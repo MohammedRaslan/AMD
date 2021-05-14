@@ -66,7 +66,7 @@
             <div class="row h-100 d-flex align-items-center">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="{{ asset('FrontEnd') }}/images/Logo.png" alt></a>
+                        <router-link to="/"><img src="{{ asset('FrontEnd') }}/images/Logo.png" alt></router-link>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
@@ -81,7 +81,7 @@
                                         </svg>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="dolls.html">Category 1</a></li>
+                                        <li><router-link class="dropdown-item" to="/example">Category 1</router-link></li>
                                         <li><a class="dropdown-item" href="dolls.html">Category 2</a></li>
                                         <li><a class="dropdown-item" href="dolls.html">Category 3</a></li>
                                         <li><a class="dropdown-item" href="dolls.html">Category 4</a></li>
@@ -214,7 +214,7 @@
     <div class="rectangle-nav"></div>
 
         <router-view></router-view>
-    
+        <vue-progress-bar></vue-progress-bar>
   
 
     

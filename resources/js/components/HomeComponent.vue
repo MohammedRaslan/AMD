@@ -182,3 +182,16 @@
     <!-- End #Auction Follow -->
     </div>
 </template>
+<script>
+
+export default({
+    created(){
+        this.$Progress.start();
+
+    },
+    mounted(){
+        this.$Progress.finish();
+
+    }
+})
+</script>
