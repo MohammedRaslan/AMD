@@ -1,6 +1,5 @@
 <template>
-    <div>
-            <!-- #Hero Section Begin -->
+    <div>            <!-- #Hero Section Begin -->
     <section class="hero">
          <!-- Swiper -->
         <div class="swiper-container swiper-hero">
@@ -81,6 +80,20 @@
             <h2>Auctions you follow</h2>
             <hr class="bot">
 
+<form @submit.prevent="test">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" v-model="form.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+       <div v-if="form.errors.has('email')" style="color:red" v-html="form.errors.get('email')" />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" v-model="form.password" class="form-control" id="exampleInputPassword1">
+       <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
+  </div>
+  <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
+  <div v-if="form.successful">HHHH</div>
+</form>
             <div class="inner-carousel">
                 <div class="owl-carousel auction-follow-slide owl-theme">
                 <!-- Block Item -->
@@ -182,9 +195,26 @@
     <!-- End #Auction Follow -->
     </div>
 </template>
+<style scoped>
+    .block{
+        display: block i !important;
+    }
+</style>
 <script>
-
 export default({
+    data: () => ({
+        loaded: true,
+        form: new form({
+            email: '',
+            password: '',
+        }),
+    }),
+    methods:{
+        async test(){
+            const response = this.form.post('api/test');
+            console.log(response);
+        }
+    },
     created(){
         this.$Progress.start();
 
