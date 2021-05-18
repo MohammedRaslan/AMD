@@ -73,31 +73,15 @@
                     <nav class="header__menu mobile-menu">
                         <ul class="text-start d-lg-flex d-xl-flex d-md-flex justify-content-between">
                             <li class="menu-1 cat mr-xl-5 mr-lg-5 mr-md-2 d-lg-flex d-xl-flex d-md-flex align-items-center">                                
-                                <div class="dropdown drop-1">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropsdown" type="button" aria-expanded="false">
-                                        <span>Marketplace</span> 
-                                         <svg id="Icon_down_solid" xmlns="http://www.w3.org/2000/svg" width="20.833" height="20.833" viewBox="0 0 20.833 20.833">
-                                            <path id="Shape" d="M10.417,20.833A10.417,10.417,0,1,1,20.833,10.417,10.428,10.428,0,0,1,10.417,20.833ZM5.208,7.291A1.042,1.042,0,0,0,4.472,9.07L9.68,14.278a1.042,1.042,0,0,0,1.474,0L16.361,9.07A1.042,1.042,0,1,0,14.888,7.6l-4.472,4.472L5.945,7.6A1.035,1.035,0,0,0,5.208,7.291Z" fill="#fff"></path>
-                                        </svg>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                                        <li><router-link class="dropdown-item" to="/example">Category 1</router-link></li>
-                                        <li><a class="dropdown-item" href="dolls.html">Category 2</a></li>
-                                        <li><a class="dropdown-item" href="dolls.html">Category 3</a></li>
-                                        <li><a class="dropdown-item" href="dolls.html">Category 4</a></li>
-                                    </ul>
-                                </div>
+                                <drop-down></drop-down>
                             </li>
                             <li class="search-item search-switch">
                                 <!-- <input type="search" name="search" placeholder="Search here" id="search"> -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="27" viewBox="0 0 19.944 19.945">
-                                    <g id="Icon_20_Grey_Search" data-name="Icon / 20 / Grey / Search" transform="translate(0 0)">
-                                        <path id="Shape" d="M18.279,19.945a1.656,1.656,0,0,1-1.179-.488l-4.334-4.334a.389.389,0,0,1-.034-.041c-.009-.011-.017-.022-.026-.033a8.2,8.2,0,1,1,2.344-2.344l.032.026a.4.4,0,0,1,.042.035L19.457,17.1a1.667,1.667,0,0,1-1.179,2.845ZM8.2,2.842A5.358,5.358,0,1,0,13.558,8.2,5.364,5.364,0,0,0,8.2,2.842Z" fill="#fff"></path>
-                                    </g>
-                                </svg>
+                                <Search></Search>
                                 <!-- <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a> -->
                                 <!-- <i class="fas fa-search"></i> -->
                             </li>
+                            @auth
                             <li class="d-xl-flex d-lg-flex d-md-flex icons">
                                <a href="#">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
@@ -126,38 +110,8 @@
                                     </g>
                                     </svg>
                                </a>  
-                               <a class="position-relative" href="#">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
-                                    <g id="Group_38" data-name="Group 38" transform="translate(-826 -317)">
-                                        <g id="Group_34" data-name="Group 34" transform="translate(-1)">
-                                        <g id="Icon_20_Grey_Shopping_Cart" data-name="Icon / 20 / Grey / Shopping Cart" transform="translate(834.019 323.998)">
-                                            <path id="Shape" d="M2.252,4.742H4L1.408.369A.759.759,0,0,0,.375.1.731.731,0,0,0,.1,1.118Z" transform="translate(11.776 1.009)" fill="#7ac943"></path>
-                                            <path id="Shape-2" data-name="Shape" d="M3.9,1.116A.735.735,0,0,0,3.627.1.762.762,0,0,0,2.594.367L0,4.744H1.75Z" transform="translate(4.193 1.011)" fill="#7ac943"></path>
-                                            <path id="Shape-3" data-name="Shape" d="M15.156,11.9H4.549A1.74,1.74,0,0,1,2.922,10.51L1.685,3.918h-.4A1.273,1.273,0,0,1,0,2.658V1.26A1.273,1.273,0,0,1,1.283,0H18.676a1.278,1.278,0,0,1,1.287,1.256v1.4a1.273,1.273,0,0,1-1.282,1.26h-.652l-1.246,6.6A1.741,1.741,0,0,1,15.156,11.9Zm-1.8-7.172a.72.72,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.72.72,0,0,0,13.352,4.731Zm-2.327,0a.738.738,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.72.72,0,0,0,11.025,4.731Zm-2.341,0a.72.72,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.738.738,0,0,0,8.684,4.731Zm-2.327,0a.72.72,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.72.72,0,0,0,6.357,4.731Z" transform="translate(0 7.092)" fill="#7ac943"></path>
-                                        </g>
-                                        <g id="Ellipse_46" data-name="Ellipse 46" transform="translate(827 317)" fill="none" stroke="#7ac943" stroke-width="1">
-                                            <circle cx="17" cy="17" r="17" stroke="none"></circle>
-                                            <circle cx="17" cy="17" r="16.5" fill="none"></circle>
-                                        </g>
-                                        </g>
-                                    </g>
-                                    </svg>
-                                    <span class="quantity-cart">2</span>
-                               </a>   
-                               <a href="#">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
-                                    <g id="Group_30" data-name="Group 30" transform="translate(-844 -319)">
-                                        <g id="Icon_20_Grey_Notification" data-name="Icon / 20 / Grey / Notification" transform="translate(851.223 326)">
-                                        <path id="Shape" d="M17.437,16.869l-1.5-2.385a6.832,6.832,0,0,1-1.06-3.645V8.75A5.886,5.886,0,0,0,10.5,3.162v-1.5a1.752,1.752,0,0,0-3.5,0v1.5A5.886,5.886,0,0,0,2.624,8.75v2.089a6.836,6.836,0,0,1-1.06,3.644l-1.5,2.385a.4.4,0,0,0-.005.42.44.44,0,0,0,.38.212H17.062a.443.443,0,0,0,.381-.211A.4.4,0,0,0,17.437,16.869Z" transform="translate(1.028)" fill="#9f72fc"></path>
-                                        <path id="Shape-2" data-name="Shape" d="M0,0A3.072,3.072,0,0,0,2.755,1.667,3.072,3.072,0,0,0,5.511,0H0Z" transform="translate(7.022 18.333)" fill="#9f72fc"></path>
-                                        </g>
-                                        <g id="Ellipse_46" data-name="Ellipse 46" transform="translate(844 319)" fill="none" stroke="#9f72fc" stroke-width="1">
-                                        <circle cx="17" cy="17" r="17" stroke="none"></circle>
-                                        <circle cx="17" cy="17" r="16.5" fill="none"></circle>
-                                        </g>
-                                    </g>
-                                    </svg>
-                               </a>                      
+                            <Cart></Cart> 
+                            <Notification></Notification>                    
                             </li>
                              <li class="menu-1 menu-user d-lg-flex d-md-flex d-xl-flex align-items-center">
                                  <!-- <a href="#"> -->
@@ -202,6 +156,7 @@
                                
                                
                             </li>
+                            @endauth
                         </ul>
                     </nav>
                 </div>

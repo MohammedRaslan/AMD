@@ -92,7 +92,6 @@
        <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
   </div>
   <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
-  <div v-if="form.successful">HHHH</div>
 </form>
             <div class="inner-carousel">
                 <div class="owl-carousel auction-follow-slide owl-theme">
@@ -195,11 +194,6 @@
     <!-- End #Auction Follow -->
     </div>
 </template>
-<style scoped>
-    .block{
-        display: block i !important;
-    }
-</style>
 <script>
 export default({
     data: () => ({
@@ -211,8 +205,18 @@ export default({
     }),
     methods:{
         async test(){
-            const response = this.form.post('api/test');
+            this.$Progress.start();
+
+            const response =await this.form.post('api/test').then(response=>{
             console.log(response);
+
+            this.$Progress.finish();
+
+            }).catch((error)=>{
+                this.$Progress.fail();
+
+            });
+         
         }
     },
     created(){
