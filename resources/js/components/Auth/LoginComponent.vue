@@ -22,7 +22,7 @@
                                 </div>
 
                                 <div class="col-6 link-up">
-                                    <a href="signup.html"  class="form-control">Signup</a>
+                                    <router-link to="register"  class="form-control">Signup</router-link>
                                 </div>
                                 
                             </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 offset-2">
                         <div class="inner">
-                            <!-- <img src="./images/img-login.png" alt=""> -->
+                            <img loading="lazy" :src="'/FrontEnd/images/img-login.png'" alt="">
                         </div>
                     </div>
                 </div>                
@@ -40,3 +40,15 @@
     </section>
     </div>
 </template>
+
+<script>
+
+export default ({
+       created(){
+        this.$Progress.start();
+    },
+    mounted(){
+        this.$Progress.finish();
+    }
+})
+</script>

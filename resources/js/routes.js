@@ -2,6 +2,8 @@ import VueRouter from "vue-router";
 import HomeComponent from "./components/HomeComponent";
 import ExampleComponent from "./components/ExampleComponent";
 import LoginComponent from "./components/Auth/LoginComponent";
+import RegisterComponent from "./components/Auth/RegisterComponent";
+
 
 
 const routes = [
@@ -19,6 +21,11 @@ const routes = [
         path:"/login",
         component: LoginComponent,
         name:"login",
+    },
+    {
+        path:"/register",
+        component: RegisterComponent,
+        name:"register",
     }
 ];
 

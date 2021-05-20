@@ -156,6 +156,10 @@
                                
                                
                             </li>
+                            @else
+                            <li class="d-xl-flex d-lg-flex d-md-flex icons">
+                                <button class="btn btn-primary">Join <i class="fas fa-sign-in-alt"></i></button>
+                            </li>
                             @endauth
                         </ul>
                     </nav>
