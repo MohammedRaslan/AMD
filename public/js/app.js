@@ -1856,6 +1856,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1900,6 +1916,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      loaded: true,
+      form: new form({
+        email: '',
+        password: ''
+      })
+    };
+  },
+  methods: {
+    test: function test() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.$Progress.start();
+
+                _context.next = 3;
+                return _this.form.post('api/test').then(function (response) {
+                  console.log(response);
+
+                  _this.$Progress.finish();
+                })["catch"](function (error) {
+                  _this.$Progress.fail();
+                });
+
+              case 3:
+                response = _context.sent;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
   created: function created() {
     this.$Progress.start();
   },
@@ -2033,28 +2091,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2240,46 +2276,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      loaded: true,
-      form: new form({
-        email: '',
-        password: ''
-      })
+      loaded: true
     };
   },
-  methods: {
-    test: function test() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this.$Progress.start();
-
-                _context.next = 3;
-                return _this.form.post('api/test').then(function (response) {
-                  console.log(response);
-
-                  _this.$Progress.finish();
-                })["catch"](function (error) {
-                  _this.$Progress.fail();
-                });
-
-              case 3:
-                response = _context.sent;
-
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
-  },
+  methods: {},
   created: function created() {
     this.$Progress.start();
   },
@@ -39129,43 +39129,124 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("form", [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6 link-up" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "form-control",
-                          attrs: { to: "register" }
-                        },
-                        [_vm._v("Signup")]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "forgot",
-                    attrs: {
-                      "data-bs-toggle": "modal",
-                      "data-bs-target": "#exampleModal"
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.test($event)
                     }
-                  },
-                  [_vm._v("Forgotten password?")]
-                )
-              ])
+                  }
+                },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.email,
+                            expression: "form.email"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "email",
+                          id: "email",
+                          placeholder: "Your Email"
+                        },
+                        domProps: { value: _vm.form.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "email", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("email")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(_vm.form.errors.get("email"))
+                            }
+                          })
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.password,
+                            expression: "form.password"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "password",
+                          id: "password",
+                          placeholder: "Password"
+                        },
+                        domProps: { value: _vm.form.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "password", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("password")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(_vm.form.errors.get("password"))
+                            }
+                          })
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "submit",
+                          disabled: _vm.form.busy,
+                          value: "Login",
+                          id: "register"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-6 link-up" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "form-control",
+                            attrs: { to: "register" }
+                          },
+                          [_vm._v("Signup")]
+                        )
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-lg-5 col-md-6 col-sm-12 offset-2" }, [
@@ -39190,43 +39271,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "email",
-          id: "email",
-          placeholder: "Your Email",
-          required: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "password",
-          id: "password",
-          placeholder: "Password",
-          required: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "submit", value: "Login", id: "register" }
-      })
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c(
+          "a",
+          {
+            staticClass: "forgot",
+            attrs: {
+              "data-bs-toggle": "modal",
+              "data-bs-target": "#exampleModal"
+            }
+          },
+          [_vm._v("Forgotten password?")]
+        )
+      ])
     ])
   }
 ]
@@ -39428,117 +39486,7 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("section", { staticClass: "auction-follow" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("hr", { staticClass: "top" }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("Auctions you follow")]),
-        _vm._v(" "),
-        _c("hr", { staticClass: "bot" }),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.test($event)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                _vm._v("Email address")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.email,
-                    expression: "form.email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "exampleInputEmail1",
-                  "aria-describedby": "emailHelp"
-                },
-                domProps: { value: _vm.form.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "email", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.form.errors.has("email")
-                ? _c("div", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      innerHTML: _vm._s(_vm.form.errors.get("email"))
-                    }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                _vm._v("Password")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.password,
-                    expression: "form.password"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputPassword1" },
-                domProps: { value: _vm.form.password },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "password", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.form.errors.has("password")
-                ? _c("div", {
-                    staticClass: "alert alert-danger",
-                    domProps: {
-                      innerHTML: _vm._s(_vm.form.errors.get("password"))
-                    }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "submit", disabled: _vm.form.busy }
-              },
-              [_vm._v("Submit")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(1)
-      ])
-    ]),
+    _vm._m(1),
     _vm._v(" "),
     _c(
       "section",
@@ -39732,25 +39680,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner-carousel" }, [
-      _c(
-        "div",
-        { staticClass: "owl-carousel auction-follow-slide owl-theme" },
-        [
-          _c("div", { staticClass: "item" }, [
-            _c("div", { staticClass: "inner-item postion-relative" }, [
-              _c("a", {
-                staticClass: "over-link",
-                attrs: { href: "shop-details.html" }
-              }),
-              _vm._v(" "),
-              _c("h4", [_vm._v("LUXURIOUS LEISURE - CONSTANCE MADSSEN")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Ends today from 21:00")])
-            ])
-          ])
-        ]
-      )
+    return _c("section", { staticClass: "auction-follow" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("hr", { staticClass: "top" }),
+        _vm._v(" "),
+        _c("h2", [_vm._v("Auctions you follow")]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "bot" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "inner-carousel" }, [
+          _c(
+            "div",
+            { staticClass: "owl-carousel auction-follow-slide owl-theme" },
+            [
+              _c("div", { staticClass: "item" }, [
+                _c("div", { staticClass: "inner-item postion-relative" }, [
+                  _c("a", {
+                    staticClass: "over-link",
+                    attrs: { href: "shop-details.html" }
+                  }),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v("LUXURIOUS LEISURE - CONSTANCE MADSSEN")]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Ends today from 21:00")])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
     ])
   },
   function() {

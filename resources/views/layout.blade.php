@@ -158,7 +158,7 @@
                             </li>
                             @else
                             <li class="d-xl-flex d-lg-flex d-md-flex icons">
-                                <button class="btn btn-primary">Join <i class="fas fa-sign-in-alt"></i></button>
+                                <router-link class="btn btn-primary" to="/login">Join <i class="fas fa-sign-in-alt"></i></router-link>
                             </li>
                             @endauth
                         </ul>

@@ -79,20 +79,6 @@
             <hr class="top">
             <h2>Auctions you follow</h2>
             <hr class="bot">
-
-<form @submit.prevent="test">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" v-model="form.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-       <div v-if="form.errors.has('email')" style="color:red" v-html="form.errors.get('email')" />
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" v-model="form.password" class="form-control" id="exampleInputPassword1">
-       <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
-  </div>
-  <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
-</form>
             <div class="inner-carousel">
                 <div class="owl-carousel auction-follow-slide owl-theme">
                 <!-- Block Item -->
@@ -198,26 +184,10 @@
 export default({
     data: () => ({
         loaded: true,
-        form: new form({
-            email: '',
-            password: '',
-        }),
+
     }),
     methods:{
-        async test(){
-            this.$Progress.start();
-
-            const response =await this.form.post('api/test').then(response=>{
-            console.log(response);
-
-            this.$Progress.finish();
-
-            }).catch((error)=>{
-                this.$Progress.fail();
-
-            });
-         
-        }
+  
     },
     created(){
         this.$Progress.start();
