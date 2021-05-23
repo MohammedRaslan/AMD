@@ -7,32 +7,51 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <h2 class="mb-4">Signup</h2>
                         <p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p>
-                        <form>                        
+                        <form @submit.prevent="register">                        
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="text" class="form-control" id="fName" placeholder="First Name" required>
+                                    <input type="text" v-model="form.first_name" class="form-control" id="fName" placeholder="First Name" required>
+                                    <div v-if="form.errors.has('first_name')" class="alert alert-danger" v-html="form.errors.get('first_name')" />
+
                                 </div>
                                 
                                 <div class="col-6">
-                                    <input type="text" class="form-control" id="lName" placeholder="Last Name" required>
+                                    <input type="text" v-model="form.last_name" class="form-control" id="lName" placeholder="Last Name" required>
+                                    <div v-if="form.errors.has('last_name')" class="alert alert-danger" v-html="form.errors.get('last_name')" />
                                 </div>
                                 
                                 <div class="col-12">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                    <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Your Email" required>
+                                    <div v-if="form.errors.has('email')" class="alert alert-danger" v-html="form.errors.get('email')" />
+
                                 </div>
                                 
                                 <div class="col-6">
-                                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                    <input type="password" v-model="form.password" class="form-control" id="password" placeholder="Password" required>
+                                    <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
                                 </div>
                                 
                                 <div class="col-6">
-                                    <input type="password" class="form-control" id="rePassword" placeholder="Repeat Passwod" required>
+                                    <input type="password" v-model="form.password_confirmation" class="form-control" id="rePassword" placeholder="Repeat Passwod" required>
+                                    <div v-if="form.errors.has('password_confirmation')" class="alert alert-danger" v-html="form.errors.get('password_confirmation')" />
+
                                 </div>
 
-                                <div class="col-12">
-                                    <input type="submit" value="Register" class="form-control" id="register">
+                                <div class="col-6">
+                                    <input type="text" v-model="form.phone" class="form-control" id="lName" placeholder="Phone" required>
+                                    <div v-if="form.errors.has('phone')" class="alert alert-danger" v-html="form.errors.get('phone')" />
                                 </div>
-                                
+
+                                <div class="col-6">
+                                    <input type="text" v-model="form.address" class="form-control" id="lName" placeholder="Address" required>
+                                    <div v-if="form.errors.has('address')" class="alert alert-danger" v-html="form.errors.get('address')" />
+
+                                </div>
+                                <div class="col-12">
+                                    <input type="submit" :disabled="form.busy" value="Register" class="form-control" id="register">
+                                </div>
+
+                   
                             </div>
                         </form>
                     </div>
@@ -56,9 +75,27 @@
 <script>
 
 export default ({
-       created(){
+    data:()=>({
+        form : new form({
+            first_name : null,
+            last_name : null,
+            email : null,
+            password : null,
+            password_confirmation : null,
+            phone: null,
+            address: null,
+        }),
+    }),
+    methods:{
+        async register(){
+            const response = await this.form.post('api/register').then((response)=>{
+                window.location.href = '/';
+            });
+            console.log(response,this.form);
+        }
+    },
+    created(){
         this.$Progress.start();
-
     },
     mounted(){
         this.$Progress.finish();

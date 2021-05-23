@@ -1938,7 +1938,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.$Progress.start();
 
                 _context.next = 3;
-                return _this.form.post('api/test').then(function (response) {
+                return _this.form.post('api/custom-login').then(function (response) {
                   console.log(response);
 
                   _this.$Progress.finish();
@@ -1979,6 +1979,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2035,6 +2062,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      form: new form({
+        first_name: null,
+        last_name: null,
+        email: null,
+        password: null,
+        password_confirmation: null,
+        phone: null,
+        address: null
+      })
+    };
+  },
+  methods: {
+    register: function register() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this.form.post('api/register').then(function (response) {
+                  window.location.href = '/';
+                });
+
+              case 2:
+                response = _context.sent;
+                console.log(response, _this.form);
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
   created: function created() {
     this.$Progress.start();
   },
@@ -39310,87 +39378,310 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", [
-        _c("div", { staticClass: "signup" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row text-center" }, [
-              _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-12" }, [
-                _c("h2", { staticClass: "mb-4" }, [_vm._v("Signup")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick."
-                  )
-                ]),
-                _vm._v(" "),
-                _c("form", [
+  return _c("div", [
+    _c("section", [
+      _c("div", { staticClass: "signup" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row text-center" }, [
+            _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-12" }, [
+              _c("h2", { staticClass: "mb-4" }, [_vm._v("Signup")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick."
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.register($event)
+                    }
+                  }
+                },
+                [
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-6" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.first_name,
+                            expression: "form.first_name"
+                          }
+                        ],
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
                           id: "fName",
                           placeholder: "First Name",
                           required: ""
+                        },
+                        domProps: { value: _vm.form.first_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.form,
+                              "first_name",
+                              $event.target.value
+                            )
+                          }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("first_name")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(
+                                _vm.form.errors.get("first_name")
+                              )
+                            }
+                          })
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-6" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.last_name,
+                            expression: "form.last_name"
+                          }
+                        ],
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
                           id: "lName",
                           placeholder: "Last Name",
                           required: ""
+                        },
+                        domProps: { value: _vm.form.last_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "last_name", $event.target.value)
+                          }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("last_name")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(
+                                _vm.form.errors.get("last_name")
+                              )
+                            }
+                          })
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-12" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.email,
+                            expression: "form.email"
+                          }
+                        ],
                         staticClass: "form-control",
                         attrs: {
                           type: "email",
                           id: "email",
                           placeholder: "Your Email",
                           required: ""
+                        },
+                        domProps: { value: _vm.form.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "email", $event.target.value)
+                          }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("email")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(_vm.form.errors.get("email"))
+                            }
+                          })
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-6" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.password,
+                            expression: "form.password"
+                          }
+                        ],
                         staticClass: "form-control",
                         attrs: {
                           type: "password",
                           id: "password",
                           placeholder: "Password",
                           required: ""
+                        },
+                        domProps: { value: _vm.form.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "password", $event.target.value)
+                          }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("password")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(_vm.form.errors.get("password"))
+                            }
+                          })
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-6" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.password_confirmation,
+                            expression: "form.password_confirmation"
+                          }
+                        ],
                         staticClass: "form-control",
                         attrs: {
                           type: "password",
                           id: "rePassword",
                           placeholder: "Repeat Passwod",
                           required: ""
+                        },
+                        domProps: { value: _vm.form.password_confirmation },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.form,
+                              "password_confirmation",
+                              $event.target.value
+                            )
+                          }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("password_confirmation")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(
+                                _vm.form.errors.get("password_confirmation")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.phone,
+                            expression: "form.phone"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "lName",
+                          placeholder: "Phone",
+                          required: ""
+                        },
+                        domProps: { value: _vm.form.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "phone", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("phone")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(_vm.form.errors.get("phone"))
+                            }
+                          })
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.address,
+                            expression: "form.address"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "lName",
+                          placeholder: "Address",
+                          required: ""
+                        },
+                        domProps: { value: _vm.form.address },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "address", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.form.errors.has("address")
+                        ? _c("div", {
+                            staticClass: "alert alert-danger",
+                            domProps: {
+                              innerHTML: _vm._s(_vm.form.errors.get("address"))
+                            }
+                          })
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-12" }, [
@@ -39398,21 +39689,23 @@ var staticRenderFns = [
                         staticClass: "form-control",
                         attrs: {
                           type: "submit",
+                          disabled: _vm.form.busy,
                           value: "Register",
                           id: "register"
                         }
                       })
                     ])
                   ])
-                ])
-              ])
+                ]
+              )
             ])
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

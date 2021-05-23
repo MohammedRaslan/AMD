@@ -36,7 +36,6 @@
 
 <body>
     <div id="app">
-
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>

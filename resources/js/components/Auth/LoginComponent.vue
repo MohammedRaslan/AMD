@@ -63,7 +63,7 @@ export default ({
         async test(){
             this.$Progress.start();
 
-            const response =await this.form.post('api/test').then(response=>{
+            const response =await this.form.post('api/custom-login').then(response=>{
             console.log(response);
 
             this.$Progress.finish();
