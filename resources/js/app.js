@@ -3,7 +3,7 @@ require('./bootstrap');
 import router from "./routes"
 import VueRouter from "vue-router"
 import Vue from "vue";
-
+import Vuex from "vuex";
 import Home from "./components/HomeComponent.vue"
 import Notification from "./components/Navbar/NotificationComponent.vue"
 import Cart from "./components/Navbar/CartComponent.vue"
@@ -16,6 +16,7 @@ window.form = Form;
 
 window.Vue = require('vue').default;
 Vue.use(VueRouter);
+Vue.use(Vuex);
 Vue.use(VueProgressBar, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
