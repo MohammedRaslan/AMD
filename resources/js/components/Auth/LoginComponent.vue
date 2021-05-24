@@ -50,7 +50,6 @@
 </template>
 
 <script>
-
 export default ({
     data: ()=>({
         loaded: true,
@@ -59,13 +58,17 @@ export default ({
             password: '',
         }),
     }),
+   
         methods:{
         async test(){
             this.$Progress.start();
-
+            // console.log(this.$store.state.user);
             const response =await this.form.post('api/custom-login').then(response=>{
-            console.log(response);
-
+            
+            this.$store.dispatch('setUser',response.data.user);
+            this.$store.dispatch('setToken',response.data.token);
+            console.log(localStorage.getItem('token'),localStorage.getItem('user'));
+            // var xemail = this.$store.state.user.email;
             this.$Progress.finish();
 
             }).catch((error)=>{
@@ -76,7 +79,16 @@ export default ({
         }
     },
     created(){
-    this.$Progress.start();
+        this.$Progress.start();
+        var token = localStorage.getItem('token');
+        console.log(token);
+        axios.get('api/test',{
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type' :'application/json',
+                'Authorization': `Bearer ${token}` 
+            }
+        });
     },
     mounted(){
         this.$Progress.finish();

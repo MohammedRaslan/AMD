@@ -1935,12 +1935,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this.$Progress.start();
+                _this.$Progress.start(); // console.log(this.$store.state.user);
+
 
                 _context.next = 3;
                 return _this.form.post('api/custom-login').then(function (response) {
-                  console.log(response);
+                  _this.$store.dispatch('setUser', response.data.user);
 
+                  _this.$store.dispatch('setToken', response.data.token);
+
+                  console.log(localStorage.getItem('token'), localStorage.getItem('user')); // var xemail = this.$store.state.user.email;
+
+                  // var xemail = this.$store.state.user.email;
                   _this.$Progress.finish();
                 })["catch"](function (error) {
                   _this.$Progress.fail();
@@ -1960,6 +1966,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     this.$Progress.start();
+    var token = localStorage.getItem('token');
+    console.log(token);
+    axios.get('api/test', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer ".concat(token)
+      }
+    });
   },
   mounted: function mounted() {
     this.$Progress.finish();
@@ -2367,17 +2382,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _components_HomeComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue");
 /* harmony import */ var _components_Navbar_NotificationComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Navbar/NotificationComponent.vue */ "./resources/js/components/Navbar/NotificationComponent.vue");
 /* harmony import */ var _components_Navbar_CartComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Navbar/CartComponent.vue */ "./resources/js/components/Navbar/CartComponent.vue");
 /* harmony import */ var _components_Navbar_DropdownComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Navbar/DropdownComponent.vue */ "./resources/js/components/Navbar/DropdownComponent.vue");
 /* harmony import */ var _components_Navbar_SearchComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Navbar/SearchComponent.vue */ "./resources/js/components/Navbar/SearchComponent.vue");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -2391,19 +2407,23 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-window.form = vform__WEBPACK_IMPORTED_MODULE_7__.default;
+
+
+window.form = vform__WEBPACK_IMPORTED_MODULE_8__.default;
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_9__.default);
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use(vuex__WEBPACK_IMPORTED_MODULE_10__.default);
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vue_progressbar__WEBPACK_IMPORTED_MODULE_6___default()), {
+vue__WEBPACK_IMPORTED_MODULE_9__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_10__.default);
+vue__WEBPACK_IMPORTED_MODULE_9__.default.use(vuex__WEBPACK_IMPORTED_MODULE_11__.default);
+vue__WEBPACK_IMPORTED_MODULE_9__.default.use((vue_progressbar__WEBPACK_IMPORTED_MODULE_7___default()), {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
   height: '70px'
 }); // Vue.component('home-component', require('./components/HomeComponent.vue').default);
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_8__.default({
+var store = new vuex__WEBPACK_IMPORTED_MODULE_11__.default.Store(_store__WEBPACK_IMPORTED_MODULE_6__.default);
+var app = new vue__WEBPACK_IMPORTED_MODULE_9__.default({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_0__.default,
+  store: store,
   components: {
     Home: _components_HomeComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     Notification: _components_Navbar_NotificationComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
@@ -2502,6 +2522,44 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
   mode: "history"
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  state: {
+    user: null,
+    token: null
+  },
+  mutations: {
+    setUser: function setUser(state, payload) {
+      state.user = payload;
+    },
+    setToken: function setToken(state, payload) {
+      state.token = payload;
+    }
+  },
+  actions: {
+    setUser: function setUser(context, payload) {
+      context.commit('setUser', payload);
+      localStorage.setItem('currentUser', JSON.stringify(payload));
+    },
+    setToken: function setToken(context, payload) {
+      context.commit('setToken', payload);
+      localStorage.setItem('token', payload);
+    }
+  }
+});
 
 /***/ }),
 
