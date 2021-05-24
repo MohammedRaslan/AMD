@@ -23,5 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/custom-login', [LoginController::class,'custom_login']);
 Route::post('/register',[RegisterController::class,'register']);
+Route::middleware('auth:api')->group(function () {
 Route::get('/test',[LoginController::class,'test']);
+    
+});
 Route::view('/home-page','layout');

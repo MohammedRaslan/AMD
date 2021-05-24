@@ -25,17 +25,21 @@ class LoginController extends Controller
     public function custom_login(Request $request)
     {
         // dd($request->email,$request);
-        $verify = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-        $token = Auth::user()->createToken('amdTokenAccess')->accessToken;
-        if($verify){
-            $user = User::where('email',$request->email)->first();
-            return response()->json(['user'=>$user,'token'=>$token]);
-        }else{
-            return response()->json(['message' => 'Not Correct']);
+        $loginData = $request->validate([
+            'email' => 'email|required',
+            'password' => 'required'
+        ]);
+
+        if (!auth()->attempt($loginData)) {
+            return response(['message' => 'Invalid Credentials']);
         }
+
+        $accessToken = auth()->user()->createToken('authToken')->accessToken;
+
+        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
     }
 
     public function test(Request $request){
-        dd($request->header('x-xsrf-token'));
+        dd($request->user()->email);
     }
 }
