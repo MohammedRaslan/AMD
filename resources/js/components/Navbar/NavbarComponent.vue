@@ -104,7 +104,6 @@
                     <div class="d-xl-flex d-lg-flex d-md-flex icons float-right" v-if="!logged">
                         <router-link class="btn btn-primary" to="/login">Join <i class="fas fa-sign-in-alt"></i></router-link>
                     </div>
-                 
                     </nav>
             
 </template>
