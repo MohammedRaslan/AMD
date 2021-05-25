@@ -1,5 +1,5 @@
 <template>
-    <div>
+
               <a href="#">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                     <g id="Group_30" data-name="Group 30" transform="translate(-844 -319)">
@@ -14,5 +14,4 @@
                                     </g>
                                     </svg>
                                </a>  
-    </div>
 </template>

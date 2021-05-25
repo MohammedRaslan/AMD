@@ -20,11 +20,6 @@ class RegisterController extends Controller
     {
         $data = $this->userService->saveUserData($request);
         
-        return response()->json($data);
+        return response(['user' => $data['user'] , 'access_token' => $data['token']]);
     }
-
-    // public function check()
-    // {
-        
-    // }
 }

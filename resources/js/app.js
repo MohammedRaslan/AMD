@@ -5,10 +5,7 @@ import VueRouter from "vue-router"
 import Vue from "vue";
 import Vuex from "vuex";
 import Home from "./components/HomeComponent.vue"
-import Notification from "./components/Navbar/NotificationComponent.vue"
-import Cart from "./components/Navbar/CartComponent.vue"
-import DropDown from "./components/Navbar/DropdownComponent.vue"
-import Search from "./components/Navbar/SearchComponent.vue"
+import Navbar from "./components/Navbar/NavbarComponent.vue";
 import storeDefinition from './store';
 import VueProgressBar from 'vue-progressbar'
 import Form from 'vform';
@@ -27,9 +24,14 @@ Vue.use(VueProgressBar, {
 // Vue.component('home-component', require('./components/HomeComponent.vue').default);
 
 const store = new Vuex.Store(storeDefinition);
+window.Fire =  new Vue();
+let TokenData = new Vue({
+  data:{
+    token: localStorage.getItem('token'),
+  }
+});
 
-
-
+Vue.mixin
 
 const app = new Vue({
     el: '#app',
@@ -38,8 +40,6 @@ const app = new Vue({
     components:{
         Home: Home,
         Notification: Notification,
-        Cart: Cart,
-        DropDown: DropDown,
-        Search: Search
+        Navbar: Navbar,
     },
 });

@@ -1,6 +1,6 @@
 <template>
     
-<div class="dropdown drop-1">
+<div class="dropdown drop-1" > 
     <button class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropsdown" type="button" aria-expanded="false">
         <span>Marketplace</span> 
             <svg id="Icon_down_solid" xmlns="http://www.w3.org/2000/svg" width="20.833" height="20.833" viewBox="0 0 20.833 20.833">

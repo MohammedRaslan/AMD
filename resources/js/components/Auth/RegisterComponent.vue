@@ -89,7 +89,19 @@ export default ({
     methods:{
         async register(){
             const response = await this.form.post('api/register').then((response)=>{
+            if(response.data.message){
+                this.$Progress.fail();
+                this.message = response.data.message;
+            }else{
+                this.$store.dispatch('setUser',response.data.user);
+                this.$store.dispatch('setToken',response.data.access_token);
+                Fire.$emit('LoginEvent');
+                this.$Progress.finish();
                 window.location.href = '/';
+            }
+            }).catch((error)=>{
+                this.$Progress.fail();
+
             });
             console.log(response,this.form);
         }

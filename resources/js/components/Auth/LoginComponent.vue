@@ -7,7 +7,10 @@
                     <div class="col-lg-5 col-md-5 col-sm-12">
                         <h2 class="mb-4">Login</h2>
                         <p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p>
-                        <form @submit.prevent="test">                        
+                        <div class="alert alert-danger" role="alert" v-if="message != null">
+                              {{ message }}
+                        </div>          
+                        <form @submit.prevent="login">                        
                             <div class="row">
                                 <div class="col-12">
                                     <input type="email" class="form-control" v-model="form.email" id="email" placeholder="Your Email" >
@@ -52,7 +55,7 @@
 <script>
 export default ({
     data: ()=>({
-        loaded: true,
+        message: null,
         form: new form({
             email: '',
             password: '',
@@ -60,17 +63,20 @@ export default ({
     }),
    
         methods:{
-        async test(){
+        async login(){
             this.$Progress.start();
-            // console.log(this.$store.state.user);
+            this.message = null;
             const response =await this.form.post('api/custom-login').then(response=>{
-            
-            this.$store.dispatch('setUser',response.data.user);
-            this.$store.dispatch('setToken',response.data.token);
-            console.log(localStorage.getItem('token'),localStorage.getItem('user'));
-            // var xemail = this.$store.state.user.email;
-            this.$Progress.finish();
-
+            if(response.data.message){
+                this.$Progress.fail();
+                this.message = response.data.message;
+            }else{
+                this.$store.dispatch('setUser',response.data.user);
+                this.$store.dispatch('setToken',response.data.access_token);
+                Fire.$emit('LoginEvent');
+                this.$Progress.finish();
+                window.location.href = '/';
+            }
             }).catch((error)=>{
                 this.$Progress.fail();
 
@@ -80,15 +86,18 @@ export default ({
     },
     created(){
         this.$Progress.start();
-        var token = localStorage.getItem('token');
-        console.log(token);
-        axios.get('api/test',{
-            headers: {
-                'Accept' : 'application/json',
-                'Content-Type' :'application/json',
-                'Authorization': `Bearer ${token}` 
-            }
-        });
+        // var token = localStorage.getItem('token');
+        
+        // if(token){
+        //     console.log(token);
+        //     axios.get('api/test',{
+        //         headers: {
+        //             'Accept' : 'application/json',
+        //             'Content-Type' :'application/json',
+        //             'Authorization': `Bearer ${token}` 
+        //         }
+        //     });
+        // }
     },
     mounted(){
         this.$Progress.finish();

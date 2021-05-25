@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Services\UserService;
 
 
 class LoginController extends Controller
 {
 
+    protected $userService;
 
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
+    }
     use AuthenticatesUsers;
 
     /**
@@ -22,21 +28,13 @@ class LoginController extends Controller
      * @var string
      */
 
-    public function custom_login(Request $request)
+    public function custom_login(LoginRequest $request)
     {
-        // dd($request->email,$request);
-        $loginData = $request->validate([
-            'email' => 'email|required',
-            'password' => 'required'
-        ]);
-
-        if (!auth()->attempt($loginData)) {
-            return response(['message' => 'Invalid Credentials']);
+        $data = $this->userService->login($request);
+        if(array_key_exists('message',$data)){
+            return response(['message' => $data['message']]);
         }
-
-        $accessToken = auth()->user()->createToken('authToken')->accessToken;
-
-        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
+        return response(['user' => auth()->user(), 'access_token' => $data['token']]);
     }
 
     public function test(Request $request){

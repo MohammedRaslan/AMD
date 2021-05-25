@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UserService{
     use AuthorizesRequests,  ValidatesRequests;
+
     protected $userRepository;
+    
     public function __construct(UserRepository $userRepository) {
         $this->userRepository = $userRepository;
 
@@ -18,7 +20,12 @@ class UserService{
     {
         $result = $this->userRepository->register($request->all());
         return $result;
-    
+    }
+
+    public function login($request)
+    {
+        $logged = $this->userRepository->login($request->all());
+        return $logged;
     }
 
 }

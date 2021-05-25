@@ -18,7 +18,7 @@ class UserRepository{
 
     public function register($request)
     {
-        return User::create([
+        $user = User::create([
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
             'email'      => $request['email'],
@@ -30,6 +30,17 @@ class UserRepository{
             'role' => 1,
         ]);
 
+        $accessToken = $user->createToken('authToken')->accessToken;
         
+        return ['user' => $user,'token' => $accessToken];
+    }
+
+    public function login($request)
+    {
+        if (!auth()->attempt($request)) {
+            return ['message' => 'Invalid Credentials'];
+        }
+        $accessToken = auth()->user()->createToken('authToken')->accessToken;
+        return ['token' => $accessToken];
     }
 }

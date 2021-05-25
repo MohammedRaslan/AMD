@@ -1,5 +1,5 @@
 <template>
-    <div>
+
            <a class="position-relative" href="#">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                     <g id="Group_38" data-name="Group 38" transform="translate(-826 -317)">
@@ -18,5 +18,6 @@
                                     </svg>
                                     <span class="quantity-cart">2</span>
                                </a>  
-    </div>
+    
 </template>
+
