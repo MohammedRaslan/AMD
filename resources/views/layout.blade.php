@@ -33,7 +33,11 @@
   
   
 </head>
-
+<style >
+    .nice-select{
+        display: none;
+    }
+</style>
 <body>
     <div id="app">
     <!-- Page Preloder -->

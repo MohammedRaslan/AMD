@@ -128,6 +128,8 @@ export default({
         logout(){
             localStorage.removeItem('token');
             localStorage.removeItem('currentUser');
+            localStorage.removeItem('auth');
+
 
             window.location.href= "/";
         }

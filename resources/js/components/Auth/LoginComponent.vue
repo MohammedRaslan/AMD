@@ -78,6 +78,7 @@ export default ({
             }else{
                 this.$store.dispatch('setUser',response.data.user);
                 this.$store.dispatch('setToken',response.data.access_token);
+                // this.$store.dispatch('setAuth',false);
                 Fire.$emit('LoginEvent');
                 this.$Progress.finish();
                 window.location.href = '/';

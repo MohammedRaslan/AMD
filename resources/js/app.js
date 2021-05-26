@@ -10,6 +10,7 @@ import storeDefinition from './store';
 import VueProgressBar from 'vue-progressbar'
 import Form from 'vform';
 import { mapState } from "vuex";
+import Swal from 'sweetalert2';
 window.form = Form;
 
 
@@ -25,6 +26,19 @@ Vue.use(VueProgressBar, {
 
 const store = new Vuex.Store(storeDefinition);
 window.Fire =  new Vue();
+window.Swal = Swal;
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+window.Toast = Toast;
 let TokenData = new Vue({
   data:{
     token: localStorage.getItem('token'),
@@ -32,13 +46,19 @@ let TokenData = new Vue({
 });
 
 router.beforeEach((to, from ,next)=>{
+
   if(localStorage.getItem('token')){
+
     if(to.path == '/login' || to.path == '/register'){
         next('/');
       }
-  }else if(to.path == '/admin/*' && !localStorage.getItem('currentUser')){
-    window.location.href = '/';
- }
+   
+  }
+  if(!localStorage.getItem('token') && to.path == '/admin'){
+    localStorage.setItem('auth',false);
+    window.location.href ="/"
+        
+  }
   next()
 })
 

@@ -31,14 +31,14 @@ const routes = [
         path:"/admin",
         component: DashboardComponent,
         name:"admin",
-        children:[
-            {
-                path:"users",
-                component: UsersComponent,
-                name: "users",
-            }
-        ]
     },
+    {
+        path:"/admin/users",
+        component: UsersComponent,
+        name: "users",
+    }
+
+   
     
 ];
 

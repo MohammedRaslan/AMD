@@ -77,7 +77,7 @@
     <section class="auction-follow">
         <div class="container">
             <hr class="top">
-            <h2>Auctions you follow</h2>
+            <h2>Auctions you follow {{ auth }}</h2>
             <hr class="bot">
             <div class="inner-carousel">
                 <div class="owl-carousel auction-follow-slide owl-theme">
@@ -180,18 +180,25 @@
     <!-- End #Auction Follow -->
     </div>
 </template>
+
 <script>
 export default({
     data: () => ({
         loaded: true,
-
+        auth: null,
     }),
     methods:{
   
     },
     created(){
         this.$Progress.start();
-
+        if(localStorage.getItem('auth')){
+           Toast.fire({
+            icon: 'error',
+            title: 'Not Auth'
+            });
+            localStorage.removeItem('auth');
+        }
     },
     mounted(){
         this.$Progress.finish();

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any?}', function ($any = null) {
-    if($any != null && str_contains($any,'admin')){
+Route::get('/{any?}/{title?}', function () {
+    if(str_contains(request()->fullUrl(),'admin')){
         return view('admin');
     }
     return view('layout');

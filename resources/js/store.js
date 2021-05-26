@@ -1,7 +1,8 @@
 export default{
     state:{
         user: null,
-        token: null
+        token: null,
+        auth: false,
     },
     mutations :{
         setUser(state, payload){
@@ -9,6 +10,9 @@ export default{
         },
         setToken(state,payload){
             state.token = payload;
+        },
+        setAuth(state,payload){
+            state.auth = payload;
         }
     },
     actions:{
@@ -19,6 +23,10 @@ export default{
         setToken(context,payload){
             context.commit('setToken',payload);
             localStorage.setItem('token',payload);
+        },
+        setAuth(context,payload){
+            context.commit('setAuth',payload);
+            localStorage.setItem('auth',payload);
         }
         },
 }

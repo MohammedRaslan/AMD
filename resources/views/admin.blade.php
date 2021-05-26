@@ -141,7 +141,7 @@
             <div class="tab-pane fade show active" id="menu-uni" role="tabpanel">
                 <nav class="sidebar-nav">
                     <ul class="metismenu">
-                        <li><a href="" class="{{ Request::path() =='admin/dashboard' ? 'active-link' : null }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                        <li><router-link to="/admin" class="{{ Request::path() =='admin/dashboard' ? 'active-link' : null }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></router-link></li>
                         <li><router-link to="/admin/users" class="{{ str_contains(Request::path() ,'user') ? 'active-link' : null }}"><i class="fa fa-users"></i><span>Users</span></router-link></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'category') ? 'active-link' : null }}"><i class="fa fa-th-list"></i><span>Categories</span></a></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'product') ? 'active-link' : null }}"><i class="fa fa-book"></i><span>Products</span></a></li>
