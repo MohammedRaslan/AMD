@@ -31,7 +31,16 @@ let TokenData = new Vue({
   }
 });
 
-Vue.mixin
+router.beforeEach((to, from ,next)=>{
+  if(localStorage.getItem('token')){
+    if(to.path == '/login' || to.path == '/register'){
+        next('/');
+      }
+  }else if(to.path == '/admin/*' && !localStorage.getItem('currentUser')){
+    window.location.href = '/';
+ }
+  next()
+})
 
 const app = new Vue({
     el: '#app',
@@ -43,3 +52,4 @@ const app = new Vue({
         Navbar: Navbar,
     },
 });
+

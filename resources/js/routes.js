@@ -3,8 +3,8 @@ import HomeComponent from "./components/HomeComponent";
 import ExampleComponent from "./components/ExampleComponent";
 import LoginComponent from "./components/Auth/LoginComponent";
 import RegisterComponent from "./components/Auth/RegisterComponent";
-
-
+import DashboardComponent from "./components/Admin/DashboardComponent"
+import UsersComponent from "./components/Admin/UsersComponent"
 
 const routes = [
     {
@@ -26,7 +26,20 @@ const routes = [
         path:"/register",
         component: RegisterComponent,
         name:"register",
-    }
+    },
+    {
+        path:"/admin",
+        component: DashboardComponent,
+        name:"admin",
+        children:[
+            {
+                path:"users",
+                component: UsersComponent,
+                name: "users",
+            }
+        ]
+    },
+    
 ];
 
 const router = new VueRouter({

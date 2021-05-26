@@ -61,7 +61,12 @@ export default ({
             password: '',
         }),
     }),
-   
+    //   beforeRouteEnter (to, from, next){ 
+    //   if(localStorage.getItem('token')){
+    //       window.location.href = "/";
+    //   }
+    //   next();
+    //   },
         methods:{
         async login(){
             this.$Progress.start();
@@ -84,6 +89,7 @@ export default ({
          
         }
     },
+
     created(){
         this.$Progress.start();
         // var token = localStorage.getItem('token');

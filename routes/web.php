@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any?}', function () {
+Route::get('/{any?}', function ($any = null) {
+    if($any != null && str_contains($any,'admin')){
+        return view('admin');
+    }
     return view('layout');
-})->where('any','^(?!api\/)[\/\w\.-]*');
-
+});

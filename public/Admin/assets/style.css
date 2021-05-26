@@ -1,0 +1,31 @@
+.metismenu li a:hover{
+    background-color: white;
+    color: #0000006b !important;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 2px !important;
+}
+.active-link{
+    background-color: white !important;
+    color: #0000006b !important;
+    border-radius: 6px !important;
+    padding: 10px !important;
+}
+
+.dt-buttons{
+    text-align: center;
+}
+.add-button{
+    justify-content: flex-end;
+}
+
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+}
+
+.form-group .control-label-not-required:after {
+    content:" (* optional)";
+    color:rgb(0, 140, 255);
+}
+
