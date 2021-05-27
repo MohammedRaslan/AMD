@@ -38,12 +38,15 @@ const Toast = Swal.mixin({
     toast.addEventListener('mouseleave', Swal.resumeTimer)
   }
 });
-window.Toast = Toast;
-let TokenData = new Vue({
-  data:{
-    token: localStorage.getItem('token'),
-  }
-});
+
+let token = localStorage.getItem('token');
+if(token){
+  window.axios.defaults.headers.common = {
+    'Accept' : 'application/json',
+    'Content-Type' :'application/json',
+    'Authorization': `Bearer ${token}` 
+  };
+}
 
 router.beforeEach((to, from ,next)=>{
 

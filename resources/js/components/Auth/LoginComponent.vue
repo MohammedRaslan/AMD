@@ -97,13 +97,13 @@ export default ({
         
         // if(token){
         //     console.log(token);
-        //     axios.get('api/test',{
-        //         headers: {
-        //             'Accept' : 'application/json',
-        //             'Content-Type' :'application/json',
-        //             'Authorization': `Bearer ${token}` 
-        //         }
-        //     });
+            // axios.get('api/test',{
+                // headers: {
+                    // 'Accept' : 'application/json',
+                    // 'Content-Type' :'application/json',
+                    // 'Authorization': `Bearer ${token}` 
+                // }
+            // });
         // }
     },
     mounted(){

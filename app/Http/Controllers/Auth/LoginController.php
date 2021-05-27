@@ -36,8 +36,4 @@ class LoginController extends Controller
         }
         return response(['user' => auth()->user(), 'access_token' => $data['token']]);
     }
-
-    public function test(Request $request){
-        dd($request->user()->email);
-    }
 }

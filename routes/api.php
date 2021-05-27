@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/custom-login', [LoginController::class,'custom_login']);
 Route::post('/register',[RegisterController::class,'register']);
-Route::middleware('auth:api')->group(function () {
-Route::get('/test',[LoginController::class,'test']);
-    
-});
+
+// Route::middleware('auth:api')->group(function () {
+    Route::get('/getUsers',[UserController::class,'getUsers']);
+// });
 Route::view('/home-page','layout');
