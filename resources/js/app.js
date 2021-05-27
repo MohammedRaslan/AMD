@@ -52,12 +52,10 @@ router.beforeEach((to, from ,next)=>{
     if(to.path == '/login' || to.path == '/register'){
         next('/');
       }
-   
   }
-  if(!localStorage.getItem('token') && to.path == '/admin'){
+  if((!localStorage.getItem('token') || JSON.parse(localStorage.getItem('currentUser')).role != 0 ) && to.path == '/admin'){
     localStorage.setItem('auth',false);
     window.location.href ="/"
-        
   }
   next()
 })

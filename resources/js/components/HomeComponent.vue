@@ -195,7 +195,7 @@ export default({
         if(localStorage.getItem('auth')){
            Toast.fire({
             icon: 'error',
-            title: 'Not Auth'
+            title: 'Not Authorize'
             });
             localStorage.removeItem('auth');
         }

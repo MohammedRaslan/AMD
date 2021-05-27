@@ -2063,8 +2063,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    this.$Progress.start();
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.$Progress.finish();
   }
 });
 
@@ -2631,7 +2634,7 @@ __webpack_require__.r(__webpack_exports__);
     if (localStorage.getItem('auth')) {
       Toast.fire({
         icon: 'error',
-        title: 'Not Auth'
+        title: 'Not Authorize'
       });
       localStorage.removeItem('auth');
     }
@@ -2768,6 +2771,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2782,7 +2800,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       logged: false,
-      mounted: false
+      mounted: false,
+      admin: false
     };
   },
   methods: {
@@ -2791,6 +2810,10 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.removeItem('currentUser');
       localStorage.removeItem('auth');
       window.location.href = "/";
+    },
+    GotoAdmin: function GotoAdmin() {
+      console.log('xx');
+      window.location.href = "/admin";
     }
   },
   created: function created() {
@@ -2801,6 +2824,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     if (localStorage.getItem('token')) {
       this.logged = true;
+
+      if (JSON.parse(localStorage.getItem('currentUser')).role == 0) {
+        this.admin = true;
+      }
     }
 
     this.mounted = true;
@@ -2879,7 +2906,7 @@ _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next
     }
   }
 
-  if (!localStorage.getItem('token') && to.path == '/admin') {
+  if ((!localStorage.getItem('token') || JSON.parse(localStorage.getItem('currentUser')).role != 0) && to.path == '/admin') {
     localStorage.setItem('auth', false);
     window.location.href = "/";
   }
@@ -44928,6 +44955,107 @@ var render = function() {
                     _c("Cart"),
                     _vm._v(" "),
                     _c("Notification"),
+                    _vm._v(" "),
+                    _vm.admin
+                      ? _c(
+                          "a",
+                          {
+                            staticStyle: {
+                              border: "1px solid blue",
+                              "border-radius": "30px",
+                              width: "40px",
+                              cursor: "pointer"
+                            },
+                            on: { click: _vm.GotoAdmin }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticStyle: {
+                                  "padding-left": "7px",
+                                  "padding-top": "5px"
+                                },
+                                attrs: {
+                                  id: "Capa_1",
+                                  "enable-background": "new 0 0 512 512",
+                                  height: "30",
+                                  viewBox: "0 0 512 512",
+                                  width: "30",
+                                  xmlns: "http://www.w3.org/2000/svg"
+                                }
+                              },
+                              [
+                                _c("g", [
+                                  _c("g", [
+                                    _c("g", [
+                                      _c("g", [
+                                        _c("g", [
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "m500.58 196.43-47.02-11.54c-2.22-6.09-4.78-12.19-7.66-18.24l24.49-40.82c3.54-5.9 2.61-13.46-2.26-18.32l-63.64-63.64c-4.86-4.87-12.42-5.8-18.32-2.26l-40.82 24.49c-6.05-2.88-12.15-5.44-18.24-7.66l-11.54-47.02c-1.65-6.7-7.66-11.42-14.57-11.42h-90c-6.91 0-12.92 4.72-14.57 11.42l-11.54 47.02c-6.09 2.22-12.19 4.78-18.24 7.66l-40.82-24.49c-5.9-3.54-13.45-2.61-18.32 2.26l-63.64 63.64c-4.87 4.86-5.8 12.42-2.26 18.32l24.49 40.82c-2.88 6.05-5.44 12.15-7.66 18.24l-47.02 11.54c-6.7 1.65-11.42 7.66-11.42 14.57v90c0 6.91 4.72 12.92 11.42 14.57l47.02 11.54c2.22 6.09 4.78 12.19 7.66 18.24l-24.49 40.82c-3.54 5.9-2.61 13.46 2.26 18.32l63.64 63.64c4.87 4.87 12.42 5.8 18.32 2.26l40.82-24.49c6.05 2.88 12.15 5.44 18.24 7.66l11.11 45.27.43 1.75c1.65 6.7 7.66 11.42 14.57 11.42l48-48 42 48c6.91 0 12.92-4.72 14.57-11.42l.43-1.75 11.11-45.27c6.09-2.22 12.19-4.78 18.24-7.66l40.82 24.49c5.9 3.54 13.45 2.61 18.32-2.26l63.64-63.64c4.87-4.86 5.8-12.42 2.26-18.32l-24.49-40.82c2.88-6.05 5.44-12.15 7.66-18.24l47.02-11.54c6.7-1.65 11.42-7.66 11.42-14.57v-90c0-6.91-4.72-12.92-11.42-14.57z",
+                                              fill: "#4086f4"
+                                            }
+                                          })
+                                        ])
+                                      ])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "m500.58 196.43-47.02-11.54c-2.22-6.09-4.78-12.19-7.66-18.24l24.49-40.82c3.54-5.9 2.61-13.46-2.26-18.32l-63.64-63.64c-4.86-4.87-12.42-5.8-18.32-2.26l-40.82 24.49c-6.05-2.88-12.15-5.44-18.24-7.66l-11.54-47.02c-1.65-6.7-7.66-11.42-14.57-11.42h-45v467l3-3 42 48c6.91 0 12.92-4.72 14.57-11.42l.43-1.75 11.11-45.27c6.09-2.22 12.19-4.78 18.24-7.66l40.82 24.49c5.9 3.54 13.45 2.61 18.32-2.26l63.64-63.64c4.87-4.86 5.8-12.42 2.26-18.32l-24.49-40.82c2.88-6.05 5.44-12.15 7.66-18.24l47.02-11.54c6.7-1.65 11.42-7.66 11.42-14.57v-90c0-6.91-4.72-12.92-11.42-14.57z",
+                                      fill: "#4175df"
+                                    }
+                                  }),
+                                  _c("g", [
+                                    _c("g", [
+                                      _c("path", {
+                                        attrs: {
+                                          d:
+                                            "m301 352.25h-90c-8.28 0-15 6.71-15 15v131.58l.43 1.75c1.65 6.7 7.66 11.42 14.57 11.42h90c6.91 0 12.92-4.72 14.57-11.42l.43-1.75v-131.58c0-8.29-6.72-15-15-15z",
+                                          fill: "#fabe2c"
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "m301 352.25h-45v159.75h45c6.91 0 12.92-4.72 14.57-11.42l.43-1.75v-131.58c0-8.29-6.72-15-15-15z",
+                                      fill: "#ff9f00"
+                                    }
+                                  }),
+                                  _c("g", { attrs: { id: "Admin_1_" } }, [
+                                    _c("g", [
+                                      _c("g", [
+                                        _c("path", {
+                                          attrs: {
+                                            d:
+                                              "m256 391c-74.439 0-135-60.561-135-135 0-27.368 8.182-53.744 23.66-76.275 15.099-21.978 36.088-38.877 60.697-48.868 4.624-1.878 9.881-1.332 14.02 1.456 4.141 2.787 6.623 7.452 6.623 12.443v103.217l30 20 30-20v-103.218c0-4.991 2.482-9.655 6.623-12.443 4.14-2.787 9.396-3.333 14.02-1.456 24.609 9.991 45.599 26.89 60.697 48.868 15.478 22.532 23.66 48.908 23.66 76.276 0 74.439-60.561 135-135 135zm45-135h.01z",
+                                            fill: "#fdd929"
+                                          }
+                                        })
+                                      ])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "m391 256c0-27.368-8.182-53.744-23.66-76.275-15.099-21.978-36.088-38.877-60.697-48.868-4.624-1.877-9.88-1.332-14.02 1.456-4.141 2.787-6.623 7.452-6.623 12.443v103.217l-30 20v123.027c74.439 0 135-60.561 135-135z",
+                                      fill: "#fabe2c"
+                                    }
+                                  })
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "a",
