@@ -102,7 +102,7 @@
 
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark" id="m-user" aria-labelledby="dropdownMenuButton22">
-                                        <li><a class="dropdown-item" href="selling.html">Selling</a></li>
+                                        <li><router-link to="/selling/overview" class="dropdown-item">Selling</router-link></li>
                                         <li><a class="dropdown-item" href="buying.html">Buying</a></li>
                                         <li><a class="dropdown-item" href="subscriptions.html">Subscriptions</a></li>
                                         <li><a class="dropdown-item" href="account.html">My Accout</a></li>

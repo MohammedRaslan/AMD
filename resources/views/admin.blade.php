@@ -151,6 +151,7 @@
                         <li><a href="" class="{{  str_contains(Request::path() ,'country') ? 'active-link' : null }}"><i class="fa fa-flag"></i> <span>Countries</span></a></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'order') ? 'active-link' : null }}"><i class="fa fa-shopping-cart"></i> <span>Orders</span></a></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'variation') ? 'active-link' : null }}"><i class="fa fa-server"></i> <span>Variations</span></a></li>
+                        <li><router-link to="/admin/subscriptions" class="{{  str_contains(Request::path() ,'subscriptions') ? 'active-link' : null }}"><i class="fa fa-th-list"></i> <span>Subscriptions</span></router-link></li>
  
                     </ul>
                 </nav>

@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/swiper.css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/app.css" type="text/css">
+<link rel="stylesheet" href=" {{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
   
   
 </head>
@@ -196,7 +197,6 @@
     <script src="js/main.js"></script>
     <script src="js/custom.js"></script> -->
 </div>
-
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap5.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap.bundle.js" defer></script>
@@ -210,7 +210,8 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
-
+    <script src="{{ asset('Admin/assets') }}/assets/plugins/dropify/js/dropify.min.js" defer></script>
+    <script src="{{ asset('Admin') }}/assets/js/form/dropify.js" defer></script>
 </body>
 
 </html>

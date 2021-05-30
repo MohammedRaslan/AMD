@@ -13,7 +13,6 @@ class UserService{
     
     public function __construct(UserRepository $userRepository) {
         $this->userRepository = $userRepository;
-
     }
 
     public function saveUserData($request)
