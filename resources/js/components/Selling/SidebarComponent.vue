@@ -3,7 +3,7 @@
                     <div class="header-taps">
                         <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <!-- Overview -->
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Overview</button>
+                            <router-link to="/selling/overview" class="nav-link active" id="v-pills-home-tab" >Overview</router-link>
                             <hr>
                             <!-- Sell an Item -->
                             <router-link to="/selling/sell_item" id="v-pills-profile-tab" class="nav-link" >

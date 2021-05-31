@@ -11,12 +11,13 @@ import VueProgressBar from 'vue-progressbar'
 import Form from 'vform';
 import { mapState } from "vuex";
 import Swal from 'sweetalert2';
-window.form = Form;
+import 'vueditor/dist/style/vueditor.min.css'
+Vue.use(Vuex);
 
 
 window.Vue = require('vue').default;
+
 Vue.use(VueRouter);
-Vue.use(Vuex);
 Vue.use(VueProgressBar, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
@@ -24,9 +25,12 @@ Vue.use(VueProgressBar, {
 })
 // Vue.component('home-component', require('./components/HomeComponent.vue').default);
 
-const store = new Vuex.Store(storeDefinition);
 window.Fire =  new Vue();
 window.Swal = Swal;
+window.form = Form;
+
+
+const store = new Vuex.Store(storeDefinition);
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
@@ -38,7 +42,7 @@ const Toast = Swal.mixin({
     toast.addEventListener('mouseleave', Swal.resumeTimer)
   }
 });
-
+window.Toast = Toast;
 let token = localStorage.getItem('token');
 if(token){
   window.axios.defaults.headers.common = {

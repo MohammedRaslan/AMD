@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -30,7 +31,9 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/getUsers',[UserController::class,'getUsers']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
 
-    
+    Route::prefix('product')->group(function () {
+        Route::post('store',[ProductController::class,'store']);
+    });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 
     

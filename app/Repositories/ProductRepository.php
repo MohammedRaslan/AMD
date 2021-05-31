@@ -1,0 +1,53 @@
+<?php
+namespace App\Repositories;
+
+use App\Models\Image;
+use App\Models\Product;
+use Illuminate\Support\Str;
+
+class ProductRepository{
+
+    protected $product;
+
+    public function __construct( Product $product ) {
+        $this->product = $product;
+    }
+
+    public function store($data,$images)
+    {
+        $product = new Product();
+        $product->sku = $data['sku'];
+        $product->title = $data['title'];
+        $product->type  = $data['type'];
+        $product->description = $data['description'];
+        $product->details = $data['details'];
+        $product->brand = $data['brand'];
+        $product->price = $data['price'];
+        $product->condition = $data['condition'];
+        $product->return_policy = $data['return_policy'];
+        $product->best_offer = $data['best_offer'];
+        $product->draft =  $data['draft'];
+        if($data->hasFile('image')){
+            $fileName = time() . '.'. $data->file('image')[0]->getClientOriginalExtension();
+            $data->image[0]->storeAs('public/products/'.$data['title'].'/',$fileName);
+            $product->image = 'public/products/'.$data['title'].'/'.$fileName;
+        }
+        if($product->save()){
+        
+        if($images){
+            foreach($images as $file){
+                $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
+                $file->storeAs('public/products/'.$product->title.'/',$fileName);
+                $path = 'public/products/'.$product->title.'/'.$fileName;
+                $image = new Image(['url' => $path]);
+                $product->images()->save($image);  
+            }
+        }
+        return ['response' => true];
+
+    }
+        return ['response' => false];
+
+    }
+
+}

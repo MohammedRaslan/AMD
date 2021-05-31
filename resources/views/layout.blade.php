@@ -53,8 +53,8 @@
         </div>
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="{{ asset('FrontEnd') }}/img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="#"><img src="{{ asset('FrontEnd') }}/img/icon/heart.png" alt=""></a>
+            <a href="#"><img src="{{ asset('FrontEnd') }}/img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -210,8 +210,6 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
-    <script src="{{ asset('Admin/assets') }}/assets/plugins/dropify/js/dropify.min.js" defer></script>
-    <script src="{{ asset('Admin') }}/assets/js/form/dropify.js" defer></script>
 </body>
 
 </html>

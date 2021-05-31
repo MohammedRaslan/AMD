@@ -148,13 +148,10 @@ export default({
             window.location.href= "/";
         },
         GotoAdmin:function(){
-            console.log('xx');
             window.location.href = "/admin";
         }
     },
  created(){
-     console.log(localStorage.getItem('token'));
-  
     //  Fire.$on('LoginEvent',()=>{
     //      this.logged = true;
     //  })

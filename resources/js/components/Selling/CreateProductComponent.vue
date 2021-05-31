@@ -40,75 +40,76 @@
                                 <div class="inner-item">
                                     <div class="row">
                                         <div class="col-lg-12 detalis">
-                                
                                                  <div class="signup">
-            <div class="container">
-                <div class="row text-center pt-0">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h2 class="pb-3 pt-4">Prodduct Info</h2>
-                        <form @submit.prevent="register">                        
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="text" v-model="form.first_name" class="form-control" id="fName" placeholder="First Name" required>
-                                    <div v-if="form.errors.has('first_name')" class="alert alert-danger" v-html="form.errors.get('first_name')" />
+                                                    <div class="container">
+                                                        <div class="row text-center pt-0">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <h2 class="pb-3 pt-4">Prodduct Info</h2>
+                                                                <form @submit.prevent="saveProduct">                        
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <input type="text" v-model="form.sku" class="form-control" id="fName" placeholder="SKU" required>
+                                                                            <div v-if="form.errors.has('sku')" class="alert alert-danger" v-html="form.errors.get('sku')" />
 
-                                </div>
-                                
-                                <div class="col-6">
-                                     <input type="file" name="image" class=" dropify" id="file" aria-describedby="inputGroupFileAddon04">
-                                    <div v-if="form.errors.has('last_name')" class="alert alert-danger" v-html="form.errors.get('last_name')" />
-                                </div>
-                                
-                                <div class="col-12">
-                                    <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Your Email" required>
-                                    <div v-if="form.errors.has('email')" class="alert alert-danger" v-html="form.errors.get('email')" />
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Title" required>
+                                                                            <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
 
-                                </div>
-                                
-                                <div class="col-6">
-                                    <input type="password" v-model="form.password" class="form-control" id="password" placeholder="Password" required>
-                                    <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
-                                </div>
-                                
-                                <div class="col-6">
-                                    <input type="password" v-model="form.password_confirmation" class="form-control" id="rePassword" placeholder="Repeat Passwod" required>
-                                    <div v-if="form.errors.has('password_confirmation')" class="alert alert-danger" v-html="form.errors.get('password_confirmation')" />
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <input type="text" v-model="form.type" class="form-control" id="email" placeholder="Type" required>
+                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
+                                                                        </div>
+                                                                        
+                                                                        <div class="col-4">
+                                                                            <input type="number" v-model="form.price" min="1" class="form-control" id="rePassword" placeholder="Price" required>
+                                                                            <div v-if="form.errors.has('price')" class="alert alert-danger" v-html="form.errors.get('price')" />
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <input type="text" v-model="form.brand   " class="form-control" id="lName" placeholder="Brand" required>
+                                                                            <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
+                                                                        </div>
 
-                                </div>
+                                                                        <div class="col-12 mb-3">
+                                                                            <UploadImages @change="handleImages" :max="7" maxError="Max files exceed" uploadMsg="upload product images" fileError="images files only accepted"/>
+                                                                            <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
+                                                                        </div>
+                                                                        <div class="col-12 mb-5">
+                                                                            <label for="#description" style="color:white">Description</label>
+                                                                            <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
+                                                                            <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
+                                                                        </div>
 
-                                <div class="col-6">
-                                    <input type="text" v-model="form.phone" class="form-control" id="lName" placeholder="Phone" required>
-                                    <div v-if="form.errors.has('phone')" class="alert alert-danger" v-html="form.errors.get('phone')" />
-                                </div>
-
-                                <div class="col-6">
-                                    <input type="text" v-model="form.address" class="form-control" id="lName" placeholder="Address" required>
-                                    <div v-if="form.errors.has('address')" class="alert alert-danger" v-html="form.errors.get('address')" />
-
-                                </div>
-                                <div class="col-12">
-                                    <input type="submit" :disabled="form.busy" value="Register" class="form-control" id="register">
-                                </div>
-
-                   
-                            </div>
-                        </form>
-                    </div>
-                    <!-- <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="blog__item">
-                            <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
-                            <div class="blog__item__text">
-                                <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
-                                <h5>Eternity Bands Do Last Forever</h5>
-                                <a href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-        </div>
+                                                                        <div class="col-12 mb-5">
+                                                                            <label for="#details" style="color:white">Details</label>
+                                                                            <input type="text" v-model="form.details" class="form-control" id="details" placeholder="Details" required>
+                                                                            <div v-if="form.errors.has('details')" class="alert alert-danger" v-html="form.errors.get('details')" />
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <input type="submit" :disabled="form.busy" value="Publish Product" class="form-control" id="register">
+                                                                        </div>
+                                                                       <div class="col-6">
+                                                                            <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-primary" id="draft">
+                                                                        </div>
+                                                        
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <div class="blog__item">
+                                                                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
+                                                                    <div class="blog__item__text">
+                                                                        <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
+                                                                        <h5>Eternity Bands Do Last Forever</h5>
+                                                                        <a href="#">Read More</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
-                          
                                     </div>
                                 </div>
                                 <hr>
@@ -130,47 +131,103 @@
 
 <script>
 import SideBar from "./SidebarComponent";
+import UploadImages from "vue-upload-drop-images";
+import { createEditor } from 'vueditor';
 export default ({
+    
     components:{
         SideBar,
+        UploadImages,
     },
       data:()=>({
+        details : "",
+        description: "",
         form : new form({
-            first_name : null,
-            last_name : null,
-            email : null,
-            password : null,
-            password_confirmation : null,
-            phone: null,
-            address: null,
+            sku : null,
+            title : null,
+            type : null,
+            image : {},
+            brand : null,
+            description: null,
+            details: null,
+            return_policy: 1,
+            price: null,
+            best_offer: 1,
+            condition: 'ccc',
+            draft: 0,
         }),
     }),
     methods:{
-        async register(){
-            const response = await this.form.post('api/register').then((response)=>{
-            if(response.data.message){
-                this.$Progress.fail();
-                this.message = response.data.message;
-            }else{
-                this.$store.dispatch('setUser',response.data.user);
-                this.$store.dispatch('setToken',response.data.access_token);
-                Fire.$emit('LoginEvent');
+        async saveProduct(){
+            this.$Progress.start();
+           this.form.details = this.details.getContent();
+           this.form.description = this.description.getContent();
+            const response = await this.form.post('/api/product/store').then((response)=>{
                 this.$Progress.finish();
-                window.location.href = '/';
-            }
+                if(this.form.draft == 1){
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product Drafted Successfully'
+                    });
+                }else{
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product Created Successfully'
+                    });
+                }
+           
+                this.form.clear();
             }).catch((error)=>{
                 this.$Progress.fail();
-
+                console.log(error);
             });
-            console.log(response,this.form);
+        },
+        handleImages(files){
+            this.form.image = files;
+          },
+        draft(){
+            this.form.draft = 1;
+            this.saveProduct();
         }
     },
+
     beforeCreate() {
         this.$Progress.start();
     },
     mounted(){
         this.$Progress.finish();
-        
+       this.description = createEditor('#description', {
+            toolbar: [
+                'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
+                'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
+                'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent',
+                'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
+            ],
+            fontName: [
+                {val: 'arial black'}, 
+                {val: 'times new roman'}, 
+                {val: 'Courier New'}
+            ],
+            fontSize: [
+                '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
+            ],
+});
+      this.details =  createEditor('#details', {
+                    toolbar: [
+                        'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
+                        'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
+                        'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent',
+                        'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
+                    ],
+                    fontName: [
+                        {val: 'arial black'}, 
+                        {val: 'times new roman'}, 
+                        {val: 'Courier New'}
+                    ],
+                    fontSize: [
+                        '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
+                    ],
+});
     }
 })
 </script>
