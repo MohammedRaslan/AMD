@@ -3471,6 +3471,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3483,6 +3486,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       details: "",
       description: "",
+      types: [],
       form: new form({
         sku: null,
         title: null,
@@ -3517,17 +3521,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this.form.post('/api/product/store').then(function (response) {
                   _this.$Progress.finish();
 
-                  if (_this.form.draft == 1) {
-                    Toast.fire({
-                      icon: 'success',
-                      title: 'Product Drafted Successfully'
-                    });
-                  } else {
-                    Toast.fire({
-                      icon: 'success',
-                      title: 'Product Created Successfully'
-                    });
-                  }
+                  _this.indicator();
 
                   _this.form.clear();
                 })["catch"](function (error) {
@@ -3553,12 +3547,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     draft: function draft() {
       this.form.draft = 1;
       this.saveProduct();
+    },
+    indicator: function indicator() {
+      if (this.form.draft == 1) {
+        Toast.fire({
+          icon: 'success',
+          title: 'Product Drafted Successfully'
+        });
+      } else {
+        Toast.fire({
+          icon: 'success',
+          title: 'Product Created Successfully'
+        });
+      }
     }
   },
   beforeCreate: function beforeCreate() {
     this.$Progress.start();
   },
   mounted: function mounted() {
+    var _this2 = this;
+
     this.$Progress.finish();
     this.description = (0,vueditor__WEBPACK_IMPORTED_MODULE_3__.createEditor)('#description', {
       toolbar: ['removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider', 'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript', 'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent', 'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'],
@@ -3581,6 +3590,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         val: 'Courier New'
       }],
       fontSize: ['12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px']
+    });
+    axios.get('/api/product/getProductData').then(function (response) {
+      _this2.types = response.data.product_types;
+      console.log(_this2.types);
     });
   }
 });
@@ -49023,6 +49036,38 @@ var render = function() {
                                                           }
                                                         }
                                                       }),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "select",
+                                                        {
+                                                          staticClass:
+                                                            "custom-select",
+                                                          attrs: {
+                                                            name: "",
+                                                            id: ""
+                                                          }
+                                                        },
+                                                        _vm._l(
+                                                          _vm.types,
+                                                          function(
+                                                            type,
+                                                            index
+                                                          ) {
+                                                            return _c(
+                                                              "option",
+                                                              { key: index },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    type.key
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          }
+                                                        ),
+                                                        0
+                                                      ),
                                                       _vm._v(" "),
                                                       _vm.form.errors.has(
                                                         "type"

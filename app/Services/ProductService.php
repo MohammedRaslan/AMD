@@ -20,6 +20,12 @@ class ProductService{
        return $response;
    }
 
+   public function getData()
+   {
+       $data = $this->productRepository->getData();
+       dd(collect($data));
+   }
+
    public function exportImages($images)
    {
        $extraImages = [];

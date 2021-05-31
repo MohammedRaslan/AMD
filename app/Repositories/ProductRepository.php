@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Enums\ProductType;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Support\Str;
@@ -11,6 +12,14 @@ class ProductRepository{
 
     public function __construct( Product $product ) {
         $this->product = $product;
+    }
+
+    public function getData()
+    {
+        $product_types = ProductType::getInstances();
+        return [
+            'product_types' => $product_types,
+        ];
     }
 
     public function store($data,$images)
@@ -45,7 +54,7 @@ class ProductRepository{
         }
         return ['response' => true];
 
-    }
+        }
         return ['response' => false];
 
     }

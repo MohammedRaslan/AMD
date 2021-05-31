@@ -59,6 +59,9 @@
                                                                         </div>
                                                                         <div class="col-4">
                                                                             <input type="text" v-model="form.type" class="form-control" id="email" placeholder="Type" required>
+                                                                            <select name="" id="" class="custom-select">
+                                                                                <option v-for="(type, index) in types" :key="index">{{ type.key }}</option>
+                                                                            </select>
                                                                             <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                         </div>
                                                                         
@@ -142,6 +145,7 @@ export default ({
       data:()=>({
         details : "",
         description: "",
+        types: [],
         form : new form({
             sku : null,
             title : null,
@@ -159,23 +163,12 @@ export default ({
     }),
     methods:{
         async saveProduct(){
-            this.$Progress.start();
+           this.$Progress.start();
            this.form.details = this.details.getContent();
            this.form.description = this.description.getContent();
             const response = await this.form.post('/api/product/store').then((response)=>{
                 this.$Progress.finish();
-                if(this.form.draft == 1){
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Product Drafted Successfully'
-                    });
-                }else{
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Product Created Successfully'
-                    });
-                }
-           
+                this.indicator();
                 this.form.clear();
             }).catch((error)=>{
                 this.$Progress.fail();
@@ -188,6 +181,19 @@ export default ({
         draft(){
             this.form.draft = 1;
             this.saveProduct();
+        },
+        indicator(){
+         if(this.form.draft == 1){
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product Drafted Successfully'
+                    });
+                }else{
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product Created Successfully'
+                    });
+                }
         }
     },
 
@@ -196,7 +202,7 @@ export default ({
     },
     mounted(){
         this.$Progress.finish();
-       this.description = createEditor('#description', {
+        this.description = createEditor('#description', {
             toolbar: [
                 'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
                 'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
@@ -212,7 +218,7 @@ export default ({
                 '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
             ],
 });
-      this.details =  createEditor('#details', {
+        this.details =  createEditor('#details', {
                     toolbar: [
                         'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
                         'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
@@ -228,6 +234,10 @@ export default ({
                         '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
                     ],
 });
+        axios.get('/api/product/getProductData').then((response) => {
+            this.types = response.data.product_types;
+            console.log(this.types);
+        });
     }
 })
 </script>

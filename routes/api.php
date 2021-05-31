@@ -33,6 +33,8 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('product')->group(function () {
         Route::post('store',[ProductController::class,'store']);
+        Route::get('getProductData',[ProductController::class,'getProductData']);
+        
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 
