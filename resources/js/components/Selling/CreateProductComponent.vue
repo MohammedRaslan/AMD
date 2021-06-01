@@ -59,10 +59,10 @@
                                                                         </div>
                                                                         <div class="col-4">
                                                                             <input type="text" v-model="form.type" class="form-control" id="email" placeholder="Type" required>
-                                                                            <select name="" id="" class="custom-select">
+                                                                            <!-- <select name="" id="" class="custom-select">
                                                                                 <option v-for="(type, index) in types" :key="index">{{ type.key }}</option>
                                                                             </select>
-                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
+                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" /> -->
                                                                         </div>
                                                                         
                                                                         <div class="col-4">

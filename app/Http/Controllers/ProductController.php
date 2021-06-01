@@ -25,4 +25,10 @@ class ProductController extends Controller
         $data = $this->productService->getData();
         return response()->json($data);
     }
+
+    public function getUserProduct(Request $request)
+    {
+        $data = $this->productService->userProduct($request->user()->id);
+        return response()->json($data);
+    }
 }

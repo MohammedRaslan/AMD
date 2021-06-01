@@ -22,7 +22,7 @@ class ProductRepository{
         ];
     }
 
-    public function store($data,$images)
+    public function store($data,$images,$user_id)
     {
         $product = new Product();
         $product->sku = $data['sku'];
@@ -36,6 +36,7 @@ class ProductRepository{
         $product->return_policy = $data['return_policy'];
         $product->best_offer = $data['best_offer'];
         $product->draft =  $data['draft'];
+        $product->user_id = $user_id;
         if($data->hasFile('image')){
             $fileName = time() . '.'. $data->file('image')[0]->getClientOriginalExtension();
             $data->image[0]->storeAs('public/products/'.$data['title'].'/',$fileName);
@@ -57,6 +58,14 @@ class ProductRepository{
         }
         return ['response' => false];
 
+    }
+
+    public function getUserProducts($id)
+    {
+        return Product::where('user_id',$id)
+                            ->where('draft',0)
+                            ->orderBy('created_at','desc')
+                            ->get();
     }
 
 }

@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->boolean('best_offer');
             $table->boolean('draft')->default(0);
             $table->boolean('status')->default(1);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

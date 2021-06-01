@@ -12,7 +12,6 @@ import UsersComponent from "./components/Admin/UsersComponent"
 import SubscriptionsComponent from "./components/Admin/Subscription/SubscriptionsComponent";
 import AddSubscriptionsComponent from "./components/Admin/Subscription/ManageSubscription.vue";
 
-
 const routes = [
     {
         path:"/",

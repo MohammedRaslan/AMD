@@ -16,14 +16,14 @@ class ProductService{
    public function store($request)
    {
        $images = $this->exportImages($request['image']);
-       $response = $this->productRepository->store($request,$images);
+       $user_id = $request->user()->id;
+       $response = $this->productRepository->store($request,$images,$user_id);
        return $response;
    }
 
    public function getData()
    {
        $data = $this->productRepository->getData();
-       dd(collect($data));
    }
 
    public function exportImages($images)
@@ -36,5 +36,11 @@ class ProductService{
             return $extraImages;
        }
        return null;
+   }
+
+   public function userProduct($id)
+   {
+       $data = $this->productRepository->getUserProducts($id);
+       return $data;
    }
 }

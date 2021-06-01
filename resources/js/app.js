@@ -53,7 +53,7 @@ if(token){
 }
 
 router.beforeEach((to, from ,next)=>{
-
+  // console.log(to.name);
   if(localStorage.getItem('token')){
 
     if(to.path == '/login' || to.path == '/register'){
@@ -63,6 +63,10 @@ router.beforeEach((to, from ,next)=>{
   if((!localStorage.getItem('token') || JSON.parse(localStorage.getItem('currentUser')).role != 0 ) && to.path == '/admin'){
     localStorage.setItem('auth',false);
     window.location.href ="/"
+  }
+  if((!localStorage.getItem('token') && !( to.name == 'login' || to.path == '/register' || to.name == 'home') )){
+    window.location.href = '/';
+
   }
   next()
 })

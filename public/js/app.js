@@ -2830,7 +2830,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.$Progress.start();
+
+                _context.next = 3;
                 return _this.form.post('api/register').then(function (response) {
                   if (response.data.message) {
                     _this.$Progress.fail();
@@ -2851,11 +2853,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.$Progress.fail();
                 });
 
-              case 2:
+              case 3:
                 response = _context.sent;
                 console.log(response, _this.form);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -3737,258 +3739,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      loading: false,
+      products: {}
+    };
+  },
   components: {
     SideBar: _SidebarComponent__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  methods: {
+    str_replace: function str_replace(str) {
+      str = str.replace('public', window.location.origin + '/storage');
+      return str;
+    }
   },
   beforeCreate: function beforeCreate() {
     this.$Progress.start();
   },
   mounted: function mounted() {
+    var _this = this;
+
+    console.log(window.location.origin, this.$route);
     this.$Progress.finish();
+    axios.get('/api/product/getUserProduct').then(function (response) {
+      _this.products = response.data;
+    });
   }
 });
 
@@ -4066,6 +3844,7 @@ if (token) {
 }
 
 _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next) {
+  // console.log(to.name);
   if (localStorage.getItem('token')) {
     if (to.path == '/login' || to.path == '/register') {
       next('/');
@@ -4075,6 +3854,10 @@ _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next
   if ((!localStorage.getItem('token') || JSON.parse(localStorage.getItem('currentUser')).role != 0) && to.path == '/admin') {
     localStorage.setItem('auth', false);
     window.location.href = "/";
+  }
+
+  if (!localStorage.getItem('token') && !(to.name == 'login' || to.path == '/register' || to.name == 'home')) {
+    window.location.href = '/';
   }
 
   next();
@@ -49035,55 +48818,7 @@ var render = function() {
                                                             )
                                                           }
                                                         }
-                                                      }),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "select",
-                                                        {
-                                                          staticClass:
-                                                            "custom-select",
-                                                          attrs: {
-                                                            name: "",
-                                                            id: ""
-                                                          }
-                                                        },
-                                                        _vm._l(
-                                                          _vm.types,
-                                                          function(
-                                                            type,
-                                                            index
-                                                          ) {
-                                                            return _c(
-                                                              "option",
-                                                              { key: index },
-                                                              [
-                                                                _vm._v(
-                                                                  _vm._s(
-                                                                    type.key
-                                                                  )
-                                                                )
-                                                              ]
-                                                            )
-                                                          }
-                                                        ),
-                                                        0
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _vm.form.errors.has(
-                                                        "type"
-                                                      )
-                                                        ? _c("div", {
-                                                            staticClass:
-                                                              "alert alert-danger",
-                                                            domProps: {
-                                                              innerHTML: _vm._s(
-                                                                _vm.form.errors.get(
-                                                                  "type"
-                                                                )
-                                                              )
-                                                            }
-                                                          })
-                                                        : _vm._e()
+                                                      })
                                                     ]
                                                   ),
                                                   _vm._v(" "),
@@ -49580,318 +49315,106 @@ var render = function() {
             _vm._v(" "),
             _c("side-bar"),
             _vm._v(" "),
-            _c("div", { staticClass: "col-xl-10 col-md-12" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab-content",
-                  attrs: { id: "v-pills-tabContent" }
-                },
-                [
-                  _c("div", { staticClass: "inner-content" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade show active",
-                        attrs: {
-                          id: "v-pills-home",
-                          role: "tabpanel",
-                          "aria-labelledby": "v-pills-home-tab"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "inner-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-lg-7 detalis" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(1),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-4 col-md-3 col-sm-4 col-6"
-                                  },
-                                  [
-                                    _c("figure", [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/FrontEnd/images/Selling/03.png",
-                                          alt: ""
-                                        }
-                                      })
+            _c(
+              "div",
+              { staticClass: "col-xl-10 col-md-12" },
+              _vm._l(_vm.products, function(product) {
+                return _c(
+                  "div",
+                  {
+                    key: product.id,
+                    staticClass: "tab-content",
+                    attrs: { id: "v-pills-tabContent" }
+                  },
+                  [
+                    _c("div", { staticClass: "inner-content" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade show active",
+                          attrs: {
+                            id: "v-pills-home",
+                            role: "tabpanel",
+                            "aria-labelledby": "v-pills-home-tab"
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "inner-item" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-lg-7 detalis" }, [
+                                _c("div", { staticClass: "row" }, [
+                                  _vm._m(1, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-4 col-md-3 col-sm-4 col-6"
+                                    },
+                                    [
+                                      _c("figure", [
+                                        _c("img", {
+                                          attrs: {
+                                            src: _vm.str_replace(product.image),
+                                            alt: ""
+                                          }
+                                        })
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-7 col-md-6 col-sm-6 col-6"
+                                    },
+                                    [
+                                      _c("h5", [
+                                        _vm._v(
+                                          "\n                                                    " +
+                                            _vm._s(product.title) +
+                                            "\n                                                    "
+                                        ),
+                                        _c("p", [_vm._v("Dolls")])
+                                      ])
+                                    ]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "col-lg-3 col-md-12 price" },
+                                [
+                                  _c("p", [_vm._v("Price")]),
+                                  _vm._v(" "),
+                                  _c("h5", [
+                                    _vm._v("$ " + _vm._s(product.price))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v("created at in "),
+                                    _c("span", [
+                                      _vm._v(_vm._s(product.created_at))
                                     ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(2)
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(3),
-                            _vm._v(" "),
-                            _vm._m(4)
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "v-pills-profile",
-                          role: "tabpanel",
-                          "aria-labelledby": "v-pills-profile-tab"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "inner-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-lg-7 detalis" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(5),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-4 col-md-3 col-sm-4 col-6"
-                                  },
-                                  [
-                                    _c("figure", [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/FrontEnd/images/Selling/03.png",
-                                          alt: ""
-                                        }
-                                      })
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(6)
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(7),
-                            _vm._v(" "),
-                            _vm._m(8)
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "inner-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-lg-7 detalis" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(9),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-4 col-md-3 col-sm-4 col-6"
-                                  },
-                                  [
-                                    _c("figure", [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/FrontEnd/images/Selling/02.png",
-                                          alt: ""
-                                        }
-                                      })
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(10)
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(11),
-                            _vm._v(" "),
-                            _vm._m(12)
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "v-pills-messages",
-                          role: "tabpanel",
-                          "aria-labelledby": "v-pills-messages-tab"
-                        }
-                      },
-                      [_vm._v("3")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "v-pills-settings",
-                          role: "tabpanel",
-                          "aria-labelledby": "v-pills-settings-tab"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "inner-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-lg-7 detalis" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(13),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-4 col-md-3 col-sm-4 col-6"
-                                  },
-                                  [
-                                    _c("figure", [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/FrontEnd/images/Selling/03.png",
-                                          alt: ""
-                                        }
-                                      })
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(14)
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(15),
-                            _vm._v(" "),
-                            _vm._m(16)
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "v-pills-home2",
-                          role: "tabpanel",
-                          "aria-labelledby": "v-pills-home-tab2"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "inner-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-lg-7 detalis" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(17),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-4 col-md-3 col-sm-4 col-6"
-                                  },
-                                  [
-                                    _c("figure", [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/FrontEnd/images/Selling/01.png",
-                                          alt: ""
-                                        }
-                                      })
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(18)
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(19),
-                            _vm._v(" "),
-                            _vm._m(20)
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "v-pills-home3",
-                          role: "tabpanel",
-                          "aria-labelledby": "v-pills-profile-tab3"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "inner-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-lg-7 detalis" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _vm._m(21),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-4 col-md-3 col-sm-4 col-6"
-                                  },
-                                  [
-                                    _c("figure", [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/FrontEnd/images/Selling/01.png",
-                                          alt: ""
-                                        }
-                                      })
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(22)
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(23),
-                            _vm._v(" "),
-                            _vm._m(24)
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr")
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ])
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._m(2, true)
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("hr")
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
           ],
           1
         ),
@@ -49945,11 +49468,11 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(25),
+              _vm._m(3),
               _vm._v(" "),
-              _vm._m(26),
+              _vm._m(4),
               _vm._v(" "),
-              _vm._m(27),
+              _vm._m(5),
               _vm._v(" "),
               _c("li", { staticClass: "page-item" }, [
                 _c(
@@ -50027,35 +49550,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-6 col-sm-6 col-6" }, [
-      _c("h5", [
-        _vm._v(
-          "\n                                                    LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION\n                                                    "
-        ),
-        _c("p", [_vm._v("Dolls")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-12 price" }, [
-      _c("p", [_vm._v("Last Bid")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("$ 54.99")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Closes in "), _c("span", [_vm._v("6d 5h 02m 30s")])]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-warning" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("New Offer Received!")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
       _c("div", { staticClass: "inner-gruop" }, [
         _c("div", { staticClass: "inner" }, [
@@ -50067,317 +49561,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "inner" }, [
           _c("button", { staticClass: "btn btn-danger" }, [
             _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-1 dot" }, [
-      _c("div", { staticClass: "inner" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-6 col-sm-6 col-6" }, [
-      _c("h5", [
-        _vm._v(
-          "\n                                                    LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION\n                                                    "
-        ),
-        _c("p", [_vm._v("Dolls")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-12 price" }, [
-      _c("p", [_vm._v("Last Bid")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("$ 54.99")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Closes in "), _c("span", [_vm._v("6d 5h 02m 30s")])]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-warning" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("New Offer Received!")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("View")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-1 dot" }, [
-      _c("div", { staticClass: "inner" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-6 col-sm-6 col-6" }, [
-      _c("h5", [
-        _vm._v(
-          "\n                                                    LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION\n                                                    "
-        ),
-        _c("p", [_vm._v("Dolls")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-12 price" }, [
-      _c("p", [_vm._v("Last Bid")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("$ 54.99")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Closes in "), _c("span", [_vm._v("6d 5h 02m 30s")])]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-warning" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("New Offer Received!")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("View")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-1 dot" }, [
-      _c("div", { staticClass: "inner" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-6 col-sm-6 col-6" }, [
-      _c("h5", [
-        _vm._v(
-          "\n                                                    LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION\n                                                    "
-        ),
-        _c("p", [_vm._v("Dolls")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-12 price" }, [
-      _c("p", [_vm._v("Last Bid")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("$ 54.99")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Closes in "), _c("span", [_vm._v("6d 5h 02m 30s")])]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-warning" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("New Offer Received!")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("View")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-1 dot" }, [
-      _c("div", { staticClass: "inner" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-6 col-sm-6 col-6" }, [
-      _c("h5", [
-        _vm._v(
-          "\n                                                    LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION\n                                                    "
-        ),
-        _c("p", [_vm._v("Dolls")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-12 price" }, [
-      _c("p", [_vm._v("Last Bid")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("$ 54.99")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Closes in "), _c("span", [_vm._v("6d 5h 02m 30s")])]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-warning" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("New Offer Received!")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("View")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-1 dot" }, [
-      _c("div", { staticClass: "inner" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-6 col-sm-6 col-6" }, [
-      _c("h5", [
-        _vm._v(
-          "\n                                                    LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION\n                                                    "
-        ),
-        _c("p", [_vm._v("Dolls")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-12 price" }, [
-      _c("p", [_vm._v("Last Price")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("$ 54.99")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Ended in "), _c("span", [_vm._v("21 Feb 2021")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns unsold" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("View")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("List Again")])
           ])
         ]),
         _vm._v(" "),

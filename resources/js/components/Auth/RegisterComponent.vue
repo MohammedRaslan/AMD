@@ -88,6 +88,7 @@ export default ({
     }),
     methods:{
         async register(){
+            this.$Progress.start();
             const response = await this.form.post('api/register').then((response)=>{
             if(response.data.message){
                 this.$Progress.fail();

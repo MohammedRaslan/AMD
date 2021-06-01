@@ -32,7 +32,7 @@
             <side-bar></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-content" id="v-pills-tabContent" v-for="product in products" :key="product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -45,13 +45,13 @@
                                                 
                                                 <div class="col-lg-4 col-md-3 col-sm-4 col-6">
                                                     <figure>
-                                                        <img :src="'/FrontEnd/images/Selling/03.png'" alt="">
+                                                        <img :src='str_replace(product.image)' alt="">
                                                     </figure>
                                                 </div>
 
                                                 <div class="col-lg-7 col-md-6 col-sm-6 col-6">
                                                     <h5>
-                                                        LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION
+                                                        {{ product.title }}
                                                         <p>Dolls</p>
                                                     </h5>
                                                 </div>
@@ -59,10 +59,10 @@
                                             
                                         </div>
                                         <div class="col-lg-3 col-md-12 price">
-                                            <p>Last Bid</p>
-                                            <h5>$ 54.99</h5>
-                                            <p>Closes in <span>6d 5h 02m 30s</span></p>
-                                            <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button>
+                                            <p>Price</p>
+                                            <h5>$ {{ product.price }}</h5>
+                                            <p>created at in <span>{{ product.created_at }}</span></p>
+                                            <!-- <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button> -->
                                         </div>
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
@@ -83,248 +83,6 @@
 
 
                              </div>
-
-                            <!-- Tab2 Sell an Item -->
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                <!-- Block Item -->
-                                <div class="inner-item">
-                                    <div class="row">
-                                        <div class="col-lg-7 detalis">
-                                            <div class="row">
-                                                <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
-                                                <div class="col-lg-4 col-md-3 col-sm-4 col-6">
-                                                    <figure>
-                                                        <img :src="'/FrontEnd/images/Selling/03.png'" alt="">
-                                                    </figure>
-                                                </div>
-
-                                                <div class="col-lg-7 col-md-6 col-sm-6 col-6">
-                                                    <h5>
-                                                        LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION
-                                                        <p>Dolls</p>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-lg-3 col-md-12 price">
-                                            <p>Last Bid</p>
-                                            <h5>$ 54.99</h5>
-                                            <p>Closes in <span>6d 5h 02m 30s</span></p>
-                                            <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12 btns">
-                                           <div class="inner-gruop">
-                                                <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
-                                                </div>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <!-- Block Item -->
-                                <div class="inner-item">
-                                    <div class="row">
-                                        <div class="col-lg-7 detalis">
-                                            <div class="row">
-                                                <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
-                                                <div class="col-lg-4 col-md-3 col-sm-4 col-6">
-                                                    <figure>
-                                                        <img :src="'/FrontEnd/images/Selling/02.png'" alt="">
-                                                    </figure>
-                                                </div>
-
-                                                <div class="col-lg-7 col-md-6 col-sm-6 col-6">
-                                                    <h5>
-                                                        LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION
-                                                        <p>Dolls</p>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-lg-3 col-md-12 price">
-                                            <p>Last Bid</p>
-                                            <h5>$ 54.99</h5>
-                                            <p>Closes in <span>6d 5h 02m 30s</span></p>
-                                            <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12 btns">
-                                           <div class="inner-gruop">
-                                                <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
-                                                </div>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                
-                            </div>
-
-                            <!-- Tab3 My Items -->
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">3</div>
-
-                            <!-- Tab4 Active -->
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-
-                               <!-- Block Item -->
-                                <div class="inner-item">
-                                    <div class="row">
-                                        <div class="col-lg-7 detalis">
-                                            <div class="row">
-                                                <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
-                                                <div class="col-lg-4 col-md-3 col-sm-4 col-6">
-                                                    <figure>
-                                                        <img :src="'/FrontEnd/images/Selling/03.png'" alt="">
-                                                    </figure>
-                                                </div>
-
-                                                <div class="col-lg-7 col-md-6 col-sm-6 col-6">
-                                                    <h5>
-                                                        LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION
-                                                        <p>Dolls</p>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-lg-3 col-md-12 price">
-                                            <p>Last Bid</p>
-                                            <h5>$ 54.99</h5>
-                                            <p>Closes in <span>6d 5h 02m 30s</span></p>
-                                            <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12 btns">
-                                           <div class="inner-gruop">
-                                                <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
-                                                </div>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <!-- Tab5 Sold-->
-                            <div class="tab-pane fade" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home-tab2">
-                               
-                                <!-- Block Item -->
-                                <div class="inner-item">
-                                    <div class="row">
-                                        <div class="col-lg-7 detalis">
-                                            <div class="row">
-                                                <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
-                                                <div class="col-lg-4 col-md-3 col-sm-4 col-6">
-                                                    <figure>
-                                                        <img :src="'/FrontEnd/images/Selling/01.png'" alt="">
-                                                    </figure>
-                                                </div>
-
-                                                <div class="col-lg-7 col-md-6 col-sm-6 col-6">
-                                                    <h5>
-                                                        LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION
-                                                        <p>Dolls</p>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-lg-3 col-md-12 price">
-                                            <p>Last Bid</p>
-                                            <h5>$ 54.99</h5>
-                                            <p>Closes in <span>6d 5h 02m 30s</span></p>
-                                            <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12 btns">
-                                           <div class="inner-gruop">
-                                                <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
-                                                </div>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <!-- Tab6 Unsold -->
-                            <div class="tab-pane fade" id="v-pills-home3" role="tabpanel" aria-labelledby="v-pills-profile-tab3">
-                                <!-- Block Item -->
-                                <div class="inner-item">
-                                    <div class="row">
-                                        <div class="col-lg-7 detalis">
-                                            <div class="row">
-                                                <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
-                                                <div class="col-lg-4 col-md-3 col-sm-4 col-6">
-                                                    <figure>
-                                                        <img :src="'/FrontEnd/images/Selling/01.png'" alt="">
-                                                    </figure>
-                                                </div>
-
-                                                <div class="col-lg-7 col-md-6 col-sm-6 col-6">
-                                                    <h5>
-                                                        LUXURIOUS LEISURE - CONSTANCE MADSSEN - E5951th COLLECTION
-                                                        <p>Dolls</p>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-12 price">
-                                            <p>Last Price</p>
-                                            <h5>$ 54.99</h5>
-                                            <p>Ended in <span>21 Feb 2021</span></p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12 btns unsold">
-                                           <div class="inner-gruop">
-                                                <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">List Again</a></button>
-                                                </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
-                                                </div>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -368,15 +126,28 @@
 <script>
 import SideBar from "./SidebarComponent";
 export default ({
+    data :()=>({
+        loading : false,
+        products: {},
+    }),
     components:{
         SideBar,
+    },
+    methods:{
+        str_replace(str){
+            str = str.replace('public',window.location.origin + '/storage');
+            return str;
+        }
     },
     beforeCreate() {
         this.$Progress.start();
     },
     mounted(){
+        console.log(window.location.origin, this.$route);
         this.$Progress.finish();
-        
+        axios.get('/api/product/getUserProduct').then((response) => {
+            this.products = response.data;
+        });
     }
 })
 </script>
