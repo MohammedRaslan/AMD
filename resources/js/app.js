@@ -11,7 +11,8 @@ import VueProgressBar from 'vue-progressbar'
 import Form from 'vform';
 import { mapState } from "vuex";
 import Swal from 'sweetalert2';
-import 'vueditor/dist/style/vueditor.min.css'
+import 'vueditor/dist/style/vueditor.min.css';
+import moment from "moment"
 Vue.use(Vuex);
 
 
@@ -29,6 +30,9 @@ window.Fire =  new Vue();
 window.Swal = Swal;
 window.form = Form;
 
+Vue.filter('myDate',function(created){
+    return moment(created).format('MMMM Do YYYY');
+});
 
 const store = new Vuex.Store(storeDefinition);
 const Toast = Swal.mixin({
@@ -53,17 +57,15 @@ if(token){
 }
 
 router.beforeEach((to, from ,next)=>{
-  // console.log(to.name);
   if(localStorage.getItem('token')){
 
     if(to.path == '/login' || to.path == '/register'){
         next('/');
       }
   }
-  if((!localStorage.getItem('token') || JSON.parse(localStorage.getItem('currentUser')).role != 0 ) && to.path == '/admin'){
-    localStorage.setItem('auth',false);
-    window.location.href ="/"
-  }
+  axios.get('/api/checkAdmin').then((response) => {
+        console.l
+ });
   if((!localStorage.getItem('token') && !( to.name == 'login' || to.path == '/register' || to.name == 'home') )){
     window.location.href = '/';
 

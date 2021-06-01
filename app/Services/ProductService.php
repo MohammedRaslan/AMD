@@ -43,4 +43,11 @@ class ProductService{
        $data = $this->productRepository->getUserProducts($id);
        return $data;
    }
+
+   public function userDraftedProduct($id)
+   {
+       $data = $this->productRepository->getUserDraftedProducts($id);
+       return $data;
+   }
+   
 }

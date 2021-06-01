@@ -159,9 +159,12 @@ export default({
  mounted(){
     if(localStorage.getItem('token')){
          this.logged = true;
-         if(JSON.parse(localStorage.getItem('currentUser')).role == 0){
-             this.admin = true;
-         }
+         axios.get('/api/checkAdmin').then((response) => {
+            if(response.data == true){
+                this.admin = true;
+            }
+         });
+      
      }
      this.mounted = true;
  }

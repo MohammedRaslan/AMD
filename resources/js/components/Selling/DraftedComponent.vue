@@ -27,7 +27,7 @@
 
         <div class="container">
             <div class="row">
-                <h2>Selling <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <h2>Drafted <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
             <!-- Compnent Here -->
             <side-bar></side-bar>
             <!-- End Component  -->
@@ -67,11 +67,9 @@
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
                                                 <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
+                                                    <button class="btn btn-primary"><a href="#">Complete</a></button>
                                                 </div>
-                                                <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
-                                                </div>
+                                             
                                                 <div class="inner">
                                                     <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
                                                 </div>
@@ -145,7 +143,7 @@ export default ({
     mounted(){
         console.log(window.location.origin, this.$route);
         this.$Progress.finish();
-        axios.get('/api/product/getUserProduct').then((response) => {
+        axios.get('/api/product/getUserProductDrafted').then((response) => {
             this.products = response.data;
         });
     }

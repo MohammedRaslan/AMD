@@ -29,10 +29,13 @@ class UserRepository{
             'type' => 1,
             'role' => 1,
         ]);
-
+        $userData = [
+            'name' => $user->first_name .' '. $user->last_name,
+            'email' => $user->email,
+        ];
         $accessToken = $user->createToken('authToken')->accessToken;
         
-        return ['user' => $user,'token' => $accessToken];
+        return ['user' => $userData,'token' => $accessToken];
     }
 
     public function login($request)

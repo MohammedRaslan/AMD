@@ -68,4 +68,14 @@ class ProductRepository{
                             ->get();
     }
 
+
+    public function getUserDraftedProducts($id)
+    {
+        return Product::where('user_id',$id)
+                            ->where('draft',1)
+                            ->orderBy('created_at','desc')
+                            ->get();
+    }
+    
+
 }

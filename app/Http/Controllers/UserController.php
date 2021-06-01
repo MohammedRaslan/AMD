@@ -38,4 +38,12 @@ class UserController extends Controller
         return ['data' => $projects, 'draw' => $request->input('draw')];
     }
     
+
+    public function checkAdmin(Request $request)
+    {
+       if($request->user()->role == 0){
+           return true;
+       }
+       return false;
+    }
 }

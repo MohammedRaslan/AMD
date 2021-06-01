@@ -19,7 +19,7 @@
                             <!-- Unsold -->
                             <button class="nav-link" id="v-pills-profile-tab3" data-bs-toggle="pill" data-bs-target="#v-pills-home3" type="button" role="tab" aria-controls="v-pills-home3" aria-selected="false">Unsold</button>
                             <!-- Draft -->
-                            <button class="nav-link" id="v-pills-messages-tab4" data-bs-toggle="pill" data-bs-target="#v-pills-home4" type="button" role="tab" aria-controls="v-pills-home4" aria-selected="false">Draft</button>
+                            <router-link to="/selling/drafted" class="nav-link" id="v-pills-messages-tab4" >Draft</router-link>
                             <hr>
                             <!-- Seller Details -->
                             <button class="nav-link" id="v-pills-settings-tab5" data-bs-toggle="pill" data-bs-target="#v-pills-home5" type="button" role="tab" aria-controls="v-pills-home5" aria-selected="false">Seller Details</button>
