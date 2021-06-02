@@ -4025,13 +4025,10 @@ _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next
     if (to.path == '/login' || to.path == '/register') {
       next('/');
     }
-  }
+  } //   axios.get('/api/checkAdmin').then((response) => {
+  //         console.l
+  //  });
 
-  axios.get('/api/checkAdmin').then(function (response) {
-    if (response.data == false) {
-      window.location.href = '/';
-    }
-  });
 
   if (!localStorage.getItem('token') && !(to.name == 'login' || to.path == '/register' || to.name == 'home')) {
     window.location.href = '/';
