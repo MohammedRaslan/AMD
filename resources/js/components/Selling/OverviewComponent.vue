@@ -32,6 +32,7 @@
             <side-bar></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
+                    <h2 v-if="message != '' " class="text-center">{{message}}</h2>
                     <div class="tab-content" id="v-pills-tabContent" v-for="product in products" :key="product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
@@ -129,6 +130,7 @@ export default ({
     data :()=>({
         loading : false,
         products: {},
+        message : '',
     }),
     components:{
         SideBar,
@@ -147,7 +149,11 @@ export default ({
         this.$Progress.finish();
         axios.get('/api/product/getUserProduct').then((response) => {
             this.products = response.data;
+            if(response.data == '' ){
+                this.message = 'You dont have products';
+                }
         });
+        console.log(this.$route.params.id);
     }
 })
 </script>

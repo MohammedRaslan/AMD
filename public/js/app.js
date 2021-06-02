@@ -3740,12 +3740,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       loading: false,
-      products: {}
+      products: {},
+      message: ''
     };
   },
   components: {
@@ -3755,6 +3757,14 @@ __webpack_require__.r(__webpack_exports__);
     str_replace: function str_replace(str) {
       str = str.replace('public', window.location.origin + '/storage');
       return str;
+    },
+    complete: function complete(draft) {
+      this.$router.push({
+        name: 'SellingOverview',
+        params: {
+          id: '12'
+        }
+      });
     }
   },
   beforeCreate: function beforeCreate() {
@@ -3767,6 +3777,10 @@ __webpack_require__.r(__webpack_exports__);
     this.$Progress.finish();
     axios.get('/api/product/getUserProductDrafted').then(function (response) {
       _this.products = response.data;
+
+      if (response.data == '') {
+        _this.message = 'You dont have products';
+      }
     });
   }
 });
@@ -3910,12 +3924,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       loading: false,
-      products: {}
+      products: {},
+      message: ''
     };
   },
   components: {
@@ -3937,7 +3953,12 @@ __webpack_require__.r(__webpack_exports__);
     this.$Progress.finish();
     axios.get('/api/product/getUserProduct').then(function (response) {
       _this.products = response.data;
+
+      if (response.data == '') {
+        _this.message = 'You dont have products';
+      }
     });
+    console.log(this.$route.params.id);
   }
 });
 
@@ -71004,110 +71025,145 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-xl-10 col-md-12" },
-              _vm._l(_vm.products, function(product) {
-                return _c(
-                  "div",
-                  {
-                    key: product.id,
-                    staticClass: "tab-content",
-                    attrs: { id: "v-pills-tabContent" }
-                  },
-                  [
-                    _c("div", { staticClass: "inner-content" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane fade show active",
-                          attrs: {
-                            id: "v-pills-home",
-                            role: "tabpanel",
-                            "aria-labelledby": "v-pills-home-tab"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "inner-item" }, [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-lg-7 detalis" }, [
-                                _c("div", { staticClass: "row" }, [
-                                  _vm._m(1, true),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-4 col-md-3 col-sm-4 col-6"
-                                    },
-                                    [
-                                      _c("figure", [
-                                        _c("img", {
-                                          attrs: {
-                                            src: _vm.str_replace(product.image),
-                                            alt: ""
-                                          }
-                                        })
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-7 col-md-6 col-sm-6 col-6"
-                                    },
-                                    [
-                                      _c("h5", [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(product.title) +
-                                            "\n                                                    "
-                                        ),
-                                        _c("p", [_vm._v("Dolls")])
-                                      ])
-                                    ]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "col-lg-3 col-md-12 price" },
-                                [
-                                  _c("p", [_vm._v("Price")]),
-                                  _vm._v(" "),
-                                  _c("h5", [
-                                    _vm._v("$ " + _vm._s(product.price))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "p",
-                                    { staticStyle: { display: "grid" } },
-                                    [
-                                      _vm._v("created at in "),
-                                      _c("span", [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("myDate")(product.created_at)
-                                          )
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(2, true)
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("hr")
-                        ]
-                      )
+              [
+                _vm.message != ""
+                  ? _c("h2", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(_vm.message))
                     ])
-                  ]
-                )
-              }),
-              0
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.products, function(product) {
+                  return _c(
+                    "div",
+                    {
+                      key: product.id,
+                      staticClass: "tab-content",
+                      attrs: { id: "v-pills-tabContent" }
+                    },
+                    [
+                      _c("div", { staticClass: "inner-content" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane fade show active",
+                            attrs: {
+                              id: "v-pills-home",
+                              role: "tabpanel",
+                              "aria-labelledby": "v-pills-home-tab"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "inner-item" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-lg-7 detalis" }, [
+                                  _c("div", { staticClass: "row" }, [
+                                    _vm._m(1, true),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-4 col-md-3 col-sm-4 col-6"
+                                      },
+                                      [
+                                        _c("figure", [
+                                          _c("img", {
+                                            attrs: {
+                                              src: _vm.str_replace(
+                                                product.image
+                                              ),
+                                              alt: ""
+                                            }
+                                          })
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-7 col-md-6 col-sm-6 col-6"
+                                      },
+                                      [
+                                        _c("h5", [
+                                          _vm._v(
+                                            "\n                                                    " +
+                                              _vm._s(product.title) +
+                                              "\n                                                    "
+                                          ),
+                                          _c("p", [_vm._v("Dolls")])
+                                        ])
+                                      ]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-3 col-md-12 price" },
+                                  [
+                                    _c("p", [_vm._v("Price")]),
+                                    _vm._v(" "),
+                                    _c("h5", [
+                                      _vm._v("$ " + _vm._s(product.price))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      { staticStyle: { display: "grid" } },
+                                      [
+                                        _vm._v("created at in "),
+                                        _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("myDate")(
+                                                product.created_at
+                                              )
+                                            )
+                                          )
+                                        ])
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-2 col-md-12 btns" },
+                                  [
+                                    _c("div", { staticClass: "inner-gruop" }, [
+                                      _c("div", { staticClass: "inner" }, [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-primary",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.complete(product)
+                                              }
+                                            }
+                                          },
+                                          [_c("a", [_vm._v("Complete")])]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._m(2, true)
+                                    ])
+                                  ]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("hr")
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                })
+              ],
+              2
             )
           ],
           1
@@ -71244,19 +71300,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Complete")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
+    return _c("div", { staticClass: "inner" }, [
+      _c("button", { staticClass: "btn btn-outline-danger" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
       ])
     ])
   },
@@ -71371,110 +71417,122 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-xl-10 col-md-12" },
-              _vm._l(_vm.products, function(product) {
-                return _c(
-                  "div",
-                  {
-                    key: product.id,
-                    staticClass: "tab-content",
-                    attrs: { id: "v-pills-tabContent" }
-                  },
-                  [
-                    _c("div", { staticClass: "inner-content" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane fade show active",
-                          attrs: {
-                            id: "v-pills-home",
-                            role: "tabpanel",
-                            "aria-labelledby": "v-pills-home-tab"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "inner-item" }, [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-lg-7 detalis" }, [
-                                _c("div", { staticClass: "row" }, [
-                                  _vm._m(1, true),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-4 col-md-3 col-sm-4 col-6"
-                                    },
-                                    [
-                                      _c("figure", [
-                                        _c("img", {
-                                          attrs: {
-                                            src: _vm.str_replace(product.image),
-                                            alt: ""
-                                          }
-                                        })
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-7 col-md-6 col-sm-6 col-6"
-                                    },
-                                    [
-                                      _c("h5", [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(product.title) +
-                                            "\n                                                    "
-                                        ),
-                                        _c("p", [_vm._v("Dolls")])
-                                      ])
-                                    ]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "col-lg-3 col-md-12 price" },
-                                [
-                                  _c("p", [_vm._v("Price")]),
-                                  _vm._v(" "),
-                                  _c("h5", [
-                                    _vm._v("$ " + _vm._s(product.price))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "p",
-                                    { staticStyle: { display: "grid" } },
-                                    [
-                                      _vm._v("created at in "),
-                                      _c("span", [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("myDate")(product.created_at)
-                                          )
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(2, true)
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("hr")
-                        ]
-                      )
+              [
+                _vm.message != ""
+                  ? _c("h2", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(_vm.message))
                     ])
-                  ]
-                )
-              }),
-              0
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.products, function(product) {
+                  return _c(
+                    "div",
+                    {
+                      key: product.id,
+                      staticClass: "tab-content",
+                      attrs: { id: "v-pills-tabContent" }
+                    },
+                    [
+                      _c("div", { staticClass: "inner-content" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane fade show active",
+                            attrs: {
+                              id: "v-pills-home",
+                              role: "tabpanel",
+                              "aria-labelledby": "v-pills-home-tab"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "inner-item" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-lg-7 detalis" }, [
+                                  _c("div", { staticClass: "row" }, [
+                                    _vm._m(1, true),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-4 col-md-3 col-sm-4 col-6"
+                                      },
+                                      [
+                                        _c("figure", [
+                                          _c("img", {
+                                            attrs: {
+                                              src: _vm.str_replace(
+                                                product.image
+                                              ),
+                                              alt: ""
+                                            }
+                                          })
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-7 col-md-6 col-sm-6 col-6"
+                                      },
+                                      [
+                                        _c("h5", [
+                                          _vm._v(
+                                            "\n                                                    " +
+                                              _vm._s(product.title) +
+                                              "\n                                                    "
+                                          ),
+                                          _c("p", [_vm._v("Dolls")])
+                                        ])
+                                      ]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-3 col-md-12 price" },
+                                  [
+                                    _c("p", [_vm._v("Price")]),
+                                    _vm._v(" "),
+                                    _c("h5", [
+                                      _vm._v("$ " + _vm._s(product.price))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      { staticStyle: { display: "grid" } },
+                                      [
+                                        _vm._v("created at in "),
+                                        _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("myDate")(
+                                                product.created_at
+                                              )
+                                            )
+                                          )
+                                        ])
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._m(2, true)
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("hr")
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                })
+              ],
+              2
             )
           ],
           1

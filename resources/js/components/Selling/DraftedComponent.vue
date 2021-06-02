@@ -32,6 +32,7 @@
             <side-bar></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
+                    <h2 v-if="message != '' " class="text-center">{{message}}</h2>
                     <div class="tab-content" id="v-pills-tabContent" v-for="product in products" :key="product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
@@ -67,7 +68,7 @@
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
                                                 <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">Complete</a></button>
+                                                    <button class="btn btn-primary" @click="complete(product)"><a>Complete</a></button>
                                                 </div>
                                              
                                                 <div class="inner">
@@ -127,6 +128,7 @@ export default ({
     data :()=>({
         loading : false,
         products: {},
+        message : '',
     }),
     components:{
         SideBar,
@@ -135,7 +137,15 @@ export default ({
         str_replace(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
-        }
+        },
+        complete(draft){
+            this.$router.push({
+                name:'SellingOverview', 
+                params:{
+                    id: '12',
+                }
+            });
+            }
     },
     beforeCreate() {
         this.$Progress.start();
@@ -145,6 +155,9 @@ export default ({
         this.$Progress.finish();
         axios.get('/api/product/getUserProductDrafted').then((response) => {
             this.products = response.data;
+              if(response.data == '' ){
+                this.message = 'You dont have products';
+                }
         });
     }
 })
