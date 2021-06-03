@@ -16,10 +16,8 @@ class ProductRepository{
 
     public function getData()
     {
-        $product_types = ProductType::getInstances();
-        return [
-            'product_types' => $product_types,
-        ];
+        return ProductType::getInstances();
+        
     }
 
     public function store($data,$images,$user_id)
@@ -77,5 +75,19 @@ class ProductRepository{
                             ->get();
     }
     
+    public function shopProducts()
+    {
+        return Product::where('status', 1)
+                        ->where('draft',0)
+                        ->orderBy('created_at','desc')
+                        ->get();
+    }
+
+    public function getProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        $images  = $product->images;
+        return ['product' => $product,'images' => $images];
+    }
 
 }

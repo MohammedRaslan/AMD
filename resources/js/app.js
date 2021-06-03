@@ -12,7 +12,8 @@ import Form from 'vform';
 import { mapState } from "vuex";
 import Swal from 'sweetalert2';
 import 'vueditor/dist/style/vueditor.min.css';
-import moment from "moment"
+import moment from "moment";
+
 Vue.use(Vuex);
 
 
@@ -32,6 +33,11 @@ window.form = Form;
 
 Vue.filter('myDate',function(created){
     return moment(created).format('MMMM Do YYYY');
+});
+
+Vue.filter('image',function(image){
+  return image.replace('public',window.location.origin + '/storage');
+    
 });
 
 const store = new Vuex.Store(storeDefinition);

@@ -145,7 +145,7 @@ export default ({
         this.$Progress.start();
     },
     mounted(){
-        console.log(window.location.origin, this.$route);
+        // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
         axios.get('/api/product/getUserProduct').then((response) => {
             this.products = response.data;
@@ -153,7 +153,7 @@ export default ({
                 this.message = 'You dont have products';
                 }
         });
-        console.log(this.$route.params.id);
+        // console.log(this.$route.params.id);
     }
 })
 </script>

@@ -31,12 +31,17 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/getUsers',[UserController::class,'getUsers']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
     Route::get('checkAdmin',[UserController::class,'checkAdmin']);
+    
     Route::prefix('product')->group(function () {
         Route::post('store',[ProductController::class,'store']);
         Route::get('getProductData',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
-   
+        
+    });
+    Route::prefix('shop')->group(function() {
+        Route::get('getShopProducts',[ProductController::class,'shopProducts']);
+        Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 

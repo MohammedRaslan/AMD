@@ -16,8 +16,19 @@
                                         </g>
                                     </g>
                                     </svg>
-                                    <span class="quantity-cart">2</span>
+                                    <span class="quantity-cart">{{number}}</span>
                                </a>  
     
 </template>
+
+<script>
+
+export default ({
+   data: ()=>({
+       number: 0,
+   }),
+
+})
+</script>
+
 

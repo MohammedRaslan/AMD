@@ -23,7 +23,8 @@ class ProductService{
 
    public function getData()
    {
-       $data = $this->productRepository->getData();
+      return $this->productRepository->getData();
+
    }
 
    public function exportImages($images)
@@ -49,5 +50,16 @@ class ProductService{
        $data = $this->productRepository->getUserDraftedProducts($id);
        return $data;
    }
+
+   public function shopProducts()
+   {
+       return $this->productRepository->shopProducts();
+   }
+
+   public function getProduct($id)
+   {
+       return $this->productRepository->getProduct($id);
+   }
+   
    
 }

@@ -58,11 +58,11 @@
 
                                                                         </div>
                                                                         <div class="col-4">
-                                                                            <input type="text" v-model="form.type" class="form-control" id="email" placeholder="Type" required>
-                                                                            <!-- <select name="" id="" class="custom-select">
-                                                                                <option v-for="(type, index) in types" :key="index">{{ type.key }}</option>
-                                                                            </select>
-                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" /> -->
+                                                                            <select name="type" v-model="form.type" id="" class="custom-select form-control" required>
+                                                                                <option selected disabled>Choose Type</option>
+                                                                                <option v-for="(type, index) in types" :key="index" :value="type" > {{ index }}</option>
+                                                                            </select >
+                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                         </div>
                                                                         
                                                                         <div class="col-4">
@@ -131,7 +131,11 @@
     <!-- Latest Blog Section End -->
     </div>
 </template>
-
+<style scoped>
+    select{
+        display: block !important;
+    }
+</style>
 <script>
 import SideBar from "./SidebarComponent";
 import UploadImages from "vue-upload-drop-images";
@@ -156,7 +160,7 @@ export default ({
             details: null,
             return_policy: 1,
             price: null,
-            best_offer: 1,
+            best_offer: 0,
             condition: 'ccc',
             draft: 0,
         }),
@@ -166,6 +170,7 @@ export default ({
            this.$Progress.start();
            this.form.details = this.details.getContent();
            this.form.description = this.description.getContent();
+           this.form.best_offer = this.form.type == 1 ? 1 :0;
             const response = await this.form.post('/api/product/store').then((response)=>{
                 this.$Progress.finish();
                 this.indicator();
@@ -235,8 +240,8 @@ export default ({
                     ],
 });
         axios.get('/api/product/getProductData').then((response) => {
-            this.types = response.data.product_types;
-            console.log(this.types);
+            this.types = response.data;
+            console.log(this.types['REGULAR']);
         });
     }
 })

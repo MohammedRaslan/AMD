@@ -12,6 +12,8 @@ import UsersComponent from "./components/Admin/UsersComponent"
 import SubscriptionsComponent from "./components/Admin/Subscription/SubscriptionsComponent";
 import AddSubscriptionsComponent from "./components/Admin/Subscription/ManageSubscription.vue";
 import DraftedComponent from "./components/Selling/DraftedComponent";
+import ShopComponent from "./components/ShopComponent.vue"
+import ShopDetailComponent from "./components/ShopDetail"
 
 const routes = [
     {
@@ -48,6 +50,16 @@ const routes = [
         path:"/selling/drafted",
         component: DraftedComponent,
         name:"draftedProduct",
+    },
+    {
+        path: "/shop",
+        component: ShopComponent,
+        name: "ShopComponent",
+    },
+    {
+        path: "/shop/:query?",
+        component: ShopDetailComponent,
+        name: "ShopDetailComponent",
     },
 
     // ADMIN ROUTES
