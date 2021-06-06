@@ -26,8 +26,21 @@
 export default ({
    data: ()=>({
        number: 0,
+       id: JSON.parse(localStorage.getItem('currentUser'))['id'],
    }),
-
+   created(){
+          Fire.$on('AddedToCart',()=>{
+             this.number = parseInt(this.number) + 1;
+            });
+        Fire.$on('RemoveFromCart',()=>{
+             this.number = parseInt(this.number) - 1;
+        });
+   },
+    mounted(){
+        axios.get('/api/cart/getCartCount/'+this.id).then((response) => {
+            this.number = response.data;
+        });
+    }
 })
 </script>
 

@@ -85,7 +85,7 @@ class ProductRepository{
 
     public function getProduct($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('id',$id)->with('user')->first();
         $images  = $product->images;
         return ['product' => $product,'images' => $images];
     }

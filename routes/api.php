@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
@@ -42,6 +43,13 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('shop')->group(function() {
         Route::get('getShopProducts',[ProductController::class,'shopProducts']);
         Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);
+    });
+
+    Route::prefix('cart')->group(function() {
+        Route::post('add/{productId}',[CartController::class,'add']);
+        Route::post('remove/{productId}',[CartController::class,'remove']);
+        Route::get('checkIfExist/{id}',[CartController::class,'checkIfExist']);
+        Route::get('getCartCount/{id}',[CartController::class,'getCartCount']);
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 

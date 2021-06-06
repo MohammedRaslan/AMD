@@ -5,12 +5,13 @@
 
             <div class="content">
                 <div>
-                    <h3>$ 356.00</h3>
+                    <h3>$ {{ this.price }}</h3>
                     <p>12 Wachers</p>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-danger">Add To Cart</button> 
+                        <button class="btn btn-danger" v-if="(added || exist)" @click="removeFromCart">Remove From Cart</button>
+                        <button class="btn btn-danger" v-else @click="addToCart">Add To Cart</button> 
                     </div>
                 </div>
             </div>
@@ -21,7 +22,28 @@
 <script>
 
 export default ({
-   props: ['id'],
-    
+   props: ['id','price','exist'],
+   data:()=>({
+       added: false
+   }),
+   methods:{
+      async addToCart(){
+        const response = await axios.post('/api/cart/add/'+this.id).then((response) => {
+            if(response.data == true){
+                Fire.$emit('AddedToCart');
+                this.added = true;
+            }
+        });
+    },
+       async removeFromCart(){
+        const response = await axios.post('/api/cart/remove/'+this.id).then((response) => {
+            if(response.data == true){
+                Fire.$emit('RemoveFromCart');
+                this.added = false;
+                this.exist = false;
+            }
+        });
+    }
+   },
 })
 </script>

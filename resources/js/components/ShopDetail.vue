@@ -31,10 +31,10 @@
         <div class="product__details__pic">
             <div class="container">
                 <div class="row">                    
-                    <div class="col-lg-8">
-                        <h2 v-if="loading"> {{ product.title }}  </h2>
+                    <div class="col-lg-8" v-if="loading">
+                        <h2 > {{ product.title }}  </h2>
                         <div class="detail-top">
-                            <p><span>Seller:</span> <span>Ahmad Aboul Nour</span></p>
+                            <p><span>Seller:</span> <span v-if="loading">{{ product.user.first_name }}  {{ product.user.last_name }}</span></p>
                             <p><span>Shipping time:</span> <span>2-9 days</span></p>
                             <p>
                                 <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_love_outline" width="20.833" height="18.75" viewBox="0 0 20.833 18.75">
@@ -49,28 +49,10 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3 tabs-img">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item">
+                                    <li class="nav-item" v-for="(image,index) in images" :key="index">
                                         <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                            <div class="product__thumb__pic set-bg" data-setbg="/FrontEnd/images/Details/tab-02.png">
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                            <div class="product__thumb__pic set-bg" data-setbg="/FrontEnd/images/Details/tab-02.png">
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                            <div class="product__thumb__pic set-bg" data-setbg="/FrontEnd/images/Details/tab-02.png">
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                            <div class="product__thumb__pic set-bg" data-setbg="/FrontEnd/images/Details/tab-02.png">
-                                            </div>
+                                            <img class="product__thumb__pic set-bg" :src="str_replace(image.url)">
+                                            
                                         </a>
                                     </li>
                                 </ul>
@@ -80,15 +62,15 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                         <div class="product__details__pic__item">
-                                            <img :src="'/FrontEnd/images/Details/Bg-02.png'" alt>
+                                            <img  :src="str_replace(product.image)" alt>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="des">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
+                            <p >
+                                {{ product.description }}
                             </p>
                         </div>
 
@@ -128,8 +110,8 @@
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                          <p>
-                                           1- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
-                                        </p>
+                                             {{ product.details }}
+                                         </p>
                                     </div>
                                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                          <p>
@@ -143,7 +125,7 @@
 
                     <div class="col-lg-4 parent-price-table">
                    
-                        <AddCartWidget :id="id"></AddCartWidget>
+                        <AddCartWidget :id="id" :price="product.price" :exist="exist" v-if="(loading && !author)"></AddCartWidget>
 
                     </div>
 
@@ -167,11 +149,32 @@ export default ({
         product: null,
         images:{},
         loading : false,
+        author: false,
+        added: false,
+        exist: false,
     }),
     components: {
         AddCartWidget,
     },
+    methods:{
+        str_replace(str){
+            str = str.replace('public',window.location.origin + '/storage');
+            return str;
+        }
+    },
     created(){
+        Fire.$on('AddedToCart',()=>{
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Added To Cart'
+                    });
+            });
+        Fire.$on('RemoveFromCart',()=>{
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Removed From Cart'
+                    });
+        });
 
     },
     mounted(){
@@ -181,6 +184,14 @@ export default ({
             this.product = response.data.product;
             this.images  = response.data.images;
             this.loading = true;
+            if(this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
+                this.author = true;
+            }
+        });
+        axios.get('/api/cart/checkIfExist/'+this.id).then((response) => {
+            if(response.data == true){
+                this.exist = true;
+            }
         });
     }
 })

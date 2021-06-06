@@ -3168,8 +3168,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      number: 0
+      number: 0,
+      id: JSON.parse(localStorage.getItem('currentUser'))['id']
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    Fire.$on('AddedToCart', function () {
+      _this.number = parseInt(_this.number) + 1;
+    });
+    Fire.$on('RemoveFromCart', function () {
+      _this.number = parseInt(_this.number) - 1;
+    });
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    axios.get('/api/cart/getCartCount/' + this.id).then(function (response) {
+      _this2.number = response.data;
+    });
   }
 });
 
@@ -4342,24 +4360,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -4367,13 +4367,35 @@ __webpack_require__.r(__webpack_exports__);
       id: null,
       product: null,
       images: {},
-      loading: false
+      loading: false,
+      author: false,
+      added: false,
+      exist: false
     };
   },
   components: {
     AddCartWidget: _widgets_AddCartComponent__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  created: function created() {},
+  methods: {
+    str_replace: function str_replace(str) {
+      str = str.replace('public', window.location.origin + '/storage');
+      return str;
+    }
+  },
+  created: function created() {
+    Fire.$on('AddedToCart', function () {
+      Toast.fire({
+        icon: 'success',
+        title: 'Added To Cart'
+      });
+    });
+    Fire.$on('RemoveFromCart', function () {
+      Toast.fire({
+        icon: 'success',
+        title: 'Removed From Cart'
+      });
+    });
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -4382,6 +4404,15 @@ __webpack_require__.r(__webpack_exports__);
       _this.product = response.data.product;
       _this.images = response.data.images;
       _this.loading = true;
+
+      if (_this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']) {
+        _this.author = true;
+      }
+    });
+    axios.get('/api/cart/checkIfExist/' + this.id).then(function (response) {
+      if (response.data == true) {
+        _this.exist = true;
+      }
     });
   }
 });
@@ -4399,6 +4430,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
 //
 //
 //
@@ -4420,7 +4460,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['id']
+  props: ['id', 'price', 'exist'],
+  data: function data() {
+    return {
+      added: false
+    };
+  },
+  methods: {
+    addToCart: function addToCart() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.post('/api/cart/add/' + _this.id).then(function (response) {
+                  if (response.data == true) {
+                    Fire.$emit('AddedToCart');
+                    _this.added = true;
+                  }
+                });
+
+              case 2:
+                response = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    removeFromCart: function removeFromCart() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.post('/api/cart/remove/' + _this2.id).then(function (response) {
+                  if (response.data == true) {
+                    Fire.$emit('RemoveFromCart');
+                    _this2.added = false;
+                    _this2.exist = false;
+                  }
+                });
+
+              case 2:
+                response = _context2.sent;
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
+  }
 });
 
 /***/ }),
@@ -73244,173 +73348,324 @@ var render = function() {
       _c("div", { staticClass: "product__details__pic" }, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-8" }, [
-              _vm.loading
-                ? _c("h2", [_vm._v(" " + _vm._s(_vm.product.title) + "  ")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg-9 col-md-9 cont-img" }, [
-                  _c("div", { staticClass: "tab-content" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane active",
-                        attrs: { id: "tabs-1", role: "tabpanel" }
-                      },
-                      [
+            _vm.loading
+              ? _c("div", { staticClass: "col-lg-8" }, [
+                  _c("h2", [_vm._v(" " + _vm._s(_vm.product.title) + "  ")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "detail-top" }, [
+                    _c("p", [
+                      _c("span", [_vm._v("Seller:")]),
+                      _vm._v(" "),
+                      _vm.loading
+                        ? _c("span", [
+                            _vm._v(
+                              _vm._s(_vm.product.user.first_name) +
+                                "  " +
+                                _vm._s(_vm.product.user.last_name)
+                            )
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-lg-3 col-md-3 tabs-img" }, [
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "nav nav-tabs",
+                          attrs: { role: "tablist" }
+                        },
+                        _vm._l(_vm.images, function(image, index) {
+                          return _c(
+                            "li",
+                            { key: index, staticClass: "nav-item" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "nav-link active",
+                                  attrs: {
+                                    "data-toggle": "tab",
+                                    href: "#tabs-1",
+                                    role: "tab"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "product__thumb__pic set-bg",
+                                    attrs: { src: _vm.str_replace(image.url) }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-lg-9 col-md-9 cont-img" }, [
+                      _c("div", { staticClass: "tab-content" }, [
                         _c(
                           "div",
-                          { staticClass: "product__details__pic__item" },
+                          {
+                            staticClass: "tab-pane active",
+                            attrs: { id: "tabs-1", role: "tabpanel" }
+                          },
                           [
-                            _c("img", {
-                              attrs: {
-                                src: "/FrontEnd/images/Details/Bg-02.png",
-                                alt: ""
-                              }
-                            })
+                            _c(
+                              "div",
+                              { staticClass: "product__details__pic__item" },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src: _vm.str_replace(_vm.product.image),
+                                    alt: ""
+                                  }
+                                })
+                              ]
+                            )
                           ]
                         )
-                      ]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _c("div", { staticClass: "product__details__content" }, [
-                _c("div", { staticClass: "col-lg-12" }, [
-                  _c(
-                    "ul",
-                    {
-                      staticClass: "nav nav-pills mb-3",
-                      attrs: { id: "pills-tab", role: "tablist" }
-                    },
-                    [
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "des" }, [
+                    _c("p", [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.product.description) +
+                          "\n                        "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "product__details__content" }, [
+                    _c("div", { staticClass: "col-lg-12" }, [
                       _c(
-                        "li",
+                        "ul",
                         {
-                          staticClass: "nav-item",
-                          attrs: { role: "presentation" }
+                          staticClass: "nav nav-pills mb-3",
+                          attrs: { id: "pills-tab", role: "tablist" }
                         },
                         [
                           _c(
-                            "button",
+                            "li",
                             {
-                              staticClass: "nav-link active",
-                              attrs: {
-                                id: "pills-home-tab",
-                                "data-bs-target": "#pills-home",
-                                "data-bs-toggle": "pill",
-                                type: "button",
-                                role: "tab",
-                                "aria-controls": "pills-home",
-                                "aria-selected": "true"
-                              }
+                              staticClass: "nav-item",
+                              attrs: { role: "presentation" }
                             },
                             [
                               _c(
-                                "svg",
+                                "button",
                                 {
+                                  staticClass: "nav-link active",
                                   attrs: {
-                                    id: "Icon_menu_leftpoint_outline",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    width: "18",
-                                    height: "14",
-                                    viewBox: "0 0 18 14"
+                                    id: "pills-home-tab",
+                                    "data-bs-target": "#pills-home",
+                                    "data-bs-toggle": "pill",
+                                    type: "button",
+                                    role: "tab",
+                                    "aria-controls": "pills-home",
+                                    "aria-selected": "true"
                                   }
                                 },
                                 [
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Path",
-                                      d:
-                                        "M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z",
-                                      transform: "translate(4)",
-                                      fill: "#7ac943"
-                                    }
-                                  }),
+                                  _c(
+                                    "svg",
+                                    {
+                                      attrs: {
+                                        id: "Icon_menu_leftpoint_outline",
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "18",
+                                        height: "14",
+                                        viewBox: "0 0 18 14"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path",
+                                          d:
+                                            "M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z",
+                                          transform: "translate(4)",
+                                          fill: "#7ac943"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path-2",
+                                          "data-name": "Path",
+                                          d:
+                                            "M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z",
+                                          transform: "translate(4 6)",
+                                          fill: "#7ac943"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path-3",
+                                          "data-name": "Path",
+                                          d:
+                                            "M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z",
+                                          transform: "translate(4 12)",
+                                          fill: "#7ac943"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path-4",
+                                          "data-name": "Path",
+                                          d:
+                                            "M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z",
+                                          fill: "#7ac943"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path-5",
+                                          "data-name": "Path",
+                                          d:
+                                            "M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z",
+                                          transform: "translate(0 6)",
+                                          fill: "#7ac943"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path-6",
+                                          "data-name": "Path",
+                                          d:
+                                            "M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z",
+                                          transform: "translate(0 12)",
+                                          fill: "#7ac943"
+                                        }
+                                      })
+                                    ]
+                                  ),
                                   _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Path-2",
-                                      "data-name": "Path",
-                                      d:
-                                        "M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z",
-                                      transform: "translate(4 6)",
-                                      fill: "#7ac943"
-                                    }
-                                  }),
+                                  _c("span", [_vm._v("Details")]),
                                   _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Path-3",
-                                      "data-name": "Path",
-                                      d:
-                                        "M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z",
-                                      transform: "translate(4 12)",
-                                      fill: "#7ac943"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Path-4",
-                                      "data-name": "Path",
-                                      d: "M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z",
-                                      fill: "#7ac943"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Path-5",
-                                      "data-name": "Path",
-                                      d: "M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z",
-                                      transform: "translate(0 6)",
-                                      fill: "#7ac943"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Path-6",
-                                      "data-name": "Path",
-                                      d: "M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z",
-                                      transform: "translate(0 12)",
-                                      fill: "#7ac943"
-                                    }
-                                  })
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass: "active-arrow",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "16",
+                                        height: "10",
+                                        viewBox: "0 0 16 10"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Polygon_1",
+                                          "data-name": "Polygon 1",
+                                          d: "M8,0l8,10H0Z",
+                                          fill: "#ffe0e0"
+                                        }
+                                      })
+                                    ]
+                                  )
                                 ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", [_vm._v("Details")]),
-                              _vm._v(" "),
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "nav-item",
+                              attrs: { role: "presentation" }
+                            },
+                            [
                               _c(
-                                "svg",
+                                "button",
                                 {
-                                  staticClass: "active-arrow",
+                                  staticClass: "nav-link",
                                   attrs: {
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    width: "16",
-                                    height: "10",
-                                    viewBox: "0 0 16 10"
+                                    id: "pills-profile-tab",
+                                    "data-bs-target": "#pills-profile",
+                                    "data-bs-toggle": "pill",
+                                    type: "button",
+                                    role: "tab",
+                                    "aria-controls": "pills-profile",
+                                    "aria-selected": "false"
                                   }
                                 },
                                 [
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Polygon_1",
-                                      "data-name": "Polygon 1",
-                                      d: "M8,0l8,10H0Z",
-                                      fill: "#ffe0e0"
-                                    }
-                                  })
+                                  _c(
+                                    "svg",
+                                    {
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "20",
+                                        height: "13",
+                                        viewBox: "0 0 20 13"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "g",
+                                        {
+                                          attrs: {
+                                            id: "Icon_20_Grey_Shopping_Cart",
+                                            "data-name":
+                                              "Icon / 20 / Grey / Shopping Cart",
+                                            transform: "translate(0 -4)"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              id: "Shape",
+                                              d:
+                                                "M15.951,13a2.226,2.226,0,0,1-2.172-1.6h-7.4A2.268,2.268,0,0,1,4.209,13a2.229,2.229,0,0,1-2.173-1.6H.836A.83.83,0,0,1,0,10.578V.826A.8.8,0,0,1,.77,0H9.68a.8.8,0,0,1,.77.826v.9h3.3a1.5,1.5,0,0,1,1.2.6.2.2,0,0,1,.034.044.238.238,0,0,0,.035.044l1.741,2.579,1.017.157A1.461,1.461,0,0,1,19.254,6.6V8.708A.843.843,0,0,1,20,9.535v1.043a.83.83,0,0,1-.836.823h-1.04A2.27,2.27,0,0,1,15.951,13Zm0-3.336a1.137,1.137,0,0,0-1.131,1.112,1.123,1.123,0,0,0,1.131,1.112,1.137,1.137,0,0,0,1.131-1.112A1.123,1.123,0,0,0,15.951,9.663Zm-11.741,0a1.137,1.137,0,0,0-1.131,1.112A1.131,1.131,0,1,0,4.209,9.663ZM12,2.825a.1.1,0,0,0-.106.1V4.973A.106.106,0,0,0,12,5.078v0h3.193a.1.1,0,0,0,.09-.054.1.1,0,0,0,0-.107l-1.4-2.043a.1.1,0,0,0-.086-.044Z",
+                                              transform: "translate(0 4)",
+                                              fill: "#fecc2f"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("Shipping")]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass: "active-arrow",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "16",
+                                        height: "10",
+                                        viewBox: "0 0 16 10"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Polygon_2",
+                                          "data-name": "Polygon 1",
+                                          d: "M8,0l8,10H0Z",
+                                          fill: "#ffe0e0"
+                                        }
+                                      })
+                                    ]
+                                  )
                                 ]
                               )
                             ]
@@ -73419,103 +73674,55 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c(
-                        "li",
+                        "div",
                         {
-                          staticClass: "nav-item",
-                          attrs: { role: "presentation" }
+                          staticClass: "tab-content",
+                          attrs: { id: "pills-tabContent" }
                         },
                         [
                           _c(
-                            "button",
+                            "div",
                             {
-                              staticClass: "nav-link",
+                              staticClass: "tab-pane fade show active",
                               attrs: {
-                                id: "pills-profile-tab",
-                                "data-bs-target": "#pills-profile",
-                                "data-bs-toggle": "pill",
-                                type: "button",
-                                role: "tab",
-                                "aria-controls": "pills-profile",
-                                "aria-selected": "false"
+                                id: "pills-home",
+                                role: "tabpanel",
+                                "aria-labelledby": "pills-home-tab"
                               }
                             },
                             [
-                              _c(
-                                "svg",
-                                {
-                                  attrs: {
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    width: "20",
-                                    height: "13",
-                                    viewBox: "0 0 20 13"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "g",
-                                    {
-                                      attrs: {
-                                        id: "Icon_20_Grey_Shopping_Cart",
-                                        "data-name":
-                                          "Icon / 20 / Grey / Shopping Cart",
-                                        transform: "translate(0 -4)"
-                                      }
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          id: "Shape",
-                                          d:
-                                            "M15.951,13a2.226,2.226,0,0,1-2.172-1.6h-7.4A2.268,2.268,0,0,1,4.209,13a2.229,2.229,0,0,1-2.173-1.6H.836A.83.83,0,0,1,0,10.578V.826A.8.8,0,0,1,.77,0H9.68a.8.8,0,0,1,.77.826v.9h3.3a1.5,1.5,0,0,1,1.2.6.2.2,0,0,1,.034.044.238.238,0,0,0,.035.044l1.741,2.579,1.017.157A1.461,1.461,0,0,1,19.254,6.6V8.708A.843.843,0,0,1,20,9.535v1.043a.83.83,0,0,1-.836.823h-1.04A2.27,2.27,0,0,1,15.951,13Zm0-3.336a1.137,1.137,0,0,0-1.131,1.112,1.123,1.123,0,0,0,1.131,1.112,1.137,1.137,0,0,0,1.131-1.112A1.123,1.123,0,0,0,15.951,9.663Zm-11.741,0a1.137,1.137,0,0,0-1.131,1.112A1.131,1.131,0,1,0,4.209,9.663ZM12,2.825a.1.1,0,0,0-.106.1V4.973A.106.106,0,0,0,12,5.078v0h3.193a.1.1,0,0,0,.09-.054.1.1,0,0,0,0-.107l-1.4-2.043a.1.1,0,0,0-.086-.044Z",
-                                          transform: "translate(0 4)",
-                                          fill: "#fecc2f"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", [_vm._v("Shipping")]),
-                              _vm._v(" "),
-                              _c(
-                                "svg",
-                                {
-                                  staticClass: "active-arrow",
-                                  attrs: {
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    width: "16",
-                                    height: "10",
-                                    viewBox: "0 0 16 10"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Polygon_2",
-                                      "data-name": "Polygon 1",
-                                      d: "M8,0l8,10H0Z",
-                                      fill: "#ffe0e0"
-                                    }
-                                  })
-                                ]
-                              )
+                              _c("p", [
+                                _vm._v(
+                                  "\n                                         " +
+                                    _vm._s(_vm.product.details) +
+                                    "\n                                     "
+                                )
+                              ])
                             ]
-                          )
+                          ),
+                          _vm._v(" "),
+                          _vm._m(2)
                         ]
                       )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(3)
+                    ])
+                  ])
                 ])
-              ])
-            ]),
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "div",
               { staticClass: "col-lg-4 parent-price-table" },
-              [_c("AddCartWidget", { attrs: { id: _vm.id } })],
+              [
+                _vm.loading && !_vm.author
+                  ? _c("AddCartWidget", {
+                      attrs: {
+                        id: _vm.id,
+                        price: _vm.product.price,
+                        exist: _vm.exist
+                      }
+                    })
+                  : _vm._e()
+              ],
               1
             )
           ])
@@ -73534,108 +73741,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "detail-top" }, [
-      _c("p", [
-        _c("span", [_vm._v("Seller:")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Ahmad Aboul Nour")])
-      ]),
+    return _c("p", [
+      _c("span", [_vm._v("Shipping time:")]),
       _vm._v(" "),
-      _c("p", [
-        _c("span", [_vm._v("Shipping time:")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("2-9 days")])
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("i", { staticClass: "far fa-heart heart" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("314")])
-      ])
+      _c("span", [_vm._v("2-9 days")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-3 tabs-img" }, [
-      _c("ul", { staticClass: "nav nav-tabs", attrs: { role: "tablist" } }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: { "data-toggle": "tab", href: "#tabs-1", role: "tab" }
-            },
-            [
-              _c("div", {
-                staticClass: "product__thumb__pic set-bg",
-                attrs: { "data-setbg": "/FrontEnd/images/Details/tab-02.png" }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { "data-toggle": "tab", href: "#tabs-2", role: "tab" }
-            },
-            [
-              _c("div", {
-                staticClass: "product__thumb__pic set-bg",
-                attrs: { "data-setbg": "/FrontEnd/images/Details/tab-02.png" }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { "data-toggle": "tab", href: "#tabs-3", role: "tab" }
-            },
-            [
-              _c("div", {
-                staticClass: "product__thumb__pic set-bg",
-                attrs: { "data-setbg": "/FrontEnd/images/Details/tab-02.png" }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { "data-toggle": "tab", href: "#tabs-4", role: "tab" }
-            },
-            [
-              _c("div", {
-                staticClass: "product__thumb__pic set-bg",
-                attrs: { "data-setbg": "/FrontEnd/images/Details/tab-02.png" }
-              })
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "des" }, [
-      _c("p", [
-        _vm._v(
-          "\n                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife\n                        "
-        )
-      ])
+    return _c("p", [
+      _c("i", { staticClass: "far fa-heart heart" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("314")])
     ])
   },
   function() {
@@ -73644,45 +73763,20 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "tab-content", attrs: { id: "pills-tabContent" } },
+      {
+        staticClass: "tab-pane fade",
+        attrs: {
+          id: "pills-profile",
+          role: "tabpanel",
+          "aria-labelledby": "pills-profile-tab"
+        }
+      },
       [
-        _c(
-          "div",
-          {
-            staticClass: "tab-pane fade show active",
-            attrs: {
-              id: "pills-home",
-              role: "tabpanel",
-              "aria-labelledby": "pills-home-tab"
-            }
-          },
-          [
-            _c("p", [
-              _vm._v(
-                "\n                                       1- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife\n                                    "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "tab-pane fade",
-            attrs: {
-              id: "pills-profile",
-              role: "tabpanel",
-              "aria-labelledby": "pills-profile-tab"
-            }
-          },
-          [
-            _c("p", [
-              _vm._v(
-                "\n                                       2- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife\n                                    "
-              )
-            ])
-          ]
-        )
+        _c("p", [
+          _vm._v(
+            "\n                                       2- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife\n                                    "
+          )
+        ])
       ]
     )
   }
@@ -73709,36 +73803,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner-price-table buy-now-card" }, [
-      _c("div", { staticClass: "card-cus overflow-inherit" }, [
-        _c("h2", [_vm._v("Buy It Now")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _c("div", [
-            _c("h3", [_vm._v("$ 356.00")]),
-            _vm._v(" "),
-            _c("p", [_vm._v("12 Wachers")])
-          ]),
+  return _c("div", { staticClass: "inner-price-table buy-now-card" }, [
+    _c("div", { staticClass: "card-cus overflow-inherit" }, [
+      _c("h2", [_vm._v("Buy It Now")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _c("div", [
+          _c("h3", [_vm._v("$ " + _vm._s(this.price))]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col" }, [
-              _c("button", { staticClass: "btn btn-danger" }, [
-                _vm._v("Add To Cart")
-              ])
-            ])
+          _c("p", [_vm._v("12 Wachers")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col" }, [
+            _vm.added || _vm.exist
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    on: { click: _vm.removeFromCart }
+                  },
+                  [_vm._v("Remove From Cart")]
+                )
+              : _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    on: { click: _vm.addToCart }
+                  },
+                  [_vm._v("Add To Cart")]
+                )
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
