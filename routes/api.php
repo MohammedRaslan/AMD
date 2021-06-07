@@ -51,6 +51,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('checkIfExist/{id}',[CartController::class,'checkIfExist']);
         Route::get('getCartCount/{id}',[CartController::class,'getCartCount']);
         Route::get('getCartProducts',[CartController::class,'getCartProducts']);
+        Route::get('calculate',[CartController::class,'calculate']);
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 

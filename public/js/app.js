@@ -3083,6 +3083,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return str;
     },
     removeFromCart: function removeFromCart(id) {
+      var _this = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -3093,6 +3095,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios.post('/api/cart/remove/' + id).then(function (response) {
                   if (response.data == true) {
                     Fire.$emit('RemoveFromCart');
+                    console.log('row_' + id);
+                    document.getElementById('row_' + id).remove();
+                    axios.get('/api/cart/getCartProducts').then(function (response) {
+                      _this.subtotal = response.data.subtotal;
+                      _this.total = response.data.total;
+                    });
                   }
                 });
 
@@ -3109,7 +3117,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   beforeCreate: function beforeCreate() {
-    var _this = this;
+    var _this2 = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -3118,9 +3126,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.next = 2;
               return axios.get('/api/cart/getCartProducts').then(function (response) {
-                _this.cartProducts = response.data.cart_products;
-                _this.subtotal = response.data.subtotal;
-                _this.total = response.data.total;
+                _this2.cartProducts = response.data.cart_products;
+                _this2.subtotal = response.data.subtotal;
+                _this2.total = response.data.total;
               });
 
             case 2:
@@ -70257,100 +70265,108 @@ var render = function() {
             "div",
             { staticClass: "col-lg-8" },
             _vm._l(_vm.cartProducts, function(product) {
-              return _c("div", { key: product.id, staticClass: "cont-pro" }, [
-                _c("div", { staticClass: "inner-pro" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-5" }, [
-                      _c("figure", [
-                        _c("img", {
-                          attrs: {
-                            src: _vm.str_replace(product.product.image),
-                            alt: ""
-                          }
-                        })
+              return _c(
+                "div",
+                {
+                  key: "row_" + product.id,
+                  staticClass: "cont-pro",
+                  attrs: { id: "row_" + product.product.id }
+                },
+                [
+                  _c("div", { staticClass: "inner-pro" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-5" }, [
+                        _c("figure", [
+                          _c("img", {
+                            attrs: {
+                              src: _vm.str_replace(product.product.image),
+                              alt: ""
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-7" }, [
+                        _c("div", { staticClass: "detail" }, [
+                          _c("h4", [
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(product.product.title) +
+                                "\n                                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v("$" + _vm._s(product.price))])
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-7" }, [
-                      _c("div", { staticClass: "detail" }, [
-                        _c("h4", [
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(product.product.title) +
-                              "\n                                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("$" + _vm._s(product.price))])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "close",
-                      on: {
-                        click: function($event) {
-                          return _vm.removeFromCart(product.product.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "15.556",
-                            height: "15.556",
-                            viewBox: "0 0 15.556 15.556"
+                    _c(
+                      "div",
+                      {
+                        staticClass: "close",
+                        on: {
+                          click: function($event) {
+                            return _vm.removeFromCart(product.product.id)
                           }
-                        },
-                        [
-                          _c(
-                            "g",
-                            {
-                              attrs: {
-                                id: "Icon_20_Grey_Close",
-                                "data-name": "Icon / 20 / Grey / Close",
-                                transform: "translate(-2.222 -2.222)"
-                              }
-                            },
-                            [
-                              _c("rect", {
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "15.556",
+                              height: "15.556",
+                              viewBox: "0 0 15.556 15.556"
+                            }
+                          },
+                          [
+                            _c(
+                              "g",
+                              {
                                 attrs: {
-                                  id: "Rectangle_4",
-                                  "data-name": "Rectangle 4",
-                                  width: "20",
-                                  height: "2",
-                                  rx: "1",
-                                  transform:
-                                    "translate(3.636 2.222) rotate(45)",
-                                  fill: "#ffe0e0"
+                                  id: "Icon_20_Grey_Close",
+                                  "data-name": "Icon / 20 / Grey / Close",
+                                  transform: "translate(-2.222 -2.222)"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c("rect", {
-                                attrs: {
-                                  id: "Rectangle_4-2",
-                                  "data-name": "Rectangle 4",
-                                  width: "20",
-                                  height: "2",
-                                  rx: "1",
-                                  transform:
-                                    "translate(2.222 16.364) rotate(-45)",
-                                  fill: "#ffe0e0"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
+                              },
+                              [
+                                _c("rect", {
+                                  attrs: {
+                                    id: "Rectangle_4",
+                                    "data-name": "Rectangle 4",
+                                    width: "20",
+                                    height: "2",
+                                    rx: "1",
+                                    transform:
+                                      "translate(3.636 2.222) rotate(45)",
+                                    fill: "#ffe0e0"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("rect", {
+                                  attrs: {
+                                    id: "Rectangle_4-2",
+                                    "data-name": "Rectangle 4",
+                                    width: "20",
+                                    height: "2",
+                                    rx: "1",
+                                    transform:
+                                      "translate(2.222 16.364) rotate(-45)",
+                                    fill: "#ffe0e0"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
             }),
             0
           ),

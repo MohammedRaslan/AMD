@@ -44,4 +44,11 @@ class CartController extends Controller
         $data = $this->cartService->getCartProducts($request->user()->id);
         return response()->json($data);
     }
+
+    public function calculate(Request $request)
+    {
+        $data = $this->cartService->getCartProducts($request->user()->id);
+        $data = ['subtotal' => $data['subtotal'],'total' => $data['total']];
+        return response()->json($data);
+    }
 }

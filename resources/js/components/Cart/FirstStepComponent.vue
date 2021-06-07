@@ -105,7 +105,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Block Item -->
-                    <div class="cont-pro" v-for="product in cartProducts" :key="product.id"> 
+                    <div class="cont-pro" v-for="product in cartProducts" :key="'row_'+product.id" :id="'row_'+product.product.id"> 
                         <div class="inner-pro">
                             <div class="row">
                                 <div class="col-5">
@@ -189,6 +189,12 @@ export default ({
             const response = await axios.post('/api/cart/remove/'+id).then((response) => {
                 if(response.data == true){
                     Fire.$emit('RemoveFromCart');
+                    console.log('row_'+id);
+                    document.getElementById('row_'+id).remove();
+                    axios.get('/api/cart/getCartProducts').then((response) => {
+                        this.subtotal = response.data.subtotal;
+                        this.total    = response.data.total;
+                    });
                 }
         });
     }
