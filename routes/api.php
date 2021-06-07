@@ -38,6 +38,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getProductData',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
+        Route::get('suspend/{id}',[ProductController::class,'suspendOrUnsuspend']);
+
         
     });
     Route::prefix('shop')->group(function() {

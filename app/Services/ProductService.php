@@ -61,5 +61,9 @@ class ProductService{
        return $this->productRepository->getProduct($id);
    }
    
+   public function suspendOrUnsuspend($id)
+   {
+       return $this->productRepository->suspendOrUnsuspend($id);
+   }
    
 }

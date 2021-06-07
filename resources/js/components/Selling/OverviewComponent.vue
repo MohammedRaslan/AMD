@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-12 price">
                                             <p>Price</p>
-                                            <h5>$ {{ product.price }}</h5>
+                                            <h5>$ {{ product.price }}</h5>  
                                             <p style="display:grid">created at in <span>{{ product.created_at | myDate }}</span></p>
                                             <!-- <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button> -->
                                         </div>
@@ -71,7 +71,8 @@
                                                     <button class="btn btn-primary"><a href="#">View</a></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
+                                                    <button @click="suspendProduct(product.id)" class="btn btn-danger" v-bind:class="{suspended: (state == false || product.status == 0)  ,suspend: (state == true || product.status == 1)} " id="suspendProduct"> {{(state == true || product.status == 1)?' Suspend ':' Suspended '}}</button>
+
                                                 </div>
                                                 <div class="inner">
                                                     <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
@@ -131,15 +132,32 @@ export default ({
         loading : false,
         products: {},
         message : '',
+        state : Boolean,
     }),
     components:{
         SideBar,
     },
+ 
     methods:{
         str_replace(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
-        }
+        },
+
+                   async suspendProduct($id) {
+               
+                   await axios.get('/api/product/suspend/'+ $id ).then((response) =>{
+                       console.log(response.data);
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    }); 
+                      this.state = response.data.state;  
+                   });                    
+               
+            },
+
+
     },
     beforeCreate() {
         this.$Progress.start();

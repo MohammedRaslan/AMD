@@ -38,6 +38,12 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
+    public function suspendOrUnsuspend($id)
+    {
+        $data = $this->productService->suspendOrUnsuspend($id);
+        return response()->json($data);
+    }
+
     public function shopProducts(Request $request)
     {
         $data = $this->productService->shopProducts();
@@ -49,4 +55,5 @@ class ProductController extends Controller
         $data = $this->productService->getProduct($id);
         return response()->json($data);
     }
+
 }

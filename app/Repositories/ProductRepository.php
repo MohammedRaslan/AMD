@@ -90,4 +90,29 @@ class ProductRepository{
         return ['product' => $product,'images' => $images];
     }
 
+    public function suspendOrUnsuspend($id){
+
+        $product = Product::find($id);
+        if ($product) {
+            if ($product->status == 0) {
+                $product->status = 1;
+                $product->save();
+                $state= true;
+                $message='Product Unsuspended Successfully';
+
+            } elseif ($product->status == 1) {
+                $product->status = 0;
+                $product->save();
+                $state= false;
+                $message='Product Suspended Successfully';
+
+            }
+            return ['response' => true,'state'=>$state , 'message'=>$message];
+        }
+        else {
+            return ['response' => false];
+
+        }
+    }
+
 }

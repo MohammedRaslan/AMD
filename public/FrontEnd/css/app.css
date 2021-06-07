@@ -2169,3 +2169,16 @@
 @media only screen and (min-width: 750px) {
   .header .header__menu path.user-acc {
     transform: translate(8px, 25px); } }
+
+
+    .suspended {
+      color: #fff !important;
+      background-color: #000 !important;
+      border-color: #fd1266 !important;
+    }
+    
+    .suspended:hover {
+      color: #fd1266 !important;
+      background-color: #fff !important;
+      border-color: #fd1266 !important;
+    }
