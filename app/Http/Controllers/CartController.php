@@ -38,4 +38,10 @@ class CartController extends Controller
         $data = $this->cartService->getCartCount($request->user()->id);
         return response()->json($data);
     }
+
+    public function getCartProducts(Request $request)
+    {
+        $data = $this->cartService->getCartProducts($request->user()->id);
+        return response()->json($data);
+    }
 }

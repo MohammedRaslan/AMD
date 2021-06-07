@@ -1,6 +1,6 @@
 <template>
 
-           <a class="position-relative" href="#">
+           <router-link to="/cart/first-step" v-bind:class="[bell ? bellClass: '',relative]" href="#">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                     <g id="Group_38" data-name="Group 38" transform="translate(-826 -317)">
                                         <g id="Group_34" data-name="Group 34" transform="translate(-1)">
@@ -17,7 +17,7 @@
                                     </g>
                                     </svg>
                                     <span class="quantity-cart">{{number}}</span>
-                               </a>  
+                               </router-link>  
     
 </template>
 
@@ -26,20 +26,35 @@
 export default ({
    data: ()=>({
        number: 0,
+       bell: false,
+       bellClass: 'belll',
+       relative: 'position-relative',
        id: JSON.parse(localStorage.getItem('currentUser'))['id'],
    }),
+   beforeCreate(){
+    axios.get('/api/cart/getCartCount/'+this.id).then((response) => {
+                this.number = response.data;
+            });
+   },
    created(){
           Fire.$on('AddedToCart',()=>{
+             this.bell = true;
              this.number = parseInt(this.number) + 1;
+             setTimeout(()=>{
+                 this.bell = false;
+                  }, 2000);
             });
         Fire.$on('RemoveFromCart',()=>{
+             this.bell = true;
              this.number = parseInt(this.number) - 1;
+            setTimeout(()=>{
+                 this.bell = false;
+                  }, 2000);
         });
+     
    },
     mounted(){
-        axios.get('/api/cart/getCartCount/'+this.id).then((response) => {
-            this.number = response.data;
-        });
+   
     }
 })
 </script>
