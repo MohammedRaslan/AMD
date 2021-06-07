@@ -73,7 +73,7 @@
                                  <!-- <a href="#"> -->
                                 <div class="dropdown drop-user1">
                                     <button class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton22" data-bs-toggle="dropsdown" type="button" aria-expanded="false">
-                                        <span>User Name</span> 
+                                        <span>{{ name }}</span> 
                                         <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_down_solid" width="20.833" height="20.833" viewBox="0 0 20.833 20.833">
                                             <path id="Shape" d="M10.417,20.833A10.417,10.417,0,1,1,20.833,10.417,10.428,10.428,0,0,1,10.417,20.833ZM5.208,7.291A1.042,1.042,0,0,0,4.472,9.07L9.68,14.278a1.042,1.042,0,0,0,1.474,0L16.361,9.07A1.042,1.042,0,1,0,14.888,7.6l-4.472,4.472L5.945,7.6A1.035,1.035,0,0,0,5.208,7.291Z" fill="#fff"/>
                                         </svg> -->
@@ -139,6 +139,7 @@ export default({
         logged : false,
         mounted: false,
         admin : false,  
+        name : '',
     }),
     methods:{
         logout(){
@@ -159,6 +160,7 @@ export default({
  mounted(){
     if(localStorage.getItem('token')){
          this.logged = true;
+         this.name = JSON.parse(localStorage.getItem('currentUser'))['first_name'] + ' ' +JSON.parse(localStorage.getItem('currentUser'))['last_name'];
          axios.get('/api/checkAdmin').then((response) => {
             if(response.data == true){
                 this.admin = true;

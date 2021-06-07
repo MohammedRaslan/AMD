@@ -78,4 +78,28 @@ class CartRepository{
         return Cart_Product::where('cart_id',$cart->id)->where('user_id',$user_id)->count();
     
     }
+
+    public function getCartProducts($user_id)
+    {
+        $cart = Cart::select('id')->where('user_id',$user_id)->first();
+        $cart_products = Cart_Product::where('user_id',$user_id)->where('cart_id',$cart->id)->with('product')->get(); // Where Status 1 From Model 
+    
+        $cart_products = $this->CheckIfProductIsUnAvailable($cart_products);
+      
+        return $cart_products;
+    }
+
+
+    public function CheckIfProductIsUnAvailable($cart_products)
+    {
+        $data = [];
+        foreach($cart_products as $cart_product){
+            if($cart_product->product == null){
+                $cart_product->delete();
+            }else{
+                $data[] = $cart_product;
+            }
+        }
+        return $data;
+    }
 }

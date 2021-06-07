@@ -31,11 +31,11 @@ class CartService{
         }
     }
     
-    public function calculate($products)
+    public function calculate($cart_products)
     {
         $subtotal = 0;
         $total = 0;
-        foreach($products as $product){
+        foreach($cart_products as $product){
             $subtotal += $product->price * $product->quantity;
         }
         $total = $subtotal;
@@ -54,6 +54,15 @@ class CartService{
     public function getCartCount($user_id)
     {
         return $this->cartRepository->getCartCount($user_id);
+    }
+
+    public function getCartProducts($user_id)
+    {
+        $data = $this->cartRepository->getCartProducts($user_id);
+        $recalculate = $this->calculate($data);
+        $response = $this->cartRepository->saveCartTotal($user_id,$recalculate['subtotal'], $recalculate['total']);
+        
+        return ['cart_products'=>$data,'subtotal' => $recalculate['subtotal'], 'total' => $recalculate['total']];
     }
 
 }
