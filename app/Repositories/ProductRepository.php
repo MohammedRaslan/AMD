@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Enums\ProductType;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Support\Str;
@@ -16,7 +17,8 @@ class ProductRepository{
 
     public function getData()
     {
-        return ProductType::getInstances();
+        return ['types'=> ProductType::getInstances(),
+                'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get()];
         
     }
 

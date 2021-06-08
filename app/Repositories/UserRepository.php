@@ -43,7 +43,11 @@ class UserRepository{
         if (!auth()->attempt($request)) {
             return ['message' => 'Invalid Credentials'];
         }
+        $userData = [
+            'name' => auth()->user()->first_name .' '. auth()->user()->last_name,
+            'email' => auth()->user()->email,
+        ];
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
-        return ['token' => $accessToken];
+        return ['user' => $userData,'token' => $accessToken];
     }
 }

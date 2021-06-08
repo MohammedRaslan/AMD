@@ -11,11 +11,11 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <!-- Bootstrap Core and vandor -->
 <link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/plugins/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="{{ asset('Admin/assets') }}//assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
-<link rel="stylesheet" href="{{ asset('Admin/assets') }}//assets/plugins/datatable/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="{{ asset('Admin/assets') }}//assets/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
-<link rel="stylesheet" href="{{ asset('Admin/assets') }}//assets/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
-<link rel="stylesheet" href=" {{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
+<link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/plugins/datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
 <!-- Core css -->
 <link rel="stylesheet" href="{{ asset('Admin/assets') }}/assets/css/style.min.css"/>
 <link rel="stylesheet" href="{{ asset('Admin/assets/style.css') }}">
@@ -143,7 +143,7 @@
                     <ul class="metismenu">
                         <li><router-link to="/admin" class="{{ Request::path() =='admin/dashboard' ? 'active-link' : null }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></router-link></li>
                         <li><router-link to="/admin/users" class="{{ str_contains(Request::path() ,'user') ? 'active-link' : null }}"><i class="fa fa-users"></i><span>Users</span></router-link></li>
-                        <li><a href="" class="{{  str_contains(Request::path() ,'category') ? 'active-link' : null }}"><i class="fa fa-th-list"></i><span>Categories</span></a></li>
+                        <li><router-link to="/admin/categories" href="" class="{{  str_contains(Request::path() ,'category') ? 'active-link' : null }}"><i class="fa fa-th-list"></i><span>Categories</span></router-link></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'product') ? 'active-link' : null }}"><i class="fa fa-book"></i><span>Products</span></a></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'tag') ? 'active-link' : null }}"><i class="fa fa-tags"></i><span>Tags</span></a></li>
                         <li><a href="" class="{{  str_contains(Request::path() ,'coupon') ? 'active-link' : null }}"><i class="fa fa-certificate"></i><span>Coupons</span></a></li>
@@ -219,7 +219,7 @@
 <script src="{{ asset('Admin/assets') }}/assets/js/core.js" defer></script>
 <script src="{{ asset('Admin') }}/assets/js/form/dropify.js" defer></script>
 <script src="{{ asset('Admin/assets') }}/js/page/index.js" defer></script>
-
-    @yield('scripts')
+<script src="{{ asset('Admin/assets/js/custom.js') }}"></script>
+    {{-- @yield('scripts') --}}
 </body>
 </html>

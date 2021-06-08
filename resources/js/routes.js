@@ -9,12 +9,14 @@ import CreateProductComponent from "./components/Selling/CreateProductComponent"
 
 import DashboardComponent from "./components/Admin/DashboardComponent"
 import UsersComponent from "./components/Admin/UsersComponent"
+import CategoriesComponent from "./components/Admin/CategoriesComponent"
 import SubscriptionsComponent from "./components/Admin/Subscription/SubscriptionsComponent";
 import AddSubscriptionsComponent from "./components/Admin/Subscription/ManageSubscription.vue";
 import DraftedComponent from "./components/Selling/DraftedComponent";
 import ShopComponent from "./components/ShopComponent.vue"
 import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
+import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
 
 const routes = [
     {
@@ -67,6 +69,11 @@ const routes = [
         component: CartFirstStepComponent,
         name: "CartFirstStepComponent",
     },
+    {
+        path: "/cart/second-step",
+        component: CartSecondStepComponent,
+        name: "CartSecondStepComponent",
+    },
 
     // ADMIN ROUTES
     {
@@ -78,6 +85,11 @@ const routes = [
         path:"/admin/users",
         component: UsersComponent,
         name: "users",
+    },
+    {
+        path:"/admin/categories",
+        component: CategoriesComponent,
+        name: "categories",
     },
     {
         path:"/admin/subscriptions",

@@ -160,7 +160,7 @@ export default({
  mounted(){
     if(localStorage.getItem('token')){
          this.logged = true;
-         this.name = JSON.parse(localStorage.getItem('currentUser'))['first_name'] + ' ' +JSON.parse(localStorage.getItem('currentUser'))['last_name'];
+         this.name = JSON.parse(localStorage.getItem('currentUser'))['name'];
          axios.get('/api/checkAdmin').then((response) => {
             if(response.data == true){
                 this.admin = true;

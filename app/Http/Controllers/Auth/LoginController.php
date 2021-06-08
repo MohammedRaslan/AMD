@@ -34,6 +34,6 @@ class LoginController extends Controller
         if(array_key_exists('message',$data)){
             return response(['message' => $data['message']]);
         }
-        return response(['user' => auth()->user(), 'access_token' => $data['token']]);
+        return response(['user' => $data['user'], 'access_token' => $data['token']]);
     }
 }

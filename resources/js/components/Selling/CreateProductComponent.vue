@@ -47,15 +47,21 @@
                                                                 <h2 class="pb-3 pt-4">Prodduct Info</h2>
                                                                 <form @submit.prevent="saveProduct">                        
                                                                     <div class="row">
-                                                                        <div class="col-6">
+                                                                        <div class="col-4">
                                                                             <input type="text" v-model="form.sku" class="form-control" id="fName" placeholder="SKU" required>
                                                                             <div v-if="form.errors.has('sku')" class="alert alert-danger" v-html="form.errors.get('sku')" />
 
                                                                         </div>
-                                                                        <div class="col-6">
+                                                                        <div class="col-4">
                                                                             <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Title" required>
                                                                             <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
-
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <select name="type" v-model="form.category" id="" class="custom-select form-control" required>
+                                                                                <option selected disabled>Choose Category</option>
+                                                                                <option v-for="(category, index) in categories" :key="index" :value="category" > {{ category.title }}</option>
+                                                                            </select >
+                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                         </div>
                                                                         <div class="col-4">
                                                                             <select name="type" v-model="form.type" id="" class="custom-select form-control" required>
@@ -150,6 +156,7 @@ export default ({
         details : "",
         description: "",
         types: [],
+        categories: [],
         form : new form({
             sku : null,
             title : null,
@@ -158,6 +165,7 @@ export default ({
             brand : null,
             description: null,
             details: null,
+            category: null,
             return_policy: 1,
             price: null,
             best_offer: 0,
@@ -240,8 +248,8 @@ export default ({
                     ],
 });
         axios.get('/api/product/getProductData').then((response) => {
-            this.types = response.data;
-            console.log(this.types['REGULAR']);
+            this.types = response.data.types;
+            this.categories = response.data.categories;
         });
     }
 })

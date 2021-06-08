@@ -161,7 +161,7 @@
                        </div>
 
                        <div class="continue">
-                           <button class="btn btn-block"><a href="delivery.html">Continue</a></button>
+                           <button class="btn btn-block"><router-link to="/cart/second-step">Continue</router-link></button>
                        </div>
 
                     </div>
