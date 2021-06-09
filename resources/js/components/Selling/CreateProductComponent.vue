@@ -59,7 +59,7 @@
                                                                         <div class="col-4">
                                                                             <select name="type" v-model="form.category" id="" class="custom-select form-control" required>
                                                                                 <option selected disabled>Choose Category</option>
-                                                                                <option v-for="(category, index) in categories" :key="index" :value="category" > {{ category.title }}</option>
+                                                                                <option v-for="(category, index) in categories" :key="index" :value="category.id" > {{ category.title }}</option>
                                                                             </select >
                                                                             <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                         </div>
@@ -182,7 +182,7 @@ export default ({
             const response = await this.form.post('/api/product/store').then((response)=>{
                 this.$Progress.finish();
                 this.indicator();
-                this.form.clear();
+                this.form.reset();
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);

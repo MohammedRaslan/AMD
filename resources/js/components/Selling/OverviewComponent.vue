@@ -67,8 +67,11 @@
                                         </div>
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
-                                                <div class="inner">
-                                                    <button class="btn btn-primary"><a href="#">View</a></button>
+                                                <div class="inner" v-if="product.draft == 0">
+                                                    <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
+                                                </div>
+                                                  <div class="inner" v-if="product.draft == 1">
+                                                    <button class="btn btn-secondary"><a href="#">Complete</a></button>
                                                 </div>
                                                 <div class="inner">
                                                     <button class="btn btn-danger"><a href="#">Suspend</a></button>
@@ -88,8 +91,9 @@
                     </div>
                 </div>
             </div>
+            <!-- <pagination :data="products" @pagination-change-page="getProducts"></pagination> -->
          
-          <div class="pagination-selling">
+          <!-- <div class="pagination-selling">
 
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -116,7 +120,7 @@
                     </li>
                 </ul>
                </nav>
-          </div>
+          </div> -->
           
         </div>
     </section>
@@ -131,6 +135,7 @@ export default ({
         loading : false,
         products: {},
         message : '',
+        pagination: {},
     }),
     components:{
         SideBar,
@@ -139,6 +144,16 @@ export default ({
         str_replace(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
+        },
+        getProducts(){
+            axios.get('/api/product/getUserProduct').then((response) => {
+            this.products = response.data.data;
+            this.pagination = response.data.links;
+            console.log(this.pagination);
+            if(response.data == '' ){
+                this.message = 'You dont have products';
+                }
+        });
         }
     },
     beforeCreate() {
@@ -147,12 +162,7 @@ export default ({
     mounted(){
         // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
-        axios.get('/api/product/getUserProduct').then((response) => {
-            this.products = response.data;
-            if(response.data == '' ){
-                this.message = 'You dont have products';
-                }
-        });
+        this.getProducts();
         // console.log(this.$route.params.id);
     }
 })

@@ -43,6 +43,7 @@ class ProductRepository{
             $product->image = 'public/products/'.$data['title'].'/'.$fileName;
         }
         if($product->save()){
+            $product->categories()->attach($data['category']);
         
         if($images){
             foreach($images as $file){
@@ -63,9 +64,8 @@ class ProductRepository{
     public function getUserProducts($id)
     {
         return Product::where('user_id',$id)
-                            ->where('draft',0)
                             ->orderBy('created_at','desc')
-                            ->get();
+                            ->paginate(3);
     }
 
 

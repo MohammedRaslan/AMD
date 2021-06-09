@@ -4338,7 +4338,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   _this.indicator();
 
-                  _this.form.clear();
+                  _this.form.reset();
                 })["catch"](function (error) {
                   _this.$Progress.fail();
 
@@ -4735,13 +4735,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       loading: false,
       products: {},
-      message: ''
+      message: '',
+      pagination: {}
     };
   },
   components: {
@@ -4751,23 +4756,28 @@ __webpack_require__.r(__webpack_exports__);
     str_replace: function str_replace(str) {
       str = str.replace('public', window.location.origin + '/storage');
       return str;
+    },
+    getProducts: function getProducts() {
+      var _this = this;
+
+      axios.get('/api/product/getUserProduct').then(function (response) {
+        _this.products = response.data.data;
+        _this.pagination = response.data.links;
+        console.log(_this.pagination);
+
+        if (response.data == '') {
+          _this.message = 'You dont have products';
+        }
+      });
     }
   },
   beforeCreate: function beforeCreate() {
     this.$Progress.start();
   },
   mounted: function mounted() {
-    var _this = this;
-
     // console.log(window.location.origin, this.$route);
     this.$Progress.finish();
-    axios.get('/api/product/getUserProduct').then(function (response) {
-      _this.products = response.data;
-
-      if (response.data == '') {
-        _this.message = 'You dont have products';
-      }
-    }); // console.log(this.$route.params.id);
+    this.getProducts(); // console.log(this.$route.params.id);
   }
 });
 
@@ -5367,7 +5377,8 @@ _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next
   }
 
   next();
-});
+}); // Vue.component('pagination', require('laravel-vue-pagination'));
+
 var app = new vue__WEBPACK_IMPORTED_MODULE_9__.default({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_0__.default,
@@ -73834,7 +73845,8 @@ var render = function() {
                                                                 {
                                                                   key: index,
                                                                   domProps: {
-                                                                    value: category
+                                                                    value:
+                                                                      category.id
                                                                   }
                                                                 },
                                                                 [
@@ -74982,7 +74994,52 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _vm._m(2, true)
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-2 col-md-12 btns" },
+                                  [
+                                    _c("div", { staticClass: "inner-gruop" }, [
+                                      product.draft == 0
+                                        ? _c("div", { staticClass: "inner" }, [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-primary"
+                                              },
+                                              [
+                                                _c(
+                                                  "router-link",
+                                                  {
+                                                    attrs: {
+                                                      to: {
+                                                        name:
+                                                          "ShopDetailComponent",
+                                                        params: {
+                                                          query: product.id
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  [_vm._v("View")]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      product.draft == 1
+                                        ? _c("div", { staticClass: "inner" }, [
+                                            _vm._m(2, true)
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm._m(3, true),
+                                      _vm._v(" "),
+                                      _vm._m(4, true)
+                                    ])
+                                  ]
+                                )
                               ])
                             ]),
                             _vm._v(" "),
@@ -74998,111 +75055,7 @@ var render = function() {
             )
           ],
           1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "pagination-selling" }, [
-          _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
-            _c("ul", { staticClass: "pagination" }, [
-              _c("li", { staticClass: "page-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "#", "aria-label": "Previous" }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          width: "8",
-                          height: "13.995",
-                          viewBox: "0 0 8 13.995"
-                        }
-                      },
-                      [
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              id: "Icon_20_Grey_Arrow",
-                              "data-name": "Icon / 20 / Grey / Arrow",
-                              transform: "translate(13.998 -3.002) rotate(90)"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                id: "Shape",
-                                d:
-                                  "M7.712,7.69,1.678,13.708a.981.981,0,0,1-1.39-1.386L5.627,7,.288,1.673A.981.981,0,0,1,1.678.287L7.712,6.3a.978.978,0,0,1,0,1.386Z",
-                                transform: "translate(16.998 5.998) rotate(90)",
-                                fill: "#99abb9"
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(3),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "#", "aria-label": "Next" }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          width: "8",
-                          height: "13.995",
-                          viewBox: "0 0 8 13.995"
-                        }
-                      },
-                      [
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              id: "Icon_20_Grey_Arrow",
-                              "data-name": "Icon / 20 / Grey / Arrow",
-                              transform: "translate(-5.998 16.998) rotate(-90)"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                id: "Shape",
-                                d:
-                                  "M7.712,7.69,1.678,13.708a.981.981,0,0,1-1.39-1.386L5.627,7,.288,1.673A.981.981,0,0,1,1.678.287L7.712,6.3a.978.978,0,0,1,0,1.386Z",
-                                transform: "translate(16.998 5.998) rotate(90)",
-                                fill: "#7ac943"
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
-        ])
+        )
       ])
     ])
   ])
@@ -75131,25 +75084,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-md-12 btns" }, [
-      _c("div", { staticClass: "inner-gruop" }, [
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("View")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "inner" }, [
-          _c("button", { staticClass: "btn btn-outline-danger" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-          ])
-        ])
+    return _c("button", { staticClass: "btn btn-secondary" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("Complete")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner" }, [
+      _c("button", { staticClass: "btn btn-danger" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Suspend")])
       ])
     ])
   },
@@ -75157,24 +75102,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item active" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("1")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("2")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("3")])
+    return _c("div", { staticClass: "inner" }, [
+      _c("button", { staticClass: "btn btn-outline-danger" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
+      ])
     ])
   }
 ]
