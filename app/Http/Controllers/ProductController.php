@@ -38,11 +38,6 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-    public function shopProducts(Request $request)
-    {
-        $data = $this->productService->shopProducts();
-        return response()->json($data);
-    }
 
     public function getProduct(Request $request, $id)
     {

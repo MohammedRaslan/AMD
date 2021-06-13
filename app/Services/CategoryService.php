@@ -22,6 +22,16 @@ class CategoryService{
     {
         return $this->categoryRepository->changeStatus($id);
     }
+
+    public function get()
+    {
+        return $this->categoryRepository->get();
+    }
+
+    public function categoryProducts($id)
+    {
+        return $this->categoryRepository->categoryProducts($id);
+    }
 }
 
 

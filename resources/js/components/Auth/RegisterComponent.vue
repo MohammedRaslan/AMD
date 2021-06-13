@@ -9,17 +9,21 @@
                         <p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p>
                         <form @submit.prevent="register">                        
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <input type="text" v-model="form.first_name" class="form-control" id="fName" placeholder="First Name" required>
                                     <div v-if="form.errors.has('first_name')" class="alert alert-danger" v-html="form.errors.get('first_name')" />
-
                                 </div>
                                 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <input type="text" v-model="form.last_name" class="form-control" id="lName" placeholder="Last Name" required>
                                     <div v-if="form.errors.has('last_name')" class="alert alert-danger" v-html="form.errors.get('last_name')" />
                                 </div>
                                 
+                                <div class="col-4">
+                                    <input type="text" v-model="form.user_name" class="form-control" id="user_name" placeholder="User Name" required>
+                                    <div v-if="form.errors.has('user_name')" class="alert alert-danger" v-html="form.errors.get('user_name')" />
+                                </div>
+
                                 <div class="col-12">
                                     <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Your Email" required>
                                     <div v-if="form.errors.has('email')" class="alert alert-danger" v-html="form.errors.get('email')" />
@@ -79,6 +83,7 @@ export default ({
         form : new form({
             first_name : null,
             last_name : null,
+            user_name: null,
             email : null,
             password : null,
             password_confirmation : null,

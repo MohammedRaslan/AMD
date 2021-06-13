@@ -82,7 +82,7 @@
                   <div class="inner">
                       <figure>
                           <router-link class="link-del" :to="{name: 'ShopDetailComponent', params:{query: product.id}}">
-                              <img :src='str_replace(product.image)' alt="">
+                              <!-- <img v-if="!loading" :src='str_replace(product.image)' alt=""> -->
                           </router-link>
                         </figure>
                       <h4><a class="link-del" href="_shop-details2.htm">{{ product.title }}</a> </h4>
@@ -135,6 +135,7 @@
 <script>
 export default {
     data:()=>({
+        id : null,
         loading: true,
         products:{},
     }),
@@ -144,11 +145,10 @@ export default {
             return str;
         }
     },
-    created(){
-        this.$Progress.start();
-    },
-   mounted(){
-       axios.get('/api/shop/getShopProducts').then((response) =>{
+ 
+   created(){
+    this.id = this.$route.params.query;
+        axios.get('/api/category/getCategoryProducts/'+this.id).then((response) =>{
            this.products = response.data;
            this.$Progress.finish();
            this.loading = false;

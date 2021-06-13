@@ -8,11 +8,26 @@
         </svg>
     </button>
     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-        <li><router-link class="dropdown-item" to="/example">Category 1</router-link></li>
-        <li><a class="dropdown-item" href="dolls.html">Category 2</a></li>
-        <li><a class="dropdown-item" href="dolls.html">Category 3</a></li>
-        <li><a class="dropdown-item" href="dolls.html">Category 4</a></li>
+        <li v-for="category in categories" :key="category.id">
+            <router-link class="dropdown-item" :to="{name: 'ShopCategoryComponent', params:{query: category.id}}">{{ category.title }}</router-link>
+        </li>
+
     </ul>
 </div>
     
 </template>
+
+<script>
+export default ({
+      data :()=>({
+          categories : {},
+    }),
+
+    created(){
+        axios.get('api/category/get').then((response) => {
+            this.categories = response.data;
+        });
+    }
+})
+</script>
+

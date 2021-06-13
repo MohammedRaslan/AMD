@@ -29,4 +29,15 @@ class CategoryRepository{
         }
         return false;
     }
+
+    public function get()
+    { 
+        return Category::select('id','title')->where('status',1)->get();
+    }
+
+    public function categoryProducts($id)
+    {
+        $category = Category::where('id',$id)->with('products')->first();
+        dd($category);
+    }
 }

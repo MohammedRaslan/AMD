@@ -55,9 +55,9 @@ const routes = [
         name:"draftedProduct",
     },
     {
-        path: "/shop",
+        path: "/shopCategory/:query?",
         component: ShopComponent,
-        name: "ShopComponent",
+        name: "ShopCategoryComponent",
     },
     {
         path: "/shop/:query?",

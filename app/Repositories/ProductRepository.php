@@ -77,14 +77,6 @@ class ProductRepository{
                             ->get();
     }
     
-    public function shopProducts()
-    {
-        return Product::where('status', 1)
-                        ->where('draft',0)
-                        ->orderBy('created_at','desc')
-                        ->get();
-    }
-
     public function getProduct($id)
     {
         $product = Product::where('id',$id)->with('user')->first();

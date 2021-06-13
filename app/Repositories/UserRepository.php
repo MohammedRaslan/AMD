@@ -3,7 +3,7 @@ namespace App\Repositories;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository{
 
@@ -21,11 +21,11 @@ class UserRepository{
         $user = User::create([
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
+            'user_name' => $request['user_name'],
             'email'      => $request['email'],
             'password'   => bcrypt($request['password']),
             'phone'      => $request['phone'],
             'address'    => $request['address'],
-            // 'subscription_id' => 1,
             'type' => 1,
             'role' => 1,
         ]);
@@ -40,14 +40,26 @@ class UserRepository{
 
     public function login($request)
     {
-        if (!auth()->attempt($request)) {
-            return ['message' => 'Invalid Credentials'];
+        if( str_contains($request['email'],'@')){
+            if (!auth()->attempt($request)) {
+                return ['message' => 'Invalid Credentials'];
+            }
+        }else{
+            $user = User::where('user_name',$request['email'])->first();
+            if(!Hash::check($request['password'], $user->password)){
+                return ['message' => 'Invalid Credentials'];
+            }
         }
         $userData = [
-            'name' => auth()->user()->first_name .' '. auth()->user()->last_name,
-            'email' => auth()->user()->email,
+            'name' => auth()->user() == null? $user->user_name : auth()->user()->user_name,
+            'email' => auth()->user() == null? $user->email : auth()->user()->email,
         ];
-        $accessToken = auth()->user()->createToken('authToken')->accessToken;
+
+        if(auth()->user()){
+            $accessToken = auth()->user()->createToken('authToken')->accessToken;
+        }else{
+            $accessToken = $user->createToken('authToken')->accessToken;
+        }
         return ['user' => $userData,'token' => $accessToken];
     }
 }

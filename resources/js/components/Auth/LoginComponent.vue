@@ -6,14 +6,14 @@
                 <div class="row text-center">
                     <div class="col-lg-5 col-md-5 col-sm-12">
                         <h2 class="mb-4">Login</h2>
-                        <p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p>
+                        <!-- <p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p> -->
                         <div class="alert alert-danger" role="alert" v-if="message != null">
                               {{ message }}
                         </div>          
                         <form @submit.prevent="login">                        
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="email" class="form-control" v-model="form.email" id="email" placeholder="Your Email" >
+                                    <input type="text" class="form-control" v-model="form.email" id="email" placeholder="Your Email" >
                                     <div v-if="form.errors.has('email')" class="alert alert-danger" v-html="form.errors.get('email')" />
                                 </div>
                                 
@@ -34,7 +34,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="forgot">Forgotten password?</a>
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="forgot">Forget password?</a>
 
                                 </div>
                             </div>

@@ -38,6 +38,9 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('category')->group(function() {
         Route::post('store',[CategoryController::class,'store']);
         Route::get('changeStatus/{id?}',[CategoryController::class,'changeStatus']);
+        Route::get('get',[CategoryController::class,'get']);
+        Route::get('getCategoryProducts/{id?}',[CategoryController::class,'categoryProducts']);
+
     });
 
     Route::prefix('product')->group(function () {
@@ -48,7 +51,6 @@ Route::middleware('auth:api')->group(function () {
         
     });
     Route::prefix('shop')->group(function() {
-        Route::get('getShopProducts',[ProductController::class,'shopProducts']);
         Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);
     });
 
