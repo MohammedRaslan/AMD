@@ -15,8 +15,8 @@
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
-                                    <h2>CORPSE BRIDE <br class="d-none d-lg-block d-xl-block"> 12” SET </h2>
-                                    <p>MCFARLANE 2005 RARE TIM BURTON</p>
+                                    <h2>CORPSE BRIDE <br class="d-none d-lg-block d-xl-block"> </h2>
+                                    <p>RARE DOLL MODEL</p>
                                     <button class="btn position-relative"><a href="dolls.html" class="over-link"></a> Buy Now</button>
                                </div>
                             </div>
@@ -35,8 +35,8 @@
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
-                                    <h2>CORPSE BRIDE <br> 12” SET </h2>
-                                    <p>MCFARLANE 2005 RARE TIM BURTON</p>
+                                    <h2>CORPSE BRIDE <br> </h2>
+                                   <p>RARE DOLL MODEL</p>
                                     <button class="btn position-relative"><a href="dolls.html" class="over-link"></a> Buy Now</button>
                                </div>
                             </div>
@@ -55,8 +55,8 @@
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
-                                    <h2>CORPSE BRIDE <br> 12” SET </h2>
-                                    <p>MCFARLANE 2005 RARE TIM BURTON</p>
+                                    <h2>CORPSE BRIDE <br>  </h2>
+                                    <p>RARE DOLL MODEL</p>
                                     <button class="btn position-relative"><a href="dolls.html" class="over-link"></a> Buy Now</button>
                                </div>
                             </div>
@@ -74,18 +74,17 @@
     <!-- Hero Section End -->
 
     <!-- Start #Auction Follow -->
-    <section class="auction-follow">
+    <!-- <section class="auction-follow">
         <div class="container">
             <hr class="top">
             <h2>Auctions you follow {{ auth }}</h2>
             <hr class="bot">
             <div class="inner-carousel">
                 <div class="owl-carousel auction-follow-slide owl-theme">
-                <!-- Block Item -->
                 <div class="item">
                     <div class="inner-item postion-relative">
                         <a class='over-link' href='shop-details.html'></a>
-                        <!-- <img src="{{ asset('FrontEnd') }}/images/Auctions/Product-01.png" alt=""> -->
+                        <img src="{{ asset('FrontEnd') }}/images/Auctions/Product-01.png" alt="">
                         <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                         <p>Ends today from 21:00</p>
                     </div>
@@ -95,7 +94,7 @@
             </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End #Auction Follow -->
     
 
@@ -120,23 +119,20 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="filter__controls">
-                                <li class="active" data-filter="*">All</li>
-                                <li data-filter=".cat1">Category 1</li>
-                                <li data-filter=".cat2">Category 2</li>
-                                <li data-filter=".cat3">Category 3</li>
-                                <li data-filter=".cat4">Category 4</li>
+                                <li class="active" data-filter="*" @click="random">All</li>
+                                <li  v-for="category in categories" :key="category.id" :data-filter="'.cat_' + category.id " @click="fetchproducts(category.id)">{{ category.title }}</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="row product__filter">
                         <!-- Block Item -->                        
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix cat1">
+                        <div v-for="product in products" :key="'product_'+product.id" class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix cat_1">
                             <div class="product__item position-relative">
                                 <a class="over-link" href="shop-details.html"></a>
-                                <!-- <div class="product__item__pic set-bg" data-setbg="{{ asset('FrontEnd') }}/images/Products/Product-01.png"></div> -->
+                                <img class="product__item__pic set-bg" :src="str_replace(product.image)">
                                 <div class="product__item__text">
-                                    <h6>Item Name</h6>
+                                    <h6>{{ product.title }}</h6>
                                     <h5>
                                         <a href="">Buy Now </a>
                                     </h5>
@@ -154,19 +150,17 @@
     <!-- Product Section End -->
 
     <!-- Start #Auction Follow -->
-    <section class="auction-follow auc-soon">
+    <!-- <section class="auction-follow auc-soon">
         <div class="container">
             <hr class="top">
             <h2>Auctions end soon</h2>
             <hr class="bot">
-        <!-- owl-carousel auction-follow-slide owl-theme -->
             <div class="inner-carousel">
                 <div class="owl-carousel auc-soon-slide owl-theme">
-                    <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item positionrelative">
                             <a class="over-link" href="shop-details.html"></a>
-                            <!-- <img src="{{ asset('FrontEnd') }}/images/Auctions/Product-01.png" alt=""> -->
+                            <img src="{{ asset('FrontEnd') }}/images/Auctions/Product-01.png" alt="">
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today from 21:00</p>
                         </div>
@@ -176,7 +170,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End #Auction Follow -->
     </div>
 </template>
@@ -186,9 +180,26 @@ export default({
     data: () => ({
         loaded: true,
         auth: null,
+        categories : {},
+        products: {},
     }),
     methods:{
-  
+        async fetchproducts(id){
+            await axios.get('/api/guest/getCategoryProducts/'+id).then((response) =>{
+            this.products = response.data;
+            this.$Progress.finish();
+            this.loading = false;
+       });
+        },
+        async random(){
+            await axios.get('/api/product/random').then((response) =>{
+            this.products = response.data;
+        });
+        },
+        str_replace(str){
+            str = str.replace('public',window.location.origin + '/storage');
+            return str;
+        }
     },
     created(){
         this.$Progress.start();
@@ -199,10 +210,17 @@ export default({
             });
             localStorage.removeItem('auth');
         }
+        axios.get('/api/category/get').then((response) => {
+            this.categories = response.data;
+        });
+
+  
     },
     mounted(){
         this.$Progress.finish();
-
+        axios.get('/api/product/random').then((response) =>{
+            this.products = response.data;
+        });
     }
 })
 </script>

@@ -220,7 +220,7 @@
 <script src="{{ asset('Admin') }}/assets/js/form/dropify.js" defer></script>
 <script src="{{ asset('Admin/assets') }}/js/page/index.js" defer></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="{{ asset('Admin/assets/js/custom.js') }}"></script>
+<script src="{{ asset('Admin/assets/js/custom.js') }}" defer></script>
     {{-- @yield('scripts') --}}
 </body>
 </html>

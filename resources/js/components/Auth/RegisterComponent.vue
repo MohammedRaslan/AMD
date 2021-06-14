@@ -6,7 +6,6 @@
                 <div class="row text-center">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <h2 class="mb-4">Signup</h2>
-                        <p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p>
                         <form @submit.prevent="register">                        
                             <div class="row">
                                 <div class="col-4">

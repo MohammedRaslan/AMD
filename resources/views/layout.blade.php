@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-xl-4 col-lg-7 col-md-7 col-sm-12 links">
                     <div class="footer__widget">
-                        <div>
+                        {{-- <div>
                             <a href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" id="Social_Media_Small_Dark_Pinterest" data-name="Social Media / Small / Dark / Pinterest" width="19.858" height="19.858" viewBox="0 0 19.858 19.858">
                                     <circle id="Oval" cx="9.929" cy="9.929" r="9.929" fill="#0cf"/>
@@ -134,14 +134,14 @@
                                     <path id="Shape" d="M5.733,6.466H3.961v6.491H1.277V6.466H0V4.185H1.277V2.708A2.517,2.517,0,0,1,3.985,0L5.973.008V2.222H4.53a.546.546,0,0,0-.569.622V4.187H5.967Z" transform="translate(6.692 3.852)" fill="#1b252c"/>
                                 </svg>
                             </a>
-                        </div>
+                        </div> --}}
                         <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Privacy</a></li>
+                            <li class="active"><router-link to="/">Home</router-link></li>
+                            <li><router-link to="subscriptions">Subscriptions</router-link></li>
+                            {{-- <li><a href="#">Privacy</a></li>
                             <li><a href="#">Terms</a></li>
                             <li><a href="#">Help</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Contact</a></li> --}}
                         </ul>
                     </div>
                     <svg class="person-footer" xmlns="http://www.w3.org/2000/svg" width="158.487" height="223.923" viewBox="0 0 158.487 223.923">

@@ -17,6 +17,7 @@ import ShopComponent from "./components/ShopComponent.vue"
 import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
+import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue";
 
 const routes = [
     {
@@ -73,6 +74,11 @@ const routes = [
         path: "/cart/second-step",
         component: CartSecondStepComponent,
         name: "CartSecondStepComponent",
+    },
+    {
+        path: "/subscriptions",
+        component: FrontSubscriptionsComponent,
+        name: "FrontSubscriptionsComponent",
     },
 
     // ADMIN ROUTES

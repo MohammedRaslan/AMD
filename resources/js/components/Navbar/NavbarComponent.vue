@@ -62,7 +62,7 @@
                                  <!-- <a href="#"> -->
                                 <div class="dropdown drop-user1">
                                     <button class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton22" data-bs-toggle="dropsdown" type="button" aria-expanded="false">
-                                        <span>{{ name }}</span> 
+                                        <span>Hello {{ name }}</span> 
                                         <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_down_solid" width="20.833" height="20.833" viewBox="0 0 20.833 20.833">
                                             <path id="Shape" d="M10.417,20.833A10.417,10.417,0,1,1,20.833,10.417,10.428,10.428,0,0,1,10.417,20.833ZM5.208,7.291A1.042,1.042,0,0,0,4.472,9.07L9.68,14.278a1.042,1.042,0,0,0,1.474,0L16.361,9.07A1.042,1.042,0,1,0,14.888,7.6l-4.472,4.472L5.945,7.6A1.035,1.035,0,0,0,5.208,7.291Z" fill="#fff"/>
                                         </svg> -->
@@ -93,7 +93,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark" id="m-user" aria-labelledby="dropdownMenuButton22">
                                         <li><router-link to="/selling/overview" class="dropdown-item">Selling</router-link></li>
                                         <li><a class="dropdown-item" href="buying.html">Buying</a></li>
-                                        <li><a class="dropdown-item" href="subscriptions.html">Subscriptions</a></li>
+                                        <li><router-link class="dropdown-item" to="subscriptions">Subscriptions</router-link></li>
                                         <li><a class="dropdown-item" href="account.html">My Account</a></li>
                                         <li><a class="dropdown-item" style="cursor:pointer" @click="logout">Logout</a></li>
                                         
@@ -108,12 +108,19 @@
                                       
                         </ul>
                     <div class="d-xl-flex d-lg-flex d-md-flex icons float-right" v-if="!logged">
-                        <router-link class="btn btn-primary" to="/login">Join <i class="fas fa-sign-in-alt"></i></router-link>
+                        <router-link class="btn btn-primary color white"  to="/login">Join <i class="fas fa-sign-in-alt"></i></router-link>
                     </div>
                     </nav>
             
 </template>
-
+<style scoped>
+    .color{
+        color: #5fcdfe;
+    }
+    .white{
+        color: white;
+    }
+</style>
 <script>
 import Drop from "./DropdownComponent";
 import Cart from "./CartComponent";

@@ -84,4 +84,9 @@ class ProductRepository{
         return ['product' => $product,'images' => $images];
     }
 
+    public function randomProducts()
+    {
+        return Product::where('status',1)->where('draft',0)->take(4)->get();
+    }
+
 }

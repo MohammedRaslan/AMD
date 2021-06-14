@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 use App\Models\Category;
+// use App\Models\Product;
 
 
 class CategoryRepository{
@@ -32,12 +33,14 @@ class CategoryRepository{
 
     public function get()
     { 
-        return Category::select('id','title')->where('status',1)->get();
+        return Category::select('id','title')->where('status',1)->with('products')->get();
     }
 
     public function categoryProducts($id)
     {
         $category = Category::where('id',$id)->with('products')->first();
-        dd($category);
+        return $category->products()->where('status',1)->where('draft',0)->get();
     }
+
+
 }

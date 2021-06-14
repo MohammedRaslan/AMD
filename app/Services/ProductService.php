@@ -61,5 +61,9 @@ class ProductService{
        return $this->productRepository->getProduct($id);
    }
    
+   public function randomProducts()
+   {
+       return $this->productRepository->randomProducts();
+   }
    
 }

@@ -82,7 +82,7 @@
                   <div class="inner">
                       <figure>
                           <router-link class="link-del" :to="{name: 'ShopDetailComponent', params:{query: product.id}}">
-                              <!-- <img v-if="!loading" :src='str_replace(product.image)' alt=""> -->
+                              <img  :src='str_replace(product.image)' alt="">
                           </router-link>
                         </figure>
                       <h4><a class="link-del" href="_shop-details2.htm">{{ product.title }}</a> </h4>

@@ -44,7 +44,7 @@
                                                     <div class="container">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <h2 class="pb-3 pt-4">Prodduct Info</h2>
+                                                                <h2 class="pb-3 pt-4">Product Info</h2>
                                                                 <form @submit.prevent="saveProduct">                        
                                                                     <div class="row">
                                                                         <div class="col-4">

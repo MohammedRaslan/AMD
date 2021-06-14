@@ -44,4 +44,10 @@ class ProductController extends Controller
         $data = $this->productService->getProduct($id);
         return response()->json($data);
     }
+
+    public function randomProducts()
+    {
+        $data = $this->productService->randomProducts();
+        return response()->json($data);
+    }
 }

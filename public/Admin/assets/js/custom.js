@@ -1,10 +1,10 @@
-jQuery(document).ready(function ($){
+// jQuery(document).ready(function ($){
 
-  $(".show-modal").click(function(){
-    $("#exampleModalCenter").modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-});
+//   $(".show-modal").click(function(){
+//     $("#exampleModalCenter").modal({
+//         backdrop: 'static',
+//         keyboard: false
+//     });
+// });
 
-});
+// });

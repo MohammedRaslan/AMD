@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row p-2 w-100" style="justify-content:flex-end"> 
-        <button class="btn btn-success pt-2 col-1 show-modal" >Add</button>
+        <button class="btn btn-success pt-2 col-1" data-target="#exampleModalCenter" data-toggle="modal" data-backdrop="static" data-keyboard="false">Add</button>
     </div>
     <div class="projects m-3">
         <div class="tableFilters row m-4">
@@ -38,12 +38,12 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" @click="closeModal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -58,7 +58,7 @@
                 <input type="number" min="0" class="form-control" v-model="form.order" id="exampleInputPassword1">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="close btn btn-secondary" @click="closeModal" data-dismiss="modal">Close</button>
                 <button type="submit" :disabled="form.busy" class="btn btn-primary">Save changes</button>
             </div>
         </form>
@@ -180,6 +180,11 @@ export default {
                     document.getElementById("btn_"+id).classList.add('btn-primary');
                 }
             });
+        },
+        closeModal(){
+            document.querySelectorAll('.modal-backdrop').forEach(function(a) {
+                a.remove()
+            })
         }
 
     }
