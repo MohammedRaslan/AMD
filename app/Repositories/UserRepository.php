@@ -30,7 +30,7 @@ class UserRepository{
             'role' => 1,
         ]);
         $userData = [
-            'name' => $user->first_name .' '. $user->last_name,
+            'name' => $user->user_name,
             'email' => $user->email,
         ];
         $accessToken = $user->createToken('authToken')->accessToken;
