@@ -44,7 +44,7 @@ $(document).ready(function(){
             },
         },
         autoplay: {
-            delay: 3000,
+            delay: 6000,
         },
     });
         // swiper.autoplay.stop();

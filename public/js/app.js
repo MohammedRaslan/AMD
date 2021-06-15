@@ -5479,7 +5479,7 @@ _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next
   //  });
 
 
-  if (!localStorage.getItem('token') && !(to.name == 'login' || to.path == '/register' || to.name == 'home')) {
+  if (!localStorage.getItem('token') && !(to.name == 'login' || to.path == '/register' || to.name == 'home' || to.path == '/subscriptions')) {
     window.location.href = '/';
   }
 
@@ -72407,7 +72407,7 @@ var render = function() {
                     _c("div", { staticClass: "inner-title" }, [
                       _vm._m(1),
                       _vm._v(" "),
-                      _c("p", [_vm._v("our Membership plans (coming soon)")]),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -72417,7 +72417,7 @@ var render = function() {
                             staticClass: "over-link",
                             attrs: { to: "/subscriptions" }
                           }),
-                          _vm._v(" Explore ")
+                          _vm._v(" EXPLORE ")
                         ],
                         1
                       )
@@ -72556,7 +72556,7 @@ var render = function() {
                           _c("div", { staticClass: "product__item__text" }, [
                             _c("h6", [_vm._v(_vm._s(product.title))]),
                             _vm._v(" "),
-                            _vm._m(2, true)
+                            _vm._m(3, true)
                           ])
                         ]
                       )
@@ -72587,6 +72587,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h2", [_vm._v("Explore"), _c("br")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("our Membership plans "),
+      _c("br"),
+      _vm._v(" (coming soon)")
+    ])
   },
   function() {
     var _vm = this

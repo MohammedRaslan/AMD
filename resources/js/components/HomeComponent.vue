@@ -36,8 +36,8 @@
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
                                     <h2>Explore<br> </h2>
-                                   <p>our Membership plans (coming soon)</p>
-                                    <button class="btn position-relative"><router-link to="/subscriptions" class="over-link"></router-link> Explore </button>
+                                   <p>our Membership plans <br> (coming soon)</p>
+                                    <button class="btn position-relative"><router-link to="/subscriptions" class="over-link"></router-link> EXPLORE </button>
                                </div>
                             </div>
                         </div>

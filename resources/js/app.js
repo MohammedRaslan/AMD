@@ -72,7 +72,7 @@ router.beforeEach((to, from ,next)=>{
 //   axios.get('/api/checkAdmin').then((response) => {
 //         console.l
 //  });
-  if((!localStorage.getItem('token') && !( to.name == 'login' || to.path == '/register' || to.name == 'home') )){
+  if((!localStorage.getItem('token') && !( to.name == 'login' || to.path == '/register' || to.name == 'home' || to.path == '/subscriptions') )){
     window.location.href = '/';
 
   }
