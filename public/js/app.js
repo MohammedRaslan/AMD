@@ -3816,27 +3816,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -72347,7 +72326,105 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("section", { staticClass: "hero" }, [
+      _c("div", { staticClass: "swiper-container swiper-hero" }, [
+        _c("div", { staticClass: "swiper-wrapper" }, [
+          _c("div", { staticClass: "swiper-slide h-100" }, [
+            _c("div", { staticClass: "container h-100" }, [
+              _c("div", { staticClass: "row h-100" }, [
+                _c("div", { staticClass: "over-lay" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-5 col-md-6 col-sm-12 img-slid h-100" },
+                  [
+                    _c("div", {
+                      staticClass: "inner-img h-100",
+                      style:
+                        " background: url(FrontEnd/images/slider/doll_1.jpg);"
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-7 details col-md-6 col-sm-12" },
+                  [
+                    _c("div", { staticClass: "inner-title" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("RARE DOLL MODEL")]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn position-relative" },
+                        [
+                          _c("router-link", {
+                            staticClass: "over-link",
+                            attrs: { to: "/login" }
+                          }),
+                          _vm._v(" Sign in")
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "swiper-slide h-100" }, [
+            _c("div", { staticClass: "container h-100" }, [
+              _c("div", { staticClass: "row h-100" }, [
+                _c("div", { staticClass: "over-lay" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-5 col-md-6 col-sm-12 img-slid h-100" },
+                  [
+                    _c("div", {
+                      staticClass: "inner-img h-100",
+                      style:
+                        " background: url(FrontEnd/images/slider/doll_2.jpg);"
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-7 details col-md-6 col-sm-12" },
+                  [
+                    _c("div", { staticClass: "inner-title" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("RARE DOLL MODEL")]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "btn position-relative" },
+                        [
+                          _c("router-link", {
+                            staticClass: "over-link",
+                            attrs: { to: "/register" }
+                          }),
+                          _vm._v(" Join Now")
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "swiper-pagination" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "swiper-pagination" })
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "section",
@@ -72470,7 +72547,7 @@ var render = function() {
                           _c("div", { staticClass: "product__item__text" }, [
                             _c("h6", [_vm._v(_vm._s(product.title))]),
                             _vm._v(" "),
-                            _vm._m(1, true)
+                            _vm._m(2, true)
                           ])
                         ]
                       )
@@ -72491,122 +72568,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "hero" }, [
-      _c("div", { staticClass: "swiper-container swiper-hero" }, [
-        _c("div", { staticClass: "swiper-wrapper" }, [
-          _c("div", { staticClass: "swiper-slide h-100" }, [
-            _c("div", { staticClass: "container h-100" }, [
-              _c("div", { staticClass: "row h-100" }, [
-                _c("div", { staticClass: "over-lay" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-5 col-md-6 col-sm-12 img-slid h-100" },
-                  [_c("div", { staticClass: "inner-img h-100" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-7 details col-md-6 col-sm-12" },
-                  [
-                    _c("div", { staticClass: "inner-title" }, [
-                      _c("h2", [
-                        _vm._v("CORPSE BRIDE "),
-                        _c("br", {
-                          staticClass: "d-none d-lg-block d-xl-block"
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("RARE DOLL MODEL")]),
-                      _vm._v(" "),
-                      _c("button", { staticClass: "btn position-relative" }, [
-                        _c("a", {
-                          staticClass: "over-link",
-                          attrs: { href: "dolls.html" }
-                        }),
-                        _vm._v(" Buy Now")
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "swiper-slide h-100" }, [
-            _c("div", { staticClass: "container h-100" }, [
-              _c("div", { staticClass: "row h-100" }, [
-                _c("div", { staticClass: "over-lay" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-5 col-md-6 col-sm-12 img-slid h-100" },
-                  [_c("div", { staticClass: "inner-img h-100" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-7 details col-md-6 col-sm-12" },
-                  [
-                    _c("div", { staticClass: "inner-title" }, [
-                      _c("h2", [_vm._v("CORPSE BRIDE "), _c("br")]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("RARE DOLL MODEL")]),
-                      _vm._v(" "),
-                      _c("button", { staticClass: "btn position-relative" }, [
-                        _c("a", {
-                          staticClass: "over-link",
-                          attrs: { href: "dolls.html" }
-                        }),
-                        _vm._v(" Buy Now")
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "swiper-slide h-100" }, [
-            _c("div", { staticClass: "container h-100" }, [
-              _c("div", { staticClass: "row h-100" }, [
-                _c("div", { staticClass: "over-lay" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-5 col-md-6 col-sm-12 img-slid h-100" },
-                  [_c("div", { staticClass: "inner-img h-100" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-7 details col-md-6 col-sm-12" },
-                  [
-                    _c("div", { staticClass: "inner-title" }, [
-                      _c("h2", [_vm._v("CORPSE BRIDE "), _c("br")]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("RARE DOLL MODEL")]),
-                      _vm._v(" "),
-                      _c("button", { staticClass: "btn position-relative" }, [
-                        _c("a", {
-                          staticClass: "over-link",
-                          attrs: { href: "dolls.html" }
-                        }),
-                        _vm._v(" Buy Now")
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "swiper-pagination" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "swiper-pagination" })
-      ])
+    return _c("h2", [
+      _vm._v("CORPSE BRIDE "),
+      _c("br", { staticClass: "d-none d-lg-block d-xl-block" })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", [_vm._v("CORPSE BRIDE "), _c("br")])
   },
   function() {
     var _vm = this

@@ -10,14 +10,14 @@
                         <div class="row h-100">
                             <div class="over-lay"></div>
                             <div class="col-lg-5 col-md-6 col-sm-12 img-slid h-100">
-                                <div class="inner-img h-100" >
+                                <div class="inner-img h-100" :style="' background: url(FrontEnd/images/slider/doll_1.jpg);'" >
                                 </div>
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
                                     <h2>CORPSE BRIDE <br class="d-none d-lg-block d-xl-block"> </h2>
                                     <p>RARE DOLL MODEL</p>
-                                    <button class="btn position-relative"><a href="dolls.html" class="over-link"></a> Buy Now</button>
+                                    <button class="btn position-relative"><router-link to="/login" class="over-link"></router-link> Sign in</button>
                                </div>
                             </div>
                         </div>
@@ -30,40 +30,19 @@
                         <div class="row h-100">
                             <div class="over-lay"></div>
                             <div class="col-lg-5 col-md-6 col-sm-12 img-slid h-100">
-                                <div class="inner-img h-100" >
+                                <div class="inner-img h-100" :style="' background: url(FrontEnd/images/slider/doll_2.jpg);'">
                                 </div>
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
                                     <h2>CORPSE BRIDE <br> </h2>
                                    <p>RARE DOLL MODEL</p>
-                                    <button class="btn position-relative"><a href="dolls.html" class="over-link"></a> Buy Now</button>
+                                    <button class="btn position-relative"><router-link to="/register" class="over-link"></router-link> Join Now</button>
                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Block Item -->
-                <div class="swiper-slide h-100">
-                    <div class="container h-100">
-                        <div class="row h-100">
-                            <div class="over-lay"></div>
-                            <div class="col-lg-5 col-md-6 col-sm-12 img-slid h-100">
-                                <div class="inner-img h-100" >
-                                </div>
-                            </div>
-                            <div class="col-lg-7 details col-md-6 col-sm-12">
-                               <div class="inner-title">
-                                    <h2>CORPSE BRIDE <br>  </h2>
-                                    <p>RARE DOLL MODEL</p>
-                                    <button class="btn position-relative"><a href="dolls.html" class="over-link"></a> Buy Now</button>
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
               
             </div>
             <!-- Add Pagination -->

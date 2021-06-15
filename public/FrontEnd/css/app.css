@@ -409,11 +409,11 @@
     background-color: #fd1266 !important;
     border: none; }
   .hero .swiper-container .swiper-slide .inner-img {
-    background: url("./../images/slider/slider-01.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: top; }
+
   .hero .swiper-container .swiper-slide img {
     height: 100%;
     width: 100%; }
