@@ -138,6 +138,7 @@ export default({
         mounted: false,
         admin : false,  
         name : '',
+        email:  null,
     }),
     methods:{
         logout(){
@@ -164,7 +165,15 @@ export default({
                 this.admin = true;
             }
          });
-      
+        this.email = JSON.parse(localStorage.getItem('currentUser'))['email'];
+        axios.get('/api/checkUser/'+this.email).then((response) => {
+            if(response.data == false){
+                localStorage.removeItem('token');
+                localStorage.removeItem('currentUser');
+                window.location.href= "/";
+
+            }
+        });
      }
      this.mounted = true;
  }

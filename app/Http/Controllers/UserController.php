@@ -46,4 +46,10 @@ class UserController extends Controller
        }
        return false;
     }
+
+    public function checkUser($email)
+    {
+        $data = $this->userService->checkUser($email);
+        return response()->json($data);
+    }
 }

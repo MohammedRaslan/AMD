@@ -27,5 +27,11 @@ class UserService{
         return $logged;
     }
 
+    public function checkUser($email)
+    {
+        return $this->userRepository->checkUser($email);
+        
+    }
+
 
 }

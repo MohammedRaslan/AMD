@@ -15,9 +15,9 @@
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
-                                    <h2>CORPSE BRIDE <br class="d-none d-lg-block d-xl-block"> </h2>
-                                    <p>RARE DOLL MODEL</p>
-                                    <button class="btn position-relative"><router-link to="/login" class="over-link"></router-link> Sign in</button>
+                                    <h2>Register Today <br class="d-none d-lg-block d-xl-block"> </h2>
+                                    <p>and start listing your items</p>
+                                    <button class="btn position-relative"><router-link to="/register" class="over-link"></router-link> SIGNUP</button>
                                </div>
                             </div>
                         </div>
@@ -35,9 +35,9 @@
                             </div>
                             <div class="col-lg-7 details col-md-6 col-sm-12">
                                <div class="inner-title">
-                                    <h2>CORPSE BRIDE <br> </h2>
-                                   <p>RARE DOLL MODEL</p>
-                                    <button class="btn position-relative"><router-link to="/register" class="over-link"></router-link> Join Now</button>
+                                    <h2>Explore<br> </h2>
+                                   <p>our Membership plans (coming soon)</p>
+                                    <button class="btn position-relative"><router-link to="/subscriptions" class="over-link"></router-link> Explore </button>
                                </div>
                             </div>
                         </div>

@@ -29,12 +29,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/custom-login', [LoginController::class,'custom_login']);
 Route::post('/register',[RegisterController::class,'register']);
+Route::get('checkUser/{email?}',[UserController::class,'checkUser']);
 
 Route::middleware('auth:api')->group(function () {
+
     Route::get('/getUsers',[UserController::class,'getUsers']);
     Route::get('/getCategories',[CategoryController::class,'getCategories']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
     Route::get('checkAdmin',[UserController::class,'checkAdmin']);
+
     
     Route::prefix('category')->group(function() {
         Route::post('store',[CategoryController::class,'store']);

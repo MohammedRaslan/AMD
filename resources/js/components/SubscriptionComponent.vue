@@ -35,54 +35,50 @@
                 <div class="row price-row">
                     <div class="col-lg-3 col-md-6 col-sm-12">
                        <div class="inner">
-                           <p class="type">FREE PLAN</p>
+                           <p class="type">Regular Membership</p>
                            <h3>FREE</h3>
                            <hr>
-                           <p>150 MB Storage</p>
-                           <p>1 GB Bandwidth</p>
-                           <p>Subdomain</p>
-                           <p>1000 Users</p>
-                           <p>Marketing Plan</p>
+                           <p>50 Free Listings</p>
+                           <p>Fees:  8% (Unlimited).</p>
+                           <p> - </p>
+                           <p> - </p>
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>
                     
                     <div class="col-lg-3 col-md-6 col-sm-12">
                        <div class="inner">
-                           <p class="type">BASIC PLAN</p>
-                           <h3>$ 9.95 /mo</h3>
+                           <p class="type">Silver Membership</p>
+                           <h3>$ 19.99 /mo</h3>
                            <hr>
-                           <p>1 GB Storage</p>
-                           <p>5 GB Bandwidth</p>
-                           <p>1 Domain</p>
-                           <p>1000 Users</p>
-                           <p>Marketing Plan</p>
+                           <p>100 Free Listings</p>
+                           <p>Fees:  7% (10 items)</p>
+                           <p>Fees:  8% afterwards</p>
+                           <p> - </p>
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
                        <div class="inner">
-                           <p class="type">PREMIUM PLAN</p>
-                           <h3>$ 16.95 /mo</h3>
+                           <p class="type">Gold Membership</p>
+                            <h3>$ 49.99 /mo</h3>
                            <hr>
-                           <p>2 GB Storage</p>
-                           <p>1 GB Bandwidth</p>
-                           <p>1 Domain</p>
-                           <p>1500 Users</p>
-                           <p>Marketing Plan</p>
+                           <p>250 Free Listings</p>
+                           <p>Fees:  Free (2 items)</p>
+                           <p>Fees:  7% afterwards</p>
+                           <p> - </p>
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
                        <div class="inner">
-                           <p class="type">BUSINESS PLAN</p>
-                           <h3>$ 24.95 /mo</h3>
+                           <p class="type">Platinum Membership</p>
+                           <h3>$ 99.99 /mo</h3>
                            <hr>
-                           <p>1 GB Storage</p>
-                           <p>5 GB Bandwidth</p>
-                           <p>1 Domain</p>
-                           <p>1000 Users</p>
-                           <p>Marketing Plan</p>
+                           <p>500 Free Listings</p>
+                           <p>Fees:  Free (5 items)</p>
+                           <p>Fees:  5% (50 items)</p>
+                           <p>Fees:  7% afterwards</p>
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>
@@ -94,11 +90,11 @@
                         <img :src="'FrontEnd/images/sub-02.png'" alt="">
                         <img :src="'FrontEnd/images/sub-01.png'" alt="">
                     </div>
-                    <div class="col-lg-7 col-sm-12">
+                    <!-- <div class="col-lg-7 col-sm-12">
                         <div class="inner-box">
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasct, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife</p> -->
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasct, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
     </section>

@@ -369,7 +369,7 @@
         .subscriptions .price-row > div .inner:hover .btn {
           display: flex; }
   .subscriptions .bot-row {
-    margin-top: 150px; }
+    margin-top: 300px; }
     @media (max-width: 768px) {
       .subscriptions .bot-row {
         margin-top: 50px; } }

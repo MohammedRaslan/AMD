@@ -4181,7 +4181,8 @@ __webpack_require__.r(__webpack_exports__);
       logged: false,
       mounted: false,
       admin: false,
-      name: ''
+      name: '',
+      email: null
     };
   },
   methods: {
@@ -4208,6 +4209,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/checkAdmin').then(function (response) {
         if (response.data == true) {
           _this.admin = true;
+        }
+      });
+      this.email = JSON.parse(localStorage.getItem('currentUser'))['email'];
+      axios.get('/api/checkUser/' + this.email).then(function (response) {
+        if (response.data == false) {
+          localStorage.removeItem('token');
+          localStorage.removeItem('currentUser');
+          window.location.href = "/";
         }
       });
     }
@@ -72353,7 +72362,7 @@ var render = function() {
                     _c("div", { staticClass: "inner-title" }, [
                       _vm._m(0),
                       _vm._v(" "),
-                      _c("p", [_vm._v("RARE DOLL MODEL")]),
+                      _c("p", [_vm._v("and start listing your items")]),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -72361,9 +72370,9 @@ var render = function() {
                         [
                           _c("router-link", {
                             staticClass: "over-link",
-                            attrs: { to: "/login" }
+                            attrs: { to: "/register" }
                           }),
-                          _vm._v(" Sign in")
+                          _vm._v(" SIGNUP")
                         ],
                         1
                       )
@@ -72398,7 +72407,7 @@ var render = function() {
                     _c("div", { staticClass: "inner-title" }, [
                       _vm._m(1),
                       _vm._v(" "),
-                      _c("p", [_vm._v("RARE DOLL MODEL")]),
+                      _c("p", [_vm._v("our Membership plans (coming soon)")]),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -72406,9 +72415,9 @@ var render = function() {
                         [
                           _c("router-link", {
                             staticClass: "over-link",
-                            attrs: { to: "/register" }
+                            attrs: { to: "/subscriptions" }
                           }),
-                          _vm._v(" Join Now")
+                          _vm._v(" Explore ")
                         ],
                         1
                       )
@@ -72569,7 +72578,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h2", [
-      _vm._v("CORPSE BRIDE "),
+      _vm._v("Register Today "),
       _c("br", { staticClass: "d-none d-lg-block d-xl-block" })
     ])
   },
@@ -72577,7 +72586,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h2", [_vm._v("CORPSE BRIDE "), _c("br")])
+    return _c("h2", [_vm._v("Explore"), _c("br")])
   },
   function() {
     var _vm = this
@@ -76432,9 +76441,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("img", { attrs: { src: "FrontEnd/images/sub-01.png", alt: "" } })
-          ]),
-          _vm._v(" "),
-          _vm._m(2)
+          ])
         ])
       ])
     ])
@@ -76458,21 +76465,19 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row price-row" }, [
       _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12" }, [
         _c("div", { staticClass: "inner" }, [
-          _c("p", { staticClass: "type" }, [_vm._v("FREE PLAN")]),
+          _c("p", { staticClass: "type" }, [_vm._v("Regular Membership")]),
           _vm._v(" "),
           _c("h3", [_vm._v("FREE")]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("p", [_vm._v("150 MB Storage")]),
+          _c("p", [_vm._v("50 Free Listings")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1 GB Bandwidth")]),
+          _c("p", [_vm._v("Fees:  8% (Unlimited).")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Subdomain")]),
+          _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1000 Users")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Marketing Plan")]),
+          _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
           _c("a", { staticClass: "btn bg-white", attrs: { href: "#" } }, [
             _vm._v("Get Started")
@@ -76482,21 +76487,19 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12" }, [
         _c("div", { staticClass: "inner" }, [
-          _c("p", { staticClass: "type" }, [_vm._v("BASIC PLAN")]),
+          _c("p", { staticClass: "type" }, [_vm._v("Silver Membership")]),
           _vm._v(" "),
-          _c("h3", [_vm._v("$ 9.95 /mo")]),
+          _c("h3", [_vm._v("$ 19.99 /mo")]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("p", [_vm._v("1 GB Storage")]),
+          _c("p", [_vm._v("100 Free Listings")]),
           _vm._v(" "),
-          _c("p", [_vm._v("5 GB Bandwidth")]),
+          _c("p", [_vm._v("Fees:  7% (10 items)")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1 Domain")]),
+          _c("p", [_vm._v("Fees:  8% afterwards")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1000 Users")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Marketing Plan")]),
+          _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
           _c("a", { staticClass: "btn bg-white", attrs: { href: "#" } }, [
             _vm._v("Get Started")
@@ -76506,21 +76509,19 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12" }, [
         _c("div", { staticClass: "inner" }, [
-          _c("p", { staticClass: "type" }, [_vm._v("PREMIUM PLAN")]),
+          _c("p", { staticClass: "type" }, [_vm._v("Gold Membership")]),
           _vm._v(" "),
-          _c("h3", [_vm._v("$ 16.95 /mo")]),
+          _c("h3", [_vm._v("$ 49.99 /mo")]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("p", [_vm._v("2 GB Storage")]),
+          _c("p", [_vm._v("250 Free Listings")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1 GB Bandwidth")]),
+          _c("p", [_vm._v("Fees:  Free (2 items)")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1 Domain")]),
+          _c("p", [_vm._v("Fees:  7% afterwards")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1500 Users")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Marketing Plan")]),
+          _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
           _c("a", { staticClass: "btn bg-white", attrs: { href: "#" } }, [
             _vm._v("Get Started")
@@ -76530,35 +76531,25 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12" }, [
         _c("div", { staticClass: "inner" }, [
-          _c("p", { staticClass: "type" }, [_vm._v("BUSINESS PLAN")]),
+          _c("p", { staticClass: "type" }, [_vm._v("Platinum Membership")]),
           _vm._v(" "),
-          _c("h3", [_vm._v("$ 24.95 /mo")]),
+          _c("h3", [_vm._v("$ 99.99 /mo")]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("p", [_vm._v("1 GB Storage")]),
+          _c("p", [_vm._v("500 Free Listings")]),
           _vm._v(" "),
-          _c("p", [_vm._v("5 GB Bandwidth")]),
+          _c("p", [_vm._v("Fees:  Free (5 items)")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1 Domain")]),
+          _c("p", [_vm._v("Fees:  5% (50 items)")]),
           _vm._v(" "),
-          _c("p", [_vm._v("1000 Users")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Marketing Plan")]),
+          _c("p", [_vm._v("Fees:  7% afterwards")]),
           _vm._v(" "),
           _c("a", { staticClass: "btn bg-white", attrs: { href: "#" } }, [
             _vm._v("Get Started")
           ])
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-sm-12" }, [
-      _c("div", { staticClass: "inner-box" })
     ])
   }
 ]

@@ -62,4 +62,13 @@ class UserRepository{
         }
         return ['user' => $userData,'token' => $accessToken];
     }
+
+    public function checkUser($email)
+    {
+        $user = User::where('email',$email)->first();
+        if($user){
+            return true;
+        }
+        return false;
+    }
 }
