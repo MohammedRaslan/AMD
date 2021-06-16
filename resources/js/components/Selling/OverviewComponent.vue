@@ -71,7 +71,8 @@
                                                     <button class="btn btn-primary"><a href="#">View</a></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <button @click="suspendProduct(product.id)" class="btn btn-danger" v-bind:class="{suspended: (state == false || product.status == 0)  ,suspend: (state == true || product.status == 1)} " id="suspendProduct"> {{(state == true || product.status == 1)?' Suspend ':' Suspended '}}</button>
+                                                    <button @click="suspendProduct(product.id)" class="btn btn-danger" :id="'suspendbtn_'+product.id"  v-if="product.status == 1"> Suspend</button>
+                                                    <button @click="suspendProduct(product.id)" class="btn btn-danger suspended" :id="'suspendbtn_'+product.id"  v-else> Unsuspend</button>
 
                                                 </div>
                                                 <div class="inner">
@@ -146,13 +147,18 @@ export default ({
 
                    async suspendProduct($id) {
                
-                   await axios.get('/api/product/suspend/'+ $id ).then((response) =>{
-                       console.log(response.data);
+                   await axios.get('/api/product/suspend/'+ $id).then((response) =>{
+                       if(response.data.state == true){
+                           document.getElementById('suspendbtn_'+$id).classList.remove('suspended');
+                           document.getElementById('suspendbtn_'+$id).innerHTML = 'Suspend';
+                       }else{
+                            document.getElementById('suspendbtn_'+$id).classList.add('suspended');
+                           document.getElementById('suspendbtn_'+$id).innerHTML = 'Unususpend';
+                       }
                     Toast.fire({
                         icon: 'success',
                         title: response.data.message
                     }); 
-                      this.state = response.data.state;  
                    });                    
                
             },

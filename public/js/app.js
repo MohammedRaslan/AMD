@@ -4274,6 +4274,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -4302,7 +4303,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.get('/api/product/suspend/' + $id).then(function (response) {
-                  console.log(response.data);
+                  if (response.data.state == true) {
+                    document.getElementById('suspendbtn_' + $id).classList.remove('suspended');
+                    document.getElementById('suspendbtn_' + $id).innerHTML = 'Suspend';
+                  } else {
+                    document.getElementById('suspendbtn_' + $id).classList.add('suspended');
+                    document.getElementById('suspendbtn_' + $id).innerHTML = 'Unususpend';
+                  }
+
                   Toast.fire({
                     icon: 'success',
                     title: response.data.message
@@ -73353,39 +73361,42 @@ var render = function() {
                                       _vm._m(2, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "inner" }, [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "btn btn-danger",
-                                            class: {
-                                              suspended:
-                                                _vm.state == false ||
-                                                product.status == 0,
-                                              suspend:
-                                                _vm.state == true ||
-                                                product.status == 1
-                                            },
-                                            attrs: { id: "suspendProduct" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.suspendProduct(
-                                                  product.id
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              " " +
-                                                _vm._s(
-                                                  _vm.state == true ||
-                                                    product.status == 1
-                                                    ? " Suspend "
-                                                    : " Suspended "
-                                                )
+                                        product.status == 1
+                                          ? _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-danger",
+                                                attrs: {
+                                                  id: "suspendbtn_" + product.id
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.suspendProduct(
+                                                      product.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v(" Suspend")]
                                             )
-                                          ]
-                                        )
+                                          : _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-danger suspended",
+                                                attrs: {
+                                                  id: "suspendbtn_" + product.id
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.suspendProduct(
+                                                      product.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v(" Unsuspend")]
+                                            )
                                       ]),
                                       _vm._v(" "),
                                       _vm._m(3, true)
