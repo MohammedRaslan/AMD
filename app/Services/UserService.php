@@ -30,8 +30,16 @@ class UserService{
     public function checkUser($email)
     {
         return $this->userRepository->checkUser($email);
-        
     }
 
+    public function getUserInfo($id)
+    {
+        return $this->userRepository->getUserInfo($id);
+    }
+
+    public function edit($data,$id)
+    {
+        return $this->userRepository->edit($data,$id);
+    }
 
 }

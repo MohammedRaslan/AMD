@@ -71,4 +71,26 @@ class UserRepository{
         }
         return false;
     }
+
+    public function getUserInfo($id)
+    {
+        $user = User::findOrFail($id);
+        return $user != NULL ? $user : false;
+    }
+
+    public function edit($data,$id)
+    {
+        $user = User::find($id);
+        if(!$user){
+            return false;
+        }
+        $user->user_name = $data['user_name'];
+        $user->first_name = $data['first_name'];
+        $user->last_name  = $data['last_name'];
+        $user->email = $data['email'];
+        $user->role = $data['role'];
+        if($user->save()){
+            return true;
+        }
+    }
 }

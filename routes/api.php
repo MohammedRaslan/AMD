@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\UserController;
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,10 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);
     });
 
+    Route::prefix('user')->group(function(){
+        Route::get('getUserInfo/{id}',[UserController::class,'getUserInfo']);
+        Route::post('edit/{id}',[UserController::class,'edit']);
+    });
     Route::prefix('cart')->group(function() {
         Route::post('add/{productId}',[CartController::class,'add']);
         Route::post('remove/{productId}',[CartController::class,'remove']);

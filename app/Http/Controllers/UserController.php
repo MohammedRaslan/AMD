@@ -52,4 +52,16 @@ class UserController extends Controller
         $data = $this->userService->checkUser($email);
         return response()->json($data);
     }
+
+    public function getUserInfo($id)
+    {
+        $user = $this->userService->getUserInfo($id);
+        return response()->json($user);
+    }
+
+    public function edit(Request $request,$id)
+    {
+        $data = $this->userService->edit($request->all(),$id);
+        return response()->json($data);
+    }
 }

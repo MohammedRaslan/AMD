@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row p-2 w-100" style="justify-content:flex-end"> 
-        <button class="btn btn-success pt-2 col-1" >Add</button>
+        <button class="btn btn-success pt-2 col-1">Add</button>
     </div>
     <div class="projects m-3">
         <div class="tableFilters row m-4">
@@ -23,7 +23,7 @@
                     <td>{{user.first_name}}</td>
                     <td>{{user.last_name}}</td>
                     <td>{{user.email}}</td>
-                    <td><button class="btn btn-primary btn-sm" :id="user.id" > <i class="fa fa-edit"></i> </button></td>
+                    <td><button class="btn btn-primary btn-sm" :id="user.id"  data-target="#exampleModalCenter" data-toggle="modal" data-backdrop="static" data-keyboard="false" @click="userInfo(user.id)"> <i class="fa fa-edit"></i> </button></td>
                 </tr>
             </tbody>
         </datatable>
@@ -32,6 +32,53 @@
                     @next="getUsers(pagination.nextPageUrl)">
         </pagination>
     </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1"  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" @click="closeModal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form @submit.prevent="EditUser(form.id)">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control"  v-model="form.user_name" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">First Name</label>
+                <input type="text" class="form-control"  v-model="form.first_name" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="text"  class="form-control"  v-model="form.last_name" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="text" class="form-control"  v-model="form.email" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Role</label>
+                <div class="select">
+                    <select class="form-control" v-model="form.role">
+                        <option disabled>Choose</option>
+                        <option v-for="(role, index) in roles"   :key="index" :value="role.value" :selected="form.role == role.value">{{role.role}}</option>
+                    </select>
+                </div>
+                <!-- <input type="number" class="form-control"  v-model="user.role" id="exampleInputPassword1"> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close btn btn-secondary" @click="closeModal" data-dismiss="modal">Close</button>
+                <button type="submit"  class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
 </div>
 </template>
 
@@ -56,8 +103,21 @@ export default {
         columns.forEach((column) => {
            sortOrders[column.name] = -1;
         });
+        let roles = [
+            {role: 'Admin', value: 0},
+            {role: 'User', value: 1}
+        ];
         return {
             users: [],
+            roles,
+            form : new form({
+                id: null,
+                user_name : null,
+                first_name : null,
+                last_name: null,
+                email: null,
+                role: null,
+            }),
             columns: columns,
             sortKey: 'id',
             sortOrders: sortOrders,
@@ -117,6 +177,30 @@ export default {
         getIndex(array, key, value) {
             return array.findIndex(i => i[key] == value)
         },
+        async userInfo(id){
+            await axios.get('/api/user/getUserInfo/'+id).then((response) => {
+                this.form.id = response.data.id;
+                this.form.user_name = response.data.user_name;
+                this.form.first_name = response.data.first_name;
+                this.form.last_name = response.data.last_name;
+                this.form.email = response.data.email;
+                this.form.role = response.data.role;
+            });
+        },
+        closeModal(){
+            document.querySelectorAll('.modal-backdrop').forEach(function(a) {
+                a.remove()
+            })
+        },
+        async EditUser(id){
+            this.$Progress.start();
+            const result = await this.form.post('/api/user/edit/'+id).then((response) => {
+                if(response.data = true){
+                    this.$Progress.finish();
+                }
+
+            });
+        }
     }
 };
 </script>
