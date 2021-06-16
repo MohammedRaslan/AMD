@@ -205,6 +205,9 @@ export default ({
             this.subtotal = response.data.subtotal;
             this.total = response.data.total;
         });
+    },
+    mounted(){
+        Fire.$emit('mounted');
     }
 })
 </script>

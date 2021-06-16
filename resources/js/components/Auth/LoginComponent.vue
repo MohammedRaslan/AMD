@@ -108,6 +108,7 @@ export default ({
     },
     mounted(){
         this.$Progress.finish();
+        Fire.$emit('mounted');
     }
 })
 </script>

@@ -151,6 +151,7 @@ export default ({
         this.$Progress.start();
     },
     mounted(){
+        Fire.$emit('mounted');
         console.log(window.location.origin, this.$route);
         this.$Progress.finish();
         axios.get('/api/product/getUserProductDrafted').then((response) => {

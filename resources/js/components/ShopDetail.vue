@@ -193,6 +193,7 @@ export default ({
                 this.exist = true;
             }
         });
+        Fire.$emit('mounted');
     }
 })
 </script>

@@ -214,6 +214,7 @@ export default ({
         this.$Progress.start();
     },
     mounted(){
+        Fire.$emit('mounted');
         this.$Progress.finish();
         this.description = createEditor('#description', {
             toolbar: [

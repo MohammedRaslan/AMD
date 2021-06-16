@@ -3184,6 +3184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.$Progress.finish();
+    Fire.$emit('mounted');
   }
 });
 
@@ -3351,6 +3352,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.$Progress.finish();
+    Fire.$emit('mounted');
   }
 });
 
@@ -3618,6 +3620,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee2);
     }))();
+  },
+  mounted: function mounted() {
+    Fire.$emit('mounted');
   }
 });
 
@@ -3808,7 +3813,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    Fire.$emit('mounted');
+  }
+});
 
 /***/ }),
 
@@ -4182,7 +4191,9 @@ __webpack_require__.r(__webpack_exports__);
       }, 2000);
     });
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    Fire.$emit('mounted');
+  }
 });
 
 /***/ }),
@@ -4731,6 +4742,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this2 = this;
 
+    Fire.$emit('mounted');
     this.$Progress.finish();
     this.description = (0,vueditor__WEBPACK_IMPORTED_MODULE_3__.createEditor)('#description', {
       toolbar: ['removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider', 'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript', 'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent', 'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'],
@@ -4931,6 +4943,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    Fire.$emit('mounted');
     console.log(window.location.origin, this.$route);
     this.$Progress.finish();
     axios.get('/api/product/getUserProductDrafted').then(function (response) {
@@ -5123,6 +5136,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     // console.log(window.location.origin, this.$route);
+    Fire.$emit('mounted');
     this.$Progress.finish();
     this.getProducts();
     Fire.$emit('mounted');
@@ -5301,6 +5315,9 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.loading = false;
     });
+  },
+  mounted: function mounted() {
+    Fire.$emit('mounted');
   }
 });
 
@@ -5514,6 +5531,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.exist = true;
       }
     });
+    Fire.$emit('mounted');
   }
 });
 

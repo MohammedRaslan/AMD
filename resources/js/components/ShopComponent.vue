@@ -153,6 +153,9 @@ export default {
            this.$Progress.finish();
            this.loading = false;
        });
+   },
+   mounted(){
+        Fire.$emit('mounted');
    }
 }
 </script>
