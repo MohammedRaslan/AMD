@@ -149,7 +149,7 @@ export default ({
             axios.get('/api/product/getUserProduct').then((response) => {
             this.products = response.data.data;
             this.pagination = response.data.links;
-            console.log(this.pagination);
+            // console.log(this.pagination);
             if(response.data == '' ){
                 this.message = 'You dont have products';
                 }
@@ -163,7 +163,7 @@ export default ({
         // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
         this.getProducts();
-        // console.log(this.$route.params.id);
+        Fire.$emit('mounted');
     }
 })
 </script>

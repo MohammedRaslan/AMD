@@ -200,6 +200,7 @@ export default({
         axios.get('/api/product/random').then((response) =>{
             this.products = response.data;
         });
+        Fire.$emit('mounted');
     }
 })
 </script>

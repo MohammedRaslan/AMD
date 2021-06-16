@@ -6,6 +6,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Home from "./components/HomeComponent.vue"
 import Navbar from "./components/Navbar/NavbarComponent.vue";
+import Loader from "./components/PreLoaderComponent.vue";
+import Admin from "./components/Admin/LayoutComponent.vue";
 import storeDefinition from './store';
 import VueProgressBar from 'vue-progressbar'
 import Form from 'vform';
@@ -69,9 +71,6 @@ router.beforeEach((to, from ,next)=>{
         next('/');
       }
   }
-//   axios.get('/api/checkAdmin').then((response) => {
-//         console.l
-//  });
   if((!localStorage.getItem('token') && !( to.name == 'login' || to.path == '/register' || to.name == 'home' || to.path == '/subscriptions') )){
     window.location.href = '/';
 
@@ -88,6 +87,8 @@ const app = new Vue({
         Home: Home,
         Notification: Notification,
         Navbar: Navbar,
+        Loader: Loader,
+        Admin: Admin,
     },
 });
 

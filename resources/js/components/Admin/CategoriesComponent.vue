@@ -122,6 +122,7 @@ export default {
             },
         }
     },
+
     methods: {
         getCategories(url = '/api/getCategories') {
         let token = localStorage.getItem('token');

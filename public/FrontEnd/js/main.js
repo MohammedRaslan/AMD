@@ -7,8 +7,8 @@
         Preloader
     --------------------*/
     $(window).on('load', function () {
-        $(".loader").fadeOut();
-        $("#preloder").delay(200).fadeOut("slow");
+        // $(".loader").fadeOut();
+        // $("#preloder").delay(200).fadeOut("slow");
        
 
         /*------------------
@@ -189,7 +189,7 @@
     } )
 
     $(".cat button").click(function() {
-        console.log("test 31111111");
+        // console.log("test 31111111");
         $(".cat .drop-1 ul").toggleClass("show");
         $(".cat .dropdown.drop-1").toggleClass("borderrad")
         $(".cat #Icon_down_solid").toggleClass("svg-tran")

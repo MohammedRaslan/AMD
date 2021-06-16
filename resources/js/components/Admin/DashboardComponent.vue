@@ -168,6 +168,7 @@ export default ({
    methods:{
   
     },
+
     created(){
         this.$Progress.start();
 
