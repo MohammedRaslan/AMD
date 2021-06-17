@@ -20,6 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('condition');
             $table->string('brand');
             $table->tinyInteger('type');
+            $table->string('image');
+            $table->longText('description');
+            $table->tinyInteger('return_policy');
+            $table->float('price');
+            $table->boolean('best_offer');
+            
             $table->string('doll_size')->nullable();
             $table->string('doll_gender')->nullable();
             $table->boolean('modified_item')->default(0);
@@ -27,13 +33,7 @@ class CreateProductsTable extends Migration
             $table->string('featured_refinements')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('upc')->nullable();
-            $table->string('image');
-            $table->longText('description');
             $table->longText('details')->nullable();
-            
-            $table->tinyInteger('return_policy');
-            $table->float('price');
-            $table->boolean('best_offer');
             $table->boolean('draft')->default(0);
             $table->boolean('status')->default(1);
             $table->integer('watchers')->default(0);

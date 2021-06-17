@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Enums\ProductCondition;
 use App\Enums\ProductType;
 use App\Models\Category;
 use App\Models\Image;
@@ -18,18 +19,19 @@ class ProductRepository{
     public function getData()
     {
         return ['types'=> ProductType::getInstances(),
-                'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get()];
+                'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
+                'conditions' => ProductCondition::getInstances(),    
+            ];
         
     }
 
     public function store($data,$images,$user_id)
     {
         $product = new Product();
-        $product->sku = $data['sku'];
+        $product->sku = 'PRO_' . Str::rand(5);
         $product->title = $data['title'];
         $product->type  = $data['type'];
         $product->description = $data['description'];
-        $product->details = $data['details'];
         $product->brand = $data['brand'];
         $product->price = $data['price'];
         $product->condition = $data['condition'];
@@ -54,7 +56,9 @@ class ProductRepository{
                 $product->images()->save($image);  
             }
         }
-        return ['response' => true];
+        return ['response' => true,
+                'product_id' =>$product->id
+               ];
 
         }
         return ['response' => false];

@@ -16,6 +16,7 @@ class ProductController extends Controller
 
     public function store(CreateProductRequest $request)
     {
+        dd($request->all());
         $data = $this->productService->store($request);
         return response()->json($data);
     }
