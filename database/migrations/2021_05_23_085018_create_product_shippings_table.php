@@ -20,10 +20,12 @@ class CreateProductShippingsTable extends Migration
             $table->string('width')->nullable();
             $table->string('height')->nullable();
             $table->string('length')->nullable();
-            $table->float('price');
-            $table->integer('type');
-            $table->json('usa')->nullable();
-            $table->json('world_wide')->nullable();
+            $table->string('service_usa')->nullable();
+            $table->float('price_usa');
+            $table->float('price_world_wide')->nullable();
+            $table->string('service_world_wide')->nullable();
+            $table->boolean('usa')->default(1);
+            $table->boolean('world_wide')->default(0);
             $table->float('weight')->nullable();
             $table->string('duration')->nullable();
             $table->timestamps();

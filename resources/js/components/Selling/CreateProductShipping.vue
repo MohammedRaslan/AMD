@@ -44,57 +44,32 @@
                                                     <div class="container">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <h2 class="pb-3 pt-4">Complete Product Info</h2>
+                                                                <h2 class="pb-3 pt-4">Product Info</h2>
                                                                 <form @submit.prevent="saveProduct">                        
                                                                     <div class="row">
-       
-                                                                        <div class="col-4">
-                                                                            <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Doll size" required>
-                                                                            <div v-if="form.errors.has('doll_size')" class="alert alert-danger" v-html="form.errors.get('doll_size')" />
-                                                                        </div>
-                                                                          <div class="col-4">
-                                                                            <input type="text" v-model="form.quantity" class="form-control" id="fName" placeholder="Quantity" required>
-                                                                            <div v-if="form.errors.has('quantity')" class="alert alert-danger" v-html="form.errors.get('quantity')" />
-                                                                        </div>
-                                                                        <div class="col-4">
+                                                                        <div class="col-4 mb-5">
                                                                             <select name="type" v-model="form.doll_gender" id="" class="m-2 form-control" required>
-                                                                                <option selected disabled>Choose Gender</option>
-                                                                                <option value="male">Male </option>
-                                                                                <option value="female">Female </option>
+                                                                                <option selected disabled>Choose Details</option>
+                                                                                <option value="no">I don't have package details </option>
+                                                                                <option value="yes">I have package details</option>
                                                                             </select >
-                                                                            <div v-if="form.errors.has('doll_gender')" class="alert alert-danger" v-html="form.errors.get('doll_gender')" />
+                                                                           <div v-if="form.errors.has('package_details')" class="alert alert-danger" v-html="form.errors.get('package_details')" />
                                                                         </div>
+                                                                          
                                                                         <div class="row">
-                                                                            <div class="col-6">
-                                                                                <input type="text" v-model="form.upc" class="form-control" id="fName" placeholder="UPC" required>
-                                                                                <div v-if="form.errors.has('upc')" class="alert alert-danger" v-html="form.errors.get('upc')" />
-                                                                            </div>
-                                                                            <div class="col-6">
-                                                                                <input type="text" v-model="form.featured_refinements" class="form-control" id="fName" placeholder="Featured Refinements" required>
-                                                                                <div v-if="form.errors.has('featured_refinements')" class="alert alert-danger" v-html="form.errors.get('featured_refinements')" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-12 mb-5">
-                                                                            <label for="#details" style="color:white">Details</label>
-                                                                            <input type="text" v-model="form.details" class="form-control" id="details" placeholder="Details" required>
-                                                                            <div v-if="form.errors.has('details')" class="alert alert-danger" v-html="form.errors.get('details')" />
-                                                                        </div>
-                                                                       
-                                                                    
-                                                                            <div class="row">
                                                                             <div class="col-6 round ">
-                                                                                <p for=""  style="color:white; float:left">This Product is Domestic Product</p>
-                                                                                <input type="checkbox" v-model="form.domestic_product" id="checkbox1" placeholder="Title" >
+                                                                                <p for=""  style="color:white; float:left">This Product is Shipped to usa</p>
+                                                                                <input type="checkbox" v-model="form.usa" id="checkbox1" placeholder="Title" >
                                                                                 <label for="checkbox1" class="ml-3"></label>
-                                                                                <div v-if="form.errors.has('domestic_product')" class="alert alert-danger" v-html="form.errors.get('domestic_product')" />
+                                                                                <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
                                                                             </div>
                                                                             <div class="col-6 round ">
-                                                                                <p style="color:white; float:left">This Product is Modified Item</p>
-                                                                                <input type="checkbox" v-model="form.modified_item" id="checkbox2" placeholder="Title" >
+                                                                                <p style="color:white; float:left">This Product Shipped to world wide</p>
+                                                                                <input type="checkbox" v-model="form.world_wide" id="checkbox2" placeholder="Title" >
                                                                                 <label for="checkbox2" class="ml-3"></label>
-                                                                                <div v-if="form.errors.has('modified_item')" class="alert alert-danger" v-html="form.errors.get('modified_item')" />
+                                                                                <div v-if="form.errors.has('world_wide')" class="alert alert-danger" v-html="form.errors.get('world_wide')" />
                                                                             </div>
-                                                                        </div>
+                                                                        </div>                                                                 
                                                                            <div class="col-6">
                                                                             <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-primary" id="draft">
                                                                         </div>
@@ -186,18 +161,20 @@ export default ({
         SideBar,
     },
       data:()=>({
-        details : "",
+        package_details : "",
         form : new form({
-            id: null,
-            doll_size: null,
-            doll_gender: null,
-            modified_item: 0,
-            domestic_product: 0,
-            featured_refinements: null,
-            quantity: null,
-            upc: null,
-            details: false,
-            draft: 1,
+            product_id: null,
+            world_wide: 0,
+            usa: 1,
+            service_usa: null,
+            price_usa: null,
+            sevice_world_wide: null,
+            price_world_wide: null,
+            height: null,
+            weight: null,
+            width: null,
+            length: null,
+            package_details: null,
         }),
     }),
     methods:{
@@ -211,13 +188,10 @@ export default ({
             const response = await this.form.post('/api/product/store/step_two').then((response)=>{
                 this.$Progress.finish();
                 this.indicator();
-
-
                 if(response.data = false){
                     this.$Progress.fail();
                 }else{
                     this.$Progress.finish();
-                    this.$router.push('/product_shipping/'+this.form.id);
                 }
                 
                 // this.$router.push('/selling/sell_item/step_two');
@@ -248,13 +222,13 @@ export default ({
 
     beforeCreate() {
         this.$Progress.start();
+  
     },
     mounted(){
         Fire.$emit('mounted');
         this.$Progress.finish();
-        this.form.id = this.$route.params.id;
-      
-        this.details =  createEditor('#details', {
+        this.form.product_id = this.$route.params.id;
+        this.package_details =  createEditor('#details', {
                     toolbar: [
                         'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
                         'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
@@ -271,24 +245,6 @@ export default ({
                     ],
 });
 
-          axios.get('/api/product/checkUserProduct/'+this.form.id).then((response) => {
-                if(response.data == false){
-                    this.$router.push('/');
-                }
-            });
-          axios.get('/api/shop/getProduct/'+this.form.id).then((response) => {
-              this.form.doll_size = response.data.product.doll_size;
-              this.form.doll_gender = response.data.product.doll_gender;
-              this.form.modified_item = response.data.product.modified_item;
-              this.form.domestic_product = response.data.product.domestic_product;
-              this.form.featured_refinements = response.data.product.featured_refinements;
-              this.form.quantity = response.data.product.quantity;
-              this.form.upc = response.data.product.upc;
-              this.details.setContent(response.data.product.details);
-              this.form.details = this.details.getContent();
-
-
-          });
     }
 })
 </script>

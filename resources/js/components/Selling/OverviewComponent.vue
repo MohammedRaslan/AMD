@@ -71,7 +71,7 @@
                                                     <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
                                                 </div>
                                                   <div class="inner" v-if="product.draft == 1">
-                                                    <button class="btn btn-secondary"><a href="#">Complete</a></button>
+                                                    <button class="btn btn-secondary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
                                                 </div>
                                                 <div class="inner">
                                                     <button class="btn btn-danger"><a href="#">Suspend</a></button>

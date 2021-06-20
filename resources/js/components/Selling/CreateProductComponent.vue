@@ -96,13 +96,13 @@
                                                                         <div class="row">
                                                                             <div class="col-6 round ">
                                                                                 <p for=""  style="color:white; float:left">This Product has return policy</p>
-                                                                                <input type="checkbox" v-model="form.return_policy" id="checkbox1" placeholder="Title" required>
+                                                                                <input type="checkbox" v-model="form.return_policy" id="checkbox1" placeholder="Title" >
                                                                                 <label for="checkbox1" class="ml-3"></label>
                                                                                 <div v-if="form.errors.has('return_policy')" class="alert alert-danger" v-html="form.errors.get('return_policy')" />
                                                                             </div>
                                                                             <div class="col-6 round ">
                                                                                 <p style="color:white; float:left">This Product accept best offer</p>
-                                                                                <input type="checkbox" v-model="form.best_offer" id="checkbox2" placeholder="Title" required>
+                                                                                <input type="checkbox" v-model="form.best_offer" id="checkbox2" placeholder="Title">
                                                                                 <label for="checkbox2" class="ml-3"></label>
                                                                                 <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                             </div>
@@ -219,7 +219,7 @@ export default ({
             return_policy: false,
             price: null,
             best_offer: false,
-            draft: 0,
+            draft: 1,
         }),
     }),
     methods:{
@@ -237,7 +237,8 @@ export default ({
                 this.$Progress.finish();
                 this.indicator();
                 this.form.reset();
-                this.$router.push('/sell_item/step_two/'+response.data.product_id);
+                console.log(response.data);
+                this.$router.push('/step_two/'+response.data.product_id);
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);

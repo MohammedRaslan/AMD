@@ -68,7 +68,7 @@
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
                                                 <div class="inner">
-                                                    <button class="btn btn-primary" @click="complete(product)"><a>Complete</a></button>
+                                                    <button class="btn btn-primary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
                                                 </div>
                                              
                                                 <div class="inner">

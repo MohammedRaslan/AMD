@@ -21,6 +21,16 @@ class ProductService{
        return $response;
    }
 
+   public function step_two($data)
+   {
+       return $this->productRepository->step_two($data);
+   }
+
+   public function checkUserProduct($user_id, $product_id)
+   {
+       return $this->productRepository->checkUserProduct($user_id, $product_id);
+   }
+
    public function getData()
    {
       return $this->productRepository->getData();

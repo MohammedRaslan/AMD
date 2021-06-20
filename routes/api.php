@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ProductCondition;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
@@ -48,6 +49,8 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('product')->group(function () {
         Route::post('store',[ProductController::class,'store']);
+        Route::post('store/step_two',[ProductController::class,'step_two']);
+        Route::get('checkUserProduct/{id?}',[ProductController::class,'checkUserProduct']);
         Route::get('getProductData',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
