@@ -9,8 +9,8 @@ use BenSampo\Enum\Enum;
  * @method static static OptionTwo()
  * @method static static OptionThree()
  */
-final class ProductType extends Enum
+final class ProductCondition extends Enum
 {
-    const Regular = 0;
-    const Bidding = 1;
-}   
+    const new =  'New ';
+    const modified =   'something Modified ';
+}

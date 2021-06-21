@@ -47,24 +47,20 @@
                                                                 <h2 class="pb-3 pt-4">Product Info</h2>
                                                                 <form @submit.prevent="saveProduct">                        
                                                                     <div class="row">
-                                                                        <div class="col-4">
-                                                                            <input type="text" v-model="form.sku" class="form-control" id="fName" placeholder="SKU" required>
-                                                                            <div v-if="form.errors.has('sku')" class="alert alert-danger" v-html="form.errors.get('sku')" />
-
-                                                                        </div>
+       
                                                                         <div class="col-4">
                                                                             <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Title" required>
                                                                             <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                         </div>
                                                                         <div class="col-4">
-                                                                            <select name="type" v-model="form.category" id="" class="custom-select form-control" required>
+                                                                            <select name="category" v-model="form.category" id="" class="m-2 form-control" required>
                                                                                 <option selected disabled>Choose Category</option>
                                                                                 <option v-for="(category, index) in categories" :key="index" :value="category.id" > {{ category.title }}</option>
                                                                             </select >
                                                                             <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                         </div>
                                                                         <div class="col-4">
-                                                                            <select name="type" v-model="form.type" id="" class="custom-select form-control" required>
+                                                                            <select name="type" v-model="form.type" id="" class="custom-select m-2 form-control" required>
                                                                                 <option selected disabled>Choose Type</option>
                                                                                 <option v-for="(type, index) in types" :key="index" :value="type" > {{ index }}</option>
                                                                             </select >
@@ -76,45 +72,53 @@
                                                                             <div v-if="form.errors.has('price')" class="alert alert-danger" v-html="form.errors.get('price')" />
                                                                         </div>
                                                                         <div class="col-4">
-                                                                            <input type="text" v-model="form.brand   " class="form-control" id="lName" placeholder="Brand" required>
+                                                                            <input type="text" v-model="form.brand" class="form-control" id="lName" placeholder="Brand" required>
                                                                             <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
                                                                         </div>
-
+                                                                        <div class="col-4">
+                                                                            <select name="type" v-model="form.condition" id="" class="custom-select m-2 form-control" required>
+                                                                                <option selected disabled>Choose Condition</option>
+                                                                                <option v-for="(condition, index) in conditions" :key="index" :value="index" > {{ condition }}</option>
+                                                                            </select >
+                                                                            <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
+                                                                        </div>
                                                                         <div class="col-12 mb-3">
-                                                                            <UploadImages @change="handleImages" :max="7" maxError="Max files exceed" uploadMsg="upload product images" fileError="images files only accepted"/>
+                                                                            <div  class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
+                                                                            <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="upload product images" fileError="images files only accepted"/>
                                                                             <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                         </div>
                                                                         <div class="col-12 mb-5">
+                                                                            
                                                                             <label for="#description" style="color:white">Description</label>
                                                                             <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                         </div>
-
-                                                                        <div class="col-12 mb-5">
-                                                                            <label for="#details" style="color:white">Details</label>
-                                                                            <input type="text" v-model="form.details" class="form-control" id="details" placeholder="Details" required>
-                                                                            <div v-if="form.errors.has('details')" class="alert alert-danger" v-html="form.errors.get('details')" />
+                                                                        <div class="row">
+                                                                            <div class="col-6 round ">
+                                                                                <p for=""  style="color:white; float:left">This Product has return policy</p>
+                                                                                <input type="checkbox" v-model="form.return_policy" id="checkbox1" placeholder="Title" >
+                                                                                <label for="checkbox1" class="ml-3"></label>
+                                                                                <div v-if="form.errors.has('return_policy')" class="alert alert-danger" v-html="form.errors.get('return_policy')" />
+                                                                            </div>
+                                                                            <div class="col-6 round ">
+                                                                                <p style="color:white; float:left">This Product accept best offer</p>
+                                                                                <input type="checkbox" v-model="form.best_offer" id="checkbox2" placeholder="Title">
+                                                                                <label for="checkbox2" class="ml-3"></label>
+                                                                                <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-6">
-                                                                            <input type="submit" :disabled="form.busy" value="Publish Product" class="form-control" id="register">
-                                                                        </div>
-                                                                       <div class="col-6">
+                                                                           <div class="col-6">
                                                                             <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-primary" id="draft">
                                                                         </div>
+                                                                        <div class="col-6">
+                                                                            <input type="submit" :disabled="form.busy" value="Next" class="form-control" id="register">
+                                                                        </div>
+                                                                    
                                                         
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
-                                                                <div class="blog__item">
-                                                                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
-                                                                    <div class="blog__item__text">
-                                                                        <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
-                                                                        <h5>Eternity Bands Do Last Forever</h5>
-                                                                        <a href="#">Read More</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div> -->
+                                                   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -141,6 +145,50 @@
     select{
         display: block !important;
     }
+    .round {
+  position: relative;
+  height: 50px;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #fd1266;
+  border-color:#fd1266;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
 </style>
 <script>
 import SideBar from "./SidebarComponent";
@@ -155,38 +203,48 @@ export default ({
       data:()=>({
         details : "",
         description: "",
+        id: null,
         types: [],
         categories: [],
+        conditions: [],
+        imagenull: false,
         form : new form({
-            sku : null,
             title : null,
             type : null,
+            condition:null,
             image : {},
             brand : null,
             description: null,
-            details: null,
             category: null,
-            return_policy: 1,
+            return_policy: false,
             price: null,
-            best_offer: 0,
-            condition: 'ccc',
-            draft: 0,
+            best_offer: false,
+            draft: 1,
         }),
     }),
     methods:{
         async saveProduct(){
            this.$Progress.start();
-           this.form.details = this.details.getContent();
            this.form.description = this.description.getContent();
            this.form.best_offer = this.form.type == 1 ? 1 :0;
+           this.form.return_policy = this.form.return_policy == true ? 1 : 0;
+           this.form.best_offer = this.form.best_offer == true ? 1 : 0;
+           if( jQuery.isEmptyObject(this.form.image)  ){
+               this.imagenull = true;
+               this.$Progress.fail();
+           }else{
             const response = await this.form.post('/api/product/store').then((response)=>{
                 this.$Progress.finish();
                 this.indicator();
                 this.form.reset();
+                console.log(response.data);
+                this.$router.push('/step_two/'+response.data.product_id);
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);
             });
+           }
+        
         },
         handleImages(files){
             this.form.image = files;
@@ -232,25 +290,11 @@ export default ({
                 '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
             ],
 });
-        this.details =  createEditor('#details', {
-                    toolbar: [
-                        'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
-                        'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
-                        'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent',
-                        'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
-                    ],
-                    fontName: [
-                        {val: 'arial black'}, 
-                        {val: 'times new roman'}, 
-                        {val: 'Courier New'}
-                    ],
-                    fontSize: [
-                        '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
-                    ],
-});
+
         axios.get('/api/product/getProductData').then((response) => {
             this.types = response.data.types;
             this.categories = response.data.categories;
+            this.conditions = response.data.conditions;
         });
     }
 })

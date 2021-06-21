@@ -21,6 +21,28 @@ class ProductService{
        return $response;
    }
 
+   public function step_two($data)
+   {
+       return $this->productRepository->step_two($data);
+   }
+
+   public function getProductShipping($user_id, $product_id)
+   {
+       return $this->productRepository->getProductShipping($user_id, $product_id);
+   }
+
+   public function step_three($data)
+   {    $id = $data['product_id'];
+        $draft = $data['draft'];
+        unset($data['draft']);
+        return $this->productRepository->step_three($id,$draft,$data);
+   }
+
+   public function checkUserProduct($user_id, $product_id)
+   {
+       return $this->productRepository->checkUserProduct($user_id, $product_id);
+   }
+
    public function getData()
    {
       return $this->productRepository->getData();
@@ -64,6 +86,11 @@ class ProductService{
    public function randomProducts()
    {
        return $this->productRepository->randomProducts();
+   }
+
+   public function changeStatus($user_id, $product_id)
+   {
+       return $this->productRepository->changeStatus($user_id,$product_id);
    }
    
 }

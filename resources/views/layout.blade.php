@@ -82,7 +82,7 @@
 
     <div class="rectangle-nav"></div>
 
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
         <vue-progress-bar></vue-progress-bar>
   
 

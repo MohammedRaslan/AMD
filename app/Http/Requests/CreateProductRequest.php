@@ -24,7 +24,7 @@ class CreateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'sku' => 'required|string|max:200',
+            'sku' => 'string|max:200',
             'title' => 'required|string|max:200',
             'type'  => 'required|string|max:200',
             'description' => 'required|string:255',
@@ -34,6 +34,7 @@ class CreateProductRequest extends FormRequest
             'return_policy' => 'required|boolean',
             'best_offer' => 'required|boolean',
             'draft' => 'required|boolean',
+            'price' => 'required|numeric'
         ];
     }
 }

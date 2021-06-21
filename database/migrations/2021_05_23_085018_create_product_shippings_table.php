@@ -16,11 +16,18 @@ class CreateProductShippingsTable extends Migration
         Schema::create('product_shippings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-            $table->integer('type');
-            $table->json('usa')->nullable();
-            $table->json('world_wide')->nullable();
+            $table->longText('package_details')->nullable();
+            $table->string('width')->nullable();
+            $table->string('height')->nullable();
+            $table->string('length')->nullable();
+            $table->string('service_usa')->nullable();
+            $table->float('price_usa');
+            $table->float('price_world_wide')->nullable();
+            $table->string('service_world_wide')->nullable();
+            $table->boolean('usa')->default(1);
+            $table->boolean('world_wide')->default(0);
             $table->float('weight')->nullable();
-            $table->string('duration');
+            $table->string('duration')->nullable();
             $table->timestamps();
         });
     }

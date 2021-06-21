@@ -6,6 +6,8 @@ import RegisterComponent from "./components/Auth/RegisterComponent";
 
 import OverviewComponent from "./components/Selling/OverviewComponent";
 import CreateProductComponent from "./components/Selling/CreateProductComponent";
+import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
+import CreateProductShippingComponent from "./components/Selling/CreateProductShipping";
 
 import DashboardComponent from "./components/Admin/DashboardComponent"
 import UsersComponent from "./components/Admin/UsersComponent"
@@ -49,6 +51,16 @@ const routes = [
         path:"/selling/sell_item",
         component: CreateProductComponent,
         name:"ProductCreate",
+    },
+    {
+        path: "/step_two/:id?",
+        component: CreateProductStepTwoComponent,
+        name: "ProductCreateStepTwo",
+    },
+    {
+        path: "/product_shipping/:id?",
+        component: CreateProductShippingComponent,
+        name: "ProductCreateShipping",
     },
     {
         path:"/selling/drafted",

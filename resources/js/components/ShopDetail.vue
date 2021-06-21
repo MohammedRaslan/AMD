@@ -69,9 +69,7 @@
                             </div>
                         </div>
                         <div class="des">
-                            <p >
-                                {{ product.description }}
-                            </p>
+                            <p v-html="product.description"></p>
                         </div>
 
                          <div class="product__details__content">
@@ -109,14 +107,31 @@
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                         <p>
-                                             {{ product.details }}
-                                         </p>
+                                         <p v-html="product.details"></p>
                                     </div>
                                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                         <p>
-                                           2- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
-                                        </p>
+                                        <hr>
+                                        <h3 class="title-color pt-2 underline"> Package Details</h3>
+
+                                        <div class="row pt-1 pb-1 m-1" v-if="shipping.package_details == 'details'">
+                                            <div class="col-3"> <span class="inner-title">Weight:</span> <span class="inner-value">{{ shipping.weight }}</span> </div>
+                                            <div class="col-3"> <span class="inner-title">Width:</span> <span class="inner-value">{{ shipping.width }}</span> </div>
+                                            <div class="col-3"> <span class="inner-title">Height:</span> <span class="inner-value">{{ shipping.height }}</span> </div>
+                                            <div class="col-3"> <span class="inner-title">Length:</span> <span class="inner-value">{{ shipping.length }}</span> </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6" v-if="shipping.usa">
+                                                <h3 class="title-color">USA</h3><hr class="title-color">
+                                                <div class="mb-2"><span class="inner-title">Service:</span> <span class="inner-value">{{ shipping.service_usa }}</span> </div>
+                                                <div><span class="inner-title">Price:</span> <span class="inner-value">{{ shipping.price_usa }} </span></div>
+                                            </div>
+                                            <div class="col-6" v-if="shipping.world_wide">
+                                                <h3 class="title-color">World Wide</h3><hr class="title-color">
+                                                <div class="mb-2"><span class="inner-title">Service:</span> <span class="inner-value">{{ shipping.service_world_wide }}</span></div>
+                                                <div><span class="inner-title">Price:</span><span class="inner-value">{{ shipping.price_world_wide }}</span>  </div>
+                                            </div>
+                                        </div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +154,23 @@
 
     </div>
 </template>
-
+<style  scoped>
+    .cont-img{
+        width: 47%;
+    }
+    .title-color{
+        color: #ffe0e0;
+    }
+    .inner-title{
+        color:#7ac942;
+    }
+    .inner-value{
+        color: #97ceff;
+    }
+    .underline{
+        text-decoration: underline;
+    }
+</style>
 <script>
 import AddCartWidget from "./widgets/AddCartComponent";
 
@@ -152,6 +183,7 @@ export default ({
         author: false,
         added: false,
         exist: false,
+        shipping: null,
     }),
     components: {
         AddCartWidget,
@@ -183,6 +215,7 @@ export default ({
         
             this.product = response.data.product;
             this.images  = response.data.images;
+            this.shipping = response.data.shipping;
             this.loading = true;
             if(this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                 this.author = true;
