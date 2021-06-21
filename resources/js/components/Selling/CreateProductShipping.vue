@@ -45,31 +45,68 @@
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                                 <h2 class="pb-3 pt-4">Product Info</h2>
-                                                                <form @submit.prevent="saveProduct">                        
+                                                                <form @submit.prevent="saveProductShipping">                        
                                                                     <div class="row">
-                                                                        <div class="col-4 mb-5">
-                                                                            <select name="type" v-model="form.doll_gender" id="" class="m-2 form-control" required>
+                                                                        <div class="col-6">
+                                                                            <input type="text" v-model="form.weight"  class="form-control" id="fName" placeholder="Weight" required>
+                                                                            <div v-if="form.errors.has('weight')" class="alert alert-danger" v-html="form.errors.get('weight')" />
+                                                                        </div>
+                                                                        <div class="col-6 mb-5">
+                                                                            <select name="type" v-model="form.package_details" id="" class="m-2 form-control" required>
                                                                                 <option selected disabled>Choose Details</option>
-                                                                                <option value="no">I don't have package details </option>
-                                                                                <option value="yes">I have package details</option>
+                                                                                <option :value=false >I don't have package details </option>
+                                                                                <option :value=true>I have package details</option>
                                                                             </select >
                                                                            <div v-if="form.errors.has('package_details')" class="alert alert-danger" v-html="form.errors.get('package_details')" />
                                                                         </div>
                                                                           
+                                                                            <div class="col-4">
+                                                                                <input type="text" v-model="form.width" :disabled="!form.package_details" class="form-control" id="fName" placeholder="Width" required>
+                                                                                <div v-if="form.errors.has('width')" class="alert alert-danger" v-html="form.errors.get('width')" />
+                                                                            </div>
+                                                                            <div class="col-4">
+                                                                                <input type="text" v-model="form.height" :disabled="!form.package_details" class="form-control" id="fName" placeholder="Height" required>
+                                                                                <div v-if="form.errors.has('height')" class="alert alert-danger" v-html="form.errors.get('height')" />
+                                                                            </div>
+                                                                            <div class="col-4">
+                                                                                <input type="text" v-model="form.length" :disabled="!form.package_details" class="form-control" id="fName" placeholder="Length" required>
+                                                                                <div v-if="form.errors.has('length')" class="alert alert-danger" v-html="form.errors.get('length')" />
+                                                                            </div>
+
+
                                                                         <div class="row">
                                                                             <div class="col-6 round ">
-                                                                                <p for=""  style="color:white; float:left">This Product is Shipped to usa</p>
+                                                                                <p for=""  style="color:white; float:left">Shipping To USA</p>
                                                                                 <input type="checkbox" v-model="form.usa" id="checkbox1" placeholder="Title" >
                                                                                 <label for="checkbox1" class="ml-3"></label>
                                                                                 <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
                                                                             </div>
                                                                             <div class="col-6 round ">
-                                                                                <p style="color:white; float:left">This Product Shipped to world wide</p>
+                                                                                <p style="color:white; float:left">Shipping To World Wide</p>
                                                                                 <input type="checkbox" v-model="form.world_wide" id="checkbox2" placeholder="Title" >
                                                                                 <label for="checkbox2" class="ml-3"></label>
                                                                                 <div v-if="form.errors.has('world_wide')" class="alert alert-danger" v-html="form.errors.get('world_wide')" />
                                                                             </div>
-                                                                        </div>                                                                 
+                                                                        </div>   
+                                                                        <div class="row">
+                                                                            <div class="col-6">
+                                                                                <input type="text" v-model="form.service_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Service USA" required>
+                                                                                <div v-if="form.errors.has('service_usa')" class="alert alert-danger" v-html="form.errors.get('service_usa')" />
+                                                                            </div>
+                                                                            <div class="col-6">
+                                                                                <input type="text" v-model="form.service_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Sevice World Wide" required>
+                                                                                <div v-if="form.errors.has('service_world_wide')" class="alert alert-danger" v-html="form.errors.get('service_world_wide')" />
+                                                                            </div>
+                                                                            <div class="col-6">
+                                                                                <input type="text" v-model="form.price_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Price USA" required>
+                                                                                <div v-if="form.errors.has('price_usa')" class="alert alert-danger" v-html="form.errors.get('price_usa')" />
+                                                                            </div>
+                                                                     
+                                                                            <div class="col-6">
+                                                                                <input type="text" v-model="form.price_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Price World Wide" required>
+                                                                                <div v-if="form.errors.has('price_world_wide')" class="alert alert-danger" v-html="form.errors.get('price_world_wide')" />
+                                                                            </div>
+                                                                        </div>                                                              
                                                                            <div class="col-6">
                                                                             <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-primary" id="draft">
                                                                         </div>
@@ -161,40 +198,39 @@ export default ({
         SideBar,
     },
       data:()=>({
-        package_details : "",
         form : new form({
             product_id: null,
-            world_wide: 0,
-            usa: 1,
+            world_wide: false,
+            usa: true,
             service_usa: null,
             price_usa: null,
-            sevice_world_wide: null,
+            service_world_wide: null,
             price_world_wide: null,
             height: null,
             weight: null,
             width: null,
             length: null,
-            package_details: null,
+            package_details: true,
+            draft: 0,
         }),
     }),
     methods:{
-        async saveProduct(){
+        async saveProductShipping(){
            this.$Progress.start();
-           
-           this.form.details = this.details.getContent();
-           this.form.domestic_product = this.form.domestic_product == true ? 1 :0;
-           this.form.modified_item = this.form.modified_item == true ? 1 :0;
-       
-            const response = await this.form.post('/api/product/store/step_two').then((response)=>{
+           this.form.usa = this.form.usa == true ? 1 :0;
+           this.form.world_wide = this.form.world_wide == true ? 1 :0;
+           this.form.package_details = this.form.package_details == true ? 'details' : 'no_details'
+            const response = await this.form.post('/api/product/store/step_three').then((response)=>{
                 this.$Progress.finish();
                 this.indicator();
                 if(response.data = false){
                     this.$Progress.fail();
                 }else{
                     this.$Progress.finish();
+                this.$router.push('/selling/overview');
+
                 }
                 
-                // this.$router.push('/selling/sell_item/step_two');
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);
@@ -203,7 +239,7 @@ export default ({
        
         draft(){
             this.form.draft = 1;
-            this.saveProduct();
+            this.saveProductShipping();
         },
         indicator(){
          if(this.form.draft == 1){
@@ -228,23 +264,26 @@ export default ({
         Fire.$emit('mounted');
         this.$Progress.finish();
         this.form.product_id = this.$route.params.id;
-        this.package_details =  createEditor('#details', {
-                    toolbar: [
-                        'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
-                        'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
-                        'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent',
-                        'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
-                    ],
-                    fontName: [
-                        {val: 'arial black'}, 
-                        {val: 'times new roman'}, 
-                        {val: 'Courier New'}
-                    ],
-                    fontSize: [
-                        '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
-                    ],
-});
-
+         axios.get('/api/product/checkUserProduct/'+this.form.product_id).then((response) => {
+                if(response.data == false){
+                    this.$router.push('/');
+                }
+            });
+        axios.get('/api/product/getProductShipping/'+this.form.product_id).then((response) => {
+            if(response.data.shipping != null){
+                this.form.world_wide = response.data.shipping.world_wide;
+                this.form.usa = response.data.shipping.usa;
+                this.form.service_usa = response.data.shipping.service_usa;
+                this.form.service_world_wide = response.data.shipping.service_world_wide;
+                this.form.price_usa = response.data.shipping.price_usa;
+                this.form.price_world_wide = response.data.shipping.price_world_wide;
+                this.form.height = response.data.shipping.height;
+                this.form.weight = response.data.shipping.weight;
+                this.form.length = response.data.shipping.length;
+                this.form.width  = response.data.shipping.width;
+                
+            }
+        });
     }
 })
 </script>

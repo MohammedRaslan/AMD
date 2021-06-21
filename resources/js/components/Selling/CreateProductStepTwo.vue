@@ -49,34 +49,36 @@
                                                                     <div class="row">
        
                                                                         <div class="col-4">
-                                                                            <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Doll size" required>
+                                                                            <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Item size" >
                                                                             <div v-if="form.errors.has('doll_size')" class="alert alert-danger" v-html="form.errors.get('doll_size')" />
                                                                         </div>
                                                                           <div class="col-4">
-                                                                            <input type="text" v-model="form.quantity" class="form-control" id="fName" placeholder="Quantity" required>
+                                                                            <input type="text" v-model="form.quantity" class="form-control" id="fName" placeholder="Quantity" >
                                                                             <div v-if="form.errors.has('quantity')" class="alert alert-danger" v-html="form.errors.get('quantity')" />
                                                                         </div>
                                                                         <div class="col-4">
-                                                                            <select name="type" v-model="form.doll_gender" id="" class="m-2 form-control" required>
+                                                                            <select name="type" v-model="form.doll_gender" id="" class="m-2 form-control" >
                                                                                 <option selected disabled>Choose Gender</option>
                                                                                 <option value="male">Male </option>
                                                                                 <option value="female">Female </option>
+                                                                                <option value="undefined">Undefined </option>
+
                                                                             </select >
                                                                             <div v-if="form.errors.has('doll_gender')" class="alert alert-danger" v-html="form.errors.get('doll_gender')" />
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-6">
-                                                                                <input type="text" v-model="form.upc" class="form-control" id="fName" placeholder="UPC" required>
+                                                                                <input type="text" v-model="form.upc" class="form-control" id="fName" placeholder="UPC" >
                                                                                 <div v-if="form.errors.has('upc')" class="alert alert-danger" v-html="form.errors.get('upc')" />
                                                                             </div>
                                                                             <div class="col-6">
-                                                                                <input type="text" v-model="form.featured_refinements" class="form-control" id="fName" placeholder="Featured Refinements" required>
+                                                                                <input type="text" v-model="form.featured_refinements" class="form-control" id="fName" placeholder="Featured Refinements" >
                                                                                 <div v-if="form.errors.has('featured_refinements')" class="alert alert-danger" v-html="form.errors.get('featured_refinements')" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 mb-5">
                                                                             <label for="#details" style="color:white">Details</label>
-                                                                            <input type="text" v-model="form.details" class="form-control" id="details" placeholder="Details" required>
+                                                                            <input type="text" v-model="form.details" class="form-control" id="details" placeholder="Details" >
                                                                             <div v-if="form.errors.has('details')" class="alert alert-danger" v-html="form.errors.get('details')" />
                                                                         </div>
                                                                        

@@ -95,7 +95,28 @@ class ProductRepository{
         return false;
     }
 
+    public function step_three($id,$draft,$data)
+    {
+        $product = Product::find($id);
+        $product->draft = $draft;
+        $product->save();
+        if($product->shipping){
+            $shipping = $product->shipping()->update($data);
+        }else{
+            $shipping = $product->shipping()->insert($data);
+        }
+        if($shipping){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+    public function getProductShipping($user_id,$product_id)
+    {
+        $product = Product::where('id',$product_id)->where('user_id',$user_id)->with('shipping')->first();
+        return ['shipping' => $product->shipping];
+    }
 
     public function getUserProducts($id)
     {
@@ -117,12 +138,25 @@ class ProductRepository{
     {
         $product = Product::where('id',$id)->with('user')->first();
         $images  = $product->images;
-        return ['product' => $product,'images' => $images];
+        return ['product' => $product,
+                'images' => $images,
+                'shipping' => $product->shipping];
     }
 
     public function randomProducts()
     {
         return Product::where('status',1)->where('draft',0)->take(4)->get();
+    }
+
+    public function changeStatus($user_id,$product_id)
+    {
+        $product = Product::where('user_id',$user_id)->where('id',$product_id)->first();
+        $product->status = $product->status == 1 ? 0 : 1;
+        if($product->save()){
+            return ['response' => true, 
+                    'status' => $product->status];
+        }
+        return ['response' => false];
     }
 
 }

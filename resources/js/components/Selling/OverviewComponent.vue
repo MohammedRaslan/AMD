@@ -74,7 +74,9 @@
                                                     <button class="btn btn-secondary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-danger"><a href="#">Suspend</a></button>
+                                                    <button class="btn btn-danger" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)"><a >Suspend</a></button>
+                                                    <button class="btn black" v-else :id="'product_'+product.id" @click="changeStatus(product.id)"><a >Suspended</a></button>
+
                                                 </div>
                                                 <div class="inner">
                                                     <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
@@ -127,7 +129,12 @@
     <!-- Latest Blog Section End -->
     </div>
 </template>
-
+<style  scoped>
+    .black{
+        background-color: black !important;
+        color: white !important;
+    }
+</style>
 <script>
 import SideBar from "./SidebarComponent";
 export default ({
@@ -150,10 +157,27 @@ export default ({
             this.products = response.data.data;
             this.pagination = response.data.links;
             // console.log(this.pagination);
-            if(response.data == '' ){
+            if(response.data.length == 0 ){
                 this.message = 'You dont have products';
                 }
         });
+        },
+        changeStatus(product_id){
+            axios.get('/api/product/changeStatus/'+product_id).then((response) => {
+                Toast.fire({
+                        icon: 'success',
+                        title: 'Status Changed Successfully'
+                    });
+                  if(response.data.status == 1){
+                    document.getElementById("product_"+product_id).classList.remove('black');
+                    document.getElementById("product_"+product_id).innerHTML = 'Suspend'
+                    document.getElementById("product_"+product_id).classList.add('btn-danger');
+                }else{
+                    document.getElementById("product_"+product_id).classList.remove('btn-danger');
+                    document.getElementById("product_"+product_id).innerHTML = 'Suspened'
+                    document.getElementById("product_"+product_id).classList.add('black');
+                }
+            });
         }
     },
     beforeCreate() {

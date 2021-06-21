@@ -147,15 +147,16 @@ export default {
     },
  
    created(){
-    this.id = this.$route.params.query;
+
+   },
+   mounted(){
+        Fire.$emit('mounted');
+        this.id = this.$route.params.query;
         axios.get('/api/category/getCategoryProducts/'+this.id).then((response) =>{
            this.products = response.data;
            this.$Progress.finish();
            this.loading = false;
        });
-   },
-   mounted(){
-        Fire.$emit('mounted');
    }
 }
 </script>
