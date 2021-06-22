@@ -6171,6 +6171,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -80391,7 +80397,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-1 dot" }, [
+    return _c("div", { staticClass: "col-sm-1 dot", attrs: { id: "dot" } }, [
       _c("div", { staticClass: "inner" })
     ])
   },
@@ -80444,7 +80450,7 @@ var render = function() {
           _c(
             "router-link",
             {
-              staticClass: "nav-link active",
+              staticClass: "nav-link",
               attrs: { to: "/selling/overview", id: "v-pills-home-tab" }
             },
             [_vm._v("Overview")]
@@ -80458,11 +80464,7 @@ var render = function() {
               staticClass: "nav-link",
               attrs: { to: "/selling/sell_item", id: "v-pills-profile-tab" }
             },
-            [
-              _vm._v(
-                "\n                      Sell An Item\n                    "
-              )
-            ]
+            [_vm._v("\n                Sell An Item\n            ")]
           ),
           _vm._v(" "),
           _c("hr"),
@@ -80648,7 +80650,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "sort row" }, [
+        _c("div", { staticClass: "sort row select-dolls" }, [
           _vm._m(1),
           _vm._v(" "),
           _vm._m(2),
@@ -80896,13 +80898,28 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "inner-sort col-sm-6 col-6" }, [
-      _c("select", { staticClass: "form-select" }, [
-        _c("option", { attrs: { selected: "" } }, [
-          _vm._v("Price Low to High")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("Price High to Low")])
-      ])
+      _c(
+        "div",
+        { staticClass: "nice-select form-select", attrs: { tabindex: "0" } },
+        [
+          _c("span", { staticClass: "current" }, [_vm._v("Price Low to High")]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list" }, [
+            _c(
+              "li",
+              {
+                staticClass: "option selected",
+                attrs: { "data-value": "Price Low to High" }
+              },
+              [_vm._v("Price Low to High")]
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "option", attrs: { "data-value": "1" } }, [
+              _vm._v("Price High to Low")
+            ])
+          ])
+        ]
+      )
     ])
   },
   function() {
@@ -80910,13 +80927,31 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "inner-sort col-sm-6 col-6" }, [
-      _c("select", { staticClass: "form-select" }, [
-        _c("option", { attrs: { selected: "" } }, [_vm._v("Show 20 Items")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("Show 40 Items")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "2" } }, [_vm._v("Show 60 Items")])
-      ])
+      _c(
+        "div",
+        { staticClass: "nice-select form-select", attrs: { tabindex: "0" } },
+        [
+          _c("span", { staticClass: "current" }, [_vm._v("Show 20 Items")]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list" }, [
+            _c(
+              "li",
+              {
+                staticClass: "option selected",
+                attrs: { "data-value": "Show 20 Items" }
+              },
+              [_vm._v("Show 20 Items")]
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "option", attrs: { "data-value": "1" } }, [
+              _vm._v("Show 40 Items")
+            ]),
+            _c("li", { staticClass: "option", attrs: { "data-value": "2" } }, [
+              _vm._v("Show 60 Items")
+            ])
+          ])
+        ]
+      )
     ])
   },
   function() {

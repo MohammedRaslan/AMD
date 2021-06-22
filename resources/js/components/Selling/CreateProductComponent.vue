@@ -20,7 +20,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-   
+
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
@@ -45,9 +45,9 @@
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                                 <h2 class="pb-3 pt-4">Product Info</h2>
-                                                                <form @submit.prevent="saveProduct">                        
+                                                                <form @submit.prevent="saveProduct">
                                                                     <div class="row">
-       
+
                                                                         <div class="col-4">
                                                                             <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Title" required>
                                                                             <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
@@ -66,7 +66,7 @@
                                                                             </select >
                                                                             <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                         </div>
-                                                                        
+
                                                                         <div class="col-4">
                                                                             <input type="number" v-model="form.price" min="1" class="form-control" id="rePassword" placeholder="Price" required>
                                                                             <div v-if="form.errors.has('price')" class="alert alert-danger" v-html="form.errors.get('price')" />
@@ -88,7 +88,7 @@
                                                                             <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                         </div>
                                                                         <div class="col-12 mb-5">
-                                                                            
+
                                                                             <label for="#description" style="color:white">Description</label>
                                                                             <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
@@ -113,12 +113,12 @@
                                                                         <div class="col-6">
                                                                             <input type="submit" :disabled="form.busy" value="Next" class="form-control" id="register">
                                                                         </div>
-                                                                    
-                                                        
+
+
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                   
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -133,9 +133,9 @@
                     </div>
                 </div>
             </div>
-         
-        
-          
+
+
+
         </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -195,7 +195,7 @@ import SideBar from "./SidebarComponent";
 import UploadImages from "vue-upload-drop-images";
 import { createEditor } from 'vueditor';
 export default ({
-    
+
     components:{
         SideBar,
         UploadImages,
@@ -244,7 +244,7 @@ export default ({
                 console.log(error);
             });
            }
-        
+
         },
         handleImages(files){
             this.form.image = files;
@@ -282,8 +282,8 @@ export default ({
                 'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
             ],
             fontName: [
-                {val: 'arial black'}, 
-                {val: 'times new roman'}, 
+                {val: 'arial black'},
+                {val: 'times new roman'},
                 {val: 'Courier New'}
             ],
             fontSize: [

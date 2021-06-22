@@ -20,7 +20,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-   
+
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
@@ -42,8 +42,8 @@
                                     <div class="row">
                                         <div class="col-lg-7 detalis">
                                             <div class="row">
-                                                <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
+                                                <div class="col-sm-1 dot" id="dot"><div class="inner"></div></div>
+
                                                 <div class="col-lg-4 col-md-3 col-sm-4 col-6">
                                                     <figure>
                                                         <img :src='str_replace(product.image)' alt="">
@@ -57,7 +57,7 @@
                                                     </h5>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col-lg-3 col-md-12 price">
                                             <p>Price</p>
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <!-- <pagination :data="products" @pagination-change-page="getProducts"></pagination> -->
-         
+
           <!-- <div class="pagination-selling">
 
               <nav aria-label="Page navigation example">
@@ -123,7 +123,7 @@
                 </ul>
                </nav>
           </div> -->
-          
+
         </div>
     </section>
     <!-- Latest Blog Section End -->

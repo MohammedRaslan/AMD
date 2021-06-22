@@ -18,6 +18,7 @@ $(document).ready(function(){
         $(".active .inner-save form input").removeAttr("disabled")
         $(".active .inner-save form button").removeAttr("disabled")
     })
+
 });
 
 
@@ -44,7 +45,7 @@ $(document).ready(function(){
             },
         },
         autoplay: {
-            delay: 6000,
+            delay: 3000,
         },
     });
         // swiper.autoplay.stop();
@@ -60,3 +61,26 @@ var swiper = new Swiper(".swiper-latest", {
         clickable: true,
     },
 });
+
+
+
+
+$(document).ready(function(){
+    // Notification
+    $(".notif-cont").slideUp("fast")
+    $(".btn-quantity").click(function() {
+        $(".notif-cont").slideToggle("fast")
+    })
+    // Notification nice-scroll
+    $(".notif-cont").niceScroll({
+        cursorcolor: "#fd1266",
+        cursorwidth: "5px",
+        cursorborder: "none",
+        cursorborderradius: "5px",
+        // autohidemode: false,
+        // railpadding: { top: 0, right: 0, left: 0, bottom: 0 },
+        horizrailenabled: false,
+        preventmultitouchscrolling: true
+    });
+
+})
