@@ -38,12 +38,17 @@
     .nice-select{
         display: none;
     }
+    #preloader{
+        display: block !important;
+    }
 </style>
 <body>
     <div id="app">
     <!-- Page Preloder -->
 
-        <Loader></Loader>
+    <div id="preloder" >
+        <div class="loader" style="display: block !imortant" ></div>
+    </div>
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">

@@ -181,7 +181,7 @@ ol {
 	left: 0;
 	z-index: 999999;
 	background: #0F243C;
-	display: none !important;
+	/* display: none !important; */
 	/* loading finish */
 }
 
