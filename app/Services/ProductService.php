@@ -92,5 +92,10 @@ class ProductService{
    {
        return $this->productRepository->changeStatus($user_id,$product_id);
    }
+
+   public function AddToWishlist($user_id,$product_id)
+   {
+       return $this->productRepository->AddToWishlist($user_id,$product_id);
+   }
    
 }

@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ALL ABOUT MY DOLLS | Home</title>
     <link rel="shortcut icon" href="{{ asset('FrontEnd') }}/images/Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    
+
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/bootstrap5.min.css" type="text/css">
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> -->
-    <!-- <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/magnific-popup.css" type="text/css">
@@ -30,9 +28,9 @@
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/swiper.css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/app.css" type="text/css">
-<link rel="stylesheet" href=" {{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
-  
-  
+    <link rel="stylesheet" href=" {{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
+
+
 </head>
 <style >
     .nice-select{
@@ -41,6 +39,7 @@
     #preloader{
         display: block !important;
     }
+
 </style>
 <body>
     <div id="app">
@@ -89,9 +88,9 @@
 
         <router-view :key="$route.path"></router-view>
         <vue-progress-bar></vue-progress-bar>
-  
 
-    
+
+
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container h-100">
@@ -213,6 +212,8 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
+    <script src="{{ asset('FrontEnd') }}/js/test.js" defer></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
 </body>
 
 </html>

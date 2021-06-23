@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 use App\Models\Category;
+use App\Models\Wishlist;
 // use App\Models\Product;
 
 
@@ -40,7 +41,16 @@ class CategoryRepository{
     {
         $category = Category::where('id',$id)->with('products')->first();
         return $category->products()->where('status',1)->where('draft',0)->get();
+
+        // $query = $products->map(function($item, $key){
+        //     dd($item->wishlist);
+        //        $count = $item->push('wishlistCount',$item->wishlist);
+        //         return [
+        //             'items' => $item,
+        //             // 'count' => $count,
+        //         ];
+                
+        // });
+        // dd($query);
     }
-
-
 }

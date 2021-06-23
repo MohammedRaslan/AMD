@@ -53,6 +53,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('store/step_two',[ProductController::class,'step_two']);
         Route::post('store/step_three',[ProductController::class,'step_three']); 
         Route::get('changeStatus/{id?}',[ProductController::class,'changeStatus']); 
+        Route::get('AddToWishlist/{id?}',[ProductController::class,'AddToWishlist']);
         Route::get('getProductShipping/{id?}',[ProductController::class,'getProductShipping']);     
         Route::get('checkUserProduct/{id?}',[ProductController::class,'checkUserProduct']);
         Route::get('getProductData',[ProductController::class,'getProductData']);
@@ -67,6 +68,7 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('user')->group(function(){
         Route::get('getUserInfo/{id}',[UserController::class,'getUserInfo']);
         Route::post('edit/{id}',[UserController::class,'edit']);
+        Route::get('getUserId',[UserController::class,'getUserId']);
     });
     Route::prefix('cart')->group(function() {
         Route::post('add/{productId}',[CartController::class,'add']);

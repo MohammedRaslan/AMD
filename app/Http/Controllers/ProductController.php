@@ -83,4 +83,10 @@ class ProductController extends Controller
         $data = $this->productService->changeStatus($request->user()->id, $id);
         return response()->json($data);
     }
+
+    public function AddToWishlist(Request $request, $product_id)
+    {
+        $response = $this->productService->AddToWishlist($request->user()->id,$product_id);
+        return response()->json($response);
+    }
 }

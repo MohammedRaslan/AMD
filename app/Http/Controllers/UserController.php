@@ -64,4 +64,10 @@ class UserController extends Controller
         $data = $this->userService->edit($request->all(),$id);
         return response()->json($data);
     }
+
+    public function getUserId(Request $request)
+    {
+        $userId = $request->user()->id;
+        return response()->json($userId);
+    }
 }

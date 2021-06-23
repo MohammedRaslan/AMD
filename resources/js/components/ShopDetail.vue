@@ -138,18 +138,19 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 parent-price-table">
+                    <div class="col-lg-4 parent-price-table" v-if="(loading && !author)">
                    
-                        <AddCartWidget :id="id" :price="product.price" :exist="exist" v-if="(loading && !author)"></AddCartWidget>
-
+                        <AddCartWidget :id="id" :price="product.price" :exist="exist" ></AddCartWidget>
+                        <MakeOfferWidget v-if="product.best_offer"></MakeOfferWidget>
+                        <ChatWidget></ChatWidget>
                     </div>
-
-
                 </div>
             </div>
-            <img class="person" :src="'/FrontEnd/images/Details/detali-bot.png'" alt>
+          
         </div>
+
     </section>
+    
     <!-- Shop Details Section End -->
 
     </div>
@@ -173,7 +174,8 @@
 </style>
 <script>
 import AddCartWidget from "./widgets/AddCartComponent";
-
+import MakeOfferWidget from "./widgets/MakeOfferComponent";
+import ChatWidget from "./widgets/ChatComponent";
 export default ({
     data:()=>({
         id : null,
@@ -187,6 +189,8 @@ export default ({
     }),
     components: {
         AddCartWidget,
+        MakeOfferWidget,
+        ChatWidget,
     },
     methods:{
         str_replace(str){

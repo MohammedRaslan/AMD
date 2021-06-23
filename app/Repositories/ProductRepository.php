@@ -6,6 +6,7 @@ use App\Enums\ProductType;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\Wishlist;
 use Illuminate\Support\Str;
 
 class ProductRepository{
@@ -157,6 +158,33 @@ class ProductRepository{
                     'status' => $product->status];
         }
         return ['response' => false];
+    }
+
+    public function AddToWishlist($user_id,$product_id)
+    {
+        
+       $product = Product::find($product_id);
+       $wishlist = Wishlist::where('user_id',$user_id)->where('product_id',$product_id)->first();
+       if($product){
+           if(!$wishlist){
+                $wishlist = Wishlist::create([
+                    'product_id' => $product_id,
+                    'user_id' => $user_id,
+                    'type' => $product->type,
+                ]);
+                return ['status' => 'added','count' => $this->productWishlistCount($product_id)];
+           }else{
+                $wishlist = Wishlist::where('user_id',$user_id)->where('product_id',$product_id)->delete();
+                return ['status' => 'not_added', 'count' => $this->productWishlistCount($product_id)];
+           }
+       }
+     
+      return false;
+    }
+
+    public function productWishlistCount($product_id)
+    {
+       return Wishlist::where('product_id',$product_id)->count();
     }
 
 }
