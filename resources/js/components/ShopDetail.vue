@@ -42,8 +42,11 @@
                                         <path id="Shape" d="M10.417,18.75a1.048,1.048,0,0,1-.742-.31L1.731,10.387A6.069,6.069,0,0,1,0,6.134,6.173,6.173,0,0,1,6.2,0,4.733,4.733,0,0,1,9.3,1.373a10.989,10.989,0,0,1,1.115,1.162,11,11,0,0,1,1.115-1.162A4.733,4.733,0,0,1,14.635,0a6.173,6.173,0,0,1,6.2,6.134,6.055,6.055,0,0,1-1.88,4.4l-7.8,7.905A1.034,1.034,0,0,1,10.417,18.75ZM6.2,2.083A4.088,4.088,0,0,0,2.083,6.134a4,4,0,0,0,1.139,2.8l7.194,7.293,7.064-7.163L17.5,9.04A3.989,3.989,0,0,0,18.75,6.134a4.088,4.088,0,0,0-4.115-4.051,2.778,2.778,0,0,0-1.722.85,11.223,11.223,0,0,0-1.648,1.918,1.042,1.042,0,0,1-1.7,0A11.257,11.257,0,0,0,7.921,2.933,2.779,2.779,0,0,0,6.2,2.083Z" fill="#fd1266"/>
                                     </g>
                                 </svg> -->
-                                <i class="far fa-heart heart"></i>
-                                <span>314</span>
+                                 <Wishlist :product_id="product.id" 
+                                          :userAddedItemToWishlist="product.userAddedItemToWishlist"
+                                          :wishlistCount="product.wishlistCount"
+                                          :product_user_id="product.user_id">
+                                </Wishlist>
                             </p>
                         </div>
                         <div class="row">
@@ -176,6 +179,7 @@
 import AddCartWidget from "./widgets/AddCartComponent";
 import MakeOfferWidget from "./widgets/MakeOfferComponent";
 import ChatWidget from "./widgets/ChatComponent";
+import Wishlist from "./widgets/WishlistComponent";
 export default ({
     data:()=>({
         id : null,
@@ -191,6 +195,7 @@ export default ({
         AddCartWidget,
         MakeOfferWidget,
         ChatWidget,
+        Wishlist,
     },
     methods:{
         str_replace(str){
@@ -218,8 +223,8 @@ export default ({
         axios.get('/api/shop/getProduct/'+this.id).then((response) => {
         
             this.product = response.data.product;
-            this.images  = response.data.images;
-            this.shipping = response.data.shipping;
+            this.images  = response.data.product.images;
+            this.shipping = response.data.product.shipping;
             this.loading = true;
             if(this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                 this.author = true;

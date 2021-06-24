@@ -20,37 +20,49 @@ import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
 import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue";
+import WishlistComponent from "./components/Buying/WishlistComponent.vue";
+import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
 
 const routes = [
     {
-        path:"/",
+        path: "/",
         component: HomeComponent,
-        name:"home",
+        name: "home",
     },
     {
-        path:"/example",
+        path: "/example",
         component: ExampleComponent,
-        name:"example",
+        name: "example",
     },
     {
-        path:"/login",
+        path: "/login",
         component: LoginComponent,
-        name:"login",
+        name: "login",
     },
     {
-        path:"/register",
+        path: "/register",
         component: RegisterComponent,
-        name:"register",
+        name: "register",
     },
     {
-        path:"/selling/overview",
+        path: "/selling/overview",
         component: OverviewComponent,
-        name:"SellingOverview",
+        name: "SellingOverview",
     },
     {
-        path:"/selling/sell_item",
+        path: "/selling/sell_item",
         component: CreateProductComponent,
-        name:"ProductCreate",
+        name: "ProductCreate",
+    },
+    {
+        path: "/buying/offers",
+        component: OfferBidsComponent,
+        name: 'OfferBids',
+    },
+    {
+        path: "/buying/wishlist",
+        component: WishlistComponent,
+        name: 'Wishlist',
     },
     {
         path: "/step_two/:id?",
@@ -63,9 +75,9 @@ const routes = [
         name: "ProductCreateShipping",
     },
     {
-        path:"/selling/drafted",
+        path: "/selling/drafted",
         component: DraftedComponent,
-        name:"draftedProduct",
+        name: "draftedProduct",
     },
     {
         path: "/shopCategory/:query?",
@@ -95,36 +107,36 @@ const routes = [
 
     // ADMIN ROUTES
     {
-        path:"/admin",
+        path: "/admin",
         component: DashboardComponent,
-        name:"admin",
+        name: "admin",
     },
     {
-        path:"/admin/users",
+        path: "/admin/users",
         component: UsersComponent,
         name: "users",
     },
     {
-        path:"/admin/categories",
+        path: "/admin/categories",
         component: CategoriesComponent,
         name: "categories",
     },
     {
-        path:"/admin/subscriptions",
+        path: "/admin/subscriptions",
         component: SubscriptionsComponent,
         name: "subscriptions",
     },
     {
-        path:"/admin/AddSubscription",
+        path: "/admin/AddSubscription",
         component: AddSubscriptionsComponent,
         name: "ManageSubscriptions",
     },
-    
+
 ];
 
 const router = new VueRouter({
     routes,
-    mode:"history",
+    mode: "history",
 });
 
 export default router;

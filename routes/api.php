@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('product')->group(function () {
         Route::post('store',[ProductController::class,'store']);
         Route::post('store/step_two',[ProductController::class,'step_two']);
-        Route::post('store/step_three',[ProductController::class,'step_three']); 
+        Route::post('store/step_three',[ProductController::class,'step_three']);
         Route::get('changeStatus/{id?}',[ProductController::class,'changeStatus']); 
         Route::get('AddToWishlist/{id?}',[ProductController::class,'AddToWishlist']);
         Route::get('getProductShipping/{id?}',[ProductController::class,'getProductShipping']);     
@@ -60,6 +61,9 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
         
+    });
+    Route::prefix('wishlist')->group(function (){
+        Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']); 
     });
     Route::prefix('shop')->group(function() {
         Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);

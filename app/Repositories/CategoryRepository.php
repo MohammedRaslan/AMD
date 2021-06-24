@@ -37,20 +37,25 @@ class CategoryRepository{
         return Category::select('id','title')->where('status',1)->with('products')->get();
     }
 
-    public function categoryProducts($id)
+    public function categoryProducts($user_id,$id)
     {
         $category = Category::where('id',$id)->with('products')->first();
-        return $category->products()->where('status',1)->where('draft',0)->get();
-
-        // $query = $products->map(function($item, $key){
-        //     dd($item->wishlist);
-        //        $count = $item->push('wishlistCount',$item->wishlist);
-        //         return [
-        //             'items' => $item,
-        //             // 'count' => $count,
-        //         ];
+        $products = $category->products()->where('status',1)->where('draft',0)->get();
+        $exist = false;
+        return $products->map(function($item, $key) use ($user_id,$exist){
+               $item->wishlistCount = count($item->wishlist);
+               if($user_id != null){
+                    foreach($item->wishlist as $wishlist){
+                        if($wishlist->user_id == $user_id){
+                            $exist = true;
+                        }
+                    }
+               }
+           
+               $item->userAddedItemToWishlist = $exist;
+               $item->unsetRelation('wishlist');
+            return $item;
                 
-        // });
-        // dd($query);
+        });
     }
 }

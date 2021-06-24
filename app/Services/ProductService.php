@@ -78,9 +78,9 @@ class ProductService{
        return $this->productRepository->shopProducts();
    }
 
-   public function getProduct($id)
+   public function getProduct($user_id,$id)
    {
-       return $this->productRepository->getProduct($id);
+       return $this->productRepository->getProduct($user_id,$id);
    }
    
    public function randomProducts()

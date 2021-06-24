@@ -135,13 +135,16 @@ class ProductRepository{
                             ->get();
     }
     
-    public function getProduct($id)
+    public function getProduct($user_id,$id)
     {
-        $product = Product::where('id',$id)->with('user')->first();
-        $images  = $product->images;
+        $product = Product::where('id',$id)->with(['user','shipping','images'])->first();
+        $wishlist = $product->wishlist()->pluck('user_id')->toArray();
+        $product->wishlistCount = count($product->wishlist);
+        $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
+        $product->unsetRelation('wishlist');
         return ['product' => $product,
-                'images' => $images,
-                'shipping' => $product->shipping];
+            ];
+      
     }
 
     public function randomProducts()

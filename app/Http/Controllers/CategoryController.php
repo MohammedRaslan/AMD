@@ -54,7 +54,8 @@ class CategoryController extends Controller
 
     public function categoryProducts(Request $request,$id)
     {
-        $data = $this->categoryService->categoryProducts($id);
+        $user_id = $request->user() != null ? $request->user()->id : null;
+        $data = $this->categoryService->categoryProducts($user_id,$id);
         return response()->json($data);
     }
 

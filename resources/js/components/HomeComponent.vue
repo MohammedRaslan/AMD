@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div class="row product__filter">
+                    <div class="row ">
                         <!-- Block Item -->                        
                         <div v-for="product in products" :key="'product_'+product.id" class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix cat_1">
                             <div class="product__item position-relative">
@@ -163,15 +163,15 @@ export default({
         products: {},
     }),
     methods:{
-        async fetchproducts(id){
-            await axios.get('/api/guest/getCategoryProducts/'+id).then((response) =>{
+         fetchproducts(id){
+             axios.get('/api/guest/getCategoryProducts/'+id).then((response) =>{
             this.products = response.data;
             this.$Progress.finish();
             this.loading = false;
        });
         },
-        async random(){
-            await axios.get('/api/product/random').then((response) =>{
+         random(){
+             axios.get('/api/product/random').then((response) =>{
             this.products = response.data;
         });
         },

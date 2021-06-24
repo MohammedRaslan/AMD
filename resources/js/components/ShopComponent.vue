@@ -94,11 +94,14 @@
                         <h4><a class="link-del" href="_shop-details2.htm">{{ product.title }}</a> </h4>
                         <h5>$ {{ product.price }}</h5>
                         <h6>
-                            <span class="float-left">or Best Offer</span>
-                            <span v-if="product.best_offer != userId">
-                                <i class="far fa-heart heart" :id="'wishlist_'+product.id" @click="addToWishlist(product.id)"></i>
-                                <span>{{ hearts }} </span>
-                            </span>
+                            <span v-if="product.best_offer" class="float-left">or Best Offer</span>
+                           
+                                <Wishlist :product_id="product.id" 
+                                          :userAddedItemToWishlist="product.userAddedItemToWishlist"
+                                          :wishlistCount="product.wishlistCount"
+                                          :product_user_id="product.user_id">
+                                </Wishlist>
+                           
                         </h6>
                     </div>
                 </div>
@@ -139,37 +142,23 @@
 
 
 <script>
+import Wishlist from "./widgets/WishlistComponent";
 export default {
     data:()=>({
         id : null,
         loading: true,
         products:{},
-        hearts : 0,
-        userId: null,
     }),
+     components: {
+        Wishlist,
+    },
     methods:{
         str_replace(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         },
-        addToWishlist(product_id){
-            axios.get('/api/product/AddToWishlist/'+product_id).then((response) => {
-                if(response.data.status == 'added'){
-                    document.getElementById("wishlist_"+product_id).classList.remove('far');
-                    document.getElementById("wishlist_"+product_id).classList.add('fas');
-                }else{
-                    document.getElementById("wishlist_"+product_id).classList.remove('fas');
-                    document.getElementById("wishlist_"+product_id).classList.add('far');
-                }
-                this.hearts = response.data.count;
-            });
-        }
-
     },
    mounted(){
-        axios.get('/api/user/getUserId').then((response) => {
-            this.userId = response.data;
-        });
         Fire.$emit('mounted');
         this.id = this.$route.params.query;
         axios.get('/api/category/getCategoryProducts/'+this.id).then((response) =>{

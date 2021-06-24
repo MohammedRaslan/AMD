@@ -28,9 +28,9 @@ class CategoryService{
         return $this->categoryRepository->get();
     }
 
-    public function categoryProducts($id)
+    public function categoryProducts($user_id,$id)
     {
-        return $this->categoryRepository->categoryProducts($id);
+        return $this->categoryRepository->categoryProducts($user_id,$id);
     }
 }
 
