@@ -59,6 +59,12 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function addNewUserFromAdmin(Request $request)
+    {
+        $user = $this->userService->addNewUserFromAdmin($request->all());
+        return response()->json($user);
+    }
+
     public function edit(Request $request,$id)
     {
         $data = $this->userService->edit($request->all(),$id);

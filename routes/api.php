@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WishlistController;
 
 /*
@@ -60,10 +61,11 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getProductData',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
-        
+        Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);   
     });
     Route::prefix('wishlist')->group(function (){
         Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']); 
+        Route::delete('remove/{id?}',[WishlistController::class,'destroy']);
     });
     Route::prefix('shop')->group(function() {
         Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);
@@ -73,6 +75,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getUserInfo/{id}',[UserController::class,'getUserInfo']);
         Route::post('edit/{id}',[UserController::class,'edit']);
         Route::get('getUserId',[UserController::class,'getUserId']);
+        Route::post('createFromAdmin',[UserController::class,'addNewUserFromAdmin']);
     });
     Route::prefix('cart')->group(function() {
         Route::post('add/{productId}',[CartController::class,'add']);
@@ -81,6 +84,10 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getCartCount/{id}',[CartController::class,'getCartCount']);
         Route::get('getCartProducts',[CartController::class,'getCartProducts']);
         Route::get('calculate',[CartController::class,'calculate']);
+    });
+
+    Route::prefix('dashboard')->group(function(){
+        Route::get('AdminDashboard',[DashboardController::class,'AdminDashboard']);
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 

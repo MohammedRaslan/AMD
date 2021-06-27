@@ -16,4 +16,9 @@ class WishlistService{
     {
         return $this->wishlistRepository->getWishlist($user_id,$type);
     }
+
+    public function destroy($user_id,$wishlist_id)
+    {
+        return $this->wishlistRepository->destroy($user_id,$wishlist_id);
+    }
 }

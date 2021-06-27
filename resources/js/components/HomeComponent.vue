@@ -108,7 +108,7 @@
                         <!-- Block Item -->                        
                         <div v-for="product in products" :key="'product_'+product.id" class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix cat_1">
                             <div class="product__item position-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img class="product__item__pic set-bg" :src="str_replace(product.image)">
                                 <div class="product__item__text">
                                     <h6>{{ product.title }}</h6>

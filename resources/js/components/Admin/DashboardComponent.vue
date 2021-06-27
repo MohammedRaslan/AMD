@@ -23,7 +23,7 @@
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card">
                     <div class="card-body ribbon">
-                        <div class="ribbon-box green" data-toggle="tooltip" title="New Professors"></div>
+                        <div class="ribbon-box green" data-toggle="tooltip" title="New Professors">{{ userCount }}</div>
                         <a href="" class="my_sort_cut text-muted">
                             <i class="fa fa-users"></i>
                             <span>Users</span>
@@ -33,7 +33,8 @@
             </div>
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body ribbon">
+                        <div class="ribbon-box orange" data-toggle="tooltip" title="New Professors">{{ categoryCount }}</div>
                         <a href="" class="my_sort_cut text-muted">
                             <i class="fa fa-th-list"></i>
                             <span>Categories</span>
@@ -44,7 +45,7 @@
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card">
                     <div class="card-body ribbon">
-                        <div class="ribbon-box orange" data-toggle="tooltip" title="New Staff"></div>
+                        <div class="ribbon-box green" data-toggle="tooltip" title="New Staff">{{ productCount }}</div>
                         <a href="" class="my_sort_cut text-muted">
                             <i class="fa fa-book"></i>
                             <span>Products</span>
@@ -74,8 +75,8 @@
             </div>
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card">
-                    <div class="card-body ribbon">
-                        <div class="ribbon-box green" data-toggle="tooltip" title="New Staff"></div>
+                    <div class="card-body ">
+                        <!-- <div class="ribbon-box green" data-toggle="tooltip" title="New Staff"></div> -->
                         <a href="" class="my_sort_cut text-muted">
                             <i class="fa fa-shopping-cart"></i>
                             <span>Orders</span>
@@ -162,11 +163,16 @@
 <script>
 
 export default ({
-   data:()=>({
-       username:JSON.parse(localStorage.getItem('currentUser'))['first_name'] + ' ' +JSON.parse(localStorage.getItem('currentUser'))['last_name'] ,
+//    data:()=>({
+//        username:JSON.parse(localStorage.getItem('currentUser'))['first_name'] + ' ' +JSON.parse(localStorage.getItem('currentUser'))['last_name'] ,
+//    }),
+   data:()=> ({
+       userCount: 0,
+       productCount: 0,
+       categoryCount: 0,
    }),
    methods:{
-  
+   
     },
 
     created(){
@@ -174,10 +180,13 @@ export default ({
 
     },
     mounted(){
+        axios.get('/api/dashboard/AdminDashboard').then((response) => {
+            this.userCount = response.data.userCount;
+            this.productCount = response.data.productCount;
+            this.categoryCount = response.data.categoryCount;
+        });
        var user = JSON.parse(localStorage.getItem('currentUser'));
-       
-        this.$Progress.finish();
-
+       this.$Progress.finish();
     }
 })
 </script>

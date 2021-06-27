@@ -13,7 +13,7 @@
                 <!-- My Items -->
                 <button class="nav-link disabled" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My Items</button>
                 <!-- Active -->
-                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Active</button>
+                <router-link to="/selling/active_product" class="nav-link" id="v-pills-settings-tab">Active</router-link>
                 <!-- Sold -->
                 <button class="nav-link" id="v-pills-home-tab2" data-bs-toggle="pill" data-bs-target="#v-pills-home2" type="button" role="tab" aria-controls="v-pills-home2" aria-selected="false">Sold</button>
                 <!-- Unsold -->

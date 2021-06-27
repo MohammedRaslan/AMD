@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Product;
 use App\Models\Wishlist;
 
 class WishlistRepository{
@@ -15,5 +16,14 @@ class WishlistRepository{
     {
         return Wishlist::where([['user_id',$user_id], ['type', $type ]])->with('product')->get();
         
+    }
+
+    public function destroy($user_id,$wishlist_id)
+    {
+        $wishlist = Wishlist::where([['user_id',$user_id], ['id',$wishlist_id]])->delete();
+        if($wishlist){
+            return true;
+        }
+        return false;
     }
 }

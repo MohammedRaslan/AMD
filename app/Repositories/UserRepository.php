@@ -78,6 +78,29 @@ class UserRepository{
         return $user != NULL ? $user : false;
     }
 
+    public function addNewUserFromAdmin($request)
+    {
+        $user = User::create([
+            'first_name' => $request['first_name'],
+            'last_name'  => $request['last_name'],
+            'user_name' => $request['user_name'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'phone'      => $request['phone'],
+            'role' => $request['role'],
+            'type' => 1,
+        ]);
+        $userData = [
+            'id' => $user->id,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'email' => $user->email,
+
+        ];
+        $accessToken = $user->createToken('authToken')->accessToken;
+        return $userData;
+    }
+
     public function edit($data,$id)
     {
         $user = User::find($id);
@@ -89,6 +112,7 @@ class UserRepository{
         $user->last_name  = $data['last_name'];
         $user->email = $data['email'];
         $user->role = $data['role'];
+        $user->password = bcrypt($data['password']);
         if($user->save()){
             return true;
         }

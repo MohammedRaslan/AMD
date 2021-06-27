@@ -1,6 +1,6 @@
 <template>
     <div>
-    <section class="breadcrumb-option">
+            <section class="breadcrumb-option">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -12,7 +12,7 @@
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                 </g>
                             </svg>
-                            <span>Buying</span>
+                            <span>Selling</span>
                         </div>
                     </div>
                 </div>
@@ -23,17 +23,17 @@
 
 
     <!-- Latest Blog Section Begin -->
-    <section class="selling buying">
+    <section class="selling">
 
         <div class="container">
             <div class="row">
-                <h2>Buying <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <h2>Selling <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
             <!-- Compnent Here -->
             <side-bar></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
-                    <div class="tab-content"  v-for="wishlist in wishlists" :key="wishlist.id" :id="'wishlist_'+wishlist.id">
+                    <div class="tab-content" id="v-pills-tabContent" v-for="product in products" :key="product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -46,14 +46,14 @@
 
                                                 <div class="col-lg-4 col-md-3 col-sm-4 col-6">
                                                     <figure>
-                                                        <img :src='str_replace(wishlist.product.image)' alt="">
+                                                        <img :src='str_replace(product.image)' alt="">
                                                     </figure>
                                                 </div>
 
                                                 <div class="col-lg-7 col-md-6 col-sm-6 col-6">
                                                     <h5>
-                                                        {{ wishlist.product.title }}
-                                                        <p> {{ wishlist.product.brand }}</p>
+                                                        {{ product.title }}
+                                                        <p>Dolls</p>
                                                     </h5>
                                                 </div>
                                             </div>
@@ -61,18 +61,25 @@
                                         </div>
                                         <div class="col-lg-3 col-md-12 price">
                                             <p>Price</p>
-                                            <h5>$ {{ wishlist.product.price }}</h5>
-                                            <p style="display:grid">created at in <span>{{ wishlist.product.created_at | myDate }}</span></p>
+                                            <h5>$ {{ product.price }}</h5>
+                                            <p style="display:grid">created at in <span>{{ product.created_at | myDate }}</span></p>
                                             <!-- <button class="btn btn-outline-warning"> <a href="#">New Offer Received!</a> </button> -->
                                         </div>
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
-                                             
-                                                  <div class="inner" >
-                                                    <button class="btn btn-secondary"><router-link :to="{name: 'ShopDetailComponent', params:{query: wishlist.product.id}}">View</router-link></button>
+                                                <div class="inner" v-if="product.draft == 0">
+                                                    <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
+                                                </div>
+                                                  <div class="inner" v-if="product.draft == 1">
+                                                    <button class="btn btn-secondary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-outline-danger" @click="removeFromWishlist(wishlist.id)">Remove Item</button>
+                                                    <button class="btn btn-danger" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)"><a >Suspend</a></button>
+                                                    <button class="btn black" v-else :id="'product_'+product.id" @click="changeStatus(product.id)"><a >Suspended</a></button>
+
+                                                </div>
+                                                <div class="inner">
+                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
                                                 </div>
                                            </div>
                                         </div>
@@ -129,11 +136,11 @@
     }
 </style>
 <script>
-import SideBar from "./BuyingSidebarComponent";
+import SideBar from "./SidebarComponent";
 export default ({
     data :()=>({
         loading : false,
-        wishlists: {},
+        products: {},
         message : '',
         pagination: {},
     }),
@@ -146,24 +153,31 @@ export default ({
             return str;
         },
         getProducts(){
-            axios.get('/api/wishlist/getWishlist/0').then((response) => {
-            this.wishlists = response.data;
-            // this.pagination = response.data.links;
+            axios.get('/api/product/getUserProductActive').then((response) => {
+            this.products = response.data.data;
+            this.pagination = response.data.links;
             // console.log(this.pagination);
-            if(response.data.length == 0 ){ 
+            if(response.data.data.length == 0 ){
                 this.message = 'You dont have products';
                 }
         });
         },
-        removeFromWishlist(wishlistId){
-             axios.delete('/api/wishlist/remove/'+wishlistId).then((response) => {
-                 document.getElementById('wishlist_'+wishlistId).remove();
-                    Toast.fire({
+        changeStatus(product_id){
+            axios.get('/api/product/changeStatus/'+product_id).then((response) => {
+                Toast.fire({
                         icon: 'success',
-                        title: 'Removed From Wishlist'
-                        });
-        });
-
+                        title: 'Status Changed Successfully'
+                    });
+                  if(response.data.status == 1){
+                    document.getElementById("product_"+product_id).classList.remove('black');
+                    document.getElementById("product_"+product_id).innerHTML = 'Suspend'
+                    document.getElementById("product_"+product_id).classList.add('btn-danger');
+                }else{
+                    document.getElementById("product_"+product_id).classList.remove('btn-danger');
+                    document.getElementById("product_"+product_id).innerHTML = 'Suspened'
+                    document.getElementById("product_"+product_id).classList.add('black');
+                }
+            });
         }
     },
     beforeCreate() {

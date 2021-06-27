@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row p-2 w-100" style="justify-content:flex-end"> 
-        <button class="btn btn-success pt-2 col-1">Add</button>
+        <button class="btn btn-success pt-2 col-1" data-target="#exampleModalCenter" data-toggle="modal" data-backdrop="static" data-keyboard="false">Add</button>
     </div>
     <div class="projects m-3">
         <div class="tableFilters row m-4">
@@ -42,7 +42,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form @submit.prevent="EditUser(form.id)">
+        <form @submit.prevent="ManageUser(form.id)">
             <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
                 <input type="text" class="form-control"  v-model="form.user_name" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -58,6 +58,14 @@
             <div class="form-group">
                 <label for="exampleInputPassword1">Email</label>
                 <input type="text" class="form-control"  v-model="form.email" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Phone</label>
+                <input type="text" class="form-control"  v-model="form.phone" id="exampleInputPassword1">
+            </div>
+             <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="text" class="form-control"  v-model="form.password" id="exampleInputPassword1">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
@@ -117,6 +125,8 @@ export default {
                 last_name: null,
                 email: null,
                 role: null,
+                phone: null,
+                password: null
             }),
             columns: columns,
             sortKey: 'id',
@@ -184,6 +194,7 @@ export default {
                 this.form.first_name = response.data.first_name;
                 this.form.last_name = response.data.last_name;
                 this.form.email = response.data.email;
+                this.form.phone = response.data.phone;
                 this.form.role = response.data.role;
             });
         },
@@ -192,14 +203,24 @@ export default {
                 a.remove()
             })
         },
-        async EditUser(id){
+        async ManageUser(id = null){
             this.$Progress.start();
-            const result = await this.form.post('/api/user/edit/'+id).then((response) => {
-                if(response.data = true){
-                    this.$Progress.finish();
-                }
-
-            });
+            if(id !=  null){
+                const result = await this.form.post('/api/user/edit/'+id).then((response) => {
+                    if(response.data = true){
+                        this.$Progress.finish();
+                    }
+                });
+            }else{
+                   const result = await this.form.post('/api/user/createFromAdmin').then((response) => {
+                    if(response.data != null){
+                        this.$Progress.finish();
+                        this.users.push(response.data);
+                        this.form.reset();
+                    }
+                });
+            }
+       
         }
     }
 };

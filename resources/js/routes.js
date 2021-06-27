@@ -8,7 +8,7 @@ import OverviewComponent from "./components/Selling/OverviewComponent";
 import CreateProductComponent from "./components/Selling/CreateProductComponent";
 import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
 import CreateProductShippingComponent from "./components/Selling/CreateProductShipping";
-
+import ActiveProductComponent from "./components/Selling/ActiveProductComponent";
 import DashboardComponent from "./components/Admin/DashboardComponent"
 import UsersComponent from "./components/Admin/UsersComponent"
 import CategoriesComponent from "./components/Admin/CategoriesComponent"
@@ -53,6 +53,11 @@ const routes = [
         path: "/selling/sell_item",
         component: CreateProductComponent,
         name: "ProductCreate",
+    },
+    {
+        path: "/selling/active_product",
+        component: ActiveProductComponent,
+        name: "ActiveProduct",
     },
     {
         path: "/buying/offers",

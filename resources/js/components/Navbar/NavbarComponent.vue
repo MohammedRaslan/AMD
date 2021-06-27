@@ -13,7 +13,7 @@
                             </li>
                         
                             <li class="d-xl-flex d-lg-flex d-md-flex icons">
-                               <a href="#">
+                               <a href="/">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                     <g id="Group_36" data-name="Group 36" transform="translate(-742 -317)">
                                         <g id="Group_35" data-name="Group 35" transform="translate(42.573 14.174)">
@@ -27,7 +27,7 @@
                                     </g>
                                     </svg>
                                </a>   
-                               <a href="#">
+                               <router-link to="/buying/wishlist">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                     <g id="Group_37" data-name="Group 37" transform="translate(-784 -317)">
                                         <g id="Icon_love_solid" transform="translate(790.583 326.125)">
@@ -39,7 +39,7 @@
                                         </g>
                                     </g>
                                     </svg>
-                               </a>  
+                               </router-link>  
                                
                                 <Cart></Cart>
                                 <Notification></Notification>

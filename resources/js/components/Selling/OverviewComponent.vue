@@ -157,7 +157,7 @@ export default ({
             this.products = response.data.data;
             this.pagination = response.data.links;
             // console.log(this.pagination);
-            if(response.data.length == 0 ){
+            if(response.data.data.length == 0 ){
                 this.message = 'You dont have products';
                 }
         });

@@ -12,6 +12,13 @@
     padding: 10px !important;
 }
 
+.router-link-exact-active{
+    background-color: white !important;
+    color: #0000006b !important;
+    border-radius: 6px !important;
+    padding: 10px !important;
+}
+
 .dt-buttons{
     text-align: center;
 }

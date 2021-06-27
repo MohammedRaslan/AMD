@@ -37,6 +37,11 @@ class UserService{
         return $this->userRepository->getUserInfo($id);
     }
 
+    public function addNewUserFromAdmin($request)
+    {
+        return $this->userRepository->addNewUserFromAdmin($request);
+    }
+
     public function edit($data,$id)
     {
         return $this->userRepository->edit($data,$id);

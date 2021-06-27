@@ -89,4 +89,9 @@ class ProductController extends Controller
         $response = $this->productService->AddToWishlist($request->user()->id,$product_id);
         return response()->json($response);
     }
+
+    // public function getUserProductActive(Request $request)
+    // {
+        
+    // }
 }

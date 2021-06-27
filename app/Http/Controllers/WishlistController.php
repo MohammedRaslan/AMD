@@ -18,4 +18,10 @@ class WishlistController extends Controller
         $data = $this->wishlistService->getWishlist($request->user()->id,$type);
         return response()->json($data);
     }
+
+    public function destroy(Request $request,$id)
+    {
+        $response = $this->wishlistService->destroy($request->user()->id,$id);
+        return response()->json($response);
+    }
 }
