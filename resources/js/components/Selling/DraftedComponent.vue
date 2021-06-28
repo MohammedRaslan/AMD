@@ -33,7 +33,7 @@
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
-                    <div class="tab-content" id="v-pills-tabContent" v-for="product in products" :key="product.id">
+                    <div class="tab-content" id="v-pills-tabContent" v-for="product in products.data" :key="product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -86,36 +86,7 @@
                     </div>
                 </div>
             </div>
-         
-          <div class="pagination-selling">
-
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13.995" viewBox="0 0 8 13.995">
-                                <g id="Icon_20_Grey_Arrow" data-name="Icon / 20 / Grey / Arrow" transform="translate(13.998 -3.002) rotate(90)">
-                                    <path id="Shape" d="M7.712,7.69,1.678,13.708a.981.981,0,0,1-1.39-1.386L5.627,7,.288,1.673A.981.981,0,0,1,1.678.287L7.712,6.3a.978.978,0,0,1,0,1.386Z" transform="translate(16.998 5.998) rotate(90)" fill="#99abb9"/>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13.995" viewBox="0 0 8 13.995">
-                            <g id="Icon_20_Grey_Arrow" data-name="Icon / 20 / Grey / Arrow" transform="translate(-5.998 16.998) rotate(-90)">
-                            <path id="Shape" d="M7.712,7.69,1.678,13.708a.981.981,0,0,1-1.39-1.386L5.627,7,.288,1.673A.981.981,0,0,1,1.678.287L7.712,6.3a.978.978,0,0,1,0,1.386Z" transform="translate(16.998 5.998) rotate(90)" fill="#7ac943"/>
-                            </g>
-                        </svg>
-                    </a>
-                    </li>
-                </ul>
-               </nav>
-          </div>
-          
+            <pagination :data="products" @pagination-change-page="getProducts"></pagination>   
         </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -145,21 +116,24 @@ export default ({
                     id: '12',
                 }
             });
-            }
+            },
+        getProducts(page = 1){
+            axios.get('/api/product/getUserProductDrafted?page=' + page).then((response) => {
+            this.products = response.data;
+              if(response.data == '' ){
+                this.message = 'You dont have products';
+                }
+        });
+        }
     },
     beforeCreate() {
         this.$Progress.start();
     },
     mounted(){
         Fire.$emit('mounted');
-        console.log(window.location.origin, this.$route);
+        // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
-        axios.get('/api/product/getUserProductDrafted').then((response) => {
-            this.products = response.data;
-              if(response.data == '' ){
-                this.message = 'You dont have products';
-                }
-        });
+        this.getProducts();
     }
 })
 </script>

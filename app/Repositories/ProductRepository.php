@@ -123,7 +123,7 @@ class ProductRepository{
     {
         return Product::where('user_id',$id)
                             ->orderBy('created_at','desc')
-                            ->paginate(3);
+                            ->paginate(10);
     }
 
 
@@ -132,7 +132,7 @@ class ProductRepository{
         return Product::where('user_id',$id)
                             ->where('draft',1)
                             ->orderBy('created_at','desc')
-                            ->get();
+                            ->paginate(10);
     }
     
     public function getProduct($user_id,$id)
@@ -190,4 +190,10 @@ class ProductRepository{
        return Wishlist::where('product_id',$product_id)->count();
     }
 
+
+    public function getUserProductActive($user_id)
+    {
+        return Product::where([['user_id',$user_id] , ['status',1]])->paginate(10);
+
+    }
 }

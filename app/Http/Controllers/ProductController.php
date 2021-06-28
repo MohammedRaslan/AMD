@@ -90,8 +90,9 @@ class ProductController extends Controller
         return response()->json($response);
     }
 
-    // public function getUserProductActive(Request $request)
-    // {
-        
-    // }
+    public function getUserProductActive(Request $request)
+    {
+        $data = $this->productService->getUserProductActive($request->user()->id);
+        return response()->json($data);
+    }
 }
