@@ -15,7 +15,10 @@ import { mapState } from "vuex";
 import Swal from 'sweetalert2';
 import 'vueditor/dist/style/vueditor.min.css';
 import moment from "moment";
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
 
+Vue.component('v-select', vSelect)
 Vue.use(Vuex);
 
 

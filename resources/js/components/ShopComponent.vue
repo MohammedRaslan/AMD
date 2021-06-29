@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="sort row select-dolls">
                     <div class="inner-sort col-sm-6 col-6">
-                        <div class="nice-select form-select" tabindex="0">
+                        <div class="nice-select form-select1" tabindex="0">
                             <span class="current">Price Low to High</span>
                             <ul class="list">
                                 <li data-value="Price Low to High" class="option selected">Price Low to High</li>
