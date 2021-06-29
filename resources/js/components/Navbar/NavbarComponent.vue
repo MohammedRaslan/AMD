@@ -2,7 +2,7 @@
   <nav class="header__menu mobile-menu" v-if="mounted">
     <ul class="text-start d-lg-flex d-xl-flex d-md-flex justify-content-between" v-if="logged">
 
-       <li class="menu-1 cat mr-xl-5 mr-lg-5 mr-md-2 d-lg-flex d-xl-flex d-md-flex align-items-center">                                
+       <li class="menu-1 cat mr-xl-5 mr-lg-5 mr-md-2 d-lg-flex d-xl-flex d-md-flex align-items-center">
                                 <Drop></Drop>
                             </li>
                             <li class="search-item search-switch">
@@ -11,7 +11,7 @@
                                 <!-- <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a> -->
                                 <!-- <i class="fas fa-search"></i> -->
                             </li>
-                        
+
                             <li class="d-xl-flex d-lg-flex d-md-flex icons">
                                <a href="#">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
@@ -26,7 +26,7 @@
                                         </g>
                                     </g>
                                     </svg>
-                               </a>   
+                               </a>
                                <a href="#">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                     <g id="Group_37" data-name="Group 37" transform="translate(-784 -317)">
@@ -39,8 +39,8 @@
                                         </g>
                                     </g>
                                     </svg>
-                               </a>  
-                               
+                               </a>
+
                                 <Cart></Cart>
                                 <Notification></Notification>
                                 <a v-on:click="GotoAdmin" v-if="admin" style="
@@ -55,14 +55,14 @@
                                     <path d="m301 352.25h-45v159.75h45c6.91 0 12.92-4.72 14.57-11.42l.43-1.75v-131.58c0-8.29-6.72-15-15-15z" fill="#ff9f00"/><g id="Admin_1_"><g><g>
                                     <path d="m256 391c-74.439 0-135-60.561-135-135 0-27.368 8.182-53.744 23.66-76.275 15.099-21.978 36.088-38.877 60.697-48.868 4.624-1.878 9.881-1.332 14.02 1.456 4.141 2.787 6.623 7.452 6.623 12.443v103.217l30 20 30-20v-103.218c0-4.991 2.482-9.655 6.623-12.443 4.14-2.787 9.396-3.333 14.02-1.456 24.609 9.991 45.599 26.89 60.697 48.868 15.478 22.532 23.66 48.908 23.66 76.276 0 74.439-60.561 135-135 135zm45-135h.01z" fill="#fdd929"/></g></g></g>
                                     <path d="m391 256c0-27.368-8.182-53.744-23.66-76.275-15.099-21.978-36.088-38.877-60.697-48.868-4.624-1.877-9.88-1.332-14.02 1.456-4.141 2.787-6.623 7.452-6.623 12.443v103.217l-30 20v123.027c74.439 0 135-60.561 135-135z" fill="#fabe2c"/></g>
-                                </svg>    
-                                </a>               
+                                </svg>
+                                </a>
                             </li>
                              <li class="menu-1 menu-user d-lg-flex d-md-flex d-xl-flex align-items-center">
                                  <!-- <a href="#"> -->
                                 <div class="dropdown drop-user1">
                                     <button class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton22" data-bs-toggle="dropsdown" type="button" aria-expanded="false">
-                                        <span>Hello {{ name }}</span> 
+                                        <span>Hello {{ name }}</span>
                                         <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_down_solid" width="20.833" height="20.833" viewBox="0 0 20.833 20.833">
                                             <path id="Shape" d="M10.417,20.833A10.417,10.417,0,1,1,20.833,10.417,10.428,10.428,0,0,1,10.417,20.833ZM5.208,7.291A1.042,1.042,0,0,0,4.472,9.07L9.68,14.278a1.042,1.042,0,0,0,1.474,0L16.361,9.07A1.042,1.042,0,1,0,14.888,7.6l-4.472,4.472L5.945,7.6A1.035,1.035,0,0,0,5.208,7.291Z" fill="#fff"/>
                                         </svg> -->
@@ -96,22 +96,22 @@
                                         <li><router-link class="dropdown-item" to="subscriptions">Subscriptions</router-link></li>
                                         <li><a class="dropdown-item" href="account.html">My Account</a></li>
                                         <li><a class="dropdown-item" style="cursor:pointer" @click="logout">Logout</a></li>
-                                        
-                                        
+
+
 
                                     </ul>
                                 </div>
-                                 
-                               
-                               
+
+
+
                             </li>
-                                      
+
                         </ul>
                     <div class="d-xl-flex d-lg-flex d-md-flex icons float-right" v-if="!logged">
-                        <router-link class="btn btn-primary color white"  to="/login">Join <i class="fas fa-sign-in-alt"></i></router-link>
+                        <router-link class="btn btn-maroon color white"  to="/login">Join <i class="fas fa-sign-in-alt"></i></router-link>
                     </div>
                     </nav>
-            
+
 </template>
 <style scoped>
     .color{
@@ -136,7 +136,7 @@ export default({
     data :()=>({
         logged : false,
         mounted: false,
-        admin : false,  
+        admin : false,
         name : '',
         email:  null,
     }),

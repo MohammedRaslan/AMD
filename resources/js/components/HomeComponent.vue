@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Block Item -->
                 <div class="swiper-slide h-100">
                     <div class="container h-100">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-              
+
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
@@ -68,26 +68,23 @@
                         <p>Ends today from 21:00</p>
                     </div>
                 </div>
-                
+
 
             </div>
             </div>
         </div>
     </section> -->
     <!-- End #Auction Follow -->
-    
+
 
     <!-- Product Section Begin -->
     <section class="product product-section spad position-relative">
         <!-- <img src="{{ asset('FrontEnd') }}/images/filter.png" class="img-filter" alt=""> -->
         <div class="img-top">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#fecc2f" fill-opacity="1" d="M0,96L480,32L960,192L1440,32L1440,0L960,0L480,0L0,0Z"></path>
-            </svg> -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -22px;" viewBox="0 0 1440 320">
                 <path fill="#fecc2f" fill-opacity="1" d="M0,32L480,96L960,32L1440,192L1440,0L960,0L480,0L0,0Z"></path>
             </svg>
-            <svg style="position: absolute;top: -13px;right: 0;left: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <svg style="position: absolute;top: -30px;right: 0;left: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill="#fd1266" fill-opacity="1" d="M0,32L480,96L960,32L1440,192L1440,0L960,0L480,0L0,0Z"></path>
             </svg>
         </div>
@@ -105,7 +102,7 @@
                     </div>
 
                     <div class="row product__filter">
-                        <!-- Block Item -->                        
+                        <!-- Block Item -->
                         <div v-for="product in products" :key="'product_'+product.id" class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix cat_1">
                             <div class="product__item position-relative">
                                 <a class="over-link" href="shop-details.html"></a>
@@ -144,8 +141,8 @@
                             <p>Ends today from 21:00</p>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -193,7 +190,7 @@ export default({
             this.categories = response.data;
         });
 
-  
+
     },
     mounted(){
         this.$Progress.finish();
