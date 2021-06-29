@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'subscription_id',
-        'address',
+        'country',
         'type',
         'role'
     ];
@@ -51,5 +51,10 @@ class User extends Authenticatable
     public function cart()
     {
         return $this->hasOne(Cart::class);
+    }
+
+    public function user_details()
+    {
+        return $this->hasOne(UserDetail::class);
     }
 }

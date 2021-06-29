@@ -22,4 +22,9 @@ class RegisterController extends Controller
         
         return response(['user' => $data['user'] , 'access_token' => $data['token']]);
     }
+
+    public function getCountries()
+    {
+        return response()->json($this->userService->getCountries());
+    }
 }

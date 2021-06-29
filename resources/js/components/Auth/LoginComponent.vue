@@ -13,7 +13,7 @@
                         <form @submit.prevent="login">                        
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="text" class="form-control" v-model="form.email" id="email" placeholder="Your Email" >
+                                    <input type="text" class="form-control" v-model="form.email" id="email" placeholder="Your Email / Username" >
                                     <div v-if="form.errors.has('email')" class="alert alert-danger" v-html="form.errors.get('email')" />
                                 </div>
                                 
@@ -28,7 +28,7 @@
                                 </div>
 
                                 <div class="col-6 link-up">
-                                    <router-link to="register"  class="form-control">Signup</router-link>
+                                    <router-link to="register" class="form-control">Signup</router-link>
                                 </div>
                                 
                             </div>

@@ -47,4 +47,10 @@ class UserService{
         return $this->userRepository->edit($data,$id);
     }
 
+    public function getCountries()
+    {
+        return $this->userRepository->getCountries();
+    }
+    
+
 }

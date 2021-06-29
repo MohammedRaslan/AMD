@@ -139,7 +139,7 @@
                         </div> --}}
                         <ul>
                             <li class="active"><router-link to="/">Home</router-link></li>
-                            <li><router-link to="subscriptions">Subscriptions</router-link></li>
+                            <li><router-link to="/subscriptions">Subscriptions</router-link></li>
                             {{-- <li><a href="#">Privacy</a></li>
                             <li><a href="#">Terms</a></li>
                             <li><a href="#">Help</a></li>

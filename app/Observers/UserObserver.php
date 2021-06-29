@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\UserDetail;
 
 class UserObserver
 {
@@ -16,6 +17,9 @@ class UserObserver
     public function created(User $user)
     {
         Cart::create([
+            'user_id' => $user->id,
+        ]);
+        UserDetail::create([
             'user_id' => $user->id,
         ]);
     }
