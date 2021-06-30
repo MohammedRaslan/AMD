@@ -2288,6 +2288,63 @@
   border-color: #7ac943 !important;
   color: #7ac943;
 }
+.selling .listing-type .form-control:disabled, .selling .listing-type .form-control[readonly] {
+  opacity: 0.3;
+  background: #0000;
+}
+.selling .listing-type .checkbox-custom,
+.selling .listing-type .radio-custom {
+  opacity: 0;
+  position: absolute;
+}
+.selling .listing-type .radio-custom-label {
+  color: #fecc2f;
+}
+.selling .listing-type .checkbox-custom,
+.selling .listing-type .checkbox-custom-label,
+.selling .listing-type .radio-custom,
+.selling .listing-type .radio-custom-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer;
+}
+.selling .listing-type .checkbox-custom-label,
+.selling .listing-type .radio-custom-label {
+  position: relative;
+}
+.selling .listing-type .checkbox-custom + .checkbox-custom-label:before,
+.selling .listing-type .radio-custom + .radio-custom-label:before {
+  content: "";
+  border: 2px solid #fecc2f;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  text-align: center;
+}
+.selling .listing-type .checkbox-custom:checked + .checkbox-custom-label:before {
+  content: "";
+  font-family: "FontAwesome";
+  background: rebeccapurple;
+  color: #fff;
+}
+.selling .listing-type .radio-custom + .radio-custom-label:before {
+  border-radius: 50%;
+}
+.selling .listing-type .radio-custom:checked + .radio-custom-label:before {
+  background-color: #fecc2f;
+}
+.selling .listing-type .radio-custom:checked + .radio-custom-label:before {
+  content: "";
+  font-family: "FontAwesome";
+  color: #1b252c;
+  font-size: 13px;
+}
+.selling .listing-type .radio-custom:checked .old-adress {
+  background-color: red;
+}
 
 .shop-details {
   background: #111b29;

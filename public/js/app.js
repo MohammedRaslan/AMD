@@ -5444,6 +5444,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -80415,6 +80463,210 @@ var render = function() {
                                                       ]
                                                     ),
                                                     _vm._v(" "),
+                                                    _vm._m(1),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "row listing-type"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "col-lg-6 save",
+                                                            attrs: {
+                                                              id: "radio_1"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._m(2),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "col-6 round round-3 pl-3"
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "label",
+                                                                  {
+                                                                    staticClass:
+                                                                      "label-text",
+                                                                    staticStyle: {
+                                                                      color:
+                                                                        "white",
+                                                                      float:
+                                                                        "left"
+                                                                    },
+                                                                    attrs: {
+                                                                      for:
+                                                                        "checkbox3"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "This Product "
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c("input", {
+                                                                  directives: [
+                                                                    {
+                                                                      name:
+                                                                        "model",
+                                                                      rawName:
+                                                                        "v-model",
+                                                                      value:
+                                                                        _vm.form
+                                                                          .best_offer,
+                                                                      expression:
+                                                                        "form.best_offer"
+                                                                    }
+                                                                  ],
+                                                                  attrs: {
+                                                                    type:
+                                                                      "checkbox",
+                                                                    id:
+                                                                      "checkbox3",
+                                                                    placeholder:
+                                                                      "Title"
+                                                                  },
+                                                                  domProps: {
+                                                                    checked: Array.isArray(
+                                                                      _vm.form
+                                                                        .best_offer
+                                                                    )
+                                                                      ? _vm._i(
+                                                                          _vm
+                                                                            .form
+                                                                            .best_offer,
+                                                                          null
+                                                                        ) > -1
+                                                                      : _vm.form
+                                                                          .best_offer
+                                                                  },
+                                                                  on: {
+                                                                    change: function(
+                                                                      $event
+                                                                    ) {
+                                                                      var $$a =
+                                                                          _vm
+                                                                            .form
+                                                                            .best_offer,
+                                                                        $$el =
+                                                                          $event.target,
+                                                                        $$c = $$el.checked
+                                                                          ? true
+                                                                          : false
+                                                                      if (
+                                                                        Array.isArray(
+                                                                          $$a
+                                                                        )
+                                                                      ) {
+                                                                        var $$v = null,
+                                                                          $$i = _vm._i(
+                                                                            $$a,
+                                                                            $$v
+                                                                          )
+                                                                        if (
+                                                                          $$el.checked
+                                                                        ) {
+                                                                          $$i <
+                                                                            0 &&
+                                                                            _vm.$set(
+                                                                              _vm.form,
+                                                                              "best_offer",
+                                                                              $$a.concat(
+                                                                                [
+                                                                                  $$v
+                                                                                ]
+                                                                              )
+                                                                            )
+                                                                        } else {
+                                                                          $$i >
+                                                                            -1 &&
+                                                                            _vm.$set(
+                                                                              _vm.form,
+                                                                              "best_offer",
+                                                                              $$a
+                                                                                .slice(
+                                                                                  0,
+                                                                                  $$i
+                                                                                )
+                                                                                .concat(
+                                                                                  $$a.slice(
+                                                                                    $$i +
+                                                                                      1
+                                                                                  )
+                                                                                )
+                                                                            )
+                                                                        }
+                                                                      } else {
+                                                                        _vm.$set(
+                                                                          _vm.form,
+                                                                          "best_offer",
+                                                                          $$c
+                                                                        )
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }),
+                                                                _vm._v(" "),
+                                                                _c("label", {
+                                                                  staticClass:
+                                                                    "ml-3",
+                                                                  attrs: {
+                                                                    for:
+                                                                      "checkbox3"
+                                                                  }
+                                                                }),
+                                                                _vm._v(" "),
+                                                                _vm.form.errors.has(
+                                                                  "best_offer"
+                                                                )
+                                                                  ? _c("div", {
+                                                                      staticClass:
+                                                                        "alert alert-danger",
+                                                                      domProps: {
+                                                                        innerHTML: _vm._s(
+                                                                          _vm.form.errors.get(
+                                                                            "best_offer"
+                                                                          )
+                                                                        )
+                                                                      }
+                                                                    })
+                                                                  : _vm._e()
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("input", {
+                                                              staticClass:
+                                                                "form-control",
+                                                              staticStyle: {
+                                                                "margin-left":
+                                                                  "20px"
+                                                              },
+                                                              attrs: {
+                                                                type: "text",
+                                                                placeholder:
+                                                                  "First name",
+                                                                disabled:
+                                                                  _vm.form
+                                                                    .best_offer
+                                                              }
+                                                            })
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _vm._m(3)
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
                                                     _c(
                                                       "div",
                                                       { staticClass: "col-6" },
@@ -80490,6 +80742,90 @@ var staticRenderFns = [
         _c("i", { staticClass: "fa fa-bars" })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row listing-type" }, [
+      _c("form", { staticClass: "row mt-5 border-0 p-0" }, [
+        _c("div", { staticClass: "col-lg-5" }, [
+          _c("input", {
+            staticClass: "radio-custom",
+            attrs: {
+              id: "radio-1",
+              name: "radio-group",
+              type: "radio",
+              checked: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "radio-custom-label", attrs: { for: "radio-1" } },
+            [_vm._v("Ship to my saved address")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-7" }, [
+          _c("input", {
+            staticClass: "radio-custom",
+            attrs: { id: "radio-2", name: "radio-group", type: "radio" }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "radio-custom-label", attrs: { for: "radio-2" } },
+            [_vm._v("… or Ship to other address ")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-save inner-save1" }, [
+      _c("form", { staticClass: "border-0", attrs: { action: "" } }, [
+        _c("div", { staticClass: "row g-3" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { id: "listing1", type: "text", placeholder: "First name" }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-lg-6 new-input", attrs: { id: "radio_2" } },
+      [
+        _c("div", { staticClass: "inner-save inner-save2" }, [
+          _c("form", { staticClass: "border-0", attrs: { action: "" } }, [
+            _c("div", { staticClass: "row g-3" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    "aria-label": "First name",
+                    placeholder: "First name",
+                    disabled: ""
+                  }
+                })
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

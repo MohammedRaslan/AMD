@@ -96,7 +96,7 @@
                                                                                 <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
                                                                             </div>
                                                                         </div>
-                                                                     
+
                                                                         <!-- <div class="col-4 text-left">
                                                                             <label class="text-white" for="type">Type</label>
                                                                             <select name="type" v-model="form.type" id="" class="custom-select m-2 form-control" required>
@@ -111,8 +111,8 @@
                                                                             <input type="number" v-model="form.price" min="1" class="form-control" id="price" placeholder="Price" required>
                                                                             <div v-if="form.errors.has('price')" id="price" class="alert alert-danger" v-html="form.errors.get('price')" />
                                                                         </div> -->
-                                                                   
-                                                                  
+
+
                                                                         <div class="col-12 mb-3 upload-img">
                                                                             <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
                                                                             <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
@@ -123,7 +123,7 @@
                                                                             <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                         </div>
-                                                                       
+
 
                                                                         <div class="row">
                                                                             <div class="col-6 round">
@@ -139,7 +139,55 @@
                                                                                 <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                             </div>
                                                                         </div>
-                                                                           <div class="col-6">
+                                                                        <div class="row listing-type">
+                                                                            <form class="row mt-5 border-0 p-0">
+                                                                                <div class="col-lg-5">
+                                                                                    <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
+                                                                                    <label class="radio-custom-label" for="radio-1">Ship to my saved address</label>
+                                                                                </div>
+                                                                                <div class="col-lg-7">
+                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
+                                                                                    <label class="radio-custom-label" for="radio-2">… or Ship to other address </label>
+                                                                                </div>
+                                                                            </form>
+                                                                            
+                                                                        </div>
+
+                                                                        <div class="row listing-type">
+                                                                            <div class="col-lg-6 save" id="radio_1">
+                                                                                 <div class="inner-save inner-save1">
+                                                                                    <form action="" class="border-0">
+                                                                                        <div class="row g-3">
+                                                                                            <div class="col-12">
+                                                                                                <input class="form-control" id='listing1' type="text" placeholder="First name">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                                <div class="col-6 round round-3 pl-3">
+                                                                                    <label for="checkbox3" class='label-text' style="color:white; float:left">This Product </label>
+                                                                                    <input type="checkbox" v-model="form.best_offer" id="checkbox3"  placeholder="Title">
+                                                                                    <label for="checkbox3" class="ml-3"></label>
+                                                                                    <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
+                                                                                </div>
+                                                                                <input class="form-control" type="text" style="margin-left: 20px" placeholder="First name" :disabled="form.best_offer">
+
+                                                                            </div>
+
+                                                                            <div class="col-lg-6 new-input" id="radio_2">
+                                                                                <div class="inner-save inner-save2">
+                                                                                    <form action="" class="border-0">
+                                                                                        <div class="row g-3">
+                                                                                            <div class="col-12">
+                                                                                                <input class="form-control" type="text" aria-label="First name" placeholder="First name" disabled>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-6">
                                                                             <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-milky" id="draft">
                                                                         </div>
                                                                         <div class="col-6">

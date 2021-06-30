@@ -17,6 +17,17 @@ $(document).ready(function(){
     $(document).on('change', '#radio-2', function () {
         $(".active .inner-save form input").removeAttr("disabled")
         $(".active .inner-save form button").removeAttr("disabled")
+
+        if ($('#radio-2').prop("checked") == true) {
+            $("#listing1").attr("disabled", 'disabled')
+            $(".round-3").css("opacity", '.3')
+        }
+    })
+    $(document).on('change', '#radio-1', function () {
+        $(".active .inner-save1 form input").removeAttr("disabled")
+        if ($('#radio-1').prop("checked") == true) {
+            $(".round-3").css("opacity", '1')
+        }
     })
 
 });
