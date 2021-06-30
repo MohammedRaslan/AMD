@@ -124,7 +124,7 @@
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                         </div>
 
-
+<!-- 
                                                                         <div class="row">
                                                                             <div class="col-6 round">
                                                                                 <label for="checkbox1" class="label-text" style="color:white; float:left">This Product has return policy</label>
@@ -138,9 +138,10 @@
                                                                                 <label for="checkbox2" class="ml-3"></label>
                                                                                 <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                             </div>
-                                                                        </div>
+                                                                        </div> -->
                                                                         <div class="row listing-type">
-                                                                            <form class="row mt-5 border-0 p-0">
+                                                                            <h3 class="text-left text-maroon mt-3">Listing Type</h3>
+                                                                            <form class="row mt-4 border-0 p-0">
                                                                                 <div class="col-lg-5">
                                                                                     <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
                                                                                     <label class="radio-custom-label" for="radio-1">Ship to my saved address</label>
