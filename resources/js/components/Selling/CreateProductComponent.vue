@@ -52,25 +52,52 @@
                                                                             <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                             <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                         </div>
-                                                                        <div class="col-4 select-product text-left">
-                                                                            <label class="text-white" for="cats">Category</label>
-                                                                            <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories"></v-select>
-                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
+                                                                        <div class="row pb-4">
+                                                                            <div class="col-4 select-product text-left">
+                                                                                <label class="text-white" for="cats">Category</label>
+                                                                                <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories" >
+                                                                                    <template #search="{attributes, events}">
+                                                                                            <input
+                                                                                                class="vs__search"
+                                                                                                :required="!form.category"
+                                                                                                v-bind="attributes"
+                                                                                                v-on="events"
+                                                                                            />
+                                                                                        </template>
+                                                                                </v-select>
+                                                                                <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
+                                                                            </div>
+                                                                                <div class="col-4 select-product text-left">
+                                                                                <label class="text-white" for="condition">Condition</label>
+                                                                                <v-select placeholder="Select Condition" id='cats' v-model="form.condition"   label="title" :options="conditions">
+                                                                                       <template #search="{attributes, events}">
+                                                                                            <input
+                                                                                                class="vs__search"
+                                                                                                :required="!form.condition"
+                                                                                                v-bind="attributes"
+                                                                                                v-on="events"
+                                                                                            />
+                                                                                        </template>
+                                                                                </v-select>
+                                                                                <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
+                                                                            </div>
+                                                                            <div class="col-4 select-product text-left">
+                                                                                <label class="text-white" for="brand">Brand</label>
+                                                                                <v-select placeholder="Select Brand" id='cats' v-model="form.brand" :reduce="brand => brand.id"  label="title" :options="brands">
+                                                                                       <template #search="{attributes, events}">
+                                                                                            <input
+                                                                                                class="vs__search"
+                                                                                                :required="!form.brand"
+                                                                                                v-bind="attributes"
+                                                                                                v-on="events"
+                                                                                            />
+                                                                                        </template>
+                                                                                </v-select>
+                                                                                <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
+                                                                            </div>
                                                                         </div>
-                                                                              <div class="col-4 text-left">
-                                                                            <label class="text-white" for="condition">Condition</label>
-                                                                            <select name="type" v-model="form.condition" id="" class="custom-select m-2 form-control" required>
-                                                                                <option selected disabled>Choose Condition</option>
-                                                                                <option v-for="(condition, index) in conditions" :key="index" :value="index" > {{ condition }}</option>
-                                                                            </select >
-                                                                            <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
-                                                                        </div>
-                                                                        <div class="col-4 text-left">
-                                                                            <label class="text-white" for="brand">Brand</label>
-                                                                            <input type="text" v-model="form.brand" class="form-control" id="brand" placeholder="Brand" required>
-                                                                            <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
-                                                                        </div>
-                                                                        <div class="col-4 text-left">
+                                                                     
+                                                                        <!-- <div class="col-4 text-left">
                                                                             <label class="text-white" for="type">Type</label>
                                                                             <select name="type" v-model="form.type" id="" class="custom-select m-2 form-control" required>
                                                                                 <option selected disabled>Choose Type</option>
@@ -83,12 +110,12 @@
                                                                             <label class="text-white" for="price">Price</label>
                                                                             <input type="number" v-model="form.price" min="1" class="form-control" id="price" placeholder="Price" required>
                                                                             <div v-if="form.errors.has('price')" id="price" class="alert alert-danger" v-html="form.errors.get('price')" />
-                                                                        </div>
+                                                                        </div> -->
                                                                    
                                                                   
                                                                         <div class="col-12 mb-3 upload-img">
                                                                             <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
-                                                                            <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="upload product images" fileError="images files only accepted"/>
+                                                                            <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
                                                                             <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                         </div>
                                                                         <div class="col-12 mb-5 description">
@@ -96,6 +123,8 @@
                                                                             <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                         </div>
+                                                                       
+
                                                                         <div class="row">
                                                                             <div class="col-6 round">
                                                                                 <label for="checkbox1" class="label-text" style="color:white; float:left">This Product has return policy</label>
@@ -111,13 +140,11 @@
                                                                             </div>
                                                                         </div>
                                                                            <div class="col-6">
-                                                                            <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-primary" id="draft">
+                                                                            <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-milky" id="draft">
                                                                         </div>
                                                                         <div class="col-6">
                                                                             <input type="submit" :disabled="form.busy" value="Next" class="form-control" id="register">
                                                                         </div>
-
-
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -206,14 +233,9 @@ export default ({
         id: null,
         types: [],
         categories: [],
-        conditions: {},
-        categoryx: null,
+        conditions: [],
+        brands: [],
         imagenull: false,
-           options: [
-            'foo',
-            'bar',
-            'baz'
-            ],
         form : new form({
             title : null,
             type : null,
@@ -301,6 +323,7 @@ export default ({
             this.types = response.data.types;
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
+            this.brands = response.data.brands;
         });
     }
 })

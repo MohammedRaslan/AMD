@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Enums\ProductCondition;
 use App\Enums\ProductType;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
@@ -21,7 +22,8 @@ class ProductRepository{
     {
         return ['types'=> ProductType::getInstances(),
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
-                'conditions' => ProductCondition::getInstances(),    
+                'conditions' => ProductCondition::asSelectArray(), 
+                'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
             ];
         
     }

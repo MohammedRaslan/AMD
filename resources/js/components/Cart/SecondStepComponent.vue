@@ -100,16 +100,16 @@
                         </div>
                     </div>
                 </div>
-                    <form class="row mt-5">
-                        <div class="col-lg-5">
-                            <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
-                            <label class="radio-custom-label" for="radio-1">Ship to my saved address</label>
-                        </div>
-                        <div class="col-lg-7">
-                            <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
-                            <label class="radio-custom-label" for="radio-2">… or Ship to other address </label>
-                        </div>
-                    </form>
+                <form class="row mt-5">
+                    <div class="col-lg-5">
+                        <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
+                        <label class="radio-custom-label" for="radio-1">Ship to my saved address</label>
+                    </div>
+                    <div class="col-lg-7">
+                        <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
+                        <label class="radio-custom-label" for="radio-2">… or Ship to other address </label>
+                    </div>
+                </form>
             </div>
 
             <div class="row">

@@ -5417,6 +5417,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5432,10 +5459,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       id: null,
       types: [],
       categories: [],
-      conditions: {},
-      categoryx: null,
+      conditions: [],
+      brands: [],
       imagenull: false,
-      options: ['foo', 'bar', 'baz'],
       form: new form({
         title: null,
         type: null,
@@ -5553,6 +5579,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this2.types = response.data.types;
       _this2.categories = response.data.categories;
       _this2.conditions = response.data.conditions;
+      _this2.brands = response.data.brands;
     });
   }
 });
@@ -79585,516 +79612,336 @@ var render = function() {
                                                     _c(
                                                       "div",
                                                       {
-                                                        staticClass:
-                                                          "col-4 select-product text-left"
+                                                        staticClass: "row pb-4"
                                                       },
                                                       [
                                                         _c(
-                                                          "label",
+                                                          "div",
                                                           {
                                                             staticClass:
-                                                              "text-white",
-                                                            attrs: {
-                                                              for: "cats"
-                                                            }
+                                                              "col-4 select-product text-left"
                                                           },
-                                                          [_vm._v("Category")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c("v-select", {
-                                                          attrs: {
-                                                            placeholder:
-                                                              "Select Category",
-                                                            id: "cats",
-                                                            reduce: function(
-                                                              category
-                                                            ) {
-                                                              return category.id
-                                                            },
-                                                            label: "title",
-                                                            options:
-                                                              _vm.categories
-                                                          },
-                                                          model: {
-                                                            value:
-                                                              _vm.form.category,
-                                                            callback: function(
-                                                              $$v
-                                                            ) {
-                                                              _vm.$set(
-                                                                _vm.form,
-                                                                "category",
-                                                                $$v
-                                                              )
-                                                            },
-                                                            expression:
-                                                              "form.category"
-                                                          }
-                                                        }),
-                                                        _vm._v(" "),
-                                                        _vm.form.errors.has(
-                                                          "type"
-                                                        )
-                                                          ? _c("div", {
-                                                              staticClass:
-                                                                "alert alert-danger",
-                                                              domProps: {
-                                                                innerHTML: _vm._s(
-                                                                  _vm.form.errors.get(
-                                                                    "type"
-                                                                  )
-                                                                )
-                                                              }
-                                                            })
-                                                          : _vm._e()
-                                                      ],
-                                                      1
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "col-4 text-left"
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "label",
-                                                          {
-                                                            staticClass:
-                                                              "text-white",
-                                                            attrs: {
-                                                              for: "condition"
-                                                            }
-                                                          },
-                                                          [_vm._v("Condition")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "select",
-                                                          {
-                                                            directives: [
+                                                          [
+                                                            _c(
+                                                              "label",
                                                               {
-                                                                name: "model",
-                                                                rawName:
-                                                                  "v-model",
+                                                                staticClass:
+                                                                  "text-white",
+                                                                attrs: {
+                                                                  for: "cats"
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "Category"
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("v-select", {
+                                                              attrs: {
+                                                                placeholder:
+                                                                  "Select Category",
+                                                                id: "cats",
+                                                                reduce: function(
+                                                                  category
+                                                                ) {
+                                                                  return category.id
+                                                                },
+                                                                label: "title",
+                                                                options:
+                                                                  _vm.categories
+                                                              },
+                                                              scopedSlots: _vm._u(
+                                                                [
+                                                                  {
+                                                                    key:
+                                                                      "search",
+                                                                    fn: function(
+                                                                      ref
+                                                                    ) {
+                                                                      var attributes =
+                                                                        ref.attributes
+                                                                      var events =
+                                                                        ref.events
+                                                                      return [
+                                                                        _c(
+                                                                          "input",
+                                                                          _vm._g(
+                                                                            _vm._b(
+                                                                              {
+                                                                                staticClass:
+                                                                                  "vs__search",
+                                                                                attrs: {
+                                                                                  required: !_vm
+                                                                                    .form
+                                                                                    .category
+                                                                                }
+                                                                              },
+                                                                              "input",
+                                                                              attributes,
+                                                                              false
+                                                                            ),
+                                                                            events
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              ),
+                                                              model: {
+                                                                value:
+                                                                  _vm.form
+                                                                    .category,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.$set(
+                                                                    _vm.form,
+                                                                    "category",
+                                                                    $$v
+                                                                  )
+                                                                },
+                                                                expression:
+                                                                  "form.category"
+                                                              }
+                                                            }),
+                                                            _vm._v(" "),
+                                                            _vm.form.errors.has(
+                                                              "type"
+                                                            )
+                                                              ? _c("div", {
+                                                                  staticClass:
+                                                                    "alert alert-danger",
+                                                                  domProps: {
+                                                                    innerHTML: _vm._s(
+                                                                      _vm.form.errors.get(
+                                                                        "type"
+                                                                      )
+                                                                    )
+                                                                  }
+                                                                })
+                                                              : _vm._e()
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "col-4 select-product text-left"
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "label",
+                                                              {
+                                                                staticClass:
+                                                                  "text-white",
+                                                                attrs: {
+                                                                  for:
+                                                                    "condition"
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "Condition"
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c("v-select", {
+                                                              attrs: {
+                                                                placeholder:
+                                                                  "Select Condition",
+                                                                id: "cats",
+                                                                label: "title",
+                                                                options:
+                                                                  _vm.conditions
+                                                              },
+                                                              scopedSlots: _vm._u(
+                                                                [
+                                                                  {
+                                                                    key:
+                                                                      "search",
+                                                                    fn: function(
+                                                                      ref
+                                                                    ) {
+                                                                      var attributes =
+                                                                        ref.attributes
+                                                                      var events =
+                                                                        ref.events
+                                                                      return [
+                                                                        _c(
+                                                                          "input",
+                                                                          _vm._g(
+                                                                            _vm._b(
+                                                                              {
+                                                                                staticClass:
+                                                                                  "vs__search",
+                                                                                attrs: {
+                                                                                  required: !_vm
+                                                                                    .form
+                                                                                    .condition
+                                                                                }
+                                                                              },
+                                                                              "input",
+                                                                              attributes,
+                                                                              false
+                                                                            ),
+                                                                            events
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              ),
+                                                              model: {
                                                                 value:
                                                                   _vm.form
                                                                     .condition,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.$set(
+                                                                    _vm.form,
+                                                                    "condition",
+                                                                    $$v
+                                                                  )
+                                                                },
                                                                 expression:
                                                                   "form.condition"
                                                               }
-                                                            ],
+                                                            }),
+                                                            _vm._v(" "),
+                                                            _vm.form.errors.has(
+                                                              "condition"
+                                                            )
+                                                              ? _c("div", {
+                                                                  staticClass:
+                                                                    "alert alert-danger",
+                                                                  domProps: {
+                                                                    innerHTML: _vm._s(
+                                                                      _vm.form.errors.get(
+                                                                        "condition"
+                                                                      )
+                                                                    )
+                                                                  }
+                                                                })
+                                                              : _vm._e()
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "div",
+                                                          {
                                                             staticClass:
-                                                              "custom-select m-2 form-control",
-                                                            attrs: {
-                                                              name: "type",
-                                                              id: "",
-                                                              required: ""
-                                                            },
-                                                            on: {
-                                                              change: function(
-                                                                $event
-                                                              ) {
-                                                                var $$selectedVal = Array.prototype.filter
-                                                                  .call(
-                                                                    $event
-                                                                      .target
-                                                                      .options,
-                                                                    function(
-                                                                      o
-                                                                    ) {
-                                                                      return o.selected
-                                                                    }
-                                                                  )
-                                                                  .map(function(
-                                                                    o
-                                                                  ) {
-                                                                    var val =
-                                                                      "_value" in
-                                                                      o
-                                                                        ? o._value
-                                                                        : o.value
-                                                                    return val
-                                                                  })
-                                                                _vm.$set(
-                                                                  _vm.form,
-                                                                  "condition",
-                                                                  $event.target
-                                                                    .multiple
-                                                                    ? $$selectedVal
-                                                                    : $$selectedVal[0]
-                                                                )
-                                                              }
-                                                            }
+                                                              "col-4 select-product text-left"
                                                           },
                                                           [
                                                             _c(
-                                                              "option",
+                                                              "label",
                                                               {
+                                                                staticClass:
+                                                                  "text-white",
                                                                 attrs: {
-                                                                  selected: "",
-                                                                  disabled: ""
+                                                                  for: "brand"
                                                                 }
                                                               },
-                                                              [
-                                                                _vm._v(
-                                                                  "Choose Condition"
-                                                                )
-                                                              ]
+                                                              [_vm._v("Brand")]
                                                             ),
                                                             _vm._v(" "),
-                                                            _vm._l(
-                                                              _vm.conditions,
-                                                              function(
-                                                                condition,
-                                                                index
-                                                              ) {
-                                                                return _c(
-                                                                  "option",
-                                                                  {
-                                                                    key: index,
-                                                                    domProps: {
-                                                                      value: index
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      " " +
-                                                                        _vm._s(
-                                                                          condition
-                                                                        )
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              }
-                                                            )
-                                                          ],
-                                                          2
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _vm.form.errors.has(
-                                                          "condition"
-                                                        )
-                                                          ? _c("div", {
-                                                              staticClass:
-                                                                "alert alert-danger",
-                                                              domProps: {
-                                                                innerHTML: _vm._s(
-                                                                  _vm.form.errors.get(
-                                                                    "condition"
-                                                                  )
-                                                                )
-                                                              }
-                                                            })
-                                                          : _vm._e()
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "col-4 text-left"
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "label",
-                                                          {
-                                                            staticClass:
-                                                              "text-white",
-                                                            attrs: {
-                                                              for: "brand"
-                                                            }
-                                                          },
-                                                          [_vm._v("Brand")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm.form.brand,
-                                                              expression:
-                                                                "form.brand"
-                                                            }
-                                                          ],
-                                                          staticClass:
-                                                            "form-control",
-                                                          attrs: {
-                                                            type: "text",
-                                                            id: "brand",
-                                                            placeholder:
-                                                              "Brand",
-                                                            required: ""
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.form.brand
-                                                          },
-                                                          on: {
-                                                            input: function(
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
-                                                              ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.form,
-                                                                "brand",
-                                                                $event.target
-                                                                  .value
-                                                              )
-                                                            }
-                                                          }
-                                                        }),
-                                                        _vm._v(" "),
-                                                        _vm.form.errors.has(
-                                                          "brand"
-                                                        )
-                                                          ? _c("div", {
-                                                              staticClass:
-                                                                "alert alert-danger",
-                                                              domProps: {
-                                                                innerHTML: _vm._s(
-                                                                  _vm.form.errors.get(
-                                                                    "brand"
-                                                                  )
-                                                                )
-                                                              }
-                                                            })
-                                                          : _vm._e()
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "col-4 text-left"
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "label",
-                                                          {
-                                                            staticClass:
-                                                              "text-white",
-                                                            attrs: {
-                                                              for: "type"
-                                                            }
-                                                          },
-                                                          [_vm._v("Type")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "select",
-                                                          {
-                                                            directives: [
-                                                              {
-                                                                name: "model",
-                                                                rawName:
-                                                                  "v-model",
-                                                                value:
-                                                                  _vm.form.type,
-                                                                expression:
-                                                                  "form.type"
-                                                              }
-                                                            ],
-                                                            staticClass:
-                                                              "custom-select m-2 form-control",
-                                                            attrs: {
-                                                              name: "type",
-                                                              id: "",
-                                                              required: ""
-                                                            },
-                                                            on: {
-                                                              change: function(
-                                                                $event
-                                                              ) {
-                                                                var $$selectedVal = Array.prototype.filter
-                                                                  .call(
-                                                                    $event
-                                                                      .target
-                                                                      .options,
-                                                                    function(
-                                                                      o
-                                                                    ) {
-                                                                      return o.selected
-                                                                    }
-                                                                  )
-                                                                  .map(function(
-                                                                    o
-                                                                  ) {
-                                                                    var val =
-                                                                      "_value" in
-                                                                      o
-                                                                        ? o._value
-                                                                        : o.value
-                                                                    return val
-                                                                  })
-                                                                _vm.$set(
-                                                                  _vm.form,
-                                                                  "type",
-                                                                  $event.target
-                                                                    .multiple
-                                                                    ? $$selectedVal
-                                                                    : $$selectedVal[0]
-                                                                )
-                                                              }
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "option",
-                                                              {
-                                                                attrs: {
-                                                                  selected: "",
-                                                                  disabled: ""
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Choose Type"
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _vm._l(
-                                                              _vm.types,
-                                                              function(
-                                                                type,
-                                                                index
-                                                              ) {
-                                                                return _c(
-                                                                  "option",
-                                                                  {
-                                                                    key: index,
-                                                                    domProps: {
-                                                                      value: type
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      " " +
-                                                                        _vm._s(
-                                                                          index
-                                                                        )
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              }
-                                                            )
-                                                          ],
-                                                          2
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _vm.form.errors.has(
-                                                          "type"
-                                                        )
-                                                          ? _c("div", {
-                                                              staticClass:
-                                                                "alert alert-danger",
-                                                              domProps: {
-                                                                innerHTML: _vm._s(
-                                                                  _vm.form.errors.get(
-                                                                    "type"
-                                                                  )
-                                                                )
-                                                              }
-                                                            })
-                                                          : _vm._e()
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "col-4 text-left"
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "label",
-                                                          {
-                                                            staticClass:
-                                                              "text-white",
-                                                            attrs: {
-                                                              for: "price"
-                                                            }
-                                                          },
-                                                          [_vm._v("Price")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm.form.price,
-                                                              expression:
-                                                                "form.price"
-                                                            }
-                                                          ],
-                                                          staticClass:
-                                                            "form-control",
-                                                          attrs: {
-                                                            type: "number",
-                                                            min: "1",
-                                                            id: "price",
-                                                            placeholder:
-                                                              "Price",
-                                                            required: ""
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.form.price
-                                                          },
-                                                          on: {
-                                                            input: function(
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
-                                                              ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.form,
-                                                                "price",
-                                                                $event.target
-                                                                  .value
-                                                              )
-                                                            }
-                                                          }
-                                                        }),
-                                                        _vm._v(" "),
-                                                        _vm.form.errors.has(
-                                                          "price"
-                                                        )
-                                                          ? _c("div", {
-                                                              staticClass:
-                                                                "alert alert-danger",
+                                                            _c("v-select", {
                                                               attrs: {
-                                                                id: "price"
+                                                                placeholder:
+                                                                  "Select Brand",
+                                                                id: "cats",
+                                                                reduce: function(
+                                                                  brand
+                                                                ) {
+                                                                  return brand.id
+                                                                },
+                                                                label: "title",
+                                                                options:
+                                                                  _vm.brands
                                                               },
-                                                              domProps: {
-                                                                innerHTML: _vm._s(
-                                                                  _vm.form.errors.get(
-                                                                    "price"
+                                                              scopedSlots: _vm._u(
+                                                                [
+                                                                  {
+                                                                    key:
+                                                                      "search",
+                                                                    fn: function(
+                                                                      ref
+                                                                    ) {
+                                                                      var attributes =
+                                                                        ref.attributes
+                                                                      var events =
+                                                                        ref.events
+                                                                      return [
+                                                                        _c(
+                                                                          "input",
+                                                                          _vm._g(
+                                                                            _vm._b(
+                                                                              {
+                                                                                staticClass:
+                                                                                  "vs__search",
+                                                                                attrs: {
+                                                                                  required: !_vm
+                                                                                    .form
+                                                                                    .brand
+                                                                                }
+                                                                              },
+                                                                              "input",
+                                                                              attributes,
+                                                                              false
+                                                                            ),
+                                                                            events
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              ),
+                                                              model: {
+                                                                value:
+                                                                  _vm.form
+                                                                    .brand,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.$set(
+                                                                    _vm.form,
+                                                                    "brand",
+                                                                    $$v
                                                                   )
-                                                                )
+                                                                },
+                                                                expression:
+                                                                  "form.brand"
                                                               }
-                                                            })
-                                                          : _vm._e()
+                                                            }),
+                                                            _vm._v(" "),
+                                                            _vm.form.errors.has(
+                                                              "brand"
+                                                            )
+                                                              ? _c("div", {
+                                                                  staticClass:
+                                                                    "alert alert-danger",
+                                                                  domProps: {
+                                                                    innerHTML: _vm._s(
+                                                                      _vm.form.errors.get(
+                                                                        "brand"
+                                                                      )
+                                                                    )
+                                                                  }
+                                                                })
+                                                              : _vm._e()
+                                                          ],
+                                                          1
+                                                        )
                                                       ]
                                                     ),
                                                     _vm._v(" "),
@@ -80137,7 +79984,7 @@ var render = function() {
                                                             maxError:
                                                               "Max files exceed",
                                                             uploadMsg:
-                                                              "upload product images",
+                                                              "Upload Item Images (up to 12 image)",
                                                             fileError:
                                                               "images files only accepted"
                                                           },
@@ -80574,7 +80421,7 @@ var render = function() {
                                                       [
                                                         _c("input", {
                                                           staticClass:
-                                                            "form-control btn btn-primary",
+                                                            "form-control btn btn-milky",
                                                           attrs: {
                                                             type: "button",
                                                             value:

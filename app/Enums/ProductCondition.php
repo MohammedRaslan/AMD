@@ -11,6 +11,6 @@ use BenSampo\Enum\Enum;
  */
 final class ProductCondition extends Enum
 {
-    const new =  'New ';
-    const modified =   'something Modified ';
+    const New = 0;
+    const Modified = 1;
 }
