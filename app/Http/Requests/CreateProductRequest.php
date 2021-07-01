@@ -28,13 +28,20 @@ class CreateProductRequest extends FormRequest
             'title' => 'required|string|max:200',
             'type'  => 'required|string|max:200',
             'description' => 'required|string:255',
-            'details' => 'nullable|string|max:255',
             'condition' => 'required|string|max:200',
             'brand' => 'required|string|max:200',
-            'return_policy' => 'required|boolean',
+            'return_policy' => 'required|string',
+            'minimum_offer' => 'nullable|numeric',
             'best_offer' => 'required|boolean',
             'draft' => 'required|boolean',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'doll_size' => 'nullable|string|max:255',
+            'quantity' => 'nullable|numeric',
+            'doll_gender' => 'nullable|string',
+            'modified_item' => 'boolean',
+            'domestic_product' => 'boolean',
+            'featured_refinements' => 'nullable|string',
+            'details' => 'nullable|string',
         ];
     }
 }

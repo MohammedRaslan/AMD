@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterUsersTableDropAddressAddCountry extends Migration
+class AlterProductTableReturnPolicyBeString extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class AlterUsersTableDropAddressAddCountry extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            if(Schema::hasColumn('users','address')){
-                $table->dropColumn('address');
-            }
-           $table->string('country')->after('phone')->nullable();
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('return_policy')->change();
         });
     }
 

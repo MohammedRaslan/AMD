@@ -8,37 +8,45 @@
                         <h2 class="mb-4">Signup</h2>
                         <form @submit.prevent="register">                        
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6">
                                     <input type="text" v-model="form.first_name" class="form-control" id="fName" placeholder="First Name" required>
                                     <div v-if="form.errors.has('first_name')" class="alert alert-danger" v-html="form.errors.get('first_name')" />
                                 </div>
                                 
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6">
                                     <input type="text" v-model="form.last_name" class="form-control" id="lName" placeholder="Last Name" required>
                                     <div v-if="form.errors.has('last_name')" class="alert alert-danger" v-html="form.errors.get('last_name')" />
                                 </div>
                                 
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6">
                                     <input type="text" v-model="form.user_name" class="form-control" id="user_name" placeholder="User Name" required>
                                     <div v-if="form.errors.has('user_name')" class="alert alert-danger" v-html="form.errors.get('user_name')" />
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6">
                                     <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Your Email" required>
                                     <div v-if="form.errors.has('email')" class="alert alert-danger" v-html="form.errors.get('email')" />
 
                                 </div>
                                 
-                                <div class="col-6">
-                                    <input type="password" v-model="form.password" class="form-control" id="password" placeholder="Password" required>
+                                <div class="col-12 text-left mb-3 col-lg-6">
+                                    <input type="password" v-model="form.password" class="form-control mb-3" id="password" placeholder="Password" required>
                                     <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
+                                    <a @click="switchVisibility" id="show"  style="color:#60c1f1; cursor:pointer">Show Password</a>
                                 </div>
                                 
-                                <div class="col-6">
-                                        <select name="type" v-model="form.country" id="" class="custom-select m-2 form-control" required>
-                                            <option selected disabled>Choose Country</option>
-                                            <option v-for="(country, index) in countries" :key="index" :value="country.name" > {{ country.name }}</option>
-                                        </select >
+                                <div class="col-12 select-product col-lg-6">
+                                  
+                                <v-select placeholder="Select Country" id='cats' v-model="form.country" :reduce="country => country.name" label="name" :options="countries">
+                                    <template #search="{attributes, events}">
+                                        <input
+                                            class="vs__search"
+                                            :required="!form.country"
+                                            v-bind="attributes"
+                                            v-on="events"
+                                        />
+                                    </template>
+                                </v-select>
                                         <div v-if="form.errors.has('country')" class="alert alert-danger" v-html="form.errors.get('country')" />
 
                                 </div>
@@ -61,12 +69,15 @@
     select{
         display: block !important;
     }
+    .vs__selected{
+        color:white !important; 
+    }
 </style>
 <script>
 
 export default ({
     data:()=>({
-        countries : {},
+        countries : [],
         form : new form({
             first_name : null,
             last_name : null,
@@ -96,6 +107,19 @@ export default ({
 
             });
             console.log(response,this.form);
+        },
+        switchVisibility(){
+            const passwordField = document.querySelector('#password')
+            const showField = document.querySelector('#show')
+            if (passwordField.getAttribute('type') === 'password'){
+                    passwordField.setAttribute('type', 'text') 
+                    showField.innerHTML = 'Hide Password';
+            }
+            else {
+                passwordField.setAttribute('type', 'password')
+                    showField.innerHTML = 'Show Password';
+                    }
+
         }
     },
     created(){

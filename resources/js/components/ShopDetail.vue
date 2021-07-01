@@ -34,8 +34,8 @@
                     <div class="col-lg-8" v-if="loading">
                         <h2 > {{ product.title }}  </h2>
                         <div class="detail-top">
-                            <p><span>Seller:</span> <span v-if="loading">{{ product.user.first_name }}  {{ product.user.last_name }}</span></p>
-                            <p><span>Shipping time:</span> <span>2-9 days</span></p>
+                            <p><span>Seller:</span> <span v-if="loading">{{ product.user.user_name }}</span></p>
+                            <p v-if="shipping.duration_usa"><span>Shipping time:</span> <span>{{ shipping.duration_usa }}</span></p>
                             <p>
                                 <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_love_outline" width="20.833" height="18.75" viewBox="0 0 20.833 18.75">
                                     <g id="Icon_love_outline-2" data-name="Icon_love_outline">
@@ -110,7 +110,25 @@
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                         <p v-html="product.details"></p>
+                                        <div class="row fs-20">
+                                            <div><span class="inner-title">Brand:</span> <span class="inner-value">{{ product.brand == null ? '-' : product.brand}} </span></div>
+                                            <div><span class="inner-title">Condition:</span> <span class="inner-value">{{ product.condition == null ? '-' : product.condition}} </span></div>
+                                            <div><span class="inner-title">Gender:</span> <span class="inner-value">{{ product.doll_gender == null ? '-' : product.doll_gender}} </span></div>
+                                            <div><span class="inner-title">Size:</span> <span class="inner-value">{{ product.doll_size == null ? '-' : product.doll_size}} </span></div> 
+                                            <div><span class="inner-title">Featured Refinements:</span> <span class="inner-value">{{ product.featured_refinements == null ? '-' : product.featured_refinements }} </span></div>
+                                            <div><span class="inner-title">Domestic Product:</span> <span class="inner-value">{{ product.domestic_product == 1 ? 'Yes' : 'No' }} </span></div> 
+                                            <div><span class="inner-title">Modified :</span> <span class="inner-value">{{ product.modified_item == 1 ? 'Yes' : 'No' }} </span></div> 
+                                            <div><span class="inner-title">UPC:</span> <span class="inner-value">{{ product.upc  == null ? '-' :  product.upc}} </span></div>
+                                            <div><span class="inner-title">Return Policy:</span> <span class="inner-value">{{ product.return_policy  == null ? '-' :  product.return_policy}} </span></div>
+                                            
+
+                                        </div>
+                                        <hr>
+                                        <div class="row" v-if="product.details">
+                                            <h4 style="color:white">Extra Details</h4>
+                                            <p class="pl-5" v-html="product.details"></p>
+                                        </div>
+                                       
                                     </div>
                                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                         <hr>
@@ -127,11 +145,13 @@
                                                 <h3 class="title-color">USA</h3><hr class="title-color">
                                                 <div class="mb-2"><span class="inner-title">Service:</span> <span class="inner-value">{{ shipping.service_usa }}</span> </div>
                                                 <div><span class="inner-title">Price:</span> <span class="inner-value">{{ shipping.price_usa }} </span></div>
+                                                <div><span class="inner-title">Duration:</span> <span class="inner-value">{{ shipping.duration_usa == null ? '-' : shipping.duration_usa }} </span></div>
                                             </div>
                                             <div class="col-6" v-if="shipping.world_wide">
                                                 <h3 class="title-color">World Wide</h3><hr class="title-color">
                                                 <div class="mb-2"><span class="inner-title">Service:</span> <span class="inner-value">{{ shipping.service_world_wide }}</span></div>
                                                 <div><span class="inner-title">Price:</span><span class="inner-value">{{ shipping.price_world_wide }}</span>  </div>
+                                                <div><span class="inner-title">Duration:</span> <span class="inner-value">{{ shipping.duration_worldwide == null ? '-' : shipping.duration_worldwide }} </span></div>
                                             </div>
                                         </div>
                                       
@@ -143,7 +163,7 @@
 
                     <div class="col-lg-4 parent-price-table" v-if="(loading && !author)">
                    
-                        <AddCartWidget :id="id" :price="product.price" :exist="exist" ></AddCartWidget>
+                        <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" ></AddCartWidget>
                         <MakeOfferWidget v-if="product.best_offer"></MakeOfferWidget>
                         <ChatWidget></ChatWidget>
                     </div>
@@ -173,6 +193,9 @@
     }
     .underline{
         text-decoration: underline;
+    }
+    .fs-20{
+        font-size: 20px;
     }
 </style>
 <script>

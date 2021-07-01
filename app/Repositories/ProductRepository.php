@@ -1,8 +1,11 @@
 <?php
 namespace App\Repositories;
 
+use App\Enums\InternationalShipping;
+use App\Enums\LocalShipping;
 use App\Enums\ProductCondition;
 use App\Enums\ProductType;
+use App\Enums\Return_Policy;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
@@ -24,7 +27,8 @@ class ProductRepository{
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
                 'conditions' => ProductCondition::asSelectArray(), 
                 'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
-            ];
+                'return_policy' => Return_Policy::asSelectArray(),
+                ];
         
     }
 
@@ -40,6 +44,15 @@ class ProductRepository{
         $product->condition = $data['condition'];
         $product->return_policy = $data['return_policy'];
         $product->best_offer = $data['best_offer'];
+        $product->best_offer_price = $data['minimum_offer'];
+        $product->doll_size  = $data['doll_size'];
+        $product->doll_gender = $data['doll_gender'];
+        $product->featured_refinements = $data['featured_refinements'];
+        $product->quantity = $data['quantity'];
+        $product->details  = $data['details'];
+        $product->modified_item = $data['modified_item'];
+        $product->upc = $data['upc'];
+        $product->domestic_product = $data['domestic_product'];
         $product->draft =  $data['draft'];
         $product->user_id = $user_id;
         $product->status  = 0;
@@ -118,7 +131,11 @@ class ProductRepository{
     public function getProductShipping($user_id,$product_id)
     {
         $product = Product::where('id',$product_id)->where('user_id',$user_id)->with('shipping')->first();
-        return ['shipping' => $product->shipping];
+        return [
+            'shipping' => $product->shipping,
+            'localShipping' => LocalShipping::asSelectArray(),
+            'worldwide' => InternationalShipping::asSelectArray(),
+        ];
     }
 
     public function getUserProducts($id)

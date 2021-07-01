@@ -6,7 +6,7 @@
             <div class="content">
                 <div>
                     <h3>$ {{ this.price }}</h3>
-                    <p>12 Wachers</p>
+                    <p>{{ this.wishlistCount     }} Wachers</p>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -22,7 +22,7 @@
 <script>
 
 export default ({
-   props: ['id','price','exist'],
+   props: ['id','price','exist','wishlistCount'],
    data:()=>({
        added: false
    }),

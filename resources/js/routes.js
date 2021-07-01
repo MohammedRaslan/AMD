@@ -69,11 +69,11 @@ const routes = [
         component: WishlistComponent,
         name: 'Wishlist',
     },
-    {
-        path: "/step_two/:id?",
-        component: CreateProductStepTwoComponent,
-        name: "ProductCreateStepTwo",
-    },
+    // {
+    //     path: "/step_two/:id?",
+    //     component: CreateProductStepTwoComponent,
+    //     name: "ProductCreateStepTwo",
+    // },
     {
         path: "/product_shipping/:id?",
         component: CreateProductShippingComponent,

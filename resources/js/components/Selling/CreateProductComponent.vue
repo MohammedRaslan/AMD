@@ -69,7 +69,7 @@
                                                                             </div>
                                                                                 <div class="col-4 select-product text-left">
                                                                                 <label class="text-white" for="condition">Condition</label>
-                                                                                <v-select placeholder="Select Condition" id='cats' v-model="form.condition"   label="title" :options="conditions">
+                                                                                <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
                                                                                        <template #search="{attributes, events}">
                                                                                             <input
                                                                                                 class="vs__search"
@@ -83,7 +83,7 @@
                                                                             </div>
                                                                             <div class="col-4 select-product text-left">
                                                                                 <label class="text-white" for="brand">Brand</label>
-                                                                                <v-select placeholder="Select Brand" id='cats' v-model="form.brand" :reduce="brand => brand.id"  label="title" :options="brands">
+                                                                                <v-select placeholder="Select Brand" id='cats' v-model="form.brand" :reduce="brand => brand.title"  label="title" :options="brands">
                                                                                        <template #search="{attributes, events}">
                                                                                             <input
                                                                                                 class="vs__search"
@@ -96,23 +96,6 @@
                                                                                 <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
                                                                             </div>
                                                                         </div>
-
-                                                                        <!-- <div class="col-4 text-left">
-                                                                            <label class="text-white" for="type">Type</label>
-                                                                            <select name="type" v-model="form.type" id="" class="custom-select m-2 form-control" required>
-                                                                                <option selected disabled>Choose Type</option>
-                                                                                <option v-for="(type, index) in types" :key="index" :value="type" > {{ index }}</option>
-                                                                            </select >
-                                                                            <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
-                                                                        </div>
-
-                                                                        <div class="col-4 text-left">
-                                                                            <label class="text-white" for="price">Price</label>
-                                                                            <input type="number" v-model="form.price" min="1" class="form-control" id="price" placeholder="Price" required>
-                                                                            <div v-if="form.errors.has('price')" id="price" class="alert alert-danger" v-html="form.errors.get('price')" />
-                                                                        </div> -->
-
-
                                                                         <div class="col-12 mb-3 upload-img">
                                                                             <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
                                                                             <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
@@ -123,32 +106,16 @@
                                                                             <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                         </div>
-
-<!-- 
-                                                                        <div class="row">
-                                                                            <div class="col-6 round">
-                                                                                <label for="checkbox1" class="label-text" style="color:white; float:left">This Product has return policy</label>
-                                                                                <input type="checkbox" v-model="form.return_policy" id="checkbox1" placeholder="Title" >
-                                                                                <label for="checkbox1" class="ml-3"></label>
-                                                                                <div v-if="form.errors.has('return_policy')" class="alert alert-danger" v-html="form.errors.get('return_policy')" />
-                                                                            </div>
-                                                                            <div class="col-6 round ">
-                                                                                <label for="checkbox2" class='label-text' style="color:white; float:left">This Product accept best offer</label>
-                                                                                <input type="checkbox" v-model="form.best_offer" id="checkbox2" placeholder="Title">
-                                                                                <label for="checkbox2" class="ml-3"></label>
-                                                                                <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
-                                                                            </div>
-                                                                        </div> -->
                                                                         <div class="row listing-type">
                                                                             <h3 class="text-left text-maroon mt-3">Listing Type</h3>
                                                                             <form class="row mt-4 border-0 p-0">
-                                                                                <div class="col-lg-5">
+                                                                                <div class="col-lg-4">
                                                                                     <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
-                                                                                    <label class="radio-custom-label" for="radio-1">Ship to my saved address</label>
+                                                                                    <label class="radio-custom-label" for="radio-1">Listing Product</label>
                                                                                 </div>
                                                                                 <div class="col-lg-7">
-                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
-                                                                                    <label class="radio-custom-label" for="radio-2">… or Ship to other address </label>
+                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio" disabled>
+                                                                                    <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
                                                                                 </div>
                                                                             </form>
                                                                             
@@ -160,18 +127,18 @@
                                                                                     <form action="" class="border-0">
                                                                                         <div class="row g-3">
                                                                                             <div class="col-12">
-                                                                                                <input class="form-control" id='listing1' type="text" placeholder="First name">
+                                                                                                <input class="form-control" v-model="form.price" id='listing1' type="number" placeholder="Price">
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
                                                                                 <div class="col-6 round round-3 pl-3">
-                                                                                    <label for="checkbox3" class='label-text' style="color:white; float:left">This Product </label>
+                                                                                    <label for="checkbox3" class='label-text' style="color:white; float:left">Accept best offer </label>
                                                                                     <input type="checkbox" v-model="form.best_offer" id="checkbox3"  placeholder="Title">
                                                                                     <label for="checkbox3" class="ml-3"></label>
                                                                                     <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                                 </div>
-                                                                                <input class="form-control" type="text" style="margin-left: 20px" placeholder="First name" :disabled="form.best_offer">
+                                                                                <input class="form-control" type="text" v-model="form.minimum_offer" style="margin-left: 31px; width:86%" placeholder="Minimum offer" :disabled="!form.best_offer">
 
                                                                             </div>
 
@@ -180,14 +147,89 @@
                                                                                     <form action="" class="border-0">
                                                                                         <div class="row g-3">
                                                                                             <div class="col-12">
-                                                                                                <input class="form-control" type="text" aria-label="First name" placeholder="First name" disabled>
+                                                                                                <input class="form-control" type="text" aria-label="First name" placeholder="Soon" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-
+                                                                        <div class="row">
+                                                                             <div class="col-6 select-product text-left mb-3">
+                                                                                <label class="text-white" for="brand">Return Policy</label>
+                                                                                <v-select placeholder="Select Policy" id='cats' v-model="form.return_policy" label="title" :options="policies">
+                                                                                       <template #search="{attributes, events}">
+                                                                                            <input
+                                                                                                class="vs__search"
+                                                                                                :required="!form.return_policy"
+                                                                                                v-bind="attributes"
+                                                                                                v-on="events"
+                                                                                            />
+                                                                                        </template>
+                                                                                </v-select>
+                                                                                <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                             <a class="btn btn-milky m-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                                                Additional Information
+                                                                             </a>
+                                                                             <div class="collapse m-3" id="collapseExample">
+                                                                                <div class="card card-body background-color">
+                                                                                     <div class="row text-left">
+       
+                                                                                        <div class="col-4">
+                                                                                            <label class="text-white" for="cats">Doll Size</label>
+                                                                                            <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Item size" >
+                                                                                            <div v-if="form.errors.has('doll_size')" class="alert alert-danger" v-html="form.errors.get('doll_size')" />
+                                                                                        </div>
+                                                                                        <div class="col-4">
+                                                                                             <label class="text-white" for="cats">Quantity</label>
+                                                                                            <input type="number" v-model="form.quantity" class="form-control" id="fName" placeholder="Quantity" >
+                                                                                            <div v-if="form.errors.has('quantity')" class="alert alert-danger" v-html="form.errors.get('quantity')" />
+                                                                                        </div>
+                                                                                        <div class="col-4">
+                                                                                             <label class="text-white" for="cats">Doll Gender</label>
+                                                                                            <v-select placeholder="Select gender" v-model="form.doll_gender" :options="gender"></v-select>
+                                                                                            <div v-if="form.errors.has('doll_gender')" class="alert alert-danger" v-html="form.errors.get('doll_gender')" />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-6">
+                                                                                                 <label class="text-white" for="cats">UPC</label>
+                                                                                                <input type="text" v-model="form.upc" class="form-control" id="fName" placeholder="UPC" >
+                                                                                                <div v-if="form.errors.has('upc')" class="alert alert-danger" v-html="form.errors.get('upc')" />
+                                                                                            </div>
+                                                                                            <div class="col-6">
+                                                                                                 <label class="text-white" for="cats">Featured Refinements</label>
+                                                                                                <input type="text" v-model="form.featured_refinements" class="form-control" id="fName" placeholder="Featured Refinements" >
+                                                                                                <div v-if="form.errors.has('featured_refinements')" class="alert alert-danger" v-html="form.errors.get('featured_refinements')" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 mb-5">
+                                                                                            <label for="#details" style="color:white">Details</label>
+                                                                                            <input type="text" v-model="form.details" class="form-control" id="details" placeholder="Details" >
+                                                                                            <div v-if="form.errors.has('details')" class="alert alert-danger" v-html="form.errors.get('details')" />
+                                                                                        </div>
+                                                                                    
+                                                                                    
+                                                                                            <div class="row">
+                                                                                            <div class="col-6 round ">
+                                                                                                <p for=""  style="color:white; float:left">This Product is Domestic Product</p>
+                                                                                                <input type="checkbox" v-model="form.domestic_product" id="checkbox1" placeholder="Title" >
+                                                                                                <label for="checkbox1" class="ml-3"></label>
+                                                                                                <div v-if="form.errors.has('domestic_product')" class="alert alert-danger" v-html="form.errors.get('domestic_product')" />
+                                                                                            </div>
+                                                                                            <div class="col-6 round ">
+                                                                                                <p style="color:white; float:left">This Product is Modified Item</p>
+                                                                                                <input type="checkbox" v-model="form.modified_item" id="checkbox2" placeholder="Title" >
+                                                                                                <label for="checkbox2" class="ml-3"></label>
+                                                                                                <div v-if="form.errors.has('modified_item')" class="alert alert-danger" v-html="form.errors.get('modified_item')" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                 </div>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="col-6">
                                                                             <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-milky" id="draft">
                                                                         </div>
@@ -231,11 +273,11 @@
   border: 1px solid #ccc;
   border-radius: 50%;
   cursor: pointer;
-  height: 28px;
-  left: 0;
+  height: 20px;
+  left: 22px;
   position: absolute;
   top: 0;
-  width: 28px;
+  width: 20px;
 }
 
 .round label:after {
@@ -244,10 +286,10 @@
   border-right: none;
   content: "";
   height: 6px;
-  left: 7px;
+  left: 3px;
   opacity: 0;
   position: absolute;
-  top: 8px;
+  top: 6px;
   transform: rotate(-45deg);
   width: 12px;
 }
@@ -263,6 +305,9 @@
 
 .round input[type="checkbox"]:checked + label:after {
   opacity: 1;
+}
+.background-color{
+    background-color: #111b29 !important;
 }
 
 </style>
@@ -284,28 +329,45 @@ export default ({
         categories: [],
         conditions: [],
         brands: [],
+        gender:[
+            'male',
+            'female',
+        ],
+        policies: [],
         imagenull: false,
         form : new form({
             title : null,
-            type : null,
+            type : 0,
             condition:null,
             image : {},
             brand : null,
             description: null,
             category: null,
-            return_policy: false,
+            return_policy: null,
             price: null,
             best_offer: false,
+            minimum_offer: null,
+
+            doll_size: null,
+            doll_gender: null,
+            modified_item: 0,
+            domestic_product: 0,
+            featured_refinements: null,
+            quantity: null,
+            upc: null,
+            details: false,
             draft: 1,
         }),
     }),
     methods:{
         async saveProduct(){
            this.$Progress.start();
+           this.form.minimum_offer = this.form.best_offer == false ? null : this.form.minimum_offer;
            this.form.description = this.description.getContent();
-           this.form.best_offer = this.form.type == 1 ? 1 :0;
-           this.form.return_policy = this.form.return_policy == true ? 1 : 0;
            this.form.best_offer = this.form.best_offer == true ? 1 : 0;
+           this.form.details = this.details.getContent();
+           this.form.domestic_product = this.form.domestic_product == true ? 1 :0;
+           this.form.modified_item = this.form.modified_item == true ? 1 :0;
            if( jQuery.isEmptyObject(this.form.image)  ){
                this.imagenull = true;
                this.$Progress.fail();
@@ -315,7 +377,7 @@ export default ({
                 this.indicator();
                 this.form.reset();
                 console.log(response.data);
-                this.$router.push('/step_two/'+response.data.product_id);
+                this.$router.push('/product_shipping/'+response.data.product_id);
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);
@@ -367,12 +429,30 @@ export default ({
                 '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
             ],
 });
+        this.details =  createEditor('#details', {
+                    toolbar: [
+                        'removeFormat', 'undo', '|', 'elements', 'fontName', 'fontSize', 'foreColor', 'backColor', 'divider',
+                        'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
+                        'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent',
+                        'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
+                    ],
+                    fontName: [
+                        {val: 'arial black'}, 
+                        {val: 'times new roman'}, 
+                        {val: 'Courier New'}
+                    ],
+                    fontSize: [
+                        '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'
+                    ],
+});
+
 
         axios.get('/api/product/getProductData').then((response) => {
             this.types = response.data.types;
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
             this.brands = response.data.brands;
+            this.policies = response.data.return_policy;
         });
     }
 })

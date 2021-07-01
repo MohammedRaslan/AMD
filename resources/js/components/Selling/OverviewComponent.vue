@@ -71,7 +71,7 @@
                                                     <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
                                                 </div>
                                                   <div class="inner" v-if="product.draft == 1">
-                                                    <button class="btn btn-secondary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
+                                                    <button class="btn btn-secondary"><router-link :to="{name: 'ProductCreateShipping', params:{id: product.id}}">Complete</router-link></button>
                                                 </div>
                                                 <div class="inner">
                                                     <button class="btn btn-danger" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)"><a >Suspend</a></button>
@@ -152,7 +152,6 @@ export default ({
         this.$Progress.start();
     },
     mounted(){
-        // console.log(window.location.origin, this.$route);
         Fire.$emit('mounted');
         this.$Progress.finish();
         this.getProducts();
