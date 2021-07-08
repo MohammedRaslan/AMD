@@ -1990,10 +1990,9 @@ $lab: 1200px;
                                 }
                             }
                         }
-                        .vs--single .vs__selected{
+                        .vs--single .vs__selected {
                             color: white;
-                                transform: translateY(-4px);
-
+                            transform: translateY(-4px);
                         }
                     }
                     .round {
@@ -2361,6 +2360,7 @@ $lab: 1200px;
                     h5 {
                         // width: 294px;
                     }
+                    background: red !important;
                     .status {
                         position: absolute;
                         bottom: 0;
@@ -2483,10 +2483,32 @@ $lab: 1200px;
         }
     }
     // #listing-type
-    .listing-type{
-        .form-control:disabled, .form-control[readonly]{
-            opacity: .3;
-            background: #0000
+    .form-control:disabled,
+    .form-control[readonly] {
+        opacity: 0.2 !important;
+        background: #0000 !important;
+    }
+    // .vs__dropdown-toggle{
+    //     border: none !important;
+    // / }
+    .vs2__combobox {
+        .signup form input {
+            border: none !important;
+        }
+    }
+    .vs__open-indicator {
+        fill: #839eb2;
+    }
+    .vs--disabled .vs__dropdown-toggle{
+
+    }
+
+
+    .listing-type {
+        .form-control:disabled,
+        .form-control[readonly] {
+            opacity: 0.2 !important;
+            background: #0000 !important;
         }
         .checkbox-custom,
         .radio-custom {
@@ -2552,39 +2574,40 @@ $lab: 1200px;
 
         // #listing-type
     }
-    .form-product{
-        .input{
+    .form-product {
+        .input {
             border: 1px solid #839eb2;
         }
-        .vs__dropdown-toggle{
+        .vs__dropdown-toggle {
             border: 1px solid #839eb2;
-
         }
-        .vs__open-indicator{
+        .vs__open-indicator {
             fill: #839eb2;
         }
-        .vs__search{
-            &:focus{
+        .vs__search {
+            &:focus {
                 box-shadow: none;
             }
         }
-        #vs1__listbox{
-            li{
+        #vs1__listbox {
+            li {
                 color: white !important;
             }
         }
-        #vs2__listbox, #vs1__listbox, #vs3__combobox, #vs3__listbox{
-            li{
+        #vs2__listbox,
+        #vs1__listbox,
+        #vs3__combobox,
+        #vs3__listbox {
+            li {
                 color: white !important;
-                a{
+                a {
                     color: white;
                 }
-                &:hover{
+                &:hover {
                     color: #111b29 !important;
-                    a{
+                    a {
                         color: #111b29 !important;
                     }
-
                 }
             }
         }

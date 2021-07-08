@@ -2184,6 +2184,9 @@
   color: white;
   background: #7ac943;
 }
+.selling.buying .inner-content .inner-item .detalis {
+  background: red !important;
+}
 .selling.buying .inner-content .inner-item .detalis .status {
   position: absolute;
   bottom: 0;
@@ -2288,9 +2291,21 @@
   border-color: #7ac943 !important;
   color: #7ac943;
 }
-.selling .listing-type .form-control:disabled, .selling .listing-type .form-control[readonly] {
-  opacity: 0.3;
-  background: #0000;
+.selling .form-control:disabled,
+.selling .form-control[readonly] {
+  opacity: 0.2 !important;
+  background: #0000 !important;
+}
+.selling .vs2__combobox .signup form input {
+  border: none !important;
+}
+.selling .vs__open-indicator {
+  fill: #839eb2;
+}
+.selling .listing-type .form-control:disabled,
+.selling .listing-type .form-control[readonly] {
+  opacity: 0.2 !important;
+  background: #0000 !important;
 }
 .selling .listing-type .checkbox-custom,
 .selling .listing-type .radio-custom {
@@ -2360,16 +2375,28 @@
 .selling .form-product #vs1__listbox li {
   color: white !important;
 }
-.selling .form-product #vs2__listbox li, .selling .form-product #vs1__listbox li, .selling .form-product #vs3__combobox li, .selling .form-product #vs3__listbox li {
+.selling .form-product #vs2__listbox li,
+.selling .form-product #vs1__listbox li,
+.selling .form-product #vs3__combobox li,
+.selling .form-product #vs3__listbox li {
   color: white !important;
 }
-.selling .form-product #vs2__listbox li a, .selling .form-product #vs1__listbox li a, .selling .form-product #vs3__combobox li a, .selling .form-product #vs3__listbox li a {
+.selling .form-product #vs2__listbox li a,
+.selling .form-product #vs1__listbox li a,
+.selling .form-product #vs3__combobox li a,
+.selling .form-product #vs3__listbox li a {
   color: white;
 }
-.selling .form-product #vs2__listbox li:hover, .selling .form-product #vs1__listbox li:hover, .selling .form-product #vs3__combobox li:hover, .selling .form-product #vs3__listbox li:hover {
+.selling .form-product #vs2__listbox li:hover,
+.selling .form-product #vs1__listbox li:hover,
+.selling .form-product #vs3__combobox li:hover,
+.selling .form-product #vs3__listbox li:hover {
   color: #111b29 !important;
 }
-.selling .form-product #vs2__listbox li:hover a, .selling .form-product #vs1__listbox li:hover a, .selling .form-product #vs3__combobox li:hover a, .selling .form-product #vs3__listbox li:hover a {
+.selling .form-product #vs2__listbox li:hover a,
+.selling .form-product #vs1__listbox li:hover a,
+.selling .form-product #vs3__combobox li:hover a,
+.selling .form-product #vs3__listbox li:hover a {
   color: #111b29 !important;
 }
 
