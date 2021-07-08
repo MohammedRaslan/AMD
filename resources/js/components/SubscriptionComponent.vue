@@ -35,11 +35,11 @@
                 <div class="row price-row">
                     <div class="col-lg-3 col-md-6 col-sm-12">
                        <div class="inner">
-                           <p class="type">Regular Membership</p>
+                           <p class="type">Regular Membership </p>
                            <h3>FREE</h3>
                            <hr>
-                           <p>50 Free Listings</p>
-                           <p>Fees:  8% (Unlimited).</p>
+                           <p>50 Free Listings monthly</p>
+                           <p>Selling Fee 9% unlimited <br> final value fee.</p>
                            <p> - </p>
                            <p> - </p>
                            <a href="#" class="btn bg-white">Get Started</a>
@@ -51,22 +51,24 @@
                            <p class="type">Silver Membership</p>
                            <h3>$ 19.99 /mo</h3>
                            <hr>
-                           <p>100 Free Listings</p>
-                           <p>Fees:  7% (10 items)</p>
-                           <p>Fees:  8% afterwards</p>
-                           <p> - </p>
+                           <p>100 Free Listings Monthly</p>
+                           <p>7% final value fee on the first 10 items sold.</p>
+                           <p>Unlimited 8% final value fee on the 11th item sold </p>
+                                                      <p> - </p>
+
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
                        <div class="inner">
-                           <p class="type">Gold Membership</p>
+                           <p class="type"> Gold Membership  </p>
                             <h3>$ 49.99 /mo</h3>
                            <hr>
                            <p>250 Free Listings</p>
-                           <p>Fees:  Free (2 items)</p>
-                           <p>Fees:  7% afterwards</p>
-                           <p> - </p>
+                           <p>No final value fee on the first 2 items sold</p>
+                           <p>Unlimited 7% final value fee on the 3rd item sold </p>
+                                                      <p> - </p>
+
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>
@@ -76,9 +78,9 @@
                            <h3>$ 99.99 /mo</h3>
                            <hr>
                            <p>500 Free Listings</p>
-                           <p>Fees:  Free (5 items)</p>
-                           <p>Fees:  5% (50 items)</p>
-                           <p>Fees:  7% afterwards</p>
+                           <p>No final value fee on the first 5 items sold</p>
+                           <p>5% final value fee on the next 25 items sold</p>
+                           <p>Unlimited 7% final value fee on the 31st item sold</p>
                            <a href="#" class="btn bg-white">Get Started</a>
                        </div>
                     </div>

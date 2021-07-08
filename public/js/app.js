@@ -7333,6 +7333,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     Fire.$emit('mounted');
@@ -86602,15 +86604,19 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row price-row" }, [
       _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12" }, [
         _c("div", { staticClass: "inner" }, [
-          _c("p", { staticClass: "type" }, [_vm._v("Regular Membership")]),
+          _c("p", { staticClass: "type" }, [_vm._v("Regular Membership ")]),
           _vm._v(" "),
           _c("h3", [_vm._v("FREE")]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("p", [_vm._v("50 Free Listings")]),
+          _c("p", [_vm._v("50 Free Listings monthly")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  8% (Unlimited).")]),
+          _c("p", [
+            _vm._v("Selling Fee 9% unlimited "),
+            _c("br"),
+            _vm._v(" final value fee.")
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
@@ -86630,11 +86636,13 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("p", [_vm._v("100 Free Listings")]),
+          _c("p", [_vm._v("100 Free Listings Monthly")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  7% (10 items)")]),
+          _c("p", [_vm._v("7% final value fee on the first 10 items sold.")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  8% afterwards")]),
+          _c("p", [
+            _vm._v("Unlimited 8% final value fee on the 11th item sold ")
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
@@ -86646,7 +86654,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12" }, [
         _c("div", { staticClass: "inner" }, [
-          _c("p", { staticClass: "type" }, [_vm._v("Gold Membership")]),
+          _c("p", { staticClass: "type" }, [_vm._v(" Gold Membership  ")]),
           _vm._v(" "),
           _c("h3", [_vm._v("$ 49.99 /mo")]),
           _vm._v(" "),
@@ -86654,9 +86662,11 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("p", [_vm._v("250 Free Listings")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  Free (2 items)")]),
+          _c("p", [_vm._v("No final value fee on the first 2 items sold")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  7% afterwards")]),
+          _c("p", [
+            _vm._v("Unlimited 7% final value fee on the 3rd item sold ")
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(" - ")]),
           _vm._v(" "),
@@ -86676,11 +86686,13 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("p", [_vm._v("500 Free Listings")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  Free (5 items)")]),
+          _c("p", [_vm._v("No final value fee on the first 5 items sold")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  5% (50 items)")]),
+          _c("p", [_vm._v("5% final value fee on the next 25 items sold")]),
           _vm._v(" "),
-          _c("p", [_vm._v("Fees:  7% afterwards")]),
+          _c("p", [
+            _vm._v("Unlimited 7% final value fee on the 31st item sold")
+          ]),
           _vm._v(" "),
           _c("a", { staticClass: "btn bg-white", attrs: { href: "#" } }, [
             _vm._v("Get Started")
