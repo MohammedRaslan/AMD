@@ -2345,6 +2345,33 @@
 .selling .listing-type .radio-custom:checked .old-adress {
   background-color: red;
 }
+.selling .form-product .input {
+  border: 1px solid #839eb2;
+}
+.selling .form-product .vs__dropdown-toggle {
+  border: 1px solid #839eb2;
+}
+.selling .form-product .vs__open-indicator {
+  fill: #839eb2;
+}
+.selling .form-product .vs__search:focus {
+  box-shadow: none;
+}
+.selling .form-product #vs1__listbox li {
+  color: white !important;
+}
+.selling .form-product #vs2__listbox li, .selling .form-product #vs1__listbox li, .selling .form-product #vs3__combobox li, .selling .form-product #vs3__listbox li {
+  color: white !important;
+}
+.selling .form-product #vs2__listbox li a, .selling .form-product #vs1__listbox li a, .selling .form-product #vs3__combobox li a, .selling .form-product #vs3__listbox li a {
+  color: white;
+}
+.selling .form-product #vs2__listbox li:hover, .selling .form-product #vs1__listbox li:hover, .selling .form-product #vs3__combobox li:hover, .selling .form-product #vs3__listbox li:hover {
+  color: #111b29 !important;
+}
+.selling .form-product #vs2__listbox li:hover a, .selling .form-product #vs1__listbox li:hover a, .selling .form-product #vs3__combobox li:hover a, .selling .form-product #vs3__listbox li:hover a {
+  color: #111b29 !important;
+}
 
 .shop-details {
   background: #111b29;

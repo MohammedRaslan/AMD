@@ -48,13 +48,13 @@
                                                                 <form @submit.prevent="saveProduct" class="form-product">
                                                                     <div class="row">
                                                                         <div class="col-12 text-left">
-                                                                             <label class="text-white" for="fName">Item Name</label>
+                                                                             <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label> 
                                                                             <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                             <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                         </div>
                                                                         <div class="row pb-4">
                                                                             <div class="col-4 select-product text-left">
-                                                                                <label class="text-white" for="cats">Category</label>
+                                                                                <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label> 
                                                                                 <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories" >
                                                                                     <template #search="{attributes, events}">
                                                                                             <input
@@ -68,7 +68,7 @@
                                                                                 <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                             </div>
                                                                                 <div class="col-4 select-product text-left">
-                                                                                <label class="text-white" for="condition">Condition</label>
+                                                                                <label class="text-white" for="condition">Condition <span class="requiredItem">*</span></label>
                                                                                 <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
                                                                                        <template #search="{attributes, events}">
                                                                                             <input
@@ -82,7 +82,7 @@
                                                                                 <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
                                                                             </div>
                                                                             <div class="col-4 select-product text-left">
-                                                                                <label class="text-white" for="brand">Brand</label>
+                                                                                <label class="text-white" for="brand">Brand <span class="requiredItem">*</span></label>
                                                                                 <v-select placeholder="Select Brand" id='cats' v-model="form.brand" :reduce="brand => brand.title"  label="title" :options="brands">
                                                                                        <template #search="{attributes, events}">
                                                                                             <input
@@ -102,12 +102,12 @@
                                                                             <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                         </div>
                                                                         <div class="col-12 mb-5 description">
-                                                                            <label for="#description" style="color:white">Description</label>
+                                                                            <label for="#description" style="color:white">Description <span class="requiredItem">*</span></label>
                                                                             <textarea type="text" v-model="form.description" name="description" placeholder="description" id="description" class="form-control"></textarea>
                                                                             <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                         </div>
                                                                         <div class="row listing-type">
-                                                                            <h3 class="text-left text-maroon mt-3">Listing Type</h3>
+                                                                            <h3 class="text-left text-maroon mt-3">Listing Type <span class="requiredItem">*</span></h3>
                                                                             <form class="row mt-4 border-0 p-0">
                                                                                 <div class="col-lg-4">
                                                                                     <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
@@ -156,7 +156,7 @@
                                                                         </div>
                                                                         <div class="row">
                                                                              <div class="col-6 select-product text-left mb-3">
-                                                                                <label class="text-white" for="brand">Return Policy</label>
+                                                                                <label class="text-white" for="brand">Return Policy <span class="requiredItem">*</span></label>
                                                                                 <v-select placeholder="Select Policy" id='cats' v-model="form.return_policy" label="title" :options="policies">
                                                                                        <template #search="{attributes, events}">
                                                                                             <input
@@ -309,7 +309,9 @@
 .background-color{
     background-color: #111b29 !important;
 }
-
+.requiredItem{
+color:#fd1266 ;
+}
 </style>
 <script>
 import SideBar from "./SidebarComponent";

@@ -5561,6 +5561,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -6113,6 +6115,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -12548,7 +12553,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nselect[data-v-2bf3c854]{\n        display: block !important;\n}\n.round[data-v-2bf3c854] {\n  position: relative;\n  height: 50px;\n}\n.round label[data-v-2bf3c854] {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  cursor: pointer;\n  height: 20px;\n  left: 22px;\n  position: absolute;\n  top: 0;\n  width: 20px;\n}\n.round label[data-v-2bf3c854]:after {\n  border: 2px solid #fff;\n  border-top: none;\n  border-right: none;\n  content: \"\";\n  height: 6px;\n  left: 3px;\n  opacity: 0;\n  position: absolute;\n  top: 6px;\n  transform: rotate(-45deg);\n  width: 12px;\n}\n.round input[type=\"checkbox\"][data-v-2bf3c854] {\n  visibility: hidden;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-2bf3c854] {\n  background-color: #fd1266;\n  border-color:#fd1266;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-2bf3c854]:after {\n  opacity: 1;\n}\n.background-color[data-v-2bf3c854]{\n    background-color: #111b29 !important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nselect[data-v-2bf3c854]{\n        display: block !important;\n}\n.round[data-v-2bf3c854] {\n  position: relative;\n  height: 50px;\n}\n.round label[data-v-2bf3c854] {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  cursor: pointer;\n  height: 20px;\n  left: 22px;\n  position: absolute;\n  top: 0;\n  width: 20px;\n}\n.round label[data-v-2bf3c854]:after {\n  border: 2px solid #fff;\n  border-top: none;\n  border-right: none;\n  content: \"\";\n  height: 6px;\n  left: 3px;\n  opacity: 0;\n  position: absolute;\n  top: 6px;\n  transform: rotate(-45deg);\n  width: 12px;\n}\n.round input[type=\"checkbox\"][data-v-2bf3c854] {\n  visibility: hidden;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-2bf3c854] {\n  background-color: #fd1266;\n  border-color:#fd1266;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-2bf3c854]:after {\n  opacity: 1;\n}\n.background-color[data-v-2bf3c854]{\n    background-color: #111b29 !important;\n}\n.requiredItem[data-v-2bf3c854]{\ncolor:#fd1266 ;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12596,7 +12601,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nselect[data-v-33798577]{\n    display: block !important;\n}\n.round[data-v-33798577] {\n    position: relative;\n    height: 50px;\n}\n.round label[data-v-33798577] {\nbackground-color: #fff;\nborder: 1px solid #ccc;\nborder-radius: 50%;\ncursor: pointer;\nheight: 28px;\nleft: 0;\nposition: absolute;\ntop: 0;\nwidth: 28px;\n}\n.round label[data-v-33798577]:after {\nborder: 2px solid #fff;\nborder-top: none;\nborder-right: none;\ncontent: \"\";\nheight: 6px;\nleft: 7px;\nopacity: 0;\nposition: absolute;\ntop: 8px;\ntransform: rotate(-45deg);\nwidth: 12px;\n}\n.round input[type=\"checkbox\"][data-v-33798577] {\nvisibility: hidden;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-33798577] {\n    background-color: #fd1266;\n    border-color:#fd1266;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-33798577]:after {\n    opacity: 1;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nselect[data-v-33798577]{\n    display: block !important;\n}\n.round[data-v-33798577] {\n    position: relative;\n    height: 50px;\n}\n.round label[data-v-33798577] {\nbackground-color: #fff;\nborder: 1px solid #ccc;\nborder-radius: 50%;\ncursor: pointer;\nheight: 28px;\nleft: 0;\nposition: absolute;\ntop: 0;\nwidth: 28px;\n}\n.round label[data-v-33798577]:after {\nborder: 2px solid #fff;\nborder-top: none;\nborder-right: none;\ncontent: \"\";\nheight: 6px;\nleft: 7px;\nopacity: 0;\nposition: absolute;\ntop: 8px;\ntransform: rotate(-45deg);\nwidth: 12px;\n}\n.round input[type=\"checkbox\"][data-v-33798577] {\nvisibility: hidden;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-33798577] {\n    background-color: #fd1266;\n    border-color:#fd1266;\n}\n.round input[type=\"checkbox\"]:checked + label[data-v-33798577]:after {\n    opacity: 1;\n}\ninput[data-v-33798577]:disabled{\n    background-color: black;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12644,7 +12649,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.insided[data-v-7b37ad2a]{\n    padding-left: 30px !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.insided[data-v-7b37ad2a]{\n    padding-left: 30px !important;\n    margin: auto;\n}\n.outside[data-v-7b37ad2a]{\n        display: flex !important;\nflex-wrap: wrap !important;\n    padding-left: 0px !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -79752,17 +79757,7 @@ var render = function() {
                                                           "col-12 text-left"
                                                       },
                                                       [
-                                                        _c(
-                                                          "label",
-                                                          {
-                                                            staticClass:
-                                                              "text-white",
-                                                            attrs: {
-                                                              for: "fName"
-                                                            }
-                                                          },
-                                                          [_vm._v("Item Name")]
-                                                        ),
+                                                        _vm._m(1),
                                                         _vm._v(" "),
                                                         _c("input", {
                                                           directives: [
@@ -79840,21 +79835,7 @@ var render = function() {
                                                               "col-4 select-product text-left"
                                                           },
                                                           [
-                                                            _c(
-                                                              "label",
-                                                              {
-                                                                staticClass:
-                                                                  "text-white",
-                                                                attrs: {
-                                                                  for: "cats"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Category"
-                                                                )
-                                                              ]
-                                                            ),
+                                                            _vm._m(2),
                                                             _vm._v(" "),
                                                             _c("v-select", {
                                                               attrs: {
@@ -79952,22 +79933,7 @@ var render = function() {
                                                               "col-4 select-product text-left"
                                                           },
                                                           [
-                                                            _c(
-                                                              "label",
-                                                              {
-                                                                staticClass:
-                                                                  "text-white",
-                                                                attrs: {
-                                                                  for:
-                                                                    "condition"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Condition"
-                                                                )
-                                                              ]
-                                                            ),
+                                                            _vm._m(3),
                                                             _vm._v(" "),
                                                             _c("v-select", {
                                                               attrs: {
@@ -80060,17 +80026,7 @@ var render = function() {
                                                               "col-4 select-product text-left"
                                                           },
                                                           [
-                                                            _c(
-                                                              "label",
-                                                              {
-                                                                staticClass:
-                                                                  "text-white",
-                                                                attrs: {
-                                                                  for: "brand"
-                                                                }
-                                                              },
-                                                              [_vm._v("Brand")]
-                                                            ),
+                                                            _vm._m(4),
                                                             _vm._v(" "),
                                                             _c("v-select", {
                                                               attrs: {
@@ -80238,23 +80194,7 @@ var render = function() {
                                                           "col-12 mb-5 description"
                                                       },
                                                       [
-                                                        _c(
-                                                          "label",
-                                                          {
-                                                            staticStyle: {
-                                                              color: "white"
-                                                            },
-                                                            attrs: {
-                                                              for:
-                                                                "#description"
-                                                            }
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "Description"
-                                                            )
-                                                          ]
-                                                        ),
+                                                        _vm._m(5),
                                                         _vm._v(" "),
                                                         _c("textarea", {
                                                           directives: [
@@ -80321,7 +80261,7 @@ var render = function() {
                                                       ]
                                                     ),
                                                     _vm._v(" "),
-                                                    _vm._m(1),
+                                                    _vm._m(6),
                                                     _vm._v(" "),
                                                     _c(
                                                       "div",
@@ -80652,7 +80592,7 @@ var render = function() {
                                                           ]
                                                         ),
                                                         _vm._v(" "),
-                                                        _vm._m(2)
+                                                        _vm._m(7)
                                                       ]
                                                     ),
                                                     _vm._v(" "),
@@ -80667,21 +80607,7 @@ var render = function() {
                                                               "col-6 select-product text-left mb-3"
                                                           },
                                                           [
-                                                            _c(
-                                                              "label",
-                                                              {
-                                                                staticClass:
-                                                                  "text-white",
-                                                                attrs: {
-                                                                  for: "brand"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Return Policy"
-                                                                )
-                                                              ]
-                                                            ),
+                                                            _vm._m(8),
                                                             _vm._v(" "),
                                                             _c("v-select", {
                                                               attrs: {
@@ -81888,9 +81814,63 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text-white", attrs: { for: "fName" } }, [
+      _vm._v("Item Name "),
+      _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text-white", attrs: { for: "cats" } }, [
+      _vm._v("Category "),
+      _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "text-white", attrs: { for: "condition" } },
+      [
+        _vm._v("Condition "),
+        _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text-white", attrs: { for: "brand" } }, [
+      _vm._v("Brand "),
+      _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticStyle: { color: "white" }, attrs: { for: "#description" } },
+      [
+        _vm._v("Description "),
+        _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row listing-type" }, [
       _c("h3", { staticClass: "text-left text-maroon mt-3" }, [
-        _vm._v("Listing Type")
+        _vm._v("Listing Type "),
+        _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
       ]),
       _vm._v(" "),
       _c("form", { staticClass: "row mt-4 border-0 p-0" }, [
@@ -81959,6 +81939,15 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text-white", attrs: { for: "brand" } }, [
+      _vm._v("Return Policy "),
+      _c("span", { staticClass: "requiredItem" }, [_vm._v("*")])
+    ])
   }
 ]
 render._withStripped = true
@@ -85169,7 +85158,7 @@ var render = function() {
               staticClass: "nav-link",
               attrs: { to: "/selling/sell_item", id: "v-pills-profile-tab" }
             },
-            [_vm._v("\n                Sell An Item\n            ")]
+            [_vm._v("\n                Sell An Item \n            ")]
           ),
           _vm._v(" "),
           _c("hr"),
@@ -85251,7 +85240,7 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "nav-link",
+              staticClass: "nav-link outside",
               attrs: {
                 id: "v-pills-settings-tab5",
                 "data-bs-toggle": "pill",

@@ -7,7 +7,7 @@
                 <hr>
                 <!-- Sell an Item -->
                 <router-link to="/selling/sell_item" id="v-pills-profile-tab" class="nav-link">
-                    Sell An Item
+                    Sell An Item 
                 </router-link>
                 <hr>
                 <!-- My Items -->
@@ -22,7 +22,7 @@
                 <router-link to="/selling/drafted" class="nav-link insided" id="v-pills-messages-tab4">Draft</router-link>
                 <hr>
                 <!-- Seller Details -->
-                <button class="nav-link" id="v-pills-settings-tab5" data-bs-toggle="pill" data-bs-target="#v-pills-home5" type="button" role="tab" aria-controls="v-pills-home5" aria-selected="false">Seller Details</button>
+                <button class="nav-link outside" id="v-pills-settings-tab5" data-bs-toggle="pill" data-bs-target="#v-pills-home5" type="button" role="tab" aria-controls="v-pills-home5" aria-selected="false">Seller Details</button>
             </div>
         </div>
     </div>
@@ -30,6 +30,12 @@
 <style scoped>
     .insided{
         padding-left: 30px !important;
+        margin: auto;
+    }
+    .outside{
+            display: flex !important;
+    flex-wrap: wrap !important;
+        padding-left: 0px !important;
     }
 </style>
 

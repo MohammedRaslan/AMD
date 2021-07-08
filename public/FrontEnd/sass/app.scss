@@ -2552,6 +2552,43 @@ $lab: 1200px;
 
         // #listing-type
     }
+    .form-product{
+        .input{
+            border: 1px solid #839eb2;
+        }
+        .vs__dropdown-toggle{
+            border: 1px solid #839eb2;
+
+        }
+        .vs__open-indicator{
+            fill: #839eb2;
+        }
+        .vs__search{
+            &:focus{
+                box-shadow: none;
+            }
+        }
+        #vs1__listbox{
+            li{
+                color: white !important;
+            }
+        }
+        #vs2__listbox, #vs1__listbox, #vs3__combobox, #vs3__listbox{
+            li{
+                color: white !important;
+                a{
+                    color: white;
+                }
+                &:hover{
+                    color: #111b29 !important;
+                    a{
+                        color: #111b29 !important;
+                    }
+
+                }
+            }
+        }
+    }
 }
 // End #Selling
 

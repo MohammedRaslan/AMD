@@ -177,6 +177,9 @@
     .round input[type="checkbox"]:checked + label:after {
         opacity: 1;
     }
+    input:disabled{
+        background-color: black;
+    }
 
 </style>
 <script>
