@@ -2360,7 +2360,7 @@ $lab: 1200px;
                     h5 {
                         // width: 294px;
                     }
-                    background: red !important;
+                    // background: red !important;
                     .status {
                         position: absolute;
                         bottom: 0;
@@ -2490,7 +2490,11 @@ $lab: 1200px;
     }
     // .vs__dropdown-toggle{
     //     border: none !important;
-    // / }
+    //  }
+     .vs--disabled .vs__clear, .vs--disabled .vs__dropdown-toggle, .vs--disabled .vs__open-indicator, .vs--disabled .vs__search, .vs--disabled .vs__selected{
+        background-color: transparent;
+        opacity: .3;
+     }
     .vs2__combobox {
         .signup form input {
             border: none !important;
@@ -2500,7 +2504,7 @@ $lab: 1200px;
         fill: #839eb2;
     }
     .vs--disabled .vs__dropdown-toggle{
-
+        border: none;
     }
 
 
@@ -2597,11 +2601,18 @@ $lab: 1200px;
         #vs2__listbox,
         #vs1__listbox,
         #vs3__combobox,
-        #vs3__listbox {
+        #vs3__listbox,
+        #vs4__combobox
+        {
             li {
                 color: white !important;
+                width: 100% !important;
+                //  display: inline-flex !important;
+                 word-wrap: nowrap !important;
+                word-spacing: normal;
                 a {
-                    color: white;
+                    word-spacing: normal;
+                    color: white !important;
                 }
                 &:hover {
                     color: #111b29 !important;
@@ -2612,6 +2623,40 @@ $lab: 1200px;
             }
         }
     }
+    #vs4__combobox, #vs4__listbox, #vs5__listbox
+        {
+            li {
+                color: white !important;
+                // max-width: 100% !important;
+                a {
+                    
+                    color: white !important;
+                }
+                &:hover {
+                    color: #111b29 !important;
+                    a {
+                        color: #111b29 !important;
+                    }
+                }
+            }
+        }
+        #v-pills-home{
+            .detalis{
+                border: none !important;
+            }
+        }
+        #vs5__listbox , #vs5__combobox{
+            input , .vs__search{
+                border: none !important;
+                height: 0;
+            }
+            // .vs__selected{
+            //     transform: translateY(-21px);
+            // }
+        }
+        // #vs2__combobox, #vs1__combobox{
+        //     border: none;
+        // }
 }
 // End #Selling
 
