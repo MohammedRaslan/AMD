@@ -136,4 +136,25 @@ class UserRepository{
             return true;
         }
     }
+
+    public function getSellerDetails($user_id)
+    {
+        return UserDetail::where('user_id',$user_id)->first();  
+    }
+
+    public function sellerDefault($data,$user_id)
+    {
+        $response = UserDetail::updateOrCreate(
+            ['user_id' => $user_id],
+            [
+                'currency' => $data['currency'],
+                'service_usa' => $data['service_usa'],
+                'service_worldwide' => $data['service_worldwide'],
+                'usa' => $data['usa'],
+                'worldwide' => $data['worldwide'],
+                'user_id' => $user_id,
+            ]
+    );
+        return $response == true ? true :false;
+    }
 }

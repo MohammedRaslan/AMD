@@ -76,4 +76,16 @@ class UserController extends Controller
         $userId = $request->user()->id;
         return response()->json($userId);
     }
+
+    public function getSellerDetails(Request $request)
+    {
+        $data = $this->userService->getSellerDetails($request->user()->id);
+        return $data;
+    }
+
+    public function sellerDefault(Request $request)
+    {
+        $data = $this->userService->sellerDefault($request->all(),$request->user()->id);
+        return response()->json($data);
+    }
 }

@@ -51,6 +51,16 @@ class UserService{
     {
         return $this->userRepository->getCountries();
     }
+
+    public function getSellerDetails($user_id)
+    {
+        return $this->userRepository->getSellerDetails($user_id);
+    }
+
+    public function sellerDefault($data,$user_id)
+    {
+        return $this->userRepository->sellerDefault($data,$user_id);
+    }
     
 
 }

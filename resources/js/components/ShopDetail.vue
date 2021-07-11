@@ -164,9 +164,12 @@
                     <div class="col-lg-4 parent-price-table" v-if="(loading && !author)">
                    
                         <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" ></AddCartWidget>
-                        <MakeOfferWidget v-if="product.best_offer"></MakeOfferWidget>
+                        <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
                         <ChatWidget></ChatWidget>
                     </div>
+                     <div class="col-lg-4 parent-price-table" v-if="author">
+                         <ListOffers :id="product.id"></ListOffers>
+                     </div>
                 </div>
             </div>
           
@@ -203,6 +206,7 @@ import AddCartWidget from "./widgets/AddCartComponent";
 import MakeOfferWidget from "./widgets/MakeOfferComponent";
 import ChatWidget from "./widgets/ChatComponent";
 import Wishlist from "./widgets/WishlistComponent";
+import ListOffers from "./widgets/ShowOffersComponent"
 export default ({
     data:()=>({
         id : null,
@@ -219,6 +223,7 @@ export default ({
         MakeOfferWidget,
         ChatWidget,
         Wishlist,
+        ListOffers,
     },
     methods:{
         str_replace(str){

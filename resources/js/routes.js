@@ -22,6 +22,7 @@ import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
 import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue";
 import WishlistComponent from "./components/Buying/WishlistComponent.vue";
 import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
+import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.vue";
 
 const routes = [
     {
@@ -83,6 +84,11 @@ const routes = [
         path: "/selling/drafted",
         component: DraftedComponent,
         name: "draftedProduct",
+    },
+    {
+        path: "/selling/seller_details",
+        component: SellerDetailsComponent,
+        name: "SellerDetails",
     },
     {
         path: "/shopCategory/:query?",

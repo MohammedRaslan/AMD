@@ -22,7 +22,7 @@
                 <router-link to="/selling/drafted" class="nav-link insided" id="v-pills-messages-tab4">Draft</router-link>
                 <hr>
                 <!-- Seller Details -->
-                <button class="nav-link outside" id="v-pills-settings-tab5" data-bs-toggle="pill" data-bs-target="#v-pills-home5" type="button" role="tab" aria-controls="v-pills-home5" aria-selected="false">Seller Details</button>
+                <router-link to="/selling/seller_details" class="nav-link outside" >Seller Details</router-link>
             </div>
         </div>
     </div>

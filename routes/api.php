@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BestOfferController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WishlistController;
 
@@ -75,7 +76,16 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getUserInfo/{id}',[UserController::class,'getUserInfo']);
         Route::post('edit/{id}',[UserController::class,'edit']);
         Route::get('getUserId',[UserController::class,'getUserId']);
+        Route::post('sellerDefault',[UserController::class,'sellerDefault']);
+        Route::get('getSellerDetails',[UserController::class,'getSellerDetails']);
         Route::post('createFromAdmin',[UserController::class,'addNewUserFromAdmin']);
+    });
+
+    Route::prefix('offer')->group(function(){
+        Route::post('makeOffer',[BestOfferController::class,'makeOffer']);
+        Route::get('getOffers/{id}',[BestOfferController::class,'getOffers']);
+        Route::get('markAsView/{id}',[BestOfferController::class,'markAsView']);
+        Route::get('declineOffer/{id}',[BestOfferController::class,'decline']);
     });
     Route::prefix('cart')->group(function() {
         Route::post('add/{productId}',[CartController::class,'add']);
