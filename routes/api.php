@@ -15,7 +15,9 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BestOfferController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\WishlistController;
+use App\Repositories\NotificationRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +74,11 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getProduct/{id?}',[ProductController::class,'getProduct']);
     });
 
+    Route::prefix('notification')->group(function(){
+        Route::get('new',[NotificationController::class,'new']);
+        Route::get('markAllAsRead',[NotificationController::class,'markAllAsRead']);
+    });
+
     Route::prefix('user')->group(function(){
         Route::get('getUserInfo/{id}',[UserController::class,'getUserInfo']);
         Route::post('edit/{id}',[UserController::class,'edit']);
@@ -86,6 +93,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getOffers/{id}',[BestOfferController::class,'getOffers']);
         Route::get('markAsView/{id}',[BestOfferController::class,'markAsView']);
         Route::get('declineOffer/{id}',[BestOfferController::class,'decline']);
+        Route::get('accept/{id}',[BestOfferController::class,'accept']);
+
     });
     Route::prefix('cart')->group(function() {
         Route::post('add/{productId}',[CartController::class,'add']);

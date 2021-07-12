@@ -37,4 +37,10 @@ class BestOfferController extends Controller
         $data = $this->bestOfferService->decline($offer_id);
         return response()->json($data);
     }
+
+    public function accept($offer_id)
+    {
+        $data = $this->bestOfferService->accept($offer_id);
+        return response()->json($data);
+    }
 }

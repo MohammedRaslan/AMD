@@ -69,7 +69,11 @@ if(token){
 
 router.beforeEach((to, from ,next)=>{
   if(localStorage.getItem('token')){
+    axios.get('/api/notification/new').then((response) => {
+      Vue.prototype.$notifications = response.data.notifications;
+      Vue.prototype.$count = response.data.count;
 
+    });
     if(to.path == '/login' || to.path == '/register'){
         next('/');
       }
@@ -86,6 +90,9 @@ const app = new Vue({
     el: '#app',
     router: router,
     store,
+    data:{
+      h:5,
+    },
     components:{
         Home: Home,
         Notification: Notification,

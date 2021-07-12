@@ -2,6 +2,8 @@
 namespace App\Repositories;
 
 use App\Models\BestOffer;
+use App\Models\Product;
+use App\Models\User;
 
 class BestOfferRepository{
 
@@ -23,14 +25,19 @@ class BestOfferRepository{
                 'price' => $data['offer'],
             ]
         );
+        $product = Product::findOrFail($data['id']);
+        $user_name = User::select('user_name')->where('id',$user_id)->first();
+        $message   = $user_name->user_name.' Made an offer on your product '.$product->title;
+        // $user_id => from , $product->user_id => to
+        NotificationRepository::generateNotification($user_id,$product->user_id,$data['id'],'offer',$message);
+
         return $data == true ? true : false;
     }
 
     public function getOffers($product_id)
     {
         return BestOffer::where('product_id',$product_id)
-                        ->where('acceptance',0)
-                        ->where('viewed',0)
+                        ->where('decline',0)
                         ->with('user')
                         ->get();
     }
@@ -48,9 +55,28 @@ class BestOfferRepository{
     public function decline($offer_id)
     {
         $response = BestOffer::findOrFail($offer_id);
-        $response->acceptance = 0;
+        $response->decline = 1;
         $response->viewed = 1;
         if($response->save()){
+            $product = Product::findOrFail($response->product_id);
+            $message   = 'Your offer on '.$product->title.' has been declined';
+            // $user_id => from , $product->user_id => to
+            NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            return true;
+        }
+        return false;
+    }
+
+    public function accept($offer_id)
+    {
+        $response = BestOffer::findOrFail($offer_id);
+        $response->acceptance = 1;
+        $response->viewed = 1;
+        if($response->save()){
+            $product = Product::findOrFail($response->product_id);
+            $message   = 'Your offer on '.$product->title.' has been accepted, Look into your cart';
+            // $user_id => from , $product->user_id => to
+            NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
             return true;
         }
         return false;

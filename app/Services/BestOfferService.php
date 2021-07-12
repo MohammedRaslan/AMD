@@ -29,4 +29,9 @@ class BestOfferService{
     {
         return $this->bestOfferRepository->decline($offer_id);
     }
+
+    public function accept($offer_id)
+    {
+        return $this->bestOfferRepository->accept($offer_id);
+    }
 }
