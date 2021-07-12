@@ -49,7 +49,7 @@ export default {
     }),
     methods:{
         acceptOffer(id){
-            axios.get('/api/notifications/accept').then((response) => {
+            axios.get('/api/offer/accept/'+id).then((response) => {
                   Toast.fire({
                     icon: 'success',
                     title: 'Offer Accepted'

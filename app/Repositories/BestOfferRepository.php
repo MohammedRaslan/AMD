@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\BestOffer;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\User;
 
@@ -38,6 +39,7 @@ class BestOfferRepository{
     {
         return BestOffer::where('product_id',$product_id)
                         ->where('decline',0)
+                        ->where('acceptance',0)
                         ->with('user')
                         ->get();
     }
@@ -77,6 +79,9 @@ class BestOfferRepository{
             $message   = 'Your offer on '.$product->title.' has been accepted, Look into your cart';
             // $user_id => from , $product->user_id => to
             NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            $cart = Cart::where('user_id',$response->user_id)->first();
+            $store = new CartRepository($cart);
+            $store->store($response->user_id,$product->id);
             return true;
         }
         return false;

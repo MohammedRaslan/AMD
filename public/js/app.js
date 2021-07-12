@@ -7964,7 +7964,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     acceptOffer: function acceptOffer(id) {
-      axios.get('/api/notifications/accept').then(function (response) {
+      axios.get('/api/offer/accept/' + id).then(function (response) {
         Toast.fire({
           icon: 'success',
           title: 'Offer Accepted'
