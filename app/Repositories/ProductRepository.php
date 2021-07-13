@@ -1,17 +1,19 @@
 <?php
 namespace App\Repositories;
 
-use App\Enums\InternationalShipping;
-use App\Enums\LocalShipping;
-use App\Enums\ProductCondition;
-use App\Enums\ProductType;
-use App\Enums\Return_Policy;
+use App\Enums\CurrencyIconsEnum;
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Wishlist;
+use App\Enums\ProductType;
+use App\Models\UserDetail;
 use Illuminate\Support\Str;
+use App\Enums\LocalShipping;
+use App\Enums\Return_Policy;
+use App\Enums\ProductCondition;
+use App\Enums\InternationalShipping;
 
 class ProductRepository{
 
@@ -55,7 +57,7 @@ class ProductRepository{
         $product->domestic_product = $data['domestic_product'];
         $product->draft =  $data['draft'];
         $product->user_id = $user_id;
-        $product->status  = 0;
+        $product->status  = 1;
         if($data->hasFile('image')){
             $fileName = time() . '.'. $data->file('image')[0]->getClientOriginalExtension();
             $data->image[0]->storeAs('public/products/'.$data['title'].'/',$fileName);
@@ -115,6 +117,11 @@ class ProductRepository{
     {
         $product = Product::find($id);
         $product->draft = $draft;
+        if($draft == 1){
+            $product->status = 0;
+        }else{
+            $product->status = 1;
+        }
         $product->save();
         if($product->shipping){
             $shipping = $product->shipping()->update($data);
@@ -131,10 +138,13 @@ class ProductRepository{
     public function getProductShipping($user_id,$product_id)
     {
         $product = Product::where('id',$product_id)->where('user_id',$user_id)->with('shipping')->first();
+        $userDetails = UserDetail::where('user_id',$user_id)->first();
         return [
             'shipping' => $product->shipping,
             'localShipping' => LocalShipping::asSelectArray(),
             'worldwide' => InternationalShipping::asSelectArray(),
+            'userDetails' => $userDetails,
+            'currencyIcon' => CurrencyIconsEnum::getValue($userDetails->currency),
         ];
     }
 
@@ -214,5 +224,15 @@ class ProductRepository{
     {
         return Product::where([['user_id',$user_id] , ['status',1]])->paginate(10);
 
+    }
+
+    public function getAllProductDataToUpdate($user_id,$product_id)
+    {
+        $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();
+        if($product){
+            return ['product' => $product];
+        }else{
+            return false;
+        }
     }
 }

@@ -5832,6 +5832,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this2.brands = response.data.brands;
       _this2.policies = response.data.return_policy;
     });
+
+    if (this.$route.params.id) {
+      axios.get('/api/product/getAllProductDataToUpdate/' + this.$route.params.id).then(function (response) {
+        _this2.form.title = response.data.product.title;
+        _this2.form.image = response.data.product.image;
+      });
+    }
   }
 });
 
@@ -6082,6 +6089,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       usa: [],
       international: [],
+      currencyIcon: null,
       form: new form({
         product_id: null,
         world_wide: false,
@@ -6193,6 +6201,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.form.weight = response.data.shipping.weight;
         _this2.form.length = response.data.shipping.length;
         _this2.form.width = response.data.shipping.width;
+      } else {
+        _this2.form.world_wide = response.data.userDetails.worldwide;
+        _this2.form.usa = response.data.userDetails.usa;
+        _this2.form.service_usa = response.data.userDetails.service_usa;
+        _this2.form.service_world_wide = response.data.userDetails.service_worldwide;
+        _this2.currencyIcon = response.data.currencyIcon;
       }
     });
   }
@@ -7071,7 +7085,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       id: null,
-      currencies: ['USA', 'EUR', 'CAD', 'GBP'],
+      currencies: ['USD', 'EUR', 'CAD', 'GBP'],
       imagenull: false,
       form: new form({
         currency: null,
@@ -8370,7 +8384,7 @@ var routes = [{
   component: _components_Selling_OverviewComponent__WEBPACK_IMPORTED_MODULE_4__.default,
   name: "SellingOverview"
 }, {
-  path: "/selling/sell_item",
+  path: "/sell_item/:id?",
   component: _components_Selling_CreateProductComponent__WEBPACK_IMPORTED_MODULE_5__.default,
   name: "ProductCreate"
 }, {
@@ -84053,10 +84067,21 @@ var render = function() {
                                                             },
                                                             [
                                                               _vm._v(
-                                                                "Price USA"
+                                                                "Price USA "
                                                               )
                                                             ]
                                                           ),
+                                                          _vm._v(" "),
+                                                          _c("span", {
+                                                            staticStyle: {
+                                                              color: "white"
+                                                            },
+                                                            domProps: {
+                                                              innerHTML: _vm._s(
+                                                                _vm.currencyIcon
+                                                              )
+                                                            }
+                                                          }),
                                                           _vm._v(" "),
                                                           _c("input", {
                                                             directives: [
@@ -86039,7 +86064,23 @@ var render = function() {
                                                 )
                                           ]),
                                           _vm._v(" "),
-                                          _vm._m(2, true)
+                                          _c("div", { staticClass: "inner" }, [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-outline-danger"
+                                              },
+                                              [
+                                                _c(
+                                                  "router-link",
+                                                  { attrs: { to: "#" } },
+                                                  [_vm._v("Update")]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ])
                                         ]
                                       )
                                     ]
@@ -86089,16 +86130,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-1 dot", attrs: { id: "dot" } }, [
       _c("div", { staticClass: "inner" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inner" }, [
-      _c("button", { staticClass: "btn btn-outline-danger" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
-      ])
     ])
   }
 ]

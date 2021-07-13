@@ -106,7 +106,7 @@
                                                                                 <div v-if="form.errors.has('service_world_wide')" class="alert alert-danger" v-html="form.errors.get('service_world_wide')" />
                                                                             </div>
                                                                             <div class="col-6">
-                                                                                <label class="text-white" for="cats">Price USA</label>
+                                                                                <label class="text-white" for="cats">Price USA </label> <span style="color:white" v-html=" currencyIcon "></span>
                                                                                 <input type="number" v-model="form.price_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Price USA" required>
                                                                                 <div v-if="form.errors.has('price_usa')" class="alert alert-danger" v-html="form.errors.get('price_usa')" />
                                                                             </div>
@@ -222,6 +222,7 @@ export default ({
       data:()=>({
         usa : [],
         international: [],
+        currencyIcon: null,
         form : new form({
             product_id: null,
             world_wide: false,
@@ -310,6 +311,12 @@ export default ({
                 this.form.length = response.data.shipping.length;
                 this.form.width  = response.data.shipping.width;
             
+            }else{
+                this.form.world_wide = response.data.userDetails.worldwide;
+                this.form.usa = response.data.userDetails.usa;
+                this.form.service_usa = response.data.userDetails.service_usa;
+                this.form.service_world_wide = response.data.userDetails.service_worldwide;
+                this.currencyIcon = response.data.currencyIcon;
             }
         });
     }

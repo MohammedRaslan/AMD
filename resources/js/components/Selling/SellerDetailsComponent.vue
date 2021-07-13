@@ -175,7 +175,7 @@ export default ({
       data:()=>({
         id: null,
         currencies:[
-            'USA',
+            'USD',
             'EUR',
             'CAD',
             'GBP',

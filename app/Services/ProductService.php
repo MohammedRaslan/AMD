@@ -102,5 +102,10 @@ class ProductService{
    {
        return $this->productRepository->getUserProductActive($user_id);
    }
+
+   public function getAllProductDataToUpdate($user_id,$product_id)
+   {
+       return $this->productRepository->getAllProductDataToUpdate($user_id,$product_id);
+   }
    
 }

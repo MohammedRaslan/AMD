@@ -64,7 +64,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getProductData',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
-        Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);   
+        Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);  
+        Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
     });
     Route::prefix('wishlist')->group(function (){
         Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']); 

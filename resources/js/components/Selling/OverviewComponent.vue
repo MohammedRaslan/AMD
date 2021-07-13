@@ -79,7 +79,7 @@
 
                                                 </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
+                                                    <button class="btn btn-outline-danger"><router-link to="#">Update</router-link></button>
                                                 </div>
                                            </div>
                                         </div>

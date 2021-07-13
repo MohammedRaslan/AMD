@@ -456,6 +456,16 @@ export default ({
             this.brands = response.data.brands;
             this.policies = response.data.return_policy;
         });
+        if(this.$route.params.id){
+            axios.get('/api/product/getAllProductDataToUpdate/'+this.$route.params.id).then((response) => {
+                this.form.title = response.data.product.title;
+                this.form.image = response.data.product.image;
+      
+
+            });
+        }
+
     }
+
 })
 </script>
