@@ -79,14 +79,18 @@ class BestOfferRepository{
         $response->viewed = 1;
         if($response->save()){
             $product = Product::findOrFail($response->product_id);
-            $product->status = 0;
-            $product->save();
+      
             $message   = 'Your offer on '.$product->title.' has been accepted, Look into your cart';
             // $user_id => from , $product->user_id => to
             NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
             $cart = Cart::where('user_id',$response->user_id)->first();
             $store = new CartRepository($cart);
-            $store->store($response->user_id,$product->id,$response->price);
+            $cart_product = $store->store($response->user_id,$product->id,$response->price);
+            // if($cart_product){
+            //     $product->status = 0;
+            //     $product->save();
+            // }
+        
             return true;
         }
         return false;
