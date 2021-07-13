@@ -51,7 +51,7 @@ const routes = [
         name: "SellingOverview",
     },
     {
-        path: "/sell_item/:id?",
+        path: "/selling/sell_item",
         component: CreateProductComponent,
         name: "ProductCreate",
     },

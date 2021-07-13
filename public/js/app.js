@@ -5832,13 +5832,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this2.brands = response.data.brands;
       _this2.policies = response.data.return_policy;
     });
-
-    if (this.$route.params.id) {
-      axios.get('/api/product/getAllProductDataToUpdate/' + this.$route.params.id).then(function (response) {
-        _this2.form.title = response.data.product.title;
-        _this2.form.image = response.data.product.image;
-      });
-    }
   }
 });
 
@@ -8384,7 +8377,7 @@ var routes = [{
   component: _components_Selling_OverviewComponent__WEBPACK_IMPORTED_MODULE_4__.default,
   name: "SellingOverview"
 }, {
-  path: "/sell_item/:id?",
+  path: "/selling/sell_item",
   component: _components_Selling_CreateProductComponent__WEBPACK_IMPORTED_MODULE_5__.default,
   name: "ProductCreate"
 }, {
