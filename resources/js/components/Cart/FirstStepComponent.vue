@@ -123,7 +123,7 @@
                                 </div>
                             </div>
 
-                            <div class="close" @click="removeFromCart(product.product.id)">
+                            <div class="close" v-if="!product.product.best_offer" @click="removeFromCart(product.product.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="15.556" viewBox="0 0 15.556 15.556">
                                     <g id="Icon_20_Grey_Close" data-name="Icon / 20 / Grey / Close" transform="translate(-2.222 -2.222)">
                                         <rect id="Rectangle_4" data-name="Rectangle 4" width="20" height="2" rx="1" transform="translate(3.636 2.222) rotate(45)" fill="#ffe0e0"/>

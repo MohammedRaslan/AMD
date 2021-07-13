@@ -60,13 +60,19 @@ export default ({
                 this.count = 0;
                 this.notifications = null;
             });
+        },
+        getNotification(){
+            axios.get('/api/notification/new').then((response) => {
+            this.notifications = response.data.notifications;
+            this.count = response.data.count;
+    });
         }
     },
     mounted(){
-      axios.get('/api/notification/new').then((response) => {
-      this.notifications = response.data.notifications;
-      this.count = response.data.count;
-    });
+        this.getNotification();
+        Fire.$on('getNotification',()=>{
+            this.getNotification();
+        });
 
     }
 })

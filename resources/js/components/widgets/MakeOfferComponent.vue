@@ -5,7 +5,7 @@
                 <div class="content">
                     <div>
                         <form @submit.prevent="makeOffer">
-                            <input  type="number" v-model="form.offer" :max="best_offer_price" placeholder="$ 0.00"> 
+                            <input  type="number" v-model="form.offer" placeholder="$ 0.00"> 
                             <button class="btn-dark btn-yellow">Submit</button>
                         </form>
                     </div>
@@ -26,12 +26,22 @@
         methods:{
             async makeOffer(){
                 this.form.id = this.id;
-                const response = await this.form.post('/api/offer/makeOffer').then((response) => {
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Offer Made Successfully'
-                    });
+                if(this.form.offer >= this.best_offer_price){
+                    const response = await this.form.post('/api/offer/makeOffer').then((response) => {
+                    if(response.data == false){
+                        Swal.fire('Item Not Available!')
+                    }else{
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Offer Made Successfully'
+                        });
+                    }
+                
                 });
+                }else{
+                    alert('Your Offer is too low');
+                }
+         
             }
         }
 })

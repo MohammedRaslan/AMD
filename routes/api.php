@@ -100,7 +100,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('add/{productId}',[CartController::class,'add']);
         Route::post('remove/{productId}',[CartController::class,'remove']);
         Route::get('checkIfExist/{id}',[CartController::class,'checkIfExist']);
-        Route::get('getCartCount/{id}',[CartController::class,'getCartCount']);
+        Route::get('getCartCount',[CartController::class,'getCartCount']);
         Route::get('getCartProducts',[CartController::class,'getCartProducts']);
         Route::get('calculate',[CartController::class,'calculate']);
     });

@@ -69,11 +69,8 @@ if(token){
 
 router.beforeEach((to, from ,next)=>{
   if(localStorage.getItem('token')){
-    axios.get('/api/notification/new').then((response) => {
-      Vue.prototype.$notifications = response.data.notifications;
-      Vue.prototype.$count = response.data.count;
-
-    });
+    Fire.$emit('getNotification');
+    Fire.$emit('cartCount');
     if(to.path == '/login' || to.path == '/register'){
         next('/');
       }

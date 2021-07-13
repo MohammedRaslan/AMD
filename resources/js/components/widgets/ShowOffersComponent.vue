@@ -2,8 +2,9 @@
        <div class="inner-price-table mt-5 border-yellow">
             <div class="card-cus">
                 <h2 class="bg-yellow dark-blue">List of Offers</h2>
-                <div class="content">
-                    <div>
+                <div class="content d-flex justify-content-center">
+                    <p class="text-center" v-if="offers.length == 0">No Offers Yet</p>
+                    <div v-else>
                   <table class="table white">
                         <thead>
                             <tr>
@@ -45,7 +46,7 @@
 export default {
     props:['id'],
     data:()=>({
-        offers: null,
+        offers: [],
     }),
     methods:{
         acceptOffer(id){
@@ -54,6 +55,7 @@ export default {
                     icon: 'success',
                     title: 'Offer Accepted'
                     });
+                Fire.$emit('offerAccepted');
             })
         },
         declineOffer(id){
@@ -69,7 +71,7 @@ export default {
                 if (result.isConfirmed) {
                 const response = axios.get('/api/offer/declineOffer/'+id).then((response) => {
                     Swal.fire(
-                        'Deleted!',
+                        'Declined!',
                         'Offer Declined.',
                         'success'
                     )

@@ -4727,20 +4727,24 @@ __webpack_require__.r(__webpack_exports__);
       number: 0,
       bell: false,
       bellClass: 'belll',
-      relative: 'position-relative',
-      id: JSON.parse(localStorage.getItem('currentUser'))['id']
+      relative: 'position-relative' //    name: JSON.parse(localStorage.getItem('currentUser'))['name'],
+
     };
   },
-  beforeCreate: function beforeCreate() {
-    var _this = this;
+  methods: {
+    getCartCount: function getCartCount() {
+      var _this = this;
 
-    axios.get('/api/cart/getCartCount/' + this.id).then(function (response) {
-      _this.number = response.data;
-    });
+      axios.get('/api/cart/getCartCount').then(function (response) {
+        _this.number = response.data;
+      });
+    }
   },
+  beforeCreate: function beforeCreate() {},
   created: function created() {
     var _this2 = this;
 
+    this.getCartCount();
     Fire.$on('AddedToCart', function () {
       _this2.bell = true;
       _this2.number = parseInt(_this2.number) + 1;
@@ -4757,7 +4761,12 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   mounted: function mounted() {
+    var _this3 = this;
+
     Fire.$emit('mounted');
+    Fire.$on('cartCount', function () {
+      _this3.getCartCount();
+    });
   }
 });
 
@@ -5086,14 +5095,22 @@ __webpack_require__.r(__webpack_exports__);
         _this.count = 0;
         _this.notifications = null;
       });
+    },
+    getNotification: function getNotification() {
+      var _this2 = this;
+
+      axios.get('/api/notification/new').then(function (response) {
+        _this2.notifications = response.data.notifications;
+        _this2.count = response.data.count;
+      });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
-    axios.get('/api/notification/new').then(function (response) {
-      _this2.notifications = response.data.notifications;
-      _this2.count = response.data.count;
+    this.getNotification();
+    Fire.$on('getNotification', function () {
+      _this3.getNotification();
     });
   }
 });
@@ -7766,6 +7783,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     Fire.$emit('AddedToCart');
                     _this.added = true;
                   }
+
+                  if (response.data == false) {
+                    Swal.fire('Item Not Available!');
+                  }
                 });
 
               case 2:
@@ -7869,18 +7890,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _this.form.id = _this.id;
-                _context.next = 3;
+
+                if (!(_this.form.offer >= _this.best_offer_price)) {
+                  _context.next = 7;
+                  break;
+                }
+
+                _context.next = 4;
                 return _this.form.post('/api/offer/makeOffer').then(function (response) {
-                  Toast.fire({
-                    icon: 'success',
-                    title: 'Offer Made Successfully'
-                  });
+                  if (response.data == false) {
+                    Swal.fire('Item Not Available!');
+                  } else {
+                    Toast.fire({
+                      icon: 'success',
+                      title: 'Offer Made Successfully'
+                    });
+                  }
                 });
 
-              case 3:
-                response = _context.sent;
-
               case 4:
+                response = _context.sent;
+                _context.next = 8;
+                break;
+
+              case 7:
+                alert('Your Offer is too low');
+
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -7955,11 +7991,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['id'],
   data: function data() {
     return {
-      offers: null
+      offers: []
     };
   },
   methods: {
@@ -7969,6 +8006,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           icon: 'success',
           title: 'Offer Accepted'
         });
+        Fire.$emit('offerAccepted');
       });
     },
     declineOffer: function declineOffer(id) {
@@ -7983,7 +8021,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (result) {
         if (result.isConfirmed) {
           var response = axios.get('/api/offer/declineOffer/' + id).then(function (response) {
-            Swal.fire('Deleted!', 'Offer Declined.', 'success');
+            Swal.fire('Declined!', 'Offer Declined.', 'success');
             document.getElementById('offer_row_' + id).remove();
           });
         }
@@ -8175,10 +8213,8 @@ if (token) {
 
 _routes__WEBPACK_IMPORTED_MODULE_0__.default.beforeEach(function (to, from, next) {
   if (localStorage.getItem('token')) {
-    axios.get('/api/notification/new').then(function (response) {
-      vue__WEBPACK_IMPORTED_MODULE_13__.default.prototype.$notifications = response.data.notifications;
-      vue__WEBPACK_IMPORTED_MODULE_13__.default.prototype.$count = response.data.count;
-    });
+    Fire.$emit('getNotification');
+    Fire.$emit('cartCount');
 
     if (to.path == '/login' || to.path == '/register') {
       next('/');
@@ -78073,69 +78109,71 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "close",
-                        on: {
-                          click: function($event) {
-                            return _vm.removeFromCart(product.product.id)
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "svg",
+                    !product.product.best_offer
+                      ? _c(
+                          "div",
                           {
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "15.556",
-                              height: "15.556",
-                              viewBox: "0 0 15.556 15.556"
+                            staticClass: "close",
+                            on: {
+                              click: function($event) {
+                                return _vm.removeFromCart(product.product.id)
+                              }
                             }
                           },
                           [
                             _c(
-                              "g",
+                              "svg",
                               {
                                 attrs: {
-                                  id: "Icon_20_Grey_Close",
-                                  "data-name": "Icon / 20 / Grey / Close",
-                                  transform: "translate(-2.222 -2.222)"
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "15.556",
+                                  height: "15.556",
+                                  viewBox: "0 0 15.556 15.556"
                                 }
                               },
                               [
-                                _c("rect", {
-                                  attrs: {
-                                    id: "Rectangle_4",
-                                    "data-name": "Rectangle 4",
-                                    width: "20",
-                                    height: "2",
-                                    rx: "1",
-                                    transform:
-                                      "translate(3.636 2.222) rotate(45)",
-                                    fill: "#ffe0e0"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("rect", {
-                                  attrs: {
-                                    id: "Rectangle_4-2",
-                                    "data-name": "Rectangle 4",
-                                    width: "20",
-                                    height: "2",
-                                    rx: "1",
-                                    transform:
-                                      "translate(2.222 16.364) rotate(-45)",
-                                    fill: "#ffe0e0"
-                                  }
-                                })
+                                _c(
+                                  "g",
+                                  {
+                                    attrs: {
+                                      id: "Icon_20_Grey_Close",
+                                      "data-name": "Icon / 20 / Grey / Close",
+                                      transform: "translate(-2.222 -2.222)"
+                                    }
+                                  },
+                                  [
+                                    _c("rect", {
+                                      attrs: {
+                                        id: "Rectangle_4",
+                                        "data-name": "Rectangle 4",
+                                        width: "20",
+                                        height: "2",
+                                        rx: "1",
+                                        transform:
+                                          "translate(3.636 2.222) rotate(45)",
+                                        fill: "#ffe0e0"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("rect", {
+                                      attrs: {
+                                        id: "Rectangle_4-2",
+                                        "data-name": "Rectangle 4",
+                                        width: "20",
+                                        height: "2",
+                                        rx: "1",
+                                        transform:
+                                          "translate(2.222 16.364) rotate(-45)",
+                                        fill: "#ffe0e0"
+                                      }
+                                    })
+                                  ]
+                                )
                               ]
                             )
                           ]
                         )
-                      ]
-                    )
+                      : _vm._e()
                   ])
                 ]
               )
@@ -88623,11 +88661,7 @@ var render = function() {
                     expression: "form.offer"
                   }
                 ],
-                attrs: {
-                  type: "number",
-                  max: _vm.best_offer_price,
-                  placeholder: "$ 0.00"
-                },
+                attrs: { type: "number", placeholder: "$ 0.00" },
                 domProps: { value: _vm.form.offer },
                 on: {
                   input: function($event) {
@@ -88678,80 +88712,82 @@ var render = function() {
         _vm._v("List of Offers")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _c("div", [
-          _c("table", { staticClass: "table white" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.offers, function(offer, index) {
-                return _c(
-                  "tr",
-                  {
-                    key: index,
-                    attrs: { id: "offer_row_" + offer.id },
-                    on: {
-                      mouseover: function($event) {
-                        return _vm.markAsView(offer.id)
-                      }
-                    }
-                  },
-                  [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      offer.viewed == 0
-                        ? _c("span", {
-                            staticClass: "dott",
-                            staticStyle: {
-                              display: "inline-block",
-                              width: "12px",
-                              height: "12px",
-                              "margin-right": "3px"
+      _c("div", { staticClass: "content d-flex justify-content-center" }, [
+        _vm.offers.length == 0
+          ? _c("p", { staticClass: "text-center" }, [_vm._v("No Offers Yet")])
+          : _c("div", [
+              _c("table", { staticClass: "table white" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.offers, function(offer, index) {
+                    return _c(
+                      "tr",
+                      {
+                        key: index,
+                        attrs: { id: "offer_row_" + offer.id },
+                        on: {
+                          mouseover: function($event) {
+                            return _vm.markAsView(offer.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          offer.viewed == 0
+                            ? _c("span", {
+                                staticClass: "dott",
+                                staticStyle: {
+                                  display: "inline-block",
+                                  width: "12px",
+                                  height: "12px",
+                                  "margin-right": "3px"
+                                },
+                                attrs: { id: "dot_" + offer.id }
+                              })
+                            : _vm._e(),
+                          _vm._v("  " + _vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(offer.user.user_name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(offer.price))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-milky btn-sm",
+                              on: {
+                                click: function($event) {
+                                  return _vm.acceptOffer(offer.id)
+                                }
+                              }
                             },
-                            attrs: { id: "dot_" + offer.id }
-                          })
-                        : _vm._e(),
-                      _vm._v("  " + _vm._s(index + 1))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(offer.user.user_name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(offer.price))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-milky btn-sm",
-                          on: {
-                            click: function($event) {
-                              return _vm.acceptOffer(offer.id)
-                            }
-                          }
-                        },
-                        [_vm._v("Accept")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-maroon btn-sm",
-                          on: {
-                            click: function($event) {
-                              return _vm.declineOffer(offer.id)
-                            }
-                          }
-                        },
-                        [_vm._v("Decline")]
-                      )
-                    ])
-                  ]
+                            [_vm._v("Accept")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-maroon btn-sm",
+                              on: {
+                                click: function($event) {
+                                  return _vm.declineOffer(offer.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Decline")]
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
                 )
-              }),
-              0
-            )
-          ])
-        ])
+              ])
+            ])
       ])
     ])
   ])

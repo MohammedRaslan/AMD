@@ -29,14 +29,20 @@ export default ({
        bell: false,
        bellClass: 'belll',
        relative: 'position-relative',
-       id: JSON.parse(localStorage.getItem('currentUser'))['id'],
+    //    name: JSON.parse(localStorage.getItem('currentUser'))['name'],
    }),
-   beforeCreate(){
-    axios.get('/api/cart/getCartCount/'+this.id).then((response) => {
+   methods:{
+       getCartCount(){
+            axios.get('/api/cart/getCartCount').then((response) => {
                 this.number = response.data;
             });
+       }
+   },
+   beforeCreate(){
+       
    },
    created(){
+          this.getCartCount();
           Fire.$on('AddedToCart',()=>{
              this.bell = true;
              this.number = parseInt(this.number) + 1;
@@ -55,7 +61,9 @@ export default ({
    },
     mounted(){
         Fire.$emit('mounted');
-   
+        Fire.$on('cartCount',()=>{
+            this.getCartCount();
+        });
     }
 })
 </script>

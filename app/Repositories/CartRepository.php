@@ -14,21 +14,23 @@ class CartRepository{
         $this->cart = $cart;
     }
 
-    public function store($user_id,$productId)
+    public function store($user_id,$productId,$offerPrice = null)
     {
         $cart = Cart::where('user_id',$user_id)->first();
-        $productPrice = Product::select('price')->where('id',$productId)->first();
-       
+        $product = Product::select('price','status')->where('id',$productId)->first();
+        if($product->status == 0){
+            return false;
+        }
         $cartProduct = Cart_Product::create([
             'user_id' => $user_id,
             'cart_id' => $cart->id,
             'product_id' => $productId,
-            'price' => $productPrice->price,
+            'price' => $offerPrice == null ? $product->price : $offerPrice ,
             'quantity' => 1,
         ]);
         if($cartProduct){
-            $cart->subtotal += $productPrice->price;
-            $cart->total += $productPrice->price;
+            $cart->subtotal += $product->price;
+            $cart->total += $product->price;
             if($cart->save()){
                 return true;
             }
