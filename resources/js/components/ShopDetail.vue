@@ -30,7 +30,7 @@
     <section class="shop-details">
         <div class="product__details__pic">
             <div class="container">
-                <div class="row">                    
+                <div class="row">
                     <div class="col-lg-8" v-if="loading">
                         <h2 > {{ product.title }}  </h2>
                         <div class="detail-top">
@@ -42,7 +42,7 @@
                                         <path id="Shape" d="M10.417,18.75a1.048,1.048,0,0,1-.742-.31L1.731,10.387A6.069,6.069,0,0,1,0,6.134,6.173,6.173,0,0,1,6.2,0,4.733,4.733,0,0,1,9.3,1.373a10.989,10.989,0,0,1,1.115,1.162,11,11,0,0,1,1.115-1.162A4.733,4.733,0,0,1,14.635,0a6.173,6.173,0,0,1,6.2,6.134,6.055,6.055,0,0,1-1.88,4.4l-7.8,7.905A1.034,1.034,0,0,1,10.417,18.75ZM6.2,2.083A4.088,4.088,0,0,0,2.083,6.134a4,4,0,0,0,1.139,2.8l7.194,7.293,7.064-7.163L17.5,9.04A3.989,3.989,0,0,0,18.75,6.134a4.088,4.088,0,0,0-4.115-4.051,2.778,2.778,0,0,0-1.722.85,11.223,11.223,0,0,0-1.648,1.918,1.042,1.042,0,0,1-1.7,0A11.257,11.257,0,0,0,7.921,2.933,2.779,2.779,0,0,0,6.2,2.083Z" fill="#fd1266"/>
                                     </g>
                                 </svg> -->
-                                 <Wishlist :product_id="product.id" 
+                                 <Wishlist :product_id="product.id"
                                           :userAddedItemToWishlist="product.userAddedItemToWishlist"
                                           :wishlistCount="product.wishlistCount"
                                           :product_user_id="product.user_id">
@@ -51,23 +51,34 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 tabs-img">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item" v-for="(image,index) in images" :key="index">
+                                <ul class="nav nav-tabs nav-detail" role="tablist">
+                                    <!-- <li class="nav-item" v-for="(image,index) in images" :key="index">
                                         <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
                                             <img class="product__thumb__pic set-bg" :src="str_replace(image.url)">
-                                            
+                                        </a>
+                                    </li> -->
+                                    <li class="nav-item" v-for="(image,index) in images" :key="index">
+                                        <a class="nav-link" :class="{ 'active': index === 0 }" data-toggle="tab" :href="'#tabs-'+index" role="tab">
+                                            <img class="product__thumb__pic set-bg" :src="str_replace(image.url)">
                                         </a>
                                     </li>
+
                                 </ul>
                             </div>
 
                             <div class="col-lg-9 col-md-9 cont-img">
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <!-- <div class="tab-pane active" :id="'tabs-'+index" role="tabpanel">
                                         <div class="product__details__pic__item">
                                             <img  :src="str_replace(product.image)" alt>
                                         </div>
+                                    </div> -->
+                                    <div v-for="(image,index) in images" :key="index" class="tab-pane" :class="{ 'active': index === 0 }" :id="'tabs-'+index" role="tabpanel">
+                                        <div class="product__details__pic__item">
+                                            <img :src="str_replace(image.url)" alt>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -114,13 +125,13 @@
                                             <div><span class="inner-title">Brand:</span> <span class="inner-value">{{ product.brand == null ? '-' : product.brand}} </span></div>
                                             <div><span class="inner-title">Condition:</span> <span class="inner-value">{{ product.condition == null ? '-' : product.condition}} </span></div>
                                             <div><span class="inner-title">Gender:</span> <span class="inner-value">{{ product.doll_gender == null ? '-' : product.doll_gender}} </span></div>
-                                            <div><span class="inner-title">Size:</span> <span class="inner-value">{{ product.doll_size == null ? '-' : product.doll_size}} </span></div> 
+                                            <div><span class="inner-title">Size:</span> <span class="inner-value">{{ product.doll_size == null ? '-' : product.doll_size}} </span></div>
                                             <div><span class="inner-title">Featured Refinements:</span> <span class="inner-value">{{ product.featured_refinements == null ? '-' : product.featured_refinements }} </span></div>
-                                            <div><span class="inner-title">Domestic Product:</span> <span class="inner-value">{{ product.domestic_product == 1 ? 'Yes' : 'No' }} </span></div> 
-                                            <div><span class="inner-title">Modified :</span> <span class="inner-value">{{ product.modified_item == 1 ? 'Yes' : 'No' }} </span></div> 
+                                            <div><span class="inner-title">Domestic Product:</span> <span class="inner-value">{{ product.domestic_product == 1 ? 'Yes' : 'No' }} </span></div>
+                                            <div><span class="inner-title">Modified :</span> <span class="inner-value">{{ product.modified_item == 1 ? 'Yes' : 'No' }} </span></div>
                                             <div><span class="inner-title">UPC:</span> <span class="inner-value">{{ product.upc  == null ? '-' :  product.upc}} </span></div>
                                             <div><span class="inner-title">Return Policy:</span> <span class="inner-value">{{ product.return_policy  == null ? '-' :  product.return_policy}} </span></div>
-                                            
+
 
                                         </div>
                                         <hr>
@@ -128,7 +139,7 @@
                                             <h4 style="color:white">Extra Details</h4>
                                             <p class="pl-5" v-html="product.details"></p>
                                         </div>
-                                       
+
                                     </div>
                                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                         <hr>
@@ -154,7 +165,7 @@
                                                 <div><span class="inner-title">Duration:</span> <span class="inner-value">{{ shipping.duration_worldwide == null ? '-' : shipping.duration_worldwide }} </span></div>
                                             </div>
                                         </div>
-                                      
+
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +173,7 @@
                     </div>
 
                     <div class="col-lg-4 parent-price-table" v-if="(loading && !author)">
-                   
+
                         <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" ></AddCartWidget>
                         <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
                         <ChatWidget></ChatWidget>
@@ -172,11 +183,11 @@
                      </div>
                 </div>
             </div>
-          
+
         </div>
 
     </section>
-    
+
     <!-- Shop Details Section End -->
 
     </div>
@@ -249,7 +260,7 @@ export default ({
     mounted(){
         this.id = this.$route.params.query;
         axios.get('/api/shop/getProduct/'+this.id).then((response) => {
-        
+
             this.product = response.data.product;
             this.images  = response.data.product.images;
             this.shipping = response.data.product.shipping;

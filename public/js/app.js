@@ -7524,6 +7524,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -87537,7 +87548,7 @@ var render = function() {
                       _c(
                         "ul",
                         {
-                          staticClass: "nav nav-tabs",
+                          staticClass: "nav nav-tabs nav-detail",
                           attrs: { role: "tablist" }
                         },
                         _vm._l(_vm.images, function(image, index) {
@@ -87548,10 +87559,11 @@ var render = function() {
                               _c(
                                 "a",
                                 {
-                                  staticClass: "nav-link active",
+                                  staticClass: "nav-link",
+                                  class: { active: index === 0 },
                                   attrs: {
                                     "data-toggle": "tab",
-                                    href: "#tabs-1",
+                                    href: "#tabs-" + index,
                                     role: "tab"
                                   }
                                 },
@@ -87570,29 +87582,36 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-lg-9 col-md-9 cont-img" }, [
-                      _c("div", { staticClass: "tab-content" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "tab-pane active",
-                            attrs: { id: "tabs-1", role: "tabpanel" }
-                          },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "product__details__pic__item" },
-                              [
-                                _c("img", {
-                                  attrs: {
-                                    src: _vm.str_replace(_vm.product.image),
-                                    alt: ""
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ])
+                      _c(
+                        "div",
+                        { staticClass: "tab-content" },
+                        _vm._l(_vm.images, function(image, index) {
+                          return _c(
+                            "div",
+                            {
+                              key: index,
+                              staticClass: "tab-pane",
+                              class: { active: index === 0 },
+                              attrs: { id: "tabs-" + index, role: "tabpanel" }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "product__details__pic__item" },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: _vm.str_replace(image.url),
+                                      alt: ""
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
                     ])
                   ]),
                   _vm._v(" "),

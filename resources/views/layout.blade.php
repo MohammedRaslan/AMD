@@ -19,6 +19,8 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/bootstrap5.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/owl.theme.default.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/magnific-popup.css" type="text/css">
@@ -212,7 +214,7 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
-    <script src="{{ asset('FrontEnd') }}/js/test.js" defer></script>
+    <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
 </body>
 

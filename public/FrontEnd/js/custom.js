@@ -29,6 +29,33 @@ $(document).ready(function(){
             $(".round-3").css("opacity", '1')
         }
     })
+    // shop-detail start
+    // $(document).on('change', '.shop-details .nav-tabs .nav-item .nav-link', function () {
+    //     console.log('click');
+    // })
+    // console.log('click');
+    // shop-detail end
+
+    $('.nav-detail').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 5
+            }
+        }
+    })
+
+
+
+
 
 });
 
