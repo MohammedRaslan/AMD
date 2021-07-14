@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BestOfferController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WishlistController;
 use App\Repositories\NotificationRepository;
 
@@ -108,6 +109,10 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('dashboard')->group(function(){
         Route::get('AdminDashboard',[DashboardController::class,'AdminDashboard']);
+    });
+
+    Route::prefix('order')->group(function(){
+        Route::get('testPaypal',[OrderController::class,'TestPaypal']);
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 
