@@ -86,11 +86,7 @@ class BestOfferRepository{
             $cart = Cart::where('user_id',$response->user_id)->first();
             $store = new CartRepository($cart);
             $cart_product = $store->store($response->user_id,$product->id,$response->price);
-            // if($cart_product){
-            //     $product->status = 0;
-            //     $product->save();
-            // }
-        
+            
             return true;
         }
         return false;

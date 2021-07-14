@@ -14,6 +14,7 @@ class Cart_Product extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class)->where('status',1);
+        return $this->belongsTo(Product::class);
+        // ->where('status',1)
     }
 }

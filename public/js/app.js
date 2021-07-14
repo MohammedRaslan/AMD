@@ -8009,11 +8009,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     acceptOffer: function acceptOffer(id) {
       axios.get('/api/offer/accept/' + id).then(function (response) {
-        Toast.fire({
-          icon: 'success',
-          title: 'Offer Accepted'
-        });
-        Fire.$emit('offerAccepted');
+        if (response.data == true) {
+          Toast.fire({
+            icon: 'success',
+            title: 'Offer Accepted'
+          });
+          Fire.$emit('offerAccepted');
+          document.getElementById('offer_btn_' + id).innerHTML = '<p>Accepted</p>';
+        }
       });
     },
     declineOffer: function declineOffer(id) {
@@ -88778,7 +88781,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(offer.price))]),
                         _vm._v(" "),
-                        _c("td", [
+                        _c("td", { attrs: { id: "offer_btn_" + offer.id } }, [
                           _c(
                             "button",
                             {

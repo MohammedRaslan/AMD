@@ -20,7 +20,7 @@
                                 <th scope="row"> <span v-if="offer.viewed == 0" :id="'dot_'+offer.id" class="dott" style="display:inline-block;width:12px; height:12px;margin-right:3px"></span>  {{ index +1  }}</th>
                                 <td>{{ offer.user.user_name }}</td>
                                 <td>{{ offer.price }}</td>
-                                <td><button class="btn btn-milky btn-sm" @click="acceptOffer(offer.id)">Accept</button>
+                                <td :id="'offer_btn_'+offer.id"><button class="btn btn-milky btn-sm" @click="acceptOffer(offer.id)">Accept</button>
                                     <button class="btn btn-maroon btn-sm" @click="declineOffer(offer.id)">Decline</button>
                                 </td>
                             </tr>
@@ -51,11 +51,15 @@ export default {
     methods:{
         acceptOffer(id){
             axios.get('/api/offer/accept/'+id).then((response) => {
-                  Toast.fire({
-                    icon: 'success',
-                    title: 'Offer Accepted'
-                    });
-                Fire.$emit('offerAccepted');
+          
+                    if(response.data == true){
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Offer Accepted'
+                        });
+                        Fire.$emit('offerAccepted');
+                        document.getElementById('offer_btn_'+id).innerHTML = '<p>Accepted</p>';
+                    }
             })
         },
         declineOffer(id){

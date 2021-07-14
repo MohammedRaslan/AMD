@@ -17,20 +17,25 @@ class CartRepository{
     public function store($user_id,$productId,$offerPrice = null)
     {
         $cart = Cart::where('user_id',$user_id)->first();
-        $product = Product::select('price','status')->where('id',$productId)->first();
+        $product = Product::find($productId);
         if($product->status == 0){
             return false;
+        }
+        
+        if($offerPrice){    
+            $product->status = 0;
+            $product->save();
         }
         $cartProduct = Cart_Product::create([
             'user_id' => $user_id,
             'cart_id' => $cart->id,
-            'product_id' => $productId,
-            'price' => $offerPrice == null ? $product->price : $offerPrice ,
+            'product_id' => $product->id,
+            'price' =>  $offerPrice == null ? $product->price : $offerPrice ,
             'quantity' => 1,
         ]);
         if($cartProduct){
-            $cart->subtotal += $product->price;
-            $cart->total += $product->price;
+            $cart->subtotal += $offerPrice == null ? $product->price : $offerPrice;
+            $cart->total += $offerPrice == null ? $product->price : $offerPrice;
             if($cart->save()){
                 return true;
             }
