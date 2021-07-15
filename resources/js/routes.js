@@ -24,6 +24,7 @@ import WishlistComponent from "./components/Buying/WishlistComponent.vue";
 import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
 import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.vue";
 import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
+import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
 const routes = [
     {
         path: "/",
@@ -44,6 +45,11 @@ const routes = [
         path: "/register",
         component: RegisterComponent,
         name: "register",
+    },
+    {
+        path: "/help",
+        component: HelpComponent,
+        name: "Help",
     },
     {
         path: "/selling/overview",
