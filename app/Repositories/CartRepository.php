@@ -91,22 +91,34 @@ class CartRepository{
         $cart = Cart::select('id')->where('user_id',$user_id)->first();
         $cart_products = Cart_Product::where('user_id',$user_id)->where('cart_id',$cart->id)->with('product')->get(); // Where Status 1 From Model 
     
-        $cart_products = $this->CheckIfProductIsUnAvailable($cart_products);
+        $cart_products = $this->CheckIfProductIsUnAvailable($cart_products,$user_id);
       
         return $cart_products;
     }
 
 
-    public function CheckIfProductIsUnAvailable($cart_products)
+    public function CheckIfProductIsUnAvailable($cart_products,$user_id)
     {
         $data = [];
         foreach($cart_products as $cart_product){
-            if($cart_product->product == null){
-                $cart_product->delete();
+            
+            if($cart_product->product->status == 0){
+                if($cart_product->product->best_offer == 1 && $cart_product->product->offerAccepted($user_id) != null){
+                    $data[] = $cart_product;
+                }else{
+                    $cart_product->delete();
+                }
             }else{
                 $data[] = $cart_product;
             }
         }
         return $data;
+    }
+
+    public function bestOfferCheckUser($user_id,$productId)
+    {
+        $product = Product::find($productId);
+        $acceptance = $product->offerAccepted($user_id);
+        return $acceptance == true ? true : false;
     }
 }

@@ -123,7 +123,7 @@
                                 </div>
                             </div>
 
-                            <div class="close" v-if="!product.product.best_offer" @click="removeFromCart(product.product.id)">
+                            <div class="close" @click="removeFromCart(product.product.id,product.product.best_offer)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="15.556" viewBox="0 0 15.556 15.556">
                                     <g id="Icon_20_Grey_Close" data-name="Icon / 20 / Grey / Close" transform="translate(-2.222 -2.222)">
                                         <rect id="Rectangle_4" data-name="Rectangle 4" width="20" height="2" rx="1" transform="translate(3.636 2.222) rotate(45)" fill="#ffe0e0"/>
@@ -185,19 +185,43 @@ export default ({
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         },
-        async removeFromCart(id){
-            const response = await axios.post('/api/cart/remove/'+id).then((response) => {
-                if(response.data == true){
-                    Fire.$emit('RemoveFromCart');
-                    console.log('row_'+id);
-                    document.getElementById('row_'+id).remove();
-                    axios.get('/api/cart/getCartProducts').then((response) => {
-                        this.subtotal = response.data.subtotal;
-                        this.total    = response.data.total;
-                    });
+        async removeFromCart(id,best_offer){
+            if(best_offer == 1){
+
+                await axios.get('/api/cart/bestOfferCheckUser/'+id).then((response) => {
+                if(response.data){
+                    Swal.fire('You can not Remove this item!')
+                }else{
+                    this.RemoveFromCartActual(id)
                 }
-        });
-    }
+            });
+            }else{
+                this.RemoveFromCartActual(id);
+            }
+         
+    },
+        async RemoveFromCartActual(id){
+            const response = await axios.post('/api/cart/remove/'+id).then((response) => {
+                    if(response.data == true){
+                        Fire.$emit('RemoveFromCart');
+                        console.log('row_'+id);
+                        document.getElementById('row_'+id).remove();
+                        axios.get('/api/cart/getCartProducts').then((response) => {
+                            this.subtotal = response.data.subtotal;
+                            this.total    = response.data.total;
+                        });
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Removed From Cart'
+                        });
+                    }
+                    });
+        },
+         async bestOfferCheckUser(product_id){
+            const response = await axios.get('/api/cart/bestOfferCheckUser/'+product_id).then((response) => {
+                return response.data;
+            });
+        }
     },
     async beforeCreate(){
        await axios.get('/api/cart/getCartProducts').then((response) => {

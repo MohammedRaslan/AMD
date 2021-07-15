@@ -7,6 +7,7 @@ use App\Services\ProductService;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\ProductStepThreeRequest;
 use App\Http\Requests\ProductStepTwoRequest;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -100,5 +101,26 @@ class ProductController extends Controller
     {
         $response = $this->productService->getAllProductDataToUpdate($request->user()->id,$product_id);
         return response()->json($response);
+    }
+
+    public function getProducts(Request $request){
+        // dd($request->user());
+        $columns = ['sku','title','brand','price','best_offer','user_id','status'];
+
+        $length = $request->input('length');
+        $column = $request->input('column'); //Index
+        $dir = $request->input('dir');
+        $searchValue = $request->input('search');
+
+        $query = Product::select('id','sku','title', 'brand','price','best_offer','user_id','status')->with('user')->orderBy($columns[$column], $dir);
+
+        if ($searchValue) {
+            $query->where(function($query) use ($searchValue) {
+                $query->where('title', 'like', '%' . $searchValue . '%');
+            });
+        }
+
+        $projects = $query->paginate($length);
+        return ['data' => $projects, 'draw' => $request->input('draw')];
     }
 }

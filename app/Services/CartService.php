@@ -65,4 +65,9 @@ class CartService{
         return ['cart_products'=>$data,'subtotal' => $recalculate['subtotal'], 'total' => $recalculate['total']];
     }
 
+    public function bestOfferCheckUser($user_id,$productId)
+    {
+        return $this->cartRepository->bestOfferCheckUser($user_id,$productId);
+    }
+
 }

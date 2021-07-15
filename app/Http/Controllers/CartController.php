@@ -51,4 +51,10 @@ class CartController extends Controller
         $data = ['subtotal' => $data['subtotal'],'total' => $data['total']];
         return response()->json($data);
     }
+
+    public function bestOfferCheckUser(Request $request,$ProductId)
+    {
+        $data = $this->cartService->bestOfferCheckUser($request->user()->id,$ProductId);
+        return response()->json($data);
+    }
 }

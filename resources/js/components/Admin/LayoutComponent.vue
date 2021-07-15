@@ -119,6 +119,7 @@
                             <li><router-link to="/admin" ><i class="fa fa-dashboard"></i><span>Dashboard</span></router-link></li>
                             <li><router-link to="/admin/users" ><i class="fa fa-users"></i><span>Users</span></router-link></li>
                             <li><router-link to="/admin/categories" ><i class="fa fa-th-list"></i><span>Categories</span></router-link></li>
+                            <li><router-link to="/admin/products" ><i class="fa fa-book"></i><span>Products</span></router-link></li>
                             <!-- <li><a href="" ><i class="fa fa-book"></i><span>Products</span></a></li>
                             <li><a href=""><i class="fa fa-tags"></i><span>Tags</span></a></li>
                             <li><a href=""><i class="fa fa-certificate"></i><span>Coupons</span></a></li>

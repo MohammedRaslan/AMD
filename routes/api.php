@@ -104,6 +104,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getCartCount',[CartController::class,'getCartCount']);
         Route::get('getCartProducts',[CartController::class,'getCartProducts']);
         Route::get('calculate',[CartController::class,'calculate']);
+        Route::get('bestOfferCheckUser/{productId}',[CartController::class,'bestOfferCheckUser']);
     });
 
     Route::prefix('dashboard')->group(function(){
@@ -116,6 +117,8 @@ Route::middleware('auth:api')->group(function () {
 Route::get('category/get',[CategoryController::class,'get']);
 Route::get('guest/getCategoryProducts/{id?}',[CategoryController::class,'categoryProducts']);
 Route::get('getCountries',[RegisterController::class,'getCountries']);
+Route::get('getProducts',[ProductController::class,'getProducts']);
+
 
 Route::get('product/random',[ProductController::class,'randomProducts']);
 

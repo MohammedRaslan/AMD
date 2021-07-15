@@ -23,7 +23,7 @@ import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue"
 import WishlistComponent from "./components/Buying/WishlistComponent.vue";
 import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
 import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.vue";
-
+import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
 const routes = [
     {
         path: "/",
@@ -131,6 +131,11 @@ const routes = [
         path: "/admin/categories",
         component: CategoriesComponent,
         name: "categories",
+    },
+    {
+        path: "/admin/products",
+        component: AdminProductComponent,
+        name: "products",
     },
     {
         path: "/admin/subscriptions",
