@@ -108,8 +108,15 @@
 <script>
 
 export default ({
+
+
     mounted() {
+
         Fire.$emit('mounted');
-    },
+    }
+
+
+
+
 })
 </script>

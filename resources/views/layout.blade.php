@@ -199,6 +199,7 @@
     <script src="js/main.js"></script>
     <script src="js/custom.js"></script> -->
 </div>
+    <script src="https://www.paypalobjects.com/api/checkout.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap5.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap.bundle.js" defer></script>
