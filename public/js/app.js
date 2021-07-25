@@ -13472,7 +13472,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\na[data-v-4f8d9b54] {\n    text-decoration: none;\n}\n.news-section[data-v-4f8d9b54] {\n  background-color: #1b252c;\n}\n.newsbg[data-v-4f8d9b54] {\n  background-color: #1b252c;\n}\n.news[data-v-4f8d9b54] {\n  background: #1b252c;\n  padding: 10px;\n}\n.newsdetails .newsblk[data-v-4f8d9b54] {\n  border: 1px solid rgba(255, 219, 179, 0.1);\n  /* margin-top: 20px; */\n  margin-left: 0px;\n  border-radius: 5px;\n  background-color: rgba(255, 219, 179, 0.1);\n  position: relative;\n  text-align: center;\n}\n.newsdetails .details h3[data-v-4f8d9b54] {\n  color: #00ccff;\n  margin-top: 12px;\n}\n.newsdetails .details h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.newsdetails h4[data-v-4f8d9b54] {\n  color: #ffe0e0;\n  font-weight: bold;\n  margin-bottom: 15px;\n  margin-top: 5px;\n}\n.newsdetails h4[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n  font-weight: bold;\n}\n.newsdetails p[data-v-4f8d9b54] {\n  overflow-wrap: break-word;\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54] {\n  border: 1px solid #fd1266;\n  padding: 13px;\n  margin-bottom: 15px;\n  padding-left: 30px;\n  padding-right: 30px;\n  color: #fd1266;\n  background-color: transparent;\n  border-radius: 5px;\n  transition: all ease-in 0.2s;\n}\n.newsdetails button[data-v-4f8d9b54]:hover {\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54]:focus {\n  background: #ffe0e0;\n  color: #fd1266;\n  padding-left: 28px;\n  padding-right: 28px;\n  padding: 12px;\n}\n.sidnews[data-v-4f8d9b54] {\n  border: 1px solid rgba(255, 219, 179, 0.1);\n  background-color: rgba(255, 219, 179, 0.1);\n  text-align: center;\n  margin-bottom: 7px;\n  padding: 0px;\n  /* margin-top: 20px; */\n  border-radius: 5px;\n  /*.image{\n    min-height: 197px;\n    max-height: 100%;\n  }*/\n}\n.sidnews h4[data-v-4f8d9b54] {\n  margin-bottom: 5px;\n  /* margin-top: 15px; */\n  color: #ffe0e0;\n}\n.sidnews h4[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.sidnews p[data-v-4f8d9b54] {\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54] {\n  border: 1px solid #fd1266;\n  padding: 10px;\n  margin-bottom: 15px;\n  padding-left: 30px;\n  padding-right: 30px;\n  color: #fd1266;\n  background-color: transparent;\n  border-radius: 5px;\n  transition: all ease-in 0.2s;\n}\n.sidnews button[data-v-4f8d9b54]:hover {\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54]:focus {\n  background: #ffe0e0;\n  color: #fd1266;\n  padding-left: 28px;\n  padding-right: 28px;\n  padding: 12px;\n}\n.news-details[data-v-4f8d9b54] {\n  background: #1b252c;\n  /* padding: 20px; */\n}\n.mainnewsh[data-v-4f8d9b54] {\n  background-color: rgba(0, 204, 255, 0.8);\n  color: #383754;\n  margin-bottom: 30px;\n  /* margin-top: 20px; */\n  padding: 5px;\n}\n.latest-news[data-v-4f8d9b54] {\n  background: rgba(255, 219, 179, 0.1);\n  border-radius: 3px;\n  padding: 10px\n}\n.latest-news h5[data-v-4f8d9b54], .latest-news h3[data-v-4f8d9b54] {\n  cursor: pointer;\n  color: #ffe0e0;\n}\n.latest-news h5[data-v-4f8d9b54]:hover, .latest-news h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n/* .latest-news .miniimages {\n  margin-left: 7px;\n  margin-bottom: 38px;\n  margin-top: 3px;\n} */\n\n/* .nimage {\n  height: 223px;\n} */\n.subnews[data-v-4f8d9b54] {\n  background: rgba(255, 219, 179, 0.1);\n  border-radius: 2px;\n  padding: 10px;\n}\n.subnews .img-fluid[data-v-4f8d9b54] {\n  margin-left: 5px;\n}\n.subnh h5[data-v-4f8d9b54], .subnh h3[data-v-4f8d9b54] {\n  cursor: pointer;\n  color: #ffe0e0;\n}\n.subnh h5[data-v-4f8d9b54]:hover, .subnh h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.subnh .subt[data-v-4f8d9b54] {\n  color: #ffe0e0;\n}\n.time[data-v-4f8d9b54] {\n  color: #fd1266;\n  font-size: 12px;\n  font-weight: bold;\n}\n.calendar[data-v-4f8d9b54] {\n  font-size: 13px;\n  font-weight: bold;\n  color: #fd1266;\n}\n.newt[data-v-4f8d9b54] {\n  color: #ffe0e0;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\na[data-v-4f8d9b54] {\n    text-decoration: none;\n}\n.news-section[data-v-4f8d9b54] {\n  background-color: #1b252c;\n}\n.newsbg[data-v-4f8d9b54] {\n  background-color: #1b252c;\n}\n.news[data-v-4f8d9b54] {\n  background: #1b252c;\n  padding: 10px;\n}\n.newsdetails .newsblk[data-v-4f8d9b54] {\n  border: 1px solid rgba(255, 219, 179, 0.1);\n  /* margin-top: 20px; */\n  margin-left: 0px;\n  border-radius: 5px;\n  background-color: rgba(255, 219, 179, 0.1);\n  position: relative;\n  text-align: center;\n}\n.newsdetails .details h3[data-v-4f8d9b54] {\n  color: #00ccff;\n  margin-top: 12px;\n}\n.newsdetails .details h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.newsdetails h4[data-v-4f8d9b54] {\n  color: #ffe0e0;\n  font-weight: bold;\n  margin-bottom: 15px;\n  margin-top: 5px;\n}\n.newsdetails h4[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n  font-weight: bold;\n}\n.newsdetails p[data-v-4f8d9b54] {\n  overflow-wrap: break-word;\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54] {\n  border: 1px solid #fd1266;\n  padding: 13px;\n  margin-bottom: 15px;\n  padding-left: 30px;\n  padding-right: 30px;\n  color: #fd1266;\n  background-color: transparent;\n  border-radius: 5px;\n  transition: all ease-in 0.2s;\n}\n.newsdetails button[data-v-4f8d9b54]:hover {\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54]:focus {\n  background: #ffe0e0;\n  color: #fd1266;\n  padding-left: 28px;\n  padding-right: 28px;\n  padding: 12px;\n}\n.sidnews[data-v-4f8d9b54] {\n  border: 1px solid rgba(255, 219, 179, 0.1);\n  background-color: rgba(255, 219, 179, 0.1);\n  text-align: center;\n  margin-bottom: 7px;\n  padding: 0px;\n  /* margin-top: 20px; */\n  border-radius: 5px;\n  /*.image{\n    min-height: 197px;\n    max-height: 100%;\n  }*/\n}\n.sidnews img[data-v-4f8d9b54] {\n  height: 192px !important;\n}\n.sidnews h4[data-v-4f8d9b54] {\n  margin-bottom: 5px;\n  /* margin-top: 15px; */\n  color: #ffe0e0;\n}\n.sidnews h4[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.sidnews p[data-v-4f8d9b54] {\n  color: #f5f3e7;\n  margin-bottom: 6px;\n}\n.sidnews button[data-v-4f8d9b54] {\n  border: 1px solid #fd1266;\n  padding: 10px;\n  margin-bottom: 15px;\n  padding-left: 30px;\n  padding-right: 30px;\n  color: #fd1266;\n  background-color: transparent;\n  border-radius: 5px;\n  transition: all ease-in 0.2s;\n}\n.sidnews button[data-v-4f8d9b54]:hover {\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54]:focus {\n  background: #ffe0e0;\n  color: #fd1266;\n  padding-left: 28px;\n  padding-right: 28px;\n  padding: 12px;\n}\n.news-details[data-v-4f8d9b54] {\n  background: #1b252c;\n  /* padding: 20px; */\n}\n.mainnewsh[data-v-4f8d9b54] {\n  background-color: rgba(0, 204, 255, 0.8);\n  color: #383754;\n  margin-bottom: 30px;\n  /* margin-top: 20px; */\n  padding: 5px;\n}\n.latest-news[data-v-4f8d9b54] {\n  background: rgba(255, 219, 179, 0.1);\n  border-radius: 3px;\n  padding: 10px\n}\n.latest-news h5[data-v-4f8d9b54], .latest-news h3[data-v-4f8d9b54] {\n  cursor: pointer;\n  color: #ffe0e0;\n}\n.latest-news h5[data-v-4f8d9b54]:hover, .latest-news h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n/* .latest-news .miniimages {\n  margin-left: 7px;\n  margin-bottom: 38px;\n  margin-top: 3px;\n} */\n\n/* .nimage {\n  height: 223px;\n} */\n.subnews[data-v-4f8d9b54] {\n  background: rgba(255, 219, 179, 0.1);\n  border-radius: 2px;\n  padding: 10px;\n}\n.subnews .img-fluid[data-v-4f8d9b54] {\n  margin-left: 5px;\n}\n.subnh h5[data-v-4f8d9b54], .subnh h3[data-v-4f8d9b54] {\n  cursor: pointer;\n  color: #ffe0e0;\n}\n.subnh h5[data-v-4f8d9b54]:hover, .subnh h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.subnh .subt[data-v-4f8d9b54] {\n  color: #ffe0e0;\n}\n.time[data-v-4f8d9b54] {\n  color: #fd1266;\n  font-size: 12px;\n  font-weight: bold;\n}\n.calendar[data-v-4f8d9b54] {\n  font-size: 13px;\n  font-weight: bold;\n  color: #fd1266;\n}\n.newt[data-v-4f8d9b54] {\n  color: #ffe0e0;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -80883,30 +80883,22 @@ var render = function() {
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-lg-6" }, [
-            _c("article", { staticClass: "newsdetails" }, [
-              _c("div", { staticClass: "newsblk" }, [
-                _c("figure", [
+            _c("article", { staticClass: "sidnews" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-lg-4 col-md-6" }, [
                   _c("img", {
-                    staticClass: "mainnews w-100",
-                    attrs: { src: "FrontEnd/images/Details/Bg-02.png" }
+                    staticClass: "img-fluid image",
+                    attrs: { src: "FrontEnd/images/Dolls/01.png" }
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                                Lorem ipsum dolor, sit amet consectetur\n                                adipisicing elit. Debitis iste aperiam\n                                cupiditate mollitia eos nisi harum....\n                            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("button", [_vm._v("Read More")])
+                _vm._m(0)
               ])
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-lg-6" }, [
-            _c("article", { staticClass: "sidnews p-2" }, [
+            _c("article", { staticClass: "sidnews" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-lg-4 col-md-6" }, [
                   _c("img", {
@@ -80921,77 +80913,6 @@ var render = function() {
           ])
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("section", { staticClass: "news-section" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "news-details" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-6 main" }, [
-              _c("article", { staticClass: "latest-news" }, [
-                _c("h4", { staticClass: "mainnewsh border" }, [
-                  _vm._v("Main News")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "image-wrapper col-lg-6" }, [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _c("img", {
-                        staticClass: "img-fluid nimage",
-                        attrs: {
-                          src: "FrontEnd/images/Details/Bg-02.png",
-                          alt: "main-news-highlight"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
-                ])
-              ]),
-              _vm._v(" "),
-              _c("article", { staticClass: "latest-news" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-6" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-6" }, [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _c("img", {
-                            staticClass: "img-fluid hover miniimages",
-                            attrs: { src: "FrontEnd/images/Details/Bg-02.png" }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(3)
-                    ])
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("article", { staticClass: "subnews" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "image-wrapper col-lg-3" }, [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _c("img", {
-                        staticClass: "img-fluid",
-                        attrs: {
-                          src: "FrontEnd/images/Dolls/01.png",
-                          alt: "sub-news-highlight"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(4)
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
     ])
   ])
 }
@@ -81000,15 +80921,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("h4", [_vm._v("Lorem ipsum dolor sit amet.")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-8 col-md-6 text-left" }, [
+    return _c("div", { staticClass: "col-lg-8 col-md-6 text-left pt-2" }, [
       _c("a", { attrs: { href: "#" } }, [
         _c("h4", [_vm._v("Lorem ipsum dolor sit amet.")])
       ]),
@@ -81026,76 +80939,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "news-header col-lg-6" }, [
-      _c("h3", [
-        _vm._v(
-          "\n                                        Lorem ipsum dolor sit amet\n                                        consectetur adipisicing elit\n                                    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("i", { staticClass: " calendar far fa-calendar-alt" }),
-      _vm._v(" "),
-      _c(
-        "time",
-        { staticClass: "time", attrs: { datetime: "2021-7-13 17:00" } },
-        [_vm._v("13th june 2021")]
-      ),
-      _vm._v(" "),
-      _c("p", { staticClass: "newt" }, [
-        _vm._v(
-          "\n                                        Lorem ipsum dolor sit amet\n                                        consectetur, adipisicing elit. Dicta\n                                        Repellendus eligendi ab quia.\n                                    "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
+    return _c("div", { staticClass: "col-lg-8 col-md-6 text-left pt-2" }, [
       _c("a", { attrs: { href: "#" } }, [
-        _c("h5", [
-          _vm._v(
-            "\n                                                    Lorem ipsum, dolor sit amet.\n                                                "
-          )
-        ])
+        _c("h4", [_vm._v("Lorem ipsum dolor sit amet.")])
       ]),
       _vm._v(" "),
-      _c("i", { staticClass: " calendar far fa-calendar-alt" }),
-      _vm._v(" "),
-      _c(
-        "time",
-        { staticClass: "time", attrs: { datetime: "2021-7-13 17:00" } },
-        [_vm._v("13th june 2021")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "subnh col-lg-9" }, [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("h5", { staticClass: " mb-2" }, [
-          _vm._v(
-            "\n                                            Lorem ipsum dolor sit amet\n                                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("i", { staticClass: "calendar far fa-calendar-alt" }),
-      _vm._v(" "),
-      _c(
-        "time",
-        { staticClass: "time", attrs: { datetime: "2021-7-13 17:00" } },
-        [_vm._v("13th june 2021")]
-      ),
-      _vm._v(" "),
-      _c("p", { staticClass: "subt" }, [
+      _c("p", [
         _vm._v(
-          "\n                                        Lorem ipsum dolor sit amet\n                                        consectetur adipisicing elit. Vel\n                                        illum fugit odit, aperiam, voluptas\n                                        nemo error nobis possimus\n                                    "
+          "\n                                    Lorem ipsum dolor sit, amet consectetur\n                                    adipisicing elit. Quam cumque illum\n                                    reiciendis ipsum minus corporis rerum\n                                    nemo neque aspernatur....\n                                "
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _c("button", [_vm._v("Read More")])
     ])
   }
 ]

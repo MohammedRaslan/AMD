@@ -4,31 +4,9 @@
         <section class="news">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <article class="newsdetails">
-                            <!--Block item -->
-                            <div class="newsblk">
-                                <figure>
-                                    <img
-                                        class="mainnews w-100"
-                                        :src="'FrontEnd/images/Details/Bg-02.png'"
-                                    />
-                                </figure>
-                                <a href="#">
-                                    <h4>Lorem ipsum dolor sit amet.</h4>
-                                </a>
-                                <p>
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Debitis iste aperiam
-                                    cupiditate mollitia eos nisi harum....
-                                </p>
-                                <button>Read More</button>
-                            </div>
-                        </article>
-                    </div>
                     <!--Block item-->
                     <div class="col-lg-6">
-                        <article class="sidnews p-2">
+                        <article class="sidnews">
                             <div class="row">
                                 <!--side news image -->
                                 <div class="col-lg-4 col-md-6">
@@ -38,7 +16,7 @@
                                     />
                                 </div>
                                 <!--side news title-->
-                                <div class="col-lg-8 col-md-6 text-left">
+                                <div class="col-lg-8 col-md-6 text-left pt-2">
                                     <a href="#">
                                         <h4>Lorem ipsum dolor sit amet.</h4>
                                     </a>
@@ -53,128 +31,42 @@
                             </div>
                         </article>
                     </div>
+
+                    <!--Block item-->
+                    <div class="col-lg-6">
+                        <article class="sidnews">
+                            <div class="row">
+                                <!--side news image -->
+                                <div class="col-lg-4 col-md-6">
+                                    <img
+                                        class="img-fluid image"
+                                        :src="'FrontEnd/images/Dolls/01.png'"
+                                    />
+                                </div>
+                                <!--side news title-->
+                                <div class="col-lg-8 col-md-6 text-left pt-2">
+                                    <a href="#">
+                                        <h4>Lorem ipsum dolor sit amet.</h4>
+                                    </a>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur
+                                        adipisicing elit. Quam cumque illum
+                                        reiciendis ipsum minus corporis rerum
+                                        nemo neque aspernatur....
+                                    </p>
+                                    <button>Read More</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
                 </div>
             </div>
         </section>
         <!--News Section End-->
         <!---------------------------------Begin The lastest News section-------------------------------------->
 
-        <!-- START MAIN NEWS -->
-        <section class="news-section">
-            <div class="container">
-                <div class="news-details">
-                    <div class="row">
-                        <div class="col-lg-6 main">
-                            <article class="latest-news">
-                                <h4 class="mainnewsh border">Main News</h4>
-                                <div class="row">
-                                    <div class="image-wrapper col-lg-6">
-                                        <a href="#">
-                                            <img
-                                                class="img-fluid nimage"
-                                                :src="'FrontEnd/images/Details/Bg-02.png'"
-                                                alt="main-news-highlight"
-                                            />
-                                        </a>
-                                    </div>
-                                    <!--MAIN NEWS TITLE-->
-                                    <div class="news-header col-lg-6">
-                                        <h3>
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit
-                                        </h3>
-                                        <i
-                                            class=" calendar far fa-calendar-alt"
-                                        ></i>
-                                        <time
-                                            class="time"
-                                            datetime="2021-7-13 17:00"
-                                            >13th june 2021</time
-                                        >
-                                        <p class="newt">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur, adipisicing elit. Dicta
-                                            Repellendus eligendi ab quia.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!--SUBNEWS BLOCKS-->
-                            </article>
-                            <!-- Start MINI NEWS-->
-
-                            <!--MINI NEWS-->
-                            <article class="latest-news">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                              <div class="col-lg-6">
-                                                <a href="#"
-                                                    ><img
-                                                        class="img-fluid hover miniimages"
-                                                        :src="'FrontEnd/images/Details/Bg-02.png'"
-                                                /></a>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <a href="#">
-                                                    <h5>
-                                                        Lorem ipsum, dolor sit amet.
-                                                    </h5>
-                                                </a>
-                                                <i
-                                                    class=" calendar far fa-calendar-alt"
-                                                ></i>
-                                                <time
-                                                    class="time"
-                                                    datetime="2021-7-13 17:00"
-                                                    >13th june 2021</time
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-6">
-                            <!--Subnews Block-->
-                            <article class="subnews">
-                                <div class="row">
-                                    <div class="image-wrapper col-lg-3">
-                                        <a href="#">
-                                            <img
-                                                class="img-fluid"
-                                                :src="'FrontEnd/images/Dolls/01.png'"
-                                                alt="sub-news-highlight"
-                                            />
-                                        </a>
-                                    </div>
-                                    <div class="subnh col-lg-9">
-                                        <a href="#">
-                                            <h5 class=" mb-2">
-                                                Lorem ipsum dolor sit amet
-                                            </h5>
-                                        </a>
-                                        <i
-                                            class="calendar far fa-calendar-alt"
-                                        ></i>
-                                        <time
-                                            class="time"
-                                            datetime="2021-7-13 17:00"
-                                            >13th june 2021</time
-                                        >
-                                        <p class="subt">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Vel
-                                            illum fugit odit, aperiam, voluptas
-                                            nemo error nobis possimus
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
     </div>
 </template>
 
@@ -260,6 +152,9 @@ a {
     max-height: 100%;
   }*/
 }
+.sidnews img {
+  height: 192px !important;
+}
 .sidnews h4 {
   margin-bottom: 5px;
   /* margin-top: 15px; */
@@ -270,6 +165,7 @@ a {
 }
 .sidnews p {
   color: #f5f3e7;
+  margin-bottom: 6px;
 }
 .sidnews button {
   border: 1px solid #fd1266;
