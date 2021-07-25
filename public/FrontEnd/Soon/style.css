@@ -9,7 +9,7 @@ body {
     font-weight: 300;
     color: white;
     background: linear-gradient(50deg, rgb(0 204 255 / 70%), rgb(122 201 67 / 70%), rgb(253 18 102 / 70%), rgb(254 206 47 / 70%)), /* change Here */
-    url("1.jpg") no-repeat center center fixed;
+    no-repeat center center fixed;
     height: 100vh;
     overflow: hidden;
     background-size: cover;
