@@ -1,0 +1,116 @@
+body {
+    font-family: "Roboto";
+    max-width: 631px;
+    width: 100%;
+    height: 300px;
+    margin: 10px auto;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 300;
+    color: white;
+    background: linear-gradient(50deg, rgb(0 204 255 / 70%), rgb(122 201 67 / 70%), rgb(253 18 102 / 70%), rgb(254 206 47 / 70%)), /* change Here */
+    url("1.jpg") no-repeat center center fixed;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover;
+}
+
+.over-div {
+    position: absolute;
+    background: #00000033;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transform: translateY(-49px);
+}
+
+.remove-top-margin {
+    margin-top: 0;
+    text-align: center;
+    padding: 0 36px;
+}
+
+@media (max-width: 850px) {
+    .remove-top-margin {
+        padding: 0;
+    }
+    .container {
+        transform: translateY(-70px);
+    }
+}
+
+
+/* .logo {
+            border-radius: 50%;
+            max-width: 150px;
+            max-height: 180px;
+        } */
+
+.logo-placeholder {
+    padding: 5px;
+    text-align: center;
+    z-index: 845;
+}
+
+.content {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 789;
+}
+
+
+/* h1{
+    color: #FECC2F;
+    font-size: 44px;
+} */
+
+h1 {
+    font-size: 72px;
+    background: -webkit-linear-gradient(20deg, #FD1266, #FECC2F, #00CCFF, #7AC943);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 31px 0;
+    text-transform: uppercase;
+}
+
+@media (max-width: 850px) {
+    h1 {
+        font-size: 47px;
+    }
+}
+
+.counter {
+    width: 500px;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .counter {
+        width: 450px;
+    }
+}
+
+
+/*
+          ##Device = Most of the Smartphones Mobiles (Portrait)
+          ##Screen = B/w 320px to 479px
+        */
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .counter {
+        width: 350px;
+    }
+}

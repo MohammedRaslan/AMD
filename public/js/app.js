@@ -8642,7 +8642,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
-  path: "/",
+  path: "/demo",
   component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_0__.default,
   name: "home"
 }, {

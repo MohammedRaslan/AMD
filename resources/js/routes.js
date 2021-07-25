@@ -27,7 +27,7 @@ import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
 import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
 const routes = [
     {
-        path: "/",
+        path: "/demo",
         component: HomeComponent,
         name: "home",
     },
