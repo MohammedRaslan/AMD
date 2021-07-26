@@ -120,6 +120,11 @@
 .header {
   height: 120px;
 }
+@media (max-width: 500px) {
+  .header {
+    padding-left: 4px;
+  }
+}
 .header .header__menu > ul {
   height: 40px;
 }
@@ -316,6 +321,37 @@
 }
 .header .notif-cont .item .cancal-not:hover {
   background-color: red;
+}
+
+#mobile-menu-wrap li {
+  list-style: none;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0rem;
+  clear: both;
+  font-weight: 400;
+  color: #dee2e6;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+#mobile-menu-wrap li a {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0rem;
+  clear: both;
+  font-weight: 400;
+  color: #dee2e6;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
 }
 
 @media (max-width: 1200px) {
@@ -2293,7 +2329,11 @@
   opacity: 0.2 !important;
   background: #0000 !important;
 }
-.selling .vs--disabled .vs__clear, .selling .vs--disabled .vs__dropdown-toggle, .selling .vs--disabled .vs__open-indicator, .selling .vs--disabled .vs__search, .selling .vs--disabled .vs__selected {
+.selling .vs--disabled .vs__clear,
+.selling .vs--disabled .vs__dropdown-toggle,
+.selling .vs--disabled .vs__open-indicator,
+.selling .vs--disabled .vs__search,
+.selling .vs--disabled .vs__selected {
   background-color: transparent;
   opacity: 0.3;
 }
@@ -2411,22 +2451,33 @@
 .selling .form-product #vs4__combobox li:hover a {
   color: #111b29 !important;
 }
-.selling #vs4__combobox li, .selling #vs4__listbox li, .selling #vs5__listbox li {
+.selling #vs4__combobox li,
+.selling #vs4__listbox li,
+.selling #vs5__listbox li {
   color: white !important;
 }
-.selling #vs4__combobox li a, .selling #vs4__listbox li a, .selling #vs5__listbox li a {
+.selling #vs4__combobox li a,
+.selling #vs4__listbox li a,
+.selling #vs5__listbox li a {
   color: white !important;
 }
-.selling #vs4__combobox li:hover, .selling #vs4__listbox li:hover, .selling #vs5__listbox li:hover {
+.selling #vs4__combobox li:hover,
+.selling #vs4__listbox li:hover,
+.selling #vs5__listbox li:hover {
   color: #111b29 !important;
 }
-.selling #vs4__combobox li:hover a, .selling #vs4__listbox li:hover a, .selling #vs5__listbox li:hover a {
+.selling #vs4__combobox li:hover a,
+.selling #vs4__listbox li:hover a,
+.selling #vs5__listbox li:hover a {
   color: #111b29 !important;
 }
 .selling #v-pills-home .detalis {
   border: none !important;
 }
-.selling #vs5__listbox input, .selling #vs5__listbox .vs__search, .selling #vs5__combobox input, .selling #vs5__combobox .vs__search {
+.selling #vs5__listbox input,
+.selling #vs5__listbox .vs__search,
+.selling #vs5__combobox input,
+.selling #vs5__combobox .vs__search {
   border: none !important;
   height: 0;
 }
@@ -2464,6 +2515,7 @@
 @media (max-width: 800px) {
   .shop-details .product__details__pic .detail-top {
     display: block;
+    padding-right: 16px;
   }
 }
 .shop-details .product__details__pic .detail-top i {
@@ -2610,8 +2662,9 @@
   }
 }
 .shop-details .cont-img .product__details__pic__item img {
-  max-height: 100% !important;
+  max-height: 575px !important;
   max-width: 100% !important;
+  border-radius: 8px;
 }
 @media (max-width: 750px) {
   .shop-details .parent-price-table {
