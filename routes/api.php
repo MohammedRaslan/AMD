@@ -15,6 +15,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BestOfferController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\WishlistController;
 use App\Repositories\NotificationRepository;
@@ -41,16 +42,21 @@ Route::get('checkUser/{email?}',[UserController::class,'checkUser']);
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/getUsers',[UserController::class,'getUsers']);
+    Route::get('/getFaqs',[FaqController::class,'getFaqs']);
     Route::get('/getCategories',[CategoryController::class,'getCategories']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
     Route::get('checkAdmin',[UserController::class,'checkAdmin']);
 
+    Route::prefix('faq')->group(function(){
+        Route::post('store',[FaqController::class,'store']);
+        Route::get('changeStatus/{id}',[FaqController::class,'changeStatus']);
+        Route::get('getAllFaqs',[FaqController::class,'getAllFaqs']);
+    });
     
     Route::prefix('category')->group(function() {
         Route::post('store',[CategoryController::class,'store']);
         Route::get('changeStatus/{id?}',[CategoryController::class,'changeStatus']);
         Route::get('getCategoryProducts/{id?}',[CategoryController::class,'categoryProducts']);
-
     });
 
     Route::prefix('product')->group(function () {

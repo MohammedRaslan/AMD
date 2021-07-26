@@ -24,6 +24,7 @@ import WishlistComponent from "./components/Buying/WishlistComponent.vue";
 import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
 import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.vue";
 import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
+import FaqComponent from "./components/Admin/FaqComponent.vue";
 import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
 const routes = [
     {
@@ -152,6 +153,11 @@ const routes = [
         path: "/admin/AddSubscription",
         component: AddSubscriptionsComponent,
         name: "ManageSubscriptions",
+    },
+    {
+        path: "/admin/faq",
+        component: FaqComponent,
+        name: "faqs",
     },
 
 ];

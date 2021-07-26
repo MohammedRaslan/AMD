@@ -5,54 +5,23 @@
             <div class="container">
                 <div class="row">
                     <!--Block item-->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" v-for="(faq, index) in faqs" :key="index">
                         <article class="sidnews">
                             <div class="row">
                                 <!--side news image -->
                                 <div class="col-lg-4 col-md-6">
                                     <img
                                         class="img-fluid image"
-                                        :src="'FrontEnd/images/Dolls/01.png'"
+                                        :src='str_replace(faq.image.url)'
                                     />
                                 </div>
                                 <!--side news title-->
                                 <div class="col-lg-8 col-md-6 text-left pt-2">
                                     <a href="#">
-                                        <h4>Lorem ipsum dolor sit amet.</h4>
+                                        <h4>{{ faq.title }}.</h4>
                                     </a>
                                     <p>
-                                        Lorem ipsum dolor sit, amet consectetur
-                                        adipisicing elit. Quam cumque illum
-                                        reiciendis ipsum minus corporis rerum
-                                        nemo neque aspernatur....
-                                    </p>
-                                    <button>Read More</button>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!--Block item-->
-                    <div class="col-lg-6">
-                        <article class="sidnews">
-                            <div class="row">
-                                <!--side news image -->
-                                <div class="col-lg-4 col-md-6">
-                                    <img
-                                        class="img-fluid image"
-                                        :src="'FrontEnd/images/Dolls/01.png'"
-                                    />
-                                </div>
-                                <!--side news title-->
-                                <div class="col-lg-8 col-md-6 text-left pt-2">
-                                    <a href="#">
-                                        <h4>Lorem ipsum dolor sit amet.</h4>
-                                    </a>
-                                    <p>
-                                        Lorem ipsum dolor sit, amet consectetur
-                                        adipisicing elit. Quam cumque illum
-                                        reiciendis ipsum minus corporis rerum
-                                        nemo neque aspernatur....
+                                       {{ faq.body }}
                                     </p>
                                     <button>Read More</button>
                                 </div>
@@ -263,3 +232,23 @@ a {
 /*# sourceMappingURL=app.css.map */
 
 </style>
+
+<script >
+export default({
+      data:()=>({
+        faqs: {},
+    }),
+       methods:{
+        str_replace(str){
+            str = str.replace('public',window.location.origin + '/storage');
+            return str;
+        },
+       },
+    mounted(){
+      axios.get('/api/faq/getAllFaqs').then((response) => {
+        this.faqs = response.data;
+      });
+    }
+})
+</script>
+

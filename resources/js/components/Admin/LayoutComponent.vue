@@ -107,7 +107,7 @@
 
         <!-- Start Main leftbar navigation -->
         <div id="left-sidebar" class="sidebar">
-            <h5 class="brand-name">Egy Premium<a href="javascript:void(0)" class="menu_option float-right"><i class="icon-grid font-16" data-toggle="tooltip" data-placement="left" title="Grid & List Toggle"></i></a></h5>
+            <h5 class="brand-name">AAMD<a href="javascript:void(0)" class="menu_option float-right"><i class="icon-grid font-16" data-toggle="tooltip" data-placement="left" title="Grid & List Toggle"></i></a></h5>
             <ul class="nav nav-tabs  d-flex justify-content-center w-100">
                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu-uni">Control Center</a></li>
                  <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu-admin">Admin</a></li> -->
@@ -120,8 +120,8 @@
                             <li><router-link to="/admin/users" ><i class="fa fa-users"></i><span>Users</span></router-link></li>
                             <li><router-link to="/admin/categories" ><i class="fa fa-th-list"></i><span>Categories</span></router-link></li>
                             <li><router-link to="/admin/products" ><i class="fa fa-book"></i><span>Products</span></router-link></li>
-                            <!-- <li><a href="" ><i class="fa fa-book"></i><span>Products</span></a></li>
-                            <li><a href=""><i class="fa fa-tags"></i><span>Tags</span></a></li>
+                            <li><router-link to="/admin/faq" ><i class="fa fa-book"></i><span>Faq</span></router-link></li>
+                            <!--<li><a href=""><i class="fa fa-tags"></i><span>Tags</span></a></li>
                             <li><a href=""><i class="fa fa-certificate"></i><span>Coupons</span></a></li>
                             <li><a href=""><i class="fa fa-certificate"></i><span>Brands</span></a></li>
                             <li><a href="" ><i class="fa fa-flag"></i> <span>Countries</span></a></li>
