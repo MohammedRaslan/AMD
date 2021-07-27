@@ -68,23 +68,7 @@
                 </a>
             </div>
             <div id="mobile-menu-wrap">
-                <ul data-v-adb1784e="" class="text-start d-lg-flex d-xl-flex d-md-flex justify-content-between">
-                    <li>
-                        <a href="#">
-                            ldfjklfk
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            ldfjklfk
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            ldfjklfk
-                        </a>
-                    </li>
-                </ul>
+               <Mobile></Mobile>
             </div>
             {{-- <div class="offcanvas__text">
             <p>Free shipping, 30-day return or refund guarantee.</p>
@@ -254,8 +238,8 @@
     <script src="js/custom.js"></script> -->
     </div>
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
-    <script src="{{ asset('FrontEnd') }}/js/bootstrap5.js" defer></script>
-    <script src="{{ asset('FrontEnd') }}/js/bootstrap.bundle.js" defer></script>
+    {{-- <script src="{{ asset('FrontEnd') }}/js/bootstrap5.js" defer></script> --}}
+    <script src="{{ asset('FrontEnd') }}/js/bootstrap5.bundle.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery.nice-select.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/swiper.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery.nicescroll.min.js" defer></script>

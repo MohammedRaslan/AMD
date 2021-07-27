@@ -352,6 +352,26 @@
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  font-size: 0.875em;
+}
+#mobile-menu-wrap .dropdown button {
+  color: #23ccfd;
+  border: 1px solid #23ccfd;
+  padding-right: 46px;
+  position: relative;
+}
+#mobile-menu-wrap .dropdown button:focus {
+  box-shadow: none;
+}
+#mobile-menu-wrap .dropdown .dropdown-menu {
+  background: #111B29;
+  border: 1px solid #23ccfd;
+  padding: 0px 7px;
+}
+#mobile-menu-wrap .dropdown-toggle::after {
+  position: absolute;
+  right: 5px;
+  top: 14px;
 }
 
 @media (max-width: 1200px) {

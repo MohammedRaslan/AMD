@@ -27,6 +27,35 @@
             white-space: nowrap;
             background-color: transparent;
             border: 0;
+            font-size: .875em;
         }
+    }
+    .dropdown {
+        button {
+            color: #23ccfd;
+            border: 1px solid #23ccfd;
+            padding-right: 46px;
+            position: relative;
+            &:focus {
+                box-shadow: none;
+            }
+            // &.dropdown-toggle {
+            //      ::after {
+            //         position: absolute;
+            //         right: 5px;
+            //         top: 14px;
+            //     }
+            // }
+        }
+        .dropdown-menu {
+            background: #111B29;
+            border: 1px solid #23ccfd;
+            padding: 0px 7px;
+        }
+    }
+    .dropdown-toggle::after {
+        position: absolute;
+        right: 5px;
+        top: 14px;
     }
 }
