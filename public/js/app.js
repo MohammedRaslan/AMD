@@ -5275,6 +5275,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5320,6 +5325,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartComponent */ "./resources/js/components/Navbar/CartComponent.vue");
 /* harmony import */ var _NotificationComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NotificationComponent */ "./resources/js/components/Navbar/NotificationComponent.vue");
 /* harmony import */ var _SearchComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchComponent */ "./resources/js/components/Navbar/SearchComponent.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -13929,7 +13950,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media (max-width: 1000px) {\n.header .container {\n    max-width: 95%;\n}\n}\n@media (max-width: 500px) {\n.header .container {\n    max-width: 99%;\n}\n}\n@media (min-width: 1000px) {\n.header .links-header-mobil {\n    display: none !important;\n}\n}\n.header .links-header-mobil .icons a {\n  margin-right: 53px;\n  margin-left: 44px;\n  text-decoration: none;\n}\n@media (max-width: 1000px) {\n.header .links-header-mobil .icons a {\n    margin-right: 68px;\n    margin-left: 18px;\n}\n}\n@media (max-width: 925px) {\n.header .links-header-mobil .icons a {\n    margin-right: 63px;\n}\n}\n@media (max-width: 900px) {\n.header .links-header-mobil .icons a {\n    margin-right: 59px;\n}\n}\n@media (max-width: 860px) {\n.header .links-header-mobil .icons a {\n    margin-right: 50px;\n}\n}\n@media (max-width: 760px) {\n.header .links-header-mobil .icons a {\n    margin-right: 21px;\n    display: inline-block;\n    text-align: center;\n}\n}\n@media (max-width: 660px) {\n.header .links-header-mobil .icons a {\n    margin-right: 12px;\n    display: inline-block;\n    text-align: center;\n}\n}\n@media (max-width: 500px) {\n.header .links-header-mobil .icons a {\n    margin-right: 16px;\n    margin-left: 0px;\n    display: inline-block;\n    text-align: center;\n}\n}\n@media (max-width: 330px) {\n.header .links-header-mobil .icons a {\n    margin-right: 2px;\n}\n}\n.header .links-header-mobil .notif-cont {\n  left: -181px;\n}\n.header .links-header-mobil .notif-cont {\n  width: 268px;\n}\n.color {\n  color: #5fcdfe;\n}\n.white {\n  color: white;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media (max-width: 1000px) {\n.header .container {\n    max-width: 95%;\n}\n}\n@media (max-width: 500px) {\n.header .container {\n    max-width: 99%;\n}\n}\n@media (min-width: 1000px) {\n.header .links-header-mobil {\n    display: none !important;\n}\n}\n.header .links-header-mobil .icons {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding-right: 50px;\n}\n@media (max-width: 575px) {\n.header .links-header-mobil .icons {\n    display: flex;\n    align-items: center;\n}\n}\n.header .links-header-mobil .notif-cont {\n  left: -181px;\n}\n.header .links-header-mobil .notif-cont {\n  width: 268px;\n}\n.color {\n  color: #5fcdfe;\n}\n.white {\n  color: white;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81328,48 +81349,13 @@ var render = function() {
       "ul",
       {
         staticClass:
-          "text-start d-lg-flex d-xl-flex d-md-flex justify-content-between",
+          "text-start d-lg-flex d-xl-flex d-md-flex justify-content-between ",
         attrs: { "data-v-adb1784e": "" }
       },
       [
-        _vm._l(_vm.categories, function(category) {
-          return _c(
-            "li",
-            { key: category.id },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "dropdown-item",
-                  attrs: {
-                    to: {
-                      name: "ShopCategoryComponent",
-                      params: { query: category.id }
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(category.title))]
-              )
-            ],
-            1
-          )
-        }),
-        _vm._v(" "),
         _c("li", [
           _c("div", { staticClass: "dropdown" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn dropdown-toggle",
-                attrs: {
-                  type: "button",
-                  id: "dropdownMenuMobile",
-                  "data-bs-toggle": "dropdown",
-                  "aria-expanded": "false"
-                }
-              },
-              [_c("span", [_vm._v("Hello " + _vm._s(_vm.name))])]
-            ),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "ul",
@@ -81377,75 +81363,109 @@ var render = function() {
                 staticClass: "dropdown-menu",
                 attrs: { "aria-labelledby": "dropdownMenuMobile" }
               },
-              [
-                _c(
+              _vm._l(_vm.categories, function(category) {
+                return _c(
                   "li",
+                  { key: category.id },
                   [
                     _c(
                       "router-link",
                       {
                         staticClass: "dropdown-item",
-                        attrs: { to: "/selling/offers" }
+                        attrs: {
+                          to: {
+                            name: "ShopCategoryComponent",
+                            params: { query: category.id }
+                          }
+                        }
                       },
-                      [_vm._v("Selling")]
+                      [_vm._v(_vm._s(category.title))]
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "dropdown-item",
-                        attrs: { to: "/buying/offers" }
-                      },
-                      [_vm._v("Buying")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "dropdown-item",
-                        attrs: { to: "/subscriptions" }
-                      },
-                      [_vm._v("Subscriptions")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "dropdown-item",
-                      staticStyle: { cursor: "pointer" },
-                      on: { click: _vm.logout }
-                    },
-                    [_vm._v("Logout")]
-                  )
-                ])
-              ]
+                )
+              }),
+              0
             )
           ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "item-border" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "dropdown-item",
+                attrs: { to: "/selling/offers" }
+              },
+              [_vm._v("Selling")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { staticClass: "dropdown-item", attrs: { to: "/buying/offers" } },
+              [_vm._v("Buying")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { staticClass: "dropdown-item", attrs: { to: "/subscriptions" } },
+              [_vm._v("Subscriptions")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "dropdown-item",
+              staticStyle: { cursor: "pointer" },
+              on: { click: _vm.logout }
+            },
+            [_vm._v("Logout")]
+          )
         ])
-      ],
-      2
+      ]
     )
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn dropdown-toggle",
+        attrs: {
+          type: "button",
+          id: "dropdownMenuMobile",
+          "data-bs-toggle": "dropdown",
+          "aria-expanded": "false"
+        }
+      },
+      [_c("span", [_vm._v("Marketplace")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
