@@ -120,6 +120,16 @@
 .header {
   height: 120px;
 }
+@media (max-width: 1000px) {
+  .header {
+    height: 132px;
+  }
+}
+@media (max-width: 500px) {
+  .header {
+    padding-left: 4px;
+  }
+}
 .header .header__menu > ul {
   height: 40px;
 }
@@ -129,9 +139,9 @@
   padding: 4px 10px;
 }
 .header .header__menu > ul > li:nth-of-type(2) {
-  border: 1px solid white;
+  border: 1px solid #00ccff;
   border-radius: 40px;
-  padding: 4px 20px;
+  padding: 4px 9px !important;
 }
 .header .header__menu > ul > li.menu-1 {
   width: 149px !important;
@@ -316,6 +326,82 @@
 }
 .header .notif-cont .item .cancal-not:hover {
   background-color: red;
+}
+
+#mobile-menu-wrap li {
+  list-style: none;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0rem;
+  clear: both;
+  font-weight: 400;
+  color: #dee2e6;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+#mobile-menu-wrap li a {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0rem;
+  clear: both;
+  font-weight: 400;
+  color: #dee2e6;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  font-size: 0.875em;
+}
+#mobile-menu-wrap .dropdown button {
+  color: #23ccfd;
+  border: 1px solid #23ccfd;
+  padding-right: 46px;
+  position: relative;
+}
+#mobile-menu-wrap .dropdown button:focus {
+  box-shadow: none;
+}
+#mobile-menu-wrap .dropdown .dropdown-menu {
+  background: #111B29;
+  border: 1px solid #23ccfd;
+  padding: 0px 7px;
+}
+#mobile-menu-wrap .dropdown-toggle::after {
+  position: absolute;
+  right: 5px;
+  top: 14px;
+}
+
+@media (max-width: 656px) {
+  .header .logo-web {
+    display: none;
+  }
+}
+.header .logo-mobil {
+  max-height: 73px;
+}
+@media (min-width: 656px) {
+  .header .logo-mobil {
+    display: none;
+  }
+}
+.header .mobile-search {
+  border: 1px solid #00ccff;
+  border-radius: 50%;
+  width: 40px;
+}
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .header #dropdownMenuMarket {
+    padding: 0 11px;
+    margin-right: 12px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -2293,7 +2379,11 @@
   opacity: 0.2 !important;
   background: #0000 !important;
 }
-.selling .vs--disabled .vs__clear, .selling .vs--disabled .vs__dropdown-toggle, .selling .vs--disabled .vs__open-indicator, .selling .vs--disabled .vs__search, .selling .vs--disabled .vs__selected {
+.selling .vs--disabled .vs__clear,
+.selling .vs--disabled .vs__dropdown-toggle,
+.selling .vs--disabled .vs__open-indicator,
+.selling .vs--disabled .vs__search,
+.selling .vs--disabled .vs__selected {
   background-color: transparent;
   opacity: 0.3;
 }
@@ -2411,22 +2501,33 @@
 .selling .form-product #vs4__combobox li:hover a {
   color: #111b29 !important;
 }
-.selling #vs4__combobox li, .selling #vs4__listbox li, .selling #vs5__listbox li {
+.selling #vs4__combobox li,
+.selling #vs4__listbox li,
+.selling #vs5__listbox li {
   color: white !important;
 }
-.selling #vs4__combobox li a, .selling #vs4__listbox li a, .selling #vs5__listbox li a {
+.selling #vs4__combobox li a,
+.selling #vs4__listbox li a,
+.selling #vs5__listbox li a {
   color: white !important;
 }
-.selling #vs4__combobox li:hover, .selling #vs4__listbox li:hover, .selling #vs5__listbox li:hover {
+.selling #vs4__combobox li:hover,
+.selling #vs4__listbox li:hover,
+.selling #vs5__listbox li:hover {
   color: #111b29 !important;
 }
-.selling #vs4__combobox li:hover a, .selling #vs4__listbox li:hover a, .selling #vs5__listbox li:hover a {
+.selling #vs4__combobox li:hover a,
+.selling #vs4__listbox li:hover a,
+.selling #vs5__listbox li:hover a {
   color: #111b29 !important;
 }
 .selling #v-pills-home .detalis {
   border: none !important;
 }
-.selling #vs5__listbox input, .selling #vs5__listbox .vs__search, .selling #vs5__combobox input, .selling #vs5__combobox .vs__search {
+.selling #vs5__listbox input,
+.selling #vs5__listbox .vs__search,
+.selling #vs5__combobox input,
+.selling #vs5__combobox .vs__search {
   border: none !important;
   height: 0;
 }
@@ -2464,6 +2565,7 @@
 @media (max-width: 800px) {
   .shop-details .product__details__pic .detail-top {
     display: block;
+    padding-right: 16px;
   }
 }
 .shop-details .product__details__pic .detail-top i {
@@ -2610,8 +2712,9 @@
   }
 }
 .shop-details .cont-img .product__details__pic__item img {
-  max-height: 100% !important;
+  max-height: 575px !important;
   max-width: 100% !important;
+  border-radius: 8px;
 }
 @media (max-width: 750px) {
   .shop-details .parent-price-table {

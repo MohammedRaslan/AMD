@@ -26,8 +26,12 @@ import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.
 import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
 import FaqComponent from "./components/Admin/FaqComponent.vue";
 import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
-const routes = [
-    {
+import AboutComponent from "./components/AboutCompontent.vue";
+import PolicyComponent from "./components/PolicyComponent.vue";
+import TermsComponent from "./components/TermsAndConditions.vue";
+
+
+const routes = [{
         path: "/demo",
         component: HomeComponent,
         name: "home",
@@ -159,7 +163,23 @@ const routes = [
         component: FaqComponent,
         name: "faqs",
     },
-
+    // Stitic Pages
+    {
+        path: "/about-us",
+        component: AboutComponent,
+        name: "about-us",
+    },
+    {
+        path: "/policy",
+        component: PolicyComponent,
+        name: "policy",
+    },
+    {
+        path: "/terms-conditions",
+        component: TermsComponent,
+        name: "terms",
+    },
+    
 ];
 
 const router = new VueRouter({

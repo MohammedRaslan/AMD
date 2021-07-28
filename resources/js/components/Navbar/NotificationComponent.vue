@@ -1,5 +1,5 @@
 <template>
-        <div class="position-relative pr-2" >
+        <a class="position-relative pr-2 d-inline-block" >
             <div class="btn-quantity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                     <g id="Group_30" data-name="Group 30" transform="translate(-844 -319)">
@@ -22,7 +22,7 @@
                     <div class="row position-relative">
                         <router-link class="over-link" :to="{name: 'ShopDetailComponent', params:{query: noti.product.id}}"></router-link>
                         <div class="col-4">
-                            <figure style="max-width:50%"> 
+                            <figure style="max-width:50%">
                                 <img :src="str_replace(noti.product.image)" alt>
                             </figure>
                         </div>
@@ -36,7 +36,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </a>
 </template>
 <style scoped>
     .read{
