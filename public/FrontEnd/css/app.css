@@ -120,6 +120,11 @@
 .header {
   height: 120px;
 }
+@media (max-width: 1000px) {
+  .header {
+    height: 132px;
+  }
+}
 @media (max-width: 500px) {
   .header {
     padding-left: 4px;
@@ -134,9 +139,9 @@
   padding: 4px 10px;
 }
 .header .header__menu > ul > li:nth-of-type(2) {
-  border: 1px solid white;
+  border: 1px solid #00ccff;
   border-radius: 40px;
-  padding: 4px 20px;
+  padding: 4px 9px !important;
 }
 .header .header__menu > ul > li.menu-1 {
   width: 149px !important;
@@ -372,6 +377,32 @@
   position: absolute;
   right: 5px;
   top: 14px;
+}
+
+@media (max-width: 656px) {
+  .header .logo-web {
+    display: none;
+  }
+}
+.header .logo-mobil {
+  max-height: 73px;
+}
+@media (min-width: 656px) {
+  .header .logo-mobil {
+    display: none;
+  }
+}
+.header .mobile-search {
+  border: 1px solid #00ccff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .header #dropdownMenuMarket {
+    padding: 0 11px;
+    margin-right: 12px;
+  }
 }
 
 @media (max-width: 1200px) {

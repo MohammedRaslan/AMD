@@ -66,6 +66,7 @@
                         </g>
                     </svg>
                 </a>
+                <Adminicon></Adminicon>
             </div>
             <div id="mobile-menu-wrap">
                <Mobile></Mobile>
@@ -80,15 +81,15 @@
         <header class="header">
             <div class="container h-100">
                 <div class="row h-100 d-flex align-items-center">
-                    <div class="col-lg-3 col-md-3 col-3 p-0">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-12 p-0">
                         <div class="header__logo">
                             <router-link to="/">
-                                {{-- <img src="{{ asset('FrontEnd') }}/images/Logo.png" alt> --}}
-                                <img src="{{ asset('FrontEnd') }}/images/Logo-mobile.png" alt>
+                                <img class="logo-web" src="{{ asset('FrontEnd') }}/images/Logo.png" alt>
+                                <img class="logo-mobil" src="{{ asset('FrontEnd') }}/images/Logo-mobile.png" alt>
                             </router-link>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-md-9 col-9">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-12 icons-mobil">
                         <Navbar></Navbar>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import Vuex from "vuex";
 import Home from "./components/HomeComponent.vue"
 import Navbar from "./components/Navbar/NavbarComponent.vue";
 import Mobile from "./components/Navbar/MobileMenuComponent.vue";
+import Adminicon from "./components/Navbar/AdminIconComponent.vue";
 import Loader from "./components/PreLoaderComponent.vue";
 import Admin from "./components/Admin/LayoutComponent.vue";
 import storeDefinition from './store';
@@ -96,6 +97,7 @@ const app = new Vue({
         Notification: Notification,
         Navbar: Navbar,
         Mobile: Mobile,
+        Adminicon: Adminicon,
         Loader: Loader,
         Admin: Admin,
     },

@@ -25,8 +25,8 @@ import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
 import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.vue";
 import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
 import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
-const routes = [
-    {
+import AboutComponent from "./components/AboutComponten.vue";
+const routes = [{
         path: "/",
         component: HomeComponent,
         name: "home",
@@ -153,6 +153,13 @@ const routes = [
         component: AddSubscriptionsComponent,
         name: "ManageSubscriptions",
     },
+    // Stitic Pages
+    {
+        path: "/about-us",
+        component: AboutComponent,
+        name: "about-us",
+    },
+
 
 ];
 
