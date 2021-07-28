@@ -5280,6 +5280,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -81363,29 +81385,90 @@ var render = function() {
                 staticClass: "dropdown-menu",
                 attrs: { "aria-labelledby": "dropdownMenuMobile" }
               },
-              _vm._l(_vm.categories, function(category) {
-                return _c(
+              [
+                _vm._l(_vm.categories, function(category) {
+                  return _c(
+                    "li",
+                    { key: category.id },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: {
+                            to: {
+                              name: "ShopCategoryComponent",
+                              params: { query: category.id }
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(category.title))]
+                      )
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _c(
                   "li",
-                  { key: category.id },
                   [
                     _c(
                       "router-link",
                       {
                         staticClass: "dropdown-item",
-                        attrs: {
-                          to: {
-                            name: "ShopCategoryComponent",
-                            params: { query: category.id }
-                          }
-                        }
+                        attrs: { to: "/selling/overview" }
                       },
-                      [_vm._v(_vm._s(category.title))]
+                      [_vm._v("Selling")]
                     )
                   ],
                   1
-                )
-              }),
-              0
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "dropdown-item",
+                        attrs: { to: "/buying/offers" }
+                      },
+                      [_vm._v("Buying")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "dropdown-item",
+                        attrs: { to: "/subscriptions" }
+                      },
+                      [_vm._v("Subscriptions")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "dropdown-item",
+                      staticStyle: { cursor: "pointer" },
+                      on: { click: _vm.logout }
+                    },
+                    [_vm._v("Logout")]
+                  )
+                ])
+              ],
+              2
             )
           ])
         ]),
@@ -81430,7 +81513,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c("li", [
           _c(
@@ -81465,6 +81548,18 @@ var staticRenderFns = [
       },
       [_c("span", [_vm._v("Marketplace")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "dropdown-item", attrs: { href: "account.html" } },
+        [_vm._v("My Account")]
+      )
+    ])
   },
   function() {
     var _vm = this
