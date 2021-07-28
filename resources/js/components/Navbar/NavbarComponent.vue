@@ -435,41 +435,57 @@
     // }
   }
   .links-header-mobil {
-    .icons a {
-      margin-right: 53px;
-      margin-left: 44px;
-      text-decoration: none;
-      @media (max-width: 1000px) {
-        margin-right: 68px;
-        margin-left: 18px;
+    .icons {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 50px;
+      @media (max-width: 575px) {
+        display: flex;
+        align-items: center;
       }
-      @media (max-width: 925px) {
-        margin-right: 63px;
-      }
-      @media (max-width: 900px) {
-        margin-right: 59px;
-      }
-      @media (max-width: 860px) {
-        margin-right: 50px;
-      }
-      @media (max-width: 760px) {
-        margin-right: 21px;
-        display: inline-block;
-        text-align: center;
-      }
-      @media (max-width: 660px) {
-        margin-right: 12px;
-        display: inline-block;
-        text-align: center;
-      }
-      @media (max-width: 500px) {
-        margin-right: 16px;
-        margin-left: 0px;
-        display: inline-block;
-        text-align: center;
-      }
-      @media (max-width: 330px) {
-        margin-right: 2px;
+      a {
+        // margin-right: 53px;
+        // margin-left: 44px;
+        // text-decoration: none;
+        // margin-right: 0 !important;
+        // margin-left: 0 !important;
+        // @media (max-width: 1000px) {
+        //   margin-right: 68px;
+        //   margin-left: 18px;
+        // }
+        // @media (max-width: 925px) {
+        //   margin-right: 63px;
+        // }
+        // @media (max-width: 900px) {
+        //   margin-right: 59px;
+        // }
+        // @media (max-width: 860px) {
+        //   margin-right: 50px;
+        // }
+        // @media (max-width: 760px) {
+        //   margin-right: 21px;
+        //   display: inline-block;
+        //   text-align: center;
+        // }
+        // @media (max-width: 660px) {
+        //   margin-right: 12px;
+        //   display: inline-block;
+        //   text-align: center;
+        // }
+        // @media (max-width: 575px) {
+        //   margin-right: 28px;
+        //   margin-left: 0px;
+        //   display: inline-block;
+        //   text-align: center;
+        // }
+        // @media (max-width: 430px) {
+        //   margin-right: 29px;
+        // }
+        // @media (max-width: 330px) {
+        //   margin-right: 15px;
+        // }
       }
     }
     .notif-cont {

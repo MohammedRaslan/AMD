@@ -54,10 +54,13 @@
         <div class="offcanvas-menu-overlay"></div>
         <div class="offcanvas-menu-wrapper">
             <div class="offcanvas__option">
+                <div class="close-menu d-inline-block">
+                    <i class="fas fa-times"></i>
+                </div>
             </div>
-            <div class="offcanvas__nav__option">
+            {{-- <div class="offcanvas__nav__option">
                 <a href="#" class="search-switch">
-                    {{-- <img src="{{ asset('FrontEnd') }}/img/icon/search.png" alt=""> --}}
+                    <img src="{{ asset('FrontEnd') }}/img/icon/search.png" alt="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="27" viewBox="0 0 19.944 19.945">
                         <g id="Icon_20_Grey_Search" data-name="Icon / 20 / Grey / Search" transform="translate(0 0)">
                             <path id="Shape"
@@ -67,7 +70,7 @@
                     </svg>
                 </a>
                 <Adminicon></Adminicon>
-            </div>
+            </div> --}}
             <div id="mobile-menu-wrap">
                <Mobile></Mobile>
             </div>
@@ -93,7 +96,12 @@
                         <Navbar></Navbar>
                     </div>
                 </div>
-                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+                <div class="canvas__open">
+                    {{-- <i class="fa fa-bars"></i> --}}
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </header>
         <!-- Header Section End -->
