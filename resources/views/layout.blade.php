@@ -10,7 +10,7 @@
     <title>ALL ABOUT MY DOLLS | Home</title>
     <link rel="shortcut icon" href="{{ asset('FrontEnd') }}/images/Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Google Font -->
@@ -199,6 +199,7 @@
     <script src="js/main.js"></script>
     <script src="js/custom.js"></script> -->
 </div>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYUwqc9NvlbymGvs7XS2Tx0_I0n6cdFx-4tLDpRVM4GwZGS0x5EPo2IIjC-XEGk8g7etaPHdlWsOWUVE&debug=true&components=buttons" defer></script>
     <script src="https://www.paypalobjects.com/api/checkout.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap5.js" defer></script>

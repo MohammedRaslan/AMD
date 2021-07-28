@@ -98,6 +98,9 @@
                         </div>
                     </div> -->
                 </div>
+                <div class="row">
+                    <div id="paypal-button-container"></div>
+                </div>
             </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -107,7 +110,7 @@
 
 <script>
 
-export default ({
+export default {
 
 
     mounted() {
@@ -118,5 +121,45 @@ export default ({
 
 
 
-})
+}
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                // $("#finalAmountTotalOrders").attr("amountData")
+                var payableAmount = 1;  
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: payableAmount
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    //will redirect user to custom page change values as desired
+                    // window.location.replace("/purchase/complete"); 
+                    alert('Transaction Completed by test')
+                    // Call your server to save the transaction
+                    return fetch('/paypal/purchase/complete', {
+                    method: 'post',
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID,
+                        details:details
+
+                    })
+                   
+                    });
+                   
+                });
+                }
+
+
+        }).render('#paypal-button-container');
 </script>

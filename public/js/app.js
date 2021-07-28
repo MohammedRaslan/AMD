@@ -7997,11 +7997,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     Fire.$emit('mounted');
   }
 });
+paypal.Buttons({
+  createOrder: function createOrder(data, actions) {
+    // $("#finalAmountTotalOrders").attr("amountData")
+    var payableAmount = 1;
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+          value: payableAmount
+        }
+      }]
+    });
+  },
+  // Finalize the transaction
+  onApprove: function onApprove(data, actions) {
+    return actions.order.capture().then(function (details) {
+      //will redirect user to custom page change values as desired
+      // window.location.replace("/purchase/complete"); 
+      alert('Transaction Completed by test'); // Call your server to save the transaction
+
+      return fetch('/paypal/purchase/complete', {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: JSON.stringify({
+          orderID: data.orderID,
+          details: details
+        })
+      });
+    });
+  }
+}).render('#paypal-button-container');
 
 /***/ }),
 
@@ -89321,7 +89357,9 @@ var render = function() {
             _vm._v(" "),
             _c("img", { attrs: { src: "FrontEnd/images/sub-01.png", alt: "" } })
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
       ])
     ])
   ])
@@ -89439,6 +89477,14 @@ var staticRenderFns = [
           ])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { attrs: { id: "paypal-button-container" } })
     ])
   }
 ]
