@@ -430,9 +430,9 @@
     @media (min-width: 1000px) {
       display: none !important;
     }
-    @media (min-width: 500px) {
-      display: none !important;
-    }
+    // @media (min-width: 500px) {
+    //   display: none !important;
+    // }
   }
   .links-header-mobil {
     .icons a {
