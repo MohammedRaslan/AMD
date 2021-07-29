@@ -53,7 +53,7 @@
       </li>
 
       <li class="item-border">
-        <router-link class="dropdown-item" to="/selling/offers"
+        <router-link class="dropdown-item" to="/selling/overview"
           >Selling</router-link
         >
       </li>
