@@ -99,7 +99,7 @@
                     </div> -->
                 </div>
                 <div class="row">
-                    <div id="paypal-button-container"></div>
+                     <div id="paypal-button-container"></div>
                 </div>
             </div>
     </section>
@@ -111,54 +111,39 @@
 <script>
 
 export default {
-
-
     mounted() {
 
         Fire.$emit('mounted');
+        
     }
-
-
-
-
 }
-
-        paypal.Buttons({
+paypal.Buttons({
             createOrder: function(data, actions) {
-                // $("#finalAmountTotalOrders").attr("amountData")
-                var payableAmount = 1;  
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: payableAmount
+                            value: "23"
                         }
                     }]
                 });
             },
 
             // Finalize the transaction
-            onApprove: function(data, actions) {
+            onApprove: function(data,actions) {
                 return actions.order.capture().then(function(details) {
-                    //will redirect user to custom page change values as desired
-                    // window.location.replace("/purchase/complete"); 
-                    alert('Transaction Completed by test')
+                    alert('Transaction completed by ' + details.payer.name.given_name)
                     // Call your server to save the transaction
-                    return fetch('/paypal/purchase/complete', {
-                    method: 'post',
-                    headers: {
-                        'content-type': 'application/json',
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    body: JSON.stringify({
-                        orderID: data.orderID,
-                        details:details
-
+                    return fetch('/api/paypal/purchase/complete', {
+                        method: 'post',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            orderID: data.orderID
+                        })
                     })
-                   
-                    });
-                   
-                });
-                }
+            })
+            }
 
 
         }).render('#paypal-button-container');

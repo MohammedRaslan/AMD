@@ -3,21 +3,22 @@
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Enums\ProductCondition;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\BestOfferController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\WishlistController;
 use App\Repositories\NotificationRepository;
+use App\Http\Controllers\BestOfferController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ use App\Repositories\NotificationRepository;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::post('/paypal/purchase/complete',[PaypalController::class,'getOrder']);
 Route::post('/custom-login', [LoginController::class,'custom_login']);
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('checkUser/{email?}',[UserController::class,'checkUser']);

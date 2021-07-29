@@ -42,6 +42,8 @@
 
 </style>
 <body>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYUwqc9NvlbymGvs7XS2Tx0_I0n6cdFx-4tLDpRVM4GwZGS0x5EPo2IIjC-XEGk8g7etaPHdlWsOWUVE&debug=true&components=buttons"></script>
+
     <div id="app">
     <!-- Page Preloder -->
 
@@ -199,8 +201,8 @@
     <script src="js/main.js"></script>
     <script src="js/custom.js"></script> -->
 </div>
-    <script src="https://www.paypal.com/sdk/js?client-id=AYUwqc9NvlbymGvs7XS2Tx0_I0n6cdFx-4tLDpRVM4GwZGS0x5EPo2IIjC-XEGk8g7etaPHdlWsOWUVE&debug=true&components=buttons" defer></script>
-    <script src="https://www.paypalobjects.com/api/checkout.js" defer></script>
+
+    {{-- <script src="https://www.paypalobjects.com/api/checkout.js" defer></script> --}}
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap5.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap.bundle.js" defer></script>

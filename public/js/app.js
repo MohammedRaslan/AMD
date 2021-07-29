@@ -8007,12 +8007,10 @@ __webpack_require__.r(__webpack_exports__);
 });
 paypal.Buttons({
   createOrder: function createOrder(data, actions) {
-    // $("#finalAmountTotalOrders").attr("amountData")
-    var payableAmount = 1;
     return actions.order.create({
       purchase_units: [{
         amount: {
-          value: payableAmount
+          value: "23"
         }
       }]
     });
@@ -8020,19 +8018,15 @@ paypal.Buttons({
   // Finalize the transaction
   onApprove: function onApprove(data, actions) {
     return actions.order.capture().then(function (details) {
-      //will redirect user to custom page change values as desired
-      // window.location.replace("/purchase/complete"); 
-      alert('Transaction Completed by test'); // Call your server to save the transaction
+      alert('Transaction completed by ' + details.payer.name.given_name); // Call your server to save the transaction
 
-      return fetch('/paypal/purchase/complete', {
+      return fetch('/api/paypal/purchase/complete', {
         method: 'post',
         headers: {
-          'content-type': 'application/json',
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          'content-type': 'application/json'
         },
         body: JSON.stringify({
-          orderID: data.orderID,
-          details: details
+          orderID: data.orderID
         })
       });
     });
@@ -8678,7 +8672,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
-  path: "/demo",
+  path: "/",
   component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_0__.default,
   name: "home"
 }, {
@@ -13508,7 +13502,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\na[data-v-4f8d9b54] {\n    text-decoration: none;\n}\n.news-section[data-v-4f8d9b54] {\n  background-color: #1b252c;\n}\n.newsbg[data-v-4f8d9b54] {\n  background-color: #1b252c;\n}\n.news[data-v-4f8d9b54] {\n  background: #1b252c;\n  padding: 10px;\n}\n.newsdetails .newsblk[data-v-4f8d9b54] {\n  border: 1px solid rgba(255, 219, 179, 0.1);\n  /* margin-top: 20px; */\n  margin-left: 0px;\n  border-radius: 5px;\n  background-color: rgba(255, 219, 179, 0.1);\n  position: relative;\n  text-align: center;\n}\n.newsdetails .details h3[data-v-4f8d9b54] {\n  color: #00ccff;\n  margin-top: 12px;\n}\n.newsdetails .details h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.newsdetails h4[data-v-4f8d9b54] {\n  color: #ffe0e0;\n  font-weight: bold;\n  margin-bottom: 15px;\n  margin-top: 5px;\n}\n.newsdetails h4[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n  font-weight: bold;\n}\n.newsdetails p[data-v-4f8d9b54] {\n  overflow-wrap: break-word;\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54] {\n  border: 1px solid #fd1266;\n  padding: 13px;\n  margin-bottom: 15px;\n  padding-left: 30px;\n  padding-right: 30px;\n  color: #fd1266;\n  background-color: transparent;\n  border-radius: 5px;\n  transition: all ease-in 0.2s;\n}\n.newsdetails button[data-v-4f8d9b54]:hover {\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54]:focus {\n  background: #ffe0e0;\n  color: #fd1266;\n  padding-left: 28px;\n  padding-right: 28px;\n  padding: 12px;\n}\n.sidnews[data-v-4f8d9b54] {\n  border: 1px solid rgba(255, 219, 179, 0.1);\n  background-color: rgba(255, 219, 179, 0.1);\n  text-align: center;\n  margin-bottom: 7px;\n  padding: 0px;\n  /* margin-top: 20px; */\n  border-radius: 5px;\n  /*.image{\n    min-height: 197px;\n    max-height: 100%;\n  }*/\n}\n.sidnews h4[data-v-4f8d9b54] {\n  margin-bottom: 5px;\n  /* margin-top: 15px; */\n  color: #ffe0e0;\n}\n.sidnews h4[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.sidnews p[data-v-4f8d9b54] {\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54] {\n  border: 1px solid #fd1266;\n  padding: 10px;\n  margin-bottom: 15px;\n  padding-left: 30px;\n  padding-right: 30px;\n  color: #fd1266;\n  background-color: transparent;\n  border-radius: 5px;\n  transition: all ease-in 0.2s;\n}\n.sidnews button[data-v-4f8d9b54]:hover {\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54]:focus {\n  background: #ffe0e0;\n  color: #fd1266;\n  padding-left: 28px;\n  padding-right: 28px;\n  padding: 12px;\n}\n.news-details[data-v-4f8d9b54] {\n  background: #1b252c;\n  /* padding: 20px; */\n}\n.mainnewsh[data-v-4f8d9b54] {\n  background-color: rgba(0, 204, 255, 0.8);\n  color: #383754;\n  margin-bottom: 30px;\n  /* margin-top: 20px; */\n  padding: 5px;\n}\n.latest-news[data-v-4f8d9b54] {\n  background: rgba(255, 219, 179, 0.1);\n  border-radius: 3px;\n  padding: 10px\n}\n.latest-news h5[data-v-4f8d9b54], .latest-news h3[data-v-4f8d9b54] {\n  cursor: pointer;\n  color: #ffe0e0;\n}\n.latest-news h5[data-v-4f8d9b54]:hover, .latest-news h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n/* .latest-news .miniimages {\n  margin-left: 7px;\n  margin-bottom: 38px;\n  margin-top: 3px;\n} */\n\n/* .nimage {\n  height: 223px;\n} */\n.subnews[data-v-4f8d9b54] {\n  background: rgba(255, 219, 179, 0.1);\n  border-radius: 2px;\n  padding: 10px;\n}\n.subnews .img-fluid[data-v-4f8d9b54] {\n  margin-left: 5px;\n}\n.subnh h5[data-v-4f8d9b54], .subnh h3[data-v-4f8d9b54] {\n  cursor: pointer;\n  color: #ffe0e0;\n}\n.subnh h5[data-v-4f8d9b54]:hover, .subnh h3[data-v-4f8d9b54]:hover {\n  color: #fecc2f;\n}\n.subnh .subt[data-v-4f8d9b54] {\n  color: #ffe0e0;\n}\n.time[data-v-4f8d9b54] {\n  color: #fd1266;\n  font-size: 12px;\n  font-weight: bold;\n}\n.calendar[data-v-4f8d9b54] {\n  font-size: 13px;\n  font-weight: bold;\n  color: #fd1266;\n}\n.newt[data-v-4f8d9b54] {\n  color: #ffe0e0;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\na[data-v-4f8d9b54] {\r\n    text-decoration: none;\n}\n.news-section[data-v-4f8d9b54] {\r\n  background-color: #1b252c;\n}\n.newsbg[data-v-4f8d9b54] {\r\n  background-color: #1b252c;\n}\n.news[data-v-4f8d9b54] {\r\n  background: #1b252c;\r\n  padding: 10px;\n}\n.newsdetails .newsblk[data-v-4f8d9b54] {\r\n  border: 1px solid rgba(255, 219, 179, 0.1);\r\n  /* margin-top: 20px; */\r\n  margin-left: 0px;\r\n  border-radius: 5px;\r\n  background-color: rgba(255, 219, 179, 0.1);\r\n  position: relative;\r\n  text-align: center;\n}\n.newsdetails .details h3[data-v-4f8d9b54] {\r\n  color: #00ccff;\r\n  margin-top: 12px;\n}\n.newsdetails .details h3[data-v-4f8d9b54]:hover {\r\n  color: #fecc2f;\n}\n.newsdetails h4[data-v-4f8d9b54] {\r\n  color: #ffe0e0;\r\n  font-weight: bold;\r\n  margin-bottom: 15px;\r\n  margin-top: 5px;\n}\n.newsdetails h4[data-v-4f8d9b54]:hover {\r\n  color: #fecc2f;\r\n  font-weight: bold;\n}\n.newsdetails p[data-v-4f8d9b54] {\r\n  overflow-wrap: break-word;\r\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54] {\r\n  border: 1px solid #fd1266;\r\n  padding: 13px;\r\n  margin-bottom: 15px;\r\n  padding-left: 30px;\r\n  padding-right: 30px;\r\n  color: #fd1266;\r\n  background-color: transparent;\r\n  border-radius: 5px;\r\n  transition: all ease-in 0.2s;\n}\n.newsdetails button[data-v-4f8d9b54]:hover {\r\n  color: #f5f3e7;\n}\n.newsdetails button[data-v-4f8d9b54]:focus {\r\n  background: #ffe0e0;\r\n  color: #fd1266;\r\n  padding-left: 28px;\r\n  padding-right: 28px;\r\n  padding: 12px;\n}\n.sidnews[data-v-4f8d9b54] {\r\n  border: 1px solid rgba(255, 219, 179, 0.1);\r\n  background-color: rgba(255, 219, 179, 0.1);\r\n  text-align: center;\r\n  margin-bottom: 7px;\r\n  padding: 0px;\r\n  /* margin-top: 20px; */\r\n  border-radius: 5px;\r\n  /*.image{\r\n    min-height: 197px;\r\n    max-height: 100%;\r\n  }*/\n}\n.sidnews h4[data-v-4f8d9b54] {\r\n  margin-bottom: 5px;\r\n  /* margin-top: 15px; */\r\n  color: #ffe0e0;\n}\n.sidnews h4[data-v-4f8d9b54]:hover {\r\n  color: #fecc2f;\n}\n.sidnews p[data-v-4f8d9b54] {\r\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54] {\r\n  border: 1px solid #fd1266;\r\n  padding: 10px;\r\n  margin-bottom: 15px;\r\n  padding-left: 30px;\r\n  padding-right: 30px;\r\n  color: #fd1266;\r\n  background-color: transparent;\r\n  border-radius: 5px;\r\n  transition: all ease-in 0.2s;\n}\n.sidnews button[data-v-4f8d9b54]:hover {\r\n  color: #f5f3e7;\n}\n.sidnews button[data-v-4f8d9b54]:focus {\r\n  background: #ffe0e0;\r\n  color: #fd1266;\r\n  padding-left: 28px;\r\n  padding-right: 28px;\r\n  padding: 12px;\n}\n.news-details[data-v-4f8d9b54] {\r\n  background: #1b252c;\r\n  /* padding: 20px; */\n}\n.mainnewsh[data-v-4f8d9b54] {\r\n  background-color: rgba(0, 204, 255, 0.8);\r\n  color: #383754;\r\n  margin-bottom: 30px;\r\n  /* margin-top: 20px; */\r\n  padding: 5px;\n}\n.latest-news[data-v-4f8d9b54] {\r\n  background: rgba(255, 219, 179, 0.1);\r\n  border-radius: 3px;\r\n  padding: 10px\n}\n.latest-news h5[data-v-4f8d9b54], .latest-news h3[data-v-4f8d9b54] {\r\n  cursor: pointer;\r\n  color: #ffe0e0;\n}\n.latest-news h5[data-v-4f8d9b54]:hover, .latest-news h3[data-v-4f8d9b54]:hover {\r\n  color: #fecc2f;\n}\r\n/* .latest-news .miniimages {\r\n  margin-left: 7px;\r\n  margin-bottom: 38px;\r\n  margin-top: 3px;\r\n} */\r\n\r\n/* .nimage {\r\n  height: 223px;\r\n} */\n.subnews[data-v-4f8d9b54] {\r\n  background: rgba(255, 219, 179, 0.1);\r\n  border-radius: 2px;\r\n  padding: 10px;\n}\n.subnews .img-fluid[data-v-4f8d9b54] {\r\n  margin-left: 5px;\n}\n.subnh h5[data-v-4f8d9b54], .subnh h3[data-v-4f8d9b54] {\r\n  cursor: pointer;\r\n  color: #ffe0e0;\n}\n.subnh h5[data-v-4f8d9b54]:hover, .subnh h3[data-v-4f8d9b54]:hover {\r\n  color: #fecc2f;\n}\n.subnh .subt[data-v-4f8d9b54] {\r\n  color: #ffe0e0;\n}\n.time[data-v-4f8d9b54] {\r\n  color: #fd1266;\r\n  font-size: 12px;\r\n  font-weight: bold;\n}\n.calendar[data-v-4f8d9b54] {\r\n  font-size: 13px;\r\n  font-weight: bold;\r\n  color: #fd1266;\n}\n.newt[data-v-4f8d9b54] {\r\n  color: #ffe0e0;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
