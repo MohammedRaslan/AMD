@@ -29,6 +29,7 @@ import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
 import AboutComponent from "./components/AboutCompontent.vue";
 import PolicyComponent from "./components/PolicyComponent.vue";
 import TermsComponent from "./components/TermsAndConditions.vue";
+import ContactComponent from "./components/ContactCompontent.vue";
 
 
 const routes = [{
@@ -179,7 +180,12 @@ const routes = [{
         component: TermsComponent,
         name: "terms",
     },
-    
+    {
+        path: "/contact-us",
+        component: ContactComponent,
+        name: "contact",
+    },
+
 ];
 
 const router = new VueRouter({

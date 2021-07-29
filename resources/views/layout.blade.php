@@ -175,7 +175,7 @@
                                     <router-link to="/terms-conditions">Terms&conditions</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/policy">Contcat us</router-link>
+                                    <router-link to="/contact-us">Contcat us</router-link>
                                 </li>
                                 {{-- <li><a href="#">Privacy</a></li>
                             <li><a href="#">Terms</a></li>
