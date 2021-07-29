@@ -68,10 +68,11 @@
         $(".offcanvas-menu-wrapper").addClass("active");
         $(".offcanvas-menu-overlay").addClass("active");
     });
-
-    $(".offcanvas-menu-overlay, .close-menu").on('click', function() {
+    // dropdown - item dropdown-item
+    $(".offcanvas-menu-overlay, .close-menu, #mobile-menu-wrap .dropdown-item, #mobile-menu-wrap ul .dropdown-cats ul").on('click', function() {
         $(".offcanvas-menu-wrapper").removeClass("active");
         $(".offcanvas-menu-overlay").removeClass("active");
+        console.log('click');
     });
 
     /*-----------------------

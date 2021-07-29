@@ -16,7 +16,9 @@
                                         </g>
                                     </g>
                                     </svg>
-                                    <span class="quantity-cart">{{number}}</span>
+                                    <span class="quantity-cart">
+                                        <span>{{number}}</span>
+                                    </span>
                                </router-link>  
     
 </template>

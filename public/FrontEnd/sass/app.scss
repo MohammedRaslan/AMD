@@ -8,6 +8,7 @@ $darkBlue: #20303c;
 $offwhite: #ffe0e0;
 $mobil: 768px;
 $lab: 1200px;
+$sm: 576px;
 ::selection {
     color: white;
     background: #3390ff;
@@ -116,7 +117,7 @@ $lab: 1200px;
 // }
 // Start #offcanvas-menu-wrapper
 .offcanvas-menu-wrapper {
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         padding: 14px 24px 21px 18px;
     }
     .m-mobil {
@@ -307,6 +308,9 @@ $lab: 1200px;
         display: flex;
         align-items: center;
         justify-content: center;
+        span {
+            line-height: 9px;
+        }
     }
     .quantity-notif {
         background-color: $purple;
@@ -320,13 +324,15 @@ $lab: 1200px;
         width: 317px;
         top: 87px;
         left: -13px;
-        padding: 10px;
+        padding: 5px 10px;
         z-index: 2;
         border-radius: 8px;
-        padding-bottom: 0;
         max-height: 400px;
         overflow-y: hidden !important;
         overflow-x: hidden !important;
+        @media (max-width: 576) {
+            top: 50px;
+        }
         .item {
             margin-bottom: 7px;
             border-bottom: 1px solid $yellow;
