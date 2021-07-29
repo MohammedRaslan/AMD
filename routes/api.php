@@ -5,6 +5,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Enums\ProductCondition;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -14,10 +15,12 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BestOfferController;
+use App\Http\Controllers\CmsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\WishlistController;
+use App\Models\Cms;
 use App\Repositories\NotificationRepository;
 
 /*
@@ -43,9 +46,22 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('/getUsers',[UserController::class,'getUsers']);
     Route::get('/getFaqs',[FaqController::class,'getFaqs']);
+    Route::get('/getAbouts',[AboutController::class,'getAbouts']);
     Route::get('/getCategories',[CategoryController::class,'getCategories']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
     Route::get('checkAdmin',[UserController::class,'checkAdmin']);
+
+    Route::prefix('about')->group(function(){
+        Route::post('store',[AboutController::class,'store']);
+        Route::get('changeStatus/{id}',[AboutController::class,'changeStatus']);
+        Route::get('getAllAbout',[AboutController::class,'getAllAbout']);
+    });
+
+    Route::prefix('cms')->group(function(){
+        Route::post('store',[CmsController::class,'store']);
+        Route::get('getAllCms',[CmsController::class,'getAllCms']);
+        Route::get('getSingleCms/{type}',[CmsController::class,'getSingleCms']);
+    });
 
     Route::prefix('faq')->group(function(){
         Route::post('store',[FaqController::class,'store']);

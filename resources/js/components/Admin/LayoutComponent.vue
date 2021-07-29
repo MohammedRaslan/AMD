@@ -121,6 +121,9 @@
                             <li><router-link to="/admin/categories" ><i class="fa fa-th-list"></i><span>Categories</span></router-link></li>
                             <li><router-link to="/admin/products" ><i class="fa fa-book"></i><span>Products</span></router-link></li>
                             <li><router-link to="/admin/faq" ><i class="fa fa-book"></i><span>Faq</span></router-link></li>
+                            <li><router-link to="/admin/about" ><i class="fa fa-book"></i><span>About</span></router-link></li>
+                            <li><router-link to="/admin/Cms" ><i class="fa fa-flag"></i><span>CMS</span></router-link></li>
+
                             <!--<li><a href=""><i class="fa fa-tags"></i><span>Tags</span></a></li>
                             <li><a href=""><i class="fa fa-certificate"></i><span>Coupons</span></a></li>
                             <li><a href=""><i class="fa fa-certificate"></i><span>Brands</span></a></li>

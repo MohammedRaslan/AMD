@@ -20,9 +20,7 @@
                                     <a href="#">
                                         <h4>{{ faq.title }}.</h4>
                                     </a>
-                                    <p>
-                                       {{ faq.body }}
-                                    </p>
+                                    <p v-html="faq.body"></p>
                                     <button>Read More</button>
                                 </div>
                             </div>

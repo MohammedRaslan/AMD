@@ -29,8 +29,8 @@ import HelpComponent from "./components/Navbar/QuestionsComponent.vue";
 import AboutComponent from "./components/AboutCompontent.vue";
 import PolicyComponent from "./components/PolicyComponent.vue";
 import TermsComponent from "./components/TermsAndConditions.vue";
-
-
+import AdminAboutComponent from "./components/Admin/AboutComponent.vue"
+import CmsComponent from "./components/Admin/CmsComponent.vue";
 const routes = [{
         path: "/demo",
         component: HomeComponent,
@@ -162,6 +162,16 @@ const routes = [{
         path: "/admin/faq",
         component: FaqComponent,
         name: "faqs",
+    },
+    {
+        path: "/admin/about",
+        component: AdminAboutComponent,
+        name: "admin-about",
+    },
+    {
+        path: "/admin/Cms",
+        component: CmsComponent,
+        name: "admin-cms",
     },
     // Stitic Pages
     {

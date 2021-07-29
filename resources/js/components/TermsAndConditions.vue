@@ -5,16 +5,8 @@
         <div class="row">
           <div class="col-md-12 col-xs-12">
             <div class="who-we-are no-border-bottom no-margin-bottom">
-              <h3>Our Terms and Conditions</h3>
-              <article>
-                Duis dapibus aliquam mi, eget euismod sem scelerisque ut.
-                Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae
-                velit in neque dictum blandit. Proin in iaculis neque.
-                Pellentesque habitant morbi tristique senectus et netus et
-                malesuada fames ac turpis egestas. Proin in iaculis neque.
-                Pellentesque habitant morbi tristique senectus et netus et
-                malesuada fames ac turpis egestas.
-              </article>
+              <h3>{{ terms.title }}</h3>
+              <article v-html="terms.body"></article>
             </div>
             <!--who-we-are-->
             <div class="image">
@@ -206,3 +198,19 @@ article.text {
   color: #00ccff !important;
 }
 </style>
+
+<script>
+
+export default({
+  data() {
+      return{
+        terms: {}
+      }
+  },
+  mounted(){
+    axios.get('/api/cms/getSingleCms/terms').then((response) => {
+      this.terms = response.data;
+    });
+  }
+})
+</script>
