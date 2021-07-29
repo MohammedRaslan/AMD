@@ -400,14 +400,12 @@
 
         <Cart></Cart>
         <Notification></Notification>
+         <div class="canvas__open">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
       </li>
-      <li
-        class="
-          menu-1 menu-user
-          d-lg-flex d-md-flex d-xl-flex
-          align-items-center
-        "
-      ></li>
     </ul>
   </div>
 </template>
@@ -421,18 +419,10 @@
       max-width: 99%;
     }
   }
-  .container > .row {
-    // @media (max-width: 1000px) {
-    //     flex-direction: column-reverse;
-    // }
-  }
   .links-header-mobil {
     @media (min-width: 1000px) {
       display: none !important;
     }
-    // @media (min-width: 500px) {
-    //   display: none !important;
-    // }
   }
   .links-header-mobil {
     .icons {
@@ -440,52 +430,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-right: 50px;
-      @media (max-width: 575px) {
+    //   padding-right: 50px;
+      @media (max-width: 576px) {
         display: flex;
         align-items: center;
-      }
-      a {
-        // margin-right: 53px;
-        // margin-left: 44px;
-        // text-decoration: none;
-        // margin-right: 0 !important;
-        // margin-left: 0 !important;
-        // @media (max-width: 1000px) {
-        //   margin-right: 68px;
-        //   margin-left: 18px;
-        // }
-        // @media (max-width: 925px) {
-        //   margin-right: 63px;
-        // }
-        // @media (max-width: 900px) {
-        //   margin-right: 59px;
-        // }
-        // @media (max-width: 860px) {
-        //   margin-right: 50px;
-        // }
-        // @media (max-width: 760px) {
-        //   margin-right: 21px;
-        //   display: inline-block;
-        //   text-align: center;
-        // }
-        // @media (max-width: 660px) {
-        //   margin-right: 12px;
-        //   display: inline-block;
-        //   text-align: center;
-        // }
-        // @media (max-width: 575px) {
-        //   margin-right: 28px;
-        //   margin-left: 0px;
-        //   display: inline-block;
-        //   text-align: center;
-        // }
-        // @media (max-width: 430px) {
-        //   margin-right: 29px;
-        // }
-        // @media (max-width: 330px) {
-        //   margin-right: 15px;
-        // }
+        margin-bottom: 3px;
       }
     }
     .notif-cont {

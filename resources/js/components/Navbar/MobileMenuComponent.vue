@@ -1,11 +1,8 @@
 <template>
   <div>
-    <ul
-      data-v-adb1784e=""
-      class="text-start d-lg-flex d-xl-flex d-md-flex justify-content-between "
-    >
+    <ul data-v-adb1784e="" class="text-start justify-content-between">
       <li>
-        <div class="dropdown">
+        <div class="dropdown d-inline-flex flex-column dropdown-cats">
           <button
             class="btn dropdown-toggle"
             type="button"
@@ -23,9 +20,11 @@
                 :to="{
                   name: 'ShopCategoryComponent',
                   params: { query: category.id },
-                }">{{ category.title }}</router-link>
+                }"
+                >{{ category.title }}</router-link
+              >
             </li>
-            <li>
+            <!-- <li>
               <router-link class="dropdown-item" to="/selling/overview"
                 >Selling</router-link
               >
@@ -48,7 +47,7 @@
               <a class="dropdown-item" style="cursor: pointer" @click="logout"
                 >Logout</a
               >
-            </li>
+            </li> -->
           </ul>
         </div>
       </li>
@@ -80,6 +79,20 @@
     </ul>
   </div>
 </template>
+<style lang="scss">
+.dropdown-cats {
+    ul {
+    li {
+        margin-bottom: 4px !important;
+        &:last-of-type {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+</style>
 <script>
 export default {
   data: () => ({

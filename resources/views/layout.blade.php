@@ -96,12 +96,11 @@
                         <Navbar></Navbar>
                     </div>
                 </div>
-                <div class="canvas__open">
-                    {{-- <i class="fa fa-bars"></i> --}}
+                {{-- <div class="canvas__open">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </div> --}}
             </div>
         </header>
         <!-- Header Section End -->

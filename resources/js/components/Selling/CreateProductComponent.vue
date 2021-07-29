@@ -55,7 +55,7 @@
                                                                         <div class="row pb-4">
                                                                             <div class="col-4 select-product text-left">
                                                                                 <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label> 
-                                                                                <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories" >
+                                                                                <!-- <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories" >
                                                                                     <template #search="{attributes, events}">
                                                                                             <input
                                                                                                 class="vs__search"
@@ -64,7 +64,7 @@
                                                                                                 v-on="events"
                                                                                             />
                                                                                         </template>
-                                                                                </v-select>
+                                                                                </v-select> -->
                                                                                 <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                             </div>
                                                                                 <div class="col-4 select-product text-left">

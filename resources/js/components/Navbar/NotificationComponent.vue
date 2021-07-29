@@ -1,5 +1,5 @@
 <template>
-        <a class="position-relative pr-2 d-inline-block" >
+        <a class="position-relative d-inline-block" >
             <div class="btn-quantity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                     <g id="Group_30" data-name="Group 30" transform="translate(-844 -319)">
@@ -13,7 +13,9 @@
                         </g>
                     </g>
                 </svg>
-                <span class="quantity-notif">{{ count }}</span>
+                <div class="quantity-notif">
+                    <span>{{ count }}</span>
+                </div>
             </div>
             <div class="notif-cont">
                 <!-- Block Item -->
