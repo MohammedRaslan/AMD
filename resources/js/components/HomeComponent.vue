@@ -198,6 +198,9 @@ export default({
             this.products = response.data;
         });
         Fire.$emit('mounted');
+        window.Echo.channel('TestChannel').listen('TestNotificationEvent', event => {
+            console.log(event);
+        });
     }
 })
 </script>
