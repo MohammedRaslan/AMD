@@ -38,4 +38,9 @@ class Product extends Model
     {
         return $this->hasMany(BestOffer::class)->where('acceptance',1)->where('user_id',$user_id)->first();
     }
+
+    public function bid()
+    {
+        return $this->hasOne(Bid::class);
+    }
 }

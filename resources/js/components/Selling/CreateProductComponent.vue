@@ -110,11 +110,11 @@
                                                                             <h3 class="text-left text-maroon mt-3">Listing Type <span class="requiredItem">*</span></h3>
                                                                             <form class="row mt-4 border-0 p-0">
                                                                                 <div class="col-lg-4">
-                                                                                    <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
+                                                                                    <input class="radio-custom"  id="radio-1" name="radio-group" type="radio" checked>
                                                                                     <label class="radio-custom-label" for="radio-1">Listing Product</label>
                                                                                 </div>
                                                                                 <div class="col-lg-7">
-                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio" disabled>
+                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
                                                                                     <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
                                                                                 </div>
                                                                             </form>
@@ -147,7 +147,12 @@
                                                                                     <form action="" class="border-0">
                                                                                         <div class="row g-3">
                                                                                             <div class="col-12">
-                                                                                                <input class="form-control" type="text" aria-label="First name" placeholder="Soon" disabled>
+                                                                                                <label for="from" style="color:white; float:left">From</label>
+                                                                                                <input class="form-control" type="datetime-local" v-model="form.bidding_from" id="from" disabled>
+                                                                                            </div>
+                                                                                             <div class="col-12">
+                                                                                                 <label for="to" style="color:white; float:left">To</label>
+                                                                                                <input class="form-control" type="datetime-local" v-model="form.bidding_to"  id="to" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
@@ -349,7 +354,8 @@ export default ({
             price: null,
             best_offer: false,
             minimum_offer: null,
-
+            bidding_from: null,
+            bidding_to: null,
             doll_size: null,
             doll_gender: null,
             modified_item: 0,
@@ -370,6 +376,8 @@ export default ({
            this.form.details = this.details.getContent();
            this.form.domestic_product = this.form.domestic_product == true ? 1 :0;
            this.form.modified_item = this.form.modified_item == true ? 1 :0;
+           this.form.type = this.form.bidding_from || this.form.bidding_to != null ? 1 : 0;
+           this.form.price = this.form.bidding_from || this.form.bidding_to == null ? 0 : this.form.price;
            if( jQuery.isEmptyObject(this.form.image)  ){
                this.imagenull = true;
                this.$Progress.fail();
