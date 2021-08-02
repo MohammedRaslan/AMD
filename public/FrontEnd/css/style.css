@@ -1564,6 +1564,13 @@ ol {
     /* width: 105px; */
 }
 
+@media (max-width: 768px) {
+    .product__details__pic .nav-tabs {
+        max-height: 582px;
+        overflow: hidden;
+    }
+}
+
 .product__details__pic .nav-tabs .nav-item {
     margin-bottom: 10px;
 }
