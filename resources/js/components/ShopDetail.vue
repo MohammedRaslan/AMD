@@ -50,17 +50,40 @@
                             </p>
                         </div>
                         <div class="row">
+                            <!-- #nav-tabs -->
                             <div class="col-lg-3 col-md-3 tabs-img">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item" v-for="(image,index) in images" :key="index">
-                                        <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                        <a class="nav-link" :class="{'active' : index == 0}" data-toggle="tab" :href="'#tabs-'+index" role="tab">
                                             <img class="product__thumb__pic set-bg" :src="str_replace(image.url)">
-
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul v-if="images.length == 0" class="nav nav-tabs">
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
+                            <!-- #tab-content -->
                             <div class="col-lg-9 col-md-9">
                                 <div class="cont-img w-100">
                                 <div class="tab-content">
