@@ -202,7 +202,7 @@
 
                         <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0"></AddCartWidget>
                         <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
-                        <Bidding v-if="product.type == 1" :details="product.bid"></Bidding>
+                        <Bidding v-if="product.type == 1" :bid="product.bid"></Bidding>
                         <ChatWidget></ChatWidget>
                     </div>
                      <div class="col-lg-4 parent-price-table" v-if="author && product.best_offer">
