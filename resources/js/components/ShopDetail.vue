@@ -59,6 +59,28 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <ul v-if="images.length == 0" class="nav nav-tabs">
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link active">
+                                             <img  class="product__thumb__pic" :src="'/FrontEnd/images/Logo.png'" alt="Logo">
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
                             <!-- #tab-content -->
