@@ -31,6 +31,9 @@ import PolicyComponent from "./components/PolicyComponent.vue";
 import TermsComponent from "./components/TermsAndConditions.vue";
 import AdminAboutComponent from "./components/Admin/AboutComponent.vue"
 import CmsComponent from "./components/Admin/CmsComponent.vue";
+import ContactComponent from "./components/ContactCompontent.vue";
+
+
 const routes = [{
         path: "/demo",
         component: HomeComponent,
@@ -189,7 +192,12 @@ const routes = [{
         component: TermsComponent,
         name: "terms",
     },
-    
+    {
+        path: "/contact-us",
+        component: ContactComponent,
+        name: "contact",
+    },
+
 ];
 
 const router = new VueRouter({
