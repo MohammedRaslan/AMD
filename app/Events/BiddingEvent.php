@@ -10,14 +10,14 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TestNotificationEvent implements ShouldBroadcast
+class BiddingEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $notification;
-    public function __construct($notification)
+    protected $bid;
+    public function __construct($bid)
     {
-        $this->notification = $notification;
+        $this->bid = $bid;
     }
 
     /**
@@ -27,12 +27,13 @@ class TestNotificationEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('TestChannel');
+        return new Channel('BiddingChannel');
     }
+
     public function broadcastWith()
     {
         return [
-            'notification' => $this->notification,
+            'bid' => $this->bid,
         ];
     }
 }

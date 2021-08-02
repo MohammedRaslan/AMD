@@ -198,8 +198,8 @@ export default({
             this.products = response.data;
         });
         Fire.$emit('mounted');
-        window.Echo.channel('TestChannel').listen('TestNotificationEvent', event => {
-            console.log(event);
+        window.Echo.channel('BiddingChannel').listen('BiddingEvent', event => {
+            console.log(event.bid);
         });
     }
 })
