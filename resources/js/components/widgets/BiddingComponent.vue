@@ -10,9 +10,12 @@
                                     </div>
                                     <div>
                                         <form action="">
-                                            <input type="text" name="" id="">
-                                            <button class="btn-dark">BID</button>
+                                            <input type="number" v-model="bidValue" name="" id="" :disabled="!openBidding">
+                                            <button class="btn-dark" :disabled="!openBidding">BID</button>
                                         </form>
+                                    </div>
+                                  <div class="btns-det">
+                                        <button class="btn btn-dark">$30</button>
                                     </div>
                                </div>
                             </div>
@@ -20,7 +23,34 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
-    props : ['bid']
+    props : ['bid','bid_step_list'],
+    data:()=>({
+        bidValue: null,
+        openBidding: false,
+
+    }),
+    mounted(){
+        var from = moment(this.bid.from).format('l');
+        var now  = moment().format('l');
+        var to   = moment(this.bid.to).format('l');
+        if(now > from){
+            this.openBidding = true;
+        }
+        var i = 0;
+        // for(i = 0; i < this.bid_step_list.length(); ++i){
+        //     if(this.bid_step_list[i] == this.bid.step){
+        //         if(this.bid_step_list.indexOf(i + 2)){
+        //             console.log('OKKKK');
+        //         }else{
+        //             console.log('NOOOO');
+        //         }
+        //     }
+        // }
+
+        
+    }
 }
 </script>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Enums\BidStepEnum;
 use App\Enums\CurrencyIconsEnum;
 use App\Models\Brand;
 use App\Models\Image;
@@ -31,8 +32,20 @@ class ProductRepository{
                 'conditions' => ProductCondition::asSelectArray(), 
                 'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
                 'return_policy' => Return_Policy::asSelectArray(),
+                'bidding_step' => $this->biddingSteps(),
                 ];
-        
+    }
+
+    public function biddingSteps()
+    {
+        return [
+            0 => 1,
+            1 => 5,
+            2 => 10,
+            3 => 20,
+            4 => 50,
+            5 => 100,
+        ];
     }
 
     public function store($data,$images,$user_id)
@@ -67,7 +80,7 @@ class ProductRepository{
         if($product->save()){
             $product->categories()->attach($data['category']);
             if($data['type'] == 1){
-                $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to']);
+                $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
             }
         if($images){
             foreach($images as $file){
@@ -87,7 +100,7 @@ class ProductRepository{
 
     }
 
-    private function MakeBidding($product_id, $from, $to )
+    private function MakeBidding($product_id, $from, $to , $bid_minimum_price,$step)
     {
         $bid = Bid::create([
             'product_id' => $product_id,
@@ -95,6 +108,8 @@ class ProductRepository{
             'to' => $to,
             'last_price' => 0,
             'before_last_price' => 0,
+            'minimum_price' => $bid_minimum_price,
+            'step' => $step,
             'status' => 1,
         ]);
     }
@@ -187,6 +202,7 @@ class ProductRepository{
         $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
         $product->unsetRelation('wishlist');
         return ['product' => $product,
+                'steps' => $this->biddingSteps(),
             ];
       
     }
