@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BestOfferController;
+use App\Http\Controllers\BidController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
@@ -89,6 +90,11 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);  
         Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
     });
+
+    Route::prefix('bid')->group(function(){
+        Route::post('store',[BidController::class,'store']);
+    });
+
     Route::prefix('wishlist')->group(function (){
         Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']); 
         Route::delete('remove/{id?}',[WishlistController::class,'destroy']);

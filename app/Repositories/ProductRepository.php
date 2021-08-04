@@ -38,14 +38,8 @@ class ProductRepository{
 
     public function biddingSteps()
     {
-        return [
-            0 => 1,
-            1 => 5,
-            2 => 10,
-            3 => 20,
-            4 => 50,
-            5 => 100,
-        ];
+        $steps = array('1','5','10','20','50','100');
+        return $steps;
     }
 
     public function store($data,$images,$user_id)
@@ -200,11 +194,26 @@ class ProductRepository{
         $wishlist = $product->wishlist()->pluck('user_id')->toArray();
         $product->wishlistCount = count($product->wishlist);
         $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
+        $product->user_details = $product->user->user_details;
         $product->unsetRelation('wishlist');
         return ['product' => $product,
-                'steps' => $this->biddingSteps(),
+                'steps' => $this->biddingStepsForProduct($product->bid->step),
             ];
       
+    }
+
+    protected function biddingStepsForProduct($step)
+    {
+            $steps = $this->biddingSteps();
+        
+            $lower_limit = $step;
+            $array = array_filter(
+                $steps,
+                function ($value) use ($lower_limit) {
+                    return ($value >= $lower_limit);
+                }
+            );
+        return  array_slice($array, 0, 3);
     }
 
     public function randomProducts()

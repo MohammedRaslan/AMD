@@ -1,56 +1,111 @@
 <template>
        <div class="inner-price-table">
                             <div class="card-cus">
-                                <h2>Closes at {{ this.bid.to }} </h2>
-
+                                <h2 v-if="openBidding">Closes at {{ this.bid.to.human }} </h2>
+                                <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
                                <div class="content">
-                                    <div>
-                                        <h3>Current bid € {{ this.bid.last_price }}</h3>
+                                    <div class="mb-3">
+                                        <h3 class="mb-0">Current bid {{ this.before_last_bid }} {{ this.user_details.currency }} </h3><br>
+                                        <small style="color:white">Minimum Bid is {{ this.minimum_price }} {{ this.user_details.currency }}</small>
                                         <!-- <p>8 Bids</p> -->
                                     </div>
-                                    <div>
-                                        <form action="">
-                                            <input type="number" v-model="bidValue" name="" id="" :disabled="!openBidding">
+                                    <div v-if="bid_end">
+                                     <div v-if="!author && openBidding">
+                                        <form @submit.prevent="makeBid()">
+                                            <input type="number" v-model="form.bidValue" name="" id="" :disabled="!openBidding">
                                             <button class="btn-dark" :disabled="!openBidding">BID</button>
                                         </form>
                                     </div>
-                                  <div class="btns-det">
-                                        <button class="btn btn-dark">$30</button>
+                                  <div class="btns-det form-style" v-if="!author && openBidding">
+                                     <form  v-for="(step, key) in this.steps" :key="key" @submit.prevent="makeBid(key)" >
+                                        <input type="hidden" :value="step" :id="'form_'+key"> 
+                                        <button class="btn btn-dark" :disabled="!openBidding" >${{ step }}</button>
+                                     </form>
+                          
                                     </div>
+                                    </div>
+                                  
                                </div>
                             </div>
                         </div>
 </template>
-
+<style scoped>
+    .form-style{
+        display: flex;
+        justify-content: space-between;
+    }
+    .swal2-select{
+        display: none !important;
+    }
+</style>
 <script>
 import moment from "moment";
 
 export default {
-    props : ['bid','bid_step_list'],
+    props : ['bid','steps','user_details','author'],
     data:()=>({
+        form : new form({
+            bidValue: null,
+            bid_id: null,
+        }),
         bidValue: null,
         openBidding: false,
-
+        before_last_bid: null,
+        minimum_price: null,
+        bid_end: false,
     }),
+    methods:{
+        async makeBid(step = null){
+                if(step != null){
+                    let value = document.getElementById('form_'+step).value;
+                    this.form.bidValue = parseInt(this.minimum_price) + parseInt(value);
+                }
+            if(this.form.bidValue < this.minimum_price){
+                Swal.fire('Your Bid is Too Low');
+            }else{
+                this.form.bid_id = this.bid.id;
+             
+                const response = await this.form.post('/api/bid/store').then((response) => {
+                       Toast.fire({
+                        icon: 'success',
+                        title: 'Your Bid Sent Successfully'
+                    });
+            });
+            }
+  
+        }
+    },
+    created(){
+        if(this.bid.last_price == 0){
+            this.minimum_price = this.bid.minimum_price;
+        }else{
+            this.minimum_price = this.bid.last_price;
+        }
+    },
     mounted(){
-        var from = moment(this.bid.from).format('l');
+        this.before_last_bid =  this.bid.before_last_price;
+        window.Echo.channel('BiddingChannel').listen('BiddingEvent', event => {
+                if(event.data.bid.id == this.bid.id){
+                    this.before_last_bid = event.data.bid.before_last_price;
+                    if(event.data.bid.last_price == 0){
+                        this.minimum_price   = event.data.bid.minimum_price;
+                    }else{
+                         this.minimum_price = event.data.bid.last_price
+                    }
+                    
+                }
+        });
+        var from = moment(this.bid.from.actual).format('l');
         var now  = moment().format('l');
-        var to   = moment(this.bid.to).format('l');
+        var to   = moment(this.bid.to.actual).format('l');
         if(now > from){
             this.openBidding = true;
         }
-        var i = 0;
-        // for(i = 0; i < this.bid_step_list.length(); ++i){
-        //     if(this.bid_step_list[i] == this.bid.step){
-        //         if(this.bid_step_list.indexOf(i + 2)){
-        //             console.log('OKKKK');
-        //         }else{
-        //             console.log('NOOOO');
-        //         }
-        //     }
-        // }
 
-        
+        if(now > to){
+            this.bid_end = true;
+        }
+
     }
 }
 </script>

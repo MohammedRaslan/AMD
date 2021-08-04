@@ -198,9 +198,7 @@ export default({
             this.products = response.data;
         });
         Fire.$emit('mounted');
-        window.Echo.channel('BiddingChannel').listen('BiddingEvent', event => {
-            console.log(event.bid);
-        });
+   
     }
 })
 </script>

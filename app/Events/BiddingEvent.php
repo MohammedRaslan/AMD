@@ -33,7 +33,7 @@ class BiddingEvent implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-            'bid' => $this->bid,
+            'data' => $this->bid,
         ];
     }
 }

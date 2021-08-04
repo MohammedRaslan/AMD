@@ -14,6 +14,20 @@ class Bid extends Model
 
     public function getToAttribute($value)
     {
-        return Carbon::parse($value)->diffForHumans();
+        return ['human' => Carbon::parse($value)->diffForHumans(),
+                'actual' => $value,
+            ];
+    }
+
+    public function getFromAttribute($value)
+    {
+        return ['human' => Carbon::parse($value)->diffForHumans(),
+                'actual' => $value,
+    ];
+}
+
+    public function history_bids()
+    {
+        return $this->hasMany(HistoryBid::class);
     }
 }
