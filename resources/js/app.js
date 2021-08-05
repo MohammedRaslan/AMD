@@ -71,8 +71,7 @@ if (token) {
 
 router.beforeEach((to, from, next) => {
     if (localStorage.getItem('token')) {
-        Fire.$emit('getNotification');
-        Fire.$emit('cartCount');
+        // Fire.$emit('getNotification');
         if (to.path == '/login' || to.path == '/register') {
             next('/');
         }

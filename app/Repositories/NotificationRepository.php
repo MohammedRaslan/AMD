@@ -20,7 +20,9 @@ class NotificationRepository{
            'message' => $message,
            'product_id' => $product_id,
        ]);
-       return $response == true ? true : false;
+
+       $new_one = Notification::where('id',$response->id)->with('product')->first();
+       return $new_one ;
    }
 
    public function new($user_id)

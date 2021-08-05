@@ -196,9 +196,18 @@ class ProductRepository{
         $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
         $product->user_details = $product->user->user_details;
         $product->unsetRelation('wishlist');
-        return ['product' => $product,
-                'steps' => $this->biddingStepsForProduct($product->bid->step),
-            ];
+        if($product->bid != null){
+            return ['product' => $product,
+            'steps' => $this->biddingStepsForProduct($product->bid->step),
+        
+        ];
+        
+        }else{
+            return ['product' => $product,
+                    
+        ];
+        }
+   
       
     }
 

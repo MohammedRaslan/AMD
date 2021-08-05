@@ -9,7 +9,7 @@
                                         <small style="color:white">Minimum Bid is {{ this.minimum_price }} {{ this.user_details.currency }}</small>
                                         <!-- <p>8 Bids</p> -->
                                     </div>
-                                    <div v-if="bid_end">
+                                    
                                      <div v-if="!author && openBidding">
                                         <form @submit.prevent="makeBid()">
                                             <input type="number" v-model="form.bidValue" name="" id="" :disabled="!openBidding">
@@ -27,7 +27,6 @@
                                   
                                </div>
                             </div>
-                        </div>
 </template>
 <style scoped>
     .form-style{

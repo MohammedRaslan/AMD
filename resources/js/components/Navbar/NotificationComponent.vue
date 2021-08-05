@@ -22,7 +22,7 @@
                 <div @click="markAllAsRead" class="read"> Mark all as read</div>
                 <div class="item  position-relative" v-for="(noti, index) in notifications" :key="index">
                     <div class="row position-relative">
-                        <router-link class="over-link" :to="{name: 'ShopDetailComponent', params:{query: noti.product.id}}"></router-link>
+                        <router-link class="over-link" :to="{name: 'ShopDetailComponent', params:{query: noti.product_id}}"></router-link>
                         <div class="col-4">
                             <figure style="max-width:50%">
                                 <img :src="str_replace(noti.product.image)" alt>
@@ -72,10 +72,12 @@ export default ({
     },
     mounted(){
         this.getNotification();
-        Fire.$on('getNotification',()=>{
-            this.getNotification();
+        window.Echo.channel('AcceptOfferChannel').listen('AcceptOfferEvent', event => {
+            if(event.email == localStorage.getItem('currentUser')['email']){
+                  this.notifications.push(event.data);
+                  this.count = parseInt(this.count) + 1;
+            }
         });
-
     }
 })
 </script>
