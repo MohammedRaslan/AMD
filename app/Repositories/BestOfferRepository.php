@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Events\AcceptOfferEvent;
+use App\Events\DeclineOfferEvent;
 use App\Models\BestOffer;
 use App\Models\Cart;
 use App\Models\Product;
@@ -67,7 +68,9 @@ class BestOfferRepository{
             $product = Product::findOrFail($response->product_id);
             $message   = 'Your offer on '.$product->title.' has been declined';
             // $user_id => from , $product->user_id => to
-            NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            $notification = NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            $user_email = User::select('email')->where('id',$response->user_id)->first();
+            event(new DeclineOfferEvent($user_email->email, $notification));
             return true;
         }
         return false;

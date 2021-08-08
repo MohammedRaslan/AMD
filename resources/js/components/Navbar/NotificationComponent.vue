@@ -73,7 +73,14 @@ export default ({
     mounted(){
         this.getNotification();
         window.Echo.channel('AcceptOfferChannel').listen('AcceptOfferEvent', event => {
-            if(event.email == localStorage.getItem('currentUser')['email']){
+            if(event.user_email == JSON.parse(localStorage.getItem('currentUser'))['email']){
+                  this.notifications.push(event.data);
+                  this.count = parseInt(this.count) + 1;
+            }
+        });
+
+        window.Echo.channel('decline-offer-event').listen('DeclineOfferEvent', event => {
+            if(event.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                   this.notifications.push(event.data);
                   this.count = parseInt(this.count) + 1;
             }
