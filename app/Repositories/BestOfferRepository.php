@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Events\AcceptOfferEvent;
 use App\Events\DeclineOfferEvent;
+use App\Events\MakeOfferEvent;
 use App\Models\BestOffer;
 use App\Models\Cart;
 use App\Models\Product;
@@ -36,7 +37,8 @@ class BestOfferRepository{
         $message   = $user_name->user_name.' Made an offer on your product '.$product->title;
         // $user_id => from , $product->user_id => to
         NotificationRepository::generateNotification($user_id,$product->user_id,$data['id'],'offer',$message);
-
+        $bestOffer = BestOffer::where('id',$bestOffer->id)->with('user')->first();
+        event(new MakeOfferEvent($bestOffer));
         return $data == true ? true : false;
     }
 

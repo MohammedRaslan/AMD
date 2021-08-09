@@ -37,8 +37,8 @@ export default({
         }
         }
     },
-    mounted(){
-        axios.get('/api/user/getUserId').then((response) => {
+   async mounted(){
+       await axios.get('/api/user/getUserId').then((response) => {
             this.user_id = response.data;
         });
     }
