@@ -286,7 +286,7 @@ export default ({
         ListOffers,
     },
     methods:{
-        str_replace(str){
+        str_replace: function(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         }

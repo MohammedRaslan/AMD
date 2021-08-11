@@ -192,7 +192,7 @@ export default {
         })
     }),
     methods: {
-        async register() {
+         register: async function() {
             this.$Progress.start();
             const response = await this.form
                 .post("api/register")
@@ -216,7 +216,7 @@ export default {
                 });
             console.log(response, this.form);
         },
-        switchVisibility() {
+        switchVisibility: function() {
             const passwordField = document.querySelector("#password");
             const showField = document.querySelector("#show");
             if (passwordField.getAttribute("type") === "password") {

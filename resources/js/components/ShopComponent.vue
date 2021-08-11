@@ -128,11 +128,11 @@ export default {
         Wishlist,
     },
     methods:{
-        str_replace(str){
+        str_replace: function(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         },
-        getProducts(){
+        getProducts: function(){
             this.id = this.$route.params.query;
             axios.get('/api/category/getCategoryProducts/'+this.id).then((response) =>{
             this.products = response.data;

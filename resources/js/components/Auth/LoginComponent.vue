@@ -68,7 +68,7 @@ export default ({
     //   next();
     //   },
         methods:{
-        async login(){
+         login: async function(){
             this.$Progress.start();
             this.message = null;
             const response =await this.form.post('api/custom-login').then(response=>{

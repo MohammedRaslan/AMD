@@ -34,7 +34,7 @@ export default ({
     //    name: JSON.parse(localStorage.getItem('currentUser'))['name'],
    }),
    methods:{
-       getCartCount(){
+       getCartCount: function(){
             axios.get('/api/cart/getCartCount').then((response) => {
                 this.number = response.data;
             });

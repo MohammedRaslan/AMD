@@ -47,8 +47,8 @@ Vue.filter('image', function(image) {
 
 });
 
-const store = new Vuex.Store(storeDefinition);
-const Toast = Swal.mixin({
+var store = new Vuex.Store(storeDefinition);
+var Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
@@ -60,7 +60,7 @@ const Toast = Swal.mixin({
     }
 });
 window.Toast = Toast;
-let token = localStorage.getItem('token');
+var token = localStorage.getItem('token');
 if (token) {
     window.axios.defaults.headers.common = {
         'Accept': 'application/json',
@@ -85,7 +85,7 @@ router.beforeEach((to, from, next) => {
 })
 Vue.component('pagination', require('laravel-vue-pagination'));
 
-const app = new Vue({
+var app = new Vue({
     el: '#app',
     router: router,
     store,

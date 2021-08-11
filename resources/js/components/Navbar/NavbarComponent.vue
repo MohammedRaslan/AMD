@@ -500,7 +500,7 @@ export default {
     email: null,
   }),
   methods: {
-    logout() {
+    logout: function() {
       localStorage.removeItem("token");
       localStorage.removeItem("currentUser");
       localStorage.removeItem("auth");

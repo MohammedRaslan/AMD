@@ -53,17 +53,17 @@ export default ({
         notifications: {},
     }),
     methods:{
-        str_replace(str){
+        str_replace: function(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         },
-        markAllAsRead(){
+        markAllAsRead: function(){
             axios.get('/api/notification/markAllAsRead').then((response) => {
                 this.count = 0;
                 this.notifications = null;
             });
         },
-        getNotification(){
+        getNotification: function(){
             axios.get('/api/notification/new').then((response) => {
             this.notifications = response.data.notifications;
             this.count = response.data.count;
