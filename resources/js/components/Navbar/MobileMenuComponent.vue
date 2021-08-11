@@ -97,6 +97,7 @@ export default {
     if (localStorage.getItem("token")) {
       this.name = JSON.parse(localStorage.getItem("currentUser"))["name"];
     }
+    // function logged
     if (localStorage.getItem("token")) {
       this.logged = true;
       this.name = JSON.parse(localStorage.getItem("currentUser"))["name"];
@@ -115,6 +116,7 @@ export default {
       });
     }
     this.mounted = true;
+    // function logged
   },
 };
 </script>
