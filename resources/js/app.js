@@ -60,7 +60,7 @@ const Toast = Swal.mixin({
     }
 });
 window.Toast = Toast;
-let token = localStorage.getItem('token');
+var token = localStorage.getItem('token');
 if (token) {
     window.axios.defaults.headers.common = {
         'Accept': 'application/json',

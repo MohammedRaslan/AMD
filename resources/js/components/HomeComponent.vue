@@ -160,19 +160,19 @@ export default({
         products: {},
     }),
     methods:{
-         fetchproducts(id){
+         fetchproducts: function(id){
              axios.get('/api/guest/getCategoryProducts/'+id).then((response) =>{
             this.products = response.data;
             this.$Progress.finish();
             this.loading = false;
        });
         },
-         random(){
+         random: function(){
              axios.get('/api/product/random').then((response) =>{
             this.products = response.data;
         });
         },
-        str_replace(str){
+        str_replace: function(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         }
