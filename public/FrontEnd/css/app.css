@@ -1146,7 +1146,7 @@
 }
 .product-section.spad .img-top {
   position: absolute;
-  background: url("./../images/wave(2).svg");
+  /*background: url("./../images/wave(2).svg");*/
   top: 0;
   right: 0;
   left: 0;
