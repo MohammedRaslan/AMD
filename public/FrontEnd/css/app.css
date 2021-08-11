@@ -397,6 +397,16 @@
 #mobile-menu-wrap .item-border {
   border-top: 2px solid #fd1266;
 }
+#mobile-menu-wrap .login-menu {
+  padding: 0.6em 1em;
+  padding: 0.6em 1em;
+  background: #fd1266;
+  width: 106px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50em;
+}
 
 @media (max-width: 620px) {
   .header_mobil_guest {

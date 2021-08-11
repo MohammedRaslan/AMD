@@ -52,11 +52,8 @@
           >Logout</a
         >
       </li>
-          <!-- <router-link class="btn btn-maroon color white" to="/login"
-            >Join <i class="fas fa-sign-in-alt"></i
-            ></router-link> -->
-      <li v-if="!logged">
-        <router-link class="dropdown-item" to="/login"
+      <li v-else>
+        <router-link class="dropdown-item login-menu" to="/login"
           >login</router-link
         >
       </li>
@@ -100,6 +97,24 @@ export default {
     if (localStorage.getItem("token")) {
       this.name = JSON.parse(localStorage.getItem("currentUser"))["name"];
     }
+    if (localStorage.getItem("token")) {
+      this.logged = true;
+      this.name = JSON.parse(localStorage.getItem("currentUser"))["name"];
+      axios.get("/api/checkAdmin").then((response) => {
+        if (response.data == true) {
+          this.admin = true;
+        }
+      });
+      this.email = JSON.parse(localStorage.getItem("currentUser"))["email"];
+      axios.get("/api/checkUser/" + this.email).then((response) => {
+        if (response.data == false) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("currentUser");
+          window.location.href = "/";
+        }
+      });
+    }
+    this.mounted = true;
   },
 };
 </script>
