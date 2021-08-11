@@ -34,7 +34,7 @@ import CmsComponent from "./components/Admin/CmsComponent.vue";
 import ContactComponent from "./components/ContactCompontent.vue";
 
 
-const routes = [{
+var routes = [{
         path: "/",
         component: HomeComponent,
         name: "home",
@@ -200,7 +200,7 @@ const routes = [{
 
 ];
 
-const router = new VueRouter({
+var router = new VueRouter({
     routes,
     mode: "history",
 });
