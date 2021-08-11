@@ -398,6 +398,24 @@
   border-top: 2px solid #fd1266;
 }
 
+@media (max-width: 620px) {
+  .header_mobil_guest {
+    height: 95px;
+    padding-top: 10px;
+  }
+}
+
+.canvas__open_guest {
+  top: -56px !important;
+  position: absolute;
+  right: 12px;
+}
+@media (min-width: 576px) {
+  .canvas__open_guest {
+    top: -15px !important;
+  }
+}
+
 .offcanvas__option i {
   color: #dee2e6;
 }
@@ -1144,6 +1162,11 @@
   height: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+@media (max-width: 500px) {
+  .product-section.spad .swiper-container {
+    padding: 0 10px;
+  }
 }
 .product-section.spad .swiper-slide {
   text-align: center;

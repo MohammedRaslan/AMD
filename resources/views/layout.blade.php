@@ -81,7 +81,7 @@
         <!-- Offcanvas Menu End -->
 
         <!-- Header Section Begin -->
-        <header class="header">
+        {{-- <header class="header">
             <div class="container h-100">
                 <div class="row h-100 d-flex align-items-center">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-12 p-0">
@@ -91,18 +91,11 @@
                                 <img class="logo-mobil" src="{{ asset('FrontEnd') }}/images/Logo-mobile.png" alt>
                             </router-link>
                         </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-12 icons-mobil">
-                        <Navbar></Navbar>
-                    </div>
-                </div>
-                {{-- <div class="canvas__open">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div> --}}
+                    </div> --}}
+                    <Navbar></Navbar>
+                {{-- </div>
             </div>
-        </header>
+        </header> --}}
         <!-- Header Section End -->
 
         <div class="rectangle-nav"></div>

@@ -68,6 +68,22 @@
     }
 }
 
+.header_mobil_guest {
+    @media (max-width: 620px) {
+        height: 95px;
+        padding-top: 10px;
+    }
+}
+
+.canvas__open_guest {
+    top: -56px !important;
+    position: absolute;
+    right: 12px;
+    @media (min-width: 576px) {
+        top: -15px !important;
+    }
+}
+
 .offcanvas__option {
     i {
         color: #dee2e6;

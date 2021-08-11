@@ -24,30 +24,6 @@
                 >{{ category.title }}</router-link
               >
             </li>
-            <!-- <li>
-              <router-link class="dropdown-item" to="/selling/overview"
-                >Selling</router-link
-              >
-            </li>
-
-            <li>
-              <router-link class="dropdown-item" to="/buying/offers"
-                >Buying</router-link
-              >
-            </li>
-            <li>
-              <router-link class="dropdown-item" to="/subscriptions"
-                >Subscriptions</router-link
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="account.html">My Account</a>
-            </li>
-            <li>
-              <a class="dropdown-item" style="cursor: pointer" @click="logout"
-                >Logout</a
-              >
-            </li> -->
           </ul>
         </div>
       </li>
@@ -63,17 +39,25 @@
           >Buying</router-link
         >
       </li>
-      <li>
+      <li v-if="logged">
         <router-link class="dropdown-item" to="/subscriptions"
           >Subscriptions</router-link
         >
       </li>
-      <li>
+      <li v-if="logged">
         <a class="dropdown-item" href="account.html">My Account</a>
       </li>
-      <li>
+      <li v-if="logged">
         <a class="dropdown-item" style="cursor: pointer" @click="logout"
           >Logout</a
+        >
+      </li>
+          <!-- <router-link class="btn btn-maroon color white" to="/login"
+            >Join <i class="fas fa-sign-in-alt"></i
+            ></router-link> -->
+      <li v-if="!logged">
+        <router-link class="dropdown-item" to="/login"
+          >login</router-link
         >
       </li>
     </ul>
