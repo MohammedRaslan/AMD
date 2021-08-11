@@ -2,7 +2,7 @@
   <div>
     <ul data-v-adb1784e="" class="text-start justify-content-between">
       <li>
-        <div class="dropdown d-inline-flex flex-column dropdown-cats">
+        <div class="dropdown d-inline-flex flex-column dropdown-cats" v-if="logged">
           <button
             class="btn dropdown-toggle"
             type="button"
@@ -13,7 +13,7 @@
             <!-- <span>Hello {{ name }}</span> -->
             <span>Marketplace</span>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuMobile">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuMobile" v-if="logged">
             <li v-for="category in categories" :key="category.id">
               <router-link
                 class="dropdown-item"
@@ -28,13 +28,13 @@
         </div>
       </li>
 
-      <li class="item-border">
+      <li class="item-border" v-if="logged">
         <router-link class="dropdown-item" to="/selling/overview"
           >Selling</router-link
         >
       </li>
 
-      <li>
+      <li v-if="logged">
         <router-link class="dropdown-item" to="/buying/offers"
           >Buying</router-link
         >
@@ -79,6 +79,7 @@ export default {
   data: () => ({
     categories: {},
     name: "",
+    logged: false,
   }),
   methods: {
     logout() {
