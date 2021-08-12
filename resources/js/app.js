@@ -19,8 +19,6 @@ import 'vueditor/dist/style/vueditor.min.css';
 import moment from "moment";
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
-// import "babel-polyfill";
-// import "whatwg-fetch";
 Vue.component('v-select', vSelect)
 Vue.use(Vuex);
 
