@@ -62,9 +62,13 @@ export default ({
      
    },
     mounted(){
-        Fire.$emit('mounted');
-        Fire.$on('cartCount',()=>{
-            this.getCartCount();
+        window.Echo.channel('AcceptOfferChannel').listen('AcceptOfferEvent', event => {
+            if(event.user_email ==  JSON.parse(localStorage.getItem('currentUser'))['email']){
+                this.number = parseInt(this.number) + 1;
+                setTimeout(()=>{
+                 this.bell = false;
+                  }, 2000);
+            }
         });
     }
 })

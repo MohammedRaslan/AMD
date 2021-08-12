@@ -198,6 +198,7 @@ export default({
             this.products = response.data;
         });
         Fire.$emit('mounted');
+   
     }
 })
 </script>

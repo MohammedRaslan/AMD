@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Enums\BidStepEnum;
 use App\Enums\CurrencyIconsEnum;
 use App\Models\Brand;
 use App\Models\Image;
@@ -14,6 +15,7 @@ use App\Enums\LocalShipping;
 use App\Enums\Return_Policy;
 use App\Enums\ProductCondition;
 use App\Enums\InternationalShipping;
+use App\Models\Bid;
 
 class ProductRepository{
 
@@ -30,8 +32,14 @@ class ProductRepository{
                 'conditions' => ProductCondition::asSelectArray(), 
                 'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
                 'return_policy' => Return_Policy::asSelectArray(),
+                'bidding_step' => $this->biddingSteps(),
                 ];
-        
+    }
+
+    public function biddingSteps()
+    {
+        $steps = array('1','5','10','20','50','100');
+        return $steps;
     }
 
     public function store($data,$images,$user_id)
@@ -65,7 +73,9 @@ class ProductRepository{
         }
         if($product->save()){
             $product->categories()->attach($data['category']);
-        
+            if($data['type'] == 1){
+                $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
+            }
         if($images){
             foreach($images as $file){
                 $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
@@ -82,6 +92,20 @@ class ProductRepository{
         }
         return ['response' => false];
 
+    }
+
+    private function MakeBidding($product_id, $from, $to , $bid_minimum_price,$step)
+    {
+        $bid = Bid::create([
+            'product_id' => $product_id,
+            'from' => $from,
+            'to' => $to,
+            'last_price' => 0,
+            'before_last_price' => 0,
+            'minimum_price' => $bid_minimum_price,
+            'step' => $step,
+            'status' => 1,
+        ]);
     }
 
     public function checkUserProduct($user_id, $product_id)
@@ -166,14 +190,39 @@ class ProductRepository{
     
     public function getProduct($user_id,$id)
     {
-        $product = Product::where('id',$id)->with(['user','shipping','images'])->first();
+        $product = Product::where('id',$id)->with(['user','shipping','images','bid'])->first();
         $wishlist = $product->wishlist()->pluck('user_id')->toArray();
         $product->wishlistCount = count($product->wishlist);
         $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
+        $product->user_details = $product->user->user_details;
         $product->unsetRelation('wishlist');
-        return ['product' => $product,
-            ];
+        if($product->bid != null){
+            return ['product' => $product,
+            'steps' => $this->biddingStepsForProduct($product->bid->step),
+        
+        ];
+        
+        }else{
+            return ['product' => $product,
+                    
+        ];
+        }
+   
       
+    }
+
+    protected function biddingStepsForProduct($step)
+    {
+            $steps = $this->biddingSteps();
+        
+            $lower_limit = $step;
+            $array = array_filter(
+                $steps,
+                function ($value) use ($lower_limit) {
+                    return ($value >= $lower_limit);
+                }
+            );
+        return  array_slice($array, 0, 3);
     }
 
     public function randomProducts()

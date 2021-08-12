@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\BiddingEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 //    ]);
 // });
 Route::get('/{any?}/{title?}', function () {
+    if(str_contains(request()->fullUrl(),'testNoti')){
+        return event(new BiddingEvent('Hello'));
+    }
     if(str_contains(request()->fullUrl(),'admin')){
         return view('admin');
     }

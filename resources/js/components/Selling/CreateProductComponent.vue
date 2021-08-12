@@ -67,7 +67,7 @@
                                                                                 </v-select>
                                                                                 <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                             </div>
-                                                                                <div class="col-4 select-product text-left">
+                                                                            <div class="col-4 select-product text-left">
                                                                                 <label class="text-white" for="condition">Condition <span class="requiredItem">*</span></label>
                                                                                 <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
                                                                                        <template #search="{attributes, events}">
@@ -110,11 +110,11 @@
                                                                             <h3 class="text-left text-maroon mt-3">Listing Type <span class="requiredItem">*</span></h3>
                                                                             <form class="row mt-4 border-0 p-0">
                                                                                 <div class="col-lg-4">
-                                                                                    <input class="radio-custom" id="radio-1" name="radio-group" type="radio" checked>
+                                                                                    <input class="radio-custom"  id="radio-1" name="radio-group" type="radio" checked>
                                                                                     <label class="radio-custom-label" for="radio-1">Listing Product</label>
                                                                                 </div>
                                                                                 <div class="col-lg-7">
-                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio" disabled>
+                                                                                    <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
                                                                                     <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
                                                                                 </div>
                                                                             </form>
@@ -147,8 +147,31 @@
                                                                                     <form action="" class="border-0">
                                                                                         <div class="row g-3">
                                                                                             <div class="col-12">
-                                                                                                <input class="form-control" type="text" aria-label="First name" placeholder="Soon" disabled>
+                                                                                                <label for="from" style="color:white; float:left">From</label>
+                                                                                                <input class="form-control" type="datetime-local" v-model="form.bidding_from" id="from" disabled>
                                                                                             </div>
+                                                                                             <div class="col-12">
+                                                                                                <label for="to" style="color:white; float:left">To</label>
+                                                                                                <input class="form-control" type="datetime-local" v-model="form.bidding_to"  id="to" disabled>
+                                                                                            </div>
+                                                                                            <div class="col-6">
+                                                                                                <label for="minimum_price" style="color:white; float:left">Minimum Price</label>
+                                                                                                <input class="form-control" type="number" v-model="form.bid_minimum_price" id="minimum_price" disabled>
+                                                                                            </div>
+                                                                                            <div class="col-6 select-product text-left">
+                                                                                                <label class="text-white" for="condition">Select Step <span class="requiredItem">*</span></label>
+                                                                                                <v-select placeholder="Select Step" id='cats' v-model="form.step" label="title" :options="bid_step">
+                                                                                                    <template #search="{attributes, events}">
+                                                                                                            <input
+                                                                                                                class="vs__search"
+                                                                                                                :required="!form.step"
+                                                                                                                v-bind="attributes"
+                                                                                                                v-on="events"
+                                                                                                            />
+                                                                                                        </template>
+                                                                                                </v-select>
+                                                                                                <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
+                                                                                        </div>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
@@ -336,6 +359,7 @@ export default ({
             'female',
         ],
         policies: [],
+        bid_step : [],
         imagenull: false,
         form : new form({
             title : null,
@@ -349,7 +373,10 @@ export default ({
             price: null,
             best_offer: false,
             minimum_offer: null,
-
+            bidding_from: null,
+            bidding_to: null,
+            bid_minimum_price: null,
+            step: null,
             doll_size: null,
             doll_gender: null,
             modified_item: 0,
@@ -370,6 +397,8 @@ export default ({
            this.form.details = this.details.getContent();
            this.form.domestic_product = this.form.domestic_product == true ? 1 :0;
            this.form.modified_item = this.form.modified_item == true ? 1 :0;
+           this.form.type = this.form.bidding_from || this.form.bidding_to != null ? 1 : 0;
+           this.form.price = this.form.bidding_from || this.form.bidding_to == null ? 0 : this.form.price;
            if( jQuery.isEmptyObject(this.form.image)  ){
                this.imagenull = true;
                this.$Progress.fail();
@@ -455,6 +484,7 @@ export default ({
             this.conditions = response.data.conditions;
             this.brands = response.data.brands;
             this.policies = response.data.return_policy;
+            this.bid_step = response.data.bidding_step;
         });
   
 

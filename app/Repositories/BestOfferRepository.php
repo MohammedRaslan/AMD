@@ -1,6 +1,9 @@
 <?php
 namespace App\Repositories;
 
+use App\Events\AcceptOfferEvent;
+use App\Events\DeclineOfferEvent;
+use App\Events\MakeOfferEvent;
 use App\Models\BestOffer;
 use App\Models\Cart;
 use App\Models\Product;
@@ -34,7 +37,8 @@ class BestOfferRepository{
         $message   = $user_name->user_name.' Made an offer on your product '.$product->title;
         // $user_id => from , $product->user_id => to
         NotificationRepository::generateNotification($user_id,$product->user_id,$data['id'],'offer',$message);
-
+        $bestOffer = BestOffer::where('id',$bestOffer->id)->with('user')->first();
+        event(new MakeOfferEvent($bestOffer));
         return $data == true ? true : false;
     }
 
@@ -66,7 +70,9 @@ class BestOfferRepository{
             $product = Product::findOrFail($response->product_id);
             $message   = 'Your offer on '.$product->title.' has been declined';
             // $user_id => from , $product->user_id => to
-            NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            $notification = NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            $user_email = User::select('email')->where('id',$response->user_id)->first();
+            event(new DeclineOfferEvent($user_email->email, $notification));
             return true;
         }
         return false;
@@ -82,11 +88,13 @@ class BestOfferRepository{
       
             $message   = 'Your offer on '.$product->title.' has been accepted, Look into your cart';
             // $user_id => from , $product->user_id => to
-            NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
+            $notification = NotificationRepository::generateNotification($product->user_id,$response->user_id,$product->id,'offer',$message);
             $cart = Cart::where('user_id',$response->user_id)->first();
             $store = new CartRepository($cart);
             $cart_product = $store->store($response->user_id,$product->id,$response->price);
-            
+            $user_email = User::where('id',$response->user_id)->select('email')->first();
+
+            event(new AcceptOfferEvent($notification,$user_email->email));
             return true;
         }
         return false;

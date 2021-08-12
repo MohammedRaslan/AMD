@@ -92,7 +92,8 @@
                             </router-link>
                             </figure>
                         <h4><a class="link-del" href="_shop-details2.htm">{{ product.title }}</a> </h4>
-                        <h5>$ {{ product.price }}</h5>
+                        <h5 v-if="product.type == 0">$ {{ product.price }}</h5>
+                        <h5 v-else>Bidding</h5>
                         <h6>
                             <span v-if="product.best_offer" class="float-left">or Best Offer</span>
                            

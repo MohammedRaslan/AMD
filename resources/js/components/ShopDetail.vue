@@ -220,14 +220,17 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-lg-4 parent-price-table" v-if="loading">
+                        <Bidding v-if="product.type == 1" :bid="product.bid" :steps="bid_step_list" :author="author" :user_details="product.user_details"></Bidding>
+                    </div>
                     <div class="col-lg-4 parent-price-table" v-if="(loading && !author)">
 
-                        <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" ></AddCartWidget>
+                        <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0"></AddCartWidget>
                         <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
+                        
                         <ChatWidget></ChatWidget>
                     </div>
-                     <div class="col-lg-4 parent-price-table" v-if="author">
+                     <div class="col-lg-4 parent-price-table" v-if="author && product.best_offer">
                          <ListOffers :id="product.id"></ListOffers>
                      </div>
                 </div>
@@ -267,6 +270,7 @@ import MakeOfferWidget from "./widgets/MakeOfferComponent";
 import ChatWidget from "./widgets/ChatComponent";
 import Wishlist from "./widgets/WishlistComponent";
 import ListOffers from "./widgets/ShowOffersComponent"
+import Bidding from "./widgets/BiddingComponent";
 export default ({
     data:()=>({
         id : null,
@@ -277,6 +281,7 @@ export default ({
         added: false,
         exist: false,
         shipping: null,
+        bid_step_list: [],
     }),
     components: {
         AddCartWidget,
@@ -284,6 +289,7 @@ export default ({
         ChatWidget,
         Wishlist,
         ListOffers,
+        Bidding
     },
     methods:{
         str_replace: function(str){
@@ -314,6 +320,7 @@ export default ({
             this.images  = response.data.product.images;
             this.shipping = response.data.product.shipping;
             this.loading = true;
+            this.bid_step_list = response.data.steps;
             if(this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                 this.author = true;
             }
@@ -323,7 +330,6 @@ export default ({
                 this.exist = true;
             }
         });
-        Fire.$emit('mounted');
     }
 })
 </script>
