@@ -41,7 +41,6 @@
     "browserslist": [
         "defaults",
         "not IE 11",
-        "maintained node versions",
-        "ios_saf"
+        "maintained node versions"
       ]
 }
