@@ -16,6 +16,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BestOfferController;
 use App\Http\Controllers\BidController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
@@ -56,6 +57,11 @@ Route::middleware('auth:api')->group(function () {
         Route::post('store',[AboutController::class,'store']);
         Route::get('changeStatus/{id}',[AboutController::class,'changeStatus']);
         Route::get('getAllAbout',[AboutController::class,'getAllAbout']);
+    });
+
+    Route::prefix('chat')->group(function(){
+        Route::post('store',[ChatController::class,'store']);
+        Route::get('getMessages/{product_id}',[ChatController::class,'getMessages']);
     });
 
     Route::prefix('cms')->group(function(){

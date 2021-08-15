@@ -221,18 +221,24 @@
                         </div>
                     </div>
                     <div class="col-lg-4 parent-price-table" v-if="loading">
+
+                    <div  v-if="loading">
                         <Bidding v-if="product.type == 1" :bid="product.bid" :steps="bid_step_list" :author="author" :user_details="product.user_details"></Bidding>
                     </div>
-                    <div class="col-lg-4 parent-price-table" v-if="(loading && !author)">
 
+                    <div v-if="(loading && !author)">
                         <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0"></AddCartWidget>
                         <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
-                        
-                        <ChatWidget></ChatWidget>
                     </div>
-                     <div class="col-lg-4 parent-price-table" v-if="author && product.best_offer">
+                     <div v-if="author && product.best_offer">
                          <ListOffers :id="product.id"></ListOffers>
                      </div>
+                     <ChatWidget 
+                            :productUserID="product.user_id" 
+                            :productUserName="product.user.user_name"
+                            :productUserEmail="product.user.email"
+                            :productID="product.id"></ChatWidget>
+                    </div>
                 </div>
             </div>
 

@@ -91,7 +91,7 @@
                                 <img  :src='str_replace(product.image)' alt="">
                             </router-link>
                             </figure>
-                        <h4><a class="link-del" href="_shop-details2.htm">{{ product.title }}</a> </h4>
+                        <h4><router-link class="link-del" :to="{name: 'ShopDetailComponent', params:{query: product.id}}">{{ product.title }}</router-link> </h4>
                         <h5 v-if="product.type == 0">$ {{ product.price }}</h5>
                         <h5 v-else>Bidding</h5>
                         <h6>
