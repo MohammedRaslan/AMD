@@ -35,7 +35,7 @@ import ContactComponent from "./components/ContactCompontent.vue";
 
 
 var routes = [{
-        path: "/",
+        path: "/demo",
         component: HomeComponent,
         name: "home",
     },

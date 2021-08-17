@@ -29,14 +29,13 @@ use Illuminate\Support\Facades\Route;
 //    ]);
 // });
 Route::get('/{any?}/{title?}', function () {
-    if(str_contains(request()->fullUrl(),'testNoti')){
-        return event(new BiddingEvent('Hello'));
-    }
+    // if(str_contains(request()->fullUrl(),'testNoti')){
+    //     return event(new BiddingEvent('Hello'));
+    // }
     if(str_contains(request()->fullUrl(),'admin')){
         return view('admin');
-    }
-    // }elseif(str_contains(request()->fullUrl(),'demo')){
+    }elseif(str_contains(request()->fullUrl(),'demo')){
         return view('layout');
-    // }
-    // return view('soon');
+    }
+    return view('soon');
 });
