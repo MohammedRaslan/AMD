@@ -92,7 +92,7 @@ var app = new Vue({
     },
     components: {
         Home: Home,
-        Notification: Notification,
+        // Notification: Notification,
         Navbar: Navbar,
         Mobile: Mobile,
         Adminicon: Adminicon,
