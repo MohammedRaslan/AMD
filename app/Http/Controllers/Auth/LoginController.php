@@ -36,4 +36,10 @@ class LoginController extends Controller
         }
         return response(['user' => $data['user'], 'access_token' => $data['token']]);
     }
+
+    public function verifyMail(Request $request)
+    {
+        $data = $this->userService->verifyMail($request->email);
+        return response()->json($data);
+    }
 }

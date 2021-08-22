@@ -22,7 +22,7 @@
                                     <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
 
                                 </div>
-                                
+                                        <router-link to="verify" v-show="show_verification_mail" style="color:#60c1f1; cursor:pointer">Activate Your Account</router-link>
                                 <div class="col-6">
                                     <input type="submit" :disabled="form.busy" value="Login" class="form-control" id="register">
                                 </div>
@@ -56,6 +56,7 @@
 export default ({
     data: ()=>({
         message: null,
+        show_verification_mail: false,
         form: new form({
             email: '',
             password: '',
@@ -76,12 +77,18 @@ export default ({
                 this.$Progress.fail();
                 this.message = response.data.message;
             }else{
-                this.$store.dispatch('setUser',response.data.user);
-                this.$store.dispatch('setToken',response.data.access_token);
-                // this.$store.dispatch('setAuth',false);
-                Fire.$emit('LoginEvent');
-                this.$Progress.finish();
-                window.location.href = '/';
+                if(response.data.is_verified){
+                    this.$store.dispatch('setUser',response.data.user);
+                    this.$store.dispatch('setToken',response.data.access_token);
+                    // this.$store.dispatch('setAuth',false);
+                    Fire.$emit('LoginEvent');
+                    this.$Progress.finish();
+                    window.location.href = '/';
+                }else{
+                    this.message = 'Please Verify your mail';
+                    this.show_verification_mail = true;
+                }
+          
             }
             }).catch((error)=>{
                 this.$Progress.fail();

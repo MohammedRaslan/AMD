@@ -7,7 +7,7 @@ use App\Models\UserDetail;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Services\sendMail;
 class UserRepository{
 
     use RegistersUsers;
@@ -46,8 +46,24 @@ class UserRepository{
         return ['user' => $userData,'token' => $accessToken];
     }
 
+    public function verifyMail($email)
+    {
+        $user = User::where('email',$email)->first();
+        $code = 256432;
+        dd($user);
+        if($user){
+            $mail = new sendMail('confirmation',array('code' =>$code),'Verify your mail',$email,'Confirmation');
+            
+            if($mail->sendMail()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function login($request)
     {
+        $is_verified = false;
         if( str_contains($request['email'],'@')){
             if (!auth()->attempt($request)) {
                 return ['message' => 'Invalid Credentials'];
@@ -68,7 +84,10 @@ class UserRepository{
         }else{
             $accessToken = $user->createToken('authToken')->accessToken;
         }
-        return ['user' => $userData,'token' => $accessToken];
+        if($this->is_verified(auth()->user() == null? $user->id : auth()->user()->id)){
+            $is_verified = true;
+        }
+        return ['user' => $userData,'token' => $accessToken,'is_verified' => $is_verified];
     }
 
     public function checkIfUserHasDetails($user_id)
@@ -80,6 +99,15 @@ class UserRepository{
         UserDetail::create([
             'user_id' => $user->id,
         ]);
+    }
+
+    public function is_verified($user_id)
+    {
+        $user = $this->user->find($user_id);
+        if($user->email_verified_at != NULL){
+            return true;
+        }
+        return false;
     }
 
     public function checkUser($email)

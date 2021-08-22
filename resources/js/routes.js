@@ -3,7 +3,7 @@ import HomeComponent from "./components/HomeComponent";
 import ExampleComponent from "./components/ExampleComponent";
 import LoginComponent from "./components/Auth/LoginComponent";
 import RegisterComponent from "./components/Auth/RegisterComponent";
-
+import verifyComponent from "./components/Auth/VerifyMailComponent";
 import OverviewComponent from "./components/Selling/OverviewComponent";
 import CreateProductComponent from "./components/Selling/CreateProductComponent";
 import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
@@ -53,6 +53,11 @@ var routes = [{
         path: "/register",
         component: RegisterComponent,
         name: "register",
+    },
+    {
+        path: "/verify",
+        component: verifyComponent,
+        name: 'verify'
     },
     {
         path: "/help",
