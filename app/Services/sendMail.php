@@ -24,7 +24,12 @@ class sendMail
     {
         $SPApiClient = new ApiClient('96d3e2d8231ee3d65da46acafd9a9412', '9256a63e7ed50bfe03ea922cf12b4be8', new FileStorage());
         $email = array(
-            'html' =>  view($this->view)->with($this->variables),
+            'template' => array(
+                'id' => 155864,
+                 'variables' => array(
+                    'code' => $this->variables['code'],
+                 )
+            ),
             'text' => 'Hello From Text!',
             'subject' => $this->subject,
             'from' => array(
@@ -37,11 +42,9 @@ class sendMail
                 ),
             ),
         );
-        try{
-            $SPApiClient->smtpSendMail($email);
-        }catch (\Exception $e){
-            return $e->getMessage();
+        if($SPApiClient->smtpSendMail($email)){
+            return true;
         }
-        
+        return false;
     }
 }

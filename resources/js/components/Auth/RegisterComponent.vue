@@ -3,7 +3,7 @@
         <section>
             <div class="signup">
                 <div class="container">
-                    <div class="row text-center">
+                    <div class="row text-center" v-show="!show_verification_mail">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <h2 class="mb-4">Signup</h2>
                             <form @submit.prevent="register">
@@ -140,6 +140,37 @@
                             </form>
                         </div>
                     </div>
+                <div class="row text-center" v-show="show_verification_mail">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2 class="mb-4">Enter Verification Code</h2>
+                        <div class="alert alert-danger" role="alert" v-show="verifiedCodeMessage != ''">
+                              {{ verifiedCodeMessage }}
+                        </div>          
+                        <form @submit.prevent="verifyCode">                        
+                            <div class="row">
+                                <div class="col-12">
+                                    <input type="number" class="form-control" v-model="codeForm.code" id="code" placeholder="Enter Code" >
+                                </div>
+                                <div class="col-6">
+                                    <input type="submit" :disabled="form.busy" value="Verify" class="form-control" id="register">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-sm-12 offset-2">
+                        <div class="inner">
+                            <img loading="lazy" :src="'/FrontEnd/images/img-login.png'" alt="">
+                        </div>
+                    </div>
+                
+                </div>   
+                <form v-show="show_verification_mail" class="col-5" @submit.prevent="verifyMail">                        
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="submit" :disabled="form.busy" value="Resend Activation Code" class="form-control" id="register">
+                        </div>
+                    </div>
+                </form>
                 </div>
             </div>
         </section>
@@ -181,6 +212,9 @@ select {
 export default {
     data: () => ({
         countries: [],
+        verified: false,
+        verifiedCodeMessage: '',
+        show_verification_mail: false,
         form: new form({
             first_name: null,
             last_name: null,
@@ -189,7 +223,14 @@ export default {
             password: null,
             phone: null,
             country: null
-        })
+        }),
+        codeForm: new form({
+            email: '',
+            code: ''
+        }),
+        VerifyMailForm: new form({
+            email: '',
+        }),
     }),
     methods: {
          register: async function() {
@@ -206,9 +247,9 @@ export default {
                         //     "setToken",
                         //     response.data.access_token
                         // );
-                        Fire.$emit("LoginEvent");
+                        // Fire.$emit("LoginEvent");
                         this.$Progress.finish();
-                        window.location.href = "/";
+                        this.show_verification_mail = true;
                     }
                 })
                 .catch(error => {
@@ -226,7 +267,25 @@ export default {
                 passwordField.setAttribute("type", "password");
                 showField.innerHTML = "Show Password";
             }
-        }
+        },
+        verifyMail: async function(){
+            this.VerifyMailForm.email = this.form.email;
+             const response = await this.VerifyMailForm.post('/api/verifyMail').then((response) => {
+                 if(response.data){
+                     this.verified = true;
+                 }
+             });
+         },
+        verifyCode: async function(){
+            this.codeForm.email = this.form.email;
+             const response = await this.codeForm.post('/api/verifyCode').then((response) => {
+                 if(response.data == true){
+                     this.$router.push('/login'); 
+                 }else{
+                     this.verifiedCodeMessage = 'This Code is incorrect, Please Check your Mail';
+                 }
+             });
+         }
     },
     created() {
         this.$Progress.start();

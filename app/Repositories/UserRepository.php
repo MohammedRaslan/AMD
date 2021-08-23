@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\CodeVerification;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\UserDetail;
@@ -8,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Services\sendMail;
+use Carbon\Carbon;
+
 class UserRepository{
 
     use RegistersUsers;
@@ -42,21 +45,62 @@ class UserRepository{
             'email' => $user->email,
         ];
         $accessToken = $user->createToken('authToken')->accessToken;
-        
+        $this->verifyMail($user->email);
         return ['user' => $userData,'token' => $accessToken];
     }
 
+
     public function verifyMail($email)
     {
-        $user = User::where('email',$email)->first();
-        $code = 256432;
-        dd($user);
-        if($user){
-            $mail = new sendMail('confirmation',array('code' =>$code),'Verify your mail',$email,'Confirmation');
-            
+        $createVerificationCode = $this->CreateVerificationCode($email);
+        if($createVerificationCode['status']){
+            $mail = new sendMail('confirmation',array('code' =>$createVerificationCode['code']),'Verify your mail',$email,'Confirmation');
             if($mail->sendMail()){
                 return true;
             }
+        }
+        return false;
+    }
+
+    
+    public function CreateVerificationCode($email)
+    {
+        $user = User::where('email',$email)->first();
+        $code = rand(10000,90000);
+        $this->RemoveRecordIfConfirmationSentToUserBefore($user->id);
+        CodeVerification::create([
+            'user_id' => $user->id,
+            'code' => $code,
+            'expire_at' => now()->addDay(),
+        ]);
+        if($user){
+            return ['status' => true,'code' => $code];
+        }
+        return ['status' => false,'code' => null];
+    }
+
+    public function RemoveRecordIfConfirmationSentToUserBefore($user_id)
+    {
+        $verify = CodeVerification::where('user_id',$user_id)->first();
+        if($verify){
+            $verify->delete();
+        }
+    }
+
+    public function verifyCode($code,$email)
+    {
+        $user = User::select('id')->where('email',$email)->first();
+        $verify = CodeVerification::where('user_id',$user->id)
+                                  ->where('code',$code)
+                                  ->whereDate('expire_at','>=',now())
+                                  ->where('status',1)
+                                  ->first();
+        if($verify){
+            $verify->status = 0;
+            $verify->save();
+            $user->email_verified_at = now();
+            $user->save();
+            return true;
         }
         return false;
     }

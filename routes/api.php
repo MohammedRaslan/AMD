@@ -44,6 +44,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/custom-login', [LoginController::class,'custom_login']);
 Route::post('/register',[RegisterController::class,'register']);
 Route::post('/verifyMail',[LoginController::class,'verifyMail']);
+Route::post('/verifyCode',[LoginController::class,'verifyCode']);
 Route::get('checkUser/{email?}',[UserController::class,'checkUser']);
 Route::post('testMail',[TestMailController::class,'test']);
 Route::middleware('auth:api')->group(function () {

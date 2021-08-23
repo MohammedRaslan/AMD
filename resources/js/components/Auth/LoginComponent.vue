@@ -77,7 +77,8 @@ export default ({
                 this.$Progress.fail();
                 this.message = response.data.message;
             }else{
-                if(response.data.is_verified){
+                console.log(response.data);
+                if(response.data.is_verified == true){
                     this.$store.dispatch('setUser',response.data.user);
                     this.$store.dispatch('setToken',response.data.access_token);
                     // this.$store.dispatch('setAuth',false);
