@@ -37,6 +37,7 @@ class UserRepository{
             'password'   => bcrypt($request['password']),
             'phone'      => $request['phone'],
             'country'    => $request['country'],
+            'image'     => $request['image'],
             'type' => 1,
             'role' => 1,
         ]);
@@ -158,9 +159,9 @@ class UserRepository{
     {
         $user = User::where('email',$email)->first();
         if($user){
-            return true;
+            return ['status' => true, 'image' => $user->image];
         }
-        return false;
+        return ['status' => false];
     }
 
     public function getUserInfo($id)

@@ -26,7 +26,8 @@ class User extends Authenticatable
         'subscription_id',
         'country',
         'type',
-        'role'
+        'role',
+        'image',
     ];
 
     /**

@@ -10,7 +10,6 @@
         $("#preloder").delay(200).fadeOut("slow");
 
 
-
         /*------------------
             Gallery filter
         --------------------*/
@@ -68,11 +67,10 @@
         $(".offcanvas-menu-wrapper").addClass("active");
         $(".offcanvas-menu-overlay").addClass("active");
     });
-    // dropdown - item dropdown-item
-    $(".offcanvas-menu-overlay, .close-menu, #mobile-menu-wrap .dropdown-item, #mobile-menu-wrap ul .dropdown-cats ul").on('click', function() {
+
+    $(".offcanvas-menu-overlay, .close-menu").on('click', function() {
         $(".offcanvas-menu-wrapper").removeClass("active");
         $(".offcanvas-menu-overlay").removeClass("active");
-        console.log('click');
     });
 
     /*-----------------------
@@ -147,6 +145,7 @@
         $(".cat .drop-1 ul").toggleClass("show");
         $(".cat .dropdown.drop-1").toggleClass("borderrad")
         $(".cat #Icon_down_solid").toggleClass("svg-tran")
+        console.log("Test R");
     })
 
     $(".menu-user button").blur(function() {
@@ -154,7 +153,7 @@
             $(".menu-user .drop-user1 ul").removeClass("show");
             $(".menu-user .dropdown.drop-user1").removeClass("borderrad")
             $("#Icon_down").removeClass("svg-tran")
-        }, 220)
+        }, 120)
     })
 
     $(".menu-user button").click(function() {
@@ -176,17 +175,10 @@
 
 
     // #selling
-    // $(".selling .dot").click(function() {
-    //     // $(this).css("display", "none")
-    //     console.log("test test1");
-    // })
-
-    $(document).on('click', '.selling .dot', function() {
+    $(".selling .dot").click(function() {
+        // $(this).css("display", "none")
         $(this).css("opacity", "0")
-            // alert('xxx');
-    });
-
-
+    })
 
     if (innerWidth < 1200) {
         $(".header-taps").slideUp()
@@ -195,13 +187,15 @@
         $(".open-tabs").slideUp()
     }
 
-    $(".selling .open-tabs").click(function() {
+    $(".selling .open-tabs, .over-lay-selling").click(function() {
         $(".header-taps").slideToggle()
+        $('.selling .over-lay-selling').toggleClass("d-none");
     })
     if (innerWidth < 1200) {
         $(".header-taps .nav .nav-link").click(function() {
             $(".header-taps").slideToggle()
             $(".burger-check").prop("checked", false)
+            $('.selling .over-lay-selling').toggleClass("d-none");
         })
     }
 

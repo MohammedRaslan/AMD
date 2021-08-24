@@ -22,7 +22,7 @@
                                     <div v-if="form.errors.has('password')" class="alert alert-danger" v-html="form.errors.get('password')" />
 
                                 </div>
-                                        <router-link to="verify" v-show="show_verification_mail" style="color:#60c1f1; cursor:pointer">Activate Your Account</router-link>
+                                        <router-link to="verify" v-show="show_verification_mail" style="color:#60c1f1; cursor:pointer" class="pb-4">Activate Your Account</router-link>
                                 <div class="col-6">
                                     <input type="submit" :disabled="form.busy" value="Login" class="form-control" id="register">
                                 </div>

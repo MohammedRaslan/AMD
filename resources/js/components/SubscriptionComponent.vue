@@ -1,6 +1,6 @@
 <template>
     <div>
-             <!-- Breadcrumb Section Begin -->
+        <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
             <div class="row">
@@ -25,82 +25,85 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="subscriptions">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h2>SUBSCRIPTION PLANS</h2>
-                        <!-- <p class="title">Home is behind, the world ahead and there are many paths to tread through shadows to the edge.</p> -->
-                    </div>                    
-                </div>
-                <div class="row price-row">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                       <div class="inner">
-                           <p class="type">Regular Membership </p>
-                           <h3>FREE</h3>
-                           <hr>
-                           <p>50 Free Listings monthly</p>
-                           <p>Selling Fee 9% unlimited <br> final value fee.</p>
-                           <p> - </p>
-                           <p> - </p>
-                           <a href="#" class="btn bg-white">Get Started</a>
-                       </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                       <div class="inner">
-                           <p class="type">Silver Membership</p>
-                           <h3>$ 19.99 /mo</h3>
-                           <hr>
-                           <p>100 Free Listings Monthly</p>
-                           <p>7% final value fee on the first 10 items sold.</p>
-                           <p>Unlimited 8% final value fee on the 11th item sold </p>
-                                                      <p> - </p>
-
-                           <a href="#" class="btn bg-white">Get Started</a>
-                       </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                       <div class="inner">
-                           <p class="type"> Gold Membership  </p>
-                            <h3>$ 49.99 /mo</h3>
-                           <hr>
-                           <p>250 Free Listings</p>
-                           <p>No final value fee on the first 2 items sold</p>
-                           <p>Unlimited 7% final value fee on the 3rd item sold </p>
-                                                      <p> - </p>
-
-                           <a href="#" class="btn bg-white">Get Started</a>
-                       </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                       <div class="inner">
-                           <p class="type">Platinum Membership</p>
-                           <h3>$ 99.99 /mo</h3>
-                           <hr>
-                           <p>500 Free Listings</p>
-                           <p>No final value fee on the first 5 items sold</p>
-                           <p>5% final value fee on the next 25 items sold</p>
-                           <p>Unlimited 7% final value fee on the 31st item sold</p>
-                           <a href="#" class="btn bg-white">Get Started</a>
-                       </div>
-                    </div>
-
-                </div>
-                <div class="row bot-row">
-                    <div class="col-5 d-none d-lg-block">
-                        <img :src="'FrontEnd/images/sub-03.png'" alt="">
-                        <img :src="'FrontEnd/images/sub-02.png'" alt="">
-                        <img :src="'FrontEnd/images/sub-01.png'" alt="">
-                    </div>
-                    <!-- <div class="col-lg-7 col-sm-12">
-                        <div class="inner-box">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasct, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife</p>
-                        </div>
-                    </div> -->
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 offset-lg-2">
+                    <h2>SUBSCRIPTION PLANS</h2>
+                    <!--<p class="title">Home is behind, the world ahead and there are many paths to tread through shadows to the edge.</p>-->
                 </div>
             </div>
+            <div class="row price-row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner first">
+                        <p class="type">Regular Membership</p>
+                        <h3>FREE</h3>
+                        <hr>
+                        <p><span class="data"></span> 50 Free Listings monthly</p>
+                        <p><span class="data"></span> Selling Fee 9% unlimited
+                            <br>
+                            final value fee.</p>
+                        <p>-</p>
+                        <p>-</p>
+                        <a href="#" class="btn bg-white">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner second">
+                        <p class="type">Silver Membership</p>
+                        <h3>$ 19.99 /mo</h3>
+                        <hr>
+                        <p><span class="data data2"></span>100 Free Listings Monthly</p>
+                        <p><span class="data data2"></span>7% final value fee on the first 10 items sold.</p>
+                        <p><span class="data data2"></span>Unlimited 8% final value fee on the 11th item sold</p>
+                        <p>-</p>
+                        <a href="#" class="btn bg-white">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner third">
+                        <p class="type">Gold Membership</p>
+                        <h3>$ 49.99 /mo</h3>
+                        <hr>
+                        <p><span class="data data2"></span>250 Free Listings</p>
+                        <p><span class="data data2"></span>No final value fee on the first 2 items sold</p>
+                        <p><span class="data data2"></span>Unlimited 7% final value fee on the 3rd item sold</p>
+                        <p>-</p>
+                        <a href="#" class="btn bg-white">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner fourth">
+                        <p class="type">Platinum Membership</p>
+                        <h3>$ 99.99 /mo</h3>
+                        <hr>
+                        <p><span class="data data2"></span>500 Free Listings</p>
+                        <p><span class="data data2"></span>No final value fee on the first 5 items sold</p>
+                        <p><span class="data data2"></span>5% final value fee on the next 25 items sold</p>
+                        <p><span class="data data2"></span>Unlimited 7% final value fee on the 31st item sold</p>
+                        <a href="#" class="btn bg-white">Get Started</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row bot-row">
+                <div class="col-5 d-none d-lg-block">
+                    <img :src="'FrontEnd/images/sub-03.png'" alt="">
+                    <img src="'FrontEnd/images/sub-02.png'" alt="">
+                    <img src="'FrontEnd/images/sub-01.png'" alt="">
+                </div>
+                <div class="col-lg-7 col-sm-12">
+                    <div class="inner-box">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasct, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis
+                            vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Latest Blog Section End -->
+
+
 
     </div>
 </template>

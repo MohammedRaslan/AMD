@@ -64,6 +64,16 @@
     border-color: #ededed;
     color: #999;
     pointer-events: none; }
+    .nice-select.open ul.list li:nth-child(1){
+      display: none !important;
+    }
+    .nice-select.open ul.list li.focus{
+      pointer-events: none !important;
+      color: #999;
+     
+    }
+
+    
     .nice-select.disabled:after {
       border-color: #cccccc; }
   .nice-select.wide {
@@ -123,7 +133,9 @@
     -webkit-transition: all 0.2s;
     transition: all 0.2s; }
     .nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
-      background-color: #f6f6f6; }
+      background-color: #f6f6f6;
+    
+    }
     .nice-select .option.selected {
       font-weight: bold; }
     .nice-select .option.disabled {
