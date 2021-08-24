@@ -34,6 +34,18 @@ class LoginController extends Controller
         if(array_key_exists('message',$data)){
             return response(['message' => $data['message']]);
         }
-        return response(['user' => $data['user'], 'access_token' => $data['token']]);
+        return response(['user' => $data['user'], 'access_token' => $data['token'], 'is_verified' => $data['is_verified']]);
+    }
+
+    public function verifyMail(Request $request)
+    {
+        $data = $this->userService->verifyMail($request->email);
+        return response()->json($data);
+    }
+
+    public function verifyCode(Request $request)
+    {
+        $data = $this->userService->verifyCode($request->code,$request->email);
+        return response()->json($data);
     }
 }

@@ -1,29 +1,30 @@
 <?php
 
+use App\Models\Cms;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Enums\ProductCondition;
-use App\Http\Controllers\AboutController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BidController;
+use App\Http\Controllers\CmsController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TestMailController;
+use App\Http\Controllers\WishlistController;
+use App\Repositories\NotificationRepository;
+use App\Http\Controllers\BestOfferController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\BestOfferController;
-use App\Http\Controllers\BidController;
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\CmsController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FaqController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\WishlistController;
-use App\Models\Cms;
-use App\Repositories\NotificationRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/custom-login', [LoginController::class,'custom_login']);
 Route::post('/register',[RegisterController::class,'register']);
+Route::post('/verifyMail',[LoginController::class,'verifyMail']);
+Route::post('/verifyCode',[LoginController::class,'verifyCode']);
 Route::get('checkUser/{email?}',[UserController::class,'checkUser']);
-
+Route::post('testMail',[TestMailController::class,'test']);
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/getUsers',[UserController::class,'getUsers']);
