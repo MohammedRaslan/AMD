@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
@@ -44,7 +45,7 @@
                             final value fee.</p>
                         <p>-</p>
                         <p>-</p>
-                        <a href="#" class="btn bg-white">Get Started</a>
+                        <router-link to="/subscriptions/free" class="btn bg-white"> Get Started</router-link>
                     </div>
                 </div>
 
@@ -57,7 +58,7 @@
                         <p><span class="data data2"></span>7% final value fee on the first 10 items sold.</p>
                         <p><span class="data data2"></span>Unlimited 8% final value fee on the 11th item sold</p>
                         <p>-</p>
-                        <a href="#" class="btn bg-white">Get Started</a>
+                        <router-link to="/subscriptions/silver" class="btn bg-white">Get Started</router-link>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
@@ -69,7 +70,7 @@
                         <p><span class="data data2"></span>No final value fee on the first 2 items sold</p>
                         <p><span class="data data2"></span>Unlimited 7% final value fee on the 3rd item sold</p>
                         <p>-</p>
-                        <a href="#" class="btn bg-white">Get Started</a>
+                        <router-link to="/subscriptions/gold" class="btn bg-white">Get Started</router-link>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
@@ -81,7 +82,7 @@
                         <p><span class="data data2"></span>No final value fee on the first 5 items sold</p>
                         <p><span class="data data2"></span>5% final value fee on the next 25 items sold</p>
                         <p><span class="data data2"></span>Unlimited 7% final value fee on the 31st item sold</p>
-                        <a href="#" class="btn bg-white">Get Started</a>
+                        <router-link to="/subscriptions/platinum" class="btn bg-white">Get Started</router-link>
                     </div>
                 </div>
 
@@ -113,6 +114,7 @@
 export default ({
     mounted() {
         Fire.$emit('mounted');
-    },
-})
+    }
+
+});
 </script>

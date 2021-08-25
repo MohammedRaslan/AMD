@@ -45,6 +45,8 @@
 </style>
 
 <body>
+    {{-- @if(Request::is('subscriptions') ) --}}
+
     <div id="app">
         <!-- Page Preloder -->
 
@@ -286,6 +288,7 @@
 
         <!-- Js Plugins -->
     </div>
+
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap5.bundle.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery.nice-select.min.js" defer></script>

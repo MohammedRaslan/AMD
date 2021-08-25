@@ -14,6 +14,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TestMailController;
@@ -46,6 +47,7 @@ Route::post('/register',[RegisterController::class,'register']);
 Route::post('/verifyMail',[LoginController::class,'verifyMail']);
 Route::post('/verifyCode',[LoginController::class,'verifyCode']);
 Route::get('checkUser/{email?}',[UserController::class,'checkUser']);
+Route::post('/paypal/purchase/subscription',[PayPalController::class,'Join_subscription']);
 Route::post('testMail',[TestMailController::class,'test']);
 Route::middleware('auth:api')->group(function () {
 

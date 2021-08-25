@@ -121,6 +121,7 @@
                     </div>
                </div>
            </div>
+           
         </div>
     </section>
     <!-- Product Section End -->
@@ -201,4 +202,5 @@ export default({
    
     }
 })
+
 </script>

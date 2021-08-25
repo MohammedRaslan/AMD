@@ -28,6 +28,10 @@ class User extends Authenticatable
         'type',
         'role',
         'image',
+        'user_product_quantity',
+        'subscription_product_quantity',
+        'subscription_end_at',
+        'subscription_type',
     ];
 
     /**
@@ -47,6 +51,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'subscription_end_at' => 'datetime',
     ];
 
     public function cart()

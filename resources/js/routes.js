@@ -32,6 +32,10 @@ import TermsComponent from "./components/TermsAndConditions.vue";
 import AdminAboutComponent from "./components/Admin/AboutComponent.vue"
 import CmsComponent from "./components/Admin/CmsComponent.vue";
 import ContactComponent from "./components/ContactCompontent.vue";
+import FreeSubscriptionComponent from "./components/subscriptions/FreeSubscriptionComponent.vue";
+import SilverSubscriptionComponent from "./components/subscriptions/SilverSubscriptionComponent.vue";
+import GoldSubscriptionComponent from "./components/subscriptions/GoldSubscriptionComponent.vue";
+import PlatinumSubscriptionComponent from "./components/subscriptions/PlatinumSubscriptionComponent.vue";
 
 
 var routes = [{
@@ -133,6 +137,26 @@ var routes = [{
         path: "/subscriptions",
         component: FrontSubscriptionsComponent,
         name: "FrontSubscriptionsComponent",
+    },
+    {
+        path: "/subscriptions/free",
+        component: FreeSubscriptionComponent,
+        name: "FreeSubscriptionComponent",
+    },
+    {
+        path: "/subscriptions/silver",
+        component: SilverSubscriptionComponent,
+        name: "FreeSubscriptionComponent",
+    },
+    {
+        path: "/subscriptions/gold",
+        component: GoldSubscriptionComponent,
+        name: "FreeSubscriptionComponent",
+    },
+    {
+        path: "/subscriptions/platinum",
+        component: PlatinumSubscriptionComponent,
+        name: "FreeSubscriptionComponent",
     },
 
     // ADMIN ROUTES

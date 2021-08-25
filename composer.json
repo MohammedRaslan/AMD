@@ -16,6 +16,7 @@
         "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "paypal/rest-api-sdk-php": "^1.14",
         "pusher/pusher-php-server": "~4.0",
         "sendpulse/rest-api": "^1.0"
     },

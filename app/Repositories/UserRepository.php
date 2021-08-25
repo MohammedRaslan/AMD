@@ -40,6 +40,9 @@ class UserRepository{
             'image'     => $request['image'],
             'type' => 1,
             'role' => 1,
+            'subscription_type' => 'FREE',
+            'subscription_product_quantity' => 50,
+            'subscription_end_at' => now()->addMonth(),
         ]);
         $userData = [
             'name' => $user->user_name,
@@ -181,6 +184,9 @@ class UserRepository{
             'phone'      => $request['phone'],
             'role' => $request['role'],
             'type' => 1,
+            'subscription_type' => 'FREE',
+            'subscription_product_quantity' => 50,
+            'subscription_end_at' => now()->addMonth(),
         ]);
         $userData = [
             'id' => $user->id,
