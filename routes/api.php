@@ -57,6 +57,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/getCategories',[CategoryController::class,'getCategories']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
     Route::get('checkAdmin',[UserController::class,'checkAdmin']);
+    Route::post('/getCurrentSubscription',[SubscriptionController::class,'getCurrentSubscription']);
 
     Route::prefix('about')->group(function(){
         Route::post('store',[AboutController::class,'store']);

@@ -187,6 +187,7 @@ class UserRepository{
             'subscription_type' => 'FREE',
             'subscription_product_quantity' => 50,
             'subscription_end_at' => now()->addMonth(),
+            'subscription_duration' => 'monthly',
         ]);
         $userData = [
             'id' => $user->id,

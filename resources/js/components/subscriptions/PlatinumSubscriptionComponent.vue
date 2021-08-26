@@ -37,12 +37,20 @@
                             <li>5% final value fee on the next 25 items sold</li>
                             <li>Unlimited 7% final value fee on the 31st item sold</li>
                         </ul> 
+                        <small class="text-white">(Get one month free annually when you purchase a yearly subscription of: $1,099.89)</small>
                         <h3 style="color: white;">Terms and Conditions</h3>
-                        <p class="terms-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor,
-                            placeat ipsa quas quod deleniti soluta quis?
-                            Nemo quod assumenda aut aliquam dicta dolores totam recusandae in, quae cupiditate cum culpa!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio a eius, corporis distinctio debitis pariatur earum 
-                            aut iusto maxime possimus nesciunt eaque ad voluptatibus! Dolore labore assumenda temporibus aut tenetur.
+                        <p class="terms-text">
+                            * Any change/cancellation to the membership will take effect as of the following month
+                                of subscription.
+                                * If you decide to cancel a monthly subscription after the start of the subscription month,
+                                no refunds will be issued. Your membership will change to the free regular membership
+                                as of the following subscription month.
+                                * Yearly subscriptions are NON-REFUNDABLE
+                                * If you choose to upgrade your yearly membership to a higher tier, the upgrade will be
+                                effective as of the following month. The extra cost for the remaining months in
+                                the subscription year will be charged to your original method of payment.
+                                * If you choose to downgrade your yearly membership to a lower tier, no refund will be
+                                issued.
                         </p>
             
                         <!-- Subscribe Button -->
@@ -50,18 +58,18 @@
                         <div class="col-6">
                             <div class="d-flex">
                                 <label for="f-option" class="l-radio">
-                                <input type="radio" id="f-option" name="selector" tabindex="1"  checked>
+                                <input type="radio"  value="1,099.89" id="f-option" name="selector" tabindex="1"  checked>
                                 <span>Annual</span>
                                 </label>
-                                <p class="text-white pt-2">20 $</p>
+                                <p class="text-white pt-2">$ 1,099.89</p>
 
                             </div>
                             <div class="d-flex">
                                 <label for="s-option" class="l-radio">
-                                    <input type="radio" id="s-option" name="selector" tabindex="2" >
+                                    <input type="radio" value="99.99" id="s-option" name="selector" tabindex="2" >
                                     <span>Monthly</span>
                                 </label>
-                                 <p class="text-white pt-2">20 $</p>
+                                 <p class="text-white pt-2">$ 99.99</p>
                             </div>
                             
                         </div>
@@ -97,10 +105,15 @@ loadAsync('https://www.paypal.com/sdk/js?client-id=AUuivy3A41GeLf_nxhIVY4QyW9rPn
 
     // Set up the transaction
     createOrder: function(data, actions) {
+     if(document.getElementById('f-option').checked){
+          var amount = document.getElementById('f-option').value;
+      }else{
+          var amount = document.getElementById('s-option').value;
+      }
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: '20.0'
+                    value: amount
                 }
             }]
         });
@@ -108,18 +121,34 @@ loadAsync('https://www.paypal.com/sdk/js?client-id=AUuivy3A41GeLf_nxhIVY4QyW9rPn
 
     // Finalize the transaction
     onApprove: function(data, actions) {
+        var email = JSON.parse(localStorage.getItem('currentUser'))['email'];
+        if(document.getElementById('f-option').checked){
+            var type   = 'annual';
+        }else{
+            var type   = 'monthly';
+        }
         return actions.order.capture().then(function(details) {
             // Show a success message to the buyer
-            alert('Transaction completed by ' + details.payer.name.given_name);
-                return fetch('/api/paypal/purchase/subscription', {
+            // alert('Transaction completed by ' + details.payer.name.given_name);
+                let api = fetch('/api/paypal/purchase/subscription', {
                         method: 'post',
                         headers: {
                             'content-type': 'application/json'
                         },
                         body: JSON.stringify({
-                            orderID: data.orderID
+                            orderID: data.orderID,
+                            details: details,
+                            type: type,
+                            subscription_name:'platinum',
+                            email: email,
+                            quantity: 500,
                         })
-                    })
+                    });
+                    api.then(response => {
+                        if(response.status == 200){
+                            window.location.href =  '/subscriptions';
+                        }
+            })
         });
     }
 

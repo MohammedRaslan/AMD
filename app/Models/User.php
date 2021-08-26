@@ -32,6 +32,7 @@ class User extends Authenticatable
         'subscription_product_quantity',
         'subscription_end_at',
         'subscription_type',
+        'subscription_duration',
     ];
 
     /**

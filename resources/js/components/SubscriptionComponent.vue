@@ -35,7 +35,7 @@
             </div>
             <div class="row price-row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner first">
+                    <div class="inner first" id="first">
                         <p class="type">Regular Membership</p>
                         <h3>FREE</h3>
                         <hr>
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner second">
+                    <div class="inner second" id="second">
                         <p class="type">Silver Membership</p>
                         <h3>$ 19.99 /mo</h3>
                         <hr>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner third">
+                    <div class="inner third" id="third">
                         <p class="type">Gold Membership</p>
                         <h3>$ 49.99 /mo</h3>
                         <hr>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner fourth">
+                    <div class="inner fourth" id="fourth">
                         <p class="type">Platinum Membership</p>
                         <h3>$ 99.99 /mo</h3>
                         <hr>
@@ -108,12 +108,177 @@
 
     </div>
 </template>
+<style scoped>
+/*********** first active*************************/
+   .subscriptions .price-row>div .inner.first.first-hover{
+        background-color: #22B3EB;
+        z-index: 1;
+    }
+.subscriptions .price-row>div .inner.first.first-hover span.data{
+        display: none;
+    }
 
+    .subscriptions .price-row>div:last-of-type .inner.first.first-hover{
+        transform: translate(2px , -47px);
+    }
+
+    .subscriptions .price-row>div .inner.first.first-hover{
+        padding-top: 55px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        height: 100%;
+    }
+
+    .subscriptions .price-row>div .inner.first.first-hover{
+
+        position: absolute;
+        height: auto;
+        width: 100%;
+        border-radius: 23px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        background-position: bottom;
+        transform: translate(-2px , -47px);
+    }
+
+     .subscriptions .price-row>div .inner.first.first-hover a{
+         display: block;
+         padding-top: 5px;
+     }
+/************** end first active******************************** */
+
+/*********** second active*************************/
+   .subscriptions .price-row>div .inner.second.second-hover{
+        background-color: #A705E0;
+        z-index: 1;
+    }
+.subscriptions .price-row>div .inner.second.second-hover span.data{
+        display: none;
+    }
+
+    .subscriptions .price-row>div:last-of-type .inner.second.second-hover{
+        transform: translate(2px , -47px);
+    }
+
+    .subscriptions .price-row>div .inner.second.second-hover{
+        padding-top: 55px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        height: 100%;
+    }
+
+    .subscriptions .price-row>div .inner.second.second-hover{
+
+        position: absolute;
+        height: auto;
+        width: 100%;
+        border-radius: 23px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        background-position: bottom;
+        transform: translate(-2px , -47px);
+    }
+
+     .subscriptions .price-row>div .inner.second.second-hover a{
+         display: block;
+         padding-top: 5px;
+     }
+/************** end second active******************************** */
+    /*********** third active*************************/
+   .subscriptions .price-row>div .inner.third.third-hover{
+        background-color: #F31A6C;
+        z-index: 1;
+    }
+.subscriptions .price-row>div .inner.third.third-hover span.data{
+        display: none;
+    }
+
+    .subscriptions .price-row>div:last-of-type .inner.third.third-hover{
+        transform: translate(2px , -47px);
+    }
+
+    .subscriptions .price-row>div .inner.third.third-hover{
+        padding-top: 55px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        height: 100%;
+    }
+
+    .subscriptions .price-row>div .inner.third.third-hover{
+
+        position: absolute;
+        height: auto;
+        width: 100%;
+        border-radius: 23px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        background-position: bottom;
+        transform: translate(-2px , -47px);
+    }
+
+     .subscriptions .price-row>div .inner.third.third-hover a{
+         display: block;
+         padding-top: 5px;
+     }
+/************** end third active******************************** */
+
+/*********** fourth active*************************/
+   .subscriptions .price-row>div .inner.fourth.fourth-hover{
+        background-color: #fecc2f;
+        z-index: 1;
+    }
+.subscriptions .price-row>div .inner.fourth.fourth-hover span.data{
+        display: none;
+    }
+
+    .subscriptions .price-row>div:last-of-type .inner.fourth.fourth-hover{
+        transform: translate(2px , -47px);
+    }
+
+    .subscriptions .price-row>div .inner.fourth.fourth-hover{
+        padding-top: 55px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        height: 100%;
+    }
+
+    .subscriptions .price-row>div .inner.fourth.fourth-hover{
+
+        position: absolute;
+        height: auto;
+        width: 100%;
+        border-radius: 23px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        background-position: bottom;
+        transform: translate(-2px , -47px);
+    }
+
+     .subscriptions .price-row>div .inner.fourth.fourth-hover a{
+         display: block;
+         padding-top: 5px;
+     }
+/************** end forth active******************************** */
+    
+   
+</style>
 <script>
 
 export default ({
     mounted() {
         Fire.$emit('mounted');
+        
+        axios.post('/api/getCurrentSubscription').then((response) => {
+            if(response.data.subscription == 'FREE'){
+                document.getElementById('first').className += ' first-hover';
+            }else if(response.data.subscription == 'SILVER'){
+                document.getElementById('second').className += ' second-hover';
+            }else if(response.data.subscription == 'GOLD'){
+                document.getElementById('third').className += ' third-hover';
+            }else if(response.data.subscription == 'PLATINUM'){
+                document.getElementById('third').className += ' fourth-hover';
+            }
+        });
     }
 
 });

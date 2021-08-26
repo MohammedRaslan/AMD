@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use App\Models\Subscription;
-use App\Services\SubscriptionService;
 use Illuminate\Http\Request;
+use App\Services\SubscriptionService;
 
 class SubscriptionController extends Controller
 {
@@ -17,6 +19,15 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $data = $this->subscriptionService->store($request->all());
+    }
+
+    public function getCurrentSubscription(Request $request)
+    {
+       
+        $subscription = $request->user()->subscription_type;
+        return response()->json([
+            'subscription' => Str::upper($subscription),
+        ]);
     }
 
     public function getSubscriptions(Request $request){
