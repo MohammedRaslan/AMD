@@ -56,6 +56,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/getAbouts',[AboutController::class,'getAbouts']);
     Route::get('/getCategories',[CategoryController::class,'getCategories']);
     Route::get('/getSubscriptions',[SubscriptionController::class,'getSubscriptions']);
+    Route::post('/cancelSubscription',[PayPalController::class,'cancel_subscsription']);
     Route::get('checkAdmin',[UserController::class,'checkAdmin']);
     Route::post('/getCurrentSubscription',[SubscriptionController::class,'getCurrentSubscription']);
 

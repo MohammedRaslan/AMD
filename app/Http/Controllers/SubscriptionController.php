@@ -25,8 +25,10 @@ class SubscriptionController extends Controller
     {
        
         $subscription = $request->user()->subscription_type;
+        $duration = $request->user()->subscription_duration;
         return response()->json([
             'subscription' => Str::upper($subscription),
+            'duration' => $duration,
         ]);
     }
 

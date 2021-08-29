@@ -267,16 +267,15 @@
 export default ({
     mounted() {
         Fire.$emit('mounted');
-        
         axios.post('/api/getCurrentSubscription').then((response) => {
-            if(response.data.subscription == 'FREE'){
+            if(response.data.subscription == 'FREE' || response.data.subscription == '' ){
                 document.getElementById('first').className += ' first-hover';
             }else if(response.data.subscription == 'SILVER'){
                 document.getElementById('second').className += ' second-hover';
             }else if(response.data.subscription == 'GOLD'){
                 document.getElementById('third').className += ' third-hover';
             }else if(response.data.subscription == 'PLATINUM'){
-                document.getElementById('third').className += ' fourth-hover';
+                document.getElementById('fourth').className += ' fourth-hover';
             }
         });
     }

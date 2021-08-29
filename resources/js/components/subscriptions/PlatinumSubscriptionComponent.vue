@@ -54,7 +54,7 @@
                         </p>
             
                         <!-- Subscribe Button -->
-                               <div class="row">
+                    <div class="row" v-show="subscriped == false && load || open_paypal_for_annual== true">
                         <div class="col-6">
                             <div class="d-flex">
                                 <label for="f-option" class="l-radio">
@@ -64,7 +64,7 @@
                                 <p class="text-white pt-2">$ 1,099.89</p>
 
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex" :style="[open_paypal_for_annual ? {'display' : 'none !important'}: '']">
                                 <label for="s-option" class="l-radio">
                                     <input type="radio" value="99.99" id="s-option" name="selector" tabindex="2" >
                                     <span>Monthly</span>
@@ -74,6 +74,36 @@
                             
                         </div>
                         <div class="col-6 float-right" id="paypal-button-container"></div>
+                    </div>
+                       <div class="row pb-5 buttons" v-show="subscriped && load" >
+
+                        <div class="row mb-3">
+                            <div class="col-12">
+                            <div class="col-6" :class="[change_to_annual ? 'active' : '']">
+                                <h5 class="text-white text-center" v-if="change_to_annual">Your Subscription Is</h5>
+                                <h5 class="text-white text-center" v-else>Monthly Subscription</h5>
+                                <h3 class="text-white mb-2">$ {{ monthly  }} <small class="_19-px">(Monthly)</small> </h3>
+                            </div>
+                            <div class="col-6"   :class="[!change_to_annual ? 'active' : '']">
+                                <h5 class="text-white text-center" v-if="!change_to_annual">Your Subscription Is</h5>
+                                <h5 class="text-white text-center" v-else>Annual Subscription</h5>
+                                    <h3 class="text-white mb-2">$ {{ annual }} <small class="_19-px">(Annual)</small></h3>
+                                    <button v-show="change_to_annual" class="btn btn-milky" @click="open_paypal_for_annual_function">Change To Annual</button>
+                            </div>
+                            </div>
+                
+                        </div>
+                    
+                        <div class="col-12 pr-5" style="display: flex !important; justify-content: center;">
+                            <a href="#" class="pink">
+                                <button> <router-link to="/subscriptions" style="text-decoration: none;color: white;">Upgrade</router-link> </button>
+                            </a>
+            
+                            <a href="#" class="blue">
+                                <button @click="cancel_subscription">Cancel</button>
+                            </a>
+            
+                        </div>
                     </div>
                     </div>
 
@@ -90,9 +120,48 @@
 
     </div>
 </template>
+<style scoped>
+    .active{
+        background-color: #1c72a8 !important;
+    }
+    ._19-px{
+        font-size: 19px !important;
+    }
+</style>
 <script>
 export default ({
+    data: () => ({
+        subscriped: false,
+        load: false,
+        monthly: 99.99,
+        annual : 1099.89,
+        change_to_annual: false,
+        open_paypal_for_annual: false,
+    }),
+    methods:{
+        cancel_subscription: function(){
+            axios.post('/api/cancelSubscription').then((response) => {
+                if(response.data.status){
+                    this.subscriped = false;
+                }
+            });
+        },
+          open_paypal_for_annual_function: function(){
+            this.open_paypal_for_annual = true;
+            this.subscriped = false;
+        }
+    },
     mounted() {
+        axios.post('/api/getCurrentSubscription').then((response) => {
+             if(response.data.subscription == 'PLATINUM'){
+                 this.subscriped = true;
+             }
+            if(response.data.duration == 'monthly'){
+                 this.change_to_annual = true;
+             }
+                 this.load = true;
+
+        });
         Fire.$emit('mounted');
         function loadAsync(url, callback) {
             var s = document.createElement('script');

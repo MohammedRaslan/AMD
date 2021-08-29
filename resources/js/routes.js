@@ -146,17 +146,17 @@ var routes = [{
     {
         path: "/subscriptions/silver",
         component: SilverSubscriptionComponent,
-        name: "FreeSubscriptionComponent",
+        name: "SilverSubscriptionComponent",
     },
     {
         path: "/subscriptions/gold",
         component: GoldSubscriptionComponent,
-        name: "FreeSubscriptionComponent",
+        name: "GoldSubscriptionComponent",
     },
     {
         path: "/subscriptions/platinum",
         component: PlatinumSubscriptionComponent,
-        name: "FreeSubscriptionComponent",
+        name: "PlatinumSubscriptionComponent",
     },
 
     // ADMIN ROUTES

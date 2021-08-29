@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -24,11 +25,20 @@ class PayPalController extends Controller
         $user->subscription_product_quantity = $order['quantity'];
         $user->subscription_type = Str::upper($order['subscription_name']);
         $user->subscription_duration = $order['type'];
-        if($order['type'] == 'monthly'){
-            $user->subscription_end_at = now()->addMonth();
-        }else{
-            $user->subscription_end_at = now()->addMonths(13);
+        if($user->subscription_duration != NULL){
+            if($order['type'] == 'monthly'){
+                $user->subscription_end_at = Carbon::parse($user->subscription_end_at)->addMonth();
+            }else{
+                $user->subscription_end_at = Carbon::parse($user->subscription_end_at)->addMonths(13);
+            }
+        }elseif($user->subscription_duration == null){
+            if($order['type'] == 'monthly'){
+                $user->subscription_end_at = Carbon::now()->addMonth();
+            }else{
+                $user->subscription_end_at = Carbon::now()->addMonths(13);
+            }
         }
+       
         if($user->save()){
             return response()->json([
                 'status_api' => true,
@@ -38,5 +48,23 @@ class PayPalController extends Controller
             'status_api' => false,
         ]);
 
+    }
+
+    public function cancel_subscsription(Request $request)
+    {
+        $user = User::find($request->user()->id);
+        $user->subscription_product_quantity = 50;
+        $user->subscription_type = 'FREE';
+        $user->subscription_duration = 'monthly';
+        $user->subscription_end_at = now()->addMonth();
+        $user->user_product_quantity = 0;
+        if($user->save()){
+            return response()->json([
+                'status' => true,
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+        ]);
     }
 }
