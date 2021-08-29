@@ -158,7 +158,7 @@ export default ({
                if(response.data.duration == 'monthly'){
                  this.change_to_annual = true;
              }
-                 this.load = true;
+            this.load = true;
         });
         Fire.$emit('mounted');
         function loadAsync(url, callback) {
