@@ -15,7 +15,7 @@
     <div class="container">
         <div class="logo-placeholder">
             <img class="logo" src="{{ asset('FrontEnd/Soon/Logo.png') }}" alt="logo">
-            <h1>Coming Soon!</h1>
+            <h1>under construction!</h1>
         </div>
     </div>
 </body>
