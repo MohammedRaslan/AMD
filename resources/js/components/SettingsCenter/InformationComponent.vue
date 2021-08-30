@@ -122,7 +122,6 @@
                                                 class="form-control mb-3"
                                                 id="password"
                                                 placeholder="Password"
-                                                required
                                             />
                                             <div
                                                 v-if="form.errors.has('password')"
@@ -247,7 +246,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 d-sm-block d-md-block  d-lg-none  mt-4">
-                                            <input type="submit" value="  Register" class="form-control" id="register">
+                                            <input type="submit" value="Update Info" class="form-control" id="register">
                                         </div>
                                     </div>
                                     <!--end right side -->
