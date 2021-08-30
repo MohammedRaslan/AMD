@@ -414,9 +414,8 @@
                         "{{ first_name }}"
                       </span></span
                     >
-                    <a class="" href="#"
-                      ><span>{{ name }}</span></a
-                    >
+                    <router-link class="" to="/settings"
+                      ><span>{{ name }}</span></router-link>
                   </div>
                   <div class="dropdown drop-user1">
                     <button
