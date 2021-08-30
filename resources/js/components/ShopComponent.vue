@@ -34,8 +34,18 @@
                 <div class="sort row select-dolls">
                     <div class="inner-sort col-sm-6 col-6">
                         <div class="nice-select form-select1" tabindex="0">
+                            <span class="current">Filter by</span>
+                            <ul class="list">
+                                <li data-value="Price Low to High" class="option selected">Price Low to High</li>
+                                <li data-value="1" class="option">Price High to Low</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="inner-sort col-sm-6 col-6">
+                        <div class="nice-select form-select1" tabindex="0">
                             <span class="current">Price Low to High</span>
                             <ul class="list">
+                                <li>Sort by</li>
                                 <li data-value="Price Low to High" class="option selected">Price Low to High</li>
                                 <li data-value="1" class="option">Price High to Low</li>
                             </ul>

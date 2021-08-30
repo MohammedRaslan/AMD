@@ -37,7 +37,6 @@ class UserController extends Controller
         $projects = $query->paginate($length);
         return ['data' => $projects, 'draw' => $request->input('draw')];
     }
-    
 
     public function checkAdmin(Request $request)
     {
@@ -53,10 +52,20 @@ class UserController extends Controller
         return response()->json($data);
     }
 
-    public function getUserInfo($id)
+    public function getUserInfo($id = null,Request $request)
     {
-        $user = $this->userService->getUserInfo($id);
+        if($id != null){
+            $user = $this->userService->getUserInfo($id);
+        }else{
+            $user = $request->user();
+        }
         return response()->json($user);
+    }
+
+    public function updateUserInfo(Request $request)
+    {
+        $response = $this->userService->updateUserInfo($request->user()->id, $request->all());
+        return response()->json($response);
     }
 
     public function addNewUserFromAdmin(Request $request)
@@ -87,5 +96,13 @@ class UserController extends Controller
     {
         $data = $this->userService->sellerDefault($request->all(),$request->user()->id);
         return response()->json($data);
+    }
+
+    public function getFirstName(Request $request)
+    {
+        $first_name = $request->user()->first_name;
+        return response()->json([
+            'first_name' => $first_name == null ? null : $first_name,
+        ]);
     }
 }

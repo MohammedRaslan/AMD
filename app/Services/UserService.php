@@ -21,6 +21,11 @@ class UserService{
         return $result;
     }
 
+    public function updateUserInfo($id, $request)
+    {
+        return $this->userRepository->updateUserInfo($id, $request);
+    }
+
     public function login($request)
     {
         $logged = $this->userRepository->login($request->all());

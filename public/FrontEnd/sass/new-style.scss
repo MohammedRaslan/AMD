@@ -273,14 +273,22 @@
     .header_mobil_guest {
         @media (max-width: 620px) {
             height: 111px;
-            padding-top: 10px;
+            padding-top: 0px;
+            padding-left: 10px;
         }
     }
     
     .canvas__open_guest {
-        top: -56px !important;
-        position: absolute;
-        right: 12px;
+        top: -65px !important;
+        position: absolute !important;
+        right: 0px;
+        border: none;
+        a{
+            display: flex;
+            i{
+                margin-left: 8px;
+            }
+        }
         @media (min-width: 576px) {
             top: -15px !important;
         }
@@ -349,6 +357,7 @@
     }
     
     @import './shop-details';
+    @import './include/home';
     .c-position-static {
         position: static !important;
     }

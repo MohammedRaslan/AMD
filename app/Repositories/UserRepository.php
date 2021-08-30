@@ -109,6 +109,22 @@ class UserRepository{
         return false;
     }
 
+    public function updateUserInfo($id, $request)
+    {
+        $user = User::find($id);
+        $user->first_name = $request['first_name'];
+        $user->last_name = $request['last_name'];
+        $user->image = $request['image'];
+        if($request['password']){
+            $user->password = bcrypt($request['password']);
+        }
+        if($user->save()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function login($request)
     {
         $is_verified = false;

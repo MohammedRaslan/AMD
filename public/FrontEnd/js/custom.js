@@ -69,7 +69,7 @@ $(document).ready(function() {
     $(".notif-cont").slideUp()
     $(".notif-cont").slideUp("fast")
 
-    $(".btn-quantity").click(function() {
+    $(".btn-notification").click(function() {
             $(".notif-cont").slideToggle("fast")
         })
         // Notification nice-scroll
@@ -83,5 +83,12 @@ $(document).ready(function() {
     //     horizrailenabled: false,
     //     preventmultitouchscrolling: true
     // });
+
+    $(document).on('click','.dropdown-hero',function(){
+        console.log('xxx');
+        $this = $(this);
+        $this.css('display', 'block');
+        $this.children('ul').slideToggle();
+    });
 
 })

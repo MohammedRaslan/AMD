@@ -1,32 +1,11 @@
 <template>
 
            <router-link to="/cart/first-step" v-bind:class="[bell ? bellClass: '',relative]" href="#">
-                                 <svg fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title=" Shopping Cart">
-                                                    <g id="Group_38" data-name="Group 38"
-                                                        transform="translate(-826 -317)">
-                                                        <g id="Group_34" data-name="Group 34" transform="translate(-1)">
-                                                            <g id="Icon_20_Grey_Shopping_Cart"
-                                                                data-name="Icon / 20 / Grey / Shopping Cart"
-                                                                transform="translate(834.019 323.998)">
-                                                                <path id="Shape"
-                                                                    d="M2.252,4.742H4L1.408.369A.759.759,0,0,0,.375.1.731.731,0,0,0,.1,1.118Z"
-                                                                    transform="translate(11.776 1.009)"></path>
-                                                                <path id="Shape-2" data-name="Shape"
-                                                                    d="M3.9,1.116A.735.735,0,0,0,3.627.1.762.762,0,0,0,2.594.367L0,4.744H1.75Z"
-                                                                    transform="translate(4.193 1.011)"></path>
-                                                                <path id="Shape-3" data-name="Shape"
-                                                                    d="M15.156,11.9H4.549A1.74,1.74,0,0,1,2.922,10.51L1.685,3.918h-.4A1.273,1.273,0,0,1,0,2.658V1.26A1.273,1.273,0,0,1,1.283,0H18.676a1.278,1.278,0,0,1,1.287,1.256v1.4a1.273,1.273,0,0,1-1.282,1.26h-.652l-1.246,6.6A1.741,1.741,0,0,1,15.156,11.9Zm-1.8-7.172a.72.72,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.72.72,0,0,0,13.352,4.731Zm-2.327,0a.738.738,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.72.72,0,0,0,11.025,4.731Zm-2.341,0a.72.72,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.738.738,0,0,0,8.684,4.731Zm-2.327,0a.72.72,0,0,0-.725.713V9.431a.726.726,0,0,0,1.451,0V5.444A.72.72,0,0,0,6.357,4.731Z"
-                                                                    transform="translate(0 7.092)"></path>
-                                                            </g>
-                                                            <g id="Ellipse_46" data-name="Ellipse 46"
-                                                                transform="translate(827 317)" fill="none"
-                                                                stroke-width="1">
-                                                                <circle cx="17" cy="17" r="17" stroke="none"></circle>
-                                                                <circle cx="17" cy="17" r="16.5" fill="none"></circle>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </svg>
+                              
+                                                <div style="padding: 5px 2px 5px 0;" class="mesg" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Shopping Cart">
+
+                                                    <svg fill="#fff" height="22" viewBox="0 0 500 400" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m166 300.003906h271.003906c6.710938 0 12.597656-4.4375 14.414063-10.882812l60.003906-210.003906c1.289063-4.527344.40625-9.390626-2.433594-13.152344-2.84375-3.75-7.265625-5.964844-11.984375-5.964844h-365.632812l-10.722656-48.25c-1.523438-6.871094-7.617188-11.75-14.648438-11.75h-91c-8.289062 0-15 6.710938-15 15 0 8.292969 6.710938 15 15 15h78.960938l54.167968 243.75c-15.9375 6.929688-27.128906 22.792969-27.128906 41.253906 0 24.8125 20.1875 45 45 45h271.003906c8.292969 0 15-6.707031 15-15 0-8.289062-6.707031-15-15-15h-271.003906c-8.261719 0-15-6.722656-15-15s6.738281-15 15-15zm0 0"/><path d="m151 405.003906c0 24.816406 20.1875 45 45.003906 45 24.8125 0 45-20.183594 45-45 0-24.8125-20.1875-45-45-45-24.816406 0-45.003906 20.1875-45.003906 45zm0 0"/><path d="m362.003906 405.003906c0 24.816406 20.1875 45 45 45 24.816406 0 45-20.183594 45-45 0-24.8125-20.183594-45-45-45-24.8125 0-45 20.1875-45 45zm0 0"/></svg>
+                                                </div>
                                     <span v-show="number > 0" class="quantity-cart"></span>
                                </router-link>  
     

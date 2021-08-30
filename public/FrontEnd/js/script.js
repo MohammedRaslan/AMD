@@ -35,6 +35,8 @@ $(document).ready(function() {
         }
     );
 
+
+
     // $(".shop-details .owl-stage-outer").hover(function() {
     //     $(this).fadeOut(100);
     //     $(this).fadeIn(500);

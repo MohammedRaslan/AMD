@@ -275,7 +275,7 @@
         position: absolute;
         background-color: #fd1266;
         border-radius: 50%;
-        top: -15px;
+        top: -22px ;/*-15px;*/
         left: 20px;
         width: 18px;
         height: 18px;
@@ -739,7 +739,83 @@
         background-color: #22B3EB;
         z-index: 1;
     }
+
+    /*****************************************************/
+    .subscriptions .price-row>div .inner.first.active{
+        background-color: #22B3EB;
+        z-index: 1;
+    }
+
+    .subscriptions .price-row>div .inner.first.active span.data{
+        display: none;
+    }
+
+    .subscriptions .price-row>div:last-of-type .inner.first.active {
+        transform: translate(2px, -47px);
+    }
     
+    .subscriptions .price-row>div .inner.first.active {
+        padding-top: 55px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        height: 100%;
+    }
+    
+    .subscriptions .price-row>div .inner.first.active {
+        position: absolute;
+        height: auto;
+        width: 100%;
+        /*background: url("./../images/Plan-Bg.png");*/
+        border-radius: 23px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        background-position: bottom;
+        transform: translate(-2px, -47px);
+    }
+
+    .subscriptions .price-row>div .inner.first.active a{
+        display: block;
+        padding-top: 5px;
+    }
+    /******************************************************/
+    /*****************************************************/
+    .subscriptions .price-row>div .inner.second.active{
+        background-color: #A705E0;
+        z-index: 1;
+    }
+
+    .subscriptions .price-row>div .inner.second.active span.data{
+        display: none;
+    }
+
+    .subscriptions .price-row>div:last-of-type .inner.second.active {
+        transform: translate(2px, -47px);
+    }
+    
+    .subscriptions .price-row>div .inner.second.active {
+        padding-top: 55px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        height: 100%;
+    }
+    
+    .subscriptions .price-row>div .inner.second.active {
+        position: absolute;
+        height: auto;
+        width: 100%;
+        /*background: url("./../images/Plan-Bg.png");*/
+        border-radius: 23px;
+        transition: all 0.4s ease-in-out;
+        transition: padding 0.1s;
+        background-position: bottom;
+        transform: translate(-2px, -47px);
+    }
+
+    .subscriptions .price-row>div .inner.second.active a{
+        display: block;
+        padding-top: 5px;
+    }
+    /******************************************************/
     .subscriptions .price-row>div .inner.second:hover {
         background-color: #A705E0;
         z-index: 1;
@@ -3866,13 +3942,41 @@
     @media (min-width:541px) and (max-width:768px) {
         .header .notif-cont.notif-cont-mobile{    
             top: 110px !important;  
-            left:56% !important ; 
+            left:45% !important ; 
             }
     }
 
     @media (min-width:769px) and (max-width:1024px) {
         .header .notif-cont.notif-cont-mobile{    
             top: 88px !important;  
-            left:62% !important ; 
+            left:47% !important ; 
             }
     }
+
+    .btn-maroon {
+        /* background: #fd1266 !important; */
+        color: #fff;
+        height: 45px;
+        transition: 0.6s;
+    }
+
+    .fas.fa-sign-in-alt{
+        border: 1px solid #fff;
+        padding: 6px;
+        border-radius: 16px;
+    }
+    .btn-maroon:hover {
+        background-color: #F31A6C !important;
+        color: #fff !important;
+        height: 45px !important;
+    }
+
+    /************ hidden icons in home guest ****************/
+    ul.ul-home-guest li {
+        visibility: hidden !important;
+    }
+
+    ul.ul-home-guest-mobile li a:not(ul.ul-home-guest-mobile a.canvas__open , ul.ul-home-guest-mobile a.canvas__open span){
+        visibility: hidden !important;
+    }
+   

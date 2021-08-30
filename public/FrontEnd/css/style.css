@@ -3930,16 +3930,18 @@ ol {
 
 .mesg {
     display: inline-flex;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background-color: transparent;
     border: 1px solid #fff;
     justify-content: center;
     align-self: end;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 3px;
     cursor: pointer;
+    box-sizing: border-box;
+    padding: 5px;
 }
 
 
@@ -4343,4 +4345,22 @@ header .header__menu>ul>li:nth-of-type(2):hover {
       .mesg.mobile{
           margin-right: 0px !important;
       }
+}
+
+@media (min-width:280px) and (max-width:320px) {
+    .col-5.buy-side{
+        padding: 0 0 0 25px !important;
+    }
+
+    .col-5.sell-side{
+        padding: 0 25px 0 0 !important;
+    }
+
+    .col-5 button.pink{
+        padding: 9px 40px 8px !important
+    }
+
+    .col-5 .dropdown-hero{
+        padding: 0 10px 0 10px !important;
+    }
 }

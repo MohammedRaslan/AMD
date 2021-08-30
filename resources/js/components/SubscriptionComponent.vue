@@ -36,46 +36,46 @@
             <div class="row price-row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="inner first" id="first">
-                        <p class="type">Regular Membership</p>
+                        <p class="type">Regular</p>
                         <h3>FREE</h3>
                         <hr>
                         <p><span class="data"></span> 50 Free Listings monthly</p>
                         <p><span class="data"></span> Selling Fee 9% unlimited
                             <br>
                             final value fee.</p>
-                        <p>-</p>
-                        <p>-</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
                         <router-link to="/subscriptions/free" class="btn bg-white"> Get Started</router-link>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="inner second" id="second">
-                        <p class="type">Silver Membership</p>
+                        <p class="type">Silver</p>
                         <h3>$ 19.99 /mo</h3>
                         <hr>
                         <p><span class="data data2"></span>100 Free Listings Monthly</p>
                         <p><span class="data data2"></span>7% final value fee on the first 10 items sold.</p>
                         <p><span class="data data2"></span>Unlimited 8% final value fee on the 11th item sold</p>
-                        <p>-</p>
+                        <p>&nbsp;</p>
                         <router-link to="/subscriptions/silver" class="btn bg-white">Get Started</router-link>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="inner third" id="third">
-                        <p class="type">Gold Membership</p>
+                        <p class="type">Gold</p>
                         <h3>$ 49.99 /mo</h3>
                         <hr>
                         <p><span class="data data2"></span>250 Free Listings</p>
                         <p><span class="data data2"></span>No final value fee on the first 2 items sold</p>
                         <p><span class="data data2"></span>Unlimited 7% final value fee on the 3rd item sold</p>
-                        <p>-</p>
+                        <p>&nbsp;</p>
                         <router-link to="/subscriptions/gold" class="btn bg-white">Get Started</router-link>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="inner fourth" id="fourth">
-                        <p class="type">Platinum Membership</p>
+                        <p class="type">Platinum</p>
                         <h3>$ 99.99 /mo</h3>
                         <hr>
                         <p><span class="data data2"></span>500 Free Listings</p>
@@ -110,6 +110,9 @@
 </template>
 <style scoped>
 /*********** first active*************************/
+.subscriptions .price-row>div .inner.first.first-hover p.type , .subscriptions .price-row>div .inner.first.first-hover h3{
+    color: #fff !important;
+}
    .subscriptions .price-row>div .inner.first.first-hover{
         background-color: #22B3EB;
         z-index: 1;
@@ -148,6 +151,9 @@
 /************** end first active******************************** */
 
 /*********** second active*************************/
+.subscriptions .price-row>div .inner.second.second-hover p.type , .subscriptions .price-row>div .inner.second.second-hover h3{
+    color: #fff !important;
+}
    .subscriptions .price-row>div .inner.second.second-hover{
         background-color: #A705E0;
         z-index: 1;
@@ -185,6 +191,9 @@
      }
 /************** end second active******************************** */
     /*********** third active*************************/
+     .subscriptions .price-row>div .inner.third.third-hover p.type ,  .subscriptions .price-row>div .inner.third.third-hover h3{
+         color: #fff !important;
+     }
    .subscriptions .price-row>div .inner.third.third-hover{
         background-color: #F31A6C;
         z-index: 1;
@@ -223,6 +232,9 @@
 /************** end third active******************************** */
 
 /*********** fourth active*************************/
+.subscriptions .price-row>div .inner.fourth.fourth-hover p.type , .subscriptions .price-row>div .inner.fourth.fourth-hover h3{
+    color: #fff !important;
+}
    .subscriptions .price-row>div .inner.fourth.fourth-hover{
         background-color: #fecc2f;
         z-index: 1;

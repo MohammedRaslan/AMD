@@ -34,9 +34,9 @@
 
 </head>
 <style>
-    .nice-select {
+    /* .nice-select {
         display: none;
-    }
+    } */
 
     #preloader {
         display: block !important;
@@ -288,9 +288,8 @@
 
         <!-- Js Plugins -->
     </div>
-
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
-    <script src="{{ asset('FrontEnd') }}/js/bootstrap5.bundle.min.js" defer></script>
+    <script src="{{ asset('FrontEnd') }}/js/bootstrap.bundle.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery.nice-select.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/swiper.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery.nicescroll.min.js" defer></script>
@@ -301,8 +300,8 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
-    <script src="{{ asset('FrontEnd') }}/js/test.js" defer></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+    {{-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script> --}}
+    {{-- <script src="{{ asset('FrontEnd') }}/js/tooltip.js" defer></script> --}}
 </body>
 
 </html>

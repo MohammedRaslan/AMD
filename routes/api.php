@@ -50,7 +50,7 @@ Route::get('checkUser/{email?}',[UserController::class,'checkUser']);
 Route::post('/paypal/purchase/subscription',[PayPalController::class,'Join_subscription']);
 Route::post('testMail',[TestMailController::class,'test']);
 Route::middleware('auth:api')->group(function () {
-
+    Route::get('/getFirstName',[UserController::class,'getFirstName']);
     Route::get('/getUsers',[UserController::class,'getUsers']);
     Route::get('/getFaqs',[FaqController::class,'getFaqs']);
     Route::get('/getAbouts',[AboutController::class,'getAbouts']);
@@ -122,12 +122,13 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::prefix('user')->group(function(){
-        Route::get('getUserInfo/{id}',[UserController::class,'getUserInfo']);
+        Route::get('getUserInfo/{id?}',[UserController::class,'getUserInfo']);
         Route::post('edit/{id}',[UserController::class,'edit']);
         Route::get('getUserId',[UserController::class,'getUserId']);
         Route::post('sellerDefault',[UserController::class,'sellerDefault']);
         Route::get('getSellerDetails',[UserController::class,'getSellerDetails']);
         Route::post('createFromAdmin',[UserController::class,'addNewUserFromAdmin']);
+        Route::post('updateUserInfo',[UserController::class,'updateUserInfo']);
     });
 
     Route::prefix('offer')->group(function(){

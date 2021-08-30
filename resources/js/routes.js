@@ -36,7 +36,9 @@ import FreeSubscriptionComponent from "./components/subscriptions/FreeSubscripti
 import SilverSubscriptionComponent from "./components/subscriptions/SilverSubscriptionComponent.vue";
 import GoldSubscriptionComponent from "./components/subscriptions/GoldSubscriptionComponent.vue";
 import PlatinumSubscriptionComponent from "./components/subscriptions/PlatinumSubscriptionComponent.vue";
-
+// import TestComponent from "./components/TestComponent.vue";
+import ChatNotificationComponent from "./components/ChatCenter/ChatNotificationComponent";
+import InformationComponent from "./components/SettingsCenter/InformationComponent";
 
 var routes = [{
         path: "/demo",
@@ -44,9 +46,14 @@ var routes = [{
         name: "home",
     },
     {
-        path: "/example",
-        component: ExampleComponent,
-        name: "example",
+        path: "/messages",
+        component: ChatNotificationComponent,
+        name: "ChatNotificationComponent",
+    },
+    {
+        path: "/settings",
+        component: InformationComponent,
+        name: "InformationComponent",
     },
     {
         path: "/login",
@@ -158,7 +165,6 @@ var routes = [{
         component: PlatinumSubscriptionComponent,
         name: "PlatinumSubscriptionComponent",
     },
-
     // ADMIN ROUTES
     {
         path: "/admin",

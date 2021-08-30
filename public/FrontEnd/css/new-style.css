@@ -225,14 +225,22 @@
 @media (max-width: 620px) {
   .header_mobil_guest {
     height: 111px;
-    padding-top: 10px;
+    padding-top: 0px;
+    padding-left: 10px;
   }
 }
 
 .canvas__open_guest {
-  top: -56px !important;
-  position: absolute;
-  right: 12px;
+  top: -65px !important;
+  position: absolute !important;
+  right: 0px;
+  border: none;
+}
+.canvas__open_guest a {
+  display: flex;
+}
+.canvas__open_guest a i {
+  margin-left: 8px;
 }
 @media (min-width: 576px) {
   .canvas__open_guest {
@@ -347,6 +355,64 @@
   .shop-details .product__details__pic .owl-nav .owl-next {
     transform: translateX(24px);
   }
+}
+
+.dropdown-hero {
+  background: #77b527;
+  transition: 0.3s;
+  border: 1px solid transparent;
+  font-size: 20px;
+  color: white;
+  transition: 0.3s;
+  border-radius: 7px;
+}
+.dropdown-hero span {
+  color: white;
+}
+.dropdown-hero .btn.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+  width: 100px;
+  height: 42px;
+}
+.dropdown-hero .btn.dropdown-toggle::after {
+  display: none !important;
+}
+.dropdown-hero .btn.dropdown-toggle:focus {
+  box-shadow: none;
+}
+.dropdown-hero .btn.dropdown-toggle svg {
+  display: none;
+}
+.dropdown-hero ul {
+  background-color: #0F243C;
+}
+.dropdown-hero ul li {
+  background-color: #0F243C;
+  color: white;
+}
+.dropdown-hero ul li a {
+  background-color: #0F243C;
+  color: white;
+}
+.dropdown-hero ul li a:hover {
+  background-color: #0F243C !important;
+  color: #77b527 !important;
+}
+.dropdown-hero:hover {
+  border: 1px solid #77b527;
+  background: white;
+  transition: 0.3s;
+}
+.dropdown-hero:hover span {
+  color: #77b527;
+}
+.dropdown-hero:hover svg {
+  background: #77b527;
+  border-radius: 50%;
+  display: block !important;
 }
 
 .c-position-static {
