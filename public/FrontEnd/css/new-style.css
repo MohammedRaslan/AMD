@@ -387,18 +387,23 @@
   display: none;
 }
 .dropdown-hero ul {
-  background-color: #0F243C;
+  background-color: transparent;
+  min-width: 66px;
+  width: 144px;
+  border: 1px solid #77b527;
+  padding: 0;
 }
 .dropdown-hero ul li {
-  background-color: #0F243C;
-  color: white;
+  background-color: transparent;
+  color: #77b527;
 }
 .dropdown-hero ul li a {
-  background-color: #0F243C;
+  background-color: transparent;
   color: white;
+  padding-left: 8px;
 }
 .dropdown-hero ul li a:hover {
-  background-color: #0F243C !important;
+  background-color: transparent !important;
   color: #77b527 !important;
 }
 .dropdown-hero:hover {

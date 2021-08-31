@@ -62,9 +62,22 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+
     public function updateUserInfo(Request $request)
     {
         $response = $this->userService->updateUserInfo($request->user()->id, $request->all());
+        return response()->json($response);
+    }
+
+    public function getUserShippingInfo(Request $request)
+    {
+        $response = $this->userService->getUserShippingInfo($request->user());
+        return response()->json($response);
+    }
+
+    public function updateUserShippingInfo(Request $request)
+    {
+        $response = $this->userService->updateUserShippingInfo($request->all(),$request->user()->id);
         return response()->json($response);
     }
 

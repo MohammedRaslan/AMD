@@ -142,8 +142,7 @@
                                     <div class="col-lg-5 text-center ">
                                         <h3 style="color: #23ccfd;" class="mb-2">Change Avatar</h3>
                                         <!--1st Row-->
-                                              <div v-show="checkImage != ''" class="alert alert-danger" v-html="checkImage"
-                                            />
+                                              <!-- <div v-show="checkImage != ''" class="alert alert-danger" v-html="checkImage"/> -->
                                         <div class="row mb-3">
                                             <div class="col-4 ">
                                                 <!--<img src="images/avatars/avatars-10.jpg" onmouseover="this.src='images/avatars/avatars-04.jpg' " onmouseleave="this.src='images/avatars/avatars-10.jpg'" >-->
@@ -288,21 +287,18 @@ export default {
     methods: {
          updateUserInfo: async function() {
             this.$Progress.start();
-            if(this.form.image == null){
-                this.checkImage = 'Please Select Avatar';
-            }else{
-                
             const response = await this.form
                 .post("api/user/updateUserInfo")
                 .then(response => {
                     if(response.data){
                         this.message = 'Data Saved Successfully';
+                        this.$Progress.finish();
                     }
                 })
                 .catch(error => {
                     this.$Progress.fail();
                 });
-            }
+            
         },
     },
     mounted(){

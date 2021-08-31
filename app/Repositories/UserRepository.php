@@ -114,7 +114,9 @@ class UserRepository{
         $user = User::find($id);
         $user->first_name = $request['first_name'];
         $user->last_name = $request['last_name'];
-        $user->image = $request['image'];
+        if($request['image'] != null){
+            $user->image = $request['image'];
+        }
         if($request['password']){
             $user->password = bcrypt($request['password']);
         }
@@ -124,6 +126,19 @@ class UserRepository{
             return false;
         }
     }
+
+    public function updateUserShippingInfo($request, $user_id)
+    {
+        $user = User::find($user_id);
+        $user->address = $request['address'];
+        $user->city = $request['city'];
+        $user->country = $request['country'];
+        if($user->save()){
+            return true;
+        }
+        return false;
+    }
+
 
     public function login($request)
     {

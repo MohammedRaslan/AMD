@@ -129,6 +129,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getSellerDetails',[UserController::class,'getSellerDetails']);
         Route::post('createFromAdmin',[UserController::class,'addNewUserFromAdmin']);
         Route::post('updateUserInfo',[UserController::class,'updateUserInfo']);
+        Route::get('getUserShippingInfo',[UserController::class,'getUserShippingInfo']);
+        Route::post('updateUserShippingInfo',[UserController::class,'updateUserShippingInfo']);
     });
 
     Route::prefix('offer')->group(function(){

@@ -26,6 +26,21 @@ class UserService{
         return $this->userRepository->updateUserInfo($id, $request);
     }
 
+    public function getUserShippingInfo($request)
+    {
+        $data = [
+            'address' => $request['address'],
+            'city' => $request['city'],
+            'country' => $request['country'],
+        ];
+        return $data;
+    }
+
+    public function updateUserShippingInfo($request,$user_id)
+    {
+        return $this->userRepository->updateUserShippingInfo($request,$user_id);
+    }
+
     public function login($request)
     {
         $logged = $this->userRepository->login($request->all());

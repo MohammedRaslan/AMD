@@ -27,18 +27,23 @@
         }
     }
     ul{
-        background-color: #0F243C;
+        background-color: transparent;
+        min-width: 66px;
+        width: 144px;
+        border: 1px solid #77b527;
+        padding: 0;
         li{
             a{
-                background-color: #0F243C;
+                background-color: transparent;
                 color: white;
+                padding-left: 8px;
                 &:hover{
-                    background-color: #0F243C !important;
+                    background-color: transparent !important;
                     color: #77b527 !important;
                 }
             }
-            background-color: #0F243C;
-            color: white;
+            background-color: transparent;
+            color: #77b527;
         }
     }
 

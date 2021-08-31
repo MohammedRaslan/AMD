@@ -39,7 +39,9 @@ import PlatinumSubscriptionComponent from "./components/subscriptions/PlatinumSu
 // import TestComponent from "./components/TestComponent.vue";
 import ChatNotificationComponent from "./components/ChatCenter/ChatNotificationComponent";
 import InformationComponent from "./components/SettingsCenter/InformationComponent";
-
+import ShippingInformationComponent from "./components/SettingsCenter/ShippingInfoComponent.vue";
+import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
+import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
 var routes = [{
         path: "/demo",
         component: HomeComponent,
@@ -51,9 +53,24 @@ var routes = [{
         name: "ChatNotificationComponent",
     },
     {
+        path: "/notifications",
+        component: NotificationMessageComponent,
+        name: "NotificationMessageComponent",
+    },
+    {
         path: "/settings",
         component: InformationComponent,
         name: "InformationComponent",
+    },
+    {
+        path: "/settings/shipping_info",
+        component: ShippingInformationComponent,
+        name: "ShippingInformationComponent",
+    },
+    {
+        path: "/settings/preferences",
+        component: PreferencesComponent,
+        name: "PreferencesComponent",
     },
     {
         path: "/login",

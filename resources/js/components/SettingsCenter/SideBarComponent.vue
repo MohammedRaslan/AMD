@@ -3,15 +3,15 @@
                     <div class="header-taps">
                         <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <!--1 Offers/Bids -->
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Personal Info</button>
+                             <router-link class="nav-link text-decoration-none text-white" id="v-pills-home-tab" to="/settings">Personal Info</router-link>
                             <hr>
 
                             <!--2 Request an Item -->
-                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Shipping Info </button>
+                             <router-link class="nav-link text-decoration-none text-white" id="v-pills-home-tab" to="/settings/shipping_info">Address Info</router-link>
                             <hr>
 
                             <!--3 My Favorites -->
-                            <button class="nav-link disabled" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Preferences</button>
+                            <router-link class="nav-link text-decoration-none text-white" id="v-pills-home-tab" to="/settings/preferences">Preferences</router-link>
                         </div>
                     </div>
                 </div>
