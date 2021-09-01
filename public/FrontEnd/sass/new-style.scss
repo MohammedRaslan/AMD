@@ -13,9 +13,25 @@
         width: 100%;
         overflow: hidden;
     }
-    
+    #preloder{
+        display: none !important;
+    }
+    .bg-transparent{
+        background: transparent !important;
+    }
     .text-green {
         color: $green !important;
+    }
+
+    .pr-sm-0{
+        @media (max-width: 992px) {
+            padding-right: 0 !important;
+        }
+    }
+    .pl-sm-0{
+        @media (max-width: 992px) {
+            padding-left: 0 !important;
+        }
     }
     
     .shop-details {
@@ -358,6 +374,8 @@
     
     @import './shop-details';
     @import './include/home';
+    @import './include/only-vue/sell-item';
+    @import './include/selling';
     .c-position-static {
         position: static !important;
     }

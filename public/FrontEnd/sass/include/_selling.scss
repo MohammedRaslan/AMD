@@ -1,0 +1,16 @@
+.header-taps-selling{
+    .nav-link,.nav-pills button{
+        color: white !important;
+        display: flex;
+        align-items: center;
+        margin: 8px 0 !important;
+        padding-left: 13px !important;
+        &:hover{
+            color: #fff !important;
+        }
+    }
+    .nav-link-sub{
+        font-size: 16px !important;
+        font-weight: normal !important;
+    }
+}

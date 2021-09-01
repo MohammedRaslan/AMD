@@ -43,7 +43,7 @@ import ShippingInformationComponent from "./components/SettingsCenter/ShippingIn
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
 import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
 var routes = [{
-        path: "/demo",
+        path: "/",
         component: HomeComponent,
         name: "home",
     },
