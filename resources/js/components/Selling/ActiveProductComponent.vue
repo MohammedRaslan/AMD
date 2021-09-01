@@ -132,10 +132,6 @@ export default ({
         },
         changeStatus(product_id){
             axios.get('/api/product/changeStatus/'+product_id).then((response) => {
-                Toast.fire({
-                        icon: 'success',
-                        title: 'Status Changed Successfully'
-                    });
                   if(response.data.status == 1){
                     document.getElementById("product_"+product_id).classList.remove('black');
                     document.getElementById("product_"+product_id).innerHTML = 'Suspend'

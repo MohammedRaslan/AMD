@@ -492,7 +492,7 @@
                     >
                       <li>
                         <router-link
-                          to="/selling/overview"
+                          to="/selling/sell_item"
                           class="dropdown-item"
                           >Selling</router-link
                         >
@@ -509,14 +509,14 @@
                       </li>
                       <li>
                         <router-link
-                          to="/selling/overview"
+                          to="/selling/sell_item"
                           class="dropdown-item"
                           >Purchases</router-link
                         >
                       </li>
                       <li>
                         <router-link
-                          to="/selling/overview"
+                          to="/selling/sell_item"
                           class="dropdown-item"
                           >Buy Again</router-link
                         >
@@ -530,7 +530,7 @@
                       </li>
                       <li>
                         <router-link
-                          to="/selling/overview"
+                          to="/selling/sell_item"
                           class="dropdown-item"
                           >Recently Viewed</router-link
                         >

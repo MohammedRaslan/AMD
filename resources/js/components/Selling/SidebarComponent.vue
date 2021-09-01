@@ -3,8 +3,8 @@
         <div class="header-taps">
             <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <!-- Overview -->
-                <router-link to="/selling/overview" class="nav-link"  id="v-pills-home-tab">Overview</router-link>
-                <hr>
+                <!-- <router-link to="/selling/overview" class="nav-link"  id="v-pills-home-tab">Overview</router-link>
+                <hr> -->
                 <!-- Sell an Item -->
                 <router-link to="/selling/sell_item" id="v-pills-profile-tab" class="nav-link">
                     Sell An Item 
