@@ -16,7 +16,8 @@ use App\Enums\Return_Policy;
 use App\Enums\ProductCondition;
 use App\Enums\InternationalShipping;
 use App\Models\Bid;
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 class ProductRepository{
 
     protected $product;
@@ -25,14 +26,18 @@ class ProductRepository{
         $this->product = $product;
     }
 
-    public function getData()
+    public function getData($id = null)
     {
+        if($id != NULL){
+           
+        }
         return ['types'=> ProductType::getInstances(),
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
                 'conditions' => ProductCondition::asSelectArray(), 
                 'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
                 'return_policy' => Return_Policy::asSelectArray(),
                 'bidding_step' => $this->biddingSteps(),
+                "product" => $id != NULL ?  Product::where('id',$id)->with(['categories','bid','images'])->first() : null,
                 ];
     }
 
@@ -117,24 +122,64 @@ class ProductRepository{
         return false;
     }
 
-    public function step_two($data)
+    public function update($id, $data)
     {
-        $product = Product::find($data['id']);
+        $product = Product::find($id);
+        $product->title = $data['title'];
+        $product->type  = $data['type'];
+        $product->description = $data['description'];
+        $product->brand = $data['brand'];
+        $product->price = $data['price'];
+        $product->condition = $data['condition'];
+        $product->return_policy = $data['return_policy'];
+        $product->best_offer = $data['best_offer'];
+        $product->best_offer_price = $data['minimum_offer'];
         $product->doll_size  = $data['doll_size'];
         $product->doll_gender = $data['doll_gender'];
         $product->featured_refinements = $data['featured_refinements'];
         $product->quantity = $data['quantity'];
-        $product->details  = $data['details'];
         $product->modified_item = $data['modified_item'];
-        $product->draft =  $data['draft'];
         $product->upc = $data['upc'];
-        $product->status = 0;
         $product->domestic_product = $data['domestic_product'];
-
+        $product->draft =  $data['draft'];
+        $product->status  = 1;
         if($product->save()){
-            return true;
+            $category = Category::select('id')->where('title',$data['category'])->first();
+            $product->categories()->sync($category);
+            if($data['type'] == 1){
+                // $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
+            }
+        if(is_object($data['image'][0])){
+            $product->images()->each(function($image){
+                $image->delete();
+            });
+            if (Storage::exists('public/products/'.$data['title'])) {
+                Storage::deleteDirectory('public/products/'.$data['title']);
+            }
+            foreach($data['image'] as $file){
+                $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
+                $file->storeAs('public/products/'.$data['title'].'/',$fileName);
+                $path = 'public/products/'.$data['title'].'/'.$fileName;
+                $image = new Image(['url' => $path]);
+                $product->images()->save($image);  
+            }
         }
-        return false;
+        
+        if(is_object($data['featured_image'][0])){
+                $featuredImage =  $data['featured_image'][0];
+                $fileName = time() . '.'. $featuredImage->getClientOriginalExtension();
+                $featuredImage->storeAs('public/products/'.$data['title'].'/',$fileName);
+                $product->image = 'public/products/'.$data['title'].'/'.$fileName;
+            
+            $product->save();
+        }
+        return ['response' => true,
+                'product_id' => $product->id
+               ];
+
+        }
+        return ['response' => false];
+
     }
 
     public function step_three($id,$draft,$data)

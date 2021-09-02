@@ -6,7 +6,7 @@ import RegisterComponent from "./components/Auth/RegisterComponent";
 import verifyComponent from "./components/Auth/VerifyMailComponent";
 import OverviewComponent from "./components/Selling/OverviewComponent";
 import CreateProductComponent from "./components/Selling/CreateProductComponent";
-import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
+// import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
 import CreateProductShippingComponent from "./components/Selling/CreateProductShipping";
 import ActiveProductComponent from "./components/Selling/ActiveProductComponent";
 import DashboardComponent from "./components/Admin/DashboardComponent"
@@ -42,6 +42,7 @@ import InformationComponent from "./components/SettingsCenter/InformationCompone
 import ShippingInformationComponent from "./components/SettingsCenter/ShippingInfoComponent.vue";
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
 import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
+import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 var routes = [{
         path: "/",
         component: HomeComponent,
@@ -96,6 +97,11 @@ var routes = [{
         path: "/selling/overview",
         component: OverviewComponent,
         name: "SellingOverview",
+    },
+    {
+        path: "/productEdit/:id?",
+        component: EditProductComponent,
+        name: "EditProductComponent",
     },
     {
         path: "/selling/sell_item",

@@ -12,8 +12,8 @@ use BenSampo\Enum\Enum;
 final class Return_Policy extends Enum
 {
     const NoReturns =   0;
-    const DaysFreeReturns_14 =   1;
-    const DaysBuyerPaysForReturn_14 = 2;
-    const DaysFreeReturns_30 = 3;
-    const DaysBuyerPaysForReturn_30 = 4;
+    const In_14_DaysFreeReturns =   1;
+    const In_14_DaysBuyerPaysForReturn = 2;
+    const In_30_DaysFreeReturns = 3;
+    const In_30_DaysBuyerPaysForReturn = 4;
 }

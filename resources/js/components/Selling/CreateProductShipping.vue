@@ -40,7 +40,7 @@
                                 <div class="inner-item">
                                     <div class="row">
                                         <div class="col-lg-12 detalis">
-                                                 <div class="signup bg-trans">
+                                                 <div class="signup  bg-transparent">
                                                     <div class="container">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -48,15 +48,16 @@
                                                                 <form @submit.prevent="saveProductShipping">                        
                                                                     <div class="row">
                                                             
-                                                                        <div class="col-12 mb-5">
+                                                                        <div class="col-12 mb-3">
+                                                                            <label class="text-white" for="cats">Package Details</label>
                                                                             <select name="type" v-model="form.package_details" id="" class="m-2 form-control" required>
-                                                                                <option selected disabled>Choose Details</option>
+                                                                                <option selected disabled >Choose Details</option>
                                                                                 <option :value=false >I don't have package details </option>
                                                                                 <option :value=true>I have package details</option>
                                                                             </select >
                                                                            <div v-if="form.errors.has('package_details')" class="alert alert-danger" v-html="form.errors.get('package_details')" />
                                                                         </div>
-                                                                          <div class="row text-left">
+                                                                          <div class="row text-left m-3" v-show="form.package_details">
                                                                                 <div class="col-3">
                                                                                     <label class="text-white" for="cats">Width</label>
                                                                                     <input type="text" v-model="form.width" :disabled="!form.package_details" class="form-control" id="fName" placeholder="Width" required>
@@ -96,22 +97,22 @@
                                                                         </div>   
                                                                         <div class="row text-left">
                                                                             <div class="col-6">
-                                                                                <label class="text-white" for="cats">Service USA</label>
+                                                                                <label class="text-white" for="cats">USA CARRIER</label>
                                                                                 <input type="text" v-model="form.service_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Service USA" required>
                                                                                 <div v-if="form.errors.has('service_usa')" class="alert alert-danger" v-html="form.errors.get('service_usa')" />
                                                                             </div>
                                                                             <div class="col-6">
-                                                                                <label class="text-white" for="cats">Service Worldwide</label>
+                                                                                <label class="text-white" for="cats">Worldwide CARRIER</label>
                                                                                 <input type="text" v-model="form.service_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Sevice World Wide" required>
                                                                                 <div v-if="form.errors.has('service_world_wide')" class="alert alert-danger" v-html="form.errors.get('service_world_wide')" />
                                                                             </div>
                                                                             <div class="col-6">
-                                                                                <label class="text-white" for="cats">Price USA </label> <span style="color:white" v-html=" currencyIcon "></span>
+                                                                                <label class="text-white" for="cats">COST USA </label> <span style="color:white" v-html=" currencyIcon "></span>
                                                                                 <input type="number" v-model="form.price_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Price USA" required>
                                                                                 <div v-if="form.errors.has('price_usa')" class="alert alert-danger" v-html="form.errors.get('price_usa')" />
                                                                             </div>
                                                                           <div class="col-6">
-                                                                                <label class="text-white" for="cats">Price Worldwide</label>
+                                                                                <label class="text-white" for="cats">COST Worldwide</label>
                                                                                 <input type="number" v-model="form.price_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Price Worldwide" required>
                                                                                 <div v-if="form.errors.has('price_world_wide')" class="alert alert-danger" v-html="form.errors.get('price_world_wide')" />
                                                                             </div>
@@ -128,15 +129,18 @@
                                                                                 </div>
                                                                             </div>
                                                                             
-                                                                        </div>                                                              
-                                                                           <div class="col-6">
-                                                                            <input type="button" @click="draft" value="Save as Draft" class="form-control btn btn-milky" id="draft">
-                                                                        </div>
-                                                                        <div class="col-6">
-                                                                            <input type="submit" :disabled="form.busy" value="Publish" class="form-control" id="register">
-                                                                        </div>
-                                                                    
-                                                        
+                                                                        </div>   
+                                                                        <div class="row pt-3">
+                                                                            <div class="col-4">
+                                                                                <input type="button" @click="GoBack" value="Back" class="form-control btn btn-outline-danger">     
+                                                                            </div>                                                           
+                                                                            <div class="col-4">
+                                                                                <input type="button" @click="draft" value="Save as Draft" class="form-control btn bg-gray" id="draft">
+                                                                            </div>
+                                                                            <div class="col-4">
+                                                                                <input type="submit" :disabled="form.busy" value="Publish" class="form-control" id="register">
+                                                                            </div>
+                                                                        </div>                                                        
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -162,7 +166,10 @@
     <!-- Latest Blog Section End -->
     </div>
 </template>
-<style scoped>
+<style>
+    .bg-gray{
+        background-color: gray !important;
+    }
     select{
         display: block !important;
     }
@@ -219,9 +226,10 @@ export default ({
     components:{
         SideBar,
     },
-      data:()=>({
+    data:()=>({
         usa : [],
         international: [],
+        package_details_choice : true,
         currencyIcon: null,
         form : new form({
             product_id: null,
@@ -280,6 +288,10 @@ export default ({
                         title: 'Product Created Successfully'
                     });
                 }
+        },
+        GoBack(){
+            var id = this.$route.params.id;
+            this.$router.push('/productEdit/'+id);
         }
     },
 

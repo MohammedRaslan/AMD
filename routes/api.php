@@ -91,13 +91,14 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('product')->group(function () {
         Route::post('store',[ProductController::class,'store']);
+        Route::post('update/{id?}',[ProductController::class,'update']);
         Route::post('store/step_two',[ProductController::class,'step_two']);
         Route::post('store/step_three',[ProductController::class,'step_three']);
         Route::get('changeStatus/{id?}',[ProductController::class,'changeStatus']); 
         Route::get('AddToWishlist/{id?}',[ProductController::class,'AddToWishlist']);
         Route::get('getProductShipping/{id?}',[ProductController::class,'getProductShipping']);     
         Route::get('checkUserProduct/{id?}',[ProductController::class,'checkUserProduct']);
-        Route::get('getProductData',[ProductController::class,'getProductData']);
+        Route::get('getProductData/{id?}',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
         Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);  

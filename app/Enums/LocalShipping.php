@@ -11,9 +11,9 @@ use BenSampo\Enum\Enum;
  */
 final class LocalShipping extends Enum
 {
-    const  business_day_1 = 0;
-    const  business_days_1_to_2 = 1;
-    const  business_days_2_to_5 = 2;
-    const  business_days_2_to_9 = 3;
-    const  business_days_1_to_10 = 4;
+    const  shipping_in_1_day = 0;
+    const  shipping_in_1_to_2 = 1;
+    const  shipping_in_2_to_5 =2;
+    const  shipping_in_2_to_9 = 3;
+    const  shipping_in_1_to_10 = 4;
 }   

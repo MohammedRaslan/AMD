@@ -110,14 +110,40 @@
                                                                             <div v-if="form.errors.has('brand')" class="alert alert-danger" v-html="form.errors.get('brand')" />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-12 mb-3 upload-img">
-                                                                        <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
-                                                                        <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
-                                                                        <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
+                                                                    <div class="col-4 mb-3 d-flex flex-column upload-img" v-if="load">
+                                                                        <label for="#description" style="color:white">Feature Image <span class="requiredItem">*</span></label>
+                                                                        <div v-show="!openFeatured">
+                                                                             <img  :src='str_replace(product.image)' alt="">
+                                                                             <button class="btn btn-milky w-100" @click="changeFeatureImage">Change Featured Image</button>
+                                                                        </div>
+                                                                       
+                                                                        <div v-show="openFeatured">
+                                                                                <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
+                                                                                <UploadImages @change="handleImage" :max="1" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 1 image)" fileError="images files only accepted"/>
+                                                                                <!-- <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" /> -->
+                                                                                <button class="btn btn-milky bg-gray w-100" @click="changeFeatureImage">Return</button>
+                                                                        </div>
                                                                     </div>
+
+                                                                    <div class="col-8 mb-3  d-flex flex-column upload-img" v-if="load">
+                                                                        <label for="#description" style="color:white">Optional Image <span class="requiredItem">*</span></label>
+                                                                        <div v-show="!openOptionalImages" class="d-flex">
+                                                                            <div v-for="(image, index) in product.images" :key="index" >
+                                                                                <img  :src='str_replace(image.url)' alt="">
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <button class="btn btn-milky w-100 pb-2" @click="changeOptionalImages">Change Optional Image</button>
+                                                                        <div v-show="openOptionalImages">
+                                                                                <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
+                                                                                <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
+                                                                                <!-- <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" /> -->
+                                                                                <button class="btn btn-milky bg-gray w-100 pb-2" @click="changeOptionalImages">Return</button>
+                                                                        </div>
+                                                                     </div>
                                                                     <div class="col-12 mb-5 description text-left">
                                                                         <label for="#description" style="color:white">Description <span class="requiredItem">*</span></label>
-                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control"></textarea>
+                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control text-white"></textarea>
                                                                         <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                     </div>
                                                                     <div class="row listing-type">
@@ -476,7 +502,11 @@ export default ({
     },
       data:()=>({
         id: null,
+        openFeatured: false,
+        openOptionalImages: false,
+        product: {},
         types: [],
+        load: false,
         categories: [],
         conditions: [],
         brands: [],
@@ -491,6 +521,7 @@ export default ({
             title : null,
             type : 0,
             condition:null,
+            featured_image : {},
             image : {},
             brand : null,
             description: null,
@@ -523,29 +554,39 @@ export default ({
            this.form.modified_item = this.form.modified_item == true ? 1 :0;
            this.form.type = this.form.bidding_from || this.form.bidding_to != null ? 1 : 0;
            this.form.price = this.form.bidding_from != null || this.form.bidding_to != null ? 0 : this.form.price;
-           if( jQuery.isEmptyObject(this.form.image)  ){
-               this.imagenull = true;
-               this.$Progress.fail();
-           }else{
-            const response = await this.form.post('/api/product/store').then((response)=>{
+       
+            const response = await this.form.post('/api/product/update/'+this.$route.params.id).then((response)=>{
                 this.$Progress.finish();
                 // this.indicator();
-                this.form.reset();
+                // this.form.reset();
                 this.$router.push('/product_shipping/'+response.data.product_id);
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);
             });
-           }
+           
 
+        },
+        handleImage(files){
+            this.form.featured_image = files;
         },
         handleImages(files){
             this.form.image = files;
-          },
+        },
         draft(){
             this.form.draft = 1;
             this.saveProduct();
         },
+        str_replace: function(str){
+            str = str.replace('public',window.location.origin + '/storage');
+            return str;
+        },
+        changeFeatureImage: function(){
+            this.openFeatured = this.openFeatured  == true ? false : true;
+        },
+        changeOptionalImages: function(){
+            this.openOptionalImages = this.openOptionalImages == true ? false : true;
+        }
     },
 
     beforeCreate() {
@@ -555,16 +596,41 @@ export default ({
         Fire.$emit('mounted');
         this.$Progress.finish();
 
-        axios.get('/api/product/getProductData').then((response) => {
+        axios.get('/api/product/getProductData/'+this.$route.params.id).then((response) => {
             this.types = response.data.types;
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
             this.brands = response.data.brands;
             this.policies = response.data.return_policy;
             this.bid_step = response.data.bidding_step;
+            this.product  = response.data.product;
+            this.form.title = this.product.title;
+            this.form.best_offer = this.product.best_offer;
+            this.form.best_offer_price = this.product.best_offer_price;
+            this.form.condition = this.product.condition;
+            this.form.description = this.product.description;
+            this.form.doll_gender = this.product.doll_gender;
+            this.form.doll_size = this.product.doll_size;
+            this.form.domestic_product = this.product.domestic_product;
+            this.form.draft = this.product.draft;
+            this.form.featured_refinements = this.product.featured_refinements;
+            this.form.modified_item  = this.product.modified_item;
+            this.form.price = this.product.price;
+            this.form.quantity = this.product.quantity;
+            this.form.return_policy = this.product.return_policy;
+            this.form.upc = this.product.upc;
+            this.form.category = this.product.categories[0].title;
+            this.form.featured_image = this.product.image;
+            this.form.image = this.product.images;
+            this.form.brand  = this.product.brand;
+            if(this.product.bid){
+                  this.form.bidding_from = this.product.bid.from;
+                  this.form.bidding_to   = this.product.bid.to;
+                  this.form.bid_minimum_price = this.product.bid.minimum_price;
+                  this.form.step = this.product.bid.step;
+            }
+            this.load = true;
         });
-  
-
     }
 
 })

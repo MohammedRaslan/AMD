@@ -38,14 +38,19 @@ class ProductService{
         return $this->productRepository->step_three($id,$draft,$data);
    }
 
+   public function update($id, $request)
+   {
+       return $this->productRepository->update($id, $request);
+   }
+
    public function checkUserProduct($user_id, $product_id)
    {
        return $this->productRepository->checkUserProduct($user_id, $product_id);
    }
 
-   public function getData()
+   public function getData($id = null)
    {
-      return $this->productRepository->getData();
+      return $this->productRepository->getData($id);
 
    }
 

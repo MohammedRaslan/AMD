@@ -35,9 +35,15 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-    public function getProductData()
+    public function getProductData($id = null)
     {
-        $data = $this->productService->getData();
+        $data = $this->productService->getData($id);
+        return response()->json($data);
+    }
+
+    public function update(Request $request ,$id)
+    {
+        $data = $this->productService->update($id, $request->all());
         return response()->json($data);
     }
 

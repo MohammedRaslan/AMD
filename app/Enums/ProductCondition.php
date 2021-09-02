@@ -16,6 +16,6 @@ final class ProductCondition extends Enum
     const Like_new_good_condition_with_or_without_box = 2;
     const Used = 3;
     const Damaged = 4;
-    const OOAK_used = 5;
-    const OOAK_like_new =6;
+    const ooak_used = 5;
+    const ooak_like_new =6;
 }
