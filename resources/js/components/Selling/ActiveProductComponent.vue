@@ -67,14 +67,11 @@
                                         </div>
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
-                                                <div class="inner" v-if="product.draft == 0">
+                                                <div class="inner" >
                                                     <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
                                                 </div>
-                                                  <div class="inner" v-if="product.draft == 1">
-                                                    <button class="btn btn-secondary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
-                                                </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-danger" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)">Suspend</button>
+                                                    <button class="btn btn-outline-danger" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)">Suspend</button>
                                                     <button class="btn black" v-else :id="'product_'+product.id" @click="changeStatus(product.id)">Suspended</button>
 
                                                 </div>

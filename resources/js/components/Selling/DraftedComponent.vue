@@ -33,7 +33,7 @@
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
-                    <div class="tab-content" id="v-pills-tabContent" v-for="product in products.data" :key="product.id">
+                    <div class="tab-content"  v-for="product in products.data" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -68,11 +68,13 @@
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
                                                 <div class="inner">
-                                                    <button class="btn btn-primary"><router-link :to="{name: 'ProductCreateStepTwo', params:{id: product.id}}">Complete</router-link></button>
+                                                    <button class="btn btn-primary" disabled><router-link  :to="{name: 'EditProductComponent', params:{id: product.id}}" >Publish</router-link></button>
                                                 </div>
-                                             
                                                 <div class="inner">
-                                                    <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
+                                                    <button class="btn btn-secondary"><router-link :to="{name: 'EditProductComponent', params:{id: product.id}}">Edit</router-link></button>
+                                                </div>
+                                                <div class="inner">
+                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button>
                                                 </div>
                                            </div>
                                         </div>
@@ -108,6 +110,14 @@ export default ({
         str_replace(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
+        },
+        deleteProduct(id){
+            axios.get('/api/product/deleteProduct/'+id).then((response) =>{
+                if(response.data){
+                   var elm = document.getElementById('product_'+id).remove();
+                   elm.parentNode.removeChild(elm);
+                }
+            });
         },
         complete(draft){
             this.$router.push({

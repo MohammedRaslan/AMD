@@ -103,11 +103,11 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-    public function getAllProductDataToUpdate(Request $request,$product_id)
-    {
-        $response = $this->productService->getAllProductDataToUpdate($request->user()->id,$product_id);
-        return response()->json($response);
-    }
+    // public function getAllProductDataToUpdate(Request $request,$product_id)
+    // {
+    //     $response = $this->productService->getAllProductDataToUpdate($request->user()->id,$product_id);
+    //     return response()->json($response);
+    // }
 
     public function getProducts(Request $request){
         // dd($request->user());
@@ -128,5 +128,11 @@ class ProductController extends Controller
 
         $projects = $query->paginate($length);
         return ['data' => $projects, 'draw' => $request->input('draw')];
+    }
+
+    public function delete(Request $request ,$product_id)
+    {
+        $response = $this->productService->deleteProduct($request->user()->id,$product_id);
+        return response()->json($response);
     }
 }

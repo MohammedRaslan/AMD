@@ -16,6 +16,8 @@ use App\Enums\Return_Policy;
 use App\Enums\ProductCondition;
 use App\Enums\InternationalShipping;
 use App\Models\Bid;
+use App\Models\Cart;
+use App\Models\Cart_Product;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 class ProductRepository{
@@ -71,21 +73,26 @@ class ProductRepository{
         $product->draft =  $data['draft'];
         $product->user_id = $user_id;
         $product->status  = 1;
-        if($data->hasFile('image')){
-            $fileName = time() . '.'. $data->file('image')[0]->getClientOriginalExtension();
-            $data->image[0]->storeAs('public/products/'.$data['title'].'/',$fileName);
-            $product->image = 'public/products/'.$data['title'].'/'.$fileName;
-        }
+        $product->image   = 'waiting';
         if($product->save()){
+
+            if($data->hasFile('image')){
+                $fileName = time() . '.'. $data->file('image')[0]->getClientOriginalExtension();
+                $data->image[0]->storeAs('public/products/'.$product->id.'/',$fileName);
+                $product->image = 'public/products/'.$product->id.'/'.$fileName;
+                $product->save();
+            }
+
             $product->categories()->attach($data['category']);
             if($data['type'] == 1){
                 $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
             }
+
         if($images){
             foreach($images as $file){
                 $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
-                $file->storeAs('public/products/'.$product->title.'/',$fileName);
-                $path = 'public/products/'.$product->title.'/'.$fileName;
+                $file->storeAs('public/products/'.$product->id.'/',$fileName);
+                $path = 'public/products/'.$product->id.'/'.$fileName;
                 $image = new Image(['url' => $path]);
                 $product->images()->save($image);  
             }
@@ -149,27 +156,30 @@ class ProductRepository{
             if($data['type'] == 1){
                 // $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
             }
+            // check if there are extra images
         if(is_object($data['image'][0])){
             $product->images()->each(function($image){
+                if (Storage::exists('public/products/'.$image->imageable_id)) {
+                    Storage::delete($image->url);
+                }
                 $image->delete();
             });
-            if (Storage::exists('public/products/'.$data['title'])) {
-                Storage::deleteDirectory('public/products/'.$data['title']);
-            }
+         
             foreach($data['image'] as $file){
                 $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
-                $file->storeAs('public/products/'.$data['title'].'/',$fileName);
-                $path = 'public/products/'.$data['title'].'/'.$fileName;
+                $file->storeAs('public/products/'.$product->id.'/',$fileName);
+                $path = 'public/products/'.$product->id.'/'.$fileName;
                 $image = new Image(['url' => $path]);
                 $product->images()->save($image);  
             }
         }
         
         if(is_object($data['featured_image'][0])){
+                Storage::delete($product->image);
                 $featuredImage =  $data['featured_image'][0];
                 $fileName = time() . '.'. $featuredImage->getClientOriginalExtension();
-                $featuredImage->storeAs('public/products/'.$data['title'].'/',$fileName);
-                $product->image = 'public/products/'.$data['title'].'/'.$fileName;
+                $featuredImage->storeAs('public/products/'.$product->id.'/',$fileName);
+                $product->image = 'public/products/'.$product->id.'/'.$fileName;
             
             $product->save();
         }
@@ -278,12 +288,35 @@ class ProductRepository{
     public function changeStatus($user_id,$product_id)
     {
         $product = Product::where('user_id',$user_id)->where('id',$product_id)->first();
-        $product->status = $product->status == 1 ? 0 : 1;
-        if($product->save()){
-            return ['response' => true, 
-                    'status' => $product->status];
+        $checkIfProduuctIsBiddingOrInCart = $this->checkIfProduuctIsBiddingOrInCart($user_id,$product_id);
+        if(!$checkIfProduuctIsBiddingOrInCart){
+            $product->status = $product->status == 1 ? 0 : 1;
+            if($product->status == 0){
+                $product->draft = 1;
+            }
+            if($product->save()){
+                return ['response' => true, 
+                        'status' => $product->status];
+            }
         }
         return ['response' => false];
+    }
+
+    public function checkIfProduuctIsBiddingOrInCart($user_id, $product_id)
+    {
+        $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();
+        $checkIfProductInCart = Cart_Product::where('product_id',$product_id)->first();
+        $checkIfProductIsBidding  = false;
+        if($product->type == 1){
+            $bidActive = Bid::select('last_price')->where('product_id',$product_id)->first();
+            if($bidActive->last_price == 0){
+                $checkIfProductIsBidding = true;
+            }
+        }
+        if($checkIfProductInCart || $checkIfProductIsBidding){
+            return true;
+        }
+        return false;
     }
 
     public function AddToWishlist($user_id,$product_id)
@@ -320,13 +353,34 @@ class ProductRepository{
 
     }
 
-    public function getAllProductDataToUpdate($user_id,$product_id)
+    // public function getAllProductDataToUpdate($user_id,$product_id)
+    // {
+    //     $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();
+    //     if($product){
+    //         return ['product' => $product];
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
+    public function deleteProduct($user_id,$product_id)
     {
-        $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();
-        if($product){
-            return ['product' => $product];
-        }else{
-            return false;
+        if(!$this->checkIfProduuctIsBiddingOrInCart($user_id,$product_id)){
+            if (Storage::exists('public/products/'.$product_id)) {
+                Storage::deleteDirectory('public/products/'.$product_id);
+            }
+            $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();
+            $product->images()->each(function($image){
+                if (Storage::exists('public/products/'.$image->imageable_id)) {
+                    Storage::delete($image->url);
+                }
+                $image->delete();
+            });
+            if($product->delete()){
+                return true;
+            }
+
         }
+        return false;
     }
 }

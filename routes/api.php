@@ -101,8 +101,9 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getProductData/{id?}',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
-        Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);  
-        Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
+        Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);
+        Route::get('deleteProduct/{id?}',[ProductController::class,'delete']);  
+        // Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
     });
 
     Route::prefix('bid')->group(function(){

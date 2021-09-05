@@ -262,7 +262,7 @@ export default ({
                     this.$Progress.fail();
                 }else{
                     this.$Progress.finish();
-                this.$router.push('/selling/overview');
+                this.$router.push('/selling/active_product');
 
                 }
                 

@@ -114,7 +114,7 @@
                                                                         <label for="#description" style="color:white">Feature Image <span class="requiredItem">*</span></label>
                                                                         <div v-show="!openFeatured">
                                                                              <img  :src='str_replace(product.image)' alt="">
-                                                                             <button class="btn btn-milky w-100" @click="changeFeatureImage">Change Featured Image</button>
+                                                                             <button class="btn btn-milky w-100" type="button" @click="changeFeatureImage">Change Featured Image</button>
                                                                         </div>
                                                                        
                                                                         <div v-show="openFeatured">
@@ -133,7 +133,7 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <button class="btn btn-milky w-100 pb-2" @click="changeOptionalImages">Change Optional Image</button>
+                                                                        <button type="button" class="btn btn-milky w-100 pb-2" @click="changeOptionalImages">Change Optional Image</button>
                                                                         <div v-show="openOptionalImages">
                                                                                 <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
                                                                                 <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
