@@ -7,6 +7,7 @@ use App\Services\ProductService;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\ProductStepThreeRequest;
 use App\Http\Requests\ProductStepTwoRequest;
+use App\Http\Requests\StoreRequestItemRequest;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -59,6 +60,17 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
+    public function getUserOfferAndBidsProduct(Request $request)
+    {
+        $response = $this->productService->getUserOfferAndBidsProduct($request->user()->id);
+        return response()->json($response);
+    }
+
+    public function getUserProductSold(Request $request)
+    {
+        $response = $this->productService->getUserProductSold($request->user()->id);
+        return response()->json($response);
+    }
 
     public function getProduct(Request $request, $id)
     {
@@ -128,6 +140,12 @@ class ProductController extends Controller
 
         $projects = $query->paginate($length);
         return ['data' => $projects, 'draw' => $request->input('draw')];
+    }
+
+    public function storeRequestItem(StoreRequestItemRequest $request)
+    {
+        $response = $this->productService->storeRequestItem($request->user()->id,$request->all());
+        return response()->json($response);
     }
 
     public function delete(Request $request ,$product_id)

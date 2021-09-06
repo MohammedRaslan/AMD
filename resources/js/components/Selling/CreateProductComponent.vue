@@ -489,7 +489,7 @@ export default ({
         imagenull: false,
         form : new form({
             title : null,
-            type : 0,
+            type : 0, // type 0 => Regular , type 1 => Bidding
             condition:null,
             image : {},
             brand : null,

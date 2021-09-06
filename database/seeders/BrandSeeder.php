@@ -485,6 +485,11 @@ class BrandSeeder extends Seeder
                 'title'       => 'Zapf',
                 'order' => 94,
             ],
+            [
+                'id'         => 95,
+                'title'       => 'Others',
+                'order' => 95,
+            ],
         ];
         Brand::insert($brands);
     }

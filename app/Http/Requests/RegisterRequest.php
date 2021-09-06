@@ -31,7 +31,7 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:4|max:15|string',
             'phone' => 'nullable|max:20',
             'country' => 'nullable|string|max:200',
-            'image' => 'nullable'
+            'image' => 'nullable|string',
         ];
     }
 }

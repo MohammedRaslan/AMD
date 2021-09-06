@@ -481,7 +481,7 @@
                           border-radius: 50%;
                           margin-left: 5px;
                         "
-                        :src="image"
+                        :src="'/'+image"
                         alt=""
                       />
                     </button>

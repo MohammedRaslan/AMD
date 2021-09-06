@@ -263,6 +263,7 @@ class UserRepository{
                 'service_worldwide' => $data['service_worldwide'],
                 'usa' => $data['usa'],
                 'worldwide' => $data['worldwide'],
+                'paypal_account' => $data['paypal_account'],
                 'user_id' => $user_id,
             ]
     );

@@ -43,6 +43,8 @@ import ShippingInformationComponent from "./components/SettingsCenter/ShippingIn
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
 import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
+import RequestItemComponent from "./components/Buying/RequestItemComponent.vue";
+import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
 var routes = [{
         path: "/",
         component: HomeComponent,
@@ -112,6 +114,16 @@ var routes = [{
         path: "/selling/active_product",
         component: ActiveProductComponent,
         name: "ActiveProduct",
+    },
+    {
+        path: "/selling/sold",
+        component: SoldProductsComponent,
+        name: "SoldProductsComponent",
+    },
+    {
+        path: "/buying/requestItem",
+        component: RequestItemComponent,
+        name: "RequestItemComponent",
     },
     {
         path: "/buying/offers",

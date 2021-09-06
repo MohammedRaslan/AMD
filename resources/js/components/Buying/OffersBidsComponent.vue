@@ -153,9 +153,9 @@ export default ({
             return str;
         },
         getProducts(){
-            axios.get('/api/product/getUserProduct').then((response) => {
-            this.products = response.data.data;
-            this.pagination = response.data.links;
+            axios.get('/api/product/getUserOfferAndBidsProduct').then((response) => {
+            this.products = response.data;
+            // this.pagination = response.data.links;
             // console.log(this.pagination);
             if(response.data.length == 0 ){
                 this.message = 'You dont have products';

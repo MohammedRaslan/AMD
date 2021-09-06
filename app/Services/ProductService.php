@@ -1,6 +1,7 @@
 <?php
 namespace  App\Services;
 
+use App\Enums\ProductType;
 use App\Repositories\ProductRepository;
 
 use function PHPSTORM_META\map;
@@ -78,6 +79,16 @@ class ProductService{
        return $data;
    }
 
+   public function getUserOfferAndBidsProduct($user_id)
+   {
+       return $this->productRepository->getUserOfferAndBidsProduct($user_id);
+   }
+
+   public function getUserProductSold($user_id)
+   {
+       return $this->productRepository->getUserProductSold($user_id);
+   }
+
    public function shopProducts()
    {
        return $this->productRepository->shopProducts();
@@ -112,6 +123,12 @@ class ProductService{
 //    {
 //        return $this->productRepository->getAllProductDataToUpdate($user_id,$product_id);
 //    }
+
+    public function storeRequestItem($user_id,$request)
+    {
+        $images = $this->exportImages($request['image']);
+        return $this->productRepository->storeRequestItem($user_id,$request,$images);
+    }
 
     public function deleteProduct($user_id,$product_id)
     {

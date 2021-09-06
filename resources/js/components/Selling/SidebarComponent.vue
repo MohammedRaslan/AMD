@@ -15,7 +15,7 @@
                 <!-- Active -->
                 <router-link to="/selling/active_product" class="nav-link nav-link-sub" id="v-pills-settings-tab">Active</router-link>
                 <!-- Sold -->
-                <button class="nav-link nav-link-sub" id="v-pills-home-tab2" data-bs-toggle="pill" data-bs-target="#v-pills-home2" type="button" role="tab" aria-controls="v-pills-home2" aria-selected="false">Sold</button>
+                <router-link class="nav-link nav-link-sub" id="v-pills-home-tab2" to="/selling/sold">Sold</router-link>
                 <!-- Unsold -->
                 <button class="nav-link nav-link-sub" id="v-pills-profile-tab3" data-bs-toggle="pill" data-bs-target="#v-pills-home3" type="button" role="tab" aria-controls="v-pills-home3" aria-selected="false">Unsold</button>
                 <!-- Draft -->

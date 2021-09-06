@@ -13,4 +13,5 @@ final class ProductType extends Enum
 {
     const Regular = 0;
     const Bidding = 1;
+    const Requested = 2;
 }   

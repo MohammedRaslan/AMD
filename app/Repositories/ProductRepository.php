@@ -18,6 +18,8 @@ use App\Enums\InternationalShipping;
 use App\Models\Bid;
 use App\Models\Cart;
 use App\Models\Cart_Product;
+use App\Models\HistoryBid;
+use App\Models\Order;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 class ProductRepository{
@@ -26,6 +28,30 @@ class ProductRepository{
 
     public function __construct( Product $product ) {
         $this->product = $product;
+    }
+
+    public function saveImage($data,$product)
+    {         
+            $file = $data['image'][0];
+            $fileName = time() . '.'. $file->getClientOriginalExtension();
+            $file->storeAs('public/products/'.$product->id.'/',$fileName);
+            $product->image = 'public/products/'.$product->id.'/'.$fileName;
+            if( $product->save()){
+                return true;
+            }
+           return false;
+        
+    }
+    
+    public function saveImages($product,$images)
+    {
+        foreach($images as $file){
+            $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
+            $file->storeAs('public/products/'.$product->id.'/',$fileName);
+            $path = 'public/products/'.$product->id.'/'.$fileName;
+            $image = new Image(['url' => $path]);
+            $product->images()->save($image);  
+        }
     }
 
     public function getData($id = null)
@@ -75,27 +101,14 @@ class ProductRepository{
         $product->status  = 1;
         $product->image   = 'waiting';
         if($product->save()){
-
-            if($data->hasFile('image')){
-                $fileName = time() . '.'. $data->file('image')[0]->getClientOriginalExtension();
-                $data->image[0]->storeAs('public/products/'.$product->id.'/',$fileName);
-                $product->image = 'public/products/'.$product->id.'/'.$fileName;
-                $product->save();
-            }
-
+            $this->saveImage($data,$product);
             $product->categories()->attach($data['category']);
             if($data['type'] == 1){
                 $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
             }
 
         if($images){
-            foreach($images as $file){
-                $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
-                $file->storeAs('public/products/'.$product->id.'/',$fileName);
-                $path = 'public/products/'.$product->id.'/'.$fileName;
-                $image = new Image(['url' => $path]);
-                $product->images()->save($image);  
-            }
+            $this->saveImages($product,$images);
         }
         return ['response' => true,
                 'product_id' => $product->id
@@ -105,6 +118,8 @@ class ProductRepository{
         return ['response' => false];
 
     }
+
+
 
     private function MakeBidding($product_id, $from, $to , $bid_minimum_price,$step)
     {
@@ -242,6 +257,17 @@ class ProductRepository{
                             ->orderBy('created_at','desc')
                             ->paginate(10);
     }
+
+    public function getUserOfferAndBidsProduct($user_id)
+    {
+        return HistoryBid::where('user_id',$user_id)->with('product')->get();
+
+    }
+
+    public function getUserProductSold($user_id)
+    {
+        
+    }
     
     public function getProduct($user_id,$id)
     {
@@ -349,7 +375,7 @@ class ProductRepository{
 
     public function getUserProductActive($user_id)
     {
-        return Product::where([['user_id',$user_id] , ['status',1]])->paginate(10);
+        return Product::where([['user_id',$user_id] , ['status',1], ['type', ProductType::getValue("Regular")]])->paginate(10);
 
     }
 
@@ -362,6 +388,29 @@ class ProductRepository{
     //         return false;
     //     }
     // }
+
+    public function storeRequestItem($user_id,$data,$images)
+    {
+        $product = new Product();
+        $product->sku = 'PRO_' . Str::random(5);
+        $product->title = $data['title'];
+        $product->type  = ProductType::getValue("Requested");
+        $product->description = $data['description'];
+        $product->brand = $data['brand'];
+        $product->condition = $data['condition'];
+        $product->user_id = $user_id;
+        $product->return_policy = 'NULL';
+        $product->price = 0;
+        $product->best_offer = 1;
+        $product->best_offer_price = $data['minimum_offer'];
+        $product->status  = 1;
+        $product->image   = 'waiting';
+        if($product->save()){
+            $this->saveImage($data,$product);
+            $this->saveImages($product,$images);
+            $product->categories()->attach($data['category_id']);
+        }
+    }
 
     public function deleteProduct($user_id,$product_id)
     {

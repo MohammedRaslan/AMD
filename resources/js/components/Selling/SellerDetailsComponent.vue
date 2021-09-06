@@ -37,7 +37,7 @@
                                 <div class="inner-item">
                                     <div class="row">
                                         <div class="col-lg-12 detalis border-0">
-                                                 <div class="signup bg-trans">
+                                                 <div class="signup bg-transparent">
                                                     <div class="container">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -70,6 +70,13 @@
                                                                                 <label class="text-white" for="cats">Service Worldwide</label>
                                                                                 <input type="text" v-model="form.service_worldwide" class="form-control" id="fName" placeholder="Service Worldwide" >
                                                                                 <div v-if="form.errors.has('service_worldwide')" class="alert alert-danger" v-html="form.errors.get('service_worldwide')" />
+                                                                            </div>
+                                                                      </div>
+                                                                      <div class="row">
+                                                                             <div class="col-12 text-left">
+                                                                                <label class="text-white" for="cats">PayPal Account</label>
+                                                                                <input type="email" v-model="form.paypal_account" class="form-control" id="fName" placeholder="PayPal Account" >
+                                                                                <div v-if="form.errors.has('paypal_account')" class="alert alert-danger" v-html="form.errors.get('paypal_account')" />
                                                                             </div>
                                                                       </div>
                                                                       <div class="row">
@@ -187,6 +194,7 @@ export default ({
             worldwide:0,
             service_usa: null,
             service_worldwide: null,
+            paypal_account: null,
         }),
     }),
     methods:{
@@ -216,6 +224,7 @@ export default ({
             this.form.service_usa = response.data.service_usa;
             this.form.service_worldwide = response.data.service_worldwide;
             this.form.currency = response.data.currency;
+            this.form.paypal_account = response.data.paypal_account;
         });
     }
 })

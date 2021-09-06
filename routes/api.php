@@ -102,7 +102,10 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
         Route::get('getUserProductDrafted',[ProductController::class,'getUserProductDrafted']);
         Route::get('getUserProductActive',[ProductController::class,'getUserProductActive']);
-        Route::get('deleteProduct/{id?}',[ProductController::class,'delete']);  
+        Route::get('deleteProduct/{id?}',[ProductController::class,'delete']);
+        Route::post('storeRequestItem',[ProductController::class,'storeRequestItem']);
+        Route::get('getUserOfferAndBidsProduct',[ProductController::class,'getUserOfferAndBidsProduct']);
+        Route::get('getUserProductSold',[ProductController::class,'getUserProductSold']);
         // Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
     });
 
