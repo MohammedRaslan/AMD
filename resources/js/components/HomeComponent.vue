@@ -65,7 +65,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-01.png'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -75,7 +75,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-02.png'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -85,7 +85,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-03.jpg'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -95,7 +95,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-04.jpg'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -105,7 +105,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-05.jpg'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -115,7 +115,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-06.jpg'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -125,7 +125,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-07.jpg'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -135,7 +135,7 @@
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
-                            <a class="over-link" href="shop-details.html"></a>
+                            <a class="over-link" href="/"></a>
                             <img :src="'FrontEnd/images/Auctions/Product-08.jpg'" alt>
                             <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                             <p>Ends today at 21:00</p>
@@ -250,7 +250,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-01.png'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -260,7 +260,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-02.png'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -270,7 +270,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-03.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -280,7 +280,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-04.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -290,7 +290,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-05.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -300,7 +300,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-06.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -310,7 +310,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-07.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -320,7 +320,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item postion-relative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-08.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -347,7 +347,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-09.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -357,7 +357,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-10.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -367,7 +367,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-11.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -377,7 +377,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-12.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -387,7 +387,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-13.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -397,7 +397,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-14.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -407,7 +407,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-15.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -417,7 +417,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-16.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -427,7 +427,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-17.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
@@ -437,7 +437,7 @@
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
-                                <a class="over-link" href="shop-details.html"></a>
+                                <a class="over-link" href="/"></a>
                                 <img :src="'FrontEnd/images/Auctions/Product-18.jpg'" alt>
                                 <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
                                 <p>Ends today at 21:00</p>
