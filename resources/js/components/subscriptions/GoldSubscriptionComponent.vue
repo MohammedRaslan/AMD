@@ -33,21 +33,21 @@
                         <h1 style="color: white;">Gold Membership</h1>
                         <ul class="df">
                             <li>250 Free Listings Monthly</li>
-                            <li>No final value fee on the first 2 items sold</li>
-                            <li>Unlimited 7% final value fee on the 3rd item sold</li>
+                            <li>0% final value fee on the first item sold per month</li>
+                            <li>Unlimited 7% final value fee on any additional item sold</li>
                         </ul> 
-                        <small class="text-white">(Get one month free annually when you purchase a yearly subscription of :$549.89)</small>
+                        <small class="text-white"><b>(Get one month free annually when you purchase a yearly subscription of :$549.89)</b></small>
                         <h3 style="color: white;">Terms and Conditions</h3>
                         <p class="terms-text">
                             * Any change/cancellation to the membership will take effect as of the following month
-                                of subscription.
+                                of subscription.<br>
                                 * If you decide to cancel a monthly subscription after the start of the subscription month,
                                 no refunds will be issued. Your membership will change to the free regular membership
-                                as of the following subscription month.
+                                as of the following subscription month.<br>
                                 * Yearly subscriptions are NON-REFUNDABLE
                                 * If you choose to upgrade your yearly membership to a higher tier, the upgrade will be
                                 effective as of the following month. The extra cost for the remaining months in
-                                the subscription year will be charged to your original method of payment.
+                                the subscription year will be charged to your original method of payment.<br>
                                 * If you choose to downgrade your yearly membership to a lower tier, no refund will be
                                 issued.
                         </p>
