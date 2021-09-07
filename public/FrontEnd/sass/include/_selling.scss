@@ -1,16 +1,37 @@
-.header-taps-selling{
-    .nav-link,.nav-pills button{
+.header-taps {
+    .nav-link,
+    .nav-pills button {
         color: white !important;
         display: flex;
         align-items: center;
         margin: 8px 0 !important;
         padding-left: 13px !important;
-        &:hover{
+        &:hover {
             color: #fff !important;
         }
     }
-    .nav-link-sub{
+    .nav-link-sub {
         font-size: 16px !important;
         font-weight: normal !important;
+    }
+    &.header-taps-selling {
+        .nav-link {
+            &.router-link-active {
+                background: $maroon;
+            }
+        }
+    }
+    &.header-taps-setting{
+        border-color: $maroon !important;
+        hr{
+            background-color: $maroon !important;
+
+        }
+        .nav-link {
+            :hover, &.router-link-active {
+                background: $maroon !important;
+            }
+        }
+        
     }
 }

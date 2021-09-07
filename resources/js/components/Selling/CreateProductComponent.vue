@@ -48,13 +48,13 @@
                                                             <form @submit.prevent="saveProduct" class="form-product p-lg-4">
                                                                 <div class="row">
                                                                     <div class="col-12 text-left">
-                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label> 
+                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                     </div>
                                                                     <div class="row pb-4 pr-sm-0">
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                            <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label> 
+                                                                            <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label>
                                                                             <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories" >
                                                                                 <template #search="{attributes, events}">
                                                                                         <input
@@ -142,7 +142,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </nav>
-                                                                        
+
                                                                     </div>
 
                                                                     <div class="row listing-type">
@@ -171,7 +171,7 @@
 
                                                                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                                                                 <div class="inner-save inner-save2">
-                                                                                    <form action="" class="border-0">
+                                                                                    <form action="" class="border-0 px-3">
                                                                                         <div class="row g-3">
                                                                                             <div class="col-6">
                                                                                                 <label for="from" style="color:white; float:left">From</label>
@@ -206,7 +206,7 @@
 
 
                                                                         </div>
-                                                                    </div>                                                                           
+                                                                    </div>
                                                                     <div class="row">
                                                                             <a class="btn btn-milky m-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                                             Additional Information
@@ -214,7 +214,7 @@
                                                                             <div class="collapse m-3 additional-information p-0" id="collapseExample">
                                                                             <div class="card card-body background-color border-0 p-0">
                                                                                 <div class="row text-left">
-        
+
                                                                                         <div class="col-lg-4">
                                                                                             <label class="text-white" for="cats">Item Size</label>
                                                                                             <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Item size" >
@@ -242,7 +242,7 @@
                                                                                                 <div v-if="form.errors.has('featured_refinements')" class="alert alert-danger" v-html="form.errors.get('featured_refinements')" />
                                                                                             </div>
                                                                                         </div>
-                                                                                
+
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6 round">
                                                                                                 <p class="text-white w-100">This Product is Domestic Product</p>
@@ -563,7 +563,7 @@ export default ({
             this.policies = response.data.return_policy;
             this.bid_step = response.data.bidding_step;
         });
-  
+
 
     }
 

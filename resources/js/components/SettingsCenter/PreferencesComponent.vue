@@ -24,12 +24,12 @@
 
 
     <!-- Latest Blog Section Begin -->
-    <section class="selling buying">
+    <section class="selling">
         <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs">
-                    <h2 class="text-green">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
          
                 <side-bar></side-bar>
@@ -38,7 +38,7 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <div class="text-center">
-                                <h3 style="color: #7ac943;">There is no products</h3>
+                                <h3 style="color: #fd1266;">There is no products</h3>
                             </div>
                         </div>
                     </div>

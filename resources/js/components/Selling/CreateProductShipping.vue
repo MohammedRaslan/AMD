@@ -20,7 +20,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-   
+
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
@@ -39,16 +39,16 @@
                                 <!-- Block Item -->
                                 <div class="inner-item">
                                     <div class="row">
-                                        <div class="col-lg-12 detalis">
+                                        <div class="col-lg-12 detalis border-0">
                                                  <div class="signup  bg-transparent">
                                                     <div class="container">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <h2 class="pb-3 pt-4">Shipping Information</h2>
-                                                                <form @submit.prevent="saveProductShipping">                        
+                                                                <h2 class="pb-3 pt-4 pt-lg-0">Shipping Information</h2>
+                                                                <form @submit.prevent="saveProductShipping">
                                                                     <div class="row">
-                                                            
-                                                                        <div class="col-12 mb-3">
+
+                                                                        <div class="col-12 mb-3 text-left">
                                                                             <label class="text-white" for="cats">Package Details</label>
                                                                             <select name="type" v-model="form.package_details" id="" class="m-2 form-control" required>
                                                                                 <option selected disabled >Choose Details</option>
@@ -79,7 +79,7 @@
                                                                                     <div v-if="form.errors.has('weight')" class="alert alert-danger" v-html="form.errors.get('weight')" />
                                                                                 </div>
                                                                           </div>
-                                                                      
+
 
                                                                         <div class="row">
                                                                             <div class="col-6 round ">
@@ -94,7 +94,7 @@
                                                                                 <label for="checkbox2" class="ml-3"></label>
                                                                                 <div v-if="form.errors.has('world_wide')" class="alert alert-danger" v-html="form.errors.get('world_wide')" />
                                                                             </div>
-                                                                        </div>   
+                                                                        </div>
                                                                         <div class="row text-left">
                                                                             <div class="col-6">
                                                                                 <label class="text-white" for="cats">USA CARRIER</label>
@@ -119,28 +119,28 @@
                                                                             <div class="row">
                                                                                 <div class="col-6 select-product text-left">
                                                                                     <label class="text-white" for="cats">Duration USA</label>
-                                                                                    <v-select placeholder="Select Duration" id='cats' v-model="form.duration_usa" label="title" :options="usa"></v-select>
+                                                                                    <v-select placeholder="Select Duration" id='cats' class='custom-vue-select' v-model="form.duration_usa" label="title" :options="usa"></v-select>
                                                                                     <div v-if="form.errors.has('duration_usa')" class="alert alert-danger" v-html="form.errors.get('duration_usa')" />
                                                                                 </div>
                                                                                 <div class="col-6 select-product text-left">
                                                                                     <label class="text-white" for="cats">Duration Worldwide</label>
-                                                                                    <v-select placeholder="Select Policy" id='cats' v-model="form.duration_worldwide" :disabled="!form.world_wide" label="title" :options="international"></v-select>
+                                                                                    <v-select placeholder="Select Policy" class="custom-vue-select" id='cats' v-model="form.duration_worldwide" :disabled="!form.world_wide" label="title" :options="international"></v-select>
                                                                                     <div v-if="form.errors.has('duration_world_wide')" class="alert alert-danger" v-html="form.errors.get('duration_world_wide')" />
                                                                                 </div>
                                                                             </div>
-                                                                            
-                                                                        </div>   
+
+                                                                        </div>
                                                                         <div class="row pt-3">
                                                                             <div class="col-4">
-                                                                                <input type="button" @click="GoBack" value="Back" class="form-control btn btn-outline-danger">     
-                                                                            </div>                                                           
+                                                                                <input type="button" @click="GoBack" value="Back" class="form-control">
+                                                                            </div>
                                                                             <div class="col-4">
                                                                                 <input type="button" @click="draft" value="Save as Draft" class="form-control btn bg-gray" id="draft">
                                                                             </div>
                                                                             <div class="col-4">
-                                                                                <input type="submit" :disabled="form.busy" value="Publish" class="form-control" id="register">
+                                                                                <input type="submit" :disabled="form.busy" value="Publish" class="form-control h-60" id="register">
                                                                             </div>
-                                                                        </div>                                                        
+                                                                        </div>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -150,17 +150,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-
 
                              </div>
                         </div>
                     </div>
                 </div>
             </div>
-         
-        
-          
+
+
+
         </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -222,7 +220,7 @@
 import SideBar from "./SidebarComponent";
 import { createEditor } from 'vueditor';
 export default ({
-    
+
     components:{
         SideBar,
     },
@@ -239,7 +237,7 @@ export default ({
             price_usa: null,
             service_world_wide: null,
             duration_usa: null,
-            duration_worldwide: null, 
+            duration_worldwide: null,
             price_world_wide: null,
             height: null,
             weight: null,
@@ -265,13 +263,13 @@ export default ({
                 this.$router.push('/selling/active_product');
 
                 }
-                
+
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);
             });
         },
-       
+
         draft(){
             this.form.draft = 1;
             this.saveProductShipping();
@@ -297,7 +295,7 @@ export default ({
 
     beforeCreate() {
         this.$Progress.start();
-  
+
     },
     mounted(){
         Fire.$emit('mounted');
@@ -322,7 +320,7 @@ export default ({
                 this.form.weight = response.data.shipping.weight;
                 this.form.length = response.data.shipping.length;
                 this.form.width  = response.data.shipping.width;
-            
+
             }else{
                 this.form.world_wide = response.data.userDetails.worldwide;
                 this.form.usa = response.data.userDetails.usa;
