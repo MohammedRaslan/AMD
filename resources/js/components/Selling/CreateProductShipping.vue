@@ -132,13 +132,13 @@
                                                                         </div>
                                                                         <div class="row pt-3">
                                                                             <div class="col-4">
-                                                                                <input type="button" @click="GoBack" value="Back" class="form-control">
+                                                                                <input type="button" @click="GoBack" value="Back" class="form-control h-40">
                                                                             </div>
                                                                             <div class="col-4">
-                                                                                <input type="button" @click="draft" value="Save as Draft" class="form-control btn bg-gray" id="draft">
+                                                                                <input type="button" @click="draft" value="Save as Draft" class="form-control h-40 btn bg-gray" id="draft">
                                                                             </div>
                                                                             <div class="col-4">
-                                                                                <input type="submit" :disabled="form.busy" value="Publish" class="form-control h-60" id="register">
+                                                                                <input type="submit" :disabled="form.busy" value="Publish" class="form-control h-40" id="register">
                                                                             </div>
                                                                         </div>
                                                                     </div>

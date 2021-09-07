@@ -11,6 +11,10 @@
   height: 60px !important;
 }
 
+.h-40 {
+  height: 40px !important;
+}
+
 .bg-transparent {
   background: transparent !important;
 }
