@@ -20,7 +20,7 @@ Route::get('createAdmin',function(){
        'first_name' => 'Admin',
        'last_name'  => 'Mophx',
        'user_name' => 'AdminMophx',
-       'email'      => 'admin@mophx.com',
+       'email'      => 'mohamedraslan2282@yahoo.com',
        'password'   => bcrypt('123456789'),
        'phone'      => '01245784512',
        'address'    => 'Address',
