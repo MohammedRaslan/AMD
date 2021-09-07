@@ -1,6 +1,9 @@
 <?php
 namespace App\Repositories;
+
+use App\Enums\CurrencyIconsEnum;
 use App\Models\Category;
+use App\Models\UserDetail;
 use App\Models\Wishlist;
 // use App\Models\Product;
 
@@ -42,7 +45,8 @@ class CategoryRepository{
         $category = Category::where('id',$id)->with('products')->first();
         $products = $category->products()->where('status',1)->where('draft',0)->get();
         $exist = false;
-        return $products->map(function($item, $key) use ($user_id,$exist){
+        $userDetails = UserDetail::where('user_id',$user_id)->first();
+        return $products->map(function($item, $key) use ($user_id,$exist,$userDetails){
                $item->wishlistCount = count($item->wishlist);
                if($user_id != null){  // check if user the owner of product
                     foreach($item->wishlist as $wishlist){
@@ -51,8 +55,8 @@ class CategoryRepository{
                         }
                     }
                }
-           
                $item->userAddedItemToWishlist = $exist;
+               $item->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
                $item->unsetRelation('wishlist');
             return $item;
                 

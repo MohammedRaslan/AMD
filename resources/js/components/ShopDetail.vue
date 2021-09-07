@@ -35,7 +35,7 @@
                         <h2 > {{ product.title }}  </h2>
                         <div class="detail-top">
                             <p><span>Seller:</span> <span v-if="loading">{{ product.user.user_name }}</span></p>
-                            <p v-if="shipping.duration_usa"><span>Shipping time:</span> <span>{{ shipping.duration_usa }}</span></p>
+                            <p v-if="shipping !=null && shipping.duration_usa"><span>Shipping time:</span> <span>{{ shipping.duration_usa }}</span></p>
                             <p>
                                 <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_love_outline" width="20.833" height="18.75" viewBox="0 0 20.833 18.75">
                                     <g id="Icon_love_outline-2" data-name="Icon_love_outline">
@@ -96,11 +96,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="des">
-                            <p v-html="product.description"></p>
-                        </div>
+                        <div class="fs-20 bottom pb-3 pt-3">
+                            <div class="row">
+                                <span class="col-lg-4 col-xs-5 maintype">Brand:</span>
+                                <span class="col-lg-8 col-xs-7 subtype">{{ product.brand == null ? '-' : product.brand}} </span>
+                            </div>
+                            <div class="row">
+                                <span class="col-lg-4 col-xs-5 maintype">Condition:</span>
+                                <span class="col-lg-8 col-xs-7 subtype">{{ product.condition == null ? '-' : product.condition}} </span>
+                            </div>
+                            <div class="row">
+                                <span class="col-lg-4 col-xs-5 maintype">Featured Refinements:</span>
+                                <span class="col-lg-8 col-xs-7 subtype">{{ product.featured_refinements == null ? '-' : product.featured_refinements }} </span>
+                            </div>
+                            <div class="row">
+                                <span class="col-lg-4 col-xs-5 maintype">Modified :</span>
+                                <span class="col-lg-8 col-xs-7 subtype">{{ product.modified_item == 1 ? 'Yes' : 'No' }} </span>
+                            </div>
+                            <div class="row">
+                                <span class="col-lg-4 col-xs-5 maintype">Return Policy:</span>
+                                <span class="col-lg-8 col-xs-7 subtype">{{ product.return_policy  == null ? '-' :  product.return_policy}} </span>
+                            </div>
 
-                         <div class="product__details__content">
+
+                        </div>
+                         <div class="product__details__content pt-3">
                             <div class="col-lg-12">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
@@ -133,55 +153,55 @@
                                     </button>
                                 </li>
                                 </ul>
-                                <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-content " id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                        <div class="fs-20">
+                                        <div class="fs-20 bottom pb-3">
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Brand:</span>
-                                                <span class="inner-value col-7">{{ product.brand == null ? '-' : product.brand}} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Brand:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.brand == null ? '-' : product.brand}} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Condition:</span>
-                                                <span class="inner-value col-7">{{ product.condition == null ? '-' : product.condition}} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Condition:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.condition == null ? '-' : product.condition}} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Gender:</span>
-                                                <span class="inner-value col-7">{{ product.doll_gender == null ? '-' : product.doll_gender}} </span></div>
+                                                <span class="col-lg-4 col-xs-5 maintype">Gender:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.doll_gender == null ? '-' : product.doll_gender}} </span></div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Size:</span>
-                                                <span class="inner-value col-7">{{ product.doll_size == null ? '-' : product.doll_size}} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Size:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.doll_size == null ? '-' : product.doll_size}} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Featured Refinements:</span>
-                                                <span class="inner-value col-7">{{ product.featured_refinements == null ? '-' : product.featured_refinements }} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Featured Refinements:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.featured_refinements == null ? '-' : product.featured_refinements }} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Domestic Product:</span>
-                                                <span class="inner-value col-7">{{ product.domestic_product == 1 ? 'Yes' : 'No' }} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Domestic Product:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.domestic_product == 1 ? 'Yes' : 'No' }} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Modified :</span>
-                                                <span class="inner-value col-7">{{ product.modified_item == 1 ? 'Yes' : 'No' }} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Modified :</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.modified_item == 1 ? 'Yes' : 'No' }} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">UPC:</span>
-                                                <span class="inner-value col-7">{{ product.upc  == null ? '-' :  product.upc}} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">UPC:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.upc  == null ? '-' :  product.upc}} </span>
                                             </div>
                                             <div class="row">
-                                                <span class="inner-title col-5 col-lg-3">Return Policy:</span>
-                                                <span class="inner-value col-7">{{ product.return_policy  == null ? '-' :  product.return_policy}} </span>
+                                                <span class="col-lg-4 col-xs-5 maintype">Return Policy:</span>
+                                                <span class="col-lg-8 col-xs-7 subtype">{{ product.return_policy  == null ? '-' :  product.return_policy}} </span>
                                             </div>
 
 
                                         </div>
                                         <hr>
-                                        <div class="row" v-if="product.details">
-                                            <h4 style="color:white">Extra Details</h4>
-                                            <p class="pl-5" v-html="product.details"></p>
+                                         <div class="des">
+                                             <h2>Description</h2>
+                                                <p class="pl-2" v-html="product.description"></p>
                                         </div>
 
                                     </div>
-                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" v-if="shipping != null">
                                         <hr>
                                         <h3 class="title-color pt-2 underline"> Package Details</h3>
 
@@ -227,7 +247,7 @@
                     </div>
 
                     <div v-if="(loading && !author)">
-                        <AddCartWidget :id="id" :price="product.price" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0"></AddCartWidget>
+                        <AddCartWidget :id="id" :price="product.price" :currency="product.currencyIcon" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0"></AddCartWidget>
                         <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
                     </div>
                      <div v-if="author && product.best_offer">
@@ -257,17 +277,26 @@
     .title-color{
         color: #ffe0e0;
     }
+    .maintype{
+        color:#7ac942;
+    }
     .inner-title{
         color:#7ac942;
     }
+    .subtype{
+        color: #fecc2f;
+    }
     .inner-value{
-        color: #97ceff;
+        color: #fecc2f;
     }
     .underline{
         text-decoration: underline;
     }
     .fs-20{
         font-size: 20px;
+    }
+    .bottom{
+        border-bottom: 1px solid #ffe0e0;
     }
 </style>
 <script>

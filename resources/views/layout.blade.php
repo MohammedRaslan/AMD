@@ -30,7 +30,10 @@
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/app.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('FrontEnd') }}/css/new-style.css" type="text/css">
     <link rel="stylesheet" href=" {{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
-
+    <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.carousel.min.css" rel="stylesheet" >
+    <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.theme.default.min.css" rel="stylesheet">
+    <script src="{{ asset('FrontEnd') }}/js/owlcarousel/jquery.min.js" defer></script>
+    <script src="{{ asset('FrontEnd') }}/js/owlcarousel/owl.carousel.js" defer></script>
 
 </head>
 <style>
@@ -300,6 +303,9 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
+    <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.carousel.min.css" rel="stylesheet" >
+    <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.theme.default.min.css" rel="stylesheet">
+
     {{-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script> --}}
     {{-- <script src="{{ asset('FrontEnd') }}/js/tooltip.js" defer></script> --}}
 </body>

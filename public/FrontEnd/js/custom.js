@@ -90,5 +90,26 @@ $(document).ready(function() {
         $this.css('display', 'block');
         $this.children('ul').slideToggle();
     });
+    $(document).ready(function() {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            margin: 10,
+            nav: true,
+            loop: true,
+            autoplay: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 3
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+    })
 
 })

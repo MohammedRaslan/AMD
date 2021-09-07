@@ -6,7 +6,8 @@
                                <div class="content data" >
                                    <h4 v-show="author">Send a message to the seller</h4>
                                 <div style="display:flex; flex-direction:column-reverse">
-                                        <p class="d-block" v-for="(message,index) in messages" :key="index">
+                                    <div v-show="messageAlert != null" class="text-white text-center"> {{ messageAlert }} </div>
+                                    <p class="d-block" v-for="(message,index) in messages" :key="index" >
                                        <span>{{ message.user_from.user_name }}:</span>
                                          {{ message.message }}
                                     </p>
@@ -25,6 +26,7 @@
 export default({
     props: ['productUserID','productUserName','productUserEmail','productID'],
         data:()=>({
+            messageAlert: null,
             messages: {},
             author: false,
             form : new form({
@@ -48,10 +50,15 @@ export default({
             }
 
             axios.get('/api/chat/getMessages/'+this.productID).then((response) =>{
-                this.messages = response.data;
+                if(response.data.length == 0){
+                    this.messageAlert = "There Are No Messages";
+                }else{
+                    this.messages = response.data;
+                }
             });
 
             window.Echo.channel('send-message').listen('ChatEvent', event => {
+                this.messageAlert = null;
                 this.messages.unshift(event.message);
             });
         }

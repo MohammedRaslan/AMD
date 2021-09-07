@@ -102,7 +102,7 @@
                             </router-link>
                             </figure>
                         <h4><router-link class="link-del" :to="{name: 'ShopDetailComponent', params:{query: product.id}}">{{ product.title }}</router-link> </h4>
-                        <h5 v-if="product.type == 0">$ {{ product.price }}</h5>
+                        <h5 v-if="product.type == 0"><span v-html=" product.currencyIcon"></span> {{ product.price }}</h5>
                         <h5 v-else>Bidding</h5>
                         <h6>
                             <span v-if="product.best_offer" class="float-left">or Best Offer</span>

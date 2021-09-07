@@ -5,8 +5,8 @@
 
             <div class="content">
                 <div>
-                    <h3>$ {{ this.price }}</h3>
-                    <p>{{ this.wishlistCount     }} Wachers</p>
+                    <h3><span v-html="currencyIcon "></span> {{ this.price }}</h3>
+                    <p>{{ this.wishlistCount }} Wachers</p>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -22,9 +22,10 @@
 <script>
 
 export default ({
-   props: ['id','price','exist','wishlistCount'],
+   props: ['id','price','exist','wishlistCount','currency'],
    data:()=>({
-       added: false
+       added: false,
+       currencyIcon: null,
    }),
    methods:{
       async addToCart(){
@@ -48,5 +49,8 @@ export default ({
         });
     }
    },
+   mounted(){
+       this.currencyIcon = this.currency;
+   }
 })
 </script>

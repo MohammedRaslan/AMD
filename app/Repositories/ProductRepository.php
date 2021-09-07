@@ -280,11 +280,13 @@ class ProductRepository{
     
     public function getProduct($user_id,$id)
     {
+        $userDetails = UserDetail::where('user_id',$user_id)->first();
         $product = Product::where('id',$id)->with(['user','shipping','images','bid'])->first();
         $wishlist = $product->wishlist()->pluck('user_id')->toArray();
         $product->wishlistCount = count($product->wishlist);
         $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
         $product->user_details = $product->user->user_details;
+        $product->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
         $product->unsetRelation('wishlist');
         if($product->bid != null){
             return ['product' => $product,
