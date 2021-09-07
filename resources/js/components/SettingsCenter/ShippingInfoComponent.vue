@@ -24,12 +24,12 @@
 
 
     <!-- Latest Blog Section Begin -->
-    <section class="selling buying">
+    <section class="selling">
         <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs">
-                    <h2 class="text-green">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
          
                 <side-bar></side-bar>
@@ -37,10 +37,10 @@
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
-                            <div class="signup">
+                            <div class="signup bg-transparent">
                               <form @submit.prevent="updateUserShippingInfo">
                                 <div class="row">
-                                    <div class="col-lg-12" style="margin-top: 9%;">
+                                    <div class="col-lg-12">
                                         <div class="row">
 
                                               <div v-show="message != ''" class="alert alert-success" v-html="message"/>

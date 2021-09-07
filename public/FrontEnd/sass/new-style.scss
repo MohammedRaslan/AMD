@@ -13,22 +13,34 @@
         width: 100%;
         overflow: hidden;
     }
-    #preloder{
+    
+    #preloder {
         display: none !important;
     }
-    .bg-transparent{
+    
+    .h-60 {
+        height: 60px !important;
+    }
+    
+    .h-40 {
+        height: 40px !important;
+    }
+    
+    .bg-transparent {
         background: transparent !important;
     }
+    
     .text-green {
         color: $green !important;
     }
-
-    .pr-sm-0{
+    
+    .pr-sm-0 {
         @media (max-width: 992px) {
             padding-right: 0 !important;
         }
     }
-    .pl-sm-0{
+    
+    .pl-sm-0 {
         @media (max-width: 992px) {
             padding-left: 0 !important;
         }
@@ -294,14 +306,42 @@
         }
     }
     
+    .custom-vue-select {
+        .vs__dropdown-toggle {
+            border: 1px solid #42525e;
+            height: 60px;
+        }
+        input {
+            border: none !important;
+            height: auto !important;
+            margin-bottom: 0 !important;
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+    }
+    
+    input:disabled {
+        background: transparent !important;
+        opacity: 0.2 !important;
+    }
+    
+    .vs--disabled .vs__clear,
+    .vs--disabled .vs__dropdown-toggle,
+    .vs--disabled .vs__open-indicator,
+    .vs--disabled .vs__search,
+    .vs--disabled .vs__selected {
+        background: transparent !important;
+    }
+    
     .canvas__open_guest {
         top: -65px !important;
         position: absolute !important;
         right: 0px;
         border: none;
-        a{
+        a {
             display: flex;
-            i{
+            i {
                 margin-left: 8px;
             }
         }

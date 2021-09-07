@@ -46,8 +46,8 @@
                                                                     <div class="row">
                                                                         <div class="row pb-4">
                                                                             <div class="col-12 select-product text-left">
-                                                                                <label class="text-white" for="cats">Currency</label> 
-                                                                                <v-select placeholder="Select Currency" id='cats' v-model="form.currency" :options="currencies" >
+                                                                                <label class="text-white" for="cats">Currency</label>
+                                                                                <v-select placeholder="Select Currency" class="custom-vue-select" id='cats' v-model="form.currency" :options="currencies" >
                                                                                     <template #search="{attributes, events}">
                                                                                             <input
                                                                                                 class="vs__search"

@@ -24,20 +24,20 @@
 
 
     <!-- Latest Blog Section Begin -->
-    <section class="selling buying">
+    <section class="selling">
         <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs">
-                    <h2 class="text-green">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
-         
+
                 <side-bar></side-bar>
 
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
-                            <div class="signup">
+                            <div class="signup bg-transparent">
                               <form @submit.prevent="updateUserInfo">
                                 <div class="row">
                                     <div class="col-lg-6" style="margin-top: 9%;">
@@ -150,7 +150,7 @@
                                                 <label for="avatar1">
                                                 <img id="img1"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-10.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-10.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-10-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-10.PNG'"/>
                                             </label>
                                             </div>
@@ -161,7 +161,7 @@
                                                 <label for="avatar2">
                                                 <img id="img2"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-11.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-11.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-11-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-11.PNG'"/>
                                             </label>
                                             </div>
@@ -171,7 +171,7 @@
                                                 <label for="avatar3">
                                                 <img id="img3"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-12.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-12.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-12-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-12.PNG'"/>
                                             </label>
                                             </div>
@@ -185,7 +185,7 @@
                                                 <label for="avatar4">
                                                 <img id="img4"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-13.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-13.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-13-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-13.PNG'"/>
                                             </label>
                                             </div>
@@ -195,7 +195,7 @@
                                                 <label for="avatar5">
                                                 <img id="img5"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-14.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-14.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-14-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-14.PNG'"/>
                                             </label>
                                             </div>
@@ -205,7 +205,7 @@
                                                 <label for="avatar6">
                                                 <img id="img6"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-15.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-15.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-15-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-15.PNG'"/>
                                             </label>
                                             </div>
@@ -219,7 +219,7 @@
                                                 <label for="avatar7">
                                                 <img id="img7"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-16.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-16.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-16-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-16.PNG'"/>
                                             </label>
                                             </div>
@@ -229,7 +229,7 @@
                                                 <label for="avatar8">
                                                 <img id="img8"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-17.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-17.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-17-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-17.PNG'"/>
                                             </label>
                                             </div>
@@ -239,7 +239,7 @@
                                                 <label for="avatar9">
                                                 <img id="img9"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-18.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-18.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-18-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-18.PNG'"/>
                                             </label>
                                             </div>
@@ -249,7 +249,7 @@
                                         </div>
                                     </div>
                                     <!--end right side -->
-                                    
+
                                 </div>
                             </form>
                             </div>
@@ -280,7 +280,7 @@ export default {
             image: null,
         }),
      }),
-    
+
      components:{
         SideBar,
     },
@@ -298,7 +298,7 @@ export default {
                 .catch(error => {
                     this.$Progress.fail();
                 });
-            
+
         },
     },
     mounted(){

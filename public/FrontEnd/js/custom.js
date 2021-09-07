@@ -70,9 +70,16 @@ $(document).ready(function() {
     $(".notif-cont").slideUp("fast")
 
     $(".btn-notification").click(function() {
-            $(".notif-cont").slideToggle("fast")
-        })
-        // Notification nice-scroll
+        $(".notif-cont").slideToggle("fast")
+    })
+
+    //      $(document).on('click', '.dropdown-hero', function() {
+    //     console.log('xxx');
+    //     $this = $(this);
+    //     $this.css('display', 'block');
+    //     $this.children('ul').slideToggle();
+    // });
+    // Notification nice-scroll
     // $(".notif-cont").niceScroll({
     //     cursorcolor: "#fd1266",
     //     cursorwidth: "5px",
@@ -84,7 +91,7 @@ $(document).ready(function() {
     //     preventmultitouchscrolling: true
     // });
 
-    $(document).on('click','.dropdown-hero',function(){
+    $(document).on('click', '.dropdown-hero', function() {
         console.log('xxx');
         $this = $(this);
         $this.css('display', 'block');
