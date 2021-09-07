@@ -20,6 +20,7 @@ use App\Models\Cart;
 use App\Models\Cart_Product;
 use App\Models\HistoryBid;
 use App\Models\Order;
+use App\Models\Order_Product;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 class ProductRepository{
@@ -266,7 +267,15 @@ class ProductRepository{
 
     public function getUserProductSold($user_id)
     {
-        
+        $userProducts = Product::select('id')->where('user_id',$user_id)->pluck('id')->toArray();
+        $productsInOrder = [];
+        foreach($userProducts as $product){
+            $checkIfProductExistInOrderProduct = Order_Product::where('product_id',$product)->with('product')->first();
+            if($checkIfProductExistInOrderProduct != null){
+                $productsInOrder[] = $checkIfProductExistInOrderProduct->product;
+            }
+        }
+        return $productsInOrder;
     }
     
     public function getProduct($user_id,$id)

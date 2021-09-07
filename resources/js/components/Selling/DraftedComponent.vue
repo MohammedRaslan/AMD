@@ -27,7 +27,7 @@
 
         <div class="container">
             <div class="row">
-                <h2>Drafted <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <h2>Draftes <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
             <!-- Compnent Here -->
             <side-bar></side-bar>
             <!-- End Component  -->

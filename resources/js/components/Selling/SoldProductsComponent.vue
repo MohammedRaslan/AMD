@@ -27,13 +27,13 @@
 
         <div class="container">
             <div class="row">
-                <h2>Drafted <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <h2>Sold <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
             <!-- Compnent Here -->
             <side-bar></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
-                    <div class="tab-content"  v-for="product in products.data" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
+                    <div class="tab-content"  v-for="product in products" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <pagination :data="products" @pagination-change-page="getProducts"></pagination>   
+            <!-- <pagination :data="products" @pagination-change-page="getProducts"></pagination>    -->
         </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -100,7 +100,7 @@ import SideBar from "./SidebarComponent";
 export default ({
     data :()=>({
         loading : false,
-        products: {},
+        products: [],
         message : '',
     }),
     components:{
@@ -128,13 +128,14 @@ export default ({
             });
             },
         getProducts(page = 1){
-             this.message = 'You dont have products';
-        //     axios.get('/api/product/getUserProductSold?page=' + page).then((response) => {
-        //     this.products = response.data;
-        //       if(response.data == '' ){
-        //         this.message = 'You dont have products';
-        //         }
-        // });
+            //  this.message = 'You dont have products';
+            axios.get('/api/product/getUserProductSold').then((response) => {
+              if(response.data.length == 0 ){
+                this.message = 'You dont have products';
+                }else{
+                    this.products = response.data;
+                }
+        });
         }
     },
     beforeCreate() {

@@ -44,7 +44,7 @@ class CategoryRepository{
         $exist = false;
         return $products->map(function($item, $key) use ($user_id,$exist){
                $item->wishlistCount = count($item->wishlist);
-               if($user_id != null){
+               if($user_id != null){  // check if user the owner of product
                     foreach($item->wishlist as $wishlist){
                         if($wishlist->user_id == $user_id){
                             $exist = true;

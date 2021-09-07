@@ -34,9 +34,9 @@
 
 </head>
 <style>
-    .nice-select {
+    /* .nice-select {
         display: none;
-    }
+    } */
 
     #preloader {
         display: block !important;
