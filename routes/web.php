@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('createAdmin',function(){
-//     User::create([
-//        'first_name' => 'Admin',
-//        'last_name'  => 'Mophx',
-//        'user_name' => 'AdminMophx',
-//        'email'      => 'admin@mophx.com',
-//        'password'   => bcrypt('123456789'),
-//        'phone'      => '01245784512',
-//        'address'    => 'Address',
-//        'type' => 1,
-//        'role' => 0,
-//    ]);
-// });
+Route::get('createAdmin',function(){
+    User::create([
+       'first_name' => 'Admin',
+       'last_name'  => 'Mophx',
+       'user_name' => 'AdminMophx',
+       'email'      => 'admin@mophx.com',
+       'password'   => bcrypt('123456789'),
+       'phone'      => '01245784512',
+       'address'    => 'Address',
+       'type' => 1,
+       'role' => 0,
+   ]);
+});
 Route::get('/{any?}/{title?}', function () {
     // if(str_contains(request()->fullUrl(),'testNoti')){
     //     return event(new BiddingEvent('Hello'));
