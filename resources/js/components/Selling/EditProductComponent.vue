@@ -24,10 +24,12 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-
+        <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
-                <h2>Sell An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-4'>Sell An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                </div>
             <!-- Compnent Here -->
             <side-bar></side-bar>
             <!-- End Component  -->

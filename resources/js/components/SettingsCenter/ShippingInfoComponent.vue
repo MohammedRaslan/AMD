@@ -44,7 +44,7 @@
                                         <div class="row">
 
                                               <div v-show="message != ''" class="alert alert-success" v-html="message"/>
-                                            <div class="col-6">
+                                            <div class="col-12 col-lg-6">
                                                 <input
                                                 type="text"
                                                 v-model="form.address"

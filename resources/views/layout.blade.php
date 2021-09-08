@@ -303,6 +303,7 @@
     <script src="{{ asset('FrontEnd') }}/js/owl.carousel.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/main.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/custom.js" defer></script>
+    <script src="{{ asset('FrontEnd') }}/js/script.js" defer></script>
     <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.carousel.min.css" rel="stylesheet" >
     <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.theme.default.min.css" rel="stylesheet">
 

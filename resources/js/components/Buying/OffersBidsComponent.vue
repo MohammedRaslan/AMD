@@ -24,7 +24,7 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying">
-
+        <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
                 <h2>Buying <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
