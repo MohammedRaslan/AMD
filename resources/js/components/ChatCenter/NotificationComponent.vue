@@ -31,7 +31,7 @@
                 <div class="top-tabs">
                     <h2 class="text-green">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
-         
+
                 <side-bar></side-bar>
 
                 <div class="col-xl-10 col-md-12">
@@ -56,9 +56,9 @@ export default {
      data: () => ({
           checkImage: '',
           message: '',
- 
+
      }),
-    
+
      components:{
         SideBar,
     },

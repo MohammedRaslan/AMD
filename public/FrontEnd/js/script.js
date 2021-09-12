@@ -37,7 +37,7 @@ $(document).ready(function() {
     );
 
 
-      $(".selling .open-tabs, .over-lay-selling").click(function() {
+    $(".selling .open-tabs, .over-lay-selling").click(function() {
         $(".header-taps").slideToggle()
         $('.selling .over-lay-selling').toggleClass("d-none");
     })
@@ -65,4 +65,23 @@ $(document).ready(function() {
     //     //     $h2.classList.remove("py-4");
     //     // }
     // }
+
+    $('.owl-test-details').owlCarousel({
+        loop: true,
+        margin: 10,
+        // autoplay: true,
+        // navigation: true,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
 })

@@ -35,6 +35,18 @@
   }
 }
 
+.heaer-tabs-yellow .router-link-exact-active.router-link-active {
+  background: #fecc2f;
+}
+
+.border-yellow {
+  border: 1px solid #FECC2F !important;
+}
+
+.border-radius-10 {
+  border-radius: 10px !important;
+}
+
 @media (min-width: 992px) {
   .shop-details .product__details__pic .col-lg-8 {
     padding-right: 30px;
