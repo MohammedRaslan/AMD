@@ -21,7 +21,7 @@
                                                         </g>
                                                     </g>
                                                 </svg>
-                            <span v-show="count > 0" class="quantity-notif"></span>
+                            <span v-show="count > 0" class="quantity-notif" style="top:-10px !important"></span>
             </div>
             <div class="notif-cont">
                 <!-- Block Item -->

@@ -30,18 +30,25 @@
         <div class="row pt-5 pb-5">
            
             <div class="col-lg-8 col-md-8 col-sm-12 content" style="padding-left: 40px;">
-                <h1 style="color: white;">Free Membership</h1>
+                <h1 style="color: white;">Free</h1>
                 <ul class="df">
                     <li>50 Free Listings monthly</li>
                     <li>Selling Fee 9% unlimited final value fee.</li>
                 </ul> 
-                <h3 style="color: white;">Terms and Conditions</h3>
-                <p class="terms-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor,
-                     placeat ipsa quas quod deleniti soluta quis?
-                     Nemo quod assumenda aut aliquam dicta dolores totam recusandae in, quae cupiditate cum culpa!
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio a eius, corporis distinctio debitis pariatur earum 
-                     aut iusto maxime possimus nesciunt eaque ad voluptatibus! Dolore labore assumenda temporibus aut tenetur.
-                </p>
+                  <h3 style="color: white;">Terms and Conditions</h3>
+                        <p class="terms-text">
+                            * Any change/cancellation to the membership will take effect as of the following month
+                                of subscription.<br>
+                                * If you decide to cancel a monthly subscription after the start of the subscription month,
+                                no refunds will be issued. Your membership will change to the free regular membership
+                                as of the following subscription month.<br>
+                                * Yearly subscriptions are NON-REFUNDABLE
+                                * If you choose to upgrade your yearly membership to a higher tier, the upgrade will be
+                                effective as of the following month. The extra cost for the remaining months in
+                                the subscription year will be charged to your original method of payment.<br>
+                                * If you choose to downgrade your yearly membership to a lower tier, no refund will be
+                                issued.
+                        </p>
                   <!-- Subscribe Button -->
                   <div></div>
             </div>

@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Events\ChatEvent;
 use App\Models\Chat;
+use App\Models\Product;
 
 class ChatRepository{
 
@@ -26,12 +27,22 @@ class ChatRepository{
         return $chatMessage;
     }
 
-    public function getMessages($product_id)
+    public function getMessages($user_id,$product_id)
     {
-        return Chat::where('product_id',$product_id)
-                          ->where('status',1)
+        $product = Product::find($product_id);
+        if($product->user_id == $user_id){
+            $messages = Chat::where('product_id',$product_id)
+            ->where('status',1)
+            ->with('user_to')->with('user_from')
+            ->orderBy('created_at','desc')->take(5)
+            ->get();
+        }else{
+            $messages = Chat::where('product_id',$product_id)
+                          ->where('status',1)->where('user_id_from',$user_id)
                           ->with('user_to')->with('user_from')
                           ->orderBy('created_at','desc')->take(5)
                           ->get();
+        }
+        return $messages;
     }
 }

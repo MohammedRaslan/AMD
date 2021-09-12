@@ -13,7 +13,11 @@
             </div>
         </div>
 </template>
-
+<style scoped>
+    .swal2-select{
+        display: none !important;
+    }
+</style>
 <script>
     export default ({
         props:['id','best_offer_price'],
@@ -31,15 +35,15 @@
                     if(response.data == false){
                         Swal.fire('Item Not Available!')
                     }else{
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Offer Made Successfully'
-                        });
+                        // Toast.fire({
+                        //     icon: 'success',
+                        //     title: 'Offer Made Successfully'
+                        // });
                     }
                 
                 });
                 }else{
-                    alert('Your Offer is too low');
+                    Swal.fire('Item Not Available!')
                 }
          
             }

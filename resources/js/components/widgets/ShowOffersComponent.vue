@@ -101,7 +101,6 @@ export default {
         });
 
         window.Echo.channel('make-offer-event').listen('MakeOfferEvent', event => {
-            console.log(event);
             if(event.offer.product_id == this.id){
                 this.offers.push(event.offer);
             }

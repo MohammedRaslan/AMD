@@ -30,7 +30,7 @@
                 <div class="row pt-5 pb-5">
                 
                     <div class="col-lg-8 col-md-8 col-sm-12 content" style="padding-left: 40px;">
-                        <h1 style="color: white;">Silver Membership</h1>
+                        <h1 style="color: white;">Silver</h1>
                         <ul class="df">
                             <li>100 Free Listings Monthly</li>
                             <li>7% final value fee on the first 10 items sold.</li>

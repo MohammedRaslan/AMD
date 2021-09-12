@@ -22,24 +22,27 @@ class BestOfferRepository{
         if($product->status == 0 ){
             return false;
         }
-        $bestOffer = BestOffer::updateOrCreate(
-            [
-                'user_id' => $user_id,
-                'product_id' => $data['id']
-            ],
-            [
-                'user_id'=> $user_id,
-                'product_id' => $data['id'],
-                'price' => $data['offer'],
-            ]
-        );
+        $checkIfUserHasOfferBefore = BestOffer::where('user_id',$user_id)->where('product_id',$data['id'])->first();
+        if(!$checkIfUserHasOfferBefore){
+            $bestOffer = BestOffer::Create(
+                [
+                    'user_id'=> $user_id,
+                    'product_id' => $data['id'],
+                    'price' => $data['offer'],
+                ]
+            );
+
         $user_name = User::select('user_name')->where('id',$user_id)->first();
         $message   = $user_name->user_name.' Made an offer on your product '.$product->title;
         // $user_id => from , $product->user_id => to
         NotificationRepository::generateNotification($user_id,$product->user_id,$data['id'],'offer',$message);
         $bestOffer = BestOffer::where('id',$bestOffer->id)->with('user')->first();
-        event(new MakeOfferEvent($bestOffer));
+        if(!$checkIfUserHasOfferBefore){
+            event(new MakeOfferEvent($bestOffer));
+        }
         return $data == true ? true : false;
+    }
+    return false;
     }
 
     public function getOffers($product_id)

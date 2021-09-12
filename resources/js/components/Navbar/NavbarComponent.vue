@@ -509,28 +509,28 @@
                       </li>
                       <li>
                         <router-link
-                          to="/selling/sell_item"
+                          to="/buying/purchased"
                           class="dropdown-item"
-                          >Purchases</router-link
+                          disabled>Purchases</router-link
                         >
                       </li>
                       <li>
                         <router-link
-                          to="/selling/sell_item"
+                          to="#"
                           class="dropdown-item"
                           >Buy Again</router-link
                         >
                       </li>
                       <li>
                         <router-link
-                          to="/selling/wishlist"
+                          to="/buying/saved"
                           class="dropdown-item"
                           >Saved</router-link
                         >
                       </li>
                       <li>
                         <router-link
-                          to="/selling/sell_item"
+                          to="#"
                           class="dropdown-item"
                           >Recently Viewed</router-link
                         >

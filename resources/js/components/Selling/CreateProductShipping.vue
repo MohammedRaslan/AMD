@@ -108,12 +108,12 @@
                                                                             </div>
                                                                             <div class="col-6">
                                                                                 <label class="text-white" for="cats">COST USA </label> <span style="color:white" v-html=" currencyIcon "></span>
-                                                                                <input type="number" v-model="form.price_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Price USA" required>
+                                                                                <input type="number" step="0.01" v-model="form.price_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Price USA" required>
                                                                                 <div v-if="form.errors.has('price_usa')" class="alert alert-danger" v-html="form.errors.get('price_usa')" />
                                                                             </div>
                                                                           <div class="col-6">
                                                                                 <label class="text-white" for="cats">COST Worldwide</label>
-                                                                                <input type="number" v-model="form.price_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Price Worldwide" required>
+                                                                                <input type="number" step="0.01" v-model="form.price_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Price Worldwide" required>
                                                                                 <div v-if="form.errors.has('price_world_wide')" class="alert alert-danger" v-html="form.errors.get('price_world_wide')" />
                                                                             </div>
                                                                             <div class="row">
@@ -138,7 +138,7 @@
                                                                                 <input type="button" @click="draft" value="Save as Draft" class="form-control h-40 btn bg-gray" id="draft">
                                                                             </div>
                                                                             <div class="col-4">
-                                                                                <input type="submit" :disabled="form.busy" value="Publish" class="form-control h-40" id="register">
+                                                                                <input type="submit" :disabled="form.busy" value="List your item" class="form-control h-40" id="register">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -175,7 +175,9 @@
         position: relative;
         height: 50px;
     }
-
+    .nice-select{
+        display: none !important;
+    }
     .round label {
     background-color: #fff;
     border: 1px solid #ccc;

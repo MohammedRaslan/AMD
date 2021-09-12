@@ -15,8 +15,8 @@ class ChatService{
         return $this->chatRepository->store($request,$user_id_from);
     }
 
-    public function getMessages($product_id)
+    public function getMessages($user_id,$product_id)
     {
-        return $this->chatRepository->getMessages($product_id);
+        return $this->chatRepository->getMessages($user_id,$product_id);
     }
 }

@@ -49,9 +49,9 @@ class ProductService{
        return $this->productRepository->checkUserProduct($user_id, $product_id);
    }
 
-   public function getData($id = null)
+   public function getData($user_id,$id)
    {
-      return $this->productRepository->getData($id);
+      return $this->productRepository->getData($user_id,$id);
 
    }
 

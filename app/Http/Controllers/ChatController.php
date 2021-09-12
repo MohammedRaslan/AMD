@@ -18,9 +18,9 @@ class ChatController extends Controller
         return response()->json($response);
     }
 
-    public function getMessages($product_id)
+    public function getMessages(Request $request,$product_id)
     {
-        $response = $this->chatService->getMessages($product_id);
+        $response = $this->chatService->getMessages($request->user()->id,$product_id);
         return response()->json($response);
     }
 }

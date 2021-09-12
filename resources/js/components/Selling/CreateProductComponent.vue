@@ -134,10 +134,11 @@
                                                                         </form> -->
                                                                         <nav>
                                                                             <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
-                                                                                <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                                                                <!-- data-bs-target="#nav-home" -->
+                                                                                <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab"  type="button" role="tab" aria-controls="nav-home" aria-selected="true">
                                                                                     <div>Listing Product</div>
                                                                                 </div>
-                                                                                <div class="nav-link col" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                                                                <div class="nav-link col" id="nav-profile-tab"   type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                                                                                     <div>… or Bidding Product</div>
                                                                                 </div>
                                                                             </div>
@@ -151,17 +152,21 @@
                                                                                 <div class="row save">
                                                                                     <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                         <div class="inner-save inner-save1 w-100">
-                                                                                            <form action="" class="border-0 px-0">
+                                                                                            <form action="" class="border-0 px-0 text-left">
+                                                                                                 <label for="#listing1" style="color:white">Price <span v-html="currencyIcon"></span> <span class="requiredItem">*</span></label>
                                                                                                 <input class="form-control mt-3" v-model="form.price" id='listing1' type="number" placeholder="Price">
                                                                                             </form>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-lg-6">
+                                                                                    <div class="col-lg-6 text-left">
                                                                                         <div class="round round-3 pl-3 minimum-offer">
                                                                                             <input type="checkbox" v-model="form.best_offer" id="checkbox3"  placeholder="Title">
                                                                                             <label for="checkbox3" class="ml-3">Accept best offer</label>
+                                                                                      
                                                                                             <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                                         </div>
+                                                                                        <label for="#listing1" style="color:white">Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem">*</span></label>
+
                                                                                         <input class="form-control" type="text" v-model="form.minimum_offer" placeholder="Minimum offer" :disabled="!form.best_offer">
                                                                                     </div>
 
@@ -476,13 +481,15 @@ export default ({
     },
       data:()=>({
         id: null,
+        currencyIcon: null,
         types: [],
         categories: [],
         conditions: [],
         brands: [],
         gender:[
-            'male',
-            'female',
+            'Male',
+            'Female',
+            'Others'
         ],
         policies: [],
         bid_step : [],
@@ -562,6 +569,7 @@ export default ({
             this.brands = response.data.brands;
             this.policies = response.data.return_policy;
             this.bid_step = response.data.bidding_step;
+            this.currencyIcon = response.data.currencyIcon;
         });
 
 

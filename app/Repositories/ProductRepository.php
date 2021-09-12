@@ -55,21 +55,28 @@ class ProductRepository{
         }
     }
 
-    public function getData($id = null)
+    public function getData($user_id,$id)
     {
-        if($id != NULL){
-           
-        }
+    
+        $userDetails = UserDetail::where('user_id',$user_id)->first();
         return ['types'=> ProductType::getInstances(),
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
-                'conditions' => ProductCondition::asSelectArray(), 
+                'conditions' => $this->fixConditions(ProductCondition::getKeys()), 
                 'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
                 'return_policy' => Return_Policy::asSelectArray(),
                 'bidding_step' => $this->biddingSteps(),
                 "product" => $id != NULL ?  Product::where('id',$id)->with(['categories','bid','images'])->first() : null,
+                'currencyIcon' => CurrencyIconsEnum::getValue($userDetails->currency),
                 ];
     }
-
+    public function fixConditions($conditions)
+    {
+        $array = [];
+        foreach($conditions as $condition){
+            $array[] = str_replace('_', ' ', $condition);
+        }
+        return $array;
+    }
     public function biddingSteps()
     {
         $steps = array('1','5','10','20','50','100');
@@ -146,7 +153,7 @@ class ProductRepository{
     }
 
     public function update($id, $data)
-    {
+    {   
         $product = Product::find($id);
         $product->title = $data['title'];
         $product->type  = $data['type'];
@@ -156,7 +163,7 @@ class ProductRepository{
         $product->condition = $data['condition'];
         $product->return_policy = $data['return_policy'];
         $product->best_offer = $data['best_offer'];
-        $product->best_offer_price = $data['minimum_offer'];
+        $product->best_offer_price = $data['best_offer_price'];
         $product->doll_size  = $data['doll_size'];
         $product->doll_gender = $data['doll_gender'];
         $product->featured_refinements = $data['featured_refinements'];
@@ -173,24 +180,26 @@ class ProductRepository{
                 // $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
             }
             // check if there are extra images
-        if(is_object($data['image'][0])){
-            $product->images()->each(function($image){
-                if (Storage::exists('public/products/'.$image->imageable_id)) {
-                    Storage::delete($image->url);
+        if(array_key_exists('image',$data) && count($data['image']) > 0){
+            if(is_object($data['image'][0])){
+                $product->images()->each(function($image){
+                    if (Storage::exists('public/products/'.$image->imageable_id)) {
+                        Storage::delete($image->url);
+                    }
+                    $image->delete();
+                });
+             
+                foreach($data['image'] as $file){
+                    $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
+                    $file->storeAs('public/products/'.$product->id.'/',$fileName);
+                    $path = 'public/products/'.$product->id.'/'.$fileName;
+                    $image = new Image(['url' => $path]);
+                    $product->images()->save($image);  
                 }
-                $image->delete();
-            });
-         
-            foreach($data['image'] as $file){
-                $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
-                $file->storeAs('public/products/'.$product->id.'/',$fileName);
-                $path = 'public/products/'.$product->id.'/'.$fileName;
-                $image = new Image(['url' => $path]);
-                $product->images()->save($image);  
             }
         }
-        
-        if(is_object($data['featured_image'][0])){
+
+        if(is_object($data['featured_image'])){
                 Storage::delete($product->image);
                 $featuredImage =  $data['featured_image'][0];
                 $fileName = time() . '.'. $featuredImage->getClientOriginalExtension();
@@ -386,7 +395,7 @@ class ProductRepository{
 
     public function getUserProductActive($user_id)
     {
-        return Product::where([['user_id',$user_id] , ['status',1], ['type', ProductType::getValue("Regular")]])->paginate(10);
+        return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ['type', ProductType::getValue("Regular")]])->paginate(10);
 
     }
 

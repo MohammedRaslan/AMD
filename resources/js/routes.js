@@ -45,6 +45,8 @@ import NotificationMessageComponent from "./components/ChatCenter/NotificationCo
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 import RequestItemComponent from "./components/Buying/RequestItemComponent.vue";
 import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
+import SavedProductComponent from "./components/Buying/SavedProductComponent.vue";
+import PurchasedProductComponent from "./components/Buying/PurchaseHistoryComponent.vue";
 var routes = [{
         path: "/",
         component: HomeComponent,
@@ -135,6 +137,17 @@ var routes = [{
         component: WishlistComponent,
         name: 'Wishlist',
     },
+    {
+        path: "/buying/saved",
+        component: SavedProductComponent,
+        name: 'SavedProductComponent',
+    },
+    {
+        path: "/buying/purchased",
+        component: PurchasedProductComponent,
+        name: 'PurchasedProductComponent',
+    },
+    
     // {
     //     path: "/step_two/:id?",
     //     component: CreateProductStepTwoComponent,

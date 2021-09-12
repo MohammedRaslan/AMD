@@ -188,7 +188,7 @@
                                                                                             <label for="checkbox3" class="ml-3">Accept best offer</label>
                                                                                             <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                                         </div>
-                                                                                        <input class="form-control" type="text" v-model="form.minimum_offer" placeholder="Minimum offer" :disabled="!form.best_offer">
+                                                                                        <input class="form-control" type="text" v-model="form.best_offer_price" placeholder="Minimum offer" :disabled="!form.best_offer">
                                                                                     </div>
 
                                                                                 </div>
@@ -543,6 +543,7 @@ export default ({
             upc: null,
             details: false,
             draft: 1,
+            best_offer_price: null,
         }),
     }),
     methods:{

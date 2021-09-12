@@ -96,7 +96,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="fs-20 bottom pb-3 pt-3">
+                        <div class="fs-20 bottom pb-3 pt-3"> 
+                            <div class="row">
+                                <span class="col-lg-4 col-xs-5 maintype">Price:</span>
+                                <span class="col-lg-8 col-xs-7 subtype">{{ product.price == null ? '-' : product.price}} <span v-html="currencyIcon"></span></span>
+                            </div>
                             <div class="row">
                                 <span class="col-lg-4 col-xs-5 maintype">Brand:</span>
                                 <span class="col-lg-8 col-xs-7 subtype">{{ product.brand == null ? '-' : product.brand}} </span>
@@ -220,7 +224,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <span class="inner-title col-4 col-lg-3">Price:</span>
-                                                    <span class="inner-value col-8">{{ shipping.price_usa }} </span>
+                                                    <span class="inner-value col-8">{{ shipping.price_usa }} <span v-html="currencyIcon"></span> </span>
                                                 </div>
                                                 <div class="row">
                                                     <span class="inner-title col-4 col-lg-3">Duration:</span>
@@ -230,7 +234,7 @@
                                             <div class="col-6" v-if="shipping.world_wide">
                                                 <h3 class="title-color">World Wide</h3><hr class="title-color">
                                                 <div class="mb-2"><span class="inner-title">Service:</span> <span class="inner-value">{{ shipping.service_world_wide }}</span></div>
-                                                <div><span class="inner-title">Price:</span><span class="inner-value">{{ shipping.price_world_wide }}</span>  </div>
+                                                <div><span class="inner-title">Price:</span><span class="inner-value">{{ shipping.price_world_wide }} <span v-html="currencyIcon"></span> </span>  </div>
                                                 <div><span class="inner-title">Duration:</span> <span class="inner-value">{{ shipping.duration_worldwide == null ? '-' : shipping.duration_worldwide }} </span></div>
                                             </div>
                                         </div>
@@ -257,7 +261,8 @@
                             :productUserID="product.user_id" 
                             :productUserName="product.user.user_name"
                             :productUserEmail="product.user.email"
-                            :productID="product.id"></ChatWidget>
+                            :productID="product.id"
+                            :loggedUser="loggedUser"></ChatWidget>
                     </div>
                 </div>
             </div>
@@ -310,6 +315,7 @@ export default ({
     data:()=>({
         id : null,
         product: null,
+        loggedUser: null,
         images:{},
         loading : false,
         author: false,
@@ -317,6 +323,7 @@ export default ({
         exist: false,
         shipping: null,
         bid_step_list: [],
+        currencyIcon: null,
     }),
     components: {
         AddCartWidget,
@@ -356,6 +363,7 @@ export default ({
             this.shipping = response.data.product.shipping;
             this.loading = true;
             this.bid_step_list = response.data.steps;
+            this.currencyIcon = response.data.product.currencyIcon;
             if(this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                 this.author = true;
             }
@@ -364,6 +372,9 @@ export default ({
             if(response.data == true){
                 this.exist = true;
             }
+        });
+        axios.get('/api/user/getUserId').then((response) => {
+            this.loggedUser = response.data;
         });
     }
 })

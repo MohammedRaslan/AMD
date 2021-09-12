@@ -24,10 +24,10 @@
 <script>
 
 export default({
-    props: ['productUserID','productUserName','productUserEmail','productID'],
+    props: ['productUserID','productUserName','productUserEmail','productID','loggedUser'],
         data:()=>({
             messageAlert: null,
-            messages: {},
+            messages: [],
             author: false,
             form : new form({
                 user_id_to: null,
@@ -59,7 +59,16 @@ export default({
 
             window.Echo.channel('send-message').listen('ChatEvent', event => {
                 this.messageAlert = null;
-                this.messages.unshift(event.message);
+                console.log(this.author, this.loggedUser, event.message.user_id_from);
+                if(!this.author || this.loggedUser == event.message.user_id_from){
+                    if(this.messages.length == 0){
+                        this.messages.push(event.message);
+                    }else{
+                        this.messages.unshift(event.message);
+
+                    }
+                }
+ 
             });
         }
 })

@@ -29,7 +29,7 @@
       </li>
 
       <li class="item-border" v-if="logged">
-        <router-link class="dropdown-item" to="/selling/overview">Selling</router-link>
+        <router-link class="dropdown-item" to="/selling/sell_item">Selling</router-link>
       </li>
 
       <li v-if="logged">
@@ -39,7 +39,7 @@
         <router-link class="dropdown-item" to="/subscriptions">Subscriptions</router-link>
       </li>
       <li v-if="logged">
-        <a class="dropdown-item" href="account.html">My Account</a>
+          <router-link class="dropdown-item" to="/settings">My Account</router-link>
       </li>
       <li v-if="logged">
         <a class="dropdown-item" style="cursor: pointer" @click="logout">Logout</a>
