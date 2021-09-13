@@ -518,6 +518,10 @@ input:disabled {
   background: #fd1266 !important;
 }
 
+svg.img-subscription {
+  max-height: 650px;
+}
+
 .c-position-static {
   position: static !important;
 }

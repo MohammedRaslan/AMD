@@ -31,7 +31,7 @@
                 <div class="top-tabs">
                     <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
-         
+
                 <side-bar></side-bar>
 
                 <div class="col-xl-10 col-md-12">
@@ -116,8 +116,8 @@
                                     <div class="col-1" style="display: flex; justify-content: center;">
                                         <div class="form-divider"></div>
                                     </div>
-                             
-                                    
+
+
                                 </div>
                             </form>
                             </div>
@@ -143,7 +143,7 @@ export default {
             country: null,
         }),
      }),
-    
+
      components:{
         SideBar,
     },
@@ -161,7 +161,7 @@ export default {
                 .catch(error => {
                     this.$Progress.fail();
                 });
-            
+
         },
     },
     mounted(){
@@ -172,7 +172,7 @@ export default {
             this.form.address = response.data.address;
             this.form.city = response.data.city;
             this.form.country = response.data.country;
-           
+
         });
     }
 }

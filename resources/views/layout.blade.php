@@ -172,7 +172,8 @@
                                 <script type="application/javascript">
                                     document.write(new Date().getFullYear());
                                 </script>
-                                © All about my dolls All rights reserved</p>
+                                © All About My Dolls All rights reserved
+                            </p>
                             {{-- <p class="mophx">Developed by <a href="http://mophx.com" target="_black">Mophx</a></p> --}}
                         </div>
                     </div>
@@ -221,7 +222,7 @@
                                 <li>
                                     <router-link to="/subscriptions">Subscriptions</router-link>
                                 </li>
-                             
+
                                 <li>
                                     <router-link to="/contact-us">Contact us</router-link>
                                 </li>
