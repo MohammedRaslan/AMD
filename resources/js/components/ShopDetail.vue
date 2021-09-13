@@ -257,8 +257,8 @@
                      <div v-if="author && product.best_offer">
                          <ListOffers :id="product.id"></ListOffers>
                      </div>
-                     <ChatWidget 
-                            :productUserID="product.user_id" 
+                     <ChatWidget
+                            :productUserID="product.user_id"
                             :productUserName="product.user.user_name"
                             :productUserEmail="product.user.email"
                             :productID="product.id"

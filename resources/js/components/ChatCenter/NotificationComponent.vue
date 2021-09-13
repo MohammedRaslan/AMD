@@ -89,7 +89,7 @@ export default {
           message: '',
          notifications :{},
      }),
-    
+
      components:{
         SideBar,
     },

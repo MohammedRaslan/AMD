@@ -38,6 +38,7 @@ import GoldSubscriptionComponent from "./components/subscriptions/GoldSubscripti
 import PlatinumSubscriptionComponent from "./components/subscriptions/PlatinumSubscriptionComponent.vue";
 // import TestComponent from "./components/TestComponent.vue";
 import ChatNotificationComponent from "./components/ChatCenter/ChatNotificationComponent";
+import ChatDetails from "./components/ChatCenter/ChatDetails.vue";
 import InformationComponent from "./components/SettingsCenter/InformationComponent";
 import ShippingInformationComponent from "./components/SettingsCenter/ShippingInfoComponent.vue";
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
@@ -56,6 +57,11 @@ var routes = [{
         path: "/messages",
         component: ChatNotificationComponent,
         name: "ChatNotificationComponent",
+    },
+    {
+        path: "/chat-details",
+        component: ChatDetails,
+        name: "ChatDetails",
     },
     {
         path: "/notifications",

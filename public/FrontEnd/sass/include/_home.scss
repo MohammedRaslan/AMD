@@ -19,25 +19,25 @@
         &::after {
             display: none !important;
         }
-        &:focus{
+        &:focus {
             box-shadow: none;
         }
-        svg{
+        svg {
             display: none;
         }
     }
-    ul{
+    ul {
         background-color: transparent;
         min-width: 66px;
         width: 144px;
         border: 1px solid #77b527;
         padding: 0;
-        li{
-            a{
+        li {
+            a {
                 background-color: transparent;
                 color: white;
                 padding-left: 8px;
-                &:hover{
+                &:hover {
                     background-color: transparent !important;
                     color: #77b527 !important;
                 }
@@ -46,7 +46,6 @@
             color: #77b527;
         }
     }
-
     &:hover {
         border: 1px solid #77b527;
         background: white;
@@ -59,9 +58,18 @@
             border-radius: 50%;
             display: block !important;
             // path{
-
             //     fill: #77b527;
             // }
         }
+    }
+}
+
+.hero {
+    .swiper-container {
+        height: calc(100vh - 128px);
+    }
+    &.hero-logged {
+        background-position: center !important;
+        background-size: cover !important;
     }
 }

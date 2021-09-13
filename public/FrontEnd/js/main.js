@@ -68,10 +68,15 @@
         $(".offcanvas-menu-overlay").addClass("active");
     });
 
-    $(".offcanvas-menu-overlay, .close-menu").on('click', function() {
+    $(".offcanvas-menu-overlay, .close-menu, .close_menu_mobile").on('click', function() {
         $(".offcanvas-menu-wrapper").removeClass("active");
         $(".offcanvas-menu-overlay").removeClass("active");
     });
+    // $(".dropdown-menu").on('click', function() {
+    //     // $(".offcanvas-menu-wrapper").removeClass("active");
+    //     // $(".offcanvas-menu-overlay").removeClass("active");
+    //     console.log('TEst click');
+    // });
 
     /*-----------------------
         Hero Slider
@@ -103,34 +108,34 @@
         }
     })
 
-    var hgwin = $(window).height();
+    // var hgwin = $(window).height();
     // $(".hero .swiper-container").css("height", "664px")
-    $(".hero .swiper-container").height(hgwin - 128),
-        // $(".hero").height(729),
+    // $(".hero .swiper-container").height(hgwin - 128),
+    // $(".hero").height(729),
 
 
 
-        $('.auction-follow-slide').owlCarousel({
-            loop: true,
-            margin: 10,
-            // autoplay: true,
-            // navigation: true,
-            nav: true,
-            // navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
-            // navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-            // navigationText: ["<div class='nav-btn prev-slide'></div>", "<i class='fa fa-angle-right'></i>"],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1000: {
-                    items: 3
-                }
+    $('.auction-follow-slide').owlCarousel({
+        loop: true,
+        margin: 10,
+        // autoplay: true,
+        // navigation: true,
+        nav: true,
+        // navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
+        // navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        // navigationText: ["<div class='nav-btn prev-slide'></div>", "<i class='fa fa-angle-right'></i>"],
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
             }
-        })
+        }
+    })
 
     // #Menu
     $(".cat button").blur(function() {
@@ -172,33 +177,6 @@
     })
 
     // #dells
-
-
-    // #selling
-    $(".selling .dot").click(function() {
-        // $(this).css("display", "none")
-        $(this).css("opacity", "0")
-    })
-
-    if (innerWidth < 1200) {
-        $(".header-taps").slideUp()
-    }
-    if (innerWidth > 1200) {
-        $(".open-tabs").slideUp()
-    }
-
-    $(".selling .open-tabs, .over-lay-selling").click(function() {
-        $(".header-taps").slideToggle()
-        $('.selling .over-lay-selling').toggleClass("d-none");
-    })
-    if (innerWidth < 1200) {
-        $(".header-taps .nav .nav-link").click(function() {
-            $(".header-taps").slideToggle()
-            $(".burger-check").prop("checked", false)
-            $('.selling .over-lay-selling').toggleClass("d-none");
-        })
-    }
-
 
     // #selling
 

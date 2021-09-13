@@ -1,9 +1,9 @@
 <template>
-    <div>  
+    <div>
         <section>
             <div class="signup">
                 <div class="container">
-                    <div class="row text-center" v-show="!show_verification_mail">
+                    <div class="row text-center pt-3 pt-lg-5" v-show="!show_verification_mail">
                         <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                             <h2 class="mb-4 text-start">Signup</h2>
                             <!--<p>But Brooke Chaffin and Catherine Connors are looking to change that with the introduction of Maverick.</p>-->
@@ -13,7 +13,7 @@
                                         <div class="row">
 
 
-                                            <div class="col-6">
+                                            <div class="col-12 col-lg-6">
                                                 <input
                                                 type="text"
                                                 v-model="form.first_name"
@@ -152,7 +152,7 @@
                                                 <label for="avatar1">
                                                 <img id="img1"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-10.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-10.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-10-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-10.PNG'"/>
                                             </label>
                                             </div>
@@ -163,7 +163,7 @@
                                                 <label for="avatar2">
                                                 <img id="img2"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-11.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-11.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-11-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-11.PNG'"/>
                                             </label>
                                             </div>
@@ -173,7 +173,7 @@
                                                 <label for="avatar3">
                                                 <img id="img3"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-12.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-12.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-12-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-12.PNG'"/>
                                             </label>
                                             </div>
@@ -187,7 +187,7 @@
                                                 <label for="avatar4">
                                                 <img id="img4"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-13.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-13.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-13-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-13.PNG'"/>
                                             </label>
                                             </div>
@@ -197,7 +197,7 @@
                                                 <label for="avatar5">
                                                 <img id="img5"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-14.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-14.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-14-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-14.PNG'"/>
                                             </label>
                                             </div>
@@ -207,7 +207,7 @@
                                                 <label for="avatar6">
                                                 <img id="img6"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-15.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-15.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-15-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-15.PNG'"/>
                                             </label>
                                             </div>
@@ -221,7 +221,7 @@
                                                 <label for="avatar7">
                                                 <img id="img7"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-16.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-16.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-16-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-16.PNG'"/>
                                             </label>
                                             </div>
@@ -231,7 +231,7 @@
                                                 <label for="avatar8">
                                                 <img id="img8"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-17.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-17.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-17-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-17.PNG'"/>
                                             </label>
                                             </div>
@@ -241,7 +241,7 @@
                                                 <label for="avatar9">
                                                 <img id="img9"
                                                 style="border-radius: 50%;"
-                                                :src="'FrontEnd/images/avatars/avatars-18.PNG'" 
+                                                :src="'FrontEnd/images/avatars/avatars-18.PNG'"
                                                 alt="..."  onmouseover="this.src='FrontEnd/images/avatars/avatars-18-colored.jpg' " onmouseleave="this.src='FrontEnd/images/avatars/avatars-18.PNG'"/>
                                             </label>
                                             </div>
@@ -251,7 +251,7 @@
                                         </div>
                                     </div>
                                     <!--end right side -->
-                                    
+
                                 </div>
                             </form>
                         </div>
@@ -261,8 +261,8 @@
                             <h2 class="mb-4">Enter Verification Code</h2>
                             <div class="alert alert-danger" role="alert" v-show="verifiedCodeMessage != ''">
                                 {{ verifiedCodeMessage }}
-                            </div>          
-                            <form @submit.prevent="verifyCode">                        
+                            </div>
+                            <form @submit.prevent="verifyCode">
                                 <div class="row">
                                     <div class="col-12">
                                         <input type="number" class="form-control" v-model="codeForm.code" id="code" placeholder="Enter Code" >
@@ -278,9 +278,9 @@
                                 <img loading="lazy" :src="'/FrontEnd/images/img-login.png'" alt="">
                             </div>
                         </div>
-                    
+
                     </div>
-                    <form v-show="show_verification_mail" class="col-5" @submit.prevent="verifyMail">                        
+                    <form v-show="show_verification_mail" class="col-5" @submit.prevent="verifyMail">
                         <div class="row">
                             <div class="col-6">
                                 <input type="submit" :disabled="form.busy" value="Resend Activation Code" class="form-control" id="register">
@@ -357,7 +357,7 @@ export default {
             if(this.form.image == null){
                 this.checkImage = 'Please Select Avatar';
             }else{
-                
+
             const response = await this.form
                 .post("api/register")
                 .then(response => {
@@ -403,7 +403,7 @@ export default {
             this.codeForm.email = this.form.email;
              const response = await this.codeForm.post('/api/verifyCode').then((response) => {
                  if(response.data == true){
-                     this.$router.push('/login'); 
+                     this.$router.push('/login');
                  }else{
                      this.verifiedCodeMessage = 'This Code is incorrect, Please Check your Mail';
                  }

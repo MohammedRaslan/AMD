@@ -4,16 +4,17 @@ $(document).ready(function() {
     $('body').scroll(function() {
         if (window.pageYOffset > sticky) {
             // $('.selling .header-taps').addClass("c-position-static");
-            if ((window.innerWidth < 1200)) {
-                $('.top-tabs h2').removeClass("py-4");
+            if ((window.innerWidth > 1200)) {
+                // $('.top-tabs h2').removeClass("py-2");
                 $('.selling .header-taps').removeClass("position-fixed");
 
             }
         } else {
             // $('.selling .header-taps').addClass("c-position-static");
             if ((window.innerWidth < 1200)) {
-                $('.top-tabs h2').addClass('py-4')
+                // $('.top-tabs h2').addClass('py-2')
                 $('.selling .header-taps').addClass("position-fixed");
+                $('.selling .top-tabs').addClass("box-shadow-taps");
             }
         }
     });
@@ -36,6 +37,35 @@ $(document).ready(function() {
     );
 
 
+    // #selling
+    $(".selling .dot").click(function() {
+        // $(this).css("display", "none")
+        $(this).css("opacity", "0")
+    })
+
+    // if (innerWidth < 1200) {
+    //     $(".header-taps").slideUp()
+    //         // $(".header-taps").addClass('d-none')
+    // }
+    if (innerWidth > 1200) {
+        $(".header-taps").toggleClass('d-none')
+        $(".open-tabs").toggleClass('d-none')
+    }
+
+
+    $(".selling .open-tabs, .over-lay-selling").click(function() {
+        $(".header-taps").toggleClass('d-block')
+        $('.selling .over-lay-selling').toggleClass("d-none");
+    })
+    if (window.innerWidth < 1200) {
+        $(".header-taps .nav .nav-link").click(function() {
+            $(".header-taps").toggleClass('d-none')
+            $('.selling .over-lay-selling').toggleClass("d-none");
+        })
+    }
+
+
+
 
     // $(".shop-details .owl-stage-outer").hover(function() {
     //     $(this).fadeOut(100);
@@ -51,4 +81,23 @@ $(document).ready(function() {
     //     //     $h2.classList.remove("py-4");
     //     // }
     // }
+
+    $('.owl-test-details').owlCarousel({
+        loop: true,
+        margin: 10,
+        // autoplay: true,
+        // navigation: true,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
 })

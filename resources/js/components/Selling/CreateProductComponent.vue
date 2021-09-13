@@ -330,7 +330,6 @@
                 background: transparent;
                 &::before{
                     background: #fd1266;
-
                 }
             }
         }
@@ -413,9 +412,6 @@
             }
         }
     }
-
-
-
     select{
         display: block !important;
     }
@@ -423,7 +419,6 @@
         position: relative;
         height: 50px;
     }
-
     .round label {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -435,7 +430,6 @@
     top: 0;
     width: 20px;
     }
-
     .round label:after {
     border: 2px solid #fff;
     border-top: none;
@@ -449,16 +443,13 @@
     transform: rotate(-45deg);
     width: 12px;
     }
-
     .round input[type="checkbox"] {
     visibility: hidden;
     }
-
     .round input[type="checkbox"]:checked + label {
     background-color: #fd1266;
     border-color:#fd1266;
     }
-
     .round input[type="checkbox"]:checked + label:after {
     opacity: 1;
     }
@@ -474,7 +465,6 @@ import SideBar from "./SidebarComponent";
 import UploadImages from "vue-upload-drop-images";
 import { createEditor } from 'vueditor';
 export default ({
-
     components:{
         SideBar,
         UploadImages,
@@ -544,7 +534,6 @@ export default ({
                 console.log(error);
             });
            }
-
         },
         handleImages(files){
             this.form.image = files;
@@ -554,14 +543,12 @@ export default ({
             this.saveProduct();
         },
     },
-
     beforeCreate() {
         this.$Progress.start();
     },
     mounted(){
         Fire.$emit('mounted');
         this.$Progress.finish();
-
         axios.get('/api/product/getProductData').then((response) => {
             this.types = response.data.types;
             this.categories = response.data.categories;
@@ -571,9 +558,6 @@ export default ({
             this.bid_step = response.data.bidding_step;
             this.currencyIcon = response.data.currencyIcon;
         });
-
-
     }
-
 })
 </script>

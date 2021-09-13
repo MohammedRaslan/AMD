@@ -24,10 +24,12 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-
+        <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
-                <h2>Request An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-4'>Request An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                </div>
             <!-- Compnent Here -->
             <side-bar></side-bar>
             <!-- End Component  -->
@@ -48,12 +50,12 @@
                                                             <form @submit.prevent="saveProduct" class="form-product p-lg-4">
                                                                 <div class="row">
                                                                     <div class="col-6 text-left">
-                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label> 
+                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                     </div>
                                                                     <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                        <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label> 
+                                                                        <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label>
                                                                         <v-select placeholder="Select Category" id='cats' v-model="form.category_id" :reduce="category => category.id"  label="title" :options="categories" >
                                                                             <template #search="{attributes, events}">
                                                                                     <input
@@ -67,7 +69,7 @@
                                                                         <div v-if="form.errors.has('type')" class="alert alert-danger" v-html="form.errors.get('type')" />
                                                                     </div>
                                                                     <div class="row pb-4 pr-sm-0">
-                                                                   
+
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
                                                                             <label class="text-white" for="condition">Condition <span class="requiredItem">*</span></label>
                                                                             <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
@@ -126,7 +128,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </nav>
-                                                                        
+
                                                                     </div>
 
                                                                     <div class="row listing-type">
@@ -411,7 +413,7 @@ export default ({
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
             this.brands = response.data.brands;
-            
+
         });
 
     }

@@ -44,7 +44,7 @@ var swiper = new Swiper('.swiper-hero', {
         },
     },
     autoplay: {
-        delay: 3000,
+        delay: 3111000,
     },
 });
 // swiper.autoplay.stop();

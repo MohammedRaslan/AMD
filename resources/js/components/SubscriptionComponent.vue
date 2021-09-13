@@ -25,7 +25,7 @@
 
 
     <!-- Latest Blog Section Begin -->
-    <section class="subscriptions">
+    <section class="subscriptions pb-0">
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 offset-lg-2">
@@ -90,8 +90,8 @@
             <div class="row bot-row">
                 <div class="col-5 d-none d-lg-block">
                     <img :src="'FrontEnd/images/sub-03.png'" alt="">
-                    <img src="'FrontEnd/images/sub-02.png'" alt="">
-                    <img src="'FrontEnd/images/sub-01.png'" alt="">
+                    <img :src="'FrontEnd/images/sub-02.png'" alt="">
+                    <img :src="'FrontEnd/images/sub-01.png'" alt="">
                 </div>
                 <div class="col-lg-7 col-sm-12">
                     <div class="inner-box">
@@ -271,8 +271,8 @@
          padding-top: 5px;
      }
 /************** end forth active******************************** */
-    
-   
+
+
 </style>
 <script>
 

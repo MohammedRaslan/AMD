@@ -46,6 +46,29 @@
         }
     }
     
+    .heaer-tabs-yellow {
+        .router-link-exact-active.router-link-active {
+            background: $yellow
+        }
+    }
+    
+    .border-yellow {
+        border: 1px solid #FECC2F !important;
+    }
+    
+    .border-radius-10 {
+        border-radius: 10px !important;
+    }
+    
+    .btn-login {
+        &:focus {
+            box-shadow: none !important
+        }
+        &:hover {
+            background: transparent !important;
+        }
+    }
+    
     .shop-details {
         .product__details__pic .col-lg-8 {
             @media (min-width: 992px) {
@@ -109,8 +132,8 @@
         .over-lay-selling {
             position: absolute;
             inset: 0;
-            background: rgb(0 0 0 / 90%);
-            z-index: 4;
+            background: rgb(0 0 0 / 40%);
+            z-index: 3;
         }
         .header-taps .nav-link:nth-of-type(4),
         .header-taps .nav-link:nth-of-type(5),
@@ -149,13 +172,17 @@
         }
         .header-taps {
             @media (max-width: 1200px) {
-                z-index: 8934;
+                z-index: 4;
                 position: fixed;
-                right: 47px;
-                left: 47px;
-                top: 93px;
+                right: 8px;
+                left: 8px;
+                top: 193px;
                 background: $bgHeader;
+                display: none;
             }
+        }
+        .box-shadow-taps {
+            box-shadow: 0 .125rem .25rem rgb(255 255 255 / 70%)!important;
         }
     }
     
@@ -416,6 +443,7 @@
     @import './include/home';
     @import './include/only-vue/sell-item';
     @import './include/selling';
+    @import './include/subscription';
     .c-position-static {
         position: static !important;
     }

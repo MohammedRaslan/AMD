@@ -28,8 +28,9 @@
         <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
-                <div class="top-tabs">
-                    <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+
+                <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-4 text-maroon'>Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
 
                 <side-bar></side-bar>
@@ -44,7 +45,7 @@
                                         <div class="row">
 
                                               <div v-show="message != ''" class="alert alert-success" v-html="message"/>
-                                            <div class="col-6">
+                                            <div class="col-12 col-lg-6">
                                                 <input
                                                 type="text"
                                                 v-model="form.first_name"

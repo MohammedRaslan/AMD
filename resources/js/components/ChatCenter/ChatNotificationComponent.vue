@@ -26,11 +26,11 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying messages">
-
+        <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs">
-                    <h2>Messages <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class="py-3 py-lg-4">Messages <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
 
                 </div>
 

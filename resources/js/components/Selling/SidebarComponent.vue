@@ -1,6 +1,6 @@
 <template>
     <div class="col-xl-2 col-md-6">
-        <div class="header-taps header-taps-selling mb-lg-4">
+        <div class="header-taps header-taps-selling mb-lg-4" ref="uniqueName">
             <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <!-- Overview -->
                 <!-- <router-link to="/selling/overview" class="nav-link"  id="v-pills-home-tab">Overview</router-link>
@@ -38,4 +38,11 @@
         padding-left: 0px !important;
     } */
 </style>
+<script>
+    // this.$el.querySelector('.header-taps');
+    // test = document.querySelectorAll(".header-taps")
+    // this.$refs.uniqueName
+    let read =  document.getElementsByClassName('header-taps')
+    console.log(read)
+</script>
 

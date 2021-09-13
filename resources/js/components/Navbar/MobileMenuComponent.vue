@@ -13,7 +13,7 @@
             <!-- <span>Hello {{ name }}</span> -->
             <span>Marketplace</span>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuMobile" v-if="logged">
+          <ul class="dropdown-menu close_menu_mobile" aria-labelledby="dropdownMenuMobile" v-if="logged">
             <li v-for="category in categories" :key="category.id">
               <router-link
                 class="dropdown-item"
@@ -29,23 +29,23 @@
       </li>
 
       <li class="item-border" v-if="logged">
-        <router-link class="dropdown-item" to="/selling/sell_item">Selling</router-link>
+        <router-link class="dropdown-item close_menu_mobile" to="/selling/overview">Selling</router-link>
       </li>
 
       <li v-if="logged">
-        <router-link class="dropdown-item" to="/buying/offers">Buying</router-link>
+        <router-link class="dropdown-item close_menu_mobile" to="/buying/offers">Buying</router-link>
       </li>
       <li v-if="logged">
-        <router-link class="dropdown-item" to="/subscriptions">Subscriptions</router-link>
+        <router-link class="dropdown-item close_menu_mobile" to="/subscriptions">Subscriptions</router-link>
       </li>
       <li v-if="logged">
-          <router-link class="dropdown-item" to="/settings">My Account</router-link>
+        <a class="dropdown-item close_menu_mobile" href="account.html">My Account</a>
       </li>
       <li v-if="logged">
-        <a class="dropdown-item" style="cursor: pointer" @click="logout">Logout</a>
+        <a class="dropdown-item close_menu_mobile" style="cursor: pointer" @click="logout">Logout</a>
       </li>
       <li v-else>
-        <router-link class="dropdown-item login-menu" to="/login">login</router-link>
+        <router-link class="dropdown-item close_menu_mobile login-menu" to="/login">login</router-link>
       </li>
     </ul>
   </div>

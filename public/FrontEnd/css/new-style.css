@@ -35,6 +35,25 @@
   }
 }
 
+.heaer-tabs-yellow .router-link-exact-active.router-link-active {
+  background: #fecc2f;
+}
+
+.border-yellow {
+  border: 1px solid #FECC2F !important;
+}
+
+.border-radius-10 {
+  border-radius: 10px !important;
+}
+
+.btn-login:focus {
+  box-shadow: none !important;
+}
+.btn-login:hover {
+  background: transparent !important;
+}
+
 @media (min-width: 992px) {
   .shop-details .product__details__pic .col-lg-8 {
     padding-right: 30px;
@@ -83,8 +102,8 @@
 .selling .over-lay-selling {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 4;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 3;
 }
 .selling .header-taps .nav-link:nth-of-type(4),
 .selling .header-taps .nav-link:nth-of-type(5),
@@ -111,13 +130,17 @@
 }
 @media (max-width: 1200px) {
   .selling .header-taps {
-    z-index: 8934;
+    z-index: 4;
     position: fixed;
-    right: 47px;
-    left: 47px;
-    top: 93px;
+    right: 8px;
+    left: 8px;
+    top: 193px;
     background: #0f243c;
+    display: none;
   }
+}
+.selling .box-shadow-taps {
+  box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.7) !important;
 }
 
 @media (max-width: 1000px) {
@@ -474,6 +497,14 @@ input:disabled {
   display: block !important;
 }
 
+.hero .swiper-container {
+  height: calc(100vh - 128px);
+}
+.hero.hero-logged {
+  background-position: center !important;
+  background-size: cover !important;
+}
+
 .header-taps .nav-link,
 .header-taps .nav-pills button {
   color: white !important;
@@ -501,6 +532,10 @@ input:disabled {
 }
 .header-taps.header-taps-setting .nav-link :hover, .header-taps.header-taps-setting .nav-link.router-link-active {
   background: #fd1266 !important;
+}
+
+svg.img-subscription {
+  max-height: 650px;
 }
 
 .c-position-static {
