@@ -81,7 +81,7 @@ export default {
   },
 
   mounted() {
-    axios.get("/api/category/get").then((response) => {
+    axios.get("/api/category/get/flag").then((response) => {
       this.categories = response.data;
     });
 

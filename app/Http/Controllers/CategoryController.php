@@ -46,9 +46,9 @@ class CategoryController extends Controller
         return $this->categoryService->changeStatus($id);
     }
 
-    public function get(Request $request)
+    public function get(Request $request, $flag = null)
     {
-        $data = $this->categoryService->get();
+        $data = $this->categoryService->get($flag);
         return response()->json($data);
     }
 

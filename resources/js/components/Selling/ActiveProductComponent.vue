@@ -135,7 +135,7 @@ export default ({
                     document.getElementById("product_"+product_id).classList.add('btn-danger');
                 }else{
                     document.getElementById("product_"+product_id).classList.remove('btn-danger');
-                    document.getElementById("product_"+product_id).innerHTML = 'Suspened'
+                    document.getElementById("product_"+product_id).innerHTML = 'Suspended'
                     document.getElementById("product_"+product_id).classList.add('black');
                 }
             });

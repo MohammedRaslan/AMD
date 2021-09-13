@@ -17,7 +17,7 @@
                     <router-link class="nav-link" id="v-pills-settings-tab" to="/buying/wishlist">Wishlist</router-link>
                     
                     <!--5 Saved Items -->
-                    <button class="nav-link" id="v-pills-home-tab2" data-bs-toggle="pill" data-bs-target="#v-pills-home2" type="button" role="tab" aria-controls="v-pills-home2" aria-selected="false" disabled>Saved Items</button>
+                    <router-link class="nav-link" id="v-pills-home-tab2" to="/buying/saved" >Saved Items</router-link>
                     
                     <!--6 Saved sellers -->
                     <button class="nav-link" id="v-pills-profile-tab3" data-bs-toggle="pill" data-bs-target="#v-pills-home3" type="button" role="tab" aria-controls="v-pills-home3" aria-selected="false" disabled>Saved sellers</button>
@@ -27,7 +27,7 @@
                     <hr>
                     
                     <!--8 Purchase History -->
-                    <button class="nav-link" id="v-pills-settings-tab5" data-bs-toggle="pill" data-bs-target="#v-pills-home5" type="button" role="tab" aria-controls="v-pills-home5" aria-selected="false" disabled>Purchase History</button>
+                    <router-link class="nav-link" id="v-pills-settings-tab5" to="/buying/purchased">Purchase History</router-link>
                 </div>
             </div>
         </div>

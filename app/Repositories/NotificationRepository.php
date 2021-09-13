@@ -37,4 +37,23 @@ class NotificationRepository{
         $response = Notification::where('to',$user_id)->where('seen',0)->update(['seen'=>1]);
         return $response == true ? true : false;
    }
+
+   public function getAllNotification($user_id)
+   {
+       $notifications = Notification::where('to',$user_id)->with('user_from')->orderBy('created_at','desc')->paginate(5);
+       return $notifications;
+   }
+
+   public function markOneAsRead($user_id,$notification_id)
+   {
+        $notification = Notification::where('to',$user_id)->where('id',$notification_id)->update(['seen'=>1]);
+        return $notification == true ? true : false;
+   }
+
+   public function delete($user_id,$notification_id)
+   {
+        $notification = Notification::where('to',$user_id)->where('id',$notification_id)->delete();
+        return $notification == true ? true : false;
+   }
+
 }

@@ -35,8 +35,11 @@ class CategoryRepository{
         return false;
     }
 
-    public function get()
+    public function get($flag)
     { 
+        if($flag != null){
+            return Category::select('id','title')->where('status',1)->get();
+        }
         return Category::select('id','title')->where('status',1)->with('products')->get();
     }
 

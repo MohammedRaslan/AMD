@@ -124,6 +124,9 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('notification')->group(function(){
         Route::get('new',[NotificationController::class,'new']);
         Route::get('markAllAsRead',[NotificationController::class,'markAllAsRead']);
+        Route::get('getAllNotification',[NotificationController::class,'getAllNotification']);
+        Route::get('markOneAsRead/{id?}',[NotificationController::class,'markOneAsRead']);
+        Route::delete('delete/{id?}',[NotificationController::class,'delete']);
     });
 
     Route::prefix('user')->group(function(){
@@ -163,7 +166,8 @@ Route::middleware('auth:api')->group(function () {
 
     
 });
-Route::get('category/get',[CategoryController::class,'get']);
+Route::get('category/get/{flag?}',[CategoryController::class,'get']);
+
 Route::get('guest/getCategoryProducts/{id?}',[CategoryController::class,'categoryProducts']);
 Route::get('getCountries',[RegisterController::class,'getCountries']);
 Route::get('getProducts',[ProductController::class,'getProducts']);

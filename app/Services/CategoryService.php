@@ -23,9 +23,9 @@ class CategoryService{
         return $this->categoryRepository->changeStatus($id);
     }
 
-    public function get()
+    public function get($flag)
     {
-        return $this->categoryRepository->get();
+        return $this->categoryRepository->get($flag);
     }
 
     public function categoryProducts($user_id,$id)

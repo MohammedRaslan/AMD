@@ -95,10 +95,10 @@ export default ({
     },
     mounted(){
         // console.log(window.location.origin, this.$route);
-        Fire.$emit('mounted');
+        // Fire.$emit('mounted');
         this.$Progress.finish();
-        this.getProducts();
-        Fire.$emit('mounted');
+        // this.getProducts();
+        // Fire.$emit('mounted');
     }
 })
 </script>

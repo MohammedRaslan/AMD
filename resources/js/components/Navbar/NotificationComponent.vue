@@ -25,7 +25,8 @@
             </div>
             <div class="notif-cont">
                 <!-- Block Item -->
-                <div @click="markAllAsRead" class="read"> Mark all as read</div>
+                <h6 v-if="message != null " class="text-center">{{ message }}</h6>
+                <div @click="markAllAsRead" class="read" v-if="message == ''"> Mark all as read</div>
                 <div class="item  position-relative" v-for="(noti, index) in notifications" :key="index">
                     <div class="row position-relative">
                         <router-link class="over-link" :to="{name: 'ShopDetailComponent', params:{query: noti.product_id}}"></router-link>
@@ -57,6 +58,7 @@ export default ({
     data:()=>({
         count: 0,
         notifications: {},
+        message : "",
     }),
     methods:{
         str_replace: function(str){
@@ -67,12 +69,16 @@ export default ({
             axios.get('/api/notification/markAllAsRead').then((response) => {
                 this.count = 0;
                 this.notifications = null;
+                 this.message = "You Don't Have Notifications";
             });
         },
         getNotification: function(){
             axios.get('/api/notification/new').then((response) => {
             this.notifications = response.data.notifications;
             this.count = response.data.count;
+            if(this.notifications.length == 0){
+                this.message = "You Don't Have Notifications";
+            }
     });
         }
     },
@@ -82,6 +88,7 @@ export default ({
             if(event.user_email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                   this.notifications.push(event.data);
                   this.count = parseInt(this.count) + 1;
+                  this.message = '';
             }
         });
 
@@ -89,6 +96,8 @@ export default ({
             if(event.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                   this.notifications.push(event.data);
                   this.count = parseInt(this.count) + 1;
+                  this.message = '';
+
             }
         });
     }

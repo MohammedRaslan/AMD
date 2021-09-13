@@ -23,4 +23,21 @@ class NotificationController extends Controller
         $response = $this->notificationService->markAllAsRead($request->user()->id);
         return response()->json($response);
     }
+
+    public function getAllNotification(Request $request)
+    {
+        $response = $this->notificationService->getAllNotification($request->user()->id);
+        return response()->json($response);
+    }
+
+    public function markOneAsRead(Request $request,$notification_id)
+    {
+        $response = $this->notificationService->markOneAsRead($request->user()->id,$notification_id);
+        return response()->json($response);
+    }
+    public function delete(Request $request,$notification_id)
+    {
+        $response = $this->notificationService->delete($request->user()->id,$notification_id);
+        return response()->json($response);
+    }
 }

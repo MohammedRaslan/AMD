@@ -130,7 +130,7 @@ export default ({
         getProducts(page = 1){
             axios.get('/api/product/getUserProductDrafted?page=' + page).then((response) => {
             this.products = response.data;
-              if(response.data == '' ){
+              if(this.products.data.length == 0 ){
                 this.message = 'You dont have products';
                 }
         });
