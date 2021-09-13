@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div>
         <!-- Home For Guest -->
     <div v-show=" !logged">
         <!-- #Hero Section Begin -->
@@ -171,7 +171,7 @@
                         </div>
 
                         <div class="row ">
-                            <!-- Block Item -->                        
+                            <!-- Block Item -->
                             <div v-for="product in products" :key="'product_'+product.id" class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix cat_1">
                                 <div class="product__item position-relative">
                                     <a class="over-link" href="/"></a>
@@ -190,15 +190,15 @@
                         </div>
                 </div>
             </div>
-            
+
             </div>
         </section>
     </div>
     <!-- Home For Looged -->
     <div v-show="logged">
-        <section class="hero" style="background:url(/FrontEnd/images/home-logged-banner.jpg);background-repeat: no-repeat; background-size: cover; height: 500px; position: relative;">
+        <section class="hero hero-logged" style="background:url(/FrontEnd/images/home-logged-banner.jpg);background-repeat: no-repeat;  height: 500px; position: relative;">
             <!--<div style="background: rgba(0, 0, 0, 0.7); width:100% ; height: 100%; position: absolute;left: 0; top: 0;"></div>-->
-            <div class="container-fluid" style="background: rgba(0, 0, 0, 0.9); height: 100%; position: absolute;left: 0; top: 0;">
+            <div class="container-fluid" style="background: rgb(0 0 0 / 80%); height: 100%; position: absolute;left: 0; top: 0;">
                 <div class="row pt-5">
                     <h3 style="color: #fff; text-align: center;">What would you like to do today ?</h3>
                 </div>
@@ -208,12 +208,12 @@
                             <button class="green">Buy</button>
                         </a> -->
                         <!--<a href="#" class="green">Buy</a>-->
-                   
+
                         <div class="dropdown dropdown-hero" style="padding: 0 23px 0 21px;">
                             <button   id="dropdownMenuMarket" data-bs-toggle="dropsdown" type="button" aria-expanded="false" class="btn dropdown-toggle">
-                                <span>Buy</span> 
+                                <span>Buy</span>
                                 <svg id="Icon_down_solid" xmlns="http://www.w3.org/2000/svg" width="20.833" height="20.833" viewBox="0 0 20.833 20.833"><path id="Shape" d="M10.417,20.833A10.417,10.417,0,1,1,20.833,10.417,10.428,10.428,0,0,1,10.417,20.833ZM5.208,7.291A1.042,1.042,0,0,0,4.472,9.07L9.68,14.278a1.042,1.042,0,0,0,1.474,0L16.361,9.07A1.042,1.042,0,1,0,14.888,7.6l-4.472,4.472L5.945,7.6A1.035,1.035,0,0,0,5.208,7.291Z" fill="#fff"></path></svg>
-                            </button> 
+                            </button>
                             <ul aria-labelledby="dropdownMenuMarket" class="dropdown-menu dropdown-menu-dark">
                                 <li  v-for="category in categories" :key="category.id">
                                     <router-link class="dropdown-item" :to="{name: 'ShopCategoryComponent', params:{query: category.id}}">{{ category.title }}</router-link>
@@ -503,7 +503,7 @@ export default({
             this.products = response.data;
         });
         Fire.$emit('mounted');
-   
+
     }
 })
 

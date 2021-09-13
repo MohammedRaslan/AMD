@@ -60,6 +60,15 @@
         border-radius: 10px !important;
     }
     
+    .btn-login {
+        &:focus {
+            box-shadow: none !important
+        }
+        &:hover {
+            background: transparent !important;
+        }
+    }
+    
     .shop-details {
         .product__details__pic .col-lg-8 {
             @media (min-width: 992px) {
@@ -169,25 +178,8 @@
                 left: 8px;
                 top: 193px;
                 background: $bgHeader;
-                //
-                // border: none;
-                // height: 100vh;
-                // background: transparent;
-                // display: flex;
-                // flex-direction: column;
-                // align-items: center;
-                // justify-content: center;
+                display: none;
             }
-            // .nav {
-            //     @media (max-width: 1200px) {
-            //         background: #0f243c;
-            //         margin: 0 !important;
-            //         border-radius: 9px;
-            //         border: 1px solid #fd1266 !important;
-            //         padding: 10px;
-            //         width: 100%;
-            //     }
-            // }
         }
         .box-shadow-taps {
             box-shadow: 0 .125rem .25rem rgb(255 255 255 / 70%)!important;

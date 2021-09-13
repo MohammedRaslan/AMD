@@ -287,7 +287,7 @@
                 </li>
 
                 <li class="d-xl-flex d-lg-flex d-md-flex icons">
-                  <router-link to="/messages">
+                  <router-link to="/messages" >
                     <div
                       class="mesg"
                       data-bs-toggle="tooltip"
@@ -589,7 +589,7 @@
               <!-- <i class="fas fa-search"></i> -->
 
               <li class="d-xl-flex d-lg-flex d-md-flex icons">
-                <router-link to="/messages">
+                <router-link to="/messages" v-if="logged">
                     <div
                       class="mesg"
                       data-bs-toggle="tooltip"
@@ -704,13 +704,13 @@
                   </svg>
                 </router-link>
                 <Notification v-if="logged"></Notification>
-                
+
                 <Cart v-if="logged"></Cart>
                 <div v-if="!logged"
                   class="canvas__open1"
                   :class="{ canvas__open_guest: this.logged != true }"
                 >
-                  <router-link to="/login" class="btn btn-maroon color white">Join <i class="fas fa-sign-in-alt"></i></router-link>
+                  <router-link to="/login" class="btn btn-maroon color white btn-login">Join <i class="fas fa-sign-in-alt"></i></router-link>
                 </div>
 
                 <div v-if="logged"

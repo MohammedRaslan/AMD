@@ -47,6 +47,13 @@
   border-radius: 10px !important;
 }
 
+.btn-login:focus {
+  box-shadow: none !important;
+}
+.btn-login:hover {
+  background: transparent !important;
+}
+
 @media (min-width: 992px) {
   .shop-details .product__details__pic .col-lg-8 {
     padding-right: 30px;
@@ -129,6 +136,7 @@
     left: 8px;
     top: 193px;
     background: #0f243c;
+    display: none;
   }
 }
 .selling .box-shadow-taps {
@@ -487,6 +495,14 @@ input:disabled {
   background: #77b527;
   border-radius: 50%;
   display: block !important;
+}
+
+.hero .swiper-container {
+  height: calc(100vh - 128px);
+}
+.hero.hero-logged {
+  background-position: center !important;
+  background-size: cover !important;
 }
 
 .header-taps .nav-link,

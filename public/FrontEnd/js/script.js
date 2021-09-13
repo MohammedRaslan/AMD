@@ -37,13 +37,29 @@ $(document).ready(function() {
     );
 
 
+    // #selling
+    $(".selling .dot").click(function() {
+        // $(this).css("display", "none")
+        $(this).css("opacity", "0")
+    })
+
+    // if (innerWidth < 1200) {
+    //     $(".header-taps").slideUp()
+    //         // $(".header-taps").addClass('d-none')
+    // }
+    if (innerWidth > 1200) {
+        $(".header-taps").toggleClass('d-none')
+        $(".open-tabs").toggleClass('d-none')
+    }
+
+
     $(".selling .open-tabs, .over-lay-selling").click(function() {
-        $(".header-taps").slideToggle()
+        $(".header-taps").toggleClass('d-block')
         $('.selling .over-lay-selling').toggleClass("d-none");
     })
     if (window.innerWidth < 1200) {
         $(".header-taps .nav .nav-link").click(function() {
-            $(".header-taps").slideToggle()
+            $(".header-taps").toggleClass('d-none')
             $('.selling .over-lay-selling').toggleClass("d-none");
         })
     }
