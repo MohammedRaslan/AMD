@@ -69,6 +69,7 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('chat')->group(function(){
         Route::post('store',[ChatController::class,'store']);
         Route::get('getMessages/{product_id}',[ChatController::class,'getMessages']);
+        Route::get('getAllChat',[ChatController::class,'getAllChat']);
     });
 
     Route::prefix('cms')->group(function(){

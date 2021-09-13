@@ -202,7 +202,7 @@
 
             <div class="pagination-selling">
 
-
+                <pagination :data="chats" @pagination-change-page="getChats"></pagination>  
             </div>
 
         </div>
@@ -214,8 +214,27 @@
 import SideBar from './SideBarComponent.vue'
 
 export default ({
+      data: () => ({
+         message: '',
+         chats :{},
+     }),
+    
      components:{
         SideBar,
     },
+        methods: {
+        getChats(page = 1){
+        axios.get('/api/chat/getAllChat?page=' + page).then((response) => {
+            // this.chats = response.data;
+            // if(this.chats.data.length == 0){
+            //     this.message = "You Don't Have Chats";
+            // }
+        });
+
+        },
+    },
+    mounted(){
+        this.getChats();
+    }
 })
 </script>

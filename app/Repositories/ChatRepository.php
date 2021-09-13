@@ -1,9 +1,10 @@
 <?php
 namespace App\Repositories;
 
-use App\Events\ChatEvent;
 use App\Models\Chat;
 use App\Models\Product;
+use App\Events\ChatEvent;
+use Illuminate\Support\Facades\DB;
 
 class ChatRepository{
 
@@ -44,5 +45,14 @@ class ChatRepository{
                           ->get();
         }
         return $messages;
+    }
+
+    public function getAllChat($user_id)
+    {   
+        // $chats = Chat::select('user_id_from','user_id_to','product_id','message')
+        //               ->where('user_id_from',$user_id)
+        //               ->orwhere('user_id_to',$user_id)->distinct('product_id')
+        //               ->get()->toArray();
+        // dd($chats);
     }
 }

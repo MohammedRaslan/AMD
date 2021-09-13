@@ -19,4 +19,9 @@ class ChatService{
     {
         return $this->chatRepository->getMessages($user_id,$product_id);
     }
+
+    public function getAllChat($user_id)
+    {
+        return $this->chatRepository->getAllChat($user_id);
+    }
 }
