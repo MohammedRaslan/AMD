@@ -20,16 +20,18 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-   
+
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <h2>Draftes <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+               <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-5'>Draftes <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+                <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
@@ -43,7 +45,7 @@
                                         <div class="col-lg-7 detalis">
                                             <div class="row">
                                                 <div class="col-sm-1 dot"><div class="inner"></div></div>
-                                                
+
                                                 <div class="col-lg-4 col-md-3 col-sm-4 col-6">
                                                     <figure>
                                                         <img :src='str_replace(product.image)' alt="">
@@ -57,7 +59,7 @@
                                                     </h5>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col-lg-3 col-md-12 price">
                                             <p>Price</p>
@@ -88,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <pagination :data="products" @pagination-change-page="getProducts"></pagination>   
+            <pagination :data="products" @pagination-change-page="getProducts"></pagination>
         </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -102,6 +104,7 @@ export default ({
         loading : false,
         products: {},
         message : '',
+        openSlideBar: false
     }),
     components:{
         SideBar,
@@ -121,7 +124,7 @@ export default ({
         },
         complete(draft){
             this.$router.push({
-                name:'SellingOverview', 
+                name:'SellingOverview',
                 params:{
                     id: '12',
                 }

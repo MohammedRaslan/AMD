@@ -37,19 +37,27 @@
 
         <!-- Latest Blog Section Begin -->
         <section class="selling">
-            <div class="over-lay-selling d-none"></div>
+            <div
+                class="over-lay-selling d-none"
+                @click="openSlideBar = !openSlideBar"
+                :aria-pressed="openSlideBar ? 'true' : 'false'"
+                :class="{ 'd-block1': openSlideBar }"
+            ></div>
             <div class="container">
                 <div class="row">
                     <div class="top-tabs p-0 mb-4">
-                        <h2 class="py-3 py-lg-4">
+                        <h2 class="py-3 py-lg-5">
                             Sell An Item
-                            <span class="open-tabs"
+                            <span
+                                @click="openSlideBar = !openSlideBar"
+                                :aria-pressed="openSlideBar ? 'true' : 'false'"
+                                class="open-tabs"
                                 ><i class="fa fa-bars"></i
                             ></span>
                         </h2>
                     </div>
                     <!-- Compnent Here -->
-                    <side-bar></side-bar>
+                    <side-bar :openSlideBar="openSlideBar"></side-bar>
                     <!-- End Component  -->
                     <div class="col-xl-10 col-md-12">
                         <div class="tab-content" id="v-pills-tabContent">
@@ -64,515 +72,572 @@
                                     <!-- Block Item -->
                                     <div class="inner-item">
                                         <div class="row">
-                                            <div
-                                                class="col-lg-12 detalis border-0"
-                                            >
-                                                <div
-                                                    class="signup  bg-transparent"
-                                                >
-                                                    <div class="container">
-                                                        <div
-                                                            class="row text-center pt-0"
-                                                        >
-                                                            <div
-                                                                class="col-lg-12 col-md-12 col-sm-12"
-                                                            >
-                                                                <h2
-                                                                    class="pb-3 pt-4 pt-lg-0"
-                                                                >
-                                                                    Shipping
-                                                                    Information
-                                                                </h2>
-                                                                <form
-                                                                    @submit.prevent="
-                                                                        saveProductShipping
-                                                                    "
-                                                                >
+                                            <div class="col-lg-12 detalis border-0 p-0">
+                                                <div class="signup  bg-transparent">
+                                                    <div class="row text-center pt-0">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <h2 class="pb-3 pt-4 pt-lg-0">Shipping Information</h2>
+                                                            <form @submit.prevent="saveProductShipping">
+                                                                <div class="row">
+                                                                    <div class="col-12 mb-3 text-left">
+                                                                        <label
+                                                                            class="text-white"
+                                                                            for="cats"
+                                                                            >Package
+                                                                            Details</label
+                                                                        >
+                                                                        <select
+                                                                            name="type"
+                                                                            v-model="
+                                                                                form.package_details
+                                                                            "
+                                                                            id=""
+                                                                            class="m-2 form-control"
+                                                                            required
+                                                                        >
+                                                                            <option
+                                                                                selected
+                                                                                disabled
+                                                                                >Choose
+                                                                                Details</option
+                                                                            >
+                                                                            <option
+                                                                                :value="
+                                                                                    false
+                                                                                "
+                                                                                >I
+                                                                                don't
+                                                                                have
+                                                                                package
+                                                                                details
+                                                                            </option>
+                                                                            <option
+                                                                                :value="
+                                                                                    true
+                                                                                "
+                                                                                >I
+                                                                                have
+                                                                                package
+                                                                                details</option
+                                                                            >
+                                                                        </select>
+                                                                        <div
+                                                                            v-if="
+                                                                                form.errors.has(
+                                                                                    'package_details'
+                                                                                )
+                                                                            "
+                                                                            class="alert alert-danger"
+                                                                            v-html="
+                                                                                form.errors.get(
+                                                                                    'package_details'
+                                                                                )
+                                                                            "
+                                                                        />
+                                                                    </div>
                                                                     <div
-                                                                        class="row"
+                                                                        class="row text-left m-3"
+                                                                        v-show="
+                                                                            form.package_details
+                                                                        "
                                                                     >
                                                                         <div
-                                                                            class="col-12 mb-3 text-left"
+                                                                            class="col-lg-3 col-6"
                                                                         >
                                                                             <label
                                                                                 class="text-white"
                                                                                 for="cats"
-                                                                                >Package
-                                                                                Details</label
+                                                                                >Width</label
                                                                             >
-                                                                            <select
-                                                                                name="type"
+                                                                            <input
+                                                                                type="text"
                                                                                 v-model="
-                                                                                    form.package_details
+                                                                                    form.width
                                                                                 "
-                                                                                id=""
-                                                                                class="m-2 form-control"
+                                                                                :disabled="
+                                                                                    !form.package_details
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Width"
                                                                                 required
-                                                                            >
-                                                                                <option
-                                                                                    selected
-                                                                                    disabled
-                                                                                    >Choose
-                                                                                    Details</option
-                                                                                >
-                                                                                <option
-                                                                                    :value="
-                                                                                        false
-                                                                                    "
-                                                                                    >I
-                                                                                    don't
-                                                                                    have
-                                                                                    package
-                                                                                    details
-                                                                                </option>
-                                                                                <option
-                                                                                    :value="
-                                                                                        true
-                                                                                    "
-                                                                                    >I
-                                                                                    have
-                                                                                    package
-                                                                                    details</option
-                                                                                >
-                                                                            </select>
+                                                                            />
                                                                             <div
                                                                                 v-if="
                                                                                     form.errors.has(
-                                                                                        'package_details'
+                                                                                        'width'
                                                                                     )
                                                                                 "
                                                                                 class="alert alert-danger"
                                                                                 v-html="
                                                                                     form.errors.get(
-                                                                                        'package_details'
+                                                                                        'width'
                                                                                     )
                                                                                 "
                                                                             />
                                                                         </div>
                                                                         <div
-                                                                            class="row text-left m-3"
-                                                                            v-show="
-                                                                                form.package_details
-                                                                            "
+                                                                            class="col-lg-3 col-6"
                                                                         >
-                                                                            <div
-                                                                                class="col-3"
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >Height</label
                                                                             >
-                                                                                <label
-                                                                                    class="text-white"
-                                                                                    for="cats"
-                                                                                    >Width</label
-                                                                                >
-                                                                                <input
-                                                                                    type="text"
-                                                                                    v-model="
-                                                                                        form.width
-                                                                                    "
-                                                                                    :disabled="
-                                                                                        !form.package_details
-                                                                                    "
-                                                                                    class="form-control"
-                                                                                    id="fName"
-                                                                                    placeholder="Width"
-                                                                                    required
-                                                                                />
-                                                                                <div
-                                                                                    v-if="
-                                                                                        form.errors.has(
-                                                                                            'width'
-                                                                                        )
-                                                                                    "
-                                                                                    class="alert alert-danger"
-                                                                                    v-html="
-                                                                                        form.errors.get(
-                                                                                            'width'
-                                                                                        )
-                                                                                    "
-                                                                                />
-                                                                            </div>
+                                                                            <input
+                                                                                type="text"
+                                                                                v-model="
+                                                                                    form.height
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.package_details
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Height"
+                                                                                required
+                                                                            />
                                                                             <div
-                                                                                class="col-3"
-                                                                            >
-                                                                                <label
-                                                                                    class="text-white"
-                                                                                    for="cats"
-                                                                                    >Height</label
-                                                                                >
-                                                                                <input
-                                                                                    type="text"
-                                                                                    v-model="
-                                                                                        form.height
-                                                                                    "
-                                                                                    :disabled="
-                                                                                        !form.package_details
-                                                                                    "
-                                                                                    class="form-control"
-                                                                                    id="fName"
-                                                                                    placeholder="Height"
-                                                                                    required
-                                                                                />
-                                                                                <div
-                                                                                    v-if="
-                                                                                        form.errors.has(
-                                                                                            'height'
-                                                                                        )
-                                                                                    "
-                                                                                    class="alert alert-danger"
-                                                                                    v-html="
-                                                                                        form.errors.get(
-                                                                                            'height'
-                                                                                        )
-                                                                                    "
-                                                                                />
-                                                                            </div>
-                                                                            <div
-                                                                                class="col-3"
-                                                                            >
-                                                                                <label
-                                                                                    class="text-white"
-                                                                                    for="cats"
-                                                                                    >Length</label
-                                                                                >
-                                                                                <input
-                                                                                    type="text"
-                                                                                    v-model="
-                                                                                        form.length
-                                                                                    "
-                                                                                    :disabled="
-                                                                                        !form.package_details
-                                                                                    "
-                                                                                    class="form-control"
-                                                                                    id="fName"
-                                                                                    placeholder="Length"
-                                                                                    required
-                                                                                />
-                                                                                <div
-                                                                                    v-if="
-                                                                                        form.errors.has(
-                                                                                            'length'
-                                                                                        )
-                                                                                    "
-                                                                                    class="alert alert-danger"
-                                                                                    v-html="
-                                                                                        form.errors.get(
-                                                                                            'length'
-                                                                                        )
-                                                                                    "
-                                                                                />
-                                                                            </div>
-                                                                            <div
-                                                                                class="col-3"
-                                                                            >
-                                                                                <label
-                                                                                    class="text-white"
-                                                                                    for="cats"
-                                                                                    >Weight</label
-                                                                                >
-                                                                                <input
-                                                                                    type="text"
-                                                                                    v-model="
-                                                                                        form.weight
-                                                                                    "
-                                                                                    :disabled="
-                                                                                        !form.package_details
-                                                                                    "
-                                                                                    class="form-control"
-                                                                                    id="fName"
-                                                                                    placeholder="Weight"
-                                                                                    required
-                                                                                />
-                                                                                <div
-                                                                                    v-if="
-                                                                                        form.errors.has(
-                                                                                            'weight'
-                                                                                        )
-                                                                                    "
-                                                                                    class="alert alert-danger"
-                                                                                    v-html="
-                                                                                        form.errors.get(
-                                                                                            'weight'
-                                                                                        )
-                                                                                    "
-                                                                                />
-                                                                            </div>
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'height'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'height'
+                                                                                    )
+                                                                                "
+                                                                            />
                                                                         </div>
+                                                                        <div
+                                                                            class="col-lg-3 col-6"
+                                                                        >
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >Length</label
+                                                                            >
+                                                                            <input
+                                                                                type="text"
+                                                                                v-model="
+                                                                                    form.length
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.package_details
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Length"
+                                                                                required
+                                                                            />
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'length'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'length'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-lg-3 col-6"
+                                                                        >
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >Weight</label
+                                                                            >
+                                                                            <input
+                                                                                type="text"
+                                                                                v-model="
+                                                                                    form.weight
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.package_details
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Weight"
+                                                                                required
+                                                                            />
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'weight'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'weight'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                    </div>
 
+                                                                    <div
+                                                                        class="row"
+                                                                    >
+                                                                        <div
+                                                                            class="col-6 round "
+                                                                        >
+                                                                            <p
+                                                                                for=""
+                                                                                style="color:white; float:left"
+                                                                            >
+                                                                                Shipping
+                                                                                To
+                                                                                USA
+                                                                            </p>
+                                                                            <input
+                                                                                type="checkbox"
+                                                                                v-model="
+                                                                                    form.usa
+                                                                                "
+                                                                                id="checkbox1"
+                                                                                placeholder="Title"
+                                                                            />
+                                                                            <label
+                                                                                for="checkbox1"
+                                                                                class="ml-3"
+                                                                            ></label>
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'usa'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'usa'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-6 round "
+                                                                        >
+                                                                            <p
+                                                                                style="color:white; float:left"
+                                                                            >
+                                                                                Shipping
+                                                                                To
+                                                                                World
+                                                                                Wide
+                                                                            </p>
+                                                                            <input
+                                                                                type="checkbox"
+                                                                                v-model="
+                                                                                    form.world_wide
+                                                                                "
+                                                                                id="checkbox2"
+                                                                                placeholder="Title"
+                                                                            />
+                                                                            <label
+                                                                                for="checkbox2"
+                                                                                class="ml-3"
+                                                                            ></label>
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'world_wide'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'world_wide'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="row text-left"
+                                                                    >
+                                                                        <div
+                                                                            class="col-6"
+                                                                        >
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >USA
+                                                                                CARRIER</label
+                                                                            >
+                                                                            <input
+                                                                                type="text"
+                                                                                v-model="
+                                                                                    form.service_usa
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.usa
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Service USA"
+                                                                                required
+                                                                            />
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'service_usa'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'service_usa'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-6"
+                                                                        >
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >Worldwide
+                                                                                CARRIER</label
+                                                                            >
+                                                                            <input
+                                                                                type="text"
+                                                                                v-model="
+                                                                                    form.service_world_wide
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.world_wide
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Sevice World Wide"
+                                                                                required
+                                                                            />
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'service_world_wide'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'service_world_wide'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-6"
+                                                                        >
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >COST
+                                                                                USA
+                                                                            </label>
+                                                                            <span
+                                                                                style="color:white"
+                                                                                v-html="
+                                                                                    currencyIcon
+                                                                                "
+                                                                            ></span>
+                                                                            <input
+                                                                                type="number"
+                                                                                step="0.01"
+                                                                                v-model="
+                                                                                    form.price_usa
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.usa
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Price USA"
+                                                                                required
+                                                                            />
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'price_usa'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'price_usa'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-6"
+                                                                        >
+                                                                            <label
+                                                                                class="text-white"
+                                                                                for="cats"
+                                                                                >COST
+                                                                                Worldwide</label
+                                                                            >
+                                                                            <input
+                                                                                type="number"
+                                                                                step="0.01"
+                                                                                v-model="
+                                                                                    form.price_world_wide
+                                                                                "
+                                                                                :disabled="
+                                                                                    !form.world_wide
+                                                                                "
+                                                                                class="form-control"
+                                                                                id="fName"
+                                                                                placeholder="Price Worldwide"
+                                                                                required
+                                                                            />
+                                                                            <div
+                                                                                v-if="
+                                                                                    form.errors.has(
+                                                                                        'price_world_wide'
+                                                                                    )
+                                                                                "
+                                                                                class="alert alert-danger"
+                                                                                v-html="
+                                                                                    form.errors.get(
+                                                                                        'price_world_wide'
+                                                                                    )
+                                                                                "
+                                                                            />
+                                                                        </div>
                                                                         <div
                                                                             class="row"
                                                                         >
                                                                             <div
-                                                                                class="col-6 round "
-                                                                            >
-                                                                                <p
-                                                                                    for=""
-                                                                                    style="color:white; float:left"
-                                                                                >
-                                                                                    Shipping
-                                                                                    To
-                                                                                    USA
-                                                                                </p>
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    v-model="
-                                                                                        form.usa
-                                                                                    "
-                                                                                    id="checkbox1"
-                                                                                    placeholder="Title"
-                                                                                />
-                                                                                <label
-                                                                                    for="checkbox1"
-                                                                                    class="ml-3"
-                                                                                ></label>
-                                                                                <div
-                                                                                    v-if="
-                                                                                        form.errors.has(
-                                                                                            'usa'
-                                                                                        )
-                                                                                    "
-                                                                                    class="alert alert-danger"
-                                                                                    v-html="
-                                                                                        form.errors.get(
-                                                                                            'usa'
-                                                                                        )
-                                                                                    "
-                                                                                />
-                                                                            </div>
-                                                                            <div
-                                                                                class="col-6 round "
-                                                                            >
-                                                                                <p
-                                                                                    style="color:white; float:left"
-                                                                                >
-                                                                                    Shipping
-                                                                                    To
-                                                                                    World
-                                                                                    Wide
-                                                                                </p>
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    v-model="
-                                                                                        form.world_wide
-                                                                                    "
-                                                                                    id="checkbox2"
-                                                                                    placeholder="Title"
-                                                                                />
-                                                                                <label
-                                                                                    for="checkbox2"
-                                                                                    class="ml-3"
-                                                                                ></label>
-                                                                                <div
-                                                                                    v-if="
-                                                                                        form.errors.has(
-                                                                                            'world_wide'
-                                                                                        )
-                                                                                    "
-                                                                                    class="alert alert-danger"
-                                                                                    v-html="
-                                                                                        form.errors.get(
-                                                                                            'world_wide'
-                                                                                        )
-                                                                                    "
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="row text-left"
-                                                                        >
-                                                                            <div
-                                                                                class="col-6"
+                                                                                class="col-6 select-product text-left"
                                                                             >
                                                                                 <label
                                                                                     class="text-white"
                                                                                     for="cats"
-                                                                                    >USA
-                                                                                    CARRIER</label
+                                                                                    >Duration
+                                                                                    USA</label
                                                                                 >
-                                                                                <input
-                                                                                    type="text"
+                                                                                <v-select
+                                                                                    placeholder="Select Duration"
+                                                                                    id="cats"
+                                                                                    class="custom-vue-select"
                                                                                     v-model="
-                                                                                        form.service_usa
+                                                                                        form.duration_usa
                                                                                     "
-                                                                                    :disabled="
-                                                                                        !form.usa
+                                                                                    label="title"
+                                                                                    :options="
+                                                                                        usa
                                                                                     "
-                                                                                    class="form-control"
-                                                                                    id="fName"
-                                                                                    placeholder="Service USA"
-                                                                                    required
-                                                                                />
+                                                                                ></v-select>
                                                                                 <div
                                                                                     v-if="
                                                                                         form.errors.has(
-                                                                                            'service_usa'
+                                                                                            'duration_usa'
                                                                                         )
                                                                                     "
                                                                                     class="alert alert-danger"
                                                                                     v-html="
                                                                                         form.errors.get(
-                                                                                            'service_usa'
+                                                                                            'duration_usa'
                                                                                         )
                                                                                     "
                                                                                 />
                                                                             </div>
                                                                             <div
-                                                                                class="col-6"
+                                                                                class="col-6 select-product text-left"
                                                                             >
                                                                                 <label
                                                                                     class="text-white"
                                                                                     for="cats"
-                                                                                    >Worldwide
-                                                                                    CARRIER</label
+                                                                                    >Duration
+                                                                                    Worldwide</label
                                                                                 >
-                                                                                <input
-                                                                                    type="text"
+                                                                                <v-select
+                                                                                    placeholder="Select Policy"
+                                                                                    class="custom-vue-select"
+                                                                                    id="cats"
                                                                                     v-model="
-                                                                                        form.service_world_wide
+                                                                                        form.duration_worldwide
                                                                                     "
                                                                                     :disabled="
                                                                                         !form.world_wide
                                                                                     "
-                                                                                    class="form-control"
-                                                                                    id="fName"
-                                                                                    placeholder="Sevice World Wide"
-                                                                                    required
-                                                                                />
+                                                                                    label="title"
+                                                                                    :options="
+                                                                                        international
+                                                                                    "
+                                                                                ></v-select>
                                                                                 <div
                                                                                     v-if="
                                                                                         form.errors.has(
-                                                                                            'service_world_wide'
+                                                                                            'duration_world_wide'
                                                                                         )
                                                                                     "
                                                                                     class="alert alert-danger"
                                                                                     v-html="
                                                                                         form.errors.get(
-                                                                                            'service_world_wide'
+                                                                                            'duration_world_wide'
                                                                                         )
                                                                                     "
                                                                                 />
                                                                             </div>
-                                                                            <div class="col-6">
-                                                                                <label class="text-white" for="cats">COST USA </label> <span style="color:white" v-html=" currencyIcon "></span>
-                                                                                <input type="number" step="0.01" v-model="form.price_usa" :disabled="!form.usa" class="form-control" id="fName" placeholder="Price USA" required>
-                                                                                <div v-if="form.errors.has('price_usa')" class="alert alert-danger" v-html="form.errors.get('price_usa')" />
-                                                                            </div>
-                                                                          <div class="col-6">
-                                                                                <label class="text-white" for="cats">COST Worldwide</label>
-                                                                                <input type="number" step="0.01" v-model="form.price_world_wide" :disabled="!form.world_wide" class="form-control" id="fName" placeholder="Price Worldwide" required>
-                                                                                <div v-if="form.errors.has('price_world_wide')" class="alert alert-danger" v-html="form.errors.get('price_world_wide')" />
-                                                                            </div>
-                                                                            <div
-                                                                                class="row"
-                                                                            >
-                                                                                <div
-                                                                                    class="col-6 select-product text-left"
-                                                                                >
-                                                                                    <label
-                                                                                        class="text-white"
-                                                                                        for="cats"
-                                                                                        >Duration
-                                                                                        USA</label
-                                                                                    >
-                                                                                    <v-select
-                                                                                        placeholder="Select Duration"
-                                                                                        id="cats"
-                                                                                        class="custom-vue-select"
-                                                                                        v-model="
-                                                                                            form.duration_usa
-                                                                                        "
-                                                                                        label="title"
-                                                                                        :options="
-                                                                                            usa
-                                                                                        "
-                                                                                    ></v-select>
-                                                                                    <div
-                                                                                        v-if="
-                                                                                            form.errors.has(
-                                                                                                'duration_usa'
-                                                                                            )
-                                                                                        "
-                                                                                        class="alert alert-danger"
-                                                                                        v-html="
-                                                                                            form.errors.get(
-                                                                                                'duration_usa'
-                                                                                            )
-                                                                                        "
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-6 select-product text-left"
-                                                                                >
-                                                                                    <label
-                                                                                        class="text-white"
-                                                                                        for="cats"
-                                                                                        >Duration
-                                                                                        Worldwide</label
-                                                                                    >
-                                                                                    <v-select
-                                                                                        placeholder="Select Policy"
-                                                                                        class="custom-vue-select"
-                                                                                        id="cats"
-                                                                                        v-model="
-                                                                                            form.duration_worldwide
-                                                                                        "
-                                                                                        :disabled="
-                                                                                            !form.world_wide
-                                                                                        "
-                                                                                        label="title"
-                                                                                        :options="
-                                                                                            international
-                                                                                        "
-                                                                                    ></v-select>
-                                                                                    <div
-                                                                                        v-if="
-                                                                                            form.errors.has(
-                                                                                                'duration_world_wide'
-                                                                                            )
-                                                                                        "
-                                                                                        class="alert alert-danger"
-                                                                                        v-html="
-                                                                                            form.errors.get(
-                                                                                                'duration_world_wide'
-                                                                                            )
-                                                                                        "
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="row pt-3"
-                                                                        >
-                                                                            <div
-                                                                                class="col-4"
-                                                                            >
-                                                                                <input
-                                                                                    type="button"
-                                                                                    @click="
-                                                                                        GoBack
-                                                                                    "
-                                                                                    value="Back"
-                                                                                    class="form-control h-40"
-                                                                                />
-                                                                            </div>
-                                                                            <div
-                                                                                class="col-4"
-                                                                            >
-                                                                                <input
-                                                                                    type="button"
-                                                                                    @click="
-                                                                                        draft
-                                                                                    "
-                                                                                    value="Save as Draft"
-                                                                                    class="form-control h-40 btn bg-gray"
-                                                                                    id="draft"
-                                                                                />
-                                                                            </div>
-                                                                            <div class="col-4">
-                                                                                <input type="submit" :disabled="form.busy" value="List your item" class="form-control h-40" id="register">
-                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                                <div
+                                                                    class="row pt-3"
+                                                                >
+                                                                    <div
+                                                                        class="col-lg-4"
+                                                                    >
+                                                                        <input
+                                                                            type="button"
+                                                                            @click="
+                                                                                GoBack
+                                                                            "
+                                                                            value="Back"
+                                                                            class="form-control h-40"
+                                                                        />
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-lg-4"
+                                                                    >
+                                                                        <input
+                                                                            type="button"
+                                                                            @click="
+                                                                                draft
+                                                                            "
+                                                                            value="Save as Draft"
+                                                                            class="form-control h-40 btn bg-gray"
+                                                                            id="draft"
+                                                                        />
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-lg-4"
+                                                                    >
+                                                                        <input
+                                                                            type="submit"
+                                                                            :disabled="
+                                                                                form.busy
+                                                                            "
+                                                                            value="List your item"
+                                                                            class="form-control h-40"
+                                                                            id="register"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -590,20 +655,20 @@
     </div>
 </template>
 <style>
-    .bg-gray{
-        background-color: gray !important;
-    }
-    select{
-        display: block !important;
-    }
-    .round {
-        position: relative;
-        height: 50px;
-    }
-    .nice-select{
-        display: none !important;
-    }
-    .round label {
+.bg-gray {
+    background-color: gray !important;
+}
+select {
+    display: block !important;
+}
+.round {
+    position: relative;
+    height: 50px;
+}
+.nice-select {
+    display: none !important;
+}
+.round label {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 50%;
@@ -669,8 +734,10 @@ export default {
             width: null,
             length: null,
             package_details: true,
-            draft: 0
-        })
+            draft: 0,
+            openSlideBar: false
+        }),
+        openSlideBar: false
     }),
     methods: {
         async saveProductShipping() {

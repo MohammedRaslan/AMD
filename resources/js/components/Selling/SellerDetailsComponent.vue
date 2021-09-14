@@ -20,47 +20,47 @@
             </div>
         </section>
 
-            <section class="selling">
-
-        <div class="container">
-            <div class="row">
-                <h2>Default Information <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
-            <!-- Compnent Here -->
-            <side-bar></side-bar>
-            <!-- End Component  -->
-                <div class="col-xl-10 col-md-12">
-                    <div class="tab-content" id="v-pills-tabContent">
-                        <div class="inner-content">
-                            <!-- Tab1 Overview -->
-                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <!-- Block Item -->
-                                <div class="inner-item">
-                                    <div class="row">
-                                        <div class="col-lg-12 detalis border-0">
-                                                 <div class="signup bg-transparent">
-                                                    <div class="container">
+        <section class="selling">
+            <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="top-tabs p-0 mb-4">
+                        <h2 class='py-3 py-lg-5'>Default Info <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    </div>
+                <!-- Compnent Here -->
+                <side-bar :openSlideBar='openSlideBar'></side-bar>
+                <!-- End Component  -->
+                    <div class="col-xl-10 col-md-12">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="inner-content">
+                                <!-- Tab1 Overview -->
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <!-- Block Item -->
+                                    <div class="inner-item">
+                                        <div class="row">
+                                            <div class="col-lg-12 detalis border-0 p-0">
+                                                    <div class="signup bg-transparent">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                                 <!-- <h2 class="pb-3 pt-4">Product Info</h2> -->
                                                                 <form @submit.prevent="saveSellerDetails" class="form-product">
-                                                                    <div class="row">
-                                                                        <div class="row pb-4">
-                                                                            <div class="col-12 select-product text-left">
-                                                                                <label class="text-white" for="cats">Currency</label>
-                                                                                <v-select placeholder="Select Currency" class="custom-vue-select" id='cats' v-model="form.currency" :options="currencies" >
-                                                                                    <template #search="{attributes, events}">
-                                                                                            <input
-                                                                                                class="vs__search"
-                                                                                                :required="!form.currency"
-                                                                                                v-bind="attributes"
-                                                                                                v-on="events"
-                                                                                            />
-                                                                                        </template>
-                                                                                </v-select>
-                                                                                <div v-if="form.errors.has('currency')" class="alert alert-danger" v-html="form.errors.get('currency')" />
-                                                                            </div>
+                                                                    <div class="row pb-4">
+                                                                        <div class="col-12 select-product text-left">
+                                                                            <label class="text-white" for="cats">Currency</label>
+                                                                            <v-select placeholder="Select Currency" class="custom-vue-select" id='cats' v-model="form.currency" :options="currencies" >
+                                                                                <template #search="{attributes, events}">
+                                                                                        <input
+                                                                                            class="vs__search"
+                                                                                            :required="!form.currency"
+                                                                                            v-bind="attributes"
+                                                                                            v-on="events"
+                                                                                        />
+                                                                                    </template>
+                                                                            </v-select>
+                                                                            <div v-if="form.errors.has('currency')" class="alert alert-danger" v-html="form.errors.get('currency')" />
                                                                         </div>
-                                                                      <div class="row">
+                                                                    </div>
+                                                                    <div class="row">
                                                                             <div class="col-12 text-left">
                                                                                 <label class="text-white" for="cats">Service USA</label>
                                                                                 <input type="text" v-model="form.service_usa" class="form-control" id="fName" placeholder="Service USA" >
@@ -71,15 +71,15 @@
                                                                                 <input type="text" v-model="form.service_worldwide" class="form-control" id="fName" placeholder="Service Worldwide" >
                                                                                 <div v-if="form.errors.has('service_worldwide')" class="alert alert-danger" v-html="form.errors.get('service_worldwide')" />
                                                                             </div>
-                                                                      </div>
-                                                                      <div class="row">
-                                                                             <div class="col-12 text-left">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                            <div class="col-12 text-left">
                                                                                 <label class="text-white" for="cats">PayPal Account</label>
                                                                                 <input type="email" v-model="form.paypal_account" class="form-control" id="fName" placeholder="PayPal Account" >
                                                                                 <div v-if="form.errors.has('paypal_account')" class="alert alert-danger" v-html="form.errors.get('paypal_account')" />
                                                                             </div>
-                                                                      </div>
-                                                                      <div class="row">
+                                                                    </div>
+                                                                    <div class="row">
                                                                         <div class="col-6 round ">
                                                                             <p for=""  style="color:white; float:left">Shipping To USA</p>
                                                                             <input type="checkbox" v-model="form.usa" id="checkbox1" placeholder="USA" >
@@ -92,30 +92,28 @@
                                                                             <label for="checkbox2" class="ml-3"></label>
                                                                             <div v-if="form.errors.has('worldwide')" class="alert alert-danger" v-html="form.errors.get('worldwide')" />
                                                                         </div>
-                                                                        </div>
-                                                                        <div class="col-12">
-                                                                            <input type="submit" :disabled="form.busy" value="Submit" class="form-control" id="register">
-                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <input type="submit" :disabled="form.busy" value="Submit" class="form-control" id="register">
                                                                     </div>
                                                                 </form>
                                                             </div>
 
                                                         </div>
                                                     </div>
-                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
-
-
-
-        </div>
-    </section>
+        </section>
     </div>
 </template>
 <style scoped>
@@ -196,6 +194,7 @@ export default ({
             service_worldwide: null,
             paypal_account: null,
         }),
+        openSlideBar: false
     }),
     methods:{
         async saveSellerDetails(){

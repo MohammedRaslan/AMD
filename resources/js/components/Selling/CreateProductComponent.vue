@@ -24,12 +24,14 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <h2>Sell An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                 <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-5'>Sell An Item <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
@@ -510,6 +512,7 @@ export default ({
             details: false,
             draft: 1,
         }),
+        openSlideBar: false
     }),
     methods:{
         async saveProduct(){

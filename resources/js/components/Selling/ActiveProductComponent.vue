@@ -27,9 +27,12 @@
         <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
-                <h2>Selling <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-5'>Selling <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                </div>
+
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
@@ -110,6 +113,7 @@ export default ({
         products: {},
         message : '',
         pagination: {},
+        openSlideBar: false
     }),
     components:{
         SideBar,

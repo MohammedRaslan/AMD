@@ -116,7 +116,7 @@ export default ({
         products: {},
         message : '',
         pagination: {},
-        openSlideBar: false
+        openSlideBar: false,
     }),
     components:{
         SideBar,

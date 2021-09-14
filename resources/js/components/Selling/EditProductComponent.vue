@@ -50,13 +50,13 @@
                                                             <form @submit.prevent="saveProduct" class="form-product p-lg-4">
                                                                 <div class="row">
                                                                     <div class="col-12 text-left">
-                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label> 
+                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                     </div>
                                                                     <div class="row pb-4 pr-sm-0">
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                            <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label> 
+                                                                            <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label>
                                                                             <v-select placeholder="Select Category" id='cats' v-model="form.category" :reduce="category => category.id"  label="title" :options="categories" >
                                                                                 <template #search="{attributes, events}">
                                                                                         <input
@@ -118,7 +118,7 @@
                                                                              <img  :src='str_replace(product.image)' alt="">
                                                                              <button class="btn btn-milky w-100" type="button" @click="changeFeatureImage">Change Featured Image</button>
                                                                         </div>
-                                                                       
+
                                                                         <div v-show="openFeatured">
                                                                                 <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
                                                                                 <UploadImages @change="handleImage" :max="1" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 1 image)" fileError="images files only accepted"/>
@@ -170,7 +170,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </nav>
-                                                                        
+
                                                                     </div>
 
                                                                     <div class="row listing-type">
@@ -234,7 +234,7 @@
 
 
                                                                         </div>
-                                                                    </div>                                                                           
+                                                                    </div>
                                                                     <div class="row">
                                                                             <a class="btn btn-milky m-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                                             Additional Information
@@ -242,7 +242,7 @@
                                                                             <div class="collapse m-3 additional-information p-0" id="collapseExample">
                                                                             <div class="card card-body background-color border-0 p-0">
                                                                                 <div class="row text-left">
-        
+
                                                                                         <div class="col-lg-4">
                                                                                             <label class="text-white" for="cats">Item Size</label>
                                                                                             <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Item size" >
@@ -270,7 +270,7 @@
                                                                                                 <div v-if="form.errors.has('featured_refinements')" class="alert alert-danger" v-html="form.errors.get('featured_refinements')" />
                                                                                             </div>
                                                                                         </div>
-                                                                                
+
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6 round">
                                                                                                 <p class="text-white w-100">This Product is Domestic Product</p>
@@ -557,7 +557,7 @@ export default ({
            this.form.modified_item = this.form.modified_item == true ? 1 :0;
            this.form.type = this.form.bidding_from || this.form.bidding_to != null ? 1 : 0;
            this.form.price = this.form.bidding_from != null || this.form.bidding_to != null ? 0 : this.form.price;
-       
+
             const response = await this.form.post('/api/product/update/'+this.$route.params.id).then((response)=>{
                 this.$Progress.finish();
                 // this.indicator();
@@ -567,7 +567,7 @@ export default ({
                 this.$Progress.fail();
                 console.log(error);
             });
-           
+
 
         },
         handleImage(files){
