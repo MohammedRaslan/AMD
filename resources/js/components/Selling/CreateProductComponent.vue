@@ -24,7 +24,7 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-
+        <div class="over-lay-selling d-none"></div>
         <div class="container">
             <div class="row">
                 <h2>Sell An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
@@ -162,7 +162,7 @@
                                                                                         <div class="round round-3 pl-3 minimum-offer">
                                                                                             <input type="checkbox" v-model="form.best_offer" id="checkbox3"  placeholder="Title">
                                                                                             <label for="checkbox3" class="ml-3">Accept best offer</label>
-                                                                                      
+
                                                                                             <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                                         </div>
                                                                                         <label for="#listing1" style="color:white">Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem">*</span></label>
@@ -542,6 +542,7 @@ export default ({
             this.form.draft = 1;
             this.saveProduct();
         },
+
     },
     beforeCreate() {
         this.$Progress.start();

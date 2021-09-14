@@ -3,6 +3,10 @@
   overflow: hidden;
 }
 
+.d-block1 {
+  display: block !important;
+}
+
 #preloder {
   display: none !important;
 }

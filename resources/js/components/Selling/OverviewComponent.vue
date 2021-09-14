@@ -1,44 +1,45 @@
 <template>
     <div>
-            <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
-                                <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown" transform="translate(-8 13) rotate(-90)">
-                                    <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
-                                </g>
-                            </svg>
-                            <span>Selling</span>
+        <section class="breadcrumb-option">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb__text">
+                            <div class="breadcrumb__links">
+                                <a href="./index.html">Home</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
+                                    <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown" transform="translate(-8 13) rotate(-90)">
+                                        <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
+                                    </g>
+                                </svg>
+                                <span>Selling</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     <!-- Breadcrumb Section End -->
 
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h2 class='py-3 py-lg-4'>Selling <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class='py-3 py-lg-5'>Selling <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
+
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 v-if="message != '' " class="text-center">{{message}}</h2>
                     <div class="tab-content" id="v-pills-tabContent" v-for="product in products.data" :key="product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
-                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                             <div class="tab-pane fade show openSlideBar" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <!-- Block Item -->
                                 <div class="inner-item">
                                     <div class="row">
@@ -115,6 +116,7 @@ export default ({
         products: {},
         message : '',
         pagination: {},
+        openSlideBar: false
     }),
     components:{
         SideBar,
@@ -148,6 +150,9 @@ export default ({
                     document.getElementById("product_"+product_id).classList.add('black');
                 }
             });
+        },
+        greet: function () {
+            alert('Hello')
         }
     },
     beforeCreate() {

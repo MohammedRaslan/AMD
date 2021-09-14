@@ -1,6 +1,6 @@
 <template>
     <div class="col-xl-2 col-md-6">
-        <div class="header-taps header-taps-selling mb-lg-4" ref="uniqueName">
+        <div :class="{ 'd-block': openSlideBar }" class="header-taps header-taps-selling mb-lg-4" >
             <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <!-- Overview -->
                 <!-- <router-link to="/selling/overview" class="nav-link"  id="v-pills-home-tab">Overview</router-link>
@@ -27,22 +27,16 @@
         </div>
     </div>
 </template>
-<style scoped>
-    /* .insided{
-        padding-left: 30px !important;
-        margin: auto;
-    } */
-    /* .outside{
-            display: flex !important;
-    flex-wrap: wrap !important;
-        padding-left: 0px !important;
-    } */
-</style>
+
 <script>
-    // this.$el.querySelector('.header-taps');
-    // test = document.querySelectorAll(".header-taps")
-    // this.$refs.uniqueName
-    let read =  document.getElementsByClassName('header-taps')
-    console.log(read)
+
+export default ({
+    props : ['openSlideBar'],
+  methods: {
+    greet: function () {
+      alert('Hello')
+    }
+  }
+})
 </script>
 
