@@ -29,4 +29,13 @@ class ChatController extends Controller
         $response = $this->chatService->getAllChat($request->user()->id);
         return response()->json($response);
     }
+
+    public function getChat(Request $request,$chat_id)
+    {
+        $response = $this->chatService->getChat($chat_id);
+        return response()->json([
+            'user_id' => $request->user()->id,
+            'chat' => $response
+        ]);
+    }
 }

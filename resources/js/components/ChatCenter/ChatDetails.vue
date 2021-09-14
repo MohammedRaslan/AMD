@@ -58,36 +58,14 @@
               <div class="inner-content p-2">
                 <div class="">
                     <div class="text-maroon pl-0 mb-3">Mohamed Maged</div>
-                    <div class="p-0">
-                      <p class="text-milky pr-lg-100">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolorem libero id maiores. Vitae, omnis quas quia,
-                        explicabo beatae officia necessitatibus cumque
-                        voluptatem dolore molestiae exercitationem vero
-                        corrupti. Quas, itaque eligendi.
-                      </p>
-                      <p class="text-green pl-lg-100">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolorem libero id maiores. Vitae, omnis quas quia,
-                        explicabo beatae officia necessitatibus cumque
-                        voluptatem dolore molestiae exercitationem vero
-                        corrupti. Quas, itaque eligendi.
-                      </p>
-                      <p class="text-milky pr-lg-100">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolorem libero id maiores. Vitae, omnis quas quia,
-                        explicabo beatae officia necessitatibus cumque
-                        voluptatem dolore molestiae exercitationem vero
-                        corrupti. Quas, itaque eligendi.
-                      </p>
-                      <p class="text-green pl-lg-100">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolorem libero id maiores. Vitae, omnis quas quia,
-                        explicabo beatae officia necessitatibus cumque
-                        voluptatem dolore molestiae exercitationem vero
-                        corrupti. Quas, itaque eligendi.
-                      </p>
-                      <form action="">
+                    <div class="p-0" >
+                      <div id="chat-list">
+                        <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right pr-lg-100' : 'text-milky text-left pl-lg-100']">
+                            {{ chat.message }}
+                        </p>  
+                      </div>
+                   
+                      <form @submit.prevent="sendMessage">
                         <div class="row pb-3">
                           <div class="col-sm-10">
                             <textarea
@@ -95,6 +73,7 @@
                               name=""
                               rows="3"
                               class="w-100"
+                              v-model="form.message"
                             ></textarea>
                           </div>
                           <div class="col-sm-2 d-flex align-items-center">
@@ -120,8 +99,62 @@
 import SideBar from "./SideBarComponent.vue";
 
 export default {
-  components: {
-    SideBar,
-  },
+      data: () => ({
+         message: '',
+         id:null,
+         chats :{},
+         user_id : null,
+        form : new form({
+            user_id_to: null,
+            message: null,
+            product_id:null,
+            private: 1,
+            })
+     }),
+      components: {
+        SideBar,
+      },
+      methods: {
+        getChat(){
+          this.id = this.$route.params.id;
+
+          axios.get('/api/chat/getChat/'+this.id).then((response) => {
+            this.chats = response.data.chat;
+            this.user_id = response.data.user_id;
+            if(this.chats.length == 0){
+                this.message = "You Don't Have Chats";
+            }else{
+              this.form.product_id = this.chats[0].product_id;
+              if(this.user_id == this.chats[0].user_id_from ){
+                this.form.user_id_to = this.chats[0].user_id_to;
+              }else{
+                this.form.user_id_to = this.chats[0].user_id_from;
+              }
+            }
+        });
+
+        },
+        sendMessage: function(){
+          var response = this.form.post('/api/chat/store').then((response) => {
+              this.form.message = null
+          });
+      },
+    },
+    mounted(){
+        this.getChat();
+            window.Echo.channel('send-message-private').listen('PrivateChatEvent', event => {
+
+            if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_from){
+
+                document.getElementById('chat-list').innerHTML += "<p class='text-green text-right pr-lg-100'>"+event.message.message+"</p>";
+
+            }else if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_to){
+              
+                document.getElementById('chat-list').innerHTML += "<p class='text-milky text-left pl-lg-100'>"+event.message.message+"</p>";
+
+            }
+
+        });
+    }
 };
 </script>

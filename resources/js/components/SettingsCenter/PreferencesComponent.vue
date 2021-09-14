@@ -38,7 +38,7 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <div class="text-center">
-                                <h3 style="color: #fd1266;">There is no products</h3>
+                                <h3 style="color: #fd1266;">You have no Preferences</h3>
                             </div>
                         </div>
                     </div>

@@ -236,7 +236,7 @@
     color: #fff !important;
 }
    .subscriptions .price-row>div .inner.fourth.fourth-hover{
-        background-color: #fecc2f;
+        background-color: #a5841e;
         z-index: 1;
     }
 .subscriptions .price-row>div .inner.fourth.fourth-hover span.data{

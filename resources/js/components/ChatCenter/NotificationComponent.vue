@@ -98,7 +98,7 @@ export default {
         axios.get('/api/notification/getAllNotification?page=' + page).then((response) => {
             this.notifications = response.data;
             if(this.notifications.data.length == 0){
-                this.message = "You Don't Have Notifications";
+                this.message = "You have no new Notifications";
             }
         });
 

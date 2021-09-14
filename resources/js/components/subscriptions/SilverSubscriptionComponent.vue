@@ -36,7 +36,7 @@
                             <li>7% final value fee on the first 10 items sold.</li>
                             <li>Unlimited 8% final value fee on any additional item sold</li>
                         </ul>
-                        <small class="text-white"><b>(Get one month free annually when you purchase a yearly subscription of :$219.89)</b></small>
+                        <h5 class="text-white"><b>(Get one month free annually when you purchase a yearly subscription of :$219.89)</b></h5>
                         <h3 style="color: white;">Terms and Conditions</h3>
                         <p class="terms-text">* Any change/cancellation to the membership will take effect as of the following month
                             of subscription.<br>

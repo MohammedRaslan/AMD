@@ -33,6 +33,7 @@ export default({
                 user_id_to: null,
                 message: null,
                 product_id:null,
+                private: 0,
             })
         }),
         methods:{

@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Models\Chat;
 use App\Models\Product;
 use App\Events\ChatEvent;
+use App\Events\PrivateChatEvent;
 use Illuminate\Support\Facades\DB;
 
 class ChatRepository{
@@ -20,10 +21,14 @@ class ChatRepository{
             'user_id_to' => $request['user_id_to'],
             'product_id' => $request['product_id'],
             'message' => $request['message'],
+            'private' => $request['private'],
         ]);
 
-        if($chatMessage){
+        if($chatMessage && $request['private'] == 0){ // public
             event(new ChatEvent($this->chat->where('id',$chatMessage->id)->with('user_to')->with('user_from')->first()));
+            event(new PrivateChatEvent($this->chat->where('id',$chatMessage->id)->with('user_to')->with('user_from')->first()));
+        }elseif($chatMessage && $request['private'] == 1){ // Private
+            event(new PrivateChatEvent($this->chat->where('id',$chatMessage->id)->with('user_to')->with('user_from')->first()));
         }
         return $chatMessage;
     }
@@ -33,15 +38,15 @@ class ChatRepository{
         $product = Product::find($product_id);
         if($product->user_id == $user_id){
             $messages = Chat::where('product_id',$product_id)
-            ->where('status',1)
+            ->where('status',1)->where('private',0)
             ->with('user_to')->with('user_from')
-            ->orderBy('created_at','desc')->take(5)
+            ->orderBy('created_at','desc')->take(10)
             ->get();
         }else{
             $messages = Chat::where('product_id',$product_id)
                           ->where('status',1)->where('user_id_from',$user_id)
                           ->with('user_to')->with('user_from')
-                          ->orderBy('created_at','desc')->take(5)
+                          ->orderBy('created_at','desc')->take(10)
                           ->get();
         }
         return $messages;
@@ -49,10 +54,35 @@ class ChatRepository{
 
     public function getAllChat($user_id)
     {   
-        // $chats = Chat::select('user_id_from','user_id_to','product_id','message')
-        //               ->where('user_id_from',$user_id)
-        //               ->orwhere('user_id_to',$user_id)->distinct('product_id')
-        //               ->get()->toArray();
-        // dd($chats);
+        return Chat::select('id','user_id_from','user_id_to','product_id','created_at')
+                      ->where('status',1)
+                      ->where('user_id_from',$user_id)
+                      ->orwhere('user_id_to',$user_id)
+                      ->with('user_to')->with('user_from')->with('product')
+                      ->get()->unique('user_id_from','user_id_to');
+                      
+        
+    }
+
+    public function getChat($chat_id)
+    {
+        $chatParameters = Chat::select('user_id_from','user_id_to','product_id')
+                              ->where('id',$chat_id)
+                              ->where('status',1)
+                              ->first();
+                              
+        return Chat::select('id','user_id_from','user_id_to','product_id','message','created_at')
+                         ->where('status',1)
+                         ->where([
+                             ['user_id_from',$chatParameters->user_id_from],
+                             ['user_id_to', $chatParameters->user_id_to],
+                             ['product_id',$chatParameters->product_id]
+                            ])->orwhere([
+                             ['user_id_from',$chatParameters->user_id_to],
+                             ['user_id_to', $chatParameters->user_id_from],
+                             ['product_id',$chatParameters->product_id]
+                             ])->orderBy('created_at','asc')->get();
+                  
+
     }
 }

@@ -72,8 +72,10 @@ class ProductRepository{
     public function fixConditions($conditions)
     {
         $array = [];
+        $str = ['_','1','2','3'];
+        $replace = [' ','(',')',','];
         foreach($conditions as $condition){
-            $array[] = str_replace('_', ' ', $condition);
+            $array[] = str_replace($str,$replace, $condition);
         }
         return $array;
     }

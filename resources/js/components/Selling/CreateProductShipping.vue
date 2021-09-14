@@ -735,7 +735,7 @@ export default {
             length: null,
             package_details: true,
             draft: 0,
-            openSlideBar: false
+            // openSlideBar: false
         }),
         openSlideBar: false
     }),

@@ -11,7 +11,7 @@
                     <hr>
 
                     <!--3 My Favorites -->
-                    <router-link class="nav-link active-maroon pl-8 text-decoration-none text-white" id="v-pills-home-tab" to="/settings">Archive</router-link>
+                    <button class="nav-link active-maroon pl-8 text-decoration-none text-white" id="v-pills-home-tab" disabled>Archive</button>
 
                     <!--4 Wachlist -->
 

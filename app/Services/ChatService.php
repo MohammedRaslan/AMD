@@ -24,4 +24,8 @@ class ChatService{
     {
         return $this->chatRepository->getAllChat($user_id);
     }
+    public function getChat($chat_id)
+    {
+        return $this->chatRepository->getChat($chat_id);
+    }
 }

@@ -136,7 +136,7 @@ export default ({
                   if(response.data.status == 1){
                     document.getElementById("product_"+product_id).classList.remove('black');
                     document.getElementById("product_"+product_id).innerHTML = 'Suspend'
-                    document.getElementById("product_"+product_id).classList.add('btn-danger');
+                    document.getElementById("product_"+product_id).classList.add('danger');
                 }else{
                     document.getElementById("product_"+product_id).classList.remove('btn-danger');
                     document.getElementById("product_"+product_id).innerHTML = 'Suspended'

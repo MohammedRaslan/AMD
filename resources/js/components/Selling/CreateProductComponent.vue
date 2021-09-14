@@ -170,6 +170,7 @@
                                                                                         <label for="#listing1" style="color:white">Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem">*</span></label>
 
                                                                                         <input class="form-control" type="text" v-model="form.minimum_offer" placeholder="Minimum offer" :disabled="!form.best_offer">
+                                                                                        <span style="color:red" v-show="minimum_offer_message != ''">{{ minimum_offer_message }}</span>
                                                                                     </div>
 
                                                                                 </div>
@@ -486,6 +487,7 @@ export default ({
         policies: [],
         bid_step : [],
         imagenull: false,
+        minimum_offer_message : '',
         form : new form({
             title : null,
             type : 0, // type 0 => Regular , type 1 => Bidding
@@ -527,6 +529,9 @@ export default ({
                this.imagenull = true;
                this.$Progress.fail();
            }else{
+               if(this.form.best_offer == 1 && this.form.minimum_offer > this.form.price){
+                   this.minimum_offer_message = "This value can not be higher than Price";
+               }else{
             const response = await this.form.post('/api/product/store').then((response)=>{
                 this.$Progress.finish();
                 // this.indicator();
@@ -536,6 +541,7 @@ export default ({
                 this.$Progress.fail();
                 console.log(error);
             });
+           }
            }
         },
         handleImages(files){

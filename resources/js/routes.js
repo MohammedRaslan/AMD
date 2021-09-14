@@ -59,7 +59,7 @@ var routes = [{
         name: "ChatNotificationComponent",
     },
     {
-        path: "/chat-details",
+        path: "/chat/:id?",
         component: ChatDetails,
         name: "ChatDetails",
     },
