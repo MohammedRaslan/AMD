@@ -57,7 +57,7 @@
             >
               <div class="inner-content p-2">
                 <div class="">
-                    <div class="text-maroon pl-0 mb-3">Mohamed Maged</div>
+                    <div class="text-maroon pl-0 mb-3">{{ user_name }}</div>
                     <div class="p-0" >
                       <div id="chat-list">
                         <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right pr-lg-100' : 'text-milky text-left pl-lg-100']">
@@ -103,6 +103,7 @@ export default {
          message: '',
          id:null,
          chats :{},
+         user_name: null,
          user_id : null,
         form : new form({
             user_id_to: null,
@@ -121,6 +122,14 @@ export default {
           axios.get('/api/chat/getChat/'+this.id).then((response) => {
             this.chats = response.data.chat;
             this.user_id = response.data.user_id;
+            //get username from first message
+
+            if(this.user_id == this.chats[0].user_to.id){
+              this.user_name = this.chats[0].user_from.user_name;
+            }else{
+              this.user_name = this.chats[0].user_to.user_name;
+            }
+          
             if(this.chats.length == 0){
                 this.message = "You Don't Have Chats";
             }else{

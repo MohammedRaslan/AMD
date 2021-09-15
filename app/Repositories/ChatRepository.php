@@ -58,10 +58,11 @@ class ChatRepository{
                       ->where('status',1)
                       ->where('user_id_from',$user_id)
                       ->orwhere('user_id_to',$user_id)
+                      ->groupBy('user_id_to','user_id_from','product_id')
                       ->with('user_to')->with('user_from')->with('product')
-                      ->get()->unique('user_id_from','user_id_to');
+                      ->get();
                       
-        
+     
     }
 
     public function getChat($chat_id)
@@ -81,7 +82,7 @@ class ChatRepository{
                              ['user_id_from',$chatParameters->user_id_to],
                              ['user_id_to', $chatParameters->user_id_from],
                              ['product_id',$chatParameters->product_id]
-                             ])->orderBy('created_at','asc')->get();
+                             ])->with('user_to')->with('user_from')->with('product')->orderBy('created_at','asc')->get();
                   
 
     }

@@ -529,7 +529,7 @@ export default ({
                this.imagenull = true;
                this.$Progress.fail();
            }else{
-               if(this.form.best_offer == 1 && this.form.minimum_offer > this.form.price){
+               if(this.form.best_offer == 1 && parseFloat(this.form.minimum_offer) >parseFloat(this.form.price)){
                    this.minimum_offer_message = "This value can not be higher than Price";
                }else{
             const response = await this.form.post('/api/product/store').then((response)=>{

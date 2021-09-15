@@ -559,7 +559,7 @@ export default ({
            this.form.modified_item = this.form.modified_item == true ? 1 :0;
            this.form.type = this.form.bidding_from || this.form.bidding_to != null ? 1 : 0;
            this.form.price = this.form.bidding_from != null || this.form.bidding_to != null ? 0 : this.form.price;
-                if(this.form.best_offer == 1 && this.form.best_offer_price > this.form.price){
+                if(this.form.best_offer == 1 &&parseFloat(this.form.best_offer_price) >parseFloat (this.form.price)){
                    this.minimum_offer_message = "This value can not be higher than Price";
                    this.$Progress.fail();
 
