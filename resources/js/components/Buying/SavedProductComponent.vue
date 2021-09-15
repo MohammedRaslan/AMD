@@ -24,16 +24,18 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying">
-
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <h2>Buying <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                 <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-5'>Buying <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <h2 class="text-center">There are no saved Products</h2>
-                  
+
                 </div>
             </div>
             <!-- <pagination :data="products" @pagination-change-page="getProducts"></pagination> -->
@@ -82,7 +84,7 @@
 import SideBar from "./BuyingSidebarComponent";
 export default ({
     data :()=>({
-
+        openSlideBar: false,
     }),
     components:{
         SideBar,

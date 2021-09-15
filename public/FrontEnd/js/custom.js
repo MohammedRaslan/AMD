@@ -119,4 +119,10 @@ $(document).ready(function() {
         })
     })
 
+
+    // $('.send-msg').click(function() {
+    //     // $('#chat-list').animate({ scrollTo: -50 }, 600)
+    //     $('#chat-list').scrollTop($('#chat-list').height())
+    // })
+
 })

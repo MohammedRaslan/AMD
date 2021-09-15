@@ -26,22 +26,21 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying messages">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <div class="top-tabs">
-                    <h2 class="py-3 py-lg-4">Messages <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
-
+                 <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-5'>Messages <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
 
-                <side-bar></side-bar>
+                <side-bar :openSlideBar='openSlideBar'></side-bar>
 
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <!-- Tab1 -->
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <div class="row text-yellow title-accordion">
+                            <div class="tab-pane fade show active" id="v-pills-home3" role="tabpanel" aria-labelledby="v-pills-home3-tab">
+                                <div class="row text-yellow title-accordion d-none d-lg-flex">
                                     <div class="col-2 pl-0">From</div>
                                     <div class="col-2 pl-0">To</div>
                                     <div class="col-4" style="padding-left: 33px;">Subject</div>
@@ -52,12 +51,12 @@
                                     <!-- Block Item -->
                                     <div class="accordion-item" v-for="(chat,index) in chats" :key="index" :id="'row-'+chat.id">
                                         <div class="accordion-header" id="flush-headingOne">
-                                            <div class="row px-0 w-auto align-items-start  collapsed" style="padding:2em; border-bottom: 1px solid white; " data-bs-target="#flush-collapseOne" data-bs-toggle="collapse" aria-controls="flush-collapseOne" aria-expanded="false">
-                                                <div class="col-2 text-maroon pl-0">{{ chat.user_from.user_name }}</div>
-                                                <div class="col-2 text-maroon pl-0">{{ chat.user_to.user_name }}</div>
-                                                <div class="col-4 text-offwhite" style="padding-left: 31px;"> {{ chat.product.title }} </div>
-                                                <div class="col-2 text-maroon">{{ chat.created_at }}</div>
-                                                <div class="col-2 text-offwhite">
+                                            <div class="row px-0 w-auto align-items-start collapsed" style="padding:2em; border-bottom: 1px solid white;">
+                                                <div class="col-6 col-lg-2 mb-3 mb-lg-0 text-maroon">{{ chat.user_from.user_name }}</div>
+                                                <div class="col-6 col-lg-2 mb-3 mb-lg-0 text-maroon">{{ chat.user_to.user_name }}</div>
+                                                <div class="col-6 col-lg-4 mb-3 mb-lg-0 text-offwhite"> {{ chat.product.title }} </div>
+                                                <div class="col-6 col-lg-2 mb-3 mb-lg-0 text-maroon">{{ chat.created_at }}</div>
+                                                <div class="col-lg-2 text-offwhite">
                                                     <button  class="btn btn-milky w-100 mb-2" @click="goToChat(chat.id)"> Open Chat</button>
                                                     <button class="btn btn-danger w-100" disabled>Archive</button>
                                                 </div>
@@ -89,8 +88,9 @@ export default ({
       data: () => ({
          message: '',
          chats :{},
+         openSlideBar: false,
      }),
-    
+
      components:{
         SideBar,
     },

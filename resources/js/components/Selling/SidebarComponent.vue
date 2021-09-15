@@ -29,14 +29,8 @@
 </template>
 
 <script>
-
 export default ({
     props : ['openSlideBar'],
-  methods: {
-    greet: function () {
-      alert('Hello')
-    }
-  }
 })
 </script>
 

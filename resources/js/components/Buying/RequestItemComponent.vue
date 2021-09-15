@@ -24,14 +24,14 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h2 class='py-3 py-lg-4'>Request An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class='py-3 py-lg-5'>Request An Item<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
@@ -49,7 +49,7 @@
                                                             <h2 class="pb-3 pt-0">Product Info</h2>
                                                             <form @submit.prevent="saveProduct" class="form-product p-lg-4">
                                                                 <div class="row">
-                                                                    <div class="col-6 text-left">
+                                                                    <div class="col-lg-6 text-left">
                                                                             <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
@@ -375,6 +375,7 @@ export default ({
             minimum_offer: null,
             draft: 0,
         }),
+        openSlideBar: false,
     }),
     methods:{
         async saveProduct(){

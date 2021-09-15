@@ -542,6 +542,26 @@ svg.img-subscription {
   max-height: 650px;
 }
 
+.chat-private #chat-list {
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 18px;
+  padding-right: 11px;
+}
+.chat-private #chat-list .msg {
+  padding: 10px;
+  border-radius: 13px;
+  color: white !important;
+}
+.chat-private #chat-list .msg.msg-to {
+  background: #fd1266;
+  margin-right: 30%;
+}
+.chat-private #chat-list .msg.msg-from {
+  background: #7ac943;
+  margin-left: 30%;
+}
+
 .c-position-static {
   position: static !important;
 }

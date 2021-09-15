@@ -31,7 +31,7 @@
         <!-- Breadcrumb Section End -->
 
             <div class="container">
-                <div class="sort row select-dolls">
+                <div class="sort row select-dolls py-5">
                     <div class="inner-sort col-sm-6 col-6">
                         <div class="nice-select form-select1" tabindex="0">
                             <span class="current">Filter by</span>
@@ -106,19 +106,19 @@
                         <h5 v-else>Bidding</h5>
                         <h6>
                             <span v-if="product.best_offer" class="float-left">or Best Offer</span>
-                           
-                                <Wishlist :product_id="product.id" 
+
+                                <Wishlist :product_id="product.id"
                                           :userAddedItemToWishlist="product.userAddedItemToWishlist"
                                           :wishlistCount="product.wishlistCount"
                                           :product_user_id="product.user_id">
                                 </Wishlist>
-                           
+
                         </h6>
                     </div>
                 </div>
             </div>
             <div class="pagination-product">
-                
+
             </div>
 
             </div>

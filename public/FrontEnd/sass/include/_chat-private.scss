@@ -1,0 +1,21 @@
+.chat-private {
+    #chat-list {
+        max-height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 18px;
+        padding-right: 11px;
+        .msg {
+            padding: 10px;
+            border-radius: 13px;
+            color: white !important;
+            &.msg-to {
+                background: $maroon;
+                margin-right: 30%;
+            }
+            &.msg-from {
+                background: $green;
+                margin-left: 30%;
+            }
+        }
+    }
+}

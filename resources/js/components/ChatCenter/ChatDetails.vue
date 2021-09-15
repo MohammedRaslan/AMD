@@ -38,19 +38,16 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying messages">
-      <div class="over-lay-selling d-none"></div>
+      <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
       <div class="container">
         <div class="row">
-          <div class="top-tabs">
-            <h2 class="py-3 py-lg-4">
-              Chat Details
-              <span class="open-tabs"><i class="fa fa-bars"></i></span>
-            </h2>
-          </div>
+            <div class="top-tabs p-0 mb-4">
+                <h2 class='py-3 py-lg-5'>Chat Details <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+            </div>
 
-          <side-bar></side-bar>
+          <side-bar :openSlideBar='openSlideBar'></side-bar>
 
-          <div class="col-xl-10 col-md-12 mt-3 mt-lg-0 px-3">
+          <div class="col-xl-10 col-md-12 mt-3 mt-lg-0 px-3 chat-private">
             <div
               class="tab-content border-yellow border-radius-10 mb-5 p-lg-3 p-1 pb-0"
               id="v-pills-tabContent"
@@ -60,11 +57,11 @@
                     <div class="text-maroon pl-0 mb-3">Mohamed Maged</div>
                     <div class="p-0" >
                       <div id="chat-list">
-                        <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right pr-lg-100' : 'text-milky text-left pl-lg-100']">
+                        <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right msg msg-from' : 'text-milky text-left msg msg-to']">
                             {{ chat.message }}
-                        </p>  
+                        </p>
                       </div>
-                   
+
                       <form @submit.prevent="sendMessage">
                         <div class="row pb-3">
                           <div class="col-sm-10">
@@ -77,7 +74,7 @@
                             ></textarea>
                           </div>
                           <div class="col-sm-2 d-flex align-items-center">
-                            <button class="w-100 btn btn-milky mb-lg-3 mb-0">
+                            <button class="w-100 btn btn-milky mb-lg-3 mb-0 send-msg">
                               Send
                             </button>
                           </div>
@@ -109,7 +106,8 @@ export default {
             message: null,
             product_id:null,
             private: 1,
-            })
+        }),
+        openSlideBar: false,
      }),
       components: {
         SideBar,
@@ -146,11 +144,11 @@ export default {
 
             if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_from){
 
-                document.getElementById('chat-list').innerHTML += "<p class='text-green text-right pr-lg-100'>"+event.message.message+"</p>";
+                document.getElementById('chat-list').innerHTML += "<p class='text-green text-right msg msg-from'>"+event.message.message+"</p>";
 
             }else if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_to){
-              
-                document.getElementById('chat-list').innerHTML += "<p class='text-milky text-left pl-lg-100'>"+event.message.message+"</p>";
+
+                document.getElementById('chat-list').innerHTML += "<p class='text-milky text-left msg msg-to'>"+event.message.message+"</p>";
 
             }
 
