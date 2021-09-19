@@ -18,8 +18,16 @@
         display: block !important;
     }
     
+    .mb-0 {
+        margin-bottom: 0 !important;
+    }
+    
     #preloder {
         display: none !important;
+    }
+    
+    .text-maroon {
+        color: $maroon !important;
     }
     
     .h-60 {
@@ -448,6 +456,7 @@
     @import './include/only-vue/sell-item';
     @import './include/selling';
     @import './include/subscription';
+    @import './include/slide-bar-taps';
     .c-position-static {
         position: static !important;
     }

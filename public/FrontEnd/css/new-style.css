@@ -7,8 +7,16 @@
   display: block !important;
 }
 
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
 #preloder {
   display: none !important;
+}
+
+.text-maroon {
+  color: #fd1266 !important;
 }
 
 .h-60 {
@@ -515,7 +523,7 @@ input:disabled {
   display: flex;
   align-items: center;
   margin: 8px 0 !important;
-  padding-left: 13px !important;
+  padding-left: 6px !important;
 }
 .header-taps .nav-link:hover,
 .header-taps .nav-pills button:hover {
@@ -524,9 +532,6 @@ input:disabled {
 .header-taps .nav-link-sub {
   font-size: 16px !important;
   font-weight: normal !important;
-}
-.header-taps.header-taps-selling .nav-link.router-link-active {
-  background: #fd1266;
 }
 .header-taps.header-taps-setting {
   border-color: #fd1266 !important;
@@ -538,8 +543,38 @@ input:disabled {
   background: #fd1266 !important;
 }
 
+.selling input::placeholder,
+.selling .upload-img input {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.selling .message-error {
+  color: #fd1266;
+}
+
 svg.img-subscription {
   max-height: 650px;
+}
+
+.slide-bar-taps .nav-link {
+  width: 100%;
+}
+.slide-bar-taps.header-taps-selling .nav-link.router-link-active {
+  color: #fd1266 !important;
+}
+.slide-bar-taps.header-taps-selling .nav-link.router-link-active:hover {
+  color: #F2F2F2 !important;
+}
+.slide-bar-taps.header-taps-selling .nav-link.nav-link-sub {
+  margin-top: 0 !important;
+}
+.slide-bar-taps.header-taps-buying .nav-link.router-link-active {
+  color: #7ac943 !important;
+}
+.slide-bar-taps.header-taps-buying .nav-link.router-link-active:hover {
+  color: #F2F2F2 !important;
+}
+.slide-bar-taps.header-taps-buying .nav-link.nav-link-sub {
+  margin-top: 0 !important;
 }
 
 .c-position-static {

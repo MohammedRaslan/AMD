@@ -24,7 +24,7 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
                 <h2>Buying <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
-                                             
+
                                                   <div class="inner" >
                                                     <button class="btn btn-secondary"><router-link :to="{name: 'ShopDetailComponent', params:{query: wishlist.product.id}}">View</router-link></button>
                                                 </div>
@@ -150,7 +150,7 @@ export default ({
             this.wishlists = response.data;
             // this.pagination = response.data.links;
             // console.log(this.pagination);
-            if(response.data.length == 0 ){ 
+            if(response.data.length == 0 ){
                 this.message = 'You dont have products';
                 }
         });

@@ -24,7 +24,7 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
@@ -42,15 +42,15 @@
                                 <div class="inner-item">
                                     <div class="row">
                                         <div class="col-lg-12 detalis border-0 sell-an-item-section p-0">
-                                                <div class="signup bg-transparent">
+                                                <div class="signup bg-transparent pb-4 pb-lg-5">
                                                 <div class="container p-2">
                                                     <div class="row text-center pt-0">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <h2 class="pb-3 pt-0">Product Info</h2>
                                                             <form @submit.prevent="saveProduct" class="form-product p-lg-4">
                                                                 <div class="row">
-                                                                    <div class="col-6 text-left">
-                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
+                                                                    <div class="col-lg-6 text-left">
+                                                                        <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                     </div>
@@ -121,32 +121,32 @@
                                                                                 <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
                                                                             </div>
                                                                         </form> -->
-                                                                        <nav>
+                                                                        <!-- <nav>
                                                                             <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                                 <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
                                                                                     <div>Requested Product</div>
                                                                                 </div>
                                                                             </div>
-                                                                        </nav>
+                                                                        </nav> -->
 
                                                                     </div>
 
-                                                                    <div class="row listing-type">
-                                                                        <div class="tab-content" id="nav-tabContent">
-                                                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                                                <div class="row save">
+                                                                    <!-- <div class="row listing-type"> -->
+                                                                        <!-- <div class="tab-content" id="nav-tabContent"> -->
+                                                                            <!-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> -->
+                                                                                <!-- <div class="row save"> -->
                                                                                     <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                         <div class="inner-save inner-save1 w-100">
-                                                                                            <form action="" class="border-0 px-0">
+                                                                                            <!-- <form action="" class="border-0 px-0"> -->
                                                                                                 <input class="form-control mt-3"  v-model="form.minimum_offer" id='listing1' type="number" placeholder="Minimum Offer">
-                                                                                            </form>
+                                                                                            <!-- </form> -->
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                <!-- </div> -->
 
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                            <!-- </div> -->
+                                                                        <!-- </div> -->
+                                                                    <!-- </div> -->
                                                                     <div class="col-lg-4"></div>
                                                                     <div class="col-lg-4">
                                                                         <input type="submit" :disabled="form.busy" value="Publish" class="form-control" id="register">
@@ -179,7 +179,7 @@
         background-color: gray !important;
     }
     .sell-an-item-section{
-        .minimum-offer{
+        .minimum-offer, .custom-checkbox{
             label{
                 width: 100%;
                 background: transparent;

@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="row">
                     <div class="top-tabs p-0 mb-4">
-                        <h2 class="py-3 py-lg-5">
+                        <h1 class="py-3 py-lg-5">
                             Sell An Item
                             <span
                                 @click="openSlideBar = !openSlideBar"
@@ -54,7 +54,7 @@
                                 class="open-tabs"
                                 ><i class="fa fa-bars"></i
                             ></span>
-                        </h2>
+                        </h1>
                     </div>
                     <!-- Compnent Here -->
                     <side-bar :openSlideBar="openSlideBar"></side-bar>
@@ -76,7 +76,7 @@
                                                 <div class="signup  bg-transparent">
                                                     <div class="row text-center pt-0">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h2 class="pb-3 pt-4 pt-lg-0">Shipping Information</h2>
+                                                            <h2 class="pb-3 pt-4 pt-lg-0 sub-title">Shipping Information</h2>
                                                             <form @submit.prevent="saveProductShipping">
                                                                 <div class="row">
                                                                     <div class="col-12 mb-3 text-left">
@@ -287,7 +287,7 @@
                                                                         class="row"
                                                                     >
                                                                         <div
-                                                                            class="col-6 round "
+                                                                            class="col-lg-6 round "
                                                                         >
                                                                             <p
                                                                                 for=""
@@ -324,7 +324,7 @@
                                                                             />
                                                                         </div>
                                                                         <div
-                                                                            class="col-6 round "
+                                                                            class="col-lg-6 round "
                                                                         >
                                                                             <p
                                                                                 style="color:white; float:left"

@@ -1858,7 +1858,8 @@
         transform: rotate(-225deg);
     }
     
-    .selling h2 {
+    .selling h2,
+    .selling h1 {
         font-family: "Roboto";
         font-weight: 300;
         font-size: 54px;
@@ -1870,6 +1871,17 @@
         position: relative;
     }
     
+    .selling .sub-title {
+        font-size: 44px;
+    }
+    
+    @media (max-width: 768px) {
+        .selling .sub-title {
+            font-size: 34px;
+        }
+    }
+    
+    .selling h1 span.open-tabs,
     .selling h2 span.open-tabs {
         display: none;
         cursor: pointer;
@@ -1879,18 +1891,21 @@
     }
     
     @media (max-width: 768px) {
+        .selling h1 span.open-tabs,
         .selling h2 span.open-tabs {
             right: 12px;
         }
     }
     
     @media (max-width: 1200px) {
+        .selling h1 span.open-tabs,
         .selling h2 span.open-tabs {
             display: inline-block;
         }
     }
     
     @media (max-width: 768px) {
+        .selling h1,
         .selling h2 {
             padding: 50px 0;
             padding-left: 8px;
@@ -1959,7 +1974,6 @@
         line-height: 26px;
         text-align: left;
         border-radius: 16px;
-        height: 32px;
         padding: 0;
         padding-left: 13px;
         margin: 8px 0;
@@ -1991,48 +2005,11 @@
         background: #fd1266;
     }
     
-    .selling .header-taps .nav-link:nth-of-type(2) {
-        color: #fd1266;
-    }
-    
     @media (max-width: 768px) {
         .selling .header-taps .nav-link:nth-of-type(2) {
             width: 100%;
             margin-left: 2%;
         }
-    }
-    
-    .selling .header-taps .nav-link:nth-of-type(2).active,
-    .selling .header-taps .nav-link:nth-of-type(2):hover {
-        color: white;
-        background: #7AC943;
-    }
-    
-    .selling .header-taps .nav-link:nth-of-type(3) {
-        color: #00ccff;
-    }
-    
-    @media (max-width: 768px) {
-        .selling .header-taps .nav-link:nth-of-type(3) {
-            width: 100%;
-        }
-    }
-    
-    .selling .header-taps .nav-link:nth-of-type(3).active,
-    .selling .header-taps .nav-link:nth-of-type(3):hover {
-        color: white;
-        background: #00ccff;
-    }
-    
-    .selling .header-taps .nav-link:nth-of-type(4),
-    .selling .header-taps .nav-link:nth-of-type(5),
-    .selling .header-taps .nav-link:nth-of-type(6),
-    .selling .header-taps .nav-link:nth-of-type(7) {
-        color: #00ccff;
-        font-family: "Roboto";
-        font-weight: normal;
-        font-size: 20px;
-        letter-spacing: -0.03em;
     }
     
     @media (max-width: 768px) {
@@ -2047,18 +2024,6 @@
             justify-content: center;
             margin-top: -11px;
         }
-    }
-    
-    .selling .header-taps .nav-link:nth-of-type(4).active,
-    .selling .header-taps .nav-link:nth-of-type(4):hover,
-    .selling .header-taps .nav-link:nth-of-type(5).active,
-    .selling .header-taps .nav-link:nth-of-type(5):hover,
-    .selling .header-taps .nav-link:nth-of-type(6).active,
-    .selling .header-taps .nav-link:nth-of-type(6):hover,
-    .selling .header-taps .nav-link:nth-of-type(7).active,
-    .selling .header-taps .nav-link:nth-of-type(7):hover {
-        color: white;
-        background: #fd1266;
     }
     
     .selling .header-taps .nav-link.nav-link-sub {

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var $h2 = $('.top-tabs h2');
+    var $h2 = $('.top-tabs');
     var sticky = $h2.offsetTop;
     $('body').scroll(function() {
         if (window.pageYOffset > sticky) {

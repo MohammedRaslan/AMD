@@ -80,13 +80,13 @@
                                                                             </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-6 round ">
+                                                                        <div class="col-lg-6 round ">
                                                                             <p for=""  style="color:white; float:left">Shipping To USA</p>
                                                                             <input type="checkbox" v-model="form.usa" id="checkbox1" placeholder="USA" >
                                                                             <label for="checkbox1" class="ml-3"></label>
                                                                             <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
                                                                         </div>
-                                                                        <div class="col-6 round ">
+                                                                        <div class="col-lg-6 round ">
                                                                             <p style="color:white; float:left">Shipping Worldwide</p>
                                                                             <input type="checkbox" v-model="form.worldwide" id="checkbox2" placeholder="Worldwide" >
                                                                             <label for="checkbox2" class="ml-3"></label>
