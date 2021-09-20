@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="sort row select-dolls">
                     <div class="inner-sort col-sm-6 col-6">
-                        <div class="nice-select form-select1" tabindex="0">
+                        <div class="nice-select form-select1  d-block" tabindex="0">
                             <span class="current">Filter by</span>
                             <ul class="list">
                                 <li data-value="Price Low to High" class="option selected">Price Low to High</li>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="inner-sort col-sm-6 col-6">
-                        <div class="nice-select form-select1" tabindex="0">
+                        <div class="nice-select form-select1  d-block" tabindex="1">
                             <span class="current">Price Low to High</span>
                             <ul class="list">
                                 <li>Sort by</li>
@@ -53,7 +53,7 @@
                     </div>
 
                 <div class="inner-sort col-sm-6 col-6">
-                    <div class="nice-select form-select" tabindex="0">
+                    <div class="nice-select form-select d-block" tabindex="2">
                         <span class="current">Show 20 Items</span>
                         <ul class="list">
                             <li data-value="Show 20 Items" class="option selected">Show 20 Items</li>
@@ -106,19 +106,19 @@
                         <h5 v-else>Bidding</h5>
                         <h6>
                             <span v-if="product.best_offer" class="float-left">or Best Offer</span>
-                           
-                                <Wishlist :product_id="product.id" 
+
+                                <Wishlist :product_id="product.id"
                                           :userAddedItemToWishlist="product.userAddedItemToWishlist"
                                           :wishlistCount="product.wishlistCount"
                                           :product_user_id="product.user_id">
                                 </Wishlist>
-                           
+
                         </h6>
                     </div>
                 </div>
             </div>
             <div class="pagination-product">
-                
+
             </div>
 
             </div>

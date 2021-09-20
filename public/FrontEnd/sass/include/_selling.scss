@@ -1,14 +1,14 @@
 .header-taps {
     .nav-link,
     .nav-pills button {
-        color: white !important;
+        color: $offwhite !important;
         display: flex;
         align-items: center;
         margin: 8px 0 !important;
         // padding-left: 13px !important;
         padding-left: 6px !important;
         &:hover {
-            color: #fff !important;
+            color: $offwhite !important;
         }
     }
     .nav-link-sub {
@@ -38,8 +38,10 @@
 
 .selling {
     input::placeholder,
-    .upload-img input {
+    .upload-img input,
+    textarea::placeholder {
         color: rgb(255 255 255 / 70%) !important;
+        font-style: italic;
     }
     .message-error {
         color: #fd1266;

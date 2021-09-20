@@ -498,7 +498,7 @@
                         >
                       </li>
                       <li>
-                        <router-link to="/buying/offers" class="dropdown-item"
+                        <router-link to="/buying/requestItem" class="dropdown-item"
                           >Looking to buy</router-link
                         >
                       </li>

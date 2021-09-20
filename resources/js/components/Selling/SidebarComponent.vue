@@ -11,15 +11,15 @@
                 </router-link>
                 <hr>
                 <!-- My Items -->
-                <button class="nav-link disabled mb-0" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My Items</button>
+                <!-- <button class="nav-link disabled mb-0" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My Items</button> -->
                 <!-- Active -->
-                <router-link to="/selling/active_product" class="nav-link nav-link-sub" id="v-pills-settings-tab">Active</router-link>
+                <router-link to="/selling/active_product" class="nav-link" id="v-pills-settings-tab">Active Items</router-link>
                 <!-- Sold -->
-                <router-link class="nav-link nav-link-sub" to="/selling/sold">Sold</router-link>
+                <router-link class="nav-link" to="/selling/sold">Sold Items</router-link>
                 <!-- Unsold -->
-                <!-- <router-link class="nav-link nav-link-sub" to='/selling/unsold'>Unsold</router-link> -->
+                <router-link class="nav-link" to='/selling/unsold'>Unsold Items</router-link>
                 <!-- Draft -->
-                <router-link to="/selling/drafted" class="nav-link nav-link-sub">Draft</router-link>
+                <router-link to="/selling/drafted" class="nav-link">Draft Items</router-link>
                 <hr>
                 <!-- Seller Details -->
                 <router-link to="/selling/seller_details" class="nav-link outside" >Seller Details</router-link>

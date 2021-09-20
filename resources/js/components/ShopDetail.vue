@@ -30,14 +30,15 @@
                                     <img  :src="str_replace(product.image)" alt>
                                 </div>
                                 <!-- #nav-tabs -->
-                                <div class="img-tabs">
-                                    <!-- <div class="owl-carousel owl-theme owl-loaded owl-shop-details">
-                                        <div class="item">1dflkdfjdfkl</div>
-                                        <div class="item">1dflkdfjdfkl</div>
-                                        <div class="item">1dflkdfjdfkl</div>
-                                        <div class="item">1dflkdfjdfkl</div>
-                                        <div class="item">1dflkdfjdfkl</div>
-                                    </div> -->
+                               <div class="img-tabs">
+                                   <div class="owl-carousel owl-theme owl-shop-details">
+                                       <div class="item text-white">dkljfdklf</div>
+                                       <div class="item text-white">dkljfdklf</div>
+                                       <div class="item text-white">dkljfdklf</div>
+                                       <div class="item text-white">dkljfdklf</div>
+                                       <div class="item text-white">dkljfdklf</div>
+                                       <div class="item text-white">dkljfdklf</div>
+                                   </div>
                                 </div>
 
 
@@ -141,153 +142,241 @@
                             </div>
 
                             <div class="product__details__content">
-                                <div class="col-lg-12">
-                                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-                                                <svg xmlns="http://www.w3.org/2000/svg" id="Icon_menu_leftpoint_outline"
-                                                    width="18" height="14" viewBox="0 0 18 14">
-                                                    <path id="Path" d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
-                                                        transform="translate(4)" fill="#7ac943" />
-                                                    <path id="Path-2" data-name="Path"
-                                                        d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
-                                                        transform="translate(4 6)" fill="#7ac943" />
-                                                    <path id="Path-3" data-name="Path"
-                                                        d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
-                                                        transform="translate(4 12)" fill="#7ac943" />
-                                                    <path id="Path-4" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
-                                                        fill="#7ac943" />
-                                                    <path id="Path-5" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
-                                                        transform="translate(0 6)" fill="#7ac943" />
-                                                    <path id="Path-6" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
-                                                        transform="translate(0 12)" fill="#7ac943" />
-                                                </svg>
-                                                <span>Details</span>
-                                                <svg class="active-arrow" xmlns="http://www.w3.org/2000/svg" width="16"
-                                                    height="10" viewBox="0 0 16 10">
-                                                    <path id="Polygon_1" data-name="Polygon 1" d="M8,0l8,10H0Z"
-                                                        fill="#ffe0e0" />
-                                                </svg>
-                                            </button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13"
-                                                    viewBox="0 0 20 13">
-                                                    <g id="Icon_20_Grey_Shopping_Cart"
-                                                        data-name="Icon / 20 / Grey / Shopping Cart"
-                                                        transform="translate(0 -4)">
-                                                        <path id="Shape"
-                                                            d="M15.951,13a2.226,2.226,0,0,1-2.172-1.6h-7.4A2.268,2.268,0,0,1,4.209,13a2.229,2.229,0,0,1-2.173-1.6H.836A.83.83,0,0,1,0,10.578V.826A.8.8,0,0,1,.77,0H9.68a.8.8,0,0,1,.77.826v.9h3.3a1.5,1.5,0,0,1,1.2.6.2.2,0,0,1,.034.044.238.238,0,0,0,.035.044l1.741,2.579,1.017.157A1.461,1.461,0,0,1,19.254,6.6V8.708A.843.843,0,0,1,20,9.535v1.043a.83.83,0,0,1-.836.823h-1.04A2.27,2.27,0,0,1,15.951,13Zm0-3.336a1.137,1.137,0,0,0-1.131,1.112,1.123,1.123,0,0,0,1.131,1.112,1.137,1.137,0,0,0,1.131-1.112A1.123,1.123,0,0,0,15.951,9.663Zm-11.741,0a1.137,1.137,0,0,0-1.131,1.112A1.131,1.131,0,1,0,4.209,9.663ZM12,2.825a.1.1,0,0,0-.106.1V4.973A.106.106,0,0,0,12,5.078v0h3.193a.1.1,0,0,0,.09-.054.1.1,0,0,0,0-.107l-1.4-2.043a.1.1,0,0,0-.086-.044Z"
-                                                            transform="translate(0 4)" fill="#fecc2f" />
-                                                    </g>
-                                                </svg>
-                                                <span>Shipping</span>
-                                                <svg class="active-arrow" xmlns="http://www.w3.org/2000/svg" width="16"
-                                                    height="10" viewBox="0 0 16 10">
-                                                    <path id="Polygon_2" data-name="Polygon 1" d="M8,0l8,10H0Z"
-                                                        fill="#ffe0e0" />
-                                                </svg>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                            <div class="fs-20 shop-details-table mt-3">
-                                                <div class="row">
-                                                    <table class="table-responsive table-borderless table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Condition :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> New </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype"> Size :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Featured Refinements:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> featured</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Domestic Product:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Modified :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> No</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">UPC:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Return Policy:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" id="Icon_menu_leftpoint_outline"
+                                                width="18" height="14" viewBox="0 0 18 14">
+                                                <path id="Path" d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
+                                                    transform="translate(4)" fill="#7ac943" />
+                                                <path id="Path-2" data-name="Path"
+                                                    d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
+                                                    transform="translate(4 6)" fill="#7ac943" />
+                                                <path id="Path-3" data-name="Path"
+                                                    d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
+                                                    transform="translate(4 12)" fill="#7ac943" />
+                                                <path id="Path-4" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
+                                                    fill="#7ac943" />
+                                                <path id="Path-5" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
+                                                    transform="translate(0 6)" fill="#7ac943" />
+                                                <path id="Path-6" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
+                                                    transform="translate(0 12)" fill="#7ac943" />
+                                            </svg>
+                                            <span>Details</span>
+                                            <svg class="active-arrow" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                height="10" viewBox="0 0 16 10">
+                                                <path id="Polygon_1" data-name="Polygon 1" d="M8,0l8,10H0Z"
+                                                    fill="#ffe0e0" />
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13"
+                                                viewBox="0 0 20 13">
+                                                <g id="Icon_20_Grey_Shopping_Cart"
+                                                    data-name="Icon / 20 / Grey / Shopping Cart"
+                                                    transform="translate(0 -4)">
+                                                    <path id="Shape"
+                                                        d="M15.951,13a2.226,2.226,0,0,1-2.172-1.6h-7.4A2.268,2.268,0,0,1,4.209,13a2.229,2.229,0,0,1-2.173-1.6H.836A.83.83,0,0,1,0,10.578V.826A.8.8,0,0,1,.77,0H9.68a.8.8,0,0,1,.77.826v.9h3.3a1.5,1.5,0,0,1,1.2.6.2.2,0,0,1,.034.044.238.238,0,0,0,.035.044l1.741,2.579,1.017.157A1.461,1.461,0,0,1,19.254,6.6V8.708A.843.843,0,0,1,20,9.535v1.043a.83.83,0,0,1-.836.823h-1.04A2.27,2.27,0,0,1,15.951,13Zm0-3.336a1.137,1.137,0,0,0-1.131,1.112,1.123,1.123,0,0,0,1.131,1.112,1.137,1.137,0,0,0,1.131-1.112A1.123,1.123,0,0,0,15.951,9.663Zm-11.741,0a1.137,1.137,0,0,0-1.131,1.112A1.131,1.131,0,1,0,4.209,9.663ZM12,2.825a.1.1,0,0,0-.106.1V4.973A.106.106,0,0,0,12,5.078v0h3.193a.1.1,0,0,0,.09-.054.1.1,0,0,0,0-.107l-1.4-2.043a.1.1,0,0,0-.086-.044Z"
+                                                        transform="translate(0 4)" fill="#fecc2f" />
+                                                </g>
+                                            </svg>
+                                            <span>Shipping</span>
+                                            <svg class="active-arrow" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                height="10" viewBox="0 0 16 10">
+                                                <path id="Polygon_2" data-name="Polygon 1" d="M8,0l8,10H0Z"
+                                                    fill="#ffe0e0" />
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <div class="fs-20 shop-details-table mt-3">
+                                            <div class="row">
+                                                <table class="table-responsive table-borderless table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Condition :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> New </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype"> Size :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Featured Refinements:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> featured</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Domestic Product:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Modified :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> No</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">UPC:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Return Policy:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
-
-                                            <p>
-                                                1- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                                quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                                                pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
-                                            </p>
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                            <div class="fs-20 shop-details-table mt-3">
-                                                <div class="row">
-                                                    <table class="table-responsive table-borderless table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Condition :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> New </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype"> Size :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Featured Refinements:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> featured</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Domestic Product:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Modified :</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> No</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">UPC:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="col-lg-4 maintype">Return Policy:</td>
-                                                                <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                2- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                                quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                                                pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
-                                            </p>
                                         </div>
                                     </div>
+
+                                    <div id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" class="tab-pane fade active show">
+                                        <div class="shipping-details mt-3 mb-4">
+                                            <!-- <hr> -->
+                                            <div class="row shipping-poll py-3">
+                                                <h3 class="title-color title-shipping-details"> Package Details</h3>
+                                                <div class="col-3">
+                                                    <span class="inner-title">Weight:</span>
+                                                    <span class="inner-value">50 kg</span>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span class="inner-title">Width:</span>
+                                                    <span class="inner-value">5 cm</span>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span class="inner-title">Height:</span>
+                                                    <span class="inner-value">50 cm</span>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span class="inner-title">Length:</span>
+                                                    <span class="inner-value">50 cm</span>
+                                                </div>
+                                            </div>
+                                            <hr class="title-color m-0">
+                                            <div class="row shipping-poll py-3">
+                                                <h3 class="title-color title-shipping-details">USA</h3>
+                                                <div class="mb-2 row">
+                                                    <span class="inner-title col-4 col-lg-3">Service:</span>
+                                                    <span class="inner-value col-8">test</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="inner-title col-4 col-lg-3">Price:</span>
+                                                    <span class="inner-value col-8">500 <span>C<i class="fas fa-dollar-sign"></i></span>
+                                                    </span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="inner-title col-4 col-lg-3">Duration:</span>
+                                                    <span class="inner-value col-8">Shipping in 1 to 2 business day </span>
+                                                </div>
+                                            </div>
+                                            <hr class="title-color m-0">
+                                            <div class="row shipping-poll py-3">
+                                                <h3 class="title-color title-shipping-details">World Wide</h3>
+                                                <div class="mb-2">
+                                                    <span class="inner-title">Service:</span>
+                                                    <span class="inner-value">test</span>
+                                                </div>
+                                                <div>
+                                                    <span class="inner-title">Price:</span>
+                                                    <span class="inner-value">1000 <span>C<i class="fas fa-dollar-sign"></i></span></span>
+                                                </div>
+                                                <div>
+                                                    <span class="inner-title">Duration:</span>
+                                                    <span class="inner-value">- </span>
+                                                </div>
+                                            </div>
+                                            <hr class="title-color m-0">
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <hr>
+                                        <h3 class="title-color pt-2 underline"> Package Details</h3>
+
+                                        <div class="row pt-1 pb-1 m-1" v-if="shipping.package_details == 'details'">
+                                            <div class="col-3"> <span class="inner-title">Weight:</span> <span class="inner-value">{{ shipping.weight }}</span> </div>
+                                            <div class="col-3"> <span class="inner-title">Width:</span> <span class="inner-value">{{ shipping.width }}</span> </div>
+                                            <div class="col-3"> <span class="inner-title">Height:</span> <span class="inner-value">{{ shipping.height }}</span> </div>
+                                            <div class="col-3"> <span class="inner-title">Length:</span> <span class="inner-value">{{ shipping.length }}</span> </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 fs-20" v-if="shipping.usa">
+                                                <h3 class="title-color">USA</h3><hr class="title-color">
+                                                <div class="mb-2 row">
+                                                    <span class="inner-title col-4 col-lg-3">Service:</span>
+                                                    <span class="inner-value col-8">{{ shipping.service_usa }}</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="inner-title col-4 col-lg-3">Price:</span>
+                                                    <span class="inner-value col-8">{{ shipping.price_usa }} </span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="inner-title col-4 col-lg-3">Duration:</span>
+                                                    <span class="inner-value col-8">{{ shipping.duration_usa == null ? '-' : shipping.duration_usa }} </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-6" v-if="shipping.world_wide">
+                                                <h3 class="title-color">World Wide</h3><hr class="title-color">
+                                                <div class="mb-2"><span class="inner-title">Service:</span> <span class="inner-value">{{ shipping.service_world_wide }}</span></div>
+                                                <div><span class="inner-title">Price:</span><span class="inner-value">{{ shipping.price_world_wide }}</span>  </div>
+                                                <div><span class="inner-title">Duration:</span> <span class="inner-value">{{ shipping.duration_worldwide == null ? '-' : shipping.duration_worldwide }} </span></div>
+                                            </div>
+                                        </div>
+
+                                    </div> -->
+
+                                    <div class="tab-pane fade show active d-none" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <div class="fs-20 shop-details-table mt-3 mb-3">
+                                            <div class="row">
+                                                <table class="table-responsive table-borderless table mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Condition :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> New </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype"> Size :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Featured Refinements:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> featured</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Domestic Product:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Modified :</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> No</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">UPC:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-lg-4 maintype">Return Policy:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-offwhite">
+                                        2- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                        quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
+                                        pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
+                                    </p>
                                 </div>
                             </div>
                             <!-- <div class="fs-20 bottom pb-3 pt-3">

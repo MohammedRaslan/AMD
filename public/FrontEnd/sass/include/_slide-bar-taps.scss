@@ -10,6 +10,7 @@
             .nav-link {
                 &.router-link-active {
                     color: $maroon !important;
+                    font-weight: bold !important;
                     &:hover {
                         color: #F2F2F2 !important;
                     }

@@ -1874,6 +1874,10 @@
         position: relative;
     }
     
+    .selling h1 {
+        font-weight: 900 !important;
+    }
+    
     .selling .sub-title {
         font-size: 44px;
     }
@@ -1971,7 +1975,7 @@
     
     .selling .header-taps .nav-link {
         font-family: "Roboto";
-        font-weight: bold;
+        font-weight: 400;
         font-size: 20px;
         letter-spacing: -0.03em;
         line-height: 26px;

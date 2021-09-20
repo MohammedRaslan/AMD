@@ -7,6 +7,10 @@
   display: block !important;
 }
 
+.text-offwhite {
+  color: #ffe0e0 !important;
+}
+
 .mb-0 {
   margin-bottom: 0 !important;
 }
@@ -89,12 +93,36 @@
   color: #7ac943 !important;
 }
 
+.btn-gray {
+  background: gray !important;
+}
+.btn-gray:hover {
+  background: white !important;
+  color: gray !important;
+}
+
+.btn-outline-offwhite {
+  color: #ffe0e0 !important;
+  border: 1px solid #ffe0e0 !important;
+  height: 40px !important;
+}
+.btn-outline-offwhite:hover {
+  background: #ffe0e0 !important;
+  color: #000 !important;
+}
+
 .heaer-tabs-yellow .router-link-exact-active.router-link-active {
   background: #fecc2f;
 }
 
 .border-yellow {
   border: 1px solid #FECC2F !important;
+}
+
+@media (min-width: 1200px) {
+  .border-maroon-lg-right {
+    border-right: 2px solid #fd1266;
+  }
 }
 
 .border-radius-10 {
@@ -496,6 +524,13 @@ input:disabled {
   object-fit: cover;
   border-radius: 10px;
 }
+.shop-details .shipping-details .title-shipping-details {
+  font-size: 18px;
+  font-weight: 600;
+}
+.shop-details .shipping-details .title-shipping-details .shipping-poll {
+  background-color: red;
+}
 
 .dropdown-hero {
   background: #77b527;
@@ -570,7 +605,7 @@ input:disabled {
 
 .header-taps .nav-link,
 .header-taps .nav-pills button {
-  color: white !important;
+  color: #ffe0e0 !important;
   display: flex;
   align-items: center;
   margin: 8px 0 !important;
@@ -578,7 +613,7 @@ input:disabled {
 }
 .header-taps .nav-link:hover,
 .header-taps .nav-pills button:hover {
-  color: #fff !important;
+  color: #ffe0e0 !important;
 }
 .header-taps .nav-link-sub {
   font-size: 16px !important;
@@ -595,8 +630,10 @@ input:disabled {
 }
 
 .selling input::placeholder,
-.selling .upload-img input {
+.selling .upload-img input,
+.selling textarea::placeholder {
   color: rgba(255, 255, 255, 0.7) !important;
+  font-style: italic;
 }
 .selling .message-error {
   color: #fd1266;
@@ -611,6 +648,7 @@ svg.img-subscription {
 }
 .slide-bar-taps.header-taps-selling .nav-link.router-link-active {
   color: #fd1266 !important;
+  font-weight: bold !important;
 }
 .slide-bar-taps.header-taps-selling .nav-link.router-link-active:hover {
   color: #F2F2F2 !important;

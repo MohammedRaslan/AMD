@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                <div class="top-tabs p-0 mb-4">
-                    <h1 class='py-3 py-lg-5'>Draftes <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
+                    <h1 class='py-3 py-lg-5'>Draftes Items<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
             <!-- Compnent Here -->
                 <side-bar :openSlideBar='openSlideBar'></side-bar>

@@ -6,6 +6,7 @@
     $bgHeader: #0f243c;
     $darkBlue: #20303c;
     $offwhite: #ffe0e0;
+    $gray: gray;
     $mobil: 768px;
     $lab: 1200px;
     $sm: 576px;
@@ -16,6 +17,10 @@
     
     .d-block1 {
         display: block !important;
+    }
+    
+    .text-offwhite {
+        color: $offwhite !important;
     }
     
     .mb-0 {
@@ -102,6 +107,24 @@
         }
     }
     
+    .btn-gray {
+        background: $gray !important;
+        &:hover {
+            background: white !important;
+            color: $gray !important;
+        }
+    }
+    
+    .btn-outline-offwhite {
+        color: $offwhite !important;
+        border: 1px solid $offwhite !important;
+        height: 40px !important;
+        &:hover {
+            background: $offwhite !important;
+            color: #000 !important;
+        }
+    }
+    
     .heaer-tabs-yellow {
         .router-link-exact-active.router-link-active {
             background: $yellow
@@ -110,6 +133,12 @@
     
     .border-yellow {
         border: 1px solid #FECC2F !important;
+    }
+    
+    .border-maroon-lg-right {
+        @media (min-width: 1200px) {
+            border-right: 2px solid $maroon;
+        }
     }
     
     .border-radius-10 {

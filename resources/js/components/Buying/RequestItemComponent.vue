@@ -28,10 +28,10 @@
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h1 class='py-3 py-lg-5 text-green'>Request An Item <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
+                    <h1 class='py-3 py-lg-5 text-green'>Request an Item <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
             <!-- Compnent Here -->
-            <side-bar :openSlideBar='openSlideBar'></side-bar>
+            <!-- <side-bar :openSlideBar='openSlideBar'></side-bar> -->
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
@@ -43,20 +43,20 @@
                                     <div class="row">
                                         <div class="col-lg-12 detalis border-0 sell-an-item-section p-0">
                                                 <div class="signup bg-transparent pb-4 pb-lg-5">
-                                                <div class="container p-2">
+                                                <div class="container px-2">
                                                     <div class="row text-center pt-0">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h2 class="pb-3 pt-0 text-green sub-title">Product Info</h2>
+                                                            <h2 class="pb-3 pt-0 sub-title text-offwhite">Product Info</h2>
                                                             <form @submit.prevent="saveProduct" class="form-product p-lg-4 border-color-green">
                                                                 <div class="row">
                                                                     <div class="col-lg-6 text-left">
-                                                                        <label class="text-white" for="fName">Item Name <span class="requiredItem text-maroon">*</span></label>
+                                                                        <label class="text-offwhite" for="fName">Item Name <span class="requiredItem text-maroon">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                     </div>
                                                                     <div class="col-lg-6 select-product text-left mb-4">
-                                                                        <label class="text-white" for="cats">Category <span class="requiredItem text-maroon">*</span></label>
-                                                                        <v-select placeholder="Select Category" id='cats' v-model="form.category_id" :reduce="category => category.id"  label="title" :options="categories" >
+                                                                        <label class="text-offwhite" for="cats">Category <span class="requiredItem text-maroon">*</span></label>
+                                                                        <v-select placeholder="Select Category" class="" id='cats' v-model="form.category_id" :reduce="category => category.id"  label="title" :options="categories" >
                                                                             <template #search="{attributes, events}">
                                                                                     <input
                                                                                         class="vs__search"
@@ -71,7 +71,7 @@
                                                                     <div class="row pb-4 pr-sm-0">
 
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                            <label class="text-white" for="condition">Condition <span class="requiredItem text-maroon">*</span></label>
+                                                                            <label class="text-offwhite" for="condition">Condition <span class="requiredItem text-maroon">*</span></label>
                                                                             <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
                                                                                     <template #search="{attributes, events}">
                                                                                         <input
@@ -85,7 +85,7 @@
                                                                             <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
                                                                         </div>
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                            <label class="text-white" for="brand">Brand <span class="requiredItem text-maroon">*</span></label>
+                                                                            <label class="text-offwhite" for="brand">Brand <span class="requiredItem text-maroon">*</span></label>
                                                                             <v-select placeholder="Select Brand" id='cats' v-model="form.brand" :reduce="brand => brand.title"  label="title" :options="brands">
                                                                                     <template #search="{attributes, events}">
                                                                                         <input
@@ -246,11 +246,11 @@
         }
         .vs__dropdown-toggle{
             border: 1px solid #42525e !important;
+                height: 60px !important;
             input{
-                height: auto !important;
+                // height: auto !important;
                 border: none;
                 margin: 0 !important;
-                height: 60px !important;
                 &:focus{
                     border: none;
                     box-shadow: none;
