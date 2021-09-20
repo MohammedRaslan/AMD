@@ -34,7 +34,7 @@
                 <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h2 class="text-center">There are no saved Products</h2>
+                    <h3 class="text-center text-green my-5">There are no saved Products</h3>
 
                 </div>
             </div>

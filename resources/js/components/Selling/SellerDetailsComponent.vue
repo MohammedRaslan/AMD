@@ -32,7 +32,7 @@
                 <!-- End Component  -->
                     <div class="col-xl-10 col-md-12">
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="inner-content">
+                            <div class="inner-content p-0">
                                 <!-- Tab1 Overview -->
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <!-- Block Item -->
@@ -80,18 +80,32 @@
                                                                             </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-6 round ">
-                                                                            <p for=""  style="color:white; float:left">Shipping To USA</p>
-                                                                            <input type="checkbox" v-model="form.usa" id="checkbox1" placeholder="USA" >
-                                                                            <label for="checkbox1" class="ml-3"></label>
-                                                                            <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
+
+                                                                        <div class="col-lg-6">
+                                                                           <div class="round round-3 custom-checkbox">
+                                                                                <input type="checkbox" v-model="form.usa" id="checkbox1"  placeholder="Title">
+                                                                                <label for="checkbox1" class="ml-3">Shipping To USA</label>
+
+                                                                                <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-lg-6 round ">
+
+                                                                        <div class="col-lg-6">
+                                                                           <div class="round round-3 custom-checkbox">
+                                                                                <input type="checkbox" v-model="form.worldwide" id="worldwide"  placeholder="Title">
+                                                                                <label for="worldwide" class="ml-3">Shipping Worldwide</label>
+
+                                                                                <div v-if="form.errors.has('worldwide')" class="alert alert-danger" v-html="form.errors.get('worldwide')" />
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <!-- <div class="col-lg-6 round ">
                                                                             <p style="color:white; float:left">Shipping Worldwide</p>
                                                                             <input type="checkbox" v-model="form.worldwide" id="checkbox2" placeholder="Worldwide" >
                                                                             <label for="checkbox2" class="ml-3"></label>
                                                                             <div v-if="form.errors.has('worldwide')" class="alert alert-danger" v-html="form.errors.get('worldwide')" />
-                                                                        </div>
+                                                                        </div> -->
                                                                     </div>
                                                                     <div class="col-12">
                                                                         <input type="submit" :disabled="form.busy" value="Submit" class="form-control" id="register">

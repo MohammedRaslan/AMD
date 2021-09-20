@@ -35,7 +35,7 @@
             <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h3 v-if="message != '' " class="text-center message-error">{{message}}</h3>
+                    <h3 v-if="message != '' " class="text-center message-error my-5">{{message}}</h3>
                     <div class="tab-content"  v-for="product in products" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->

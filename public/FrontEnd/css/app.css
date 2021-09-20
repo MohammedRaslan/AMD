@@ -1650,6 +1650,7 @@
     .dells .del-product .inner figure {
         width: 100%;
         overflow: hidden;
+        height: 15em;
     }
     
     .dells .del-product .inner img {
@@ -1658,6 +1659,8 @@
         width: 100%;
         max-height: 100%;
         transition: all 300ms ease;
+        height: 15em;
+        object-fit: cover;
     }
     
     .dells .del-product .inner h4 {
@@ -2674,8 +2677,7 @@
         color: white;
         background: #fd1266;
     }
-    
-    .selling.buying .header-taps .nav-link:nth-of-type(4),
+    /* .selling.buying .header-taps .nav-link:nth-of-type(4),
     .selling.buying .header-taps .nav-link:nth-of-type(5),
     .selling.buying .header-taps .nav-link:nth-of-type(6),
     .selling.buying .header-taps .nav-link:nth-of-type(7) {
@@ -2684,7 +2686,7 @@
         font-weight: normal;
         font-size: 20px;
         letter-spacing: -0.03em;
-    }
+    } */
     /* .selling.buying .header-taps .nav-link:nth-of-type(4).active,
     .selling.buying .header-taps .nav-link:nth-of-type(5).active,
     .selling.buying .header-taps .nav-link:nth-of-type(6).active,
@@ -2895,7 +2897,7 @@
     
     .shop-details .product__details__pic .detail-top p:nth-of-type(2) span:last-of-type {
         color: #fecc2f;
-        margin-left: 14px;
+        /* margin-left: 14px; */
     }
     
     .shop-details .product__details__pic .tab-content .product__details__pic__item img {
@@ -3827,7 +3829,7 @@
     
     @media (min-width: 300px) and (max-width: 374px) {
         .footer .links ul li {
-            margin-left: 4px;
+            margin-left: 0px !important;
         }
     }
     

@@ -82,7 +82,7 @@ $(document).ready(function() {
     //     // }
     // }
 
-    $('.owl-test-details').owlCarousel({
+    $('.owl-shop-details').owlCarousel({
         loop: true,
         margin: 10,
         // autoplay: true,

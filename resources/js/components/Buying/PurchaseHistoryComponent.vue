@@ -34,7 +34,7 @@
                 <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h3 class="text-center text-green">There are no Purchased Products</h3>
+                    <h3 class="text-center text-green my-5">There are no Purchased Products</h3>
                 </div>
             </div>
             <!-- <pagination :data="products" @pagination-change-page="getProducts"></pagination> -->

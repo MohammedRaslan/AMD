@@ -665,9 +665,9 @@ select {
     position: relative;
     height: 50px;
 }
-.nice-select {
+/* .nice-select {
     display: none !important;
-}
+} */
 .round label {
     background-color: #fff;
     border: 1px solid #ccc;
