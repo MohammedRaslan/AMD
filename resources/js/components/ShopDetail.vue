@@ -27,10 +27,22 @@
                             <!-- imgs-product -->
                             <div class="imgs-product">
                                 <div class="product__thumb__pic">
-                                    <img  :src="str_replace(product.image)" alt>
+                                    <img :src="str_replace(product.image)" alt>
                                 </div>
                                 <!-- #nav-tabs -->
                                <div class="img-tabs">
+                                   <div class="inner-imgs-tabs">
+                                       <div class="item" v-for="(image,index) in images" :key="index">
+                                           <figure>
+                                               <img :src="str_replace(image.url)" alt="">
+                                           </figure>
+                                       </div>
+                                   </div>
+                                   <!-- <li class="nav-item" v-for="(image,index) in images" :key="index">
+                                            <a class="nav-link" :class="{'active' : index == 0}" data-toggle="tab" :href="'#tabs-'+index" role="tab">
+                                                <img class="product__thumb__pic set-bg" :src="str_replace(image.url)">
+                                            </a>
+                                        </li> -->
                                    <div class="owl-carousel owl-theme owl-shop-details">
                                        <div class="item text-white">dkljfdklf</div>
                                        <div class="item text-white">dkljfdklf</div>
