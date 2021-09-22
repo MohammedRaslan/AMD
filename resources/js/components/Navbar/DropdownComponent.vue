@@ -11,6 +11,7 @@
         <li v-for="category in categories" :key="category.id">
             <router-link class="dropdown-item" :to="{name: 'ShopCategoryComponent', params:{query: category.id}}">{{ category.title }}</router-link>
         </li>
+        <hr class="divider-x m-0 bg-maroon mx-2">
         <li>
             <router-link class="dropdown-item" to="/">Requested items</router-link>
         </li>

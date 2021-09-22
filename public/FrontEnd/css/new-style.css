@@ -23,6 +23,14 @@
   color: #fd1266 !important;
 }
 
+.bg-maroon {
+  background: #fd1266 !important;
+}
+
+.fs-14 {
+  font-size: 14px !important;
+}
+
 .h-60 {
   height: 60px !important;
 }
@@ -33,6 +41,10 @@
 
 .bg-transparent {
   background: transparent !important;
+}
+
+.swal2-select {
+  display: none !important;
 }
 
 .text-green {
@@ -49,10 +61,19 @@
   border-color: #7ac943 !important;
 }
 
+.border-yellow {
+  border: 1px solid #fecc2f !important;
+}
+
 @media (max-width: 992px) {
   .pl-sm-0 {
     padding-left: 0 !important;
   }
+}
+
+.divider-x {
+  height: 1px;
+  opacity: 1;
 }
 
 .custom-checkbox label {
@@ -149,6 +170,10 @@
 
 .border-radius-10 {
   border-radius: 10px !important;
+}
+
+.border-radius-20 {
+  border-radius: 20px !important;
 }
 
 .btn-login:focus {

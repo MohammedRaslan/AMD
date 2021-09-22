@@ -76,7 +76,8 @@
                                                     <button class="btn btn-secondary"><router-link :to="{name: 'EditProductComponent', params:{id: product.id}}">Edit</router-link></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button>
+                                                    <!-- <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button> -->
+                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)">Delete</button>
                                                 </div>
                                            </div>
                                         </div>
@@ -115,12 +116,35 @@ export default ({
             return str;
         },
         deleteProduct(id){
-            axios.get('/api/product/deleteProduct/'+id).then((response) =>{
-                if(response.data){
-                   var elm = document.getElementById('product_'+id).remove();
-                   elm.parentNode.removeChild(elm);
-                }
-            });
+             Swal.fire({
+                title: 'Are you sure you want <br/> to delet this item?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#fd1266',
+                cancelButtonColor: 'gray',
+                confirmButtonText: 'Yes, delete it!',
+                width: 600,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                axios.get('/api/product/deleteProduct/'+id).then((response) =>{
+                    if(response.data){
+                    var elm = document.getElementById('product_'+id).remove();
+                    elm.parentNode.removeChild(elm);
+                    }
+                });
+            }
+        })
+            // axios.get('/api/product/deleteProduct/'+id).then((response) =>{
+            //     if(response.data){
+            //        var elm = document.getElementById('product_'+id).remove();
+            //        elm.parentNode.removeChild(elm);
+            //     }
+            // });
         },
         complete(draft){
             this.$router.push({
@@ -147,6 +171,10 @@ export default ({
         // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
         this.getProducts();
+        // Swal.fire('You can not Remove this item!')
+
+
+
     }
 })
 </script>
