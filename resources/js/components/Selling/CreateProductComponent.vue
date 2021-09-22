@@ -137,10 +137,10 @@
                                                                         <nav>
                                                                             <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                                 <!-- data-bs-target="#nav-home" -->
-                                                                                <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab"  type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                                                                <div class="nav-link col active" id="nav-product-list-tab" data-bs-toggle="tab" data-bs-target="#nav-product-list" type="button" role="tab" aria-controls="nav-product-list" aria-selected="true">
                                                                                     <div>Listing Product</div>
                                                                                 </div>
-                                                                                <div class="nav-link col" id="nav-profile-tab"   type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                                                                <div class="nav-link col" id="nav-bidding-product-tab" data-bs-toggle="tab" data-bs-target="#nav-bidding-product" type="button" role="tab" aria-controls="nav-bidding-product" aria-selected="false">
                                                                                     <div>… or Bidding Product</div>
                                                                                 </div>
                                                                             </div>
@@ -150,7 +150,7 @@
 
                                                                     <div class="row listing-type">
                                                                         <div class="tab-content" id="nav-tabContent">
-                                                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                                            <div class="tab-pane fade show active" id="nav-product-list" role="tabpanel" aria-labelledby="nav-product-list-tab">
                                                                                 <div class="row save">
                                                                                     <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                         <div class="inner-save inner-save1 w-100">
@@ -177,7 +177,7 @@
 
                                                                             </div>
 
-                                                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                                            <div class="tab-pane fade" id="nav-bidding-product" role="tabpanel" aria-labelledby="nav-bidding-product-tab"> 
                                                                                 <div class="inner-save inner-save2">
                                                                                     <form action="" class="border-0 px-3">
                                                                                         <div class="row g-3">

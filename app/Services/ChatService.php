@@ -22,7 +22,21 @@ class ChatService{
 
     public function getAllChat($user_id)
     {
-        return $this->chatRepository->getAllChat($user_id);
+        $chats = $this->chatRepository->getAllChat($user_id);
+        $uniqeChats = [];
+        foreach ($chats as $chat ) {
+            $isAdded = false;
+            foreach ($uniqeChats as $uniqeChat ) {
+                if ($uniqeChat->user_id_from == $chat->user_id_to && $uniqeChat->user_id_to == $chat->user_id_from && $uniqeChat->product_id == $chat->product_id) {
+                    $isAdded =true;
+                    break;
+                }
+            }
+            if (!$isAdded) {
+                array_push($uniqeChats , $chat);
+            }
+        }
+        return $uniqeChats;
     }
     public function getChat($chat_id)
     {

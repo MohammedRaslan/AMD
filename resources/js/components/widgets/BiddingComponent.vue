@@ -6,7 +6,7 @@
                                <div class="content">
                                     <div class="mb-3">
                                         <h3 class="mb-0">Current bid {{ this.before_last_bid }} {{ this.user_details.currency }} </h3><br>
-                                        <small style="color:white">Minimum Bid is {{ this.minimum_price }} {{ this.user_details.currency }}</small>
+                                        <small style="color:white">Minimum Bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }}</small>
                                         <!-- <p>8 Bids</p> -->
                                     </div>
                                     

@@ -30,4 +30,9 @@ class Bid extends Model
     {
         return $this->hasMany(HistoryBid::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

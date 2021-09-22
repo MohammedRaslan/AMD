@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Models\Chat;
 use App\Models\Product;
 use App\Events\ChatEvent;
+use App\Events\MessageEvent;
 use App\Events\PrivateChatEvent;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,7 @@ class ChatRepository{
         }elseif($chatMessage && $request['private'] == 1){ // Private
             event(new PrivateChatEvent($this->chat->where('id',$chatMessage->id)->with('user_to')->with('user_from')->first()));
         }
+        event(new MessageEvent($chatMessage->user_to));
         return $chatMessage;
     }
 
