@@ -6,7 +6,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb__text">
                             <div class="breadcrumb__links">
-                                <a href="./index.html">Home</a>
+                                <router-link to="/">Home</router-link>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="4"

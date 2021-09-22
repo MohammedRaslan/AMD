@@ -3,8 +3,9 @@
             <div :class="{ 'd-block': openSlideBar }" class="header-taps mb-lg-4 header-taps-buying slide-bar-taps">
                 <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <!--1 Offers/Bids -->
-                    <router-link class="nav-link" to="/buying/offers">Offers/Bids</router-link>
+                    <router-link class="nav-link" to="/buying/purchased">Purchase History</router-link>
                     <hr>
+                    <router-link class="nav-link" to="/buying/offers">Offers/Bids</router-link>
 
                     <!--2 Request an Item -->
                     <!-- <router-link class="nav-link" to="/buying/requestItem">Request an Item</router-link>
@@ -24,7 +25,6 @@
                     <!-- <hr> -->
 
                     <!--8 Purchase History -->
-                    <router-link class="nav-link" to="/buying/purchased">Purchase History</router-link>
                 </div>
             </div>
         </div>
