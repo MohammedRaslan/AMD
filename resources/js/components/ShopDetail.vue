@@ -42,7 +42,7 @@
                                 <p>
                                     <span>Seller:</span>
                                     <span v-if="loading"> <router-link to='#' class="text-milky text-decoration-underline">{{ product.user.user_name }}</router-link> </span>
-                                    <span v-b-tooltip.hover.top="'Tooltip!'" variant="primary" class="saved-seller-icon m-1" v-html="iconSeller == true ? '<i class=\'fas fa-plus-circle\'></i>': '<i class=\'far fa-check-circle\'></i>' " v-on:click="changeiconSeller"></span>
+                                    <span class="saved-seller-icon m-1" :title="iconSeller ? 'Saved Seller': 'Unsaved Seller' " v-html="iconSeller ? '<i class=\'fas fa-plus-circle\'></i>': '<i class=\'far fa-check-circle\'></i>' " v-on:click="changeiconSeller"></span>
                                 </p>
                                 <p v-if="shipping !=null && shipping.duration_usa"><span>Shipping time:</span> <span>{{ shipping.duration_usa }}</span></p>
                                 <p>
