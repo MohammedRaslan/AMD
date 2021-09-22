@@ -10,7 +10,7 @@
                     <router-link class="nav-link" to="/buying/saved">Saved Items</router-link>
                     <hr>
 
-                    <router-link class="nav-link" to="/buying/purchased">Saved sellers</router-link>
+                    <router-link class="nav-link" to="/buying/saved-seller">Saved sellers</router-link>
                 </div>
             </div>
         </div>

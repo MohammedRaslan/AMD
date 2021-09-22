@@ -74,10 +74,13 @@
                                                         <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
                                                     </div>
                                                     <div class="inner">
-                                                        <button class="btn btn-outline-danger" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)">Suspend</button>
-                                                        <button class="btn black" v-else :id="'product_'+product.id" @click="changeStatus(product.id)">Suspended</button>
-
+                                                        <button class="btn btn-maroon" v-if="product.status == 1" :id="'product_'+product.id" @click="changeStatus(product.id)">Suspend</button>
+                                                        <button class="btn btn-secondary" v-else :id="'product_'+product.id" @click="changeStatus(product.id)">Suspended</button>
                                                     </div>
+                                                    <div class="inner">
+                                                        <button class="btn btn-outline-maroon" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button>x
+                                                    </div>
+
                                                     <!-- <div class="inner">
                                                         <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
                                                     </div> -->

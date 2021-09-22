@@ -48,6 +48,7 @@ import EditProductComponent from "./components/Selling/EditProductComponent.vue"
 import RequestItemComponent from "./components/Buying/RequestItemComponent.vue";
 import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
 import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductComponent.vue";
+import SavedSellerComponent from "./components/Buying/Myfavorites/SavedSellerComponent.vue";
 import PurchasedProductComponent from "./components/Buying/PurchaseHistoryComponent.vue";
 var routes = [{
         path: "/",
@@ -153,6 +154,11 @@ var routes = [{
         path: "/buying/saved",
         component: SavedProductComponent,
         name: 'SavedProductComponent',
+    },
+    {
+        path: "/buying/saved-seller",
+        component: SavedSellerComponent,
+        name: 'SavedSellerComponent',
     },
     {
         path: "/buying/purchased",

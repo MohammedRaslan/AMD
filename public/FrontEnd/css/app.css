@@ -3057,12 +3057,11 @@
         max-height: 100% !important;
         max-width: 100% !important;
     }
-    
-    @media (max-width: 750px) {
+    /* @media (max-width: 750px) {
         .shop-details .parent-price-table {
             margin-top: 70px;
         }
-    }
+    } */
     
     .shop-details .parent-price-table .inner-price-table {
         border: 1px solid #fd1266;
@@ -3953,7 +3952,7 @@
     .btn-maroon:hover {
         background-color: #F31A6C !important;
         color: #fff !important;
-        height: 45px !important;
+        /* height: 45px !important; */
     }
     /************ hidden icons in home guest ****************/
     

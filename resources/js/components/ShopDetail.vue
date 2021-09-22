@@ -1,14 +1,49 @@
 <template>
     <div>
+        <!-- Breadcrumb Section Begin -->
+        <section class="breadcrumb-option">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb__text">
+                            <div class="breadcrumb__links">
+                                <a href="index.html">Home</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
+                                    <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown"
+                                        transform="translate(-8 13) rotate(-90)">
+                                        <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0" />
+                                    </g>
+                                </svg>
+                                <a href="dolls.html">Category</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
+                                    <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown"
+                                        transform="translate(-8 13) rotate(-90)">
+                                        <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0" />
+                                    </g>
+                                </svg>
+                                <span>Luxurious Dolls</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb Section End -->
+
+
         <section class="shop-details">
-            <div class="product__details__pic">
+            <div class="product__details__pic pt-5">
                 <div class="container">
                     <div class="row">
                         <!-- <div class="col-lg-8" v-if="loading"> -->
                         <div class="col-lg-8">
                             <h2 > {{ product.title }}  </h2>
                             <div class="detail-top">
-                                <p><span>Seller:</span> <span v-if="loading">{{ product.user.user_name }}</span></p>
+                                <p>
+                                    <span>Seller:</span>
+                                    <span v-if="loading"> <router-link to='#' class="text-milky text-decoration-underline">{{ product.user.user_name }}</router-link> </span>
+                                    <span v-b-tooltip.hover.top="'Tooltip!'" variant="primary" class="saved-seller-icon m-1" v-html="iconSeller == true ? '<i class=\'fas fa-plus-circle\'></i>': '<i class=\'far fa-check-circle\'></i>' " v-on:click="changeiconSeller"></span>
+                                </p>
                                 <p v-if="shipping !=null && shipping.duration_usa"><span>Shipping time:</span> <span>{{ shipping.duration_usa }}</span></p>
                                 <p>
                                     <!-- <svg xmlns="http://www.w3.org/2000/svg" id="Icon_love_outline" width="20.833" height="18.75" viewBox="0 0 20.833 18.75">
@@ -31,25 +66,18 @@
                                 </div>
                                 <!-- #nav-tabs -->
                                <div class="img-tabs">
-                                   <div class="inner-imgs-tabs">
-                                       <div class="item" v-for="(image,index) in images" :key="index">
-                                           <figure>
-                                               <img :src="str_replace(image.url)" alt="">
-                                           </figure>
-                                       </div>
-                                   </div>
-                                   <!-- <li class="nav-item" v-for="(image,index) in images" :key="index">
-                                            <a class="nav-link" :class="{'active' : index == 0}" data-toggle="tab" :href="'#tabs-'+index" role="tab">
-                                                <img class="product__thumb__pic set-bg" :src="str_replace(image.url)">
-                                            </a>
-                                        </li> -->
-                                   <div class="owl-carousel owl-theme owl-shop-details">
-                                       <div class="item text-white">dkljfdklf</div>
-                                       <div class="item text-white">dkljfdklf</div>
-                                       <div class="item text-white">dkljfdklf</div>
-                                       <div class="item text-white">dkljfdklf</div>
-                                       <div class="item text-white">dkljfdklf</div>
-                                       <div class="item text-white">dkljfdklf</div>
+                                   <div class="inner-imgs-tabs mt-4">
+                                       <carousel :items='4' :nav='false'  :margin='13'>
+                                           <!-- <template slot="prev"><span class="prev">TEst</span></template> -->
+
+                                            <div class="item" v-for="(image,index) in images" :key="index">
+                                                <figure class="m-0">
+                                                    <img :src="str_replace(image.url)" alt="">
+                                                </figure>
+                                            </div>
+
+                                            <!-- <template slot="next"><span class="next">Test 111</span></template> -->
+                                       </carousel>
                                    </div>
                                 </div>
 
@@ -112,41 +140,41 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="fs-20 shop-details-table mt-3">
+                            <div class="fs-20 shop-details-table">
                                 <div class="row">
-                                    <table class="table-responsive table-borderless table">
+                                    <table class="table-responsive table-borderless table px-0">
                                         <tbody>
-                                            <tr>
-                                                <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
+                                            <tr v-if='product.brand'>
+                                                <td class="col-lg-4 col-xs-5 maintype px-0">Brand:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.brand == null ? '-' : product.brand}} </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype">Condition :</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> New </td>
+                                            <tr v-if='product.condition'>
+                                                <td class="col-lg-4 maintype px-0">Condition:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.condition == null ? '-' : product.condition}} </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype"> Size :</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
+                                            <tr v-if='product.doll_size'>
+                                                <td class="col-lg-4 maintype px-0"> Size:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype">Featured Refinements:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> featured</td>
+                                            <tr v-if='product.featured_refinements'>
+                                                <td class="col-lg-4 maintype px-0">Featured Refinements:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype">Domestic Product:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
+                                            <tr v-if='product.domestic_product'>
+                                                <td class="col-lg-4 maintype px-0">Domestic Product:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype">Modified :</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> No</td>
+                                            <tr v-if='product.modified_item'>
+                                                <td class="col-lg-4 maintype px-0">Modified:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype">UPC:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
+                                            <tr v-if='product.pc'>
+                                                <td class="col-lg-4 maintype px-0">UPC:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype">{{ product.upc  == null ? '-' :  product.upc}} </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-lg-4 maintype">Return Policy:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
+                                            <tr v-if='product.return_policy'>
+                                                <td class="col-lg-4 maintype px-0">Return Policy:</td>
+                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -207,39 +235,39 @@
                                     <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <div class="fs-20 shop-details-table mt-3">
                                             <div class="row">
-                                                <table class="table-responsive table-borderless table">
+                                                <table class="table-responsive table-borderless table px-0">
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
+                                                        <tr v-if='product.brand'>
+                                                            <td class="col-lg-4 col-xs-5 maintype px-0">Brand:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.brand == null ? '-' : product.brand}} </td>
+                                                        </tr>
+                                                        <tr v-if='product.condition'>
+                                                            <td class="col-lg-4 maintype px-0">Condition:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.condition == null ? '-' : product.condition}} </td>
+                                                        </tr>
+                                                        <tr v-if='product.doll_size'>
+                                                            <td class="col-lg-4 maintype px-0">Size:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
+                                                        </tr>
+                                                        <tr v-if='product.featured_refinements'>
+                                                            <td class="col-lg-4 maintype px-0">Featured Refinements:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype">  {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="col-lg-4 maintype">Condition :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> New </td>
+                                                            <td class="col-lg-4 maintype px-0">Domestic Product:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="col-lg-4 maintype"> Size :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
+                                                            <td class="col-lg-4 maintype px-0">Modified:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype">Featured Refinements:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> featured</td>
+                                                        <tr v-if='product.upc'>
+                                                            <td class="col-lg-4 maintype px-0">UPC:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype">{{ product.upc  == null ? '-' :  product.upc}} </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype">Domestic Product:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype">Modified :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> No</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype">UPC:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype">Return Policy:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
+                                                        <tr v-if='product.return_policy'>
+                                                            <td class="col-lg-4 maintype px-0">Return Policy:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -249,57 +277,60 @@
 
                                     <div id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" class="tab-pane fade active show">
                                         <div class="shipping-details mt-3 mb-4">
-                                            <!-- <hr> -->
-                                            <div class="row shipping-poll py-3">
+                                           <!-- Package Details -->
+                                            <div class="row shipping-poll py-3" v-if="shipping.package_details == 'details'">
                                                 <h3 class="title-color title-shipping-details"> Package Details</h3>
-                                                <div class="col-3">
+                                                <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Weight:</span>
-                                                    <span class="inner-value">50 kg</span>
+                                                    <span class="inner-value">{{ shipping.weight }} kg</span>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Width:</span>
-                                                    <span class="inner-value">5 cm</span>
+                                                    <span class="inner-value">{{ shipping.width }} cm</span>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Height:</span>
-                                                    <span class="inner-value">50 cm</span>
+                                                    <span class="inner-value">{{ shipping.height }} cm</span>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Length:</span>
-                                                    <span class="inner-value">50 cm</span>
+                                                    <span class="inner-value">{{ shipping.length }} cm</span>
                                                 </div>
                                             </div>
-                                            <hr class="title-color m-0">
-                                            <div class="row shipping-poll py-3">
-                                                <h3 class="title-color title-shipping-details">USA</h3>
-                                                <div class="mb-2 row">
+                                            <hr class="title-color m-0" v-if="shipping.package_details == 'details'">
+
+                                            <!-- USA Shipping -->
+                                            <div class="row shipping-poll py-3" v-if="shipping.usa">
+                                                <h3 class="title-color title-shipping-details">USA Shipping</h3>
+                                                <div class="row">
                                                     <span class="inner-title col-4 col-lg-3">Service:</span>
-                                                    <span class="inner-value col-8">test</span>
+                                                    <span class="inner-value col-8">{{ shipping.service_usa }}</span>
                                                 </div>
                                                 <div class="row">
-                                                    <span class="inner-title col-4 col-lg-3">Price:</span>
-                                                    <span class="inner-value col-8">500 <span>C<i class="fas fa-dollar-sign"></i></span>
-                                                    </span>
+                                                    <span class="inner-title col-4 col-lg-3">Cost:</span>
+                                                    <span class="inner-value col-8">{{ shipping.price_usa }} <span v-html="currencyIcon"></span> </span>
                                                 </div>
                                                 <div class="row">
                                                     <span class="inner-title col-4 col-lg-3">Duration:</span>
-                                                    <span class="inner-value col-8">Shipping in 1 to 2 business day </span>
+                                                    <span class="inner-value col-8">{{ shipping.duration_usa == null ? '-' : shipping.duration_usa }} </span>
                                                 </div>
                                             </div>
-                                            <hr class="title-color m-0">
-                                            <div class="row shipping-poll py-3">
-                                                <h3 class="title-color title-shipping-details">World Wide</h3>
-                                                <div class="mb-2">
+                                            <hr class="title-color m-0" v-if="shipping.usa">
+
+                                            <!-- Worldwide Shipping -->
+                                            <div class="row shipping-poll py-3" v-if="shipping.world_wide">
+                                                <h3 class="title-color title-shipping-details">Worldwide</h3>
+                                                <div class="">
                                                     <span class="inner-title">Service:</span>
-                                                    <span class="inner-value">test</span>
+                                                    <span class="inner-value">{{ shipping.service_world_wide }}</span>
                                                 </div>
                                                 <div>
-                                                    <span class="inner-title">Price:</span>
-                                                    <span class="inner-value">1000 <span>C<i class="fas fa-dollar-sign"></i></span></span>
+                                                    <span class="inner-title">Cost:</span>
+                                                    <span class="inner-value">{{ shipping.price_world_wide }} <span v-html="currencyIcon"></span> </span>
                                                 </div>
-                                                <div>
+                                                <div v-if='shipping.duration_worldwide'>
                                                     <span class="inner-title">Duration:</span>
-                                                    <span class="inner-value">- </span>
+                                                    <span class="inner-value">{{ shipping.duration_worldwide == null ? '-' : shipping.duration_worldwide }} </span>
                                                 </div>
                                             </div>
                                             <hr class="title-color m-0">
@@ -347,48 +378,47 @@
                                             <div class="row">
                                                 <table class="table-responsive table-borderless table mb-0">
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="col-lg-4 col-xs-5 maintype">Brand :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> New Brand </td>
+                                                        <tr v-if='product.brand'>
+                                                            <td class="col-lg-4 col-xs-5 maintype">Brand:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.brand == null ? '-' : product.brand}} </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype">Condition :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> New </td>
+                                                        <tr v-if='product.condition'>
+                                                            <td class="col-lg-4 maintype">Condition:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.condition == null ? '-' : product.condition}} </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td class="col-lg-4 maintype"> Size :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> 15 in </td>
+                                                        <tr v-if='product.doll_size'>
+                                                            <td class="col-lg-4 maintype">Size:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr v-if='product.featured_refinements'>
                                                             <td class="col-lg-4 maintype">Featured Refinements:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> featured</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype">  {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="col-lg-4 maintype">Domestic Product:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> Yes </td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="col-lg-4 maintype">Modified :</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> No</td>
+                                                            <td class="col-lg-4 maintype">Modified:</td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr v-if='product.upc'>
                                                             <td class="col-lg-4 maintype">UPC:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype">upc needed </td>
+                                                            <td class="col-lg-8 col-xs-7 subtype">{{ product.upc  == null ? '-' :  product.upc}} </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr v-if='product.return_policy'>
                                                             <td class="col-lg-4 maintype">Return Policy:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> 1 </td>
+                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="text-offwhite">
-                                        2- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                        quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                                        pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleife
-                                    </p>
+                                    <div class="description">
+                                        <h3 class="title-color title-shipping-details">Description</h3>
+                                        <p class="text-offwhite" v-html="product.description"></p>
+                                    </div>
                                 </div>
                             </div>
                             <!-- <div class="fs-20 bottom pb-3 pt-3">
@@ -606,6 +636,7 @@ import ChatWidget from "./widgets/ChatComponent";
 import Wishlist from "./widgets/WishlistComponent";
 import ListOffers from "./widgets/ShowOffersComponent"
 import Bidding from "./widgets/BiddingComponent";
+import carousel from 'vue-owl-carousel'
 export default ({
     data:()=>({
         id : null,
@@ -619,6 +650,8 @@ export default ({
         shipping: null,
         bid_step_list: [],
         currencyIcon: null,
+        iconSeller: true,
+
     }),
     components: {
         AddCartWidget,
@@ -626,13 +659,19 @@ export default ({
         ChatWidget,
         Wishlist,
         ListOffers,
-        Bidding
+        Bidding,
+        carousel,
     },
     methods:{
         str_replace: function(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
-        }
+        },
+        changeiconSeller() {
+            this.iconSeller = !this.iconSeller;
+        },
+
+
     },
     created(){
         Fire.$on('AddedToCart',()=>{

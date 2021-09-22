@@ -107,6 +107,14 @@
         }
     }
     
+    .btn-maroon {
+        background: $maroon !important;
+        &:hover {
+            background: white !important;
+            color: $maroon !important;
+        }
+    }
+    
     .btn-gray {
         background: $gray !important;
         &:hover {
@@ -125,6 +133,16 @@
         }
     }
     
+    .btn-outline-maroon {
+        color: $maroon !important;
+        border: 1px solid $maroon !important;
+        height: 40px !important;
+        &:hover {
+            background: $maroon !important;
+            color: $offwhite !important;
+        }
+    }
+    
     .heaer-tabs-yellow {
         .router-link-exact-active.router-link-active {
             background: $yellow
@@ -133,6 +151,10 @@
     
     .border-yellow {
         border: 1px solid #FECC2F !important;
+    }
+    
+    .border-maroon {
+        border: 1px solid $maroon;
     }
     
     .border-maroon-lg-right {
@@ -157,7 +179,7 @@
     .shop-details {
         .product__details__pic .col-lg-8 {
             @media (min-width: 992px) {
-                padding-right: 30px;
+                padding-right: 108px;
             }
             .parent-tats {
                 .nav-link {

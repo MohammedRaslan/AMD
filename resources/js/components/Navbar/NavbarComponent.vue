@@ -564,7 +564,7 @@
                 v-if="!logged"
               >
                 <router-link class="btn btn-maroon color white" to="/login"
-                  >Join <i class="fas fa-sign-in-alt"></i
+                  >Login <i class="fas fa-sign-in-alt"></i
                 ></router-link>
               </div>
             </nav>
