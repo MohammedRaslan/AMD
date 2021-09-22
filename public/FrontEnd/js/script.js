@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var $h2 = $('.top-tabs h2');
+    var $h2 = $('.top-tabs');
     var sticky = $h2.offsetTop;
     $('body').scroll(function() {
         if (window.pageYOffset > sticky) {
@@ -53,51 +53,19 @@ $(document).ready(function() {
     }
 
 
-    // $(".selling .open-tabs, .over-lay-selling").click(function() {
-    //     $(".header-taps").toggleClass('d-block')
-    //     $('.selling .over-lay-selling').toggleClass("d-none");
-    // })
-    // if (window.innerWidth < 1200) {
-    //     $(".header-taps .nav .nav-link").click(function() {
-    //         $('.selling .over-lay-selling').toggleClass("d-none");
-    //         $(".header-taps").toggleClass('d-block')
-    //     })
-    // }
 
+    $(document).on('click', '.inner-imgs-tabs .item', function() {
+        $('.inner-imgs-tabs .item').removeClass('active')
+        $(this).addClass('active')
 
+        tapImg = $(this).find('img').attr("src");
+        console.log(tapImg);
 
-
-    // $(".shop-details .owl-stage-outer").hover(function() {
-    //     $(this).fadeOut(100);
-    //     $(this).fadeIn(500);
-    // });
-
-
-    // function headerTabs() {
-    //     console.log('lkdf');
-    //     // if (window.pageYOffset > sticky) {
-    //     //     $h2.classList.add("py-4");
-    //     // } else {
-    //     //     $h2.classList.remove("py-4");
-    //     // }
-    // }
-
-    $('.owl-test-details').owlCarousel({
-        loop: true,
-        margin: 10,
-        // autoplay: true,
-        // navigation: true,
-        nav: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
+        $(".product__thumb__pic img").attr("src", tapImg);
     })
+
+    $('.inner-imgs-tabs .owl-prev').text('fdljldfkjdf')
+
+
+
 })

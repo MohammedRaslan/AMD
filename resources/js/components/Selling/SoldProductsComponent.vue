@@ -28,14 +28,14 @@
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h2 class='py-3 py-lg-5'>Sold <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class='py-3 py-lg-5'>Sold Items<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
 
             <!-- Compnent Here -->
             <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h2 v-if="message != '' " class="text-center">{{message}}</h2>
+                    <h3 v-if="message != '' " class="text-center message-error my-5">{{message}}</h3>
                     <div class="tab-content"  v-for="product in products" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->

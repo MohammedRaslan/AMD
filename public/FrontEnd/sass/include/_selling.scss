@@ -1,37 +1,49 @@
 .header-taps {
     .nav-link,
     .nav-pills button {
-        color: white !important;
+        color: $offwhite !important;
         display: flex;
         align-items: center;
         margin: 8px 0 !important;
-        padding-left: 13px !important;
+        // padding-left: 13px !important;
+        padding-left: 6px !important;
         &:hover {
-            color: #fff !important;
+            color: $offwhite !important;
         }
     }
     .nav-link-sub {
         font-size: 16px !important;
         font-weight: normal !important;
     }
-    &.header-taps-selling {
-        .nav-link {
-            &.router-link-active {
-                background: $maroon;
-            }
-        }
-    }
-    &.header-taps-setting{
+    // &.header-taps-selling {
+    //     .nav-link {
+    //         &.router-link-active {
+    //             background: $maroon;
+    //         }
+    //     }
+    // }
+    &.header-taps-setting {
         border-color: $maroon !important;
-        hr{
+        hr {
             background-color: $maroon !important;
-
         }
         .nav-link {
-            :hover, &.router-link-active {
+             :hover,
+            &.router-link-active {
                 background: $maroon !important;
             }
         }
-        
+    }
+}
+
+.selling {
+    input::placeholder,
+    .upload-img input,
+    textarea::placeholder {
+        color: rgb(255 255 255 / 70%) !important;
+        font-style: italic;
+    }
+    .message-error {
+        color: #fd1266;
     }
 }

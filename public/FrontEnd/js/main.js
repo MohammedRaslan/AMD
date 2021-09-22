@@ -143,7 +143,7 @@
             $(".cat .drop-1 ul").removeClass("show");
             $(".cat .dropdown.drop-1").removeClass("borderrad")
             $(".cat #Icon_down_solid").removeClass("svg-tran")
-        }, 120)
+        }, 320)
     })
 
     $(".cat button").click(function() {
@@ -158,7 +158,7 @@
             $(".menu-user .drop-user1 ul").removeClass("show");
             $(".menu-user .dropdown.drop-user1").removeClass("borderrad")
             $("#Icon_down").removeClass("svg-tran")
-        }, 120)
+        }, 320)
     })
 
     $(".menu-user button").click(function() {

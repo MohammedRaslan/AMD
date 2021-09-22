@@ -20,7 +20,8 @@ import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
 import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue";
-import WishlistComponent from "./components/Buying/WishlistComponent.vue";
+import WishlistComponent from "./components/Buying/Myfavorites/WishlistComponent.vue";
+// import myfavoritesComponent from "./components/Buying/MyfavoritesComponent.vue";
 import OfferBidsComponent from "./components/Buying/OffersBidsComponent.vue";
 import SellerDetailsComponent from "./components/Selling/SellerDetailsComponent.vue";
 import AdminProductComponent from "./components/Admin/ProductsComponent.vue";
@@ -46,7 +47,8 @@ import NotificationMessageComponent from "./components/ChatCenter/NotificationCo
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 import RequestItemComponent from "./components/Buying/RequestItemComponent.vue";
 import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
-import SavedProductComponent from "./components/Buying/SavedProductComponent.vue";
+import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductComponent.vue";
+import SavedSellerComponent from "./components/Buying/Myfavorites/SavedSellerComponent.vue";
 import PurchasedProductComponent from "./components/Buying/PurchaseHistoryComponent.vue";
 var routes = [{
         path: "/",
@@ -143,17 +145,27 @@ var routes = [{
         component: WishlistComponent,
         name: 'Wishlist',
     },
+    // {
+    //     path: "/buying/myfavorites",
+    //     component: myfavoritesComponent,
+    //     name: 'myfavorites',
+    // },
     {
         path: "/buying/saved",
         component: SavedProductComponent,
         name: 'SavedProductComponent',
     },
     {
+        path: "/buying/saved-seller",
+        component: SavedSellerComponent,
+        name: 'SavedSellerComponent',
+    },
+    {
         path: "/buying/purchased",
         component: PurchasedProductComponent,
         name: 'PurchasedProductComponent',
     },
-    
+
     // {
     //     path: "/step_two/:id?",
     //     component: CreateProductStepTwoComponent,
