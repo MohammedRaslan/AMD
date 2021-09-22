@@ -287,117 +287,51 @@
                 </li>
 
                 <li class="d-xl-flex d-lg-flex d-md-flex icons">
-                  <router-link to="/messages" >
-                    <div
-                      class="mesg"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title=""
-                      data-bs-original-title="Messages"
-                    >
-                      <svg
-                        width="22"
-                        height="22"
+                    <Messages></Messages>
+
+
+                    <router-link to="/buying/wishlist">
+                        <svg
                         fill="#fff"
-                        version="1.1"
-                        id="Capa_1"
+                        stroke="#fff"
                         xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 512 512"
-                        style="enable-background: new 0 0 512 512"
-                        xml:space="preserve"
-                      >
-                        <g>
-                          <g>
-                            <polygon
-                              points="339.392,258.624 512,367.744 512,144.896 		"
-                            ></polygon>
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <polygon
-                              points="0,144.896 0,367.744 172.608,258.624 		"
-                            ></polygon>
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path
-                              d="M480,80H32C16.032,80,3.36,91.904,0.96,107.232L256,275.264l255.04-168.032C508.64,91.904,495.968,80,480,80z"
-                            ></path>
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path
-                              d="M310.08,277.952l-45.28,29.824c-2.688,1.76-5.728,2.624-8.8,2.624c-3.072,0-6.112-0.864-8.8-2.624l-45.28-29.856
-    L1.024,404.992C3.488,420.192,16.096,432,32,432h448c15.904,0,28.512-11.808,30.976-27.008L310.08,277.952z"
-                            ></path>
-                          </g>
-                        </g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                        <g></g>
-                      </svg>
-                    </div>
-                  </router-link>
-                  <router-link to="/buying/wishlist">
-                    <svg
-                      fill="#fff"
-                      stroke="#fff"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="34"
-                      height="34"
-                      viewBox="0 0 34 34"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title=""
-                      data-bs-original-title="Favourits"
-                    >
-                      <g
-                        id="Group_37"
-                        data-name="Group 37"
-                        transform="translate(-784 -317)"
-                      >
-                        <g
-                          id="Icon_love_solid"
-                          transform="translate(790.583 326.125)"
+                        width="34"
+                        height="34"
+                        viewBox="0 0 34 34"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title=""
+                        data-bs-original-title="Favourits"
                         >
-                          <path
-                            id="Path"
-                            d="M1.6,9.7A5.729,5.729,0,0,1,5.729,0C7.667,0,9.38,2.134,10.417,3.606,11.454,2.134,13.166,0,15.1,0a5.729,5.729,0,0,1,3.985,9.845l-7.926,8.139a1.042,1.042,0,0,1-1.492,0Z"
-                          ></path>
-                        </g>
                         <g
-                          id="Ellipse_48"
-                          data-name="Ellipse 48"
-                          transform="translate(784 317)"
-                          fill="none"
-                          stroke-width="1"
+                            id="Group_37"
+                            data-name="Group 37"
+                            transform="translate(-784 -317)"
                         >
-                          <circle cx="17" cy="17" r="17" stroke="none"></circle>
-                          <circle cx="17" cy="17" r="16.5" fill="none"></circle>
+                            <g
+                            id="Icon_love_solid"
+                            transform="translate(790.583 326.125)"
+                            >
+                            <path
+                                id="Path"
+                                d="M1.6,9.7A5.729,5.729,0,0,1,5.729,0C7.667,0,9.38,2.134,10.417,3.606,11.454,2.134,13.166,0,15.1,0a5.729,5.729,0,0,1,3.985,9.845l-7.926,8.139a1.042,1.042,0,0,1-1.492,0Z"
+                            ></path>
+                            </g>
+                            <g
+                            id="Ellipse_48"
+                            data-name="Ellipse 48"
+                            transform="translate(784 317)"
+                            fill="none"
+                            stroke-width="1"
+                            >
+                            <circle cx="17" cy="17" r="17" stroke="none"></circle>
+                            <circle cx="17" cy="17" r="16.5" fill="none"></circle>
+                            </g>
                         </g>
-                      </g>
-                    </svg>
-                  </router-link>
-                  <Notification></Notification>
-                  <Cart></Cart>
+                        </svg>
+                    </router-link>
+                    <Notification></Notification>
+                    <Cart></Cart>
                 </li>
                 <li
                   class="
@@ -499,7 +433,7 @@
                       </li>
                       <li>
                         <router-link to="/buying/requestItem" class="dropdown-item"
-                          >Looking to buy</router-link
+                          >Request an Item</router-link
                         >
                       </li>
                       <li>
@@ -779,12 +713,14 @@ import Drop from "./DropdownComponent";
 import Cart from "./CartComponent";
 import Notification from "./NotificationComponent";
 import Search from "./SearchComponent";
+import Messages from "./MessagesComponent";
 export default {
   components: {
     Drop,
     Cart,
     Notification,
     Search,
+    Messages,
   },
   data: () => ({
     logged: false,

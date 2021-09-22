@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h1 class='py-3 py-lg-5 text-green'>Buying <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
+                    <h1 class='py-3 py-lg-5 text-green'>Favorites <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
             <!-- Compnent Here -->
                 <side-bar :openSlideBar='openSlideBar'></side-bar>
@@ -39,71 +39,71 @@
                         <div class="row">
                             <!-- Block Item -->
                             <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center border-maroon border-radius-10 p-3">
+                                <div class="card-box text-center p-3">
                                     <router-link to="#" class="d-block text-decoration-none">
                                         <figure>
                                             <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
                                         </figure>
-                                        <h5 class="text-offwhite">Mohamed Elemry</h5>
+                                        <h5 class="text-offwhite">mohamed383</h5>
                                     </router-link>
                                 </div>
                             </div>
 
                             <!-- Block Item -->
                             <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center border-maroon border-radius-10 p-3">
+                                <div class="card-box text-center p-3">
                                     <router-link to="#" class="d-block text-decoration-none">
                                         <figure>
                                             <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
                                         </figure>
-                                        <h5 class="text-offwhite">Mohamed Elemry</h5>
+                                        <h5 class="text-offwhite">mohamed383</h5>
                                     </router-link>
                                 </div>
                             </div>
                             <!-- Block Item -->
                             <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center border-maroon border-radius-10 p-3">
+                                <div class="card-box text-center p-3">
                                     <router-link to="#" class="d-block text-decoration-none">
                                         <figure>
                                             <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
                                         </figure>
-                                        <h5 class="text-offwhite">Mohamed Elemry</h5>
-                                    </router-link>
-                                </div>
-                            </div>
-
-                            <!-- Block Item -->
-                            <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center border-maroon border-radius-10 p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
-                                        <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
-                                        </figure>
-                                        <h5 class="text-offwhite">Mohamed Elemry</h5>
+                                        <h5 class="text-offwhite">mohamed383</h5>
                                     </router-link>
                                 </div>
                             </div>
 
                             <!-- Block Item -->
                             <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center border-maroon border-radius-10 p-3">
+                                <div class="card-box text-center p-3">
                                     <router-link to="#" class="d-block text-decoration-none">
                                         <figure>
                                             <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
                                         </figure>
-                                        <h5 class="text-offwhite">Mohamed Elemry</h5>
+                                        <h5 class="text-offwhite">mohamed383</h5>
                                     </router-link>
                                 </div>
                             </div>
 
                             <!-- Block Item -->
                             <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center border-maroon border-radius-10 p-3">
+                                <div class="card-box text-center p-3">
                                     <router-link to="#" class="d-block text-decoration-none">
                                         <figure>
                                             <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
                                         </figure>
-                                        <h5 class="text-offwhite">Mohamed Elemry</h5>
+                                        <h5 class="text-offwhite">mohamed383</h5>
+                                    </router-link>
+                                </div>
+                            </div>
+
+                            <!-- Block Item -->
+                            <div class="col-6 col-lg-3 mb-3">
+                                <div class="card-box text-center p-3">
+                                    <router-link to="#" class="d-block text-decoration-none">
+                                        <figure>
+                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
+                                        </figure>
+                                        <h5 class="text-offwhite">mohamed383</h5>
                                     </router-link>
                                 </div>
                             </div>

@@ -109,18 +109,28 @@
                                                                         <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control"></textarea>
                                                                         <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                     </div>
-                                                                    <div class="row listing-type">
-                                                                        <h3 class="text-left mt-3 text-green">Selling Format <span class="requiredItem text-maroon">*</span></h3>
-                                                                        <!-- <form class="row mt-4 border-0 p-0">
-                                                                            <div class="col-lg-4">
-                                                                                <input class="radio-custom"  id="radio-1" name="radio-group" type="radio" checked>
+                                                                    <div class="listing-type">
+                                                                        <h3 class="text-left mt-3 text-green">Price <span class="fst-italic">(optional)</span> </h3>
+
+                                                                        <form class="row mt-4 border-0 p-0">
+                                                                            <div class="col-lg-6 text-left">
+                                                                                <label class="text-offwhite" for="">From <span v-html="currencyIcon"></span></label>
+                                                                                <input type="text" class="form-control" id="" placeholder="" required>
+                                                                            </div>
+                                                                            <div class="col-lg-6 text-left">
+                                                                                <label class="text-offwhite" for="">To <span v-html="currencyIcon"></span></label>
+                                                                                <input type="text" class="form-control" id="" placeholder="" required>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                            <!-- <div class="col-lg-4">
+                                                                                <input class="radio-custom"  id="radio-1" name="radio-group" type="number" >
                                                                                 <label class="radio-custom-label" for="radio-1">Listing Product</label>
                                                                             </div>
                                                                             <div class="col-lg-7">
-                                                                                <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
+                                                                                <input class="radio-custom" name="radio-group" type="number">
                                                                                 <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
-                                                                            </div>
-                                                                        </form> -->
+                                                                            </div> -->
                                                                         <!-- <nav>
                                                                             <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                                 <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
@@ -129,28 +139,32 @@
                                                                             </div>
                                                                         </nav> -->
 
-                                                                    </div>
 
                                                                     <!-- <div class="row listing-type"> -->
                                                                         <!-- <div class="tab-content" id="nav-tabContent"> -->
                                                                             <!-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> -->
                                                                                 <!-- <div class="row save"> -->
-                                                                                    <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
-                                                                                        <div class="inner-save inner-save1 w-100">
+                                                                                    <!-- <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
+                                                                                        <div class="inner-save inner-save1 w-100"> -->
                                                                                             <!-- <form action="" class="border-0 px-0"> -->
-                                                                                                <input class="form-control mt-3"  v-model="form.minimum_offer" id='listing1' type="number" placeholder="Minimum Offer">
+                                                                                                <!-- <input class="form-control mt-3"  v-model="form.minimum_offer" id='listing1' type="number" placeholder="Minimum Offer"> -->
                                                                                             <!-- </form> -->
-                                                                                        </div>
-                                                                                    </div>
+                                                                                        <!-- </div>
+                                                                                    </div> -->
                                                                                 <!-- </div> -->
 
                                                                             <!-- </div> -->
                                                                         <!-- </div> -->
                                                                     <!-- </div> -->
-                                                                    <div class="col-lg-4"></div>
+                                                                </div>
+                                                                <div class="row">
                                                                     <div class="col-lg-4">
-                                                                        <input type="submit" :disabled="form.busy" value="Publish" class="form-control btn-green" id="register">
+                                                                        <router-link to="/" class="form-control mb-3 btn btn-outline-offwhite"> Cancel</router-link>
                                                                     </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="submit" :disabled="form.busy" value="Publish Your Request" class="form-control btn-green" id="register">
+                                                                    </div>
+
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -362,6 +376,7 @@ export default ({
         categories: [],
         conditions: [],
         brands: [],
+        currencyIcon: null,
         imagenull: false,
         form : new form({
             title : null,
@@ -414,7 +429,7 @@ export default ({
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
             this.brands = response.data.brands;
-
+            this.currencyIcon = response.data.currencyIcon;
         });
 
     }
