@@ -27,12 +27,12 @@
         hr {
             background-color: $maroon !important;
         }
-        .nav-link {
-             :hover,
-            &.router-link-active {
-                background: $maroon !important;
-            }
-        }
+        // .nav-link {
+        //      :hover,
+        //     &.router-link-active {
+        //         background: $maroon !important;
+        //     }
+        // }
     }
 }
 

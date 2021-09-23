@@ -33,4 +33,22 @@
                 }
             }
         }
+        &.slide-bar-taps-milky {
+            border-color: $milky !important;
+            hr {
+                background-color: $milky !important;
+            }
+            .nav-link {
+                &.router-link-active {
+                    color: $milky !important;
+                    font-weight: bold !important;
+                    &:hover {
+                        color: #F2F2F2 !important;
+                    }
+                }
+                &.nav-link-sub {
+                    margin-top: 0 !important;
+                }
+            }
+        }
     }
