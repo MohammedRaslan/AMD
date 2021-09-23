@@ -144,7 +144,7 @@
                                                                             >Width (cm)</label
                                                                         >
                                                                         <input
-                                                                            type="text"
+                                                                            type="number"
                                                                             v-model="
                                                                                 form.width
                                                                             "
@@ -177,7 +177,7 @@
                                                                             >Height (cm)</label
                                                                         >
                                                                         <input
-                                                                            type="text"
+                                                                            type="number"
                                                                             v-model="
                                                                                 form.height
                                                                             "
@@ -210,7 +210,7 @@
                                                                             >Length (cm)</label
                                                                         >
                                                                         <input
-                                                                            type="text"
+                                                                            type="number"
                                                                             v-model="
                                                                                 form.length
                                                                             "
@@ -243,7 +243,7 @@
                                                                             >Weight (kg)</label
                                                                         >
                                                                         <input
-                                                                            type="text"
+                                                                            type="number"
                                                                             v-model="
                                                                                 form.weight
                                                                             "
