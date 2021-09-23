@@ -35,9 +35,9 @@ Route::get('/{any?}/{title?}', function () {
     if(str_contains(request()->fullUrl(),'admin')){
         return view('admin');
     }
-    return view('layout');
-    // elseif(str_contains(request()->fullUrl(),'demo')){
-    //     return view('layout');
-    // }
-    // return view('soon');
+    //return view('layout');
+    elseif(str_contains(request()->fullUrl(),'demo')){
+        return view('layout');
+    }
+    return view('soon');
 });
