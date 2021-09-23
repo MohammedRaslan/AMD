@@ -204,6 +204,7 @@
     }
     
     .btn-login {
+        background: transparent !important;
         &:focus {
             box-shadow: none !important
         }

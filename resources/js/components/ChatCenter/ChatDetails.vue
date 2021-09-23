@@ -7,7 +7,7 @@
           <div class="col-lg-12">
             <div class="breadcrumb__text">
               <div class="breadcrumb__links">
-                <a href="./index.html">Home</a>
+                <router-link to="/">Home</router-link>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="4"
@@ -62,9 +62,9 @@
                       <div id="chat-list">
                         <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right pr-lg-100' : 'text-milky text-left pl-lg-100']">
                             {{ chat.message }}
-                        </p>  
+                        </p>
                       </div>
-                   
+
                       <form @submit.prevent="sendMessage">
                         <div class="row pb-3">
                           <div class="col-sm-10">
@@ -129,7 +129,7 @@ export default {
             }else{
               this.user_name = this.chats[0].user_to.user_name;
             }
-          
+
             if(this.chats.length == 0){
                 this.message = "You Don't Have Chats";
             }else{
@@ -158,7 +158,7 @@ export default {
                 document.getElementById('chat-list').innerHTML += "<p class='text-green text-right pr-lg-100'>"+event.message.message+"</p>";
 
             }else if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_to){
-              
+
                 document.getElementById('chat-list').innerHTML += "<p class='text-milky text-left pl-lg-100'>"+event.message.message+"</p>";
 
             }

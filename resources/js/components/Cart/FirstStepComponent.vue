@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
+                            <router-link to="/">Home</router-link>
                             <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
                                 <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown" transform="translate(-8 13) rotate(-90)">
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
@@ -21,7 +21,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-   
+
 
     <section class="shopping-cart">
         <div class="container">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Block Step -->
                     <div class="col-lg-3 col-12 col-sm-6">
                         <div class="inner-step delivery row">
@@ -105,7 +105,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Block Item -->
-                    <div class="cont-pro" v-for="product in cartProducts" :key="'row_'+product.id" :id="'row_'+product.product.id"> 
+                    <div class="cont-pro" v-for="product in cartProducts" :key="'row_'+product.id" :id="'row_'+product.product.id">
                         <div class="inner-pro">
                             <div class="row">
                                 <div class="col-5">
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
 
                 </div>
                 <div class="col-lg-4">
@@ -198,7 +198,7 @@ export default ({
             }else{
                 this.RemoveFromCartActual(id);
             }
-         
+
     },
         async RemoveFromCartActual(id){
             const response = await axios.post('/api/cart/remove/'+id).then((response) => {

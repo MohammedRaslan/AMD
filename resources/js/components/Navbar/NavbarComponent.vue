@@ -345,7 +345,7 @@
                     <span class="d-block" style="width: 156px"
                       >Hello,
                       <span class="font-weight-bolder">
-                        "{{ first_name }}"
+                        {{ first_name }}
                       </span></span
                     >
                     <router-link class="" to="/settings"
@@ -497,8 +497,7 @@
                 class="d-xl-flex d-lg-flex d-md-flex icons float-right"
                 v-if="!logged"
               >
-                <router-link class="btn btn-maroon color white" to="/login"
-                  >Login <i class="fas fa-sign-in-alt"></i
+                <router-link class="btn btn-login text-offwhite" to="/login">Login <i class="fas fa-sign-in-alt"></i
                 ></router-link>
               </div>
             </nav>

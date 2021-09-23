@@ -10,14 +10,14 @@
         <div id="header_top" class="header_top">
             <div class="container">
                 <div class="hleft">
-                    <a class="header-brand" href="index.html"><i class="fa fa-graduation-cap brand-logo"></i></a>
+                    <router-link class="header-brand" to="/"><i class="fa fa-graduation-cap brand-logo"></i></router-link>
                     <div class="dropdown">
                         <a href="javascript:void(0)" class="nav-link icon menu_toggle"><i class="fe fe-align-center"></i></a>
                         <a href="javascript:void(0)" class="nav-link icon settingbar"><i class="fe fe-settings"></i></a>
                     </div>
                 </div>
                 <div class="hright">
-                    <a href="login.html" class="nav-link icon settingbar"><i class="fe fe-power"></i></a>                
+                    <a href="login.html" class="nav-link icon settingbar"><i class="fe fe-power"></i></a>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
                         </ul>
                     </div>
                     <hr>
-                
+
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
                             <li><a href="" ><i class="fa fa-shopping-cart"></i> <span>Orders</span></a></li>
                             <li><a href="" ><i class="fa fa-server"></i> <span>Variations</span></a></li> -->
                             <li><router-link to="/admin/subscriptions"><i class="fa fa-th-list"></i> <span>Subscriptions</span></router-link></li>
-    
+
                         </ul>
                     </nav>
                 </div>
@@ -143,7 +143,7 @@
             <div class="section-body" id="page_top">
                 <div class="container-fluid">
                     <div class="page-header">
-                        <div class="left">                        
+                        <div class="left">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="What you want to find">
                                 <div class="input-group-append">
@@ -158,7 +158,7 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
                                         <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
-                                
+
                                     </div>
                                 </div>
                             </div>
@@ -168,10 +168,10 @@
             </div>
             <!-- Start Page title and tab -->
             <router-view></router-view>
-            <vue-progress-bar></vue-progress-bar>       
-    
-    
-        </div>    
+            <vue-progress-bar></vue-progress-bar>
+
+
+        </div>
     </div>
 </div>
 </template>

@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
+                            <router-link to="/">Home</router-link>
                             <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
                                 <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown"
                                     transform="translate(-8 13) rotate(-90)">
@@ -90,7 +90,7 @@ export default ({
          message: '',
          chats :{},
      }),
-    
+
      components:{
         SideBar,
     },
