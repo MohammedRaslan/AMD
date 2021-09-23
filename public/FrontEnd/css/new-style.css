@@ -253,9 +253,6 @@ input[type=number]::-webkit-outer-spin-button {
 .selling .header-taps .nav-link:nth-of-type(7) {
   padding-left: 13px;
 }
-.selling .header-taps .nav-link:hover, .selling .header-taps .nav-link.active {
-  background: #fd1266 !important;
-}
 .selling .header-taps hr {
   background-color: #fd1266;
 }
@@ -702,9 +699,6 @@ input:disabled {
 .header-taps.header-taps-setting hr {
   background-color: #fd1266 !important;
 }
-.header-taps.header-taps-setting .nav-link :hover, .header-taps.header-taps-setting .nav-link.router-link-active {
-  background: #fd1266 !important;
-}
 
 .selling input::placeholder,
 .selling .upload-img input,
@@ -739,6 +733,22 @@ svg.img-subscription {
   color: #F2F2F2 !important;
 }
 .slide-bar-taps.header-taps-buying .nav-link.nav-link-sub {
+  margin-top: 0 !important;
+}
+.slide-bar-taps.slide-bar-taps-milky {
+  border-color: #00ccff !important;
+}
+.slide-bar-taps.slide-bar-taps-milky hr {
+  background-color: #00ccff !important;
+}
+.slide-bar-taps.slide-bar-taps-milky .nav-link.router-link-active {
+  color: #00ccff !important;
+  font-weight: bold !important;
+}
+.slide-bar-taps.slide-bar-taps-milky .nav-link.router-link-active:hover {
+  color: #F2F2F2 !important;
+}
+.slide-bar-taps.slide-bar-taps-milky .nav-link.nav-link-sub {
   margin-top: 0 !important;
 }
 
