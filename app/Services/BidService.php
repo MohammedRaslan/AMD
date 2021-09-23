@@ -17,7 +17,7 @@ class BidService{
         //dd($bid->minimum_price , $maxBid);
         $currentPrice =0 ;
         if (  $maxBid < $request['bidValue'] ) {
-            //dd($maxBid);
+            //  dd($maxBid);
             $currentPrice= $bid->minimum_price;
             for ($step = $bid->minimum_price/100; $currentPrice <= $maxBid;  ) {
                 $currentPrice = $currentPrice + $step;
@@ -30,8 +30,8 @@ class BidService{
                 'user_id' => $user_id,
                 'price' => $request['bidValue'],
             ];
-    
-            return $this->bidRepository->storeHistory($data , $currentPrice , true);
+
+            return $this->bidRepository->storeHistory($data , $currentPrice );
         }else {
             $currentPrice= $bid->last_price;
             for ($step = $bid->minimum_price/100; $currentPrice <= $request['bidValue'];  ) {
@@ -43,10 +43,16 @@ class BidService{
                 'user_id' => $user_id,
                 'price' => $request['bidValue'],
             ];
-            return $this->bidRepository->storeHistory($data , $currentPrice ,false);
+            return $this->bidRepository->storeHistory($data , $currentPrice );
 
         }
        
+
+    }
+
+    public function getHistory($user_id , $bid_id)
+    {   
+        return $this->bidRepository->getHistory($user_id ,$bid_id );
 
     }
 

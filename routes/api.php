@@ -115,6 +115,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('bid')->group(function(){
         Route::post('store',[BidController::class,'store']);
+        Route::get('getHistory/{bid_id}' ,[BidController::class,'getHistory']);
     });
 
     Route::prefix('wishlist')->group(function (){

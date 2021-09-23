@@ -5,7 +5,9 @@
                                 <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
                                <div class="content">
                                     <div class="mb-3">
-                                        <h3 class="mb-0">Current bid {{ this.before_last_bid }} {{ this.user_details.currency }} </h3><br>
+                                        <h3 class="mb-0" v-if="isHighst">You Are The Highest Bidder</h3>
+                                         <h3 class="mb-0" v-else>You Have Been Outbid</h3><br>
+                                        <h3 class="mb-0">Current bid {{ this.bid.last_price }} {{ this.user_details.currency }} </h3><br>
                                         <small style="color:white">Minimum Bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }}</small>
                                         <!-- <p>8 Bids</p> -->
                                     </div>
@@ -52,6 +54,7 @@ export default {
         before_last_bid: null,
         minimum_price: null,
         bid_end: false,
+        isHighst : false,
     }),
     methods:{
         async makeBid(step = null){
@@ -72,7 +75,17 @@ export default {
             });
             }
   
-        }
+        },
+    showUserHistory(id){
+        axios.get('/api/bid/getHistory/'+id).then((response) => {
+            console.log(response);
+            if(response.data == true){
+                this.isHighst = true;
+            }else{
+                this.isHighst = false;
+            }
+        });
+    },
     },
     created(){
         if(this.bid.last_price == 0){
@@ -81,9 +94,13 @@ export default {
             this.minimum_price = this.bid.last_price;
         }
     },
+
+  
     mounted(){
         this.before_last_bid =  this.bid.before_last_price;
+        this.showUserHistory(this.bid.id);
         window.Echo.channel('BiddingChannel').listen('BiddingEvent', event => {
+            
                 if(event.data.bid.id == this.bid.id){
                     this.before_last_bid = event.data.bid.before_last_price;
                     if(event.data.bid.last_price == 0){
@@ -93,6 +110,8 @@ export default {
                     }
                     
                 }
+                this.showUserHistory(this.bid.id);
+                console.log(event.data.history);
         });
         var from = moment(this.bid.from.actual).format('l');
         var now  = moment().format('l');

@@ -21,4 +21,10 @@ class BidController extends Controller
         }
         return response()->json($response);
     }
+
+    public function getHistory(Request $request , $bid_id)
+    {
+        return response()->json($this->bidService->getHistory($request->user()->id , $bid_id));
+
+    }
 }
