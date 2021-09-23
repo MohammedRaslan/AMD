@@ -700,6 +700,7 @@ export default ({
         axios.get('/api/shop/getProduct/'+this.id).then((response) => {
 
             this.product = response.data.product;
+            console.log(this.product);
             this.images  = response.data.product.images;
             this.shipping = response.data.product.shipping;
             this.loading = true;
