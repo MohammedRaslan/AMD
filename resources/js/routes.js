@@ -16,6 +16,7 @@ import SubscriptionsComponent from "./components/Admin/Subscription/Subscription
 import AddSubscriptionsComponent from "./components/Admin/Subscription/ManageSubscription.vue";
 import DraftedComponent from "./components/Selling/DraftedComponent";
 import ShopComponent from "./components/ShopComponent.vue"
+import VendorComponent from "./components/VendorComponent"
 import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
@@ -297,6 +298,13 @@ var routes = [{
         path: "/contact-us",
         component: ContactComponent,
         name: "contact",
+    },
+
+
+    {
+        path: "/vendorCategory/:query?",
+        component: VendorComponent,
+        name: "VendorComponent",
     },
 
 ];

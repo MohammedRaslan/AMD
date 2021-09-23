@@ -123,6 +123,11 @@ class ProductService{
    {
        return $this->productRepository->getUserProductActive($user_id);
    }
+   
+   public function getVendorProducts($user_id)
+   {
+       return $this->productRepository->getVendorProducts($user_id);
+   }
 
 //    public function getAllProductDataToUpdate($user_id,$product_id)
 //    {

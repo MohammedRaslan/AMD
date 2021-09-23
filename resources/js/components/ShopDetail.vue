@@ -41,7 +41,7 @@
                             <div class="detail-top">
                                 <p>
                                     <span>Seller:</span>
-                                    <span v-if="loading"> <router-link to='#' class="text-milky text-decoration-underline">{{ product.user.user_name }}</router-link> </span>
+                                    <span v-if="loading"> <router-link :to="'/vendorCategory/' + product.user.id" class="text-milky text-decoration-underline">{{ product.user.user_name }}</router-link> </span>
                                     <span class="saved-seller-icon m-1" :title="iconSeller ? 'Saved Seller': 'Unsaved Seller' " v-html="iconSeller ? '<i class=\'fas fa-plus-circle\'></i>': '<i class=\'far fa-check-circle\'></i>' " v-on:click="addToVendorWishlist(product.user.id)"></span>
                                 </p>
                                 <p v-if="shipping !=null && shipping.duration_usa"><span>Shipping time:</span> <span>{{ shipping.duration_usa }}</span></p>
@@ -640,7 +640,9 @@ import carousel from 'vue-owl-carousel'
 export default ({
     data:()=>({
         id : null,
-        product: null,
+        product: {
+            user : {}
+        },
         loggedUser: null,
         images:{},
         loading : false,

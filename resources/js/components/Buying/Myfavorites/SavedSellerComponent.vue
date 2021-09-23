@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <div class="breadcrumb__links">
-                            <router-link to="/">Home</router-link>
+                            <a href="./index.html">Home</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
                                 <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown" transform="translate(-8 13) rotate(-90)">
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
@@ -37,76 +37,19 @@
                     <!-- <h3 class="text-center text-green my-5">There are no saved Sellers</h3> -->
                     <div class="inner-saved-seller mb-5">
                         <div class="row">
-                            <!-- Block Item -->
-                            <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
-                                        <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
-                                        </figure>
-                                        <h5 class="text-offwhite">mohamed383</h5>
-                                    </router-link>
-                                </div>
-                            </div>
-
-                            <!-- Block Item -->
-                            <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
-                                        <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
-                                        </figure>
-                                        <h5 class="text-offwhite">mohamed383</h5>
-                                    </router-link>
-                                </div>
-                            </div>
-                            <!-- Block Item -->
+                            <!-- Block Item -->  
                             <div class="col-6 col-lg-3 mb-3" v-for="wishlist in wishlists" :key="wishlist.id" :id="'wishlist_'+wishlist.id">
                                 <div class="card-box text-center p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
+                                    <router-link :to="'/vendorCategory/' + wishlist.id" class="d-block text-decoration-none">
                                         <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
+                                            <img class="rounded-circle" :src="'/' +wishlist.image" alt="">
                                         </figure>
-                                        <h5 class="text-offwhite">mohamed383</h5>
+                                        <h5 class="text-offwhite">{{wishlist.user_name}}</h5>
                                     </router-link>
                                 </div>
                             </div>
 
-                            <!-- Block Item -->
-                            <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
-                                        <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
-                                        </figure>
-                                        <h5 class="text-offwhite">mohamed383</h5>
-                                    </router-link>
-                                </div>
-                            </div>
-
-                            <!-- Block Item -->
-                            <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
-                                        <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
-                                        </figure>
-                                        <h5 class="text-offwhite">mohamed383</h5>
-                                    </router-link>
-                                </div>
-                            </div>
-
-                            <!-- Block Item -->
-                            <div class="col-6 col-lg-3 mb-3">
-                                <div class="card-box text-center p-3">
-                                    <router-link to="#" class="d-block text-decoration-none">
-                                        <figure>
-                                            <img class="rounded-circle" :src="'/FrontEnd/images/avatars/avatars-10.PNG'" alt="">
-                                        </figure>
-                                        <h5 class="text-offwhite">mohamed383</h5>
-                                    </router-link>
-                                </div>
-                            </div>
+           
 
                         </div>
                     </div>

@@ -424,6 +424,28 @@ class ProductRepository{
 
     }
 
+    public function getVendorProducts($user_id)
+    {
+        $products= Product::where([['user_id',$user_id] , ['status',1], ['draft', 0] ])->paginate(10);
+        $exist = false;
+        $userDetails = UserDetail::where('user_id',$user_id)->first();
+        return $products->map(function($item, $key) use ($user_id,$exist,$userDetails){
+               $item->wishlistCount = count($item->wishlist);
+               if($user_id != null){  // check if user the owner of product
+                    foreach($item->wishlist as $wishlist){
+                        if($wishlist->user_id == $user_id){
+                            $exist = true;
+                        }
+                    }
+               }
+               $item->userAddedItemToWishlist = $exist;
+               $item->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
+               $item->unsetRelation('wishlist');
+            return $item;
+            });
+
+    }
+
     // public function getAllProductDataToUpdate($user_id,$product_id)
     // {
     //     $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();

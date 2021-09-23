@@ -27,14 +27,14 @@ $(document).ready(function() {
     })
 
     // $('shop-details .owl-stage-outer').hover
-    $(".shop-details .owl-stage-outer, .shop-details .owl-nav").hover(
-        function() {
-            $(".shop-details .owl-nav").css('opacity', 1);
-        },
-        function() {
-            $(".shop-details .owl-nav").css('opacity', 0);
-        }
-    );
+    // $(".shop-details .owl-stage-outer, .shop-details .owl-nav").hover(
+    //     function() {
+    //         $(".shop-details .owl-nav").css('opacity', 1);
+    //     },
+    //     function() {
+    //         $(".shop-details .owl-nav").css('opacity', 0);
+    //     }
+    // );
 
 
     // #selling

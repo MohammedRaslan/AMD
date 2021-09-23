@@ -532,6 +532,7 @@ input:disabled {
   border-radius: 8px;
 }
 .shop-details .product__details__pic .owl-nav {
+  display: none !important;
   position: absolute;
   width: 100%;
   top: 29%;

@@ -153,6 +153,8 @@ export default {
             this.products = response.data;
             this.$Progress.finish();
             this.loading = false;
+                        console.log(response);
+
         });
         }
     },

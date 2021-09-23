@@ -120,6 +120,11 @@ class ProductController extends Controller
         $data = $this->productService->getUserProductActive($request->user()->id);
         return response()->json($data);
     }
+    public function getVendorProducts($user_id)
+    {
+        $data = $this->productService->getVendorProducts($user_id);
+        return response()->json($data);
+    }
 
     // public function getAllProductDataToUpdate(Request $request,$product_id)
     // {
