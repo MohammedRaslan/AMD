@@ -23,15 +23,15 @@
 
 
     <!-- Latest Blog Section Begin -->
-    <section class="selling">
-        <div class="over-lay-selling d-none"></div>
+    <section class="selling buying">
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h2 class='py-3 py-lg-4'>Request An Item <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h1 class='py-3 py-lg-5 text-green'>Request an Item <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <!-- <side-bar :openSlideBar='openSlideBar'></side-bar> -->
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
@@ -42,21 +42,21 @@
                                 <div class="inner-item">
                                     <div class="row">
                                         <div class="col-lg-12 detalis border-0 sell-an-item-section p-0">
-                                                <div class="signup bg-transparent">
-                                                <div class="container p-2">
+                                                <div class="signup bg-transparent pb-4 pb-lg-5">
+                                                <div class="container px-2">
                                                     <div class="row text-center pt-0">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h2 class="pb-3 pt-0">Product Info</h2>
-                                                            <form @submit.prevent="saveProduct" class="form-product p-lg-4">
+                                                            <h2 class="pb-3 pt-0 sub-title text-offwhite">Product Info</h2>
+                                                            <form @submit.prevent="saveProduct" class="form-product p-lg-4 border-color-green">
                                                                 <div class="row">
-                                                                    <div class="col-6 text-left">
-                                                                            <label class="text-white" for="fName">Item Name <span class="requiredItem">*</span></label>
+                                                                    <div class="col-lg-6 text-left">
+                                                                        <label class="text-offwhite" for="fName">Item Name <span class="requiredItem text-maroon">*</span></label>
                                                                         <input type="text" v-model="form.title" class="form-control" id="fName" placeholder="Item Name" required>
                                                                         <div v-if="form.errors.has('title')" class="alert alert-danger" v-html="form.errors.get('title')" />
                                                                     </div>
-                                                                    <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                        <label class="text-white" for="cats">Category <span class="requiredItem">*</span></label>
-                                                                        <v-select placeholder="Select Category" id='cats' v-model="form.category_id" :reduce="category => category.id"  label="title" :options="categories" >
+                                                                    <div class="col-lg-6 select-product text-left mb-4">
+                                                                        <label class="text-offwhite" for="cats">Category <span class="requiredItem text-maroon">*</span></label>
+                                                                        <v-select placeholder="Select Category" class="" id='cats' v-model="form.category_id" :reduce="category => category.id"  label="title" :options="categories" >
                                                                             <template #search="{attributes, events}">
                                                                                     <input
                                                                                         class="vs__search"
@@ -71,7 +71,7 @@
                                                                     <div class="row pb-4 pr-sm-0">
 
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                            <label class="text-white" for="condition">Condition <span class="requiredItem">*</span></label>
+                                                                            <label class="text-offwhite" for="condition">Condition <span class="requiredItem text-maroon">*</span></label>
                                                                             <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
                                                                                     <template #search="{attributes, events}">
                                                                                         <input
@@ -85,7 +85,7 @@
                                                                             <div v-if="form.errors.has('condition')" class="alert alert-danger" v-html="form.errors.get('condition')" />
                                                                         </div>
                                                                         <div class="col-lg-6 select-product text-left mb-4 pr-sm-0">
-                                                                            <label class="text-white" for="brand">Brand <span class="requiredItem">*</span></label>
+                                                                            <label class="text-offwhite" for="brand">Brand <span class="requiredItem text-maroon">*</span></label>
                                                                             <v-select placeholder="Select Brand" id='cats' v-model="form.brand" :reduce="brand => brand.title"  label="title" :options="brands">
                                                                                     <template #search="{attributes, events}">
                                                                                         <input
@@ -105,52 +105,66 @@
                                                                         <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                     </div>
                                                                     <div class="col-12 mb-5 description text-left">
-                                                                        <label for="#description" style="color:white">Description <span class="requiredItem">*</span></label>
+                                                                        <label for="#description" style="color:white">Description <span class="requiredItem text-maroon">*</span></label>
                                                                         <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control"></textarea>
                                                                         <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                     </div>
-                                                                    <div class="row listing-type">
-                                                                        <h3 class="text-left text-maroon mt-3">Selling Format <span class="requiredItem">*</span></h3>
-                                                                        <!-- <form class="row mt-4 border-0 p-0">
-                                                                            <div class="col-lg-4">
-                                                                                <input class="radio-custom"  id="radio-1" name="radio-group" type="radio" checked>
+                                                                    <div class="listing-type">
+                                                                        <h3 class="text-left mt-3 text-green">Price <span class="fst-italic">(optional)</span> </h3>
+
+                                                                        <form class="row mt-4 border-0 p-0">
+                                                                            <div class="col-lg-6 text-left">
+                                                                                <label class="text-offwhite" for="">From <span v-html="currencyIcon"></span></label>
+                                                                                <input type="text" class="form-control" id="" placeholder="" required>
+                                                                            </div>
+                                                                            <div class="col-lg-6 text-left">
+                                                                                <label class="text-offwhite" for="">To <span v-html="currencyIcon"></span></label>
+                                                                                <input type="text" class="form-control" id="" placeholder="" required>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                            <!-- <div class="col-lg-4">
+                                                                                <input class="radio-custom"  id="radio-1" name="radio-group" type="number" >
                                                                                 <label class="radio-custom-label" for="radio-1">Listing Product</label>
                                                                             </div>
                                                                             <div class="col-lg-7">
-                                                                                <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
+                                                                                <input class="radio-custom" name="radio-group" type="number">
                                                                                 <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
-                                                                            </div>
-                                                                        </form> -->
-                                                                        <nav>
+                                                                            </div> -->
+                                                                        <!-- <nav>
                                                                             <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                                 <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
                                                                                     <div>Requested Product</div>
                                                                                 </div>
                                                                             </div>
-                                                                        </nav>
+                                                                        </nav> -->
 
-                                                                    </div>
 
-                                                                    <div class="row listing-type">
-                                                                        <div class="tab-content" id="nav-tabContent">
-                                                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                                                <div class="row save">
-                                                                                    <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
-                                                                                        <div class="inner-save inner-save1 w-100">
-                                                                                            <form action="" class="border-0 px-0">
-                                                                                                <input class="form-control mt-3"  v-model="form.minimum_offer" id='listing1' type="number" placeholder="Minimum Offer">
-                                                                                            </form>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                    <!-- <div class="row listing-type"> -->
+                                                                        <!-- <div class="tab-content" id="nav-tabContent"> -->
+                                                                            <!-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> -->
+                                                                                <!-- <div class="row save"> -->
+                                                                                    <!-- <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
+                                                                                        <div class="inner-save inner-save1 w-100"> -->
+                                                                                            <!-- <form action="" class="border-0 px-0"> -->
+                                                                                                <!-- <input class="form-control mt-3"  v-model="form.minimum_offer" id='listing1' type="number" placeholder="Minimum Offer"> -->
+                                                                                            <!-- </form> -->
+                                                                                        <!-- </div>
+                                                                                    </div> -->
+                                                                                <!-- </div> -->
 
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4"></div>
+                                                                            <!-- </div> -->
+                                                                        <!-- </div> -->
+                                                                    <!-- </div> -->
+                                                                </div>
+                                                                <div class="row">
                                                                     <div class="col-lg-4">
-                                                                        <input type="submit" :disabled="form.busy" value="Publish" class="form-control" id="register">
+                                                                        <router-link to="/" class="form-control mb-3 btn btn-outline-offwhite"> Cancel</router-link>
                                                                     </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="submit" :disabled="form.busy" value="Publish Your Request" class="form-control btn-green" id="register">
+                                                                    </div>
+
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -179,7 +193,7 @@
         background-color: gray !important;
     }
     .sell-an-item-section{
-        .minimum-offer{
+        .minimum-offer, .custom-checkbox{
             label{
                 width: 100%;
                 background: transparent;
@@ -246,11 +260,11 @@
         }
         .vs__dropdown-toggle{
             border: 1px solid #42525e !important;
+                height: 60px !important;
             input{
-                height: auto !important;
+                // height: auto !important;
                 border: none;
                 margin: 0 !important;
-                height: 60px !important;
                 &:focus{
                     border: none;
                     box-shadow: none;
@@ -362,6 +376,7 @@ export default ({
         categories: [],
         conditions: [],
         brands: [],
+        currencyIcon: null,
         imagenull: false,
         form : new form({
             title : null,
@@ -375,6 +390,7 @@ export default ({
             minimum_offer: null,
             draft: 0,
         }),
+        openSlideBar: false
     }),
     methods:{
         async saveProduct(){
@@ -413,7 +429,7 @@ export default ({
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
             this.brands = response.data.brands;
-
+            this.currencyIcon = response.data.currencyIcon;
         });
 
     }

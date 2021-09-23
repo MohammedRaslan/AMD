@@ -114,6 +114,11 @@ class ProductService{
        return $this->productRepository->AddToWishlist($user_id,$product_id);
    }
 
+   public function AddToVendorWishlist($user_id,$vendor_id)
+   {
+       return $this->productRepository->AddToVendorWishlist($user_id,$vendor_id);
+   }
+
    public function getUserProductActive($user_id)
    {
        return $this->productRepository->getUserProductActive($user_id);

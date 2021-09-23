@@ -1,0 +1,36 @@
+    .slide-bar-taps {
+        .nav-link {
+            width: 100%;
+        } // .nav-link {
+        //     &.router-link-active {
+        //         color: $maroon;
+        //     }
+        // }
+        &.header-taps-selling {
+            .nav-link {
+                &.router-link-active {
+                    color: $maroon !important;
+                    font-weight: bold !important;
+                    &:hover {
+                        color: #F2F2F2 !important;
+                    }
+                }
+                &.nav-link-sub {
+                    margin-top: 0 !important;
+                }
+            }
+        }
+        &.header-taps-buying {
+            .nav-link {
+                &.router-link-active {
+                    color: $green !important;
+                    &:hover {
+                        color: #F2F2F2 !important;
+                    }
+                }
+                &.nav-link-sub {
+                    margin-top: 0 !important;
+                }
+            }
+        }
+    }

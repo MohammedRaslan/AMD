@@ -24,15 +24,17 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling buying">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <h2>Buying <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <div class="top-tabs p-0 mb-4">
+                    <h1 class='py-3 py-lg-5 text-green'>Buying <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
+                </div>
             <!-- Compnent Here -->
-            <side-bar></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h2 v-if="message != '' " class="text-center">{{message}}</h2>
+                    <h3 v-if="message != '' " class="text-center text-green my-5">{{message}}</h3>
                     <div class="tab-content"  v-for="wishlist in wishlists" :key="wishlist.id" :id="'wishlist_'+wishlist.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
@@ -67,7 +69,7 @@
                                         </div>
                                         <div class="col-lg-2 col-md-12 btns">
                                            <div class="inner-gruop">
-                                             
+
                                                   <div class="inner" >
                                                     <button class="btn btn-secondary"><router-link :to="{name: 'ShopDetailComponent', params:{query: wishlist.product.id}}">View</router-link></button>
                                                 </div>
@@ -136,6 +138,7 @@ export default ({
         wishlists: {},
         message : '',
         pagination: {},
+        openSlideBar: false
     }),
     components:{
         SideBar,
@@ -150,7 +153,7 @@ export default ({
             this.wishlists = response.data;
             // this.pagination = response.data.links;
             // console.log(this.pagination);
-            if(response.data.length == 0 ){ 
+            if(response.data.length == 0 ){
                 this.message = 'You dont have products';
                 }
         });

@@ -26,6 +26,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\VendorWishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('store/step_three',[ProductController::class,'step_three']);
         Route::get('changeStatus/{id?}',[ProductController::class,'changeStatus']); 
         Route::get('AddToWishlist/{id?}',[ProductController::class,'AddToWishlist']);
+        Route::get('AddToVendorWishlist/{id?}',[ProductController::class,'AddToVendorWishlist']);
         Route::get('getProductShipping/{id?}',[ProductController::class,'getProductShipping']);     
         Route::get('checkUserProduct/{id?}',[ProductController::class,'checkUserProduct']);
         Route::get('getProductData/{id?}',[ProductController::class,'getProductData']);
@@ -117,6 +119,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('wishlist')->group(function (){
         Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']); 
+        Route::get('getVendorWishlist',[VendorWishlistController::class,'getVendorWishlist']); 
         Route::delete('remove/{id?}',[WishlistController::class,'destroy']);
     });
     Route::prefix('shop')->group(function() {

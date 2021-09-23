@@ -6,6 +6,7 @@
     $bgHeader: #0f243c;
     $darkBlue: #20303c;
     $offwhite: #ffe0e0;
+    $gray: gray;
     $mobil: 768px;
     $lab: 1200px;
     $sm: 576px;
@@ -18,8 +19,28 @@
         display: block !important;
     }
     
+    .text-offwhite {
+        color: $offwhite !important;
+    }
+    
+    .mb-0 {
+        margin-bottom: 0 !important;
+    }
+    
     #preloder {
         display: none !important;
+    }
+    
+    .text-maroon {
+        color: $maroon !important;
+    }
+    
+    .bg-maroon {
+        background: $maroon !important;
+    }
+    
+    .fs-14 {
+        font-size: 14px !important;
     }
     
     .h-60 {
@@ -34,6 +55,10 @@
         background: transparent !important;
     }
     
+    .swal2-select {
+        display: none !important;
+    }
+    
     .text-green {
         color: $green !important;
     }
@@ -44,9 +69,103 @@
         }
     }
     
+    .border-color-green {
+        border-color: $green !important;
+    }
+    
+    .border-yellow {
+        border: 1px solid $yellow !important;
+    }
+    
     .pl-sm-0 {
         @media (max-width: 992px) {
             padding-left: 0 !important;
+        }
+    }
+    
+    .divider-x {
+        height: 1px;
+        opacity: 1;
+        // margin: 4px;
+        // margin-bottom: 0px;
+        // width: 122px;
+        // margin-right: auto;
+        // margin-left: auto;
+    }
+    
+    .custom-checkbox {
+        label {
+            width: 100% !important;
+            background: transparent !important;
+            color: #fff;
+            border: none !important;
+            text-align: left;
+            padding-left: 18px !important;
+            top: 18px;
+            left: 0px !important;
+            &::before {
+                content: '';
+                border: 1px solid #fd1266;
+                position: absolute;
+                top: 0px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                left: -10px !important;
+            }
+            &::after {
+                left: -7px !important
+            }
+        }
+        input[type=checkbox]:checked+label {
+            background: transparent;
+            &::before {
+                background: #fd1266;
+            }
+        }
+    }
+    
+    .btn-green {
+        background: $green !important;
+        &:hover {
+            background: white !important;
+            color: $green !important;
+        }
+    }
+    
+    .btn-maroon {
+        background: $maroon !important;
+        &:hover {
+            background: white !important;
+            color: $maroon !important;
+        }
+    }
+    
+    .btn-gray {
+        background: $gray !important;
+        &:hover {
+            background: white !important;
+            color: $gray !important;
+        }
+    }
+    
+    .btn-outline-offwhite {
+        color: $offwhite !important;
+        border: 1px solid $offwhite !important;
+        height: 40px !important;
+        &:hover {
+            background: $offwhite !important;
+            color: #000 !important;
+        }
+    }
+    
+    .btn-outline-maroon {
+        color: $maroon !important;
+        border: 1px solid $maroon !important;
+        height: 40px !important;
+        &:hover {
+            background: $maroon !important;
+            color: $offwhite !important;
         }
     }
     
@@ -60,8 +179,28 @@
         border: 1px solid #FECC2F !important;
     }
     
+    .border-maroon {
+        border: 1px solid $maroon;
+    }
+    
+    .border-maroon-lg-right {
+        @media (min-width: 1200px) {
+            border-right: 2px solid $maroon;
+        }
+    }
+    
     .border-radius-10 {
         border-radius: 10px !important;
+    }
+    
+    .border-radius-20 {
+        border-radius: 20px !important;
+    }
+    
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
     
     .btn-login {
@@ -76,7 +215,7 @@
     .shop-details {
         .product__details__pic .col-lg-8 {
             @media (min-width: 992px) {
-                padding-right: 30px;
+                padding-right: 108px;
             }
             .parent-tats {
                 .nav-link {
@@ -448,6 +587,7 @@
     @import './include/only-vue/sell-item';
     @import './include/selling';
     @import './include/subscription';
+    @import './include/slide-bar-taps';
     .c-position-static {
         position: static !important;
     }

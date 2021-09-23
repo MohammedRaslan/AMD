@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                <div class="top-tabs p-0 mb-4">
-                    <h2 class='py-3 py-lg-5'>Draftes <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h1 class='py-3 py-lg-5'>Draftes Items<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
             <!-- Compnent Here -->
                 <side-bar :openSlideBar='openSlideBar'></side-bar>
@@ -76,7 +76,8 @@
                                                     <button class="btn btn-secondary"><router-link :to="{name: 'EditProductComponent', params:{id: product.id}}">Edit</router-link></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button>
+                                                    <!-- <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button> -->
+                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)">Delete</button>
                                                 </div>
                                            </div>
                                         </div>
@@ -115,12 +116,35 @@ export default ({
             return str;
         },
         deleteProduct(id){
-            axios.get('/api/product/deleteProduct/'+id).then((response) =>{
-                if(response.data){
-                   var elm = document.getElementById('product_'+id).remove();
-                   elm.parentNode.removeChild(elm);
-                }
-            });
+             Swal.fire({
+                title: 'Are you sure you want <br/> to delet this item?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#fd1266',
+                cancelButtonColor: 'gray',
+                confirmButtonText: 'Yes, delete it!',
+                width: 600,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                axios.get('/api/product/deleteProduct/'+id).then((response) =>{
+                    if(response.data){
+                    var elm = document.getElementById('product_'+id).remove();
+                    elm.parentNode.removeChild(elm);
+                    }
+                });
+            }
+        })
+            // axios.get('/api/product/deleteProduct/'+id).then((response) =>{
+            //     if(response.data){
+            //        var elm = document.getElementById('product_'+id).remove();
+            //        elm.parentNode.removeChild(elm);
+            //     }
+            // });
         },
         complete(draft){
             this.$router.push({
@@ -147,6 +171,10 @@ export default ({
         // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
         this.getProducts();
+        // Swal.fire('You can not Remove this item!')
+
+
+
     }
 })
 </script>

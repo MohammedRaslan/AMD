@@ -16,7 +16,7 @@ final class ProductCondition extends Enum
      *  2 close )
      *  3 ,
      * */
-
+    const ANY= 7;
     const New_1_Original_NRFB_3_Never_removed_from_box_2 = 0;
     const New_1_Open_box_2 = 1;
     const Like_New_1_Good_condition_with_or_without_Box_2 = 2;

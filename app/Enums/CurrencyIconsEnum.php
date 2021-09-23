@@ -11,8 +11,8 @@ use BenSampo\Enum\Enum;
  */
 final class CurrencyIconsEnum extends Enum
 {
-    const USD =   '<i class="fas fa-dollar-sign"></i>';
-    const EUR =   '<i class="fas fa-euro-sign"></i>';
-    const CAD =   'C<i class="fas fa-dollar-sign"></i>';
-    const GBP =   '<i class="fas fa-pound-sign"></i>';
+    const USD = '&#36';
+    const EUR = '&#8364';
+    const CAD = 'CA$';
+    const GBP = '&#163';
 }

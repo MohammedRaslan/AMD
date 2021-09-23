@@ -109,6 +109,12 @@ class ProductController extends Controller
         return response()->json($response);
     }
 
+    public function AddToVendorWishlist(Request $request, $vendor_id)
+    {
+        $response = $this->productService->AddToVendorWishlist($request->user()->id,$vendor_id);
+        return response()->json($response);
+    }
+
     public function getUserProductActive(Request $request)
     {
         $data = $this->productService->getUserProductActive($request->user()->id);

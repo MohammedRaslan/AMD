@@ -20,8 +20,8 @@
                                                             <circle cx="17" cy="17" r="16.5" fill="none"></circle>
                                                         </g>
                                                     </g>
-                                                </svg>
-                            <span v-show="count > 0" class="quantity-notif" style="top:-10px !important"></span>
+                </svg>
+                <span v-show="count > 0" v-html="count" class="quantity-notif" style="top:-10px !important"></span>
             </div>
             <div class="notif-cont">
                 <!-- Block Item -->

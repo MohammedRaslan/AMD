@@ -16,6 +16,11 @@ class BrandSeeder extends Seeder
     {
         $brands = [
             [
+                'id'         => 96,
+                'title'       => 'Any',
+                'order' => 0,
+            ],
+            [
                 'id'         => 1,
                 'title'       => 'Adora',
                 'order' => 1,

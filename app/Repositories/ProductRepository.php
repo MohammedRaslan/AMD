@@ -21,6 +21,8 @@ use App\Models\Cart_Product;
 use App\Models\HistoryBid;
 use App\Models\Order;
 use App\Models\Order_Product;
+use App\Models\User;
+use App\Models\VendorWhishList;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 class ProductRepository{
@@ -383,6 +385,27 @@ class ProductRepository{
            }else{
                 $wishlist = Wishlist::where('user_id',$user_id)->where('product_id',$product_id)->delete();
                 return ['status' => 'not_added', 'count' => $this->productWishlistCount($product_id)];
+           }
+       }
+     
+      return false;
+    }
+
+    public function AddToVendorWishlist($user_id,$vendor_id)
+    {
+        
+       $user = User::find($vendor_id);
+       $wishlist = VendorWhishList::where('user_id',$user_id)->where('vendor_id',$vendor_id)->first();
+       if($user){
+           if(!$wishlist){
+                $wishlist = VendorWhishList::create([
+                    'vendor_id' => $vendor_id,
+                    'user_id' => $user_id,
+                ]);
+                return ['status' => 'added','count' => $this->productWishlistCount($vendor_id)];
+           }else{
+                $wishlist = VendorWhishList::where('user_id',$user_id)->where('vendor_id',$vendor_id)->delete();
+                return ['status' => 'not_added', 'count' => $this->productWishlistCount($vendor_id)];
            }
        }
      

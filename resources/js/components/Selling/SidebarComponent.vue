@@ -1,25 +1,25 @@
 <template>
     <div class="col-xl-2 col-md-6">
-        <div :class="{ 'd-block': openSlideBar }" class="header-taps header-taps-selling mb-lg-4" >
+        <div :class="{ 'd-block': openSlideBar }" class="slide-bar-taps header-taps header-taps-selling mb-lg-4" >
             <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <!-- Overview -->
                 <!-- <router-link to="/selling/overview" class="nav-link"  id="v-pills-home-tab">Overview</router-link>
                 <hr> -->
                 <!-- Sell an Item -->
-                <router-link to="/selling/sell_item" id="v-pills-profile-tab" class="nav-link">
+                <router-link to="/selling/sell_item" class="nav-link">
                     Sell An Item
                 </router-link>
                 <hr>
                 <!-- My Items -->
-                <button class="nav-link disabled" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My Items</button>
+                <!-- <button class="nav-link disabled mb-0" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My Items</button> -->
                 <!-- Active -->
-                <router-link to="/selling/active_product" class="nav-link nav-link-sub" id="v-pills-settings-tab">Active</router-link>
+                <router-link to="/selling/active_product" class="nav-link" id="v-pills-settings-tab">Active Items</router-link>
                 <!-- Sold -->
-                <router-link class="nav-link nav-link-sub" id="v-pills-home-tab2" to="/selling/sold">Sold</router-link>
+                <router-link class="nav-link" to="/selling/sold">Sold Items</router-link>
                 <!-- Unsold -->
-                <button class="nav-link nav-link-sub" id="v-pills-profile-tab3" data-bs-toggle="pill" data-bs-target="#v-pills-home3" type="button" role="tab" aria-controls="v-pills-home3" aria-selected="false">Unsold</button>
+                <router-link class="nav-link" to='/selling/unsold'>Unsold Items</router-link>
                 <!-- Draft -->
-                <router-link to="/selling/drafted" class="nav-link nav-link-sub" id="v-pills-messages-tab4">Draft</router-link>
+                <router-link to="/selling/drafted" class="nav-link">Draft Items</router-link>
                 <hr>
                 <!-- Seller Details -->
                 <router-link to="/selling/seller_details" class="nav-link outside" >Seller Details</router-link>
@@ -29,14 +29,8 @@
 </template>
 
 <script>
-
 export default ({
     props : ['openSlideBar'],
-  methods: {
-    greet: function () {
-      alert('Hello')
-    }
-  }
 })
 </script>
 

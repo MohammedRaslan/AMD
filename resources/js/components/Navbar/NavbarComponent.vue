@@ -287,50 +287,51 @@
                 </li>
 
                 <li class="d-xl-flex d-lg-flex d-md-flex icons">
-                                    <Messages></Messages>
+                    <Messages></Messages>
 
-                  <router-link to="/buying/wishlist">
-                    <svg
-                      fill="#fff"
-                      stroke="#fff"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="34"
-                      height="34"
-                      viewBox="0 0 34 34"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title=""
-                      data-bs-original-title="Favourits"
-                    >
-                      <g
-                        id="Group_37"
-                        data-name="Group 37"
-                        transform="translate(-784 -317)"
-                      >
-                        <g
-                          id="Icon_love_solid"
-                          transform="translate(790.583 326.125)"
+
+                    <router-link to="/buying/wishlist">
+                        <svg
+                        fill="#fff"
+                        stroke="#fff"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="34"
+                        height="34"
+                        viewBox="0 0 34 34"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title=""
+                        data-bs-original-title="Favourits"
                         >
-                          <path
-                            id="Path"
-                            d="M1.6,9.7A5.729,5.729,0,0,1,5.729,0C7.667,0,9.38,2.134,10.417,3.606,11.454,2.134,13.166,0,15.1,0a5.729,5.729,0,0,1,3.985,9.845l-7.926,8.139a1.042,1.042,0,0,1-1.492,0Z"
-                          ></path>
-                        </g>
                         <g
-                          id="Ellipse_48"
-                          data-name="Ellipse 48"
-                          transform="translate(784 317)"
-                          fill="none"
-                          stroke-width="1"
+                            id="Group_37"
+                            data-name="Group 37"
+                            transform="translate(-784 -317)"
                         >
-                          <circle cx="17" cy="17" r="17" stroke="none"></circle>
-                          <circle cx="17" cy="17" r="16.5" fill="none"></circle>
+                            <g
+                            id="Icon_love_solid"
+                            transform="translate(790.583 326.125)"
+                            >
+                            <path
+                                id="Path"
+                                d="M1.6,9.7A5.729,5.729,0,0,1,5.729,0C7.667,0,9.38,2.134,10.417,3.606,11.454,2.134,13.166,0,15.1,0a5.729,5.729,0,0,1,3.985,9.845l-7.926,8.139a1.042,1.042,0,0,1-1.492,0Z"
+                            ></path>
+                            </g>
+                            <g
+                            id="Ellipse_48"
+                            data-name="Ellipse 48"
+                            transform="translate(784 317)"
+                            fill="none"
+                            stroke-width="1"
+                            >
+                            <circle cx="17" cy="17" r="17" stroke="none"></circle>
+                            <circle cx="17" cy="17" r="16.5" fill="none"></circle>
+                            </g>
                         </g>
-                      </g>
-                    </svg>
-                  </router-link>
-                  <Notification></Notification>
-                  <Cart></Cart>
+                        </svg>
+                    </router-link>
+                    <Notification></Notification>
+                    <Cart></Cart>
                 </li>
                 <li
                   class="
@@ -431,8 +432,8 @@
                         >
                       </li>
                       <li>
-                        <router-link to="/buying/offers" class="dropdown-item"
-                          >Looking to buy</router-link
+                        <router-link to="/buying/requestItem" class="dropdown-item"
+                          >Request an Item</router-link
                         >
                       </li>
                       <li>
@@ -497,7 +498,7 @@
                 v-if="!logged"
               >
                 <router-link class="btn btn-maroon color white" to="/login"
-                  >Join <i class="fas fa-sign-in-alt"></i
+                  >Login <i class="fas fa-sign-in-alt"></i
                 ></router-link>
               </div>
             </nav>
@@ -720,6 +721,7 @@ export default {
     Messages,
     Notification,
     Search,
+    Messages,
   },
   data: () => ({
     logged: false,

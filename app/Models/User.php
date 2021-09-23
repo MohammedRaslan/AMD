@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserDetail::class);
     }
+
+    public function vendors()
+    {
+        return $this->belongsToMany(User::class, 'vendor_whish_lists' ,'vendor_id','id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'vendor_whish_lists' ,'user_id','id');
+    }
 }
