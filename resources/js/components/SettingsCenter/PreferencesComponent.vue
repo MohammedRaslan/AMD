@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="top-tabs">
-                    <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class="text-milky">Preferences <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
 
                 <side-bar></side-bar>
@@ -38,7 +38,7 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <div class="text-center">
-                                <h3 style="color: #fd1266;">You have no Preferences</h3>
+                                <h3 class="text-milky">You have no Preferences</h3>
                             </div>
                         </div>
                     </div>

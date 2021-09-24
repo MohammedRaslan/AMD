@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="top-tabs">
-                    <h2 class="text-maroon">Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class="text-milky">Address Info <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
 
                 <side-bar></side-bar>
@@ -38,13 +38,13 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <div class="signup bg-transparent">
-                              <form @submit.prevent="updateUserShippingInfo">
+                              <form @submit.prevent="updateUserShippingInfo" class="border-color-milky">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="row">
 
                                               <div v-show="message != ''" class="alert alert-success" v-html="message"/>
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-12">
                                                 <input
                                                 type="text"
                                                 v-model="form.address"
@@ -108,7 +108,7 @@
                                             />
                                         </div>
                                             <div class="col-12 d-none d-md-none d-lg-block ">
-                                                <input type="submit" value="Update Info" class="form-control" id="register">
+                                                <input type="submit" value="Update Info" class="form-control btn-milky" id="register">
                                             </div>
                                         </div>
                                     </div>

@@ -35,6 +35,10 @@
         color: $maroon !important;
     }
     
+    .text-milky {
+        color: $milky !important;
+    }
+    
     .bg-maroon {
         background: $maroon !important;
     }
@@ -71,6 +75,10 @@
     
     .border-color-green {
         border-color: $green !important;
+    }
+    
+    .border-color-milky {
+        border-color: $milky !important;
     }
     
     .border-yellow {
@@ -197,6 +205,14 @@
         &:hover {
             background: white !important;
             color: $maroon !important;
+        }
+    }
+    
+    .btn-milky {
+        background: $milky !important;
+        &:hover {
+            background: white !important;
+            color: $milky !important;
         }
     }
     
@@ -549,6 +565,14 @@
                 box-shadow: none !important;
             }
         }
+    }
+    
+    .vs__open-indicator {
+        fill: $offwhite !important;
+    }
+    
+    .vs__clear {
+        display: none !important;
     }
     
     input:disabled {

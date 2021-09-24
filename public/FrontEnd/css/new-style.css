@@ -23,6 +23,10 @@
   color: #fd1266 !important;
 }
 
+.text-milky {
+  color: #00ccff !important;
+}
+
 .bg-maroon {
   background: #fd1266 !important;
 }
@@ -59,6 +63,10 @@
 
 .border-color-green {
   border-color: #7ac943 !important;
+}
+
+.border-color-milky {
+  border-color: #00ccff !important;
 }
 
 .border-yellow {
@@ -177,6 +185,14 @@
 .btn-maroon:hover {
   background: white !important;
   color: #fd1266 !important;
+}
+
+.btn-milky {
+  background: #00ccff !important;
+}
+.btn-milky:hover {
+  background: white !important;
+  color: #00ccff !important;
 }
 
 .btn-gray {
@@ -484,6 +500,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .custom-vue-select input:focus {
   box-shadow: none !important;
+}
+
+.vs__open-indicator {
+  fill: #ffe0e0 !important;
+}
+
+.vs__clear {
+  display: none !important;
 }
 
 input:disabled {
@@ -801,9 +825,11 @@ svg.img-subscription {
 }
 .slide-bar-taps.slide-bar-taps-milky .nav-link.router-link-active:hover {
   color: #F2F2F2 !important;
+  background: #00ccff !important;
 }
-.slide-bar-taps.slide-bar-taps-milky .nav-link.nav-link-sub {
-  margin-top: 0 !important;
+.slide-bar-taps.slide-bar-taps-milky .nav-link:hover {
+  color: #F2F2F2 !important;
+  background: #00ccff !important;
 }
 
 .c-position-static {

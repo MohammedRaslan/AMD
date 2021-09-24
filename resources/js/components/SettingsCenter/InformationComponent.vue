@@ -30,7 +30,7 @@
             <div class="row">
 
                 <div class="top-tabs p-0 mb-4">
-                    <h2 class='py-3 py-lg-4 text-maroon'>Settings <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                    <h2 class='py-3 py-lg-4 text-milky'>Personal Info <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
 
                 <side-bar></side-bar>
@@ -39,7 +39,7 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <div class="signup bg-transparent">
-                              <form @submit.prevent="updateUserInfo">
+                              <form @submit.prevent="updateUserInfo" class="border-color-milky">
                                 <div class="row">
                                     <div class="col-lg-6" style="margin-top: 9%;">
                                         <div class="row">
@@ -131,13 +131,13 @@
                                             />
                                         </div>
                                             <div class="col-12 d-none d-md-none d-lg-block ">
-                                                <input type="submit" value="Update Info" class="form-control" id="register">
+                                                <input type="submit" value="Update Info" class="form-control btn-milky" id="register">
                                             </div>
                                         </div>
                                     </div>
                                     <!--devider-->
                                     <div class="col-1" style="display: flex; justify-content: center;">
-                                        <div class="form-divider"></div>
+                                        <div class="form-divider border-color-milky"></div>
                                     </div>
                                     <!--right side -->
                                     <div class="col-lg-5 text-center ">

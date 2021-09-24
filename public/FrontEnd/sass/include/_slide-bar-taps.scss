@@ -44,10 +44,12 @@
                     font-weight: bold !important;
                     &:hover {
                         color: #F2F2F2 !important;
+                        background: $milky !important;
                     }
                 }
-                &.nav-link-sub {
-                    margin-top: 0 !important;
+                &:hover {
+                    color: #F2F2F2 !important;
+                    background: $milky !important;
                 }
             }
         }
