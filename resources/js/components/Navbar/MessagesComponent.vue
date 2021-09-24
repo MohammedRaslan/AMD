@@ -68,7 +68,7 @@ L1.024,404.992C3.488,420.192,16.096,432,32,432h448c15.904,0,28.512-11.808,30.976
             </svg>
         </div>
 
-        <span style="top:-10px !important" class="quantity-cart">{{ this.count}}</span>
+        <span v-show="count > 0" style="top:-10px !important" class="quantity-cart">{{ this.count}}</span>
     </router-link>
 </template>
 <script>

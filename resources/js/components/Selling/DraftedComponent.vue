@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  v-if="renderComponent">
             <section class="breadcrumb-option">
         <div class="container">
             <div class="row">
@@ -105,7 +105,8 @@ export default ({
         loading : false,
         products: {},
         message : '',
-        openSlideBar: false
+        openSlideBar: false,
+        renderComponent : true
     }),
     components:{
         SideBar,
@@ -117,7 +118,7 @@ export default ({
         },
         deleteProduct(id){
              Swal.fire({
-                title: 'Are you sure you want <br/> to delet this item?',
+                title: 'Are you sure you want <br/> to delete this item?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#fd1266',
@@ -133,8 +134,8 @@ export default ({
                 )
                 axios.get('/api/product/deleteProduct/'+id).then((response) =>{
                     if(response.data){
-                    var elm = document.getElementById('product_'+id).remove();
-                    elm.parentNode.removeChild(elm);
+
+                    this.$router.go(0);
                     }
                 });
             }

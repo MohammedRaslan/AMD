@@ -658,7 +658,7 @@ export default {
         openSlideBar: false
     }),
     methods: {
-        async saveProductShipping() {
+        async saveProductShipping(isDraft =1) {
             this.$Progress.start();
             this.form.usa = this.form.usa == true ? 1 : 0;
             this.form.world_wide = this.form.world_wide == true ? 1 : 0;
@@ -673,6 +673,10 @@ export default {
                         this.$Progress.fail();
                     } else {
                         this.$Progress.finish();
+                        if(isDraft ==1){
+                            this.$router.push('/selling/drafted');
+                            return ;
+                        }
                         this.$router.push("/selling/active_product");
                     }
                 })
@@ -684,7 +688,7 @@ export default {
 
         draft() {
             this.form.draft = 1;
-            this.saveProductShipping();
+            this.saveProductShipping(1);
         },
         indicator() {
             if (this.form.draft == 1) {
