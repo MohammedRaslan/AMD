@@ -141,7 +141,7 @@
                                                                         <label
                                                                             class="text-offwhite"
                                                                             for="cats"
-                                                                            >Width (cm)</label
+                                                                            >Width {{userDetails.is_american ==1? "(in)" : "(cm)" }}</label
                                                                         >
                                                                         <input
                                                                             type="number"
@@ -174,7 +174,7 @@
                                                                         <label
                                                                             class="text-offwhite"
                                                                             for="cats"
-                                                                            >Height (cm)</label
+                                                                            >Height {{userDetails.is_american ==1? "(in)" : "(cm)" }}</label
                                                                         >
                                                                         <input
                                                                             type="number"
@@ -207,7 +207,7 @@
                                                                         <label
                                                                             class="text-offwhite"
                                                                             for="cats"
-                                                                            >Length (cm)</label
+                                                                            >Length {{userDetails.is_american ==1? "(in)" : "(cm)" }}</label
                                                                         >
                                                                         <input
                                                                             type="number"
@@ -240,7 +240,7 @@
                                                                         <label
                                                                             class="text-offwhite"
                                                                             for="cats"
-                                                                            >Weight (kg)</label
+                                                                            >Weight {{userDetails.is_american ==1? "(lb)" : "(kg)" }}</label
                                                                         >
                                                                         <input
                                                                             type="number"
@@ -629,6 +629,7 @@ export default {
         international: [],
         package_details_choice: true,
         currencyIcon: null,
+        userDetails : null,
         form: new form({
             product_id: null,
             world_wide: false,
@@ -651,6 +652,14 @@ export default {
     }),
     methods: {
         async saveProductShipping(isDraft =1) {
+            if (!this.form.usa && !this.form.world_wide) {
+                console.log(this.form.usa);
+                console.log(this.form.world_wide);
+
+                 this.$Progress.fail();
+                 Swal.fire('Please Enter Choose Shipping Details!')
+                 return ;
+            }
             this.$Progress.start();
             this.form.usa = this.form.usa == true ? 1 : 0;
             this.form.world_wide = this.form.world_wide == true ? 1 : 0;
@@ -746,6 +755,8 @@ export default {
                     this.form.weight = response.data.shipping.weight;
                     this.form.length = response.data.shipping.length;
                     this.form.width = response.data.shipping.width;
+                    this.userDetails = {is_american : 1};
+
                 } else {
                     this.form.world_wide = response.data.userDetails.worldwide;
                     this.form.usa = response.data.userDetails.usa;
@@ -754,6 +765,8 @@ export default {
                     this.form.service_world_wide =
                         response.data.userDetails.service_worldwide;
                     this.currencyIcon = response.data.currencyIcon;
+                    this.userDetails = response.data.userDetails;;
+
                 }
             });
     }

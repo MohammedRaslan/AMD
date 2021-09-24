@@ -111,14 +111,14 @@
                                                                         <div class="col-lg-6">
                                                                            <div class="inner">
                                                                                 <div class="custom_radio">
-                                                                                    <input type="radio" id="usa" name="featured" checked><label for="usa" class="text-offwhite">Custom Radio Button 1</label>
+                                                                                    <input type="radio" id="usa" name="is_american"  v-model="form.is_american" value="1"><label for="usa" class="text-offwhite">American</label>
                                                                                 </div>
                                                                            </div>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="inner">
                                                                                 <div class="custom_radio">
-                                                                                    <input type="radio" id="worldwide-cur" name="featured"><label for="worldwide-cur" class="text-offwhite">Custom Radio Button 1</label>
+                                                                                    <input type="radio" id="worldwide-cur" name="is_american" v-model="form.is_american" value="0"><label for="worldwide-cur" class="text-offwhite">Metric</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -226,6 +226,7 @@ export default ({
             service_usa: null,
             service_worldwide: null,
             paypal_account: null,
+            is_american : null,
         }),
         openSlideBar: false
     }),
@@ -257,6 +258,7 @@ export default ({
             this.form.service_worldwide = response.data.service_worldwide;
             this.form.currency = response.data.currency;
             this.form.paypal_account = response.data.paypal_account;
+            this.form.is_american = response.data.is_american;
         });
     }
 })

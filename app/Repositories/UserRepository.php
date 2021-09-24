@@ -264,7 +264,7 @@ class UserRepository{
                 'usa' => $data['usa'],
                 'worldwide' => $data['worldwide'],
                 'paypal_account' => $data['paypal_account'],
-                'isAmerican' => $data['isAmerican'],
+                'is_american' => $data['is_american'],
                 'user_id' => $user_id,
             ]
     );

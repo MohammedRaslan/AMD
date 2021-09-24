@@ -282,19 +282,19 @@
                                                 <h3 class="title-color title-shipping-details"> Package Details</h3>
                                                 <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Weight:</span>
-                                                    <span class="inner-value">{{ shipping.weight }} kg</span>
+                                                    <span class="inner-value">{{ shipping.weight }} {{product.user_details.is_american ==1 ? "(lb)" : "(kg)"}}</span>
                                                 </div>
                                                 <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Width:</span>
-                                                    <span class="inner-value">{{ shipping.width }} cm</span>
+                                                    <span class="inner-value">{{ shipping.width }} {{product.user_details.is_american ==1 ? "(in)" : "(cm)"}}</span>
                                                 </div>
                                                 <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Height:</span>
-                                                    <span class="inner-value">{{ shipping.height }} cm</span>
+                                                    <span class="inner-value">{{ shipping.height }} {{product.user_details.is_american ==1 ? "(in)" : "(cm)"}}</span>
                                                 </div>
                                                 <div class="col-6 col-lg-3">
                                                     <span class="inner-title">Length:</span>
-                                                    <span class="inner-value">{{ shipping.length }} cm</span>
+                                                    <span class="inner-value">{{ shipping.length }} {{product.user_details.is_american ==1 ? "(in)" : "(cm)"}}</span>
                                                 </div>
                                             </div>
                                             <hr class="title-color m-0" v-if="shipping.package_details == 'details'">
