@@ -274,7 +274,7 @@
                                                                     <div class="col-lg-6 mb-4 pr-lg-5 border-maroon-lg-right">
                                                                        <div class="round round-3 pl-3 custom-checkbox">
                                                                             <input type="checkbox" v-model="form.usa" id="checkbox1" placeholder="Title" >
-                                                                            <label for="checkbox1" class="ml-3">Shipping To USA</label>
+                                                                            <label for="checkbox1" class="ml-3">Shipping to USA</label>
 
                                                                             <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
                                                                         </div>
@@ -351,40 +351,22 @@
                                                                         </div>
 
                                                                         <div class="select-product text-left">
-                                                                            <label
-                                                                                class="text-offwhite"
-                                                                                for="cats"
-                                                                                >Duration
-                                                                                </label
-                                                                            >
-                                                                            <v-select
-                                                                                placeholder="Select Duration"
-                                                                                id="cats"
-                                                                                class="custom-vue-select"
-                                                                                v-model="
-                                                                                    form.duration_usa
-                                                                                "
-                                                                                :disabled="
-                                                                                    !form.usa
-                                                                                "
+                                                                            <label class="text-offwhite" for="cats">Duration</label>
+                                                                            <v-select placeholder="Select Duration" id="cats" class="custom-vue-select" v-model="form.duration_usa"
+                                                                                :disabled="!form.usa"
                                                                                 label="title"
-                                                                                :options="
-                                                                                    usa
-                                                                                "
-                                                                            ></v-select>
-                                                                            <div
-                                                                                v-if="
-                                                                                    form.errors.has(
-                                                                                        'duration_usa'
-                                                                                    )
-                                                                                "
-                                                                                class="alert alert-danger"
-                                                                                v-html="
-                                                                                    form.errors.get(
-                                                                                        'duration_usa'
-                                                                                    )
-                                                                                "
-                                                                            />
+                                                                                :options="usa"
+                                                                                >
+                                                                                <template #search="{attributes, events}">
+                                                                                 <input
+                                                                                        class="vs__search"
+                                                                                        :required="!form.duration_usa"
+                                                                                         v-bind="attributes"
+                                                                                        v-on="events"
+                                                                                    />
+                                                                                </template>
+                                                                            </v-select>
+                                                                            <div v-if="form.errors.has('duration_usa')" class="alert alert-danger" v-html=" form.errors.get('duration_usa')" />
                                                                         </div>
 
 
@@ -393,7 +375,7 @@
                                                                     <div class="col-lg-6 mb-4 pl-lg-5">
                                                                         <div class="round round-3 pl-3 custom-checkbox">
                                                                             <input type="checkbox" v-model="form.world_wide" id="checkbox2" placeholder="Title" >
-                                                                            <label for="checkbox2" class="ml-3">Shipping To World Wide</label>
+                                                                            <label for="checkbox2" class="ml-3">Shipping to Worldwide</label>
                                                                             <div v-if="form.errors.has('world_wide')" class="alert alert-danger" v-html="form.errors.get('world_wide')" />
                                                                         </div>
 
@@ -518,7 +500,17 @@
                                                                                 :options="
                                                                                     international
                                                                                 "
-                                                                            ></v-select>
+                                                                            >
+                                                                                <template #search="{attributes, events}">
+                                                                                 <input
+                                                                                        class="vs__search"
+                                                                                        :required="!form.duration_worldwide"
+                                                                                         v-bind="attributes"
+                                                                                        v-on="events"
+                                                                                    />
+                                                                                </template>
+
+                                                                            </v-select>
                                                                             <div
                                                                                 v-if="
                                                                                     form.errors.has(
@@ -680,6 +672,19 @@ export default {
                     this.$Progress.fail();
                     console.log(error);
                 });
+            // if(this.form.usa === false && this.form.world_wide === false) {
+            //     if(this.form.usa === 0 && this.form.world_wide === 0) {
+
+            //         console.log(this.form.usa);
+            //         console.log('this.form.usa');
+            //         console.log(this.form.world_wide);
+            //         }
+            //         else{
+
+            //         }
+
+            // }
+
         },
 
         draft() {
