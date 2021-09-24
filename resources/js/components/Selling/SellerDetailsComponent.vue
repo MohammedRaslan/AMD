@@ -46,7 +46,7 @@
                                                                 <form @submit.prevent="saveSellerDetails" class="form-product">
                                                                     <div class="row pb-4">
                                                                         <div class="col-12 select-product text-left">
-                                                                            <label class="text-white" for="cats">Currency</label>
+                                                                            <label class="text-offwhite" for="cats">Currency</label>
                                                                             <v-select placeholder="Select Currency" class="custom-vue-select" id='cats' v-model="form.currency" :options="currencies" >
                                                                                 <template #search="{attributes, events}">
                                                                                         <input
@@ -62,19 +62,19 @@
                                                                     </div>
                                                                     <div class="row">
                                                                             <div class="col-12 text-left">
-                                                                                <label class="text-white" for="cats">Service USA</label>
+                                                                                <label class="text-offwhite" for="cats">Service USA</label>
                                                                                 <input type="text" v-model="form.service_usa" class="form-control" id="fName" placeholder="Service USA" >
                                                                                 <div v-if="form.errors.has('service_usa')" class="alert alert-danger" v-html="form.errors.get('service_usa')" />
                                                                             </div>
                                                                             <div class="col-12 text-left">
-                                                                                <label class="text-white" for="cats">Service Worldwide</label>
+                                                                                <label class="text-offwhite" for="cats">Service Worldwide</label>
                                                                                 <input type="text" v-model="form.service_worldwide" class="form-control" id="fName" placeholder="Service Worldwide" >
                                                                                 <div v-if="form.errors.has('service_worldwide')" class="alert alert-danger" v-html="form.errors.get('service_worldwide')" />
                                                                             </div>
                                                                     </div>
                                                                     <div class="row">
                                                                             <div class="col-12 text-left">
-                                                                                <label class="text-white" for="cats">PayPal Account</label>
+                                                                                <label class="text-offwhite" for="cats">PayPal Account</label>
                                                                                 <input type="email" v-model="form.paypal_account" class="form-control" id="fName" placeholder="PayPal Account" >
                                                                                 <div v-if="form.errors.has('paypal_account')" class="alert alert-danger" v-html="form.errors.get('paypal_account')" />
                                                                             </div>
@@ -84,7 +84,7 @@
                                                                         <div class="col-lg-6">
                                                                            <div class="round round-3 custom-checkbox">
                                                                                 <input type="checkbox" v-model="form.usa" id="checkbox1"  placeholder="Title">
-                                                                                <label for="checkbox1" class="ml-3">Shipping To USA</label>
+                                                                                <label for="checkbox1" class="ml-3 text-offwhite">Shipping To USA</label>
 
                                                                                 <div v-if="form.errors.has('usa')" class="alert alert-danger" v-html="form.errors.get('usa')" />
                                                                             </div>
@@ -93,7 +93,7 @@
                                                                         <div class="col-lg-6">
                                                                            <div class="round round-3 custom-checkbox">
                                                                                 <input type="checkbox" v-model="form.worldwide" id="worldwide"  placeholder="Title">
-                                                                                <label for="worldwide" class="ml-3">Shipping Worldwide</label>
+                                                                                <label for="worldwide" class="ml-3 text-offwhite">Shipping Worldwide</label>
 
                                                                                 <div v-if="form.errors.has('worldwide')" class="alert alert-danger" v-html="form.errors.get('worldwide')" />
                                                                             </div>
@@ -107,8 +107,27 @@
                                                                             <div v-if="form.errors.has('worldwide')" class="alert alert-danger" v-html="form.errors.get('worldwide')" />
                                                                         </div> -->
                                                                     </div>
-                                                                    <div class="col-12">
-                                                                        <input type="submit" :disabled="form.busy" value="Submit" class="form-control" id="register">
+                                                                    <div class="row mb-4 px-2">
+                                                                        <div class="col-lg-6">
+                                                                           <div class="inner">
+                                                                                <div class="custom_radio">
+                                                                                    <input type="radio" id="usa" name="featured" checked><label for="usa" class="text-offwhite">Custom Radio Button 1</label>
+                                                                                </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="inner">
+                                                                                <div class="custom_radio">
+                                                                                    <input type="radio" id="worldwide-cur" name="featured"><label for="worldwide-cur" class="text-offwhite">Custom Radio Button 1</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-12">
+                                                                            <input type="submit" :disabled="form.busy" value="Submit" class="form-control" id="register">
+                                                                        </div>
                                                                     </div>
                                                                 </form>
                                                             </div>

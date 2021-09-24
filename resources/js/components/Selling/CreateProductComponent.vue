@@ -4,8 +4,8 @@ Pull requests
 Issues
 Marketplace
 Explore
- 
-@kiroSamirI 
+
+@kiroSamirI
 MohammedRaslan
 /
 AMD
@@ -29,7 +29,7 @@ Latest commit 010ac2e 3 hours ago
  4 contributors
 @MohammedRaslan@mohamedelkamary5@haidyeed@kiroSamirI
 597 lines (573 sloc)  40.8 KB
-   
+
 <template>
     <div>
         <section class="breadcrumb-option">
@@ -103,7 +103,7 @@ Latest commit 010ac2e 3 hours ago
                                                                     </div>
                                                                     <div class="col-lg-6 select-product text-left mb-4">
                                                                         <label class="text-offwhite" for="condition">Condition <span class="requiredItem text-maroon">*</span></label>
-                                                                        <v-select placeholder="Select Condition"   id='cats' v-model="form.condition"   label="title" :options="conditions">
+                                                                        <v-select placeholder="Select Condition" id='cats' v-model="form.condition" label="title" :options="conditions">
                                                                                 <template #search="{attributes, events}">
                                                                                     <input
                                                                                         class="vs__search"
@@ -150,8 +150,8 @@ Latest commit 010ac2e 3 hours ago
                                                                         <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                     </div>
                                                                     <div class="col-12 mb-5 description text-left">
-                                                                        <label for="#description" style="color:white">Description <span class="requiredItem text-maroon">*</span></label>
-                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control"></textarea>
+                                                                        <label for="#description" class='text-offwhite'>Description <span class="requiredItem text-maroon">*</span></label>
+                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control text-white"></textarea>
                                                                         <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                     </div>
                                                                 </div>
@@ -188,7 +188,7 @@ Latest commit 010ac2e 3 hours ago
                                                                                 <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                     <div class="inner-save inner-save1 w-100">
                                                                                         <form action="" class="border-0 px-0 text-left pb-0">
-                                                                                                <label for="#listing1" style="color:white">Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
+                                                                                                <label for="#listing1" class='text-offwhite'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
                                                                                             <input class="form-control mt-3" v-model="form.price" id='listing1' type="number" placeholder="Price">
                                                                                         </form>
                                                                                     </div>
@@ -196,11 +196,11 @@ Latest commit 010ac2e 3 hours ago
                                                                                 <div class="col-lg-6 text-left">
                                                                                     <div class="round round-3 pl-3 minimum-offer custom-checkbox">
                                                                                         <input type="checkbox" v-model="form.best_offer" id="checkbox3"  placeholder="Title">
-                                                                                        <label for="checkbox3" class="ml-3">Accept best offer</label>
+                                                                                        <label for="checkbox3" class="ml-3 text-offwhite">Accept best offer</label>
 
                                                                                         <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                                     </div>
-                                                                                    <label for="#listing1" style="color:white">Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
+                                                                                    <label for="#listing1" class='text-offwhite'>Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
 
                                                                                     <input class="form-control" type="text" v-model="form.minimum_offer" placeholder="Minimum offer" :disabled="!form.best_offer">
                                                                                     <span style="color:red" v-show="minimum_offer_message != ''">{{ minimum_offer_message }}</span>
@@ -215,15 +215,15 @@ Latest commit 010ac2e 3 hours ago
                                                                                 <form action="" class="border-0 px-3">
                                                                                     <div class="row g-3">
                                                                                         <div class="col-6">
-                                                                                            <label for="from" style="color:white; float:left">From</label>
+                                                                                            <label for="from" class='text-offwhite' style="float:left">From</label>
                                                                                             <input class="form-control" type="datetime-local" v-model="form.bidding_from" id="from">
                                                                                         </div>
                                                                                         <div class="col-6">
-                                                                                            <label for="to" style="color:white; float:left">To</label>
+                                                                                            <label for="to" class='text-offwhite' style="float:left">To</label>
                                                                                             <input class="form-control" type="datetime-local" v-model="form.bidding_to"  id="to">
                                                                                         </div>
                                                                                         <div class="col-6">
-                                                                                            <label for="minimum_price" style="color:white; float:left">Minimum Price</label>
+                                                                                            <label for="minimum_price" class='text-offwhite' style="float:left">Minimum Price</label>
                                                                                             <input class="form-control" type="number" v-model="form.bid_minimum_price" id="minimum_price">
                                                                                         </div>
                                                                                         <div class="col-6 select-product text-left">
@@ -356,6 +356,7 @@ Latest commit 010ac2e 3 hours ago
     </div>
 </template>
 <style lang='scss'>
+    $offwhite: #ffe0e0;
     .bg-gray{
         background-color: gray !important;
     }
@@ -402,7 +403,7 @@ Latest commit 010ac2e 3 hours ago
                 }
                 &.active{
                     div{
-                        background: white;
+                        background: $offwhite;
                         color: black;
                     }
                 }
