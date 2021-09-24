@@ -61,7 +61,7 @@
             <hr class="bot">
 
             <div class="inner-carousel">
-                <div class="owl-carousel auction-follow-slide owl-theme">
+                <carousel :items='4' :nav='false' >
                     <!-- Block Item -->
                     <div class="item">
                         <div class="inner-item postion-relative">
@@ -141,8 +141,7 @@
                             <p>Ends today at 21:00</p>
                         </div>
                     </div>
-
-                </div>
+                </carousel>
             </div>
         </div>
         </section>
@@ -246,88 +245,90 @@
                 <hr class="bot">
 
                 <div class="inner-carousel">
-                    <div class="owl-carousel auction-follow-slide owl-theme">
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-01.png'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
-                            </div>
-                        </div>
+                        <carousel :items='4' :nav='false'>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-02.png'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-01.png'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-03.jpg'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-02.png'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-04.jpg'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-03.jpg'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-05.jpg'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-04.jpg'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-06.jpg'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-05.jpg'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-07.jpg'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-06.jpg'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Block Item -->
-                        <div class="item">
-                            <div class="inner-item postion-relative">
-                                <a class="over-link" href="/"></a>
-                                <img :src="'FrontEnd/images/Auctions/Product-08.jpg'" alt>
-                                <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
-                                <p>Ends today at 21:00</p>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-07.jpg'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
+                            <!-- Block Item -->
+                            <div class="item">
+                                <div class="inner-item postion-relative">
+                                    <a class="over-link" href="/"></a>
+                                    <img :src="'FrontEnd/images/Auctions/Product-08.jpg'" alt>
+                                    <h4>LUXURIOUS LEISURE - CONSTANCE MADSSEN</h4>
+                                    <p>Ends today at 21:00</p>
+                                </div>
+                            </div>
+
+                        </carousel>
+
                 </div>
             </div>
         </section>
@@ -343,7 +344,7 @@
                 <hr class="bot">
                 <!-- owl-carousel auction-follow-slide owl-theme -->
                 <div class="inner-carousel">
-                    <div class="owl-carousel auc-soon-slide owl-theme">
+                    <carousel :items='4' :nav='false' >
                         <!-- Block Item -->
                         <div class="item">
                             <div class="inner-item positionrelative">
@@ -443,8 +444,7 @@
                                 <p>Ends today at 21:00</p>
                             </div>
                         </div>
-
-                    </div>
+                    </carousel>
                 </div>
             </div>
         </section>
@@ -453,6 +453,7 @@
 </template>
 
 <script>
+import carousel from 'vue-owl-carousel'
 export default({
     data: () => ({
         loaded: true,
@@ -461,6 +462,9 @@ export default({
         products: {},
         logged : false,
     }),
+     components: {
+        carousel,
+    },
     methods:{
          fetchproducts: function(id){
              axios.get('/api/guest/getCategoryProducts/'+id).then((response) =>{
