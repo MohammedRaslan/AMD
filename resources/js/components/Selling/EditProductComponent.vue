@@ -551,7 +551,7 @@ export default ({
         }),
     }),
     methods:{
-        async saveProduct(){
+        async saveProduct(isDraft = 0){
            this.$Progress.start();
            this.form.minimum_offer = this.form.best_offer == false ? null : this.form.minimum_offer;
            this.form.best_offer = this.form.best_offer == true ? 1 : 0;
@@ -566,8 +566,10 @@ export default ({
                }else{
             const response = await this.form.post('/api/product/update/'+this.$route.params.id).then((response)=>{
                 this.$Progress.finish();
-                // this.indicator();
-                // this.form.reset();
+                if(isDraft ==1){
+                    this.$router.push('/selling/drafted');
+                    return ;
+                }
                 this.$router.push('/product_shipping/'+response.data.product_id);
             }).catch((error)=>{
                 this.$Progress.fail();
@@ -584,7 +586,7 @@ export default ({
         },
         draft(){
             this.form.draft = 1;
-            this.saveProduct();
+            this.saveProduct(1);
         },
         str_replace: function(str){
             str = str.replace('public',window.location.origin + '/storage');
