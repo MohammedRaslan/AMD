@@ -141,9 +141,7 @@ export default ({
                     document.getElementById("product_"+product_id).innerHTML = 'Suspend'
                     document.getElementById("product_"+product_id).classList.add('danger');
                 }else{
-                    document.getElementById("product_"+product_id).classList.remove('btn-danger');
-                    document.getElementById("product_"+product_id).innerHTML = 'Suspended'
-                    document.getElementById("product_"+product_id).classList.add('black');
+                    this.$router.go(0);
                 }
             });
         }
