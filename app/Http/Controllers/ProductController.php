@@ -164,4 +164,11 @@ class ProductController extends Controller
         $response = $this->productService->deleteProduct($request->user()->id,$product_id);
         return response()->json($response);
     }
+
+
+    public function requestedProduct(Request $request)
+    {
+        $data = $this->productService->requestedProduct($request->user()->id);
+        return response()->json($data);
+    }
 }

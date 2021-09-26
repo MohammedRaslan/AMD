@@ -128,6 +128,11 @@ class ProductService{
    {
        return $this->productRepository->getVendorProducts($user_id);
    }
+   
+   public function requestedProduct($user_id)
+   {
+       return $this->productRepository->requestedProduct($user_id);
+   }
 
 //    public function getAllProductDataToUpdate($user_id,$product_id)
 //    {

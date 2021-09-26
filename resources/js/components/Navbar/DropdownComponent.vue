@@ -13,7 +13,7 @@
         </li>
         <hr class="divider-x m-0 bg-maroon mx-2">
         <li>
-            <router-link class="dropdown-item" to="/shopCategory/1">Requested items</router-link>
+            <router-link class="dropdown-item" to="/requestedItems">Requested items</router-link>
         </li>
 
     </ul>

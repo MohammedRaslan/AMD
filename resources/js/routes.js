@@ -17,6 +17,7 @@ import AddSubscriptionsComponent from "./components/Admin/Subscription/ManageSub
 import DraftedComponent from "./components/Selling/DraftedComponent";
 import ShopComponent from "./components/ShopComponent.vue"
 import VendorComponent from "./components/VendorComponent"
+import RequestedComponent from "./components/RequestedComponent"
 import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
@@ -305,6 +306,11 @@ var routes = [{
         path: "/vendorCategory/:query?",
         component: VendorComponent,
         name: "VendorComponent",
+    },
+    {
+        path: "/requestedItems",
+        component: RequestedComponent,
+        name: "RequestedComponent",
     },
 
 ];

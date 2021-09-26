@@ -113,6 +113,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getUserOfferAndBidsProduct',[ProductController::class,'getUserOfferAndBidsProduct']);
         Route::get('getUserProductSold',[ProductController::class,'getUserProductSold']);
         // Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
+        Route::get('requestedProduct',[ProductController::class,'requestedProduct']);
+
     });
 
     Route::prefix('bid')->group(function(){
