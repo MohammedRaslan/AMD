@@ -159,7 +159,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-4">
-                                                                        <router-link to="/" class="form-control mb-3 btn btn-outline-offwhite"> Cancel</router-link>
+                                                                        <a @click="$router.go(-1)" class="form-control mb-3 btn btn-outline-white"> Cancel</a>
                                                                     </div>
                                                                     <div class="col-lg-8">
                                                                         <input type="submit" :disabled="form.busy" value="Publish Your Request" class="form-control btn-green" id="register">

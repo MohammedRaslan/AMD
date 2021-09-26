@@ -12,7 +12,7 @@
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                 </g>
                             </svg>
-                            <span>My favorites</span>
+                            <span>Favorites</span>
                         </div>
                     </div>
                 </div>

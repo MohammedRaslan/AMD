@@ -44,7 +44,7 @@ Latest commit 010ac2e 3 hours ago
                                         <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                     </g>
                                 </svg>
-                                <span>Selling</span>
+                                <span>Sell an Item</span>
                             </div>
                         </div>
                     </div>
@@ -62,9 +62,9 @@ Latest commit 010ac2e 3 hours ago
                  <div class="top-tabs p-0 mb-4">
                     <h1 class='py-3 py-lg-5'>Sell an Item <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
-            <!-- Compnent Here -->
-            <side-bar :openSlideBar='openSlideBar'></side-bar>
-            <!-- End Component  -->
+                <!-- Compnent Here -->
+                <side-bar :openSlideBar='openSlideBar'></side-bar>
+                <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content p-0">
@@ -323,7 +323,7 @@ Latest commit 010ac2e 3 hours ago
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-4">
-                                                                        <input type="button" value="Cancel" class="form-control mb-3 btn btn-outline-offwhite" >
+                                                                        <input @click="$router.go(-1)" type="button" value="Cancel" class="form-control mb-3 btn btn-outline-white" >
 
                                                                     </div>
                                                                     <div class="col-lg-4">
@@ -597,7 +597,7 @@ export default ({
                     this.$router.push('/selling/drafted');
                     return ;
                 }
-                this.$router.push('/product_shipping/'+response.data.product_id);
+                this.$router.push('/selling/sell_item/'+response.data.product_id);
             }).catch((error)=>{
                 this.$Progress.fail();
                 console.log(error);

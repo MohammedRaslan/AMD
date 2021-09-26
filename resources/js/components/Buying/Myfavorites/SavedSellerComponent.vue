@@ -12,7 +12,7 @@
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                 </g>
                             </svg>
-                            <span>Saved</span>
+                            <span>Favorites</span>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <!-- <h3 class="text-center text-green my-5">There are no saved Sellers</h3> -->
                     <div class="inner-saved-seller mb-5">
                         <div class="row">
-                            <!-- Block Item -->  
+                            <!-- Block Item -->
                             <div class="col-6 col-lg-3 mb-3" v-for="wishlist in wishlists" :key="wishlist.id" :id="'wishlist_'+wishlist.id">
                                 <div class="card-box text-center p-3">
                                     <router-link :to="'/vendorCategory/' + wishlist.id" class="d-block text-decoration-none">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
 
-           
+
 
                         </div>
                     </div>

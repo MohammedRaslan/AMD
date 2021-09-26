@@ -30,7 +30,6 @@
             <div class="row text-center">
                 <div class="col-lg-8 offset-lg-2">
                     <h2>SUBSCRIPTION PLANS</h2>
-                    <!--<p class="title">Home is behind, the world ahead and there are many paths to tread through shadows to the edge.</p>-->
                 </div>
             </div>
             <div class="row price-row">

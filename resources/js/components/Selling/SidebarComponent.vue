@@ -1,13 +1,13 @@
 <template>
     <div class="col-xl-2 col-md-6">
-        <div :class="{ 'd-block': openSlideBar }" class="slide-bar-taps header-taps header-taps-selling mb-lg-4" >
+        <div :class="{ 'd-block': openSlideBar }" class="slide-bar-taps slide-bar-taps-maroon header-taps header-taps-selling mb-lg-4" >
             <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <!-- Overview -->
                 <!-- <router-link to="/selling/overview" class="nav-link"  id="v-pills-home-tab">Overview</router-link>
                 <hr> -->
                 <!-- Sell an Item -->
                 <router-link to="/selling/sell_item" class="nav-link">
-                    Sell An Item
+                    Sell an Item
                 </router-link>
                 <hr>
                 <!-- My Items -->

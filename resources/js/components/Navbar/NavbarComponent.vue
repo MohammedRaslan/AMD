@@ -348,7 +348,7 @@
                         {{ first_name }}
                       </span></span
                     >
-                    <router-link class="" to="/settings"
+                    <router-link class="" to="/settings/personal"
                       ><span>{{ name }}</span></router-link>
                   </div>
                   <div class="dropdown drop-user1">
@@ -477,7 +477,7 @@
                       <li>
                         <router-link
                           class="dropdown-item"
-                          to="/settings"
+                          to="/settings/personal"
                           >Settings</router-link
                         >
                       </li>
