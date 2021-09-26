@@ -29,8 +29,6 @@ class StoreRequestItemRequest extends FormRequest
             'condition' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
             'description' => 'required|string',
-            'best_offer' => 'required|boolean',
-            'minimum_offer' => 'required|numeric',
         ];
     }
 }

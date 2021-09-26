@@ -386,9 +386,9 @@ export default ({
             brand : null,
             description: null,
             category_id: null,
-            best_offer: 1,
-            minimum_offer: null,
-            draft: 0,
+            best_offer: 0,
+            draft: 1,
+            price : 0,
         }),
         openSlideBar: false
     }),

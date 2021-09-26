@@ -56,10 +56,10 @@ class ChatRepository{
 
     public function getAllChat($user_id)
     {   
-        return Chat::select('id','user_id_from','user_id_to','product_id','created_at')
-                      ->where('status',1)
+        return Chat::select('id','user_id_from','user_id_to','product_id','created_at' , 'status')
                       ->where('user_id_from',$user_id)
                       ->orwhere('user_id_to',$user_id)
+                      ->where('status',1)
                       ->groupBy('user_id_to','user_id_from','product_id')
                       ->with('user_to')->with('user_from')->with('product')
                       ->get();
@@ -87,5 +87,17 @@ class ChatRepository{
                              ])->with('user_to')->with('user_from')->with('product')->orderBy('created_at','asc')->get();
                   
 
+    }
+
+
+    public function archiveChat($id)
+    {
+        $chat = Chat::find($id);
+         if ($chat) {
+            $chat->status = 0;
+            $chat->save();
+            return true;
+        }
+        return false;
     }
 }

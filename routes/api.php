@@ -72,6 +72,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('getMessages/{product_id}',[ChatController::class,'getMessages']);
         Route::get('getAllChat',[ChatController::class,'getAllChat']);
         Route::get('getChat/{id}',[ChatController::class,'getChat']);
+        Route::get('archiveChat/{id}',[ChatController::class,'archiveChat']);
     });
 
     Route::prefix('cms')->group(function(){

@@ -52,7 +52,7 @@ import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductC
 import SavedSellerComponent from "./components/Buying/Myfavorites/SavedSellerComponent.vue";
 import PurchasedProductComponent from "./components/Buying/PurchaseHistoryComponent.vue";
 var routes = [{
-        path: "/demo",
+        path: "/",
         component: HomeComponent,
         name: "home",
     },

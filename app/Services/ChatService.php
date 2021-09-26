@@ -42,4 +42,9 @@ class ChatService{
     {
         return $this->chatRepository->getChat($chat_id);
     }
+    
+    public function archiveChat($chat_id)
+    {
+        return $this->chatRepository->archiveChat($chat_id);
+    }
 }

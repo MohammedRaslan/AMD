@@ -59,7 +59,7 @@
                                                 <div class="col-2 text-maroon">{{ chat.created_at }}</div>
                                                 <div class="col-2 text-offwhite">
                                                     <button  class="btn btn-milky w-100 mb-2" @click="goToChat(chat.id)"> Open Chat</button>
-                                                    <button class="btn btn-danger w-100" disabled>Archive</button>
+                                                    <button class="btn btn-danger w-100" @click="archiveChat(chat.id)">Archive</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,6 +106,14 @@ export default ({
         },
         goToChat(id){
             this.$router.push("/chat/"+id);
+        },
+        archiveChat(id){
+            axios.get('/api/chat/archiveChat/' + id).then((response) => {
+            if(response.data.chat == true){
+                this.$router.go(0);
+
+            }
+        });  
         }
     },
     mounted(){

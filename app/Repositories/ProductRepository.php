@@ -468,15 +468,13 @@ class ProductRepository{
         $product->user_id = $user_id;
         $product->return_policy = 'NULL';
         $product->price = 0;
-        $product->best_offer = 1;
-        $product->best_offer_price = $data['minimum_offer'];
         $product->status  = 1;
         $product->image   = 'waiting';
         if($product->save()){
             $this->saveImage($data,$product);
-            $this->saveImages($product,$images);
             $product->categories()->attach($data['category_id']);
         }
+        return $product;
     }
 
     public function deleteProduct($user_id,$product_id)

@@ -38,4 +38,13 @@ class ChatController extends Controller
             'chat' => $response
         ]);
     }
+    
+    public function archiveChat(Request $request,$chat_id)
+    {
+        $response = $this->chatService->archiveChat($chat_id);
+        return response()->json([
+            'user_id' => $request->user()->id,
+            'chat' => $response
+        ]);
+    }
 }
