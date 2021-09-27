@@ -706,7 +706,6 @@ export default ({
     mounted(){
         this.id = this.$route.params.query;
         axios.get('/api/shop/getProduct/'+this.id).then((response) => {
-
             this.product = response.data.product;
             this.category = response.data.category;
             this.images  = response.data.product.images;
@@ -714,6 +713,7 @@ export default ({
             this.loading = true;
             this.bid_step_list = response.data.steps;
             this.currencyIcon = response.data.product.currencyIcon;
+            console.log(response);
             if(this.product.user.email == JSON.parse(localStorage.getItem('currentUser'))['email']){
                 this.author = true;
             }

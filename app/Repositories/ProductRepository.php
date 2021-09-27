@@ -303,15 +303,16 @@ class ProductRepository{
         $product->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
         $product->unsetRelation('wishlist');
         if($product->bid != null){
-            return ['product' => $product,
-                    'category' => $product->categories[0],
+            return [
+                'product' => $product,
+                'category' => $product->categories[0],
             'steps' => $this->biddingStepsForProduct($product->bid->step),
         
         ];
         
         }else{
             return ['product' => $product,
-                    
+            'category' => $product->categories[0],
         ];
         }
    
