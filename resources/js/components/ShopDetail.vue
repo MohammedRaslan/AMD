@@ -572,7 +572,7 @@
                         <div class="col-lg-4 parent-price-table" v-if="loading">
 
                             <div  v-if="loading">
-                                <Bidding v-if="product.type == 1" :bid="product.bid" :steps="bid_step_list" :author="author" :user_details="product.user_details"></Bidding>
+                                <Bidding :currency="product.currencyIcon" v-if="product.type == 1" :bid="product.bid" :steps="bid_step_list" :author="author" :user_details="product.user_details"></Bidding>
                             </div>
 
                             <div v-if="(loading && !author)">
