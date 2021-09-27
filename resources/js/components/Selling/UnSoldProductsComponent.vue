@@ -1,5 +1,5 @@
 <template>
-    <div  v-if="renderComponent">
+    <div>
             <section class="breadcrumb-option">
         <div class="container">
             <div class="row">
@@ -12,7 +12,7 @@
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                 </g>
                             </svg>
-                            <span>Drafte Items</span>
+                            <span>Unsold Items</span>
                         </div>
                     </div>
                 </div>
@@ -27,15 +27,16 @@
         <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-               <div class="top-tabs p-0 mb-4">
-                    <h1 class='py-3 py-lg-5'>Drafte Items<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
+                <div class="top-tabs p-0 mb-4">
+                    <h2 class='py-3 py-lg-5'>UnSold Items<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                 </div>
+
             <!-- Compnent Here -->
-                <side-bar :openSlideBar='openSlideBar'></side-bar>
+            <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h2 v-if="message != '' " class="text-center">{{message}}</h2>
-                    <div class="tab-content"  v-for="product in products.data" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
+                    <h3 v-if="message != '' " class="text-center message-error my-5">{{message}}</h3>
+                    <div class="tab-content"  v-for="product in products" :key="product.id" :id="'v-pills-tabContent product_'+product.id">
                         <div class="inner-content">
                             <!-- Tab1 Overview -->
                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -76,8 +77,7 @@
                                                     <button class="btn btn-secondary"><router-link :to="{name: 'EditProductComponent', params:{id: product.id}}">Edit</router-link></button>
                                                 </div>
                                                 <div class="inner">
-                                                    <!-- <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button> -->
-                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)">Delete</button>
+                                                    <button class="btn btn-outline-danger" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button>
                                                 </div>
                                            </div>
                                         </div>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <pagination :data="products" @pagination-change-page="getProducts"></pagination>
+            <!-- <pagination :data="products" @pagination-change-page="getProducts"></pagination>    -->
         </div>
     </section>
     <!-- Latest Blog Section End -->
@@ -103,10 +103,9 @@ import SideBar from "./SidebarComponent";
 export default ({
     data :()=>({
         loading : false,
-        products: {},
+        products: [],
         message : '',
-        openSlideBar: false,
-        renderComponent : true
+        openSlideBar: false
     }),
     components:{
         SideBar,
@@ -117,35 +116,12 @@ export default ({
             return str;
         },
         deleteProduct(id){
-             Swal.fire({
-                title: 'Are you sure you want <br/> to delete this item?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#fd1266',
-                cancelButtonColor: 'gray',
-                confirmButtonText: 'Yes, delete it!',
-                width: 600,
-            }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-                axios.get('/api/product/deleteProduct/'+id).then((response) =>{
-                    if(response.data){
-
-                    this.$router.go(0);
-                    }
-                });
-            }
-        })
-            // axios.get('/api/product/deleteProduct/'+id).then((response) =>{
-            //     if(response.data){
-            //        var elm = document.getElementById('product_'+id).remove();
-            //        elm.parentNode.removeChild(elm);
-            //     }
-            // });
+            axios.get('/api/product/deleteProduct/'+id).then((response) =>{
+                if(response.data){
+                   var elm = document.getElementById('product_'+id).remove();
+                   elm.parentNode.removeChild(elm);
+                }
+            });
         },
         complete(draft){
             this.$router.push({
@@ -156,10 +132,12 @@ export default ({
             });
             },
         getProducts(page = 1){
-            axios.get('/api/product/getUserProductDrafted?page=' + page).then((response) => {
-            this.products = response.data;
-              if(this.products.data.length == 0 ){
+            //  this.message = 'You dont have products';
+            axios.get('/api/product/getUserProductSold').then((response) => {
+              if(response.data.length == 0 ){
                 this.message = 'You dont have products';
+                }else{
+                    this.products = response.data;
                 }
         });
         }
@@ -172,10 +150,6 @@ export default ({
         // console.log(window.location.origin, this.$route);
         this.$Progress.finish();
         this.getProducts();
-        // Swal.fire('You can not Remove this item!')
-
-
-
     }
 })
 </script>

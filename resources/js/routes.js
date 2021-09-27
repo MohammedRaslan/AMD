@@ -51,6 +51,7 @@ import NotificationMessageComponent from "./components/ChatCenter/NotificationCo
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 import RequestItemComponent from "./components/Buying/RequestItemComponent.vue";
 import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
+import UnSoldProductsComponent from "./components/Selling/UnSoldProductsComponent.vue";
 import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductComponent.vue";
 import SavedSellerComponent from "./components/Buying/Myfavorites/SavedSellerComponent.vue";
 import PurchasedProductComponent from "./components/Buying/PurchaseHistoryComponent.vue";
@@ -75,7 +76,7 @@ var routes = [{
         name: "NotificationMessageComponent",
     },
     {
-        path: "/settings",
+        path: "/settings/personal",
         component: InformationComponent,
         name: "InformationComponent",
     },
@@ -140,6 +141,11 @@ var routes = [{
         name: "SoldProductsComponent",
     },
     {
+        path: "/selling/unsold",
+        component: UnSoldProductsComponent,
+        name: "UnSoldProductsComponent",
+    },
+    {
         path: "/buying/requestItem",
         component: RequestItemComponent,
         name: "RequestItemComponent",
@@ -181,7 +187,7 @@ var routes = [{
     //     name: "ProductCreateStepTwo",
     // },
     {
-        path: "/product_shipping/:id?",
+        path: "/selling/sell_item/:id?",
         component: CreateProductShippingComponent,
         name: "ProductCreateShipping",
     },

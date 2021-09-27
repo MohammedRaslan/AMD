@@ -4098,13 +4098,13 @@ header .header__menu>ul>li:nth-of-type(2):hover {
     background-color: #9F72FC;
     margin-right: 10px;
     position: absolute;
-    left: 21px;
     margin-top: 7px;
 }
 
-.price-row span.data.data2::before {
+
+/* .price-row span.data.data2::before {
     left: -8px;
-}
+} */
 
 
 /***************************************/

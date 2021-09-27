@@ -26,7 +26,7 @@
                                         />
                                     </g>
                                 </svg>
-                                <span>Selling</span>
+                                <span>Sell an Item</span>
                             </div>
                         </div>
                     </div>
@@ -529,7 +529,7 @@
                                                                 </div>
                                                                 <div class="row pt-3">
                                                                     <div class="col-lg-4 mb-3">
-                                                                        <input type="button" @click="GoBack" value="Back" class="form-control mb-0 btn-outline-offwhite h-40"/>
+                                                                        <input type="button" @click="GoBack" value="Back" class="form-control mb-0 btn-outline-white h-40"/>
                                                                     </div>
                                                                     <div class="col-lg-4 mb-3">
                                                                         <input type="button" @click="draft" value="Save as Draft" class="form-control mb-0 h-40 btn btn-gray" id="draft"/>
@@ -685,18 +685,6 @@ export default {
                     this.$Progress.fail();
                     console.log(error);
                 });
-            // if(this.form.usa === false && this.form.world_wide === false) {
-            //     if(this.form.usa === 0 && this.form.world_wide === 0) {
-
-            //         console.log(this.form.usa);
-            //         console.log('this.form.usa');
-            //         console.log(this.form.world_wide);
-            //         }
-            //         else{
-
-            //         }
-
-            // }
 
         },
 

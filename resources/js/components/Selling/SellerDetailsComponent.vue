@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="row">
                     <div class="top-tabs p-0 mb-4">
-                        <h2 class='py-3 py-lg-5'>Default Info <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                        <h2 class='py-3 py-lg-5'>Seller Details <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
                     </div>
                 <!-- Compnent Here -->
                 <side-bar :openSlideBar='openSlideBar'></side-bar>
@@ -38,7 +38,7 @@
                                     <!-- Block Item -->
                                     <div class="inner-item">
                                         <div class="row">
-                                            <div class="col-lg-12 detalis border-0 p-0">
+                                            <div class="col-lg-12 detalis border-0">
                                                     <div class="signup bg-transparent">
                                                         <div class="row text-center pt-0">
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -60,6 +60,25 @@
                                                                             <div v-if="form.errors.has('currency')" class="alert alert-danger" v-html="form.errors.get('currency')" />
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="row mb-4 px-2">
+                                                                        <label class="text-offwhite text-left">Unit Measurement</label>
+                                                                        <div class="col-lg-6">
+                                                                           <div class="inner">
+                                                                                <div class="custom_radio">
+                                                                                    <input type="radio" id="usa" name="is_american"  v-model="form.is_american" value="1"><label for="usa" class="text-offwhite">American</label>
+                                                                                </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="inner">
+                                                                                <div class="custom_radio">
+                                                                                    <input type="radio" id="worldwide-cur" name="is_american" v-model="form.is_american" value="0"><label for="worldwide-cur" class="text-offwhite">Metric</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="row">
                                                                             <div class="col-12 text-left">
                                                                                 <label class="text-offwhite" for="cats">Service USA</label>
@@ -73,12 +92,13 @@
                                                                             </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                            <div class="col-12 text-left">
-                                                                                <label class="text-offwhite" for="cats">PayPal Account</label>
-                                                                                <input type="email" v-model="form.paypal_account" class="form-control" id="fName" placeholder="PayPal Account" >
-                                                                                <div v-if="form.errors.has('paypal_account')" class="alert alert-danger" v-html="form.errors.get('paypal_account')" />
-                                                                            </div>
+                                                                        <div class="col-12 text-left">
+                                                                            <label class="text-offwhite" for="cats">PayPal Account</label>
+                                                                            <input type="email" v-model="form.paypal_account" class="form-control" id="fName" placeholder="PayPal Account" >
+                                                                            <div v-if="form.errors.has('paypal_account')" class="alert alert-danger" v-html="form.errors.get('paypal_account')" />
+                                                                        </div>
                                                                     </div>
+
                                                                     <div class="row">
 
                                                                         <div class="col-lg-6">
@@ -107,22 +127,7 @@
                                                                             <div v-if="form.errors.has('worldwide')" class="alert alert-danger" v-html="form.errors.get('worldwide')" />
                                                                         </div> -->
                                                                     </div>
-                                                                    <div class="row mb-4 px-2">
-                                                                        <div class="col-lg-6">
-                                                                           <div class="inner">
-                                                                                <div class="custom_radio">
-                                                                                    <input type="radio" id="usa" name="is_american"  v-model="form.is_american" value="1"><label for="usa" class="text-offwhite">American</label>
-                                                                                </div>
-                                                                           </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="inner">
-                                                                                <div class="custom_radio">
-                                                                                    <input type="radio" id="worldwide-cur" name="is_american" v-model="form.is_american" value="0"><label for="worldwide-cur" class="text-offwhite">Metric</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+
                                                                     <div class="row">
 
                                                                         <div class="col-12">

@@ -676,15 +676,15 @@ export default ({
             return str;
         },
            addToVendorWishlist(vendor_id){
-               
+
                 axios.get('/api/product/AddToVendorWishlist/'+vendor_id).then((response) => {
                     if(response.data.status == 'added'){
-                      this.iconSeller = !this.iconSeller;          
+                      this.iconSeller = !this.iconSeller;
                     }
                 });
-            
+
         },
-        
+
 
 
     },

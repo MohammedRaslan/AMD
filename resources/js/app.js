@@ -81,6 +81,10 @@ router.beforeEach((to, from, next) => {
     }
     next()
 })
+
+
+
+
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 var app = new Vue({

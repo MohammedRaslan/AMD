@@ -13,7 +13,7 @@
                                     <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                 </g>
                             </svg>
-                            <span>Settings</span>
+                            <span>Address Info</span>
                         </div>
                     </div>
                 </div>
@@ -25,14 +25,14 @@
 
     <!-- Latest Blog Section Begin -->
     <section class="selling">
-        <div class="over-lay-selling d-none"></div>
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <div class="top-tabs">
-                    <h2 class="text-milky">Address Info <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
+                <div class="top-tabs p-0 mb-4">
+                    <h1 class='py-3 py-lg-5 text-milky'>Address Info  <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
 
-                <side-bar></side-bar>
+                <side-bar :openSlideBar='openSlideBar'></side-bar>
 
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
@@ -43,8 +43,9 @@
                                     <div class="col-lg-12">
                                         <div class="row">
 
-                                              <div v-show="message != ''" class="alert alert-success" v-html="message"/>
+                                            <div v-show="message != ''" class="alert alert-success" v-html="message"/>
                                             <div class="col-12">
+                                                <label for="fName" class="text-offwhite">Address</label>
                                                 <input
                                                 type="text"
                                                 v-model="form.address"
@@ -63,6 +64,7 @@
                                             </div>
 
                                             <div class="col-12 col-lg-6">
+                                                <label for="lName" class="text-offwhite">City</label>
                                                 <input
                                                     type="text"
                                                     v-model="form.city"
@@ -81,6 +83,7 @@
                                             </div>
 
                                         <div class="col-12 select-product col-lg-6 pb-3">
+                                            <label for="cats" class="text-offwhite">Country</label>
                                             <v-select
                                                 class="select-country"
                                                 placeholder="Select Country"
@@ -142,6 +145,7 @@ export default {
             city: null,
             country: null,
         }),
+        openSlideBar: false
      }),
 
      components:{
