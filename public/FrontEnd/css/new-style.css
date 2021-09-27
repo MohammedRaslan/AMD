@@ -7,6 +7,10 @@
   display: block !important;
 }
 
+.opacity-100 {
+  opacity: 1 !important;
+}
+
 .text-offwhite {
   color: #ffe0e0 !important;
 }
@@ -807,6 +811,10 @@ input:disabled {
 }
 svg.img-subscription {
   max-height: 650px;
+}
+
+.subscriptions .inner {
+  border: 1px solid #fd1266;
 }
 
 .slide-bar-taps .nav-link {

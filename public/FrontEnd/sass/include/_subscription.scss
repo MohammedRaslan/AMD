@@ -2,4 +2,8 @@ svg.img-subscription {
     max-height: 650px;
 }
 
-.subscriptions {}
+.subscriptions {
+    .inner {
+        border: 1px solid $maroon;
+    }
+}

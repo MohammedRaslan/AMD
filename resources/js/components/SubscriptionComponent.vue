@@ -34,10 +34,10 @@
             </div>
             <div class="row price-row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner first" id="first">
+                    <div class="inner px-2 h-100 first" id="first">
                         <p class="type">Regular</p>
                         <h3>FREE</h3>
-                        <hr>
+                        <hr class="opacity-100 bg-white">
                         <p><span class="data"></span> 50 Free Listings monthly</p>
                         <p><span class="data"></span> Selling Fee 9% unlimited
                             <br>
@@ -49,10 +49,10 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner second" id="second">
+                    <div class="inner px-2 h-100 second" id="second">
                         <p class="type">Silver</p>
                         <h3>$ 19.99 /mo</h3>
-                        <hr>
+                        <hr class="opacity-100 bg-white">
                         <p><span class="data data2"></span>100 Free Listings Monthly</p>
                         <p><span class="data data2"></span>7% final value fee on the first 10 items sold.</p>
                         <p><span class="data data2"></span>Unlimited 8% final value fee on the 11th item sold</p>
@@ -61,10 +61,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner third" id="third">
+                    <div class="inner px-2 h-100 third" id="third">
                         <p class="type">Gold</p>
                         <h3>$ 49.99 /mo</h3>
-                        <hr>
+                        <hr class="opacity-100 bg-white">
                         <p><span class="data data2"></span>250 Free Listings</p>
                         <p><span class="data data2"></span>No final value fee on the first 2 items sold</p>
                         <p><span class="data data2"></span>Unlimited 7% final value fee on the 3rd item sold</p>
@@ -73,10 +73,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner fourth" id="fourth">
+                    <div class="inner px-2 h-100 fourth" id="fourth">
                         <p class="type">Platinum</p>
                         <h3>$ 99.99 /mo</h3>
-                        <hr>
+                        <hr class="opacity-100 bg-white">
                         <p><span class="data data2"></span>500 Free Listings</p>
                         <p><span class="data data2"></span>No final value fee on the first 5 items sold</p>
                         <p><span class="data data2"></span>5% final value fee on the next 25 items sold</p>
@@ -109,29 +109,29 @@
 </template>
 <style scoped>
 /*********** first active*************************/
-.subscriptions .price-row>div .inner.first.first-hover p.type , .subscriptions .price-row>div .inner.first.first-hover h3{
+/* .subscriptions .price-row>div .inner.first.first-hover p.type , .subscriptions .price-row>div .inner.first.first-hover h3{
     color: #fff !important;
-}
-   .subscriptions .price-row>div .inner.first.first-hover{
+} */
+   /* .subscriptions .price-row>div .inner.first.first-hover{
         background-color: #22B3EB;
         z-index: 1;
-    }
-.subscriptions .price-row>div .inner.first.first-hover span.data{
+    } */
+/* .subscriptions .price-row>div .inner.first.first-hover span.data{
         display: none;
-    }
+    } */
 
-    .subscriptions .price-row>div:last-of-type .inner.first.first-hover{
+    /* .subscriptions .price-row>div:last-of-type .inner.first.first-hover{
         transform: translate(2px , -47px);
-    }
+    } */
 
-    .subscriptions .price-row>div .inner.first.first-hover{
+    /* .subscriptions .price-row>div .inner.first.first-hover{
         padding-top: 55px;
         transition: all 0.4s ease-in-out;
         transition: padding 0.1s;
         height: 100%;
-    }
+    } */
 
-    .subscriptions .price-row>div .inner.first.first-hover{
+    /* .subscriptions .price-row>div .inner.first.first-hover{
 
         position: absolute;
         height: auto;
@@ -146,7 +146,7 @@
      .subscriptions .price-row>div .inner.first.first-hover a{
          display: block;
          padding-top: 5px;
-     }
+     } */
 /************** end first active******************************** */
 
 /*********** second active*************************/
