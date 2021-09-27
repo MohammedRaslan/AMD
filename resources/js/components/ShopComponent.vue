@@ -35,10 +35,12 @@
                     <div class="inner-sort col-sm-6 col-6">
                         <label class="text-green fs-14">Filter by</label>
                         <div class="nice-select form-select1  d-block" tabindex="0">
-                            <span class="current">Price Low to High</span>
+                            <span class="current">All</span>
                             <ul class="list">
-                                <li data-value="Price Low to High" class="option selected">Price Low to High</li>
-                                <li data-value="1" class="option">Price High to Low</li>
+                                <li>All</li>
+                                <li data-value="All" class="option selected">All</li>
+                                <li data-value="1" class="option">Auchion</li>
+                                <li data-value="2" class="option">Listing</li>
                             </ul>
                         </div>
                     </div>
@@ -59,6 +61,7 @@
                     <div class="nice-select form-select d-block" tabindex="2">
                         <span class="current">Show 20 Items</span>
                         <ul class="list">
+                            <li>Show 20 Items</li>
                             <li data-value="Show 20 Items" class="option selected">Show 20 Items</li>
                             <li data-value="1" class="option">Show 40 Items</li><li data-value="2" class="option">Show 60 Items</li>
                         </ul>

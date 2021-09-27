@@ -730,6 +730,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        transition: .3s;
     }
 
     .subscriptions .price-row>div .inner:hover,
@@ -739,6 +740,7 @@
         transition: padding 0.1s;
         background-position: bottom;
         border-color: transparent;
+        transition: .3s;
     }
 
     @media (min-width: 1200px) {
