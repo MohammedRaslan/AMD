@@ -115,11 +115,11 @@
                                                                         <form class="row mt-4 border-0 p-0">
                                                                             <div class="col-lg-6 text-left">
                                                                                 <label class="text-offwhite" for="">From <span v-html="currencyIcon"></span></label>
-                                                                                <input type="text" class="form-control" id="" placeholder="" required>
+                                                                                <input type="text" class="form-control" id="" v-model="form.price_from" placeholder="" required>
                                                                             </div>
                                                                             <div class="col-lg-6 text-left">
                                                                                 <label class="text-offwhite" for="">To <span v-html="currencyIcon"></span></label>
-                                                                                <input type="text" class="form-control" id="" placeholder="" required>
+                                                                                <input type="text" class="form-control" id="" placeholder=""  v-model="form.price_to" required>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -386,7 +386,8 @@ export default ({
             brand : null,
             description: null,
             category_id: null,
-            best_offer: 0,
+            price_from: null,
+            price_to : null,            
             draft: 1,
             price : 0,
         }),

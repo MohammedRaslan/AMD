@@ -1,10 +1,10 @@
 <template>
     <div>
-        <section class="dells">
+        <section class="dells" :style="'background-image:' + category.image +';'">
             <div class="dells-top">
                 <div class="inner-top">
                     <div class="container">
-                        <h2>Dolls</h2>
+                        <h2>{{category.title}}</h2>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                                             <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                         </g>
                                     </svg>
-                                    <span>Dolls</span>
+                                    <span>{{category.title}}</span>
                                 </div>
                             </div>
                         </div>
@@ -138,6 +138,7 @@ export default {
         id : null,
         loading: true,
         products:{},
+        category : {}
     }),
      components: {
         Wishlist,
@@ -153,14 +154,23 @@ export default {
             this.products = response.data;
             this.$Progress.finish();
             this.loading = false;
-                        console.log(response);
 
         });
-        }
+    },
+        getCategory: function(){
+            this.id = this.$route.params.query;
+            axios.get('/api/getCategory/'+this.id).then((response) =>{
+            this.category = response.data;
+            this.$Progress.finish();
+            this.loading = false;
+
+        });
+    }
     },
    mounted(){
         Fire.$emit('mounted');
         this.getProducts();
+        this.getCategory();
    }
 }
 </script>

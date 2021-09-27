@@ -177,6 +177,7 @@ Route::middleware('auth:api')->group(function () {
     
 });
 Route::get('category/get/{flag?}',[CategoryController::class,'get']);
+Route::get('getCategory/{id}',[CategoryController::class,'getCategory']);
 
 Route::get('guest/getCategoryProducts/{id?}',[CategoryController::class,'categoryProducts']);
 Route::get('getCountries',[RegisterController::class,'getCountries']);

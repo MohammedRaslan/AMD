@@ -57,6 +57,11 @@
                 <label for="exampleInputPassword1">Order</label>
                 <input type="number" min="0" class="form-control" v-model="form.order" id="exampleInputPassword1">
             </div>
+              <div class="col-12 mb-3 upload-img">
+                    <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
+                       <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
+                    <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
+               </div>
             <div class="modal-footer">
                 <button type="button" class="close btn btn-secondary" @click="closeModal" data-dismiss="modal">Close</button>
                 <button type="submit" :disabled="form.busy" class="btn btn-primary">Save changes</button>
@@ -74,9 +79,11 @@
 
 import Datatable from './Datatable/Datatable.vue';
 import Pagination from './Datatable/Pagination.vue';
+import UploadImages from "vue-upload-drop-images";
+
 export default {
     
-    components: { datatable: Datatable, pagination: Pagination },
+    components: { datatable: Datatable, pagination: Pagination ,  UploadImages, },
     created() {
         this.getCategories();
     },
@@ -87,6 +94,7 @@ export default {
             {label: '#'},
             {label: 'title', name: 'title'},
             {label: 'order', name: 'order'},
+            {label: 'image', name: 'image'},
             {label: 'status', name: 'status' },
         ];
 
@@ -95,9 +103,11 @@ export default {
         });
         return {
             categories: [],
+            imagenull: false,
             form : new form({
                 title : null,
                 order : null,
+                image : null
             }),
             columns: columns,
             sortKey: 'id',
@@ -139,6 +149,9 @@ export default {
                     console.log(errors);
                 });
         },
+     handleImages(files){
+            this.form.image = files;
+          },
         configPagination(data) {
             this.pagination.lastPage = data.last_page;
             this.pagination.currentPage = data.current_page;
@@ -164,7 +177,7 @@ export default {
             const response = await this.form.post('/api/category/store').then((response) => {
                 this.categories.push(response.data);
                 this.$Progress.finish();
-                this.form.reset();
+                //this.form.reset();
             });
         },
         async changeStatus(id){

@@ -180,6 +180,7 @@
                                                                                     <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                         <div class="inner-save inner-save1 w-100">
                                                                                             <form action="" class="border-0 px-0">
+                                                                                            <label for="#listing1" class='text-offwhite'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
                                                                                                 <input class="form-control mt-3" v-model="form.price" id='listing1' type="number" placeholder="Price">
                                                                                             </form>
                                                                                         </div>
@@ -245,7 +246,7 @@
                                                                                 <div class="row text-left">
 
                                                                                         <div class="col-lg-4">
-                                                                                            <label class="text-white" for="cats">Item Size</label>
+                                                                                            <label class="text-white" for="cats">Item Size {{is_american ==1? "(in)" : "(cm)" }}</label>
                                                                                             <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Item size" >
                                                                                             <div v-if="form.errors.has('doll_size')" class="alert alert-danger" v-html="form.errors.get('doll_size')" />
                                                                                         </div>
@@ -640,6 +641,8 @@ export default ({
                   this.form.bid_minimum_price = this.product.bid.minimum_price;
                   this.form.step = this.product.bid.step;
             }
+            this.currencyIcon = response.data.currencyIcon;
+            this.is_american = response.data.is_american;
             this.load = true;
         });
     }

@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
-
-@kiroSamirI
-MohammedRaslan
-/
-AMD
-Public
-1
-00
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-AMD/resources/js/components/Selling/CreateProductComponent.vue
-@mohamedelkamary5
-mohamedelkamary5 done fix sell & buy & shop details & q navbar
-Latest commit 010ac2e 3 hours ago
- History
- 4 contributors
-@MohammedRaslan@mohamedelkamary5@haidyeed@kiroSamirI
-597 lines (573 sloc)  40.8 KB
 
 <template>
     <div>
@@ -157,16 +126,7 @@ Latest commit 010ac2e 3 hours ago
                                                                 </div>
                                                                 <div class="row listing-type">
                                                                     <h3 class="text-left text-maroon mt-3">Selling Format <span class="requiredItem text-maroon">*</span></h3>
-                                                                    <!-- <form class="row mt-4 border-0 p-0">
-                                                                        <div class="col-lg-4">
-                                                                            <input class="radio-custom"  id="radio-1" name="radio-group" type="radio" checked>
-                                                                            <label class="radio-custom-label" for="radio-1">Listing Product</label>
-                                                                        </div>
-                                                                        <div class="col-lg-7">
-                                                                            <input class="radio-custom" id="radio-2" name="radio-group" type="radio">
-                                                                            <label class="radio-custom-label" for="radio-2">… or Bidding Product</label>
-                                                                        </div>
-                                                                    </form> -->
+                                                                    
                                                                     <nav>
                                                                         <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                             <!-- data-bs-target="#nav-home" -->
@@ -257,7 +217,7 @@ Latest commit 010ac2e 3 hours ago
                                                                             <div class="row text-left">
 
                                                                                     <div class="col-lg-4">
-                                                                                        <label class="text-offwhite" for="cats">Item Size</label>
+                                                                                        <label class="text-offwhite" for="cats">Item Size {{is_american ==1? "(in)" : "(cm)" }}</label>
                                                                                         <input type="text" v-model="form.doll_size" class="form-control" id="fName" placeholder="Item size" >
                                                                                         <div v-if="form.errors.has('doll_size')" class="alert alert-danger" v-html="form.errors.get('doll_size')" />
                                                                                     </div>
@@ -620,6 +580,7 @@ export default ({
         Fire.$emit('mounted');
         this.$Progress.finish();
         axios.get('/api/product/getProductData').then((response) => {
+            console.log(response.data);
             this.types = response.data.types;
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
@@ -627,6 +588,7 @@ export default ({
             this.policies = response.data.return_policy;
             this.bid_step = response.data.bidding_step;
             this.currencyIcon = response.data.currencyIcon;
+            this.is_american = response.data.is_american;
         });
     }
 })

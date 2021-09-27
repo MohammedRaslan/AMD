@@ -69,6 +69,7 @@ class ProductRepository{
                 'bidding_step' => $this->biddingSteps(),
                 "product" => $id != NULL ?  Product::where('id',$id)->with(['categories','bid','images'])->first() : null,
                 'currencyIcon' => CurrencyIconsEnum::getValue($userDetails->currency),
+                'is_american' => $userDetails->is_american,
                 ];
     }
     public function fixConditions($conditions)
@@ -303,6 +304,7 @@ class ProductRepository{
         $product->unsetRelation('wishlist');
         if($product->bid != null){
             return ['product' => $product,
+                    'category' => $product->categories[0],
             'steps' => $this->biddingStepsForProduct($product->bid->step),
         
         ];
@@ -490,6 +492,8 @@ class ProductRepository{
         $product->user_id = $user_id;
         $product->return_policy = 'NULL';
         $product->price = 0;
+        $product->price_from = $data['price_from'];
+        $product->price_to = $data['price_to'];
         $product->status  = 1;
         $product->image   = 'waiting';
         if($product->save()){

@@ -14,14 +14,14 @@
                                         <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0" />
                                     </g>
                                 </svg>
-                                <router-link to="/shopCategory/1">Category</router-link>
+                                <router-link :to="'/shopCategory/' + category.id">{{category.title }}</router-link>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6">
                                     <g id="Icon_20_Grey_Dropdown" data-name="Icon / 20 / Grey / Dropdown"
                                         transform="translate(-8 13) rotate(-90)">
                                         <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0" />
                                     </g>
                                 </svg>
-                                <span>Luxurious Dolls</span>
+                                <span>{{ product.title}}</span>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                             <div class="product__details__content">
                                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                                             <svg xmlns="http://www.w3.org/2000/svg" id="Icon_menu_leftpoint_outline"
                                                 width="18" height="14" viewBox="0 0 18 14">
                                                 <path id="Path" d="M0,1A1,1,0,0,1,1,0H13a1,1,0,0,1,0,2H1A1,1,0,0,1,0,1Z"
@@ -210,8 +210,8 @@
                                             </svg>
                                         </button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <li v-if="product.type != 2" class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13"
                                                 viewBox="0 0 20 13">
                                                 <g id="Icon_20_Grey_Shopping_Cart"
@@ -232,7 +232,7 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <div class="fs-20 shop-details-table mt-3">
                                             <div class="row">
                                                 <table class="table-responsive table-borderless table px-0">
@@ -275,7 +275,7 @@
                                         </div>
                                     </div>
 
-                                    <div id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" class="tab-pane fade active show">
+                                    <div v-if="product.shipping" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" class="tab-pane fade">
                                         <div class="shipping-details mt-3 mb-4">
                                            <!-- Package Details -->
                                             <div class="row shipping-poll py-3" v-if="shipping.package_details == 'details'">
@@ -582,6 +582,9 @@
                             <div v-if="author && product.best_offer">
                                 <ListOffers :id="product.id"></ListOffers>
                             </div>
+                             <div v-if="!author && product.type ==2">
+                                <OffertItem :id="product.id"></OffertItem>
+                            </div>
                             <ChatWidget
                                     :productUserID="product.user_id"
                                     :productUserName="product.user.user_name"
@@ -635,6 +638,7 @@ import MakeOfferWidget from "./widgets/MakeOfferComponent";
 import ChatWidget from "./widgets/ChatComponent";
 import Wishlist from "./widgets/WishlistComponent";
 import ListOffers from "./widgets/ShowOffersComponent"
+import OffertItem from "./widgets/OffertItemComponenet"
 import Bidding from "./widgets/BiddingComponent";
 import carousel from 'vue-owl-carousel'
 export default ({
@@ -643,6 +647,7 @@ export default ({
         product: {
             user : {}
         },
+        category : {},
         loggedUser: null,
         images:{},
         loading : false,
@@ -663,6 +668,7 @@ export default ({
         ListOffers,
         Bidding,
         carousel,
+        OffertItem,
     },
     methods:{
         str_replace: function(str){
@@ -702,7 +708,7 @@ export default ({
         axios.get('/api/shop/getProduct/'+this.id).then((response) => {
 
             this.product = response.data.product;
-            console.log(this.product);
+            this.category = response.data.category;
             this.images  = response.data.product.images;
             this.shipping = response.data.product.shipping;
             this.loading = true;

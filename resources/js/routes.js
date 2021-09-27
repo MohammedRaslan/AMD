@@ -6,6 +6,8 @@ import RegisterComponent from "./components/Auth/RegisterComponent";
 import verifyComponent from "./components/Auth/VerifyMailComponent";
 import OverviewComponent from "./components/Selling/OverviewComponent";
 import CreateProductComponent from "./components/Selling/CreateProductComponent";
+import OfferProductComponent from "./components/Selling/OfferProductComponent";
+import CreateOfferShippingComponent from "./components/Selling/CreateOfferShippingComponent";
 // import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
 import CreateProductShippingComponent from "./components/Selling/CreateProductShipping";
 import ActiveProductComponent from "./components/Selling/ActiveProductComponent";
@@ -53,7 +55,7 @@ import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductC
 import SavedSellerComponent from "./components/Buying/Myfavorites/SavedSellerComponent.vue";
 import PurchasedProductComponent from "./components/Buying/PurchaseHistoryComponent.vue";
 var routes = [{
-        path: "/demo",
+        path: "/",
         component: HomeComponent,
         name: "home",
     },
@@ -123,6 +125,11 @@ var routes = [{
         name: "ProductCreate",
     },
     {
+        path: "/offer_item/:id?",
+        component: OfferProductComponent,
+        name: "OfferCreate",
+    },
+    {
         path: "/selling/active_product",
         component: ActiveProductComponent,
         name: "ActiveProduct",
@@ -177,6 +184,11 @@ var routes = [{
         path: "/product_shipping/:id?",
         component: CreateProductShippingComponent,
         name: "ProductCreateShipping",
+    },
+    {
+        path: "/offer_shipping/:id?",
+        component: CreateOfferShippingComponent,
+        name: "OfferCreateShipping",
     },
     {
         path: "/selling/drafted",

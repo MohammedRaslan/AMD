@@ -15,12 +15,23 @@ class CategoryRepository{
     public function __construct(Category $category) {
         $this->category = $category;
     }
-
+    public function saveImage($data,$category)
+    {         
+            $file = $data[0];
+            $fileName = time() . '.'. $file->getClientOriginalExtension();
+            $file->storeAs('public/categorys/',$fileName);
+            return 'public/categorys/'.$fileName;
+           
+           
+        
+    }
     public function store($data)
     {
+        //dd($data['image']);
         return Category::create([
             'title' => $data['title'],
             'order' => $data['order'],
+            'image' => $this->saveImage($data['image'] ,""),
             'status' => 1,
         ]);
     }
@@ -42,6 +53,12 @@ class CategoryRepository{
         }
         return Category::select('id','title')->where('status',1)->with('products')->get();
     }
+    
+    public function getCategory($id)
+    { 
+        
+            return Category::find($id);
+         }
 
     public function categoryProducts($user_id,$id)
     {

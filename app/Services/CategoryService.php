@@ -27,6 +27,11 @@ class CategoryService{
     {
         return $this->categoryRepository->get($flag);
     }
+    
+    public function getCategory($id)
+    {
+        return $this->categoryRepository->getCategory($id);
+    }
 
     public function categoryProducts($user_id,$id)
     {
