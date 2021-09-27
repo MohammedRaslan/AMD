@@ -683,14 +683,15 @@
         font-size: 14px;
         font-weight: 400;
         color: #ffe0e0;
+        position: relative;
+        display: inline-block;
     }
-
-    .subscriptions .price-row p:last-of-type {
+    /* .subscriptions .price-row p:last-of-type {
         margin-bottom: 30px;
-    }
+    } */
 
     .subscriptions .price-row .btn {
-        display: none;
+        /* display: none; */
         margin: 40px auto;
         height: 40px;
         width: 120px;
@@ -704,7 +705,7 @@
     }
 
     .subscriptions .price-row .btn:hover {
-        background: #fd1266 !important;
+        background: transparent !important;
         color: white;
         border: 2px solid white;
     }
@@ -725,25 +726,35 @@
         transition: all 0.4s ease-in-out;
         transition: padding 0.1s;
         height: 100%;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    .subscriptions .price-row>div .inner:hover {
-        /* position: absolute; */
-        /* height: auto; */
-        /* width: 100%; */
+    .subscriptions .price-row>div .inner:hover,
+    .subscriptions .price-row>div .inner.current-subscription {
         border-radius: 23px;
         transition: all 0.4s ease-in-out;
         transition: padding 0.1s;
         background-position: bottom;
-        /* transform: translate(-2px, -47px); */
-    }
-    /*background: url("./../images/Plan-Bg.png");*/
-
-    .subscriptions .price-row>div .inner:hover span.data {
-        display: none;
+        border-color: transparent;
     }
 
-    .subscriptions .price-row>div .inner.first:hover {
+    @media (min-width: 1200px) {
+        .subscriptions .price-row>div .inner:hover,
+        .subscriptions .price-row>div .inner.current-subscription {
+            transform: translateY(-12px);
+        }
+    }
+
+    .subscriptions .price-row>div .inner:hover span.data::before,
+    .subscriptions .price-row>div .inner.current-subscription span.data::before {
+        background-color: #fff !important;
+    }
+
+    .subscriptions .price-row>div .inner.first:hover,
+    .subscriptions .price-row>div .inner.first.current-subscription {
         background-color: #22B3EB;
         z-index: 1;
     }
@@ -826,17 +837,20 @@
     }
     /******************************************************/
 
-    .subscriptions .price-row>div .inner.second:hover {
+    .subscriptions .price-row>div .inner.second:hover,
+    .subscriptions .price-row>div .inner.second.current-subscription {
         background-color: #A705E0;
         z-index: 1;
     }
 
-    .subscriptions .price-row>div .inner.third:hover {
+    .subscriptions .price-row>div .inner.third:hover,
+    .subscriptions .price-row>div .inner.third.current-subscription {
         background-color: #F31A6C;
         z-index: 1;
     }
 
-    .subscriptions .price-row>div .inner.fourth:hover {
+    .subscriptions .price-row>div .inner.fourth:hover,
+    .subscriptions .price-row>div .inner.fourth.current-subscription {
         background-color: #fd7b47;
         z-index: 1;
     }
@@ -849,20 +863,22 @@
         }
     }
 
-    .subscriptions .price-row>div .inner:hover .type {
+    .subscriptions .price-row>div .inner:hover .type,
+    .subscriptions .price-row>div .inner.current-subscription .type {
         color: #ffe0e0;
     }
 
-    .subscriptions .price-row>div .inner:hover h3 {
+    .subscriptions .price-row>div .inner:hover h3,
+    .subscriptions .price-row>div .inner.current-subscription h3 {
         color: #ffe0e0;
     }
 
-    .subscriptions .price-row>div .inner:hover .btn {
+    .subscriptions .price-row>div .inner .btn {
         display: flex;
     }
 
     .subscriptions .bot-row {
-        margin-top: 200px;
+        height: 300px;
     }
 
     @media (max-width: 768px) {
