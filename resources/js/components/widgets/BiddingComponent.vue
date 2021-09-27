@@ -5,9 +5,9 @@
                 <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
                 <div class="content">
                     <div class="mb-3">
-                    <!-- <h3 class="mb-0" v-if="isHighst">You Are The Highest Bidder</h3> -->
-                    <!-- <h3 class="mb-0" v-else>You Have Been Outbid</h3><br> -->
-                    <h3 class="mb-0">Current bid is {{ this.bid.last_price }} <span v-html="currencyIcon"></span> </h3><br>
+                    <h3 class="mb-0" v-if="isHighst">You Are The Highest Bidder</h3>
+                    <h3 class="mb-0" v-else>You Have Been Outbid</h3><br>
+                    <small class="text-white">Current bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }} <span v-html="currencyIcon"></span> </small><br>
                     <!-- <small class="text-white">Minimum Bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }}</small> -->
                         <!-- <p>8 Bids</p> -->
                     </div>
