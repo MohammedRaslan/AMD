@@ -106,7 +106,7 @@
                                                                     </div>
                                                                     <div class="col-12 mb-5 description text-left">
                                                                         <label for="#description" style="color:white">Description <span class="requiredItem text-maroon">*</span></label>
-                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control"></textarea>
+                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control text-white"></textarea>
                                                                         <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
                                                                     </div>
                                                                     <div class="listing-type">
@@ -387,7 +387,7 @@ export default ({
             description: null,
             category_id: null,
             price_from: null,
-            price_to : null,            
+            price_to : null,
             draft: 1,
             price : 0,
         }),
