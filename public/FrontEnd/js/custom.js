@@ -72,6 +72,11 @@ $(document).ready(function() {
     $(".btn-notification").click(function() {
         $(".notif-cont").slideToggle("fast")
     })
+    $(".btn-notification").blur(function() {
+        setTimeout(function() {
+            $(".notif-cont").slideUp("fast")
+        }, 220)
+    })
 
     //      $(document).on('click', '.dropdown-hero', function() {
     //     console.log('xxx');

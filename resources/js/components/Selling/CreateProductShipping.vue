@@ -455,6 +455,12 @@
                                                                                 for="cats"
                                                                                 >Cost</label
                                                                             >
+                                                                            <span
+                                                                                style="color:white"
+                                                                                v-html="
+                                                                                    currencyIcon
+                                                                                "
+                                                                            ></span>
                                                                             <input
                                                                                 type="number"
                                                                                 step="0.01"
