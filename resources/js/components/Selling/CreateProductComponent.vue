@@ -186,7 +186,7 @@
                                                                                         </div>
                                                                                         <div class="col-6">
                                                                                             <label for="minimum_price" class='text-offwhite' style="float:left">Minimum Price</label>
-                                                                                            <input class="form-control" type="number" v-model="form.bid_minimum_price" id="minimum_price">
+                                                                                            <input class="form-control" type="number" placeholder="Minimum Price" v-model="form.bid_minimum_price" id="minimum_price">
                                                                                         </div>
                                                                                         <div class="col-6 select-product text-left">
                                                                                             <label class="text-offwhite" for="condition">Select Step <span class="requiredItem text-maroon">*</span></label>
