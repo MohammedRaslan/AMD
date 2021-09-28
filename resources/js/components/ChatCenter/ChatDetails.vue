@@ -60,7 +60,7 @@
                     <div class="text-maroon pl-0 mb-3">{{ user_name }}</div>
                     <div class="p-0" >
                       <div id="chat-list">
-                        <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right pr-lg-100' : 'text-milky text-left pl-lg-100']">
+                        <p  v-for="(chat,index) in chats" :key="index"  :class="[chat.user_id_from == user_id ? 'text-green text-right msg msg-from' : 'text-milky text-left msg msg-to']">
                             {{ chat.message }}
                         </p>
                       </div>
@@ -155,11 +155,11 @@ export default {
 
             if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_from){
 
-                document.getElementById('chat-list').innerHTML += "<p class='text-green text-right pr-lg-100'>"+event.message.message+"</p>";
+                document.getElementById('chat-list').innerHTML += "<p class='text-green text-right msg msg-from'>"+event.message.message+"</p>";
 
             }else if(this.form.product_id == event.message.product_id && this.user_id == event.message.user_id_to){
 
-                document.getElementById('chat-list').innerHTML += "<p class='text-milky text-left pl-lg-100'>"+event.message.message+"</p>";
+                document.getElementById('chat-list').innerHTML += "<p class='text-milky text-left msg msg-to'>"+event.message.message+"</p>";
 
             }
 
