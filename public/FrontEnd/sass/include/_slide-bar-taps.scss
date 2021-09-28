@@ -73,4 +73,25 @@
                 }
             }
         }
+        &.slide-bar-taps-green {
+            border-color: $green !important;
+            hr {
+                background-color: $green !important;
+            }
+            .nav-link {
+                color: $offwhite !important;
+                &.router-link-active {
+                    color: $green !important;
+                    font-weight: bold !important;
+                    &:hover {
+                        color: #F2F2F2 !important;
+                        background: $green !important;
+                    }
+                }
+                &:hover {
+                    color: #F2F2F2 !important;
+                    background: $green !important;
+                }
+            }
+        }
     }

@@ -114,19 +114,19 @@
                                                                     </div>
                                                                     <!-- </div> -->
                                                                     <div class="col-12 mb-3 upload-img">
-                                                                        <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div>
+                                                                        <!-- <div class="alert alert-danger" :style="[imagenull ? {'display':'block'} :  {'display':'none'}]" v-if="imagenull">Image Cannot be empty</div> -->
                                                                         <UploadImages @change="handleImages" :max="12" maxError="Max files exceed" uploadMsg="Upload Item Images (up to 12 image)" fileError="images files only accepted"/>
                                                                         <div v-if="form.errors.has('image')" class="alert alert-danger" v-html="form.errors.get('image')" />
                                                                     </div>
                                                                     <div class="col-12 mb-5 description text-left">
                                                                         <label for="#description" class='text-offwhite'>Description <span class="requiredItem text-maroon">*</span></label>
-                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control text-white"></textarea>
-                                                                        <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" />
+                                                                        <textarea rows="5" type="text" v-model="form.description" name="description" placeholder="description"  class="form-control text-white" required></textarea>
+                                                                        <!-- <div v-if="form.errors.has('description')" class="alert alert-danger" v-html="form.errors.get('description')" /> -->
                                                                     </div>
                                                                 </div>
                                                                 <div class="row listing-type">
                                                                     <h3 class="text-left text-maroon mt-3">Selling Format <span class="requiredItem text-maroon">*</span></h3>
-                                                                    
+
                                                                     <nav>
                                                                         <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                             <!-- data-bs-target="#nav-home" -->
@@ -147,10 +147,12 @@
                                                                             <div class="row save">
                                                                                 <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                     <div class="inner-save inner-save1 w-100">
-                                                                                        <form action="" class="border-0 px-0 text-left pb-0">
-                                                                                                <label for="#listing1" class='text-offwhite'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
-                                                                                            <input class="form-control mt-3" v-model="form.price" id='listing1' type="number" placeholder="Price">
-                                                                                        </form>
+                                                                                        <!-- <form action="" class="border-0 px-0 text-left pb-0"> -->
+                                                                                        <div class="px-0 text-left pb-0 mt-4 pt-2">
+                                                                                            <label for="priceListing" class='text-offwhite mb-2 pb-1'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
+                                                                                            <input class="form-control mt-3" v-model="form.price" id='priceListing' type="number" placeholder="Price" required>
+                                                                                        </div>
+                                                                                        <!-- </form> -->
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-lg-6 text-left">
@@ -184,7 +186,7 @@
                                                                                         </div>
                                                                                         <div class="col-6">
                                                                                             <label for="minimum_price" class='text-offwhite' style="float:left">Minimum Price</label>
-                                                                                            <input class="form-control" type="number" v-model="form.bid_minimum_price" id="minimum_price">
+                                                                                            <input class="form-control" type="number" placeholder="Minimum Price" v-model="form.bid_minimum_price" id="minimum_price">
                                                                                         </div>
                                                                                         <div class="col-6 select-product text-left">
                                                                                             <label class="text-offwhite" for="condition">Select Step <span class="requiredItem text-maroon">*</span></label>
@@ -545,6 +547,7 @@ export default ({
            if( jQuery.isEmptyObject(this.form.image)  ){
                this.imagenull = true;
                this.$Progress.fail();
+                Swal.fire('Image Cannot be empty')
            }else{
                if(this.form.best_offer == 1 && parseFloat(this.form.minimum_offer) >parseFloat(this.form.price)){
                    this.minimum_offer_message = "This value can not be higher than Price";

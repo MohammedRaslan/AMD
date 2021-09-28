@@ -4,7 +4,7 @@
             <div class="dells-top">
                 <div class="inner-top">
                     <div class="container">
-                        <h2>Dolls</h2>
+                        <h2>Requested Items</h2>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                                             <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                         </g>
                                     </svg>
-                                    <span>Dolls</span>
+                                    <span>Requested Items</span>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ export default {
         getProducts: function(){
             this.id = this.$route.params.query;
             axios.get('/api/product/requestedProduct').then((response) =>{
-            
+
             this.products = response.data;
             this.$Progress.finish();
             this.loading = false;

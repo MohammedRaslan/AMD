@@ -675,13 +675,26 @@ export default ({
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         },
-           addToVendorWishlist(vendor_id){
+        addToVendorWishlist(vendor_id){
 
-                axios.get('/api/product/AddToVendorWishlist/'+vendor_id).then((response) => {
-                    if(response.data.status == 'added'){
-                      this.iconSeller = !this.iconSeller;
+            axios.get('/api/product/AddToVendorWishlist/'+vendor_id).then((response) => {
+                if(response.data.status == 'added'){
+                    this.iconSeller = !this.iconSeller;
+                    if(this.iconSeller){
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Unsaved Seller successfal'
+                        });
+                    } else{
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Saved Seller successfal'
+                        });
+
                     }
-                });
+                }
+            });
+
 
         },
 
@@ -690,16 +703,16 @@ export default ({
     },
     created(){
         Fire.$on('AddedToCart',()=>{
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Added To Cart'
-                    });
+            Toast.fire({
+                icon: 'success',
+                title: 'Added To Cart'
             });
+        });
         Fire.$on('RemoveFromCart',()=>{
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Removed From Cart'
-                    });
+            Toast.fire({
+                icon: 'success',
+                title: 'Removed From Cart'
+            });
         });
 
     },

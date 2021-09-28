@@ -24,22 +24,22 @@
 
 
     <!-- Latest Blog Section Begin -->
-        <section class="selling buying messages">
-
+    <section class="selling buying messages">
+        <div class="over-lay-selling d-none" @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" :class="{ 'd-block1': openSlideBar }"></div>
         <div class="container">
             <div class="row">
-                <div class="top-tabs">
-                    <h2>Notification <span class="open-tabs"><i class="fa fa-bars"></i></span> </h2>
 
+                <div class="top-tabs p-0 mb-4">
+                    <h1 class='py-3 py-lg-5 text-yellow'>Notification<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
 
-                <side-bar></side-bar>
+                <side-bar :openSlideBar='openSlideBar'></side-bar>
 
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="inner-content">
                             <!-- Tab1 -->
-                             <h2 v-if="message != '' " class="text-center">{{ message }}</h2>
+                             <h3 v-if="message != '' " class="text-center text-yellow">{{ message }}</h3>
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" v-show="message == ''">
                                 <div class="row text-yellow title-accordion">
                                     <div class="col-2 pl-0">From</div>
@@ -88,6 +88,7 @@ export default {
           checkImage: '',
           message: '',
          notifications :{},
+         openSlideBar: false,
      }),
 
      components:{

@@ -1,7 +1,8 @@
 <template>
     <div>
-        <section class="dells" :style="'background-image:' + category.image +';'">
-            <div class="dells-top">
+        <section class="dells">
+            <!-- <div class="dells-top" :style="'background-image:' + category.image +';'"> -->
+            <div class="dells-top set-bg" :data-setbg="category.image" >
                 <div class="inner-top">
                     <div class="container">
                         <h2>{{category.title}}</h2>
@@ -166,6 +167,7 @@ export default {
             this.category = response.data;
             this.$Progress.finish();
             this.loading = false;
+            console.log(response.data);
 
         });
     }

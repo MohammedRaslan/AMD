@@ -1,12 +1,8 @@
 <template>
-    <div style="
-    display: flex;
-    justify-content: flex-end;
-">
-        <i  :class="[userAddedItemToWishlist ? heartSolid : heartEmpty, heart ]" :id="'wishlist_'+product_id" @click="addToWishlist(product_id)" class="mr-1"></i>
-        <span :id="'wishlistCount_'+product_id">{{ this.wishlistCount }} </span>
+   <div class="d-flex justify-content-end">
+        <i :class="[userAddedItemToWishlist ? heartSolid : heartEmpty, heart ]" :id="'wishlist_'+product_id" @click="addToWishlist(product_id)" class="mr-1"></i>
+        <span class="text-offwhite" :id="'wishlistCount_'+product_id">{{ this.wishlistCount }}</span>
     </div>
-
 </template>
 
 <script>

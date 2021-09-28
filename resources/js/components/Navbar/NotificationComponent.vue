@@ -1,6 +1,6 @@
 <template>
         <a class="position-relative d-inline-block" >
-            <div class="btn-notification">
+            <button class="btn-notification bg-transparent border-0">
                 <svg fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Notifications">
                                                     <g id="Group_30" data-name="Group 30"
                                                         transform="translate(-844 -319)">
@@ -22,7 +22,7 @@
                                                     </g>
                 </svg>
                 <span v-show="count > 0" v-html="count" class="quantity-notif" style="top:-10px !important"></span>
-            </div>
+            </button>
             <div class="notif-cont">
                 <!-- Block Item -->
                 <h6 v-if="message != null " class="text-center">{{ message }}</h6>

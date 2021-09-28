@@ -72,6 +72,20 @@ $(document).ready(function() {
     $(".btn-notification").click(function() {
         $(".notif-cont").slideToggle("fast")
     })
+    $(".btn-notification").blur(function() {
+        setTimeout(function() {
+            $(".notif-cont").slideUp("fast")
+        }, 220)
+    })
+
+
+    $('.set-bg').each(function() {
+        setTimeout(function() {
+            var bg = $(this).data('setbg');
+            $(this).css('background-image', 'url(' + bg + ')');
+
+        }, 9000)
+    });
 
     //      $(document).on('click', '.dropdown-hero', function() {
     //     console.log('xxx');
