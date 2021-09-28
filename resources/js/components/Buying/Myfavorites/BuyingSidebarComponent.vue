@@ -1,6 +1,6 @@
 <template>
     <div class="col-xl-2 col-md-12">
-            <div :class="{ 'd-block': openSlideBar }" class="header-taps mb-lg-4 header-taps-buying slide-bar-taps">
+            <div :class="{ 'd-block': openSlideBar }" class="header-taps mb-lg-4 header-taps-buying slide-bar-taps-green slide-bar-taps">
                 <div class="nav flex-column nav-pills m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <!--1 Offers/Bids -->
                     <router-link class="nav-link" to="/buying/wishlist">Watchlist</router-link>
