@@ -48,6 +48,7 @@ import InformationComponent from "./components/SettingsCenter/InformationCompone
 import ShippingInformationComponent from "./components/SettingsCenter/ShippingInfoComponent.vue";
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
 import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
+import archiveMessageComponent from "./components/ChatCenter/ArchiveComponent.vue";
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 import RequestItemComponent from "./components/Buying/RequestItem/RequestItemComponent.vue";
 import RequestEDItemComponent from "./components/Buying/RequestItem/RequestEDItemComponent.vue";
@@ -67,7 +68,7 @@ var routes = [{
         name: "ChatNotificationComponent",
     },
     {
-        path: "/chat/:id?",
+        path: "/messages/:id?",
         component: ChatDetails,
         name: "ChatDetails",
     },
@@ -75,6 +76,11 @@ var routes = [{
         path: "/notifications",
         component: NotificationMessageComponent,
         name: "NotificationMessageComponent",
+    },
+    {
+        path: "/archive",
+        component: archiveMessageComponent,
+        name: "archiveMessageComponent",
     },
     {
         path: "/settings/personal",

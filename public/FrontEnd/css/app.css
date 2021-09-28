@@ -1934,8 +1934,7 @@
             font-size: 37px;
         }
     }
-    
-    @media (max-width:540px) {
+    /* @media (max-width:540px) {
         .selling.buying.messages .col-xl-10 {
             padding-left: 11px;
             padding-right: 36px;
@@ -1943,7 +1942,7 @@
         .selling.messages .accordion-button::after {
             right: -11px !important;
         }
-    }
+    } */
     
     .selling .header-taps {
         border: 1px solid #fd1266;
