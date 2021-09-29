@@ -34,8 +34,57 @@
             <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                    <h3 class="text-center text-green my-5">No Products</h3>
-                </div>
+                        <h2 v-if="message != '' " class="text-center">{{message}}</h2>
+                        <div class="tab-content" id="v-pills-tabContent" v-for="product in products.data" :key="product.id">
+                            <div class="inner-content">
+                                <!-- Tab1 Overview -->
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <!-- Block Item -->
+                                    <div class="inner-item">
+                                        <div class="row">
+                                            <div class="col-lg-7 detalis">
+                                                <div class="row">
+                                                    <div class="col-sm-1 dot" id="dot"><div class="inner"></div></div>
+
+                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-6">
+                                                        <figure>
+                                                            <img :src='str_replace(product.image)' alt="">
+                                                        </figure>
+                                                    </div>
+
+                                                    <div class="col-lg-7 col-md-6 col-sm-6 col-6">
+                                                        <h5>
+                                                            {{ product.title }}
+                                                            <p>Dolls</p>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-2 col-md-12 btns">
+                                            <div class="inner-gruop">
+                                                    <div class="inner" >
+                                                        <button class="btn btn-primary"><router-link :to="{name: 'ShopDetailComponent', params:{query: product.id}}">View</router-link></button>
+                                                    </div>
+                                                    <div class="inner">
+                                                        <button class="btn btn-outline-maroon" type="button" @click="deleteProduct(product.id)"><a href="#">Delete</a></button>x
+                                                    </div>
+
+                                                    <!-- <div class="inner">
+                                                        <button class="btn btn-outline-danger"><a href="#">Delete</a></button>
+                                                    </div> -->
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <pagination :data="products" @pagination-change-page="getProducts"></pagination>
+                    </div>
             </div>
 
 
@@ -221,7 +270,6 @@
 <script>
 import SideBar from "./SidebarRequestComponent.vue";
 import UploadImages from "vue-upload-drop-images";
-import { createEditor } from 'vueditor';
 export default ({
 
     components:{
@@ -235,6 +283,8 @@ export default ({
         brands: [],
         currencyIcon: null,
         imagenull: false,
+        message : null,
+        products: {},
         form : new form({
             title : null,
             type : 2 , // Requested
@@ -251,28 +301,17 @@ export default ({
         openSlideBar: false
     }),
     methods:{
-        async saveProduct(){
-           this.$Progress.start();
-           if( jQuery.isEmptyObject(this.form.image)  ){
-               this.imagenull = true;
-               this.$Progress.fail();
-           }else{
-            const response = await this.form.post('/api/product/storeRequestItem').then((response)=>{
-                this.$Progress.finish();
-                this.form.reset();
-            }).catch((error)=>{
-                this.$Progress.fail();
-                console.log(error);
-            });
-           }
-
+          str_replace(str){
+            str = str.replace('public',window.location.origin + '/storage');
+            return str;
         },
-        handleImages(files){
-            this.form.image = files;
-          },
-        draft(){
-            this.form.draft = 1;
-            this.saveProduct();
+        getProducts(page = 1) {
+                 axios.get('/api/product/getRequestedItems?page=' + page).then((response) => {
+            this.products = response.data;
+            if(response.data.length == 0 ){
+                this.message = 'You dont have products';
+                }
+        });
         },
     },
 
@@ -283,12 +322,7 @@ export default ({
         Fire.$emit('mounted');
         this.$Progress.finish();
 
-        axios.get('/api/product/getProductData').then((response) => {
-            this.categories = response.data.categories;
-            this.conditions = response.data.conditions;
-            this.brands = response.data.brands;
-            this.currencyIcon = response.data.currencyIcon;
-        });
+        this.getProducts()
 
     }
 

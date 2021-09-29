@@ -112,7 +112,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('storeRequestItem',[ProductController::class,'storeRequestItem']);
         Route::get('getUserOfferAndBidsProduct',[ProductController::class,'getUserOfferAndBidsProduct']);
         Route::get('getUserProductSold',[ProductController::class,'getUserProductSold']);
-        // Route::get('getAllProductDataToUpdate/{id?}',[ProductController::class,'getAllProductDataToUpdate']);
+        Route::get('getRequestedItems',[ProductController::class,'getRequestedItems']);
         Route::get('requestedProduct',[ProductController::class,'requestedProduct']);
 
     });

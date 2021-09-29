@@ -28,7 +28,7 @@
             <div class="parent-steps">
                 <div class="row">
                     <!-- Block Step -->
-                    <div class="col-lg-3 col-12 col-sm-6">
+                    <div class="col-lg-4 col-12 col-sm-6">
                         <div class="inner-step shop-cart row">
                             <div class="col-2 icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="19.963" height="17.986" viewBox="0 0 19.963 17.986">
@@ -46,23 +46,10 @@
                         </div>
                     </div>
 
-                    <!-- Block Step -->
-                    <div class="col-lg-3 col-12 col-sm-6">
-                        <div class="inner-step delivery row">
-                            <div class="col-2 icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13">
-                                    <path id="Shape" d="M15.951,13a2.226,2.226,0,0,1-2.172-1.6h-7.4A2.268,2.268,0,0,1,4.209,13a2.229,2.229,0,0,1-2.173-1.6H.836A.83.83,0,0,1,0,10.578V.826A.8.8,0,0,1,.77,0H9.68a.8.8,0,0,1,.77.826v.9h3.3a1.5,1.5,0,0,1,1.2.6.2.2,0,0,1,.034.044.238.238,0,0,0,.035.044l1.741,2.579,1.017.157A1.461,1.461,0,0,1,19.254,6.6V8.708A.843.843,0,0,1,20,9.535v1.043a.83.83,0,0,1-.836.823h-1.04A2.27,2.27,0,0,1,15.951,13Zm0-3.336a1.137,1.137,0,0,0-1.131,1.112,1.123,1.123,0,0,0,1.131,1.112,1.137,1.137,0,0,0,1.131-1.112A1.123,1.123,0,0,0,15.951,9.663Zm-11.741,0a1.137,1.137,0,0,0-1.131,1.112A1.131,1.131,0,1,0,4.209,9.663ZM12,2.825a.1.1,0,0,0-.106.1V4.973A.106.106,0,0,0,12,5.078v0h3.193a.1.1,0,0,0,.09-.054.1.1,0,0,0,0-.107l-1.4-2.043a.1.1,0,0,0-.086-.044Z" transform="translate(0)" fill="#ffe0e0"/>
-                                </svg>
-                            </div>
-                            <div class="col-9 des">
-                                <h6>Delivery</h6>
-                                <p>Step 2</p>
-                            </div>
-                        </div>
-                    </div>
+          
 
                     <!-- Block Step -->
-                    <div class="col-lg-3 col-12 col-sm-6">
+                    <div class="col-lg-4 col-12 col-sm-6">
                         <div class="inner-step payment row">
                             <div class="col-2 icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17.971" height="18.986" viewBox="0 0 17.971 18.986">
@@ -81,7 +68,7 @@
                     </div>
 
                     <!-- Block Step -->
-                    <div class="col-lg-3 col-12 col-sm-6">
+                    <div class="col-lg-4 col-12 col-sm-6">
                         <div class="inner-step confirmation row">
                             <div class="col-2 icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="19.942" height="19.983" viewBox="0 0 19.942 19.983">
@@ -161,6 +148,8 @@
                        </div>
 
                        <div class="continue">
+                                                   <div class="col-6 float-right" id="paypal-button-container"></div>
+
                            <button class="btn btn-block"><router-link to="/cart/second-step">Continue</router-link></button>
                        </div>
 
@@ -186,6 +175,7 @@ export default ({
             return str;
         },
         async removeFromCart(id,best_offer){
+            
             if(best_offer == 1){
 
                 await axios.get('/api/cart/bestOfferCheckUser/'+id).then((response) => {
@@ -232,6 +222,76 @@ export default ({
     },
     mounted(){
         Fire.$emit('mounted');
+          function loadAsync(url, callback) {
+            var s = document.createElement('script');
+            s.setAttribute('src', url);s.setAttribute('data-merchant-id' ,"6BP35TV3GEJJ2,CHWDZS5MXCD46"); s.onload = callback;
+            document.head.insertBefore(s, document.head.firstElementChild);
+        }
+        loadAsync('https://www.paypal.com/sdk/js?client-id=AUuivy3A41GeLf_nxhIVY4QyW9rPnUc3Ksx-ueYsZTjQvw0loyTa4VK7srlDkWce5fwgDM0Zq2pfcZBa&merchant-id=*&debug=true&components=buttons', function() {
+  paypal.Buttons({
+
+    // Set up the transaction
+    createOrder: function(data, actions) {
+        var amount = 200;
+        console.log(actions);
+        return actions.order.create({
+                intent: 'CAPTURE',
+
+            purchase_units: [{
+                reference_id : "3",
+                amount: {
+                    value: amount
+                },
+                 payee: {
+                    email_address: 'sb-ypfvb7366074@business.example.com'
+                }
+            },{
+                reference_id : "4",
+              amount: {
+                    value: amount
+                },
+                 payee: {
+                    email_address: 'sb-uunji7911424@business.example.com'
+                }
+            },
+            ]
+        });
+    },
+
+    // Finalize the transaction
+    onApprove: function(data, actions) {
+        var email = JSON.parse(localStorage.getItem('currentUser'))['email'];
+        var type   = 'monthly';
+        
+        return actions.order.capture().then(function(details) {
+            // Show a success message to the buyer
+            // alert('Transaction completed by ' + details.payer.name.given_name);
+                let api = fetch('/api/paypal/purchase/subscription', {
+                        method: 'post',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            orderID: data.orderID,
+                            details: details,
+                            type: type,
+                            subscription_name:'platinum',
+                            email: email,
+                            quantity: 500,
+                        })
+                    });
+                    api.then(response => {
+                        if(response.status == 200){
+                            window.location.href =  '/subscriptions';
+                        }
+            })
+        });
     }
+
+  }).render('#paypal-button-container');
+});
+    }
+
+    
 })
 </script>

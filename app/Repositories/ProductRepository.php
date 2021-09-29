@@ -426,6 +426,11 @@ class ProductRepository{
         return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ['type', ProductType::getValue("Regular")]])->paginate(10);
 
     }
+    public function getRequestedItems($user_id)
+    {
+        return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ['type', ProductType::getValue("Requested")]])->paginate(10);
+
+    }
 
     public function getVendorProducts($user_id)
     {
