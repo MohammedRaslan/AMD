@@ -3,11 +3,6 @@
   overflow: hidden;
 }
 
-#preloder {
-  display: none !important;
-  opacity: 0 !important;
-}
-
 .w-120 {
   width: 120px !important;
 }
