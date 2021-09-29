@@ -47,6 +47,10 @@ import ChatDetails from "./components/ChatCenter/ChatDetails.vue";
 import InformationComponent from "./components/SettingsCenter/InformationComponent";
 import ShippingInformationComponent from "./components/SettingsCenter/ShippingInfoComponent.vue";
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
+import FreeSettingSubscrComponent from "./components/SettingsCenter/subscrition/FreeSubscriptionComponent.vue";
+import SilverSettingSubscrComponent from "./components/SettingsCenter/subscrition/SilverSubscriptionComponent.vue";
+import GoldSettingSubscrComponent from "./components/SettingsCenter/subscrition/GoldSubscriptionComponent.vue";
+import PlatinumSettingSubscrComponent from "./components/SettingsCenter/subscrition/PlatinumSubscriptionComponent.vue";
 import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
 import archiveMessageComponent from "./components/ChatCenter/ArchiveComponent.vue";
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
@@ -96,6 +100,26 @@ var routes = [{
         path: "/settings/preferences",
         component: PreferencesComponent,
         name: "PreferencesComponent",
+    },
+    {
+        path: "/settings/free",
+        component: FreeSettingSubscrComponent,
+        name: "FreeSettingSubscrComponent",
+    },
+    {
+        path: "/settings/silver",
+        component: SilverSettingSubscrComponent,
+        name: "SilverSettingSubscrComponent",
+    },
+    {
+        path: "/settings/gold",
+        component: GoldSettingSubscrComponent,
+        name: "GoldSettingSubscrComponent",
+    },
+    {
+        path: "/settings/platinum",
+        component: PlatinumSettingSubscrComponent,
+        name: "PlatinumSettingSubscrComponent",
     },
     {
         path: "/login",

@@ -10,7 +10,7 @@
                 <router-link class="nav-link text-decoration-none text-white" to="/settings/shipping_info">Address Info</router-link>
                 <hr>
                 <!--2 Request an Item -->
-                <router-link class="nav-link text-decoration-none text-white" :to="'/subscriptions/'+subscription">Subscription</router-link>
+                <router-link class="nav-link text-decoration-none text-white" :to="'/settings/'+subscription">Subscription</router-link>
                 <hr>
 
                 <!--3 My Favorites -->

@@ -3,6 +3,15 @@
   overflow: hidden;
 }
 
+#preloder {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.w-120 {
+  width: 120px !important;
+}
+
 .d-block1 {
   display: block !important;
 }
@@ -250,8 +259,28 @@
   border: 1px solid #FECC2F !important;
 }
 
+.border {
+  border: 1px solid transparent;
+}
+
+.border-milky {
+  border-color: #00ccff !important;
+}
+
+.border-1 {
+  border-width: 1px !important;
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
 .border-maroon {
   border: 1px solid #fd1266;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
 }
 
 @media (min-width: 1200px) {
