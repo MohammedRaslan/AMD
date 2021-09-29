@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="inner px-2 h-100 second current-subscription" id="second">
+                    <div class="inner px-2 h-100 second" id="second">
                         <div>
                             <p class="type">Silver</p>
                             <h3>$ 19.99 /mo</h3>
@@ -318,17 +318,21 @@
 <script>
 
 export default ({
+    data:()=>({
+        subscription : null
+    }),
     mounted() {
         Fire.$emit('mounted');
         axios.post('/api/getCurrentSubscription').then((response) => {
+            this.subscription = response.data.subscription;
             if(response.data.subscription == 'FREE' || response.data.subscription == '' ){
-                document.getElementById('first').className += ' first-hover';
+                document.getElementById('first').className += ' current-subscription';
             }else if(response.data.subscription == 'SILVER'){
-                document.getElementById('second').className += ' second-hover';
+                document.getElementById('second').className += ' current-subscription';
             }else if(response.data.subscription == 'GOLD'){
-                document.getElementById('third').className += ' third-hover';
+                document.getElementById('third').className += ' current-subscription';
             }else if(response.data.subscription == 'PLATINUM'){
-                document.getElementById('fourth').className += ' fourth-hover';
+                document.getElementById('fourth').className += ' current-subscription';
             }
         });
     }

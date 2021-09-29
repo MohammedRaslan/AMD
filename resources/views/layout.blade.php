@@ -207,7 +207,7 @@
                             </a>
                         </div> --}}
                             <ul>
-                                <li class="active">
+                                <li>
                                     <router-link to="/">Home</router-link>
                                 </li>
                                 <li>

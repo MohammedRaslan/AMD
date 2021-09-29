@@ -3876,7 +3876,7 @@
         }
     }
     
-    .footer .active a {
+    .footer a.router-link-exact-active {
         color: #00ccff;
     }
     

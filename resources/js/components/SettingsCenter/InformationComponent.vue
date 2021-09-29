@@ -40,10 +40,10 @@
                         <div class="inner-content">
                             <div class="signup bg-transparent">
                               <form @submit.prevent="updateUserInfo" class="border-color-milky">
-                                <div class="row">
-                                    <div class="col-lg-6" style="margin-top: 9%;">
+                                <div class="row my-3">
+                                    <div class="col-lg-6 d-flex align-items-centr">
                                         <div class="row">
-                                            <div v-show="message != ''" class="alert alert-success" v-html="message"/>
+                                            <!-- <div v-show="message != ''" class="alert alert-success" v-html="message"/> -->
 
                                             <div class="col-12 col-lg-6">
                                                 <label for="fName" class="text-offwhite">User name</label>
@@ -153,13 +153,13 @@
                                     </div>
                                     <!--right side -->
                                     <div class="col-lg-5 text-center ">
+                                        <!-- <img id="img1" style="border-radius: 50%; width: 80px;" :src="'/'+this.form.image"> -->
                                         <h3 style="color: #23ccfd;" class="mb-2">Change Avatar</h3>
                                         <!--1st Row-->
                                               <!-- <div v-show="checkImage != ''" class="alert alert-danger" v-html="checkImage"/> -->
                                         <div class="row mb-3">
                                             <div class="col-4 ">
-                                                <!--<img src="images/avatars/avatars-10.jpg" onmouseover="this.src='images/avatars/avatars-04.jpg' " onmouseleave="this.src='images/avatars/avatars-10.jpg'" >-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-10-colored.jpg" name="emotion" id="avatar1" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-10-colored.jpg" name="emotion" id="avatar1" class="input-hidden" />
                                                 <label for="avatar1">
                                                 <img id="img1"
                                                 style="border-radius: 50%;"
@@ -169,8 +169,7 @@
                                             </div>
 
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-11.jpg" onmouseover="this.src='images/avatars/avatars-03.jpg' " onmouseleave="this.src='images/avatars/avatars-11.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-11-colored.jpg" name="emotion"  id="avatar2" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-11-colored.jpg" name="emotion"  id="avatar2" class="input-hidden" />
                                                 <label for="avatar2">
                                                 <img id="img2"
                                                 style="border-radius: 50%;"
@@ -179,8 +178,7 @@
                                             </label>
                                             </div>
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-12.jpg" onmouseover="this.src='images/avatars/avatars-01.jpg' " onmouseleave="this.src='images/avatars/avatars-12.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-12-colored.jpg" name="emotion" id="avatar3" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-12-colored.jpg" name="emotion" id="avatar3" class="input-hidden" />
                                                 <label for="avatar3">
                                                 <img id="img3"
                                                 style="border-radius: 50%;"
@@ -193,8 +191,7 @@
                                         <!--2st Row-->
                                         <div class="row mb-3">
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-13.jpg" onmouseover="this.src='images/avatars/avatars-07.jpg' " onmouseleave="this.src='images/avatars/avatars-13.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-13-colored.jpg" name="emotion" id="avatar4" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-13-colored.jpg" name="emotion" id="avatar4" class="input-hidden" />
                                                 <label for="avatar4">
                                                 <img id="img4"
                                                 style="border-radius: 50%;"
@@ -203,8 +200,7 @@
                                             </label>
                                             </div>
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-14.jpg" onmouseover="this.src='images/avatars/avatars-08.jpg' " onmouseleave="this.src='images/avatars/avatars-14.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-14-colored.jpg" name="emotion" id="avatar5" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-14-colored.jpg" name="emotion" id="avatar5" class="input-hidden" />
                                                 <label for="avatar5">
                                                 <img id="img5"
                                                 style="border-radius: 50%;"
@@ -213,8 +209,7 @@
                                             </label>
                                             </div>
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-15.jpg" onmouseover="this.src='images/avatars/avatars-02.jpg' " onmouseleave="this.src='images/avatars/avatars-15.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-15-colored.jpg" name="emotion" id="avatar6" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-15-colored.jpg" name="emotion" id="avatar6" class="input-hidden" />
                                                 <label for="avatar6">
                                                 <img id="img6"
                                                 style="border-radius: 50%;"
@@ -227,8 +222,7 @@
                                         <!--2st Row-->
                                         <div class="row">
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-16.jpg" onmouseover="this.src='images/avatars/avatars-06.jpg' " onmouseleave="this.src='images/avatars/avatars-16.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-16-colored.jpg" name="emotion" id="avatar7" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-16-colored.jpg" name="emotion" id="avatar7" class="input-hidden" />
                                                 <label for="avatar7">
                                                 <img id="img7"
                                                 style="border-radius: 50%;"
@@ -237,8 +231,7 @@
                                             </label>
                                             </div>
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-17.jpg" onmouseover="this.src='images/avatars/avatars-09.jpg' " onmouseleave="this.src='images/avatars/avatars-17.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-17-colored.jpg" name="emotion" id="avatar8" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-17-colored.jpg" name="emotion" id="avatar8" class="input-hidden" />
                                                 <label for="avatar8">
                                                 <img id="img8"
                                                 style="border-radius: 50%;"
@@ -247,8 +240,7 @@
                                             </label>
                                             </div>
                                             <div class="col-4">
-                                                <!--<img src="images/avatars/avatars-18.jpg" onmouseover="this.src='images/avatars/avatars-05.jpg' " onmouseleave="this.src='images/avatars/avatars-18.jpg'">-->
-                                                <input type="radio" v-model="form.image" value="/FrontEnd/images/avatars/avatars-18-colored.jpg" name="emotion" id="avatar9" class="input-hidden" />
+                                                <input type="radio" v-model="form.image" value="FrontEnd/images/avatars/avatars-18-colored.jpg" name="emotion" id="avatar9" class="input-hidden" />
                                                 <label for="avatar9">
                                                 <img id="img9"
                                                 style="border-radius: 50%;"
@@ -303,10 +295,14 @@ export default {
          updateUserInfo: async function() {
             this.$Progress.start();
             const response = await this.form
-                .post("api/user/updateUserInfo")
+                .post("/api/user/updateUserInfo")
                 .then(response => {
                     if(response.data){
-                        this.message = 'Data Saved Successfully';
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Data Saved Successfully'
+                        });
+
                         this.$Progress.finish();
                     }
                 })
@@ -335,6 +331,7 @@ export default {
             this.form.last_name = response.data.last_name;
             this.form.email = response.data.email;
             this.form.user_name = response.data.user_name;
+            this.form.image = response.data.image;
         });
     }
 }

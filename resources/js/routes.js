@@ -51,7 +51,7 @@ import NotificationMessageComponent from "./components/ChatCenter/NotificationCo
 import archiveMessageComponent from "./components/ChatCenter/ArchiveComponent.vue";
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 import RequestItemComponent from "./components/Buying/RequestItem/RequestItemComponent.vue";
-import RequestEDItemComponent from "./components/Buying/RequestItem/RequestEDItemComponent.vue";
+import MyequestsComponent from "./components/Buying/RequestItem/MyRequestsComponent.vue";
 import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
 import UnSoldProductsComponent from "./components/Selling/UnSoldProductsComponent.vue";
 import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductComponent.vue";
@@ -158,9 +158,9 @@ var routes = [{
         name: "RequestItemComponent",
     },
     {
-        path: "/buying/requestedItem",
-        component: RequestEDItemComponent,
-        name: "RequestEDItemComponent",
+        path: "/buying/myrequests",
+        component: MyequestsComponent,
+        name: "MyequestsComponent",
     },
     {
         path: "/buying/offers",

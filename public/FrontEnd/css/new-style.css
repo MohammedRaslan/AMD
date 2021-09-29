@@ -815,6 +815,10 @@ svg.img-subscription {
 
 .slide-bar-taps .nav-link {
   width: 100%;
+  color: #ffe0e0 !important;
+}
+.slide-bar-taps.header-taps-selling .nav-link {
+  color: #ffe0e0 !important;
 }
 .slide-bar-taps.header-taps-selling .nav-link.router-link-active {
   color: #fd1266 !important;
@@ -841,6 +845,9 @@ svg.img-subscription {
 .slide-bar-taps.slide-bar-taps-milky hr {
   background-color: #00ccff !important;
 }
+.slide-bar-taps.slide-bar-taps-milky .nav-link {
+  color: #ffe0e0 !important;
+}
 .slide-bar-taps.slide-bar-taps-milky .nav-link.router-link-active {
   color: #00ccff !important;
   font-weight: bold !important;
@@ -858,6 +865,9 @@ svg.img-subscription {
 }
 .slide-bar-taps.slide-bar-taps-maroon hr {
   background-color: #fd1266 !important;
+}
+.slide-bar-taps.slide-bar-taps-maroon .nav-link {
+  color: #ffe0e0 !important;
 }
 .slide-bar-taps.slide-bar-taps-maroon .nav-link.router-link-active {
   color: #fd1266 !important;
