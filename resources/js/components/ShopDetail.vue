@@ -576,7 +576,7 @@
                             </div>
 
                             <div v-if="(loading && !author)">
-                                <AddCartWidget :id="id" :price="product.price" :currency="product.currencyIcon" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0"></AddCartWidget>
+                                <AddCartWidget :id="id" :price="product.price" :currency="product.currencyIcon" :exist="exist" :wishlistCount="product.wishlistCount" v-if="product.type == 0 || product.type == 4"></AddCartWidget>
                                 <MakeOfferWidget v-if="product.best_offer" :id="product.id" :best_offer_price="product.best_offer_price" ></MakeOfferWidget>
                             </div>
                             <div v-if="author && product.best_offer">

@@ -165,9 +165,11 @@
 
 export default ({
     data:()=>({
+        loded : false,
         cartProducts: {},
         subtotal: null,
         total: null,
+        vendors : [],
     }),
         methods:{
         str_replace(str){
@@ -211,50 +213,30 @@ export default ({
             const response = await axios.get('/api/cart/bestOfferCheckUser/'+product_id).then((response) => {
                 return response.data;
             });
-        }
-    },
-    async beforeCreate(){
-       await axios.get('/api/cart/getCartProducts').then((response) => {
-            this.cartProducts = response.data.cart_products;
-            this.subtotal = response.data.subtotal;
-            this.total = response.data.total;
-        });
-    },
-    mounted(){
-        Fire.$emit('mounted');
-          function loadAsync(url, callback) {
-            var s = document.createElement('script');
-            s.setAttribute('src', url);s.setAttribute('data-merchant-id' ,"6BP35TV3GEJJ2,CHWDZS5MXCD46"); s.onload = callback;
-            document.head.insertBefore(s, document.head.firstElementChild);
-        }
-        loadAsync('https://www.paypal.com/sdk/js?client-id=AUuivy3A41GeLf_nxhIVY4QyW9rPnUc3Ksx-ueYsZTjQvw0loyTa4VK7srlDkWce5fwgDM0Zq2pfcZBa&merchant-id=*&debug=true&components=buttons', function() {
+        },
+        setLoded(){
   paypal.Buttons({
 
     // Set up the transaction
-    createOrder: function(data, actions) {
+    createOrder: (data, actions) => {
         var amount = 200;
-        console.log(actions);
+        var vendors = [];
+        this.vendors.forEach(vendor => {
+              vendors.push({
+                reference_id : vendor.id,
+                amount : {
+                    value: vendor.total_vendor
+                },
+                 payee: {
+                    email_address: vendor.paypal_account
+                }
+            });
+        });
+
         return actions.order.create({
                 intent: 'CAPTURE',
 
-            purchase_units: [{
-                reference_id : "3",
-                amount: {
-                    value: amount
-                },
-                 payee: {
-                    email_address: 'sb-ypfvb7366074@business.example.com'
-                }
-            },{
-                reference_id : "4",
-              amount: {
-                    value: amount
-                },
-                 payee: {
-                    email_address: 'sb-uunji7911424@business.example.com'
-                }
-            },
-            ]
+            purchase_units: vendors
         });
     },
 
@@ -289,7 +271,49 @@ export default ({
     }
 
   }).render('#paypal-button-container');
-});
+}
+    },
+    async beforeCreate(){
+       await axios.get('/api/cart/getCartProducts').then((response) => {
+            this.cartProducts = response.data.cart_products;
+            this.subtotal = response.data.subtotal;
+            this.total = response.data.total;
+            this.vendors = response.data.vendors;
+             var vendorsAccountIds = "";
+       
+           
+      
+    
+        console.log(vendorsAccountIds);
+        var url= 'https://www.paypal.com/sdk/js?client-id=AUuivy3A41GeLf_nxhIVY4QyW9rPnUc3Ksx-ueYsZTjQvw0loyTa4VK7srlDkWce5fwgDM0Zq2pfcZBa&debug=false&components=buttons' ;
+            var s = document.createElement('script');
+                 if (this.vendors.length > 1) {
+                     url = url + "&merchant-id=*";
+                 this.vendors.forEach(vendor => {
+                            vendorsAccountIds = vendorsAccountIds + vendor.paypal_account_id
+                        
+                        });
+                s.setAttribute('data-merchant-id' ,vendorsAccountIds);
+            }
+                        s.setAttribute('src', url);
+
+          s.onload = this.setLoded;
+            s.addEventListener("load" , this.setLoded)
+            document.head.insertBefore(s, document.head.firstElementChild);
+        });
+    },
+    mounted(){
+
+        Fire.$emit('mounted');
+          function loadAsync(url, callback) {
+            var s = document.createElement('script');
+            s.setAttribute('src', url);s.setAttribute('data-merchant-id' ,"6BP35TV3GEJJ2,CHWDZS5MXCD46"); s.onload = callback;
+            s.addEventListener("load" , this.setLoded)
+            document.head.insertBefore(s, document.head.firstElementChild);
+                        this.setLoded();
+
+        }
+        
     }
 
     

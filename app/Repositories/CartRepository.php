@@ -89,11 +89,13 @@ class CartRepository{
     public function getCartProducts($user_id)
     {
         $cart = Cart::select('id')->where('user_id',$user_id)->first();
-        $cart_products = Cart_Product::where('user_id',$user_id)->where('cart_id',$cart->id)->with('product')->get(); // Where Status 1 From Model 
-    
+        $cart_products = Cart_Product::where('user_id',$user_id)->where('cart_id',$cart->id)->with('product')->get();
+        $cart_vendor_products = Cart_Product::where('user_id',$user_id)->where('cart_id',$cart->id)->with('product')->get()->groupBy('product.user_id'); // Where Status 1 From Model 
+        //dd($cart_products);
+
         $cart_products = $this->CheckIfProductIsUnAvailable($cart_products,$user_id);
       
-        return $cart_products;
+        return [ "cart_product" => $cart_products , 'cart_vendor_products' => $cart_vendor_products];
     }
 
 

@@ -10,6 +10,7 @@ import OfferProductComponent from "./components/Selling/OfferProductComponent";
 import CreateOfferShippingComponent from "./components/Selling/CreateOfferShippingComponent";
 // import CreateProductStepTwoComponent from "./components/Selling/CreateProductStepTwo";
 import CreateProductShippingComponent from "./components/Selling/CreateProductShipping";
+import OfferProductShippingComponent from "./components/Selling/OfferProductShippingComponent";
 import ActiveProductComponent from "./components/Selling/ActiveProductComponent";
 import DashboardComponent from "./components/Admin/DashboardComponent"
 import UsersComponent from "./components/Admin/UsersComponent"
@@ -202,6 +203,11 @@ var routes = [{
         path: "/selling/sell_item/:id?",
         component: CreateProductShippingComponent,
         name: "ProductCreateShipping",
+    },
+    {
+        path: "/selling/offer_item/:id?",
+        component: OfferProductShippingComponent,
+        name: "OfferCreateShipping",
     },
     {
         path: "/offer_shipping/:id?",

@@ -42,6 +42,21 @@ class CartService{
         return ['subtotal' => $subtotal, 'total'=> $total];
     }
 
+    private function calculateCheckout($cart_vendor_products)
+    {
+        $vendors = [];
+        foreach ($cart_vendor_products as $key => $vendor ) {
+            $subtotal = $this->calculate($vendor)['subtotal'];
+            array_push($vendors , [
+                'id' => $key,
+                'total_vendor' => $subtotal,
+                'paypal_account' => $cart_vendor_products[$key][0]->product->user->user_details->paypal_account,
+                'paypal_account_id' => $cart_vendor_products[$key][0]->product->user->user_details->paypal_account_id,
+            ]);
+        }
+        return $vendors;
+    }
+
     public function checkIfExist($user_id,$productId)
     {
         $data  = $this->cartRepository->checkIfExist($user_id,$productId);
@@ -58,11 +73,13 @@ class CartService{
 
     public function getCartProducts($user_id)
     {
-        $data = $this->cartRepository->getCartProducts($user_id);
+        $allData = $this->cartRepository->getCartProducts($user_id);
+        $data = $allData['cart_product'];
         $recalculate = $this->calculate($data);
+        $vendors = $this->calculateCheckout($allData['cart_vendor_products']);
         $response = $this->cartRepository->saveCartTotal($user_id,$recalculate['subtotal'], $recalculate['total']);
         
-        return ['cart_products'=>$data,'subtotal' => $recalculate['subtotal'], 'total' => $recalculate['total']];
+        return ['cart_products'=>$data,'subtotal' => $recalculate['subtotal'], 'total' => $recalculate['total'] , 'vendors' =>$vendors];
     }
 
     public function bestOfferCheckUser($user_id,$productId)
