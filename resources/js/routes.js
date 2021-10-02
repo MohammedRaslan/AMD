@@ -47,11 +47,16 @@ import ChatDetails from "./components/ChatCenter/ChatDetails.vue";
 import InformationComponent from "./components/SettingsCenter/InformationComponent";
 import ShippingInformationComponent from "./components/SettingsCenter/ShippingInfoComponent.vue";
 import PreferencesComponent from "./components/SettingsCenter/PreferencesComponent.vue";
+import FreeSettingSubscrComponent from "./components/SettingsCenter/subscrition/FreeSubscriptionComponent.vue";
+import SilverSettingSubscrComponent from "./components/SettingsCenter/subscrition/SilverSubscriptionComponent.vue";
+import GoldSettingSubscrComponent from "./components/SettingsCenter/subscrition/GoldSubscriptionComponent.vue";
+import PlatinumSettingSubscrComponent from "./components/SettingsCenter/subscrition/PlatinumSubscriptionComponent.vue";
 import NotificationMessageComponent from "./components/ChatCenter/NotificationComponent.vue";
 import archiveMessageComponent from "./components/ChatCenter/ArchiveComponent.vue";
 import EditProductComponent from "./components/Selling/EditProductComponent.vue";
 import RequestItemComponent from "./components/Buying/RequestItem/RequestItemComponent.vue";
 import MyRequestesItemComponent from "./components/Buying/RequestItem/MyRequestesItemComponent.vue";
+import MyequestsComponent from "./components/Buying/RequestItem/MyRequestsComponent.vue";
 import SoldProductsComponent from "./components/Selling/SoldProductsComponent.vue";
 import UnSoldProductsComponent from "./components/Selling/UnSoldProductsComponent.vue";
 import SavedProductComponent from "./components/Buying/Myfavorites/SavedProductComponent.vue";
@@ -96,6 +101,26 @@ var routes = [{
         path: "/settings/preferences",
         component: PreferencesComponent,
         name: "PreferencesComponent",
+    },
+    {
+        path: "/settings/free",
+        component: FreeSettingSubscrComponent,
+        name: "FreeSettingSubscrComponent",
+    },
+    {
+        path: "/settings/silver",
+        component: SilverSettingSubscrComponent,
+        name: "SilverSettingSubscrComponent",
+    },
+    {
+        path: "/settings/gold",
+        component: GoldSettingSubscrComponent,
+        name: "GoldSettingSubscrComponent",
+    },
+    {
+        path: "/settings/platinum",
+        component: PlatinumSettingSubscrComponent,
+        name: "PlatinumSettingSubscrComponent",
     },
     {
         path: "/login",
@@ -161,6 +186,11 @@ var routes = [{
         path: "/buying/requestedItem",
         component: MyRequestesItemComponent,
         name: "RequestEDItemComponent",
+    },
+    {
+        path: "/buying/myrequests",
+        component: MyequestsComponent,
+        name: "MyequestsComponent",
     },
     {
         path: "/buying/offers",

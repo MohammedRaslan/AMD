@@ -37,7 +37,7 @@
 
                 <div class="col-xl-10 col-md-12">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="inner-content">
+                        <div class="inner-content px-0">
                             <div class="text-center">
                                 <h3 class="text-milky">You have no Preferences</h3>
                             </div>

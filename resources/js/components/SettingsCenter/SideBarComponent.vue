@@ -10,7 +10,7 @@
                 <router-link class="nav-link text-decoration-none text-white" to="/settings/shipping_info">Address Info</router-link>
                 <hr>
                 <!--2 Request an Item -->
-                <router-link class="nav-link text-decoration-none text-white" to="/subscriptions/free">Subscription</router-link>
+                <router-link class="nav-link text-decoration-none text-white" :to="'/settings/'+subscription">Subscription</router-link>
                 <hr>
 
                 <!--3 My Favorites -->
@@ -24,6 +24,15 @@
 <script>
 export default ({
     props : ['openSlideBar'],
+    data:()=>({
+        subscription : null
+    }),
+    mounted() {
+        Fire.$emit('mounted');
+        axios.post('/api/getCurrentSubscription').then((response) => {
+            this.subscription = response.data.subscription.toLowerCase();
+        });
+    }
 })
 
 </script>

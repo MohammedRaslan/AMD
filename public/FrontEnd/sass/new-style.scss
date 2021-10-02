@@ -15,6 +15,15 @@
         overflow: hidden;
     }
     
+    // #finish-loading
+    // #preloder {
+    //     display: none !important;
+    //     opacity: 0 !important;
+    // }
+    .w-120 {
+        width: 120px !important;
+    }
+    
     .d-block1 {
         display: block !important;
     }
@@ -276,8 +285,29 @@
         border: 1px solid #FECC2F !important;
     }
     
+    // border border-milky border-2
+    .border {
+        border: 1px solid transparent;
+    }
+    
+    .border-milky {
+        border-color: $milky !important;
+    }
+    
+    .border-1 {
+        border-width: 1px !important;
+    }
+    
+    .border-2 {
+        border-width: 2px !important;
+    }
+    
     .border-maroon {
         border: 1px solid $maroon;
+    }
+    
+    .border-radius-5 {
+        border-radius: 5px;
     }
     
     .border-maroon-lg-right {

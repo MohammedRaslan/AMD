@@ -12,7 +12,7 @@
                                         <path id="Triangle" d="M3,4,6,0H0Z" transform="translate(7 8)" fill="#ffe0e0"/>
                                     </g>
                                 </svg>
-                                <span>Requested Item</span>
+                                <span>My Requests</span>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="top-tabs p-0 mb-4">
-                    <h1 class='py-3 py-lg-5 text-green'>Requested Item <span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
+                    <h1 class='py-3 py-lg-5 text-green'>My Requests<span @click="openSlideBar = !openSlideBar" :aria-pressed="openSlideBar ? 'true' : 'false'" class="open-tabs"><i class="fa fa-bars"></i></span> </h1>
                 </div>
             <!-- Compnent Here -->
             <side-bar :openSlideBar='openSlideBar'></side-bar>

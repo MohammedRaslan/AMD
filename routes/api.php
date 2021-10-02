@@ -86,7 +86,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('changeStatus/{id}',[FaqController::class,'changeStatus']);
         Route::get('getAllFaqs',[FaqController::class,'getAllFaqs']);
     });
-    
+
     Route::prefix('category')->group(function() {
         Route::post('store',[CategoryController::class,'store']);
         Route::get('changeStatus/{id?}',[CategoryController::class,'changeStatus']);
@@ -98,10 +98,10 @@ Route::middleware('auth:api')->group(function () {
         Route::post('update/{id?}',[ProductController::class,'update']);
         Route::post('store/step_two',[ProductController::class,'step_two']);
         Route::post('store/step_three',[ProductController::class,'step_three']);
-        Route::get('changeStatus/{id?}',[ProductController::class,'changeStatus']); 
+        Route::get('changeStatus/{id?}',[ProductController::class,'changeStatus']);
         Route::get('AddToWishlist/{id?}',[ProductController::class,'AddToWishlist']);
         Route::get('AddToVendorWishlist/{id?}',[ProductController::class,'AddToVendorWishlist']);
-        Route::get('getProductShipping/{id?}',[ProductController::class,'getProductShipping']);     
+        Route::get('getProductShipping/{id?}',[ProductController::class,'getProductShipping']);
         Route::get('checkUserProduct/{id?}',[ProductController::class,'checkUserProduct']);
         Route::get('getProductData/{id?}',[ProductController::class,'getProductData']);
         Route::get('getUserProduct',[ProductController::class,'getUserProduct']);
@@ -123,8 +123,8 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::prefix('wishlist')->group(function (){
-        Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']); 
-        Route::get('getVendorWishlist',[VendorWishlistController::class,'getVendorWishlist']); 
+        Route::get('getWishlist/{type}',[WishlistController::class,'getWishlist']);
+        Route::get('getVendorWishlist',[VendorWishlistController::class,'getVendorWishlist']);
         Route::delete('remove/{id?}',[WishlistController::class,'destroy']);
     });
     Route::prefix('shop')->group(function() {
@@ -174,7 +174,7 @@ Route::middleware('auth:api')->group(function () {
     });
     Route::post('/createSubscription',[SubscriptionController::class,'store']);
 
-    
+
 });
 Route::get('category/get/{flag?}',[CategoryController::class,'get']);
 Route::get('getCategory/{id}',[CategoryController::class,'getCategory']);

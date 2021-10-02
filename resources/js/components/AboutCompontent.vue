@@ -59,10 +59,13 @@
     </main>
   </div>
 </template>
-<style scoped>
+<style scoped lang='scss'>
   main {
     background: #0f243c;
     padding-top: 40px;
+    @media (min-width:1200px) {
+        min-height: 400px;
+    }
   }
   .title-inner {
     overflow: hidden;

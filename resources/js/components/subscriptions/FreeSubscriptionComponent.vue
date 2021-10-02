@@ -34,7 +34,7 @@
                 <ul class="df">
                     <li>50 Free Listings monthly</li>
                     <li>Selling Fee 9% unlimited final value fee.</li>
-                </ul> 
+                </ul>
                   <h3 style="color: white;">Terms and Conditions</h3>
                         <p class="terms-text">
                             * Any change/cancellation to the membership will take effect as of the following month
@@ -53,7 +53,7 @@
                   <div></div>
             </div>
 
-            <div class="d-sm-nonecol-lg-4 col-md-4 d-sm-12 d-md-block" style="display: flex !important; justify-content: flex-end;">
+            <div class="col-lg-4 col-md-4 d-sm-12 d-sm-none d-md-block" style="display: flex !important; justify-content: flex-end;">
 
                 <svg class="img-subscription" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.738 269.09">
                             <g id="Group_66" data-name="Group 66" transform="translate(-2461.7 -377.809)">

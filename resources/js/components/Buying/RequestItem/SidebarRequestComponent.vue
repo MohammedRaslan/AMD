@@ -5,7 +5,7 @@
                     <router-link class="nav-link" to="/buying/requestItem">Request Item</router-link>
                     <hr>
 
-                    <router-link class="nav-link" to="/buying/requestedItem">Requested Item</router-link>
+                    <router-link class="nav-link" to="/buying/myrequests">My Requests</router-link>
 
                 </div>
             </div>
