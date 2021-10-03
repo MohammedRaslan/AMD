@@ -8,10 +8,10 @@
                   <table class="table white">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" class="fw-500">#</th>
+                            <th scope="col" class="fw-500">Username</th>
+                            <th scope="col" class="fw-500">Price</th>
+                            <th scope="col" class="fw-500">Action</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -51,7 +51,7 @@ export default {
     methods:{
         acceptOffer(id){
             axios.get('/api/offer/accept/'+id).then((response) => {
-          
+
                     if(response.data == true){
                         Toast.fire({
                             icon: 'success',
@@ -81,17 +81,17 @@ export default {
                     )
                     document.getElementById('offer_row_'+id).remove();
                 });
-               
+
                 }
                 })
-       
+
         },
         async markAsView(id){
             const response = axios.get('/api/offer/markAsView/'+id).then((response) => {
                 if(document.getElementById('dot_'+id)){
                     document.getElementById('dot_'+id).remove();
                 }
-                
+
             });
         }
     },

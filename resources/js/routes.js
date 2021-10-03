@@ -24,6 +24,7 @@ import RequestedComponent from "./components/RequestedComponent"
 import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
+import DoneShoppingComponent from "./components/Cart/DoneShoppingComponent.vue";
 import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue";
 import WishlistComponent from "./components/Buying/Myfavorites/WishlistComponent.vue";
 // import myfavoritesComponent from "./components/Buying/MyfavoritesComponent.vue";
@@ -275,6 +276,11 @@ var routes = [{
         name: "CartSecondStepComponent",
     },
     {
+        path: "/cart/done-shopping",
+        component: DoneShoppingComponent,
+        name: "DoneShoppingComponent",
+    },
+    {
         path: "/subscriptions",
         component: FrontSubscriptionsComponent,
         name: "FrontSubscriptionsComponent",
@@ -384,6 +390,20 @@ var routes = [{
 var router = new VueRouter({
     routes,
     mode: "history",
+    scrollBehavior() {
+        document.getElementById('app').scrollIntoView();
+    }
 });
 
 export default router;
+
+
+
+// const router = new VueRouter({
+//     mode: 'history',
+//     base: process.env.BASE_URL,
+//     routes,
+//     scrollBehavior() {
+//         document.getElementById('app').scrollIntoView();
+//     }
+// })

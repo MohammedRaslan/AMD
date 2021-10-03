@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-          
+
 
                     <!-- Block Step -->
                     <div class="col-lg-4 col-12 col-sm-6">
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-9 des">
                                 <h6>Payment</h6>
-                                <p>Step 3</p>
+                                <p>Step 2</p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                             </div>
                             <div class="col-9 des">
                                 <h6>Confirmation</h6>
-                                <p>Step 4</p>
+                                <p>Step 3</p>
                             </div>
                         </div>
                     </div>
@@ -92,6 +92,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Block Item -->
+                    <h3 v-if="cartProducts.length == 0" class="text-offwhite text-center">No Products</h3>
                     <div class="cont-pro" v-for="product in cartProducts" :key="'row_'+product.id" :id="'row_'+product.product.id">
                         <div class="inner-pro">
                             <div class="row">
@@ -140,17 +141,16 @@
                                <span class="price">$ {{ subtotal }}</span>
                            </h3>
                        </div>
-                           <div class="subtotal">
+                        <div class="subtotal">
                            <h3>
                                <span class="label">Total</span>
                                <span class="price">$ {{ total }}</span>
                            </h3>
                        </div>
 
-                       <div class="continue">
-                                                   <div class="col-6 float-right" id="paypal-button-container"></div>
-
-                           <button class="btn btn-block"><router-link to="/cart/second-step">Continue</router-link></button>
+                       <div class="continue px-4">
+                            <div id="paypal-button-container"></div>
+                           <!-- <button class="btn btn-block"><router-link to="/cart/second-step">Continue</router-link></button> -->
                        </div>
 
                     </div>
@@ -171,13 +171,13 @@ export default ({
         total: null,
         vendors : [],
     }),
-        methods:{
+    methods:{
         str_replace(str){
             str = str.replace('public',window.location.origin + '/storage');
             return str;
         },
         async removeFromCart(id,best_offer){
-            
+
             if(best_offer == 1){
 
                 await axios.get('/api/cart/bestOfferCheckUser/'+id).then((response) => {
@@ -191,7 +191,7 @@ export default ({
                 this.RemoveFromCartActual(id);
             }
 
-    },
+        },
         async RemoveFromCartActual(id){
             const response = await axios.post('/api/cart/remove/'+id).then((response) => {
                     if(response.data == true){
@@ -209,77 +209,77 @@ export default ({
                     }
                     });
         },
-         async bestOfferCheckUser(product_id){
+            async bestOfferCheckUser(product_id){
             const response = await axios.get('/api/cart/bestOfferCheckUser/'+product_id).then((response) => {
                 return response.data;
             });
         },
         setLoded(){
-  paypal.Buttons({
+            paypal.Buttons({
 
-    // Set up the transaction
-    createOrder: (data, actions) => {
-        var amount = 200;
-        var vendors = [];
-        this.vendors.forEach(vendor => {
-              vendors.push({
-                reference_id : vendor.id,
-                amount : {
-                    value: vendor.total_vendor
+                // Set up the transaction
+                createOrder: (data, actions) => {
+                    var amount = 200;
+                    var vendors = [];
+                    this.vendors.forEach(vendor => {
+                        vendors.push({
+                            reference_id : vendor.id,
+                            amount : {
+                                value: vendor.total_vendor
+                            },
+                            payee: {
+                                email_address: vendor.paypal_account
+                            }
+                        });
+                    });
+
+                    return actions.order.create({
+                            intent: 'CAPTURE',
+
+                        purchase_units: vendors
+                    });
                 },
-                 payee: {
-                    email_address: vendor.paypal_account
+
+                // Finalize the transaction
+                onApprove: (data, actions) => {
+                    var email = JSON.parse(localStorage.getItem('currentUser'))['email'];
+                    var type   = 'monthly';
+
+                    return actions.order.capture().then(function(details) {
+                        console.log(details);
+                        axios.post('/api/order/store' , details).then((response) => {
+                        this.cartProducts = response.data.cart_products;
+                        this.subtotal = response.data.subtotal;
+                        this.total = response.data.total;
+                        this.vendors = response.data.vendors;
+                        });
+                        // Show a success message to the buyer
+                        // alert('Transaction completed by ' + details.payer.name.given_name);
+                        //     let api = fetch('/api/paypal/purchase/subscription', {
+                        //             method: 'post',
+                        //             headers: {
+                        //                 'content-type': 'application/json'
+                        //             },
+                        //             body: JSON.stringify({
+                        //                 orderID: data.orderID,
+                        //                 details: details,
+                        //                 type: type,
+                        //                 subscription_name:'platinum',
+                        //                 email: email,
+                        //                 quantity: 500,
+                        //             })
+                        //         });
+                        //         api.then(response => {
+                        //             if(response.status == 200){
+                        //                 window.location.href =  '/subscriptions';
+                        //             }
+                        // })
+                        console.log(details);
+                    });
                 }
-            });
-        });
 
-        return actions.order.create({
-                intent: 'CAPTURE',
-
-            purchase_units: vendors
-        });
-    },
-
-    // Finalize the transaction
-    onApprove: (data, actions) => {
-        var email = JSON.parse(localStorage.getItem('currentUser'))['email'];
-        var type   = 'monthly';
-        
-        return actions.order.capture().then(function(details) {
-            console.log(details);
-            axios.post('/api/order/store' , details).then((response) => {
-            this.cartProducts = response.data.cart_products;
-            this.subtotal = response.data.subtotal;
-            this.total = response.data.total;
-            this.vendors = response.data.vendors;
-            });
-            // Show a success message to the buyer
-            // alert('Transaction completed by ' + details.payer.name.given_name);
-            //     let api = fetch('/api/paypal/purchase/subscription', {
-            //             method: 'post',
-            //             headers: {
-            //                 'content-type': 'application/json'
-            //             },
-            //             body: JSON.stringify({
-            //                 orderID: data.orderID,
-            //                 details: details,
-            //                 type: type,
-            //                 subscription_name:'platinum',
-            //                 email: email,
-            //                 quantity: 500,
-            //             })
-            //         });
-            //         api.then(response => {
-            //             if(response.status == 200){
-            //                 window.location.href =  '/subscriptions';
-            //             }
-            // })
-            console.log(details);
-        });
-    }
-
-  }).render('#paypal-button-container');
-}
+            }).render('#paypal-button-container');
+        }
     },
     async beforeCreate(){
        await axios.get('/api/cart/getCartProducts').then((response) => {
@@ -288,10 +288,10 @@ export default ({
             this.total = response.data.total;
             this.vendors = response.data.vendors;
              var vendorsAccountIds = "";
-       
-           
-      
-    
+
+
+
+
         //console.log(vendorsAccountIds);
         var url= 'https://www.paypal.com/sdk/js?client-id=AUuivy3A41GeLf_nxhIVY4QyW9rPnUc3Ksx-ueYsZTjQvw0loyTa4VK7srlDkWce5fwgDM0Zq2pfcZBa&debug=false&components=buttons' ;
             var s = document.createElement('script');
@@ -299,9 +299,9 @@ export default ({
                      url = url + "&merchant-id=*";
                  this.vendors.forEach(vendor => {
                             vendorsAccountIds = vendorsAccountIds + vendor.paypal_account_id +','
-                        
+
                         });
-                        
+
                 s.setAttribute('data-merchant-id' ,vendorsAccountIds.slice(0,-1) );
             }
                         s.setAttribute('src', url);
@@ -321,9 +321,9 @@ export default ({
             document.head.insertBefore(s, document.head.firstElementChild);
 
         }
-        
+
     }
 
-    
+
 })
 </script>

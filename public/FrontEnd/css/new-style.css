@@ -3,6 +3,11 @@
   overflow: hidden;
 }
 
+#preloder {
+  display: none !important;
+  opacity: 0 !important;
+}
+
 .w-120 {
   width: 120px !important;
 }
@@ -37,6 +42,10 @@
 
 .fs-14 {
   font-size: 14px !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
 }
 
 .h-60 {
@@ -272,6 +281,10 @@
 
 .border-maroon {
   border: 1px solid #fd1266;
+}
+
+.border-color-maroon {
+  border-color: #fd1266 !important;
 }
 
 .border-radius-5 {
@@ -955,6 +968,25 @@ svg.img-subscription {
 .chat-private #chat-list .msg.msg-from {
   background: #7ac943;
   margin-left: 30%;
+}
+
+.done-shopping {
+  background-color: #111b29;
+  height: calc(100vh - 128px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.nice-select.nice-select-maroon {
+  border-color: #fd1266 !important;
+}
+.nice-select.nice-select-maroon:after {
+  border-color: #fd1266 !important;
+}
+.nice-select.nice-select-maroon ul.list {
+  border-color: #fd1266 !important;
 }
 
 .c-position-static {

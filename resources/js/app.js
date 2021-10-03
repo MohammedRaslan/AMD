@@ -69,18 +69,22 @@ if (token) {
 }
 
 router.beforeEach((to, from, next) => {
-    if (localStorage.getItem('token')) {
-        // Fire.$emit('getNotification');
-        if (to.path == '/login' || to.path == '/register' || to.path == '/verify') {
-            next('/');
+        if (localStorage.getItem('token')) {
+            // Fire.$emit('getNotification');
+            if (to.path == '/login' || to.path == '/register' || to.path == '/verify') {
+                next('/');
+            }
         }
-    }
-    if ((!localStorage.getItem('token') && !(to.name == 'login' || to.path == '/register' || to.name == 'home' || to.name == 'verify' || to.path == '/subscriptions'))) {
-        window.location.href = '/';
+        if ((!localStorage.getItem('token') && !(to.name == 'login' || to.path == '/register' || to.name == 'home' || to.name == 'verify' || to.path == '/subscriptions'))) {
+            window.location.href = '/';
 
-    }
-    next()
-})
+        }
+        next()
+    })
+    // router.beforeEach((to, from, next) => {
+    //     console.log('Test route');
+    // })
+
 
 
 
@@ -103,4 +107,5 @@ var app = new Vue({
         Loader: Loader,
         Admin: Admin,
     },
+
 });
