@@ -98,6 +98,13 @@
                                                                             <div v-if="form.errors.has('paypal_account')" class="alert alert-danger" v-html="form.errors.get('paypal_account')" />
                                                                         </div>
                                                                     </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 text-left">
+                                                                            <label class="text-offwhite" for="cats">PayPal Account ID</label>
+                                                                            <input type="text" v-model="form.paypal_account_id" class="form-control" id="fName" placeholder="PayPal Account ID" >
+                                                                            <div v-if="form.errors.has('paypal_account_id')" class="alert alert-danger" v-html="form.errors.get('paypal_account_id')" />
+                                                                        </div>
+                                                                    </div>
 
                                                                     <div class="row">
 
@@ -231,6 +238,7 @@ export default ({
             service_usa: null,
             service_worldwide: null,
             paypal_account: null,
+            paypal_account_id: null,
             is_american : null,
         }),
         openSlideBar: false
@@ -263,6 +271,7 @@ export default ({
             this.form.service_worldwide = response.data.service_worldwide;
             this.form.currency = response.data.currency;
             this.form.paypal_account = response.data.paypal_account;
+            this.form.paypal_account_id = response.data.paypal_account_id;
             this.form.is_american = response.data.is_american;
         });
     }

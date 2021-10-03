@@ -43,4 +43,9 @@ class Product extends Model
     {
         return $this->hasOne(Bid::class);
     }
+
+    public function offerdProduct()
+    {
+        return $this->belongsTo(Product::class , 'product_id');
+    }
 }

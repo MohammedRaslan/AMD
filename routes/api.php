@@ -26,6 +26,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VendorWishlistController;
 
 /*
@@ -120,6 +121,12 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('bid')->group(function(){
         Route::post('store',[BidController::class,'store']);
         Route::get('getHistory/{bid_id}' ,[BidController::class,'getHistory']);
+    });
+
+
+    Route::prefix('order')->group(function(){
+        Route::post('store',[OrderController::class,'store']);
+        //Route::get('getHistory/{bid_id}' ,[BidController::class,'getHistory']);
     });
 
     Route::prefix('wishlist')->group(function (){

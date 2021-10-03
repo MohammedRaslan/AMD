@@ -26,7 +26,7 @@ class CreateProductRequest extends FormRequest
         return [
             'sku' => 'string|max:200',
             'title' => 'required|string|max:200',
-            'type'  => 'required|string|max:200',
+            'type'  => 'required|max:200',
             'description' => 'required|string:255',
             'condition' => 'required|string|max:200',
             'brand' => 'required|string|max:200',

@@ -1,0 +1,47 @@
+<?php
+namespace App\Repositories;
+
+use App\Models\Order;
+use App\Models\Order_Product;
+use App\Models\Product;
+use App\Models\User;
+
+class OrderRepository{
+
+    protected $order;
+
+    public function __construct( Order $order ) {
+        $this->order = $order;
+    }
+
+    public function store($user_id,$productId,$offerPrice = null)
+    {
+        $order = Order::where('user_id',$user_id)->first();
+        $product = Product::find($productId);
+        if($product->status == 0){
+            return false;
+        }
+        
+        if($offerPrice){    
+            $product->status = 0;
+            $product->save();
+        }
+        $orderProduct = Order_Product::create([
+            'user_id' => $user_id,
+            'order_id' => $order->id,
+            'product_id' => $product->id,
+            'price' =>  $offerPrice == null ? $product->price : $offerPrice ,
+            'quantity' => 1,
+        ]);
+        if($orderProduct){
+            $order->subtotal += $offerPrice == null ? $product->price : $offerPrice;
+            $order->total += $offerPrice == null ? $product->price : $offerPrice;
+            if($order->save()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+  
+}

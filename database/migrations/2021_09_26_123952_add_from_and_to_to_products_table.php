@@ -16,6 +16,7 @@ class AddFromAndToToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->integer('price_from')->nullable();
             $table->integer('price_to')->nullable();
+            $table->foreignId('product_id')->nullable();
         });
     }
 
@@ -26,8 +27,10 @@ class AddFromAndToToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('and_to_to_products', function (Blueprint $table) {
-            //
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('price_from');
+            $table->dropColumn('price_to');
+            $table->dropColumn('product_id');
         });
     }
 }

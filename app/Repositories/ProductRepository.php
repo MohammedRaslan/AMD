@@ -15,6 +15,7 @@ use App\Enums\LocalShipping;
 use App\Enums\Return_Policy;
 use App\Enums\ProductCondition;
 use App\Enums\InternationalShipping;
+use App\Events\DeclineOfferEvent;
 use App\Models\Bid;
 use App\Models\Cart;
 use App\Models\Cart_Product;
@@ -61,6 +62,7 @@ class ProductRepository{
     {
     
         $userDetails = UserDetail::where('user_id',$user_id)->first();
+        //dd( Product::where('id',$id)->with(['categories','bid','images'])->first()->categories[0] );
         return ['types'=> ProductType::getInstances(),
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
                 'conditions' => $this->fixConditions(ProductCondition::getKeys()), 
@@ -90,6 +92,7 @@ class ProductRepository{
 
     public function store($data,$images,$user_id)
     {
+        
         $product = new Product();
         $product->sku = 'PRO_' . Str::random(5);
         $product->title = $data['title'];
@@ -113,12 +116,20 @@ class ProductRepository{
         $product->user_id = $user_id;
         $product->status  = 1;
         $product->image   = 'waiting';
+        $product->product_id =  $data['product_id']  ? $data['product_id'] : null ;
+        //dd($product , $images,$user_id);
         if($product->save()){
-            $this->saveImage($data,$product);
+            if(is_object($data['featured_image'])){
+                $this->saveImage($data,$product);            
+            }elseif(is_string($data['featured_image'])){
+                $product->image = $data['featured_image'];
+            }
+            $product->save();
+            //dd($data['category']);
             $product->categories()->attach($data['category']);
             if($data['type'] == 1){
                 $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
-            }
+        }
 
         if($images){
             $this->saveImages($product,$images);
@@ -177,6 +188,7 @@ class ProductRepository{
         $product->upc = $data['upc'];
         $product->domestic_product = $data['domestic_product'];
         $product->draft =  $data['draft'];
+        $product->product_id =  $data['product_id']  ? $data['product_id'] : null ;
         $product->status  = 1;
         if($product->save()){
             $category = Category::select('id')->where('title',$data['category'])->first();
@@ -232,6 +244,12 @@ class ProductRepository{
             $product->status = 1;
         }
         $product->save();
+        if($product->offerdProduct && $product->offerdProduct->id){
+            $message   = 'Your have an offer on '.$product->offerdProduct->title ;
+            $notification = NotificationRepository::generateNotification($product->user_id,$product->offerdProduct->user_id,$product->id,'offer',$message);
+            $user_email = $product->offerdProduct->user;
+            event(new DeclineOfferEvent($user_email->email, $notification));
+        }
         if($product->shipping){
             $shipping = $product->shipping()->update($data);
         }else{
