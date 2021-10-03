@@ -1,0 +1,11 @@
+.nice-select {
+    &.nice-select-maroon {
+        border-color: $maroon !important;
+        &:after {
+            border-color: $maroon !important;
+        }
+        ul.list {
+            border-color: $maroon !important;
+        }
+    }
+}

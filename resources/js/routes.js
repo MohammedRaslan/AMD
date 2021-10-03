@@ -24,6 +24,7 @@ import RequestedComponent from "./components/RequestedComponent"
 import ShopDetailComponent from "./components/ShopDetail"
 import CartFirstStepComponent from "./components/Cart/FirstStepComponent.vue";
 import CartSecondStepComponent from "./components/Cart/SecondStepComponent.vue";
+import DoneShoppingComponent from "./components/Cart/DoneShoppingComponent.vue";
 import FrontSubscriptionsComponent from "./components/SubscriptionComponent.vue";
 import WishlistComponent from "./components/Buying/Myfavorites/WishlistComponent.vue";
 // import myfavoritesComponent from "./components/Buying/MyfavoritesComponent.vue";
@@ -273,6 +274,11 @@ var routes = [{
         path: "/cart/second-step",
         component: CartSecondStepComponent,
         name: "CartSecondStepComponent",
+    },
+    {
+        path: "/cart/done-shopping",
+        component: DoneShoppingComponent,
+        name: "DoneShoppingComponent",
     },
     {
         path: "/subscriptions",

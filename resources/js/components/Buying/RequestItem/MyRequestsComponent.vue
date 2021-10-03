@@ -34,7 +34,7 @@
             <side-bar :openSlideBar='openSlideBar'></side-bar>
             <!-- End Component  -->
                 <div class="col-xl-10 col-md-12">
-                        <h2 v-if="message != '' " class="text-center">{{message}}</h2>
+                        <h3 v-if="message != '' " class="text-center">{{message}}</h3>
                         <div class="tab-content" id="v-pills-tabContent" v-for="product in products.data" :key="product.id">
                             <div class="inner-content">
                                 <!-- Tab1 Overview -->
@@ -283,7 +283,7 @@ export default ({
         brands: [],
         currencyIcon: null,
         imagenull: false,
-        message : null,
+        message : '',
         products: {},
         form : new form({
             title : null,
