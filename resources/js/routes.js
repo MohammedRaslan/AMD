@@ -390,6 +390,20 @@ var routes = [{
 var router = new VueRouter({
     routes,
     mode: "history",
+    scrollBehavior() {
+        document.getElementById('app').scrollIntoView();
+    }
 });
 
 export default router;
+
+
+
+// const router = new VueRouter({
+//     mode: 'history',
+//     base: process.env.BASE_URL,
+//     routes,
+//     scrollBehavior() {
+//         document.getElementById('app').scrollIntoView();
+//     }
+// })
