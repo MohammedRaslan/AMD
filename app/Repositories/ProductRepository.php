@@ -116,7 +116,7 @@ class ProductRepository{
         $product->user_id = $user_id;
         $product->status  = 1;
         $product->image   = 'waiting';
-        $product->product_id =  $data['product_id']  ? $data['product_id'] : null ;
+        $product->product_id =  isset($data['product_id'])  ? $data['product_id'] : null ;
         //dd($product , $images,$user_id);
         if($product->save()){
             if(is_object($data['featured_image'])){
