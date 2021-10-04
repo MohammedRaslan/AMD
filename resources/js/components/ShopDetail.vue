@@ -145,36 +145,36 @@
                                     <table class="table-responsive table-borderless table px-0">
                                         <tbody>
                                             <tr v-if='product.brand'>
-                                                <td class="col-lg-4 col-xs-5 maintype px-0">Brand:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.brand == null ? '-' : product.brand}} </td>
+                                                <td class="col-3 col-lg-4 maintype px-0">Brand:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.brand == null ? '-' : product.brand}} </td>
                                             </tr>
                                             <tr v-if='product.condition'>
-                                                <td class="col-lg-4 maintype px-0">Condition:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.condition == null ? '-' : product.condition}} </td>
+                                                <td class="col-3 col-lg-4 maintype px-0">Condition:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.condition == null ? '-' : product.condition}} </td>
                                             </tr>
                                             <tr v-if='product.doll_size'>
-                                                <td class="col-lg-4 maintype px-0"> Size:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
+                                                <td class="col-3 col-lg-4 maintype px-0"> Size:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
                                             </tr>
                                             <tr v-if='product.featured_refinements'>
-                                                <td class="col-lg-4 maintype px-0">Featured Refinements:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
+                                                <td class="col-3 col-lg-4 maintype px-0">Featured Refinements:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
                                             </tr>
                                             <tr v-if='product.domestic_product'>
-                                                <td class="col-lg-4 maintype px-0">Domestic Product:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
+                                                <td class="col-3 col-lg-4 maintype px-0">Domestic Product:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
                                             </tr>
                                             <tr v-if='product.modified_item'>
-                                                <td class="col-lg-4 maintype px-0">Modified:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
+                                                <td class="col-3 col-lg-4 maintype px-0">Modified:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
                                             </tr>
                                             <tr v-if='product.pc'>
-                                                <td class="col-lg-4 maintype px-0">UPC:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype">{{ product.upc  == null ? '-' :  product.upc}} </td>
+                                                <td class="col-3 col-lg-4 maintype px-0">UPC:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0">{{ product.upc  == null ? '-' :  product.upc}} </td>
                                             </tr>
                                             <tr v-if='product.return_policy'>
-                                                <td class="col-lg-4 maintype px-0">Return Policy:</td>
-                                                <td class="col-lg-8 col-xs-7 subtype"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
+                                                <td class="col-3 col-lg-4 maintype px-0">Return Policy:</td>
+                                                <td class="col-9 col-lg-8 subtype  px-0"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -238,36 +238,36 @@
                                                 <table class="table-responsive table-borderless table px-0">
                                                     <tbody>
                                                         <tr v-if='product.brand'>
-                                                            <td class="col-lg-4 col-xs-5 maintype px-0">Brand:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.brand == null ? '-' : product.brand}} </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Brand:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype"> {{ product.brand == null ? '-' : product.brand}} </td>
                                                         </tr>
                                                         <tr v-if='product.condition'>
-                                                            <td class="col-lg-4 maintype px-0">Condition:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.condition == null ? '-' : product.condition}} </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Condition:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype"> {{ product.condition == null ? '-' : product.condition}} </td>
                                                         </tr>
                                                         <tr v-if='product.doll_size'>
-                                                            <td class="col-lg-4 maintype px-0">Size:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Size:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype"> {{ product.doll_size == null ? '-' : product.doll_size}} </td>
                                                         </tr>
                                                         <tr v-if='product.featured_refinements'>
-                                                            <td class="col-lg-4 maintype px-0">Featured Refinements:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype">  {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Featured Refinements:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype">  {{ product.featured_refinements == null ? '-' : product.featured_refinements }} </td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="col-lg-4 maintype px-0">Domestic Product:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Domestic Product:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype"> {{ product.domestic_product == 1 ? 'Yes' : 'No' }}  </td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="col-lg-4 maintype px-0">Modified:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Modified:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype"> {{ product.modified_item == 1 ? 'Yes' : 'No' }}</td>
                                                         </tr>
                                                         <tr v-if='product.upc'>
-                                                            <td class="col-lg-4 maintype px-0">UPC:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype">{{ product.upc  == null ? '-' :  product.upc}} </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">UPC:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype">{{ product.upc  == null ? '-' :  product.upc}} </td>
                                                         </tr>
                                                         <tr v-if='product.return_policy'>
-                                                            <td class="col-lg-4 maintype px-0">Return Policy:</td>
-                                                            <td class="col-lg-8 col-xs-7 subtype"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
+                                                            <td class="col-3 col-lg-4  px-0 maintype">Return Policy:</td>
+                                                            <td class="col-9 col-lg-8  px-0 subtype"> {{ product.return_policy  == null ? '-' :  product.return_policy}}  </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
