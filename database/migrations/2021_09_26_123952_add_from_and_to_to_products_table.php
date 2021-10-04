@@ -28,9 +28,9 @@ class AddFromAndToToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            // $table->dropColumn('price_from');
-            // $table->dropColumn('price_to');
-            // $table->dropColumn('product_id');
+            $table->dropColumn('price_from');
+            $table->dropColumn('price_to');
+            $table->dropColumn('product_id');
         });
     }
 }
