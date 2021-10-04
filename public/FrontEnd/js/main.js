@@ -153,19 +153,19 @@
         console.log("Test R");
     })
 
-    $(".menu-user button").blur(function() {
-        setTimeout(function() {
-            $(".menu-user .drop-user1 ul").removeClass("show");
-            $(".menu-user .dropdown.drop-user1").removeClass("borderrad")
-            $("#Icon_down").removeClass("svg-tran")
-        }, 320)
-    })
+    // $(".menu-user button").blur(function() {
+    //     setTimeout(function() {
+    //         $(".menu-user .drop-user1 ul").removeClass("show");
+    //         $(".menu-user .dropdown.drop-user1").removeClass("borderrad")
+    //         $("#Icon_down").removeClass("svg-tran")
+    //     }, 320)
+    // })
 
-    $(".menu-user button").click(function() {
-        $(".menu-user .drop-user1 ul").toggleClass("show");
-        $(".menu-user .dropdown.drop-user1").toggleClass("borderrad")
-        $("#Icon_down").toggleClass("svg-tran")
-    })
+    // $(".menu-user button").click(function() {
+    //     $(".menu-user .drop-user1 ul").toggleClass("show");
+    //     $(".menu-user .dropdown.drop-user1").toggleClass("borderrad")
+    //     $("#Icon_down").toggleClass("svg-tran")
+    // })
 
     /*--------------------------
         Header

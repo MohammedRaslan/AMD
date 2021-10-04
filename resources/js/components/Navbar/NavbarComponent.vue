@@ -352,13 +352,7 @@
                       ><span>{{ name }}</span></router-link>
                   </div>
                   <div class="dropdown drop-user1">
-                    <button
-                      class="btn btn-outline-secondary dropdown-toggle w-auto"
-                      id="dropdownMenuButton22"
-                      data-bs-toggle="dropsdown"
-                      type="button"
-                      aria-expanded="false"
-                    >
+                    <button class="btn btn-outline-secondary dropdown-toggle w-auto" @blur="blurDropAvatar"  @click="clickdropavatar">
                       <svg
                         v-show="image == null"
                         class="user-icon"
@@ -419,11 +413,7 @@
                         alt=""
                       />
                     </button>
-                    <ul
-                      class="dropdown-menu dropdown-menu-dark"
-                      id="m-user"
-                      aria-labelledby="dropdownMenuButton22"
-                    >
+                    <ul class="dropdown-menu dropdown-menu-dark" :class="{ 'show': dropAvatar }" id="m-user">
                       <li>
                         <router-link
                           to="/selling/sell_item"
@@ -510,16 +500,6 @@
                 links-header-mobil
               "
             >
-              <!-- <li
-                    class="menu-1 cat mr-xl-5 mr-lg-5 mr-md-2 d-lg-flex d-xl-flex d-md-flex align-items-center">
-                    <Drop></Drop>
-                </li> -->
-              <!-- <li class="search-item search-switch">
-                    <Search></Search>
-                </li> -->
-              <!-- <input type="search" name="search" placeholder="Search here" id="search"> -->
-              <!-- <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a> -->
-              <!-- <i class="fas fa-search"></i> -->
 
               <li class="d-xl-flex d-lg-flex d-md-flex icons">
                 <router-link to="/messages" v-if="logged">
@@ -730,6 +710,7 @@ export default {
     email: null,
     image: null,
     first_name: null,
+    dropAvatar: false
   }),
   methods: {
     logout: function () {
@@ -740,6 +721,12 @@ export default {
     },
     GotoAdmin: function () {
       window.location.href = "/admin";
+    },
+    blurDropAvatar: function () {
+        setTimeout(() => this.dropAvatar = false, 120);
+    },
+    clickdropavatar: function () {
+        this.dropAvatar = !this.dropAvatar
     },
   },
   created() {
