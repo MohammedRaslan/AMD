@@ -138,20 +138,20 @@
     })
 
     // #Menu
-    $(".cat button").blur(function() {
-        setTimeout(function() {
-            $(".cat .drop-1 ul").removeClass("show");
-            $(".cat .dropdown.drop-1").removeClass("borderrad")
-            $(".cat #Icon_down_solid").removeClass("svg-tran")
-        }, 320)
-    })
+    // $(".cat button").blur(function() {
+    //     setTimeout(function() {
+    //         $(".cat .drop-1 ul").removeClass("show");
+    //         $(".cat .dropdown.drop-1").removeClass("borderrad")
+    //         $(".cat #Icon_down_solid").removeClass("svg-tran")
+    //     }, 320)
+    // })
 
-    $(".cat button").click(function() {
-        $(".cat .drop-1 ul").toggleClass("show");
-        $(".cat .dropdown.drop-1").toggleClass("borderrad")
-        $(".cat #Icon_down_solid").toggleClass("svg-tran")
-        console.log("Test R");
-    })
+    // $(".cat button").click(function() {
+    //     $(".cat .drop-1 ul").toggleClass("show");
+    //     $(".cat .dropdown.drop-1").toggleClass("borderrad")
+    //     $(".cat #Icon_down_solid").toggleClass("svg-tran")
+    //     console.log("Test R");
+    // })
 
     // $(".menu-user button").blur(function() {
     //     setTimeout(function() {
