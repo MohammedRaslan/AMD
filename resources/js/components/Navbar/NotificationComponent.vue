@@ -83,7 +83,7 @@ export default ({
     });
         },
         blurDropDwonCatetoies: function () {
-            setTimeout(() => this.dropDwonCatetoies = false, 120);
+            setTimeout(() => this.dropDwonCatetoies = false, 320);
         },
         clickDropDwonCatetoies: function () {
             this.dropDwonCatetoies = !this.dropDwonCatetoies
