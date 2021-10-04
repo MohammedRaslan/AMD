@@ -1,6 +1,6 @@
 <template>
         <a class="position-relative d-inline-block" >
-            <button class="btn-notification bg-transparent border-0">
+            <button class="btn-notification bg-transparent border-0" @blur="blurDropDwonCatetoies"  @click="clickDropDwonCatetoies">
                 <svg fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Notifications">
                                                     <g id="Group_30" data-name="Group 30"
                                                         transform="translate(-844 -319)">
@@ -23,7 +23,7 @@
                 </svg>
                 <span v-show="count > 0" v-html="count" class="quantity-notif" style="top:-10px !important"></span>
             </button>
-            <div class="notif-cont">
+            <div class="notif-cont" :class="{ 'd-none': !dropDwonCatetoies }">
                 <!-- Block Item -->
                 <h6 v-if="message != null " class="text-center">{{ message }}</h6>
                 <div @click="markAllAsRead" class="read" v-if="message == ''"> Mark all as read</div>
@@ -59,6 +59,7 @@ export default ({
         count: 0,
         notifications: {},
         message : "",
+        dropDwonCatetoies: false
     }),
     methods:{
         str_replace: function(str){
@@ -80,7 +81,13 @@ export default ({
                 this.message = "You Don't Have Notifications";
             }
     });
-        }
+        },
+        blurDropDwonCatetoies: function () {
+            setTimeout(() => this.dropDwonCatetoies = false, 220);
+        },
+        clickDropDwonCatetoies: function () {
+            this.dropDwonCatetoies = !this.dropDwonCatetoies
+        },
     },
     mounted(){
         this.getNotification();

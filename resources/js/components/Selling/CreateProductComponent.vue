@@ -130,10 +130,10 @@
                                                                     <nav>
                                                                         <div class="nav nav-tabs mt-3 border-0 row" id="nav-tab" role="tablist">
                                                                             <!-- data-bs-target="#nav-home" -->
-                                                                            <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                                                            <div class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
                                                                                 <div>Listing</div>
                                                                             </div>
-                                                                            <div class="nav-link col" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                                                            <div class="nav-link col" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
                                                                                 <div>… or Bidding</div>
                                                                             </div>
                                                                         </div>
