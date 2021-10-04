@@ -138,34 +138,34 @@
     })
 
     // #Menu
-    $(".cat button").blur(function() {
-        setTimeout(function() {
-            $(".cat .drop-1 ul").removeClass("show");
-            $(".cat .dropdown.drop-1").removeClass("borderrad")
-            $(".cat #Icon_down_solid").removeClass("svg-tran")
-        }, 320)
-    })
+    // $(".cat button").blur(function() {
+    //     setTimeout(function() {
+    //         $(".cat .drop-1 ul").removeClass("show");
+    //         $(".cat .dropdown.drop-1").removeClass("borderrad")
+    //         $(".cat #Icon_down_solid").removeClass("svg-tran")
+    //     }, 320)
+    // })
 
-    $(".cat button").click(function() {
-        $(".cat .drop-1 ul").toggleClass("show");
-        $(".cat .dropdown.drop-1").toggleClass("borderrad")
-        $(".cat #Icon_down_solid").toggleClass("svg-tran")
-        console.log("Test R");
-    })
+    // $(".cat button").click(function() {
+    //     $(".cat .drop-1 ul").toggleClass("show");
+    //     $(".cat .dropdown.drop-1").toggleClass("borderrad")
+    //     $(".cat #Icon_down_solid").toggleClass("svg-tran")
+    //     console.log("Test R");
+    // })
 
-    $(".menu-user button").blur(function() {
-        setTimeout(function() {
-            $(".menu-user .drop-user1 ul").removeClass("show");
-            $(".menu-user .dropdown.drop-user1").removeClass("borderrad")
-            $("#Icon_down").removeClass("svg-tran")
-        }, 320)
-    })
+    // $(".menu-user button").blur(function() {
+    //     setTimeout(function() {
+    //         $(".menu-user .drop-user1 ul").removeClass("show");
+    //         $(".menu-user .dropdown.drop-user1").removeClass("borderrad")
+    //         $("#Icon_down").removeClass("svg-tran")
+    //     }, 320)
+    // })
 
-    $(".menu-user button").click(function() {
-        $(".menu-user .drop-user1 ul").toggleClass("show");
-        $(".menu-user .dropdown.drop-user1").toggleClass("borderrad")
-        $("#Icon_down").toggleClass("svg-tran")
-    })
+    // $(".menu-user button").click(function() {
+    //     $(".menu-user .drop-user1 ul").toggleClass("show");
+    //     $(".menu-user .dropdown.drop-user1").toggleClass("borderrad")
+    //     $("#Icon_down").toggleClass("svg-tran")
+    // })
 
     /*--------------------------
         Header
