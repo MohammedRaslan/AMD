@@ -35,7 +35,7 @@ class ProductRepository{
     }
 
     public function saveImage($data,$product)
-    {         
+    {       
             $file = $data['image'][0];
             $fileName = time() . '.'. $file->getClientOriginalExtension();
             $file->storeAs('public/products/'.$product->id.'/',$fileName);
@@ -119,13 +119,13 @@ class ProductRepository{
         $product->product_id =  isset($data['product_id'])  ? $data['product_id'] : null ;
         //dd($product , $images,$user_id);
         if($product->save()){
-            if(is_object($data['featured_image'])){
+            if(!is_string($data['featured_image'] )  ){
                 $this->saveImage($data,$product);            
             }elseif(is_string($data['featured_image'])){
                 $product->image = $data['featured_image'];
             }
             $product->save();
-            //dd($data['category']);
+            //dd($product->image);
             $product->categories()->attach($data['category']);
             if($data['type'] == 1){
                 $this->MakeBidding($product->id,$data['bidding_from'],$data['bidding_to'],$data['bid_minimum_price'],$data['step']);
