@@ -723,7 +723,7 @@ export default {
       window.location.href = "/admin";
     },
     blurDropAvatar: function () {
-        setTimeout(() => this.dropAvatar = false, 120);
+        setTimeout(() => this.dropAvatar = false, 320);
     },
     clickdropavatar: function () {
         this.dropAvatar = !this.dropAvatar

@@ -66,17 +66,17 @@ var swiper = new Swiper(".swiper-latest", {
 
 $(document).ready(function() {
     // Notification
-    $(".notif-cont").slideUp()
-    $(".notif-cont").slideUp("fast")
+    // $(".notif-cont").slideUp()
+    // $(".notif-cont").slideUp("fast")
 
-    $(".btn-notification").click(function() {
-        $(".notif-cont").slideToggle("fast")
-    })
-    $(".btn-notification").blur(function() {
-        setTimeout(function() {
-            $(".notif-cont").slideUp("fast")
-        }, 220)
-    })
+    // $(".btn-notification").click(function() {
+    //     $(".notif-cont").slideToggle("fast")
+    // })
+    // $(".btn-notification").blur(function() {
+    //     setTimeout(function() {
+    //         $(".notif-cont").slideUp("fast")
+    //     }, 220)
+    // })
 
 
     $('.set-bg').each(function() {
