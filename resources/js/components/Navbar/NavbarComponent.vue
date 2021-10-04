@@ -352,7 +352,7 @@
                       ><span>{{ name }}</span></router-link>
                   </div>
                   <div class="dropdown drop-user1">
-                    <button class="btn btn-outline-secondary dropdown-toggle w-auto" @blur="blurDropAvatar"  @click="clickdropavatar">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-auto" style="height: 50px;" @blur="blurDropAvatar"  @click="clickdropavatar">
                       <svg
                         v-show="image == null"
                         class="user-icon"
