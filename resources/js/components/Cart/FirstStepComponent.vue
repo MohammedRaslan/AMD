@@ -248,10 +248,9 @@ export default ({
                     return actions.order.capture().then(function(details) {
                         console.log(details);
                         axios.post('/api/order/store' , details).then((response) => {
-                        this.cartProducts = response.data.cart_products;
-                        this.subtotal = response.data.subtotal;
-                        this.total = response.data.total;
-                        this.vendors = response.data.vendors;
+                          if(response.status == 200){
+                                window.location.href =  '/cart/done-shopping';
+                            }
                         });
                         // Show a success message to the buyer
                         // alert('Transaction completed by ' + details.payer.name.given_name);

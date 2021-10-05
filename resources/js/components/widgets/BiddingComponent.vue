@@ -1,7 +1,7 @@
 <template>
        <div class="inner-price-table">
             <div class="card-cus">
-                <h2 v-if="openBidding">Closes in {{ this.bid.to.human }} </h2>
+                <h2 v-if="openBidding">Closes in {{ this.bid.to.actual }} </h2>
                 <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
                 <div class="content">
                     <div class="mb-3">

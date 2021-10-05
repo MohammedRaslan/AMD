@@ -202,7 +202,7 @@
                                                 <path id="Path-6" data-name="Path" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z"
                                                     transform="translate(0 12)" fill="#7ac943" />
                                             </svg>
-                                            <span>Details</span>
+                                            <span class="text-green">Details</span>
                                             <svg class="active-arrow" xmlns="http://www.w3.org/2000/svg" width="16"
                                                 height="10" viewBox="0 0 16 10">
                                                 <path id="Polygon_1" data-name="Polygon 1" d="M8,0l8,10H0Z"

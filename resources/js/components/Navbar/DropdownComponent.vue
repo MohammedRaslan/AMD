@@ -28,7 +28,7 @@ export default ({
     }),
     methods: {
     blurDropCategories: function () {
-        setTimeout(() => this.dropCategories = false, 220);
+        setTimeout(() => this.dropCategories = false, 320);
     },
     clickDropCategories: function () {
         this.dropCategories = !this.dropCategories

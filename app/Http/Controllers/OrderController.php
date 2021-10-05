@@ -15,6 +15,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $this->orderService->add($request->user()->id,$request);
+        $this->orderService->add($request->user(),$request);
     }
 }
