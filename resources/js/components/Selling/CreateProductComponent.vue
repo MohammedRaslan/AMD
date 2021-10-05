@@ -516,7 +516,7 @@ export default ({
             description: null,
             category: null,
             return_policy: null,
-            price: null,
+            price: 0,
             best_offer: false,
             minimum_offer: null,
             bidding_from: null,
