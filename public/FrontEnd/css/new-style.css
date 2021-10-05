@@ -739,6 +739,17 @@ input:disabled {
   font-weight: 600;
   margin-bottom: 8px;
 }
+.shop-details .count-down-bid {
+  position: relative;
+}
+.shop-details .count-down-bid::before {
+  content: ":";
+  position: absolute;
+  right: 6px;
+}
+.shop-details .count-down-bid:last-of-type::before {
+  content: "";
+}
 
 .dropdown-hero {
   background: #77b527;

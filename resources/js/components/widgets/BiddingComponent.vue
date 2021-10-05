@@ -1,7 +1,8 @@
 <template>
        <div class="inner-price-table">
             <div class="card-cus">
-                <h2 v-if="openBidding">Closes in {{ this.bid.to.actual }} </h2>
+                <!-- <h2 v-if="openBidding">Closes in {{ this.bid.to.actual }} </h2> -->
+                <h2 v-if="openBidding">Closes in <span class="count-down-bid" v-for="times in times" :key="times.id"> {{ times.time }} &nbsp; </span></h2>
                 <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
                 <div class="content">
                     <div class="mb-3">
@@ -49,6 +50,18 @@ export default {
         bid_end: false,
         isHighst : false,
         currencyIcon: null,
+        //
+        startTime: "July 17, 2021 12:03:00",
+        endTime: 'Oct 29, 2021 14:55:00',
+        times: [
+        { id: 0, text: "D", time: 1 },
+        { id: 1, text: "H", time: 1 },
+        { id: 2, text: "M", time: 1 },
+        { id: 3, text: "S", time: 1 }
+        ],
+        progress: 100,
+        // isActive: false,
+        timeinterval: undefined
     }),
     methods:{
         async makeBid(step = null){
@@ -70,16 +83,52 @@ export default {
             }
 
         },
-    showUserHistory(id){
-        axios.get('/api/bid/getHistory/'+id).then((response) => {
-            console.log(response);
-            if(response.data == true){
-                this.isHighst = true;
-            }else{
-                this.isHighst = false;
-            }
-        });
-    },
+        showUserHistory(id){
+            axios.get('/api/bid/getHistory/'+id).then((response) => {
+                console.log(response);
+                if(response.data == true){
+                    this.isHighst = true;
+                }else{
+                    this.isHighst = false;
+                }
+            });
+        },
+        updateTimer: function() {
+        if (
+            this.times[3].time > 0 ||
+            this.times[2].time > 0 ||
+            this.times[1].time > 0 ||
+            this.times[0].time > 0
+        ) {
+            this.getTimeRemaining();
+            this.updateProgressBar();
+        } else {
+            clearTimeout(this.timeinterval);
+            // this.times[3].time = this.times[2].time = this.times[1].time = this.times[0].time = 0;
+            this.progress = 0;
+        }
+        },
+        getTimeRemaining: function() {
+        let t = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
+        if(t >= 0){
+        this.times[3].time = Math.floor(t / 1000 % 60); //seconds
+        this.times[2].time = Math.floor(t / 1000 / 60 % 60); //minutes
+        this.times[1].time = Math.floor(t / (1000 * 60 * 60) % 24); //hours
+        this.times[0].time = Math.floor(t / (1000 * 60 * 60 * 24)); //days
+        }else {
+            this.times[3].time = this.times[2].time = this.times[1].time = this.times[0].time = 0;
+            this.progress = 0;
+        }
+        },
+        updateProgressBar: function() {
+        let startTime = Date.parse(new Date(this.startTime));
+        let currentTime = Date.parse(new Date());
+        let endTime = Date.parse(new Date(this.endTime));
+        let interval = parseFloat(
+            (currentTime - startTime) / (endTime - startTime) * 100
+        ).toFixed(2);
+        this.progress = 100-interval;
+        }
     },
     created(){
         if(this.bid.last_price == 0){
@@ -87,6 +136,8 @@ export default {
         }else{
             this.minimum_price = this.bid.last_price;
         }
+        this.updateTimer();
+        this.timeinterval = setInterval(this.updateTimer, 1000);
     },
 
 
@@ -120,6 +171,7 @@ export default {
 
         this.currencyIcon = this.currency;
 
+        // l
 
     }
 }

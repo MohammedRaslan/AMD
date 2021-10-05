@@ -7,7 +7,7 @@
                 border-radius: 8px;
             }
             .owl-nav {
-                display: none !important; 
+                display: none !important;
                 position: absolute;
                 width: 100%;
                 top: 29%;
@@ -100,5 +100,17 @@
             font-weight: 600;
             margin-bottom: 8px;
         }
-        // }
+        .count-down-bid {
+            position: relative;
+            &::before {
+                content: ':';
+                position: absolute;
+                right: 6px;
+            }
+            &:last-of-type {
+                &::before {
+                    content: '';
+                }
+            }
+        }
     }
