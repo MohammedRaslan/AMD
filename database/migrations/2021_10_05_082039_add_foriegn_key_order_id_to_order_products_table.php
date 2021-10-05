@@ -14,7 +14,6 @@ class AddForiegnKeyOrderIdToOrderProductsTable extends Migration
     public function up()
     {
         Schema::table('order_product', function (Blueprint $table) {
-            $table->dropColumn('cart_id');
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
 
         });
