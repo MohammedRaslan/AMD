@@ -188,7 +188,7 @@ class ProductRepository{
         $product->upc = $data['upc'];
         $product->domestic_product = $data['domestic_product'];
         $product->draft =  $data['draft'];
-        $product->product_id =  $data['product_id']  ? $data['product_id'] : null ;
+        $product->product_id =  isset($data['product_id'])  ? $data['product_id'] : null ;
         $product->status  = 1;
         if($product->save()){
             $category = Category::select('id')->where('title',$data['category'])->first();
