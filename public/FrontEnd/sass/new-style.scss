@@ -450,6 +450,15 @@
             @media (max-width: 1200px) {
                 z-index: 4;
                 position: fixed;
+                right: 118px;
+                left: 118px;
+                top: 193px;
+                background: $bgHeader;
+                display: none;
+            }
+            @media (max-width: 700px) {
+                z-index: 4;
+                position: fixed;
                 right: 8px;
                 left: 8px;
                 top: 193px;
