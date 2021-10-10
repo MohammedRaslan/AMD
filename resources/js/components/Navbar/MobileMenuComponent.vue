@@ -1,54 +1,59 @@
 <template>
   <div>
     <ul data-v-adb1784e="" class="text-start justify-content-between">
-      <li>
-        <div class="dropdown d-inline-flex flex-column dropdown-cats" v-if="logged">
-          <button
-            class="btn dropdown-toggle"
-            type="button"
-            id="dropdownMenuMobile"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <!-- <span>Hello {{ name }}</span> -->
-            <span>Marketplace</span>
-          </button>
-          <ul class="dropdown-menu close_menu_mobile" aria-labelledby="dropdownMenuMobile" v-if="logged">
-            <li v-for="category in categories" :key="category.id">
-              <router-link
-                class="dropdown-item"
-                :to="{
-                  name: 'ShopCategoryComponent',
-                  params: { query: category.id },
-                }"
-                >{{ category.title }}</router-link
-              >
-            </li>
-          </ul>
-        </div>
-      </li>
+        <li>
+            <div class="dropdown d-inline-flex flex-column dropdown-cats" v-if="logged">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <span>Hello {{ name }}</span> -->
+                    <span>Marketplace</span>
+                </button>
+                <ul class="dropdown-menu close_menu_mobile" aria-labelledby="dropdownMenuMobile" v-if="logged">
+                    <li v-for="category in categories" :key="category.id">
+                        <router-link class="dropdown-item" :to="{ name: 'ShopCategoryComponent', params: { query: category.id },}">
+                            {{ category.title }}
+                        </router-link>
+                    </li>
+                     <hr class="divider-x m-0 bg-maroon">
+                    <li>
+                        <router-link class="dropdown-item" to="/requestedItems">Requested items</router-link>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-      <li class="item-border" v-if="logged">
-        <router-link class="dropdown-item close_menu_mobile" to="/selling/overview">Selling</router-link>
-      </li>
+        <li class="item-border">
+            <router-link class="dropdown-item close_menu_mobile" to="/selling/sell_item">Selling</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="/buying/requestItem">Request an Item</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="/buying/wishlist">Watching</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="/buying/purchased">Purchases</router-link>
+        </li>
 
-      <li v-if="logged">
-        <router-link class="dropdown-item close_menu_mobile" to="/buying/offers">Buying</router-link>
-      </li>
-      <li v-if="logged">
-        <router-link class="dropdown-item close_menu_mobile" to="/subscriptions">Subscriptions</router-link>
-      </li>
-      <li v-if="logged">
-        <a class="dropdown-item close_menu_mobile" href="account.html">My Account</a>
-      </li>
-      <li v-if="logged">
-        <a class="dropdown-item close_menu_mobile" style="cursor: pointer" @click="logout">Logout</a>
-      </li>
-      <li v-else>
-        <router-link class="dropdown-item close_menu_mobile login-menu" to="/login">login</router-link>
-      </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="#">Buy Again</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="/buying/saved">Saved</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="#">Recently Viewed</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="/help">Help and Support</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item close_menu_mobile" to="/settings/personal">Settings</router-link>
+        </li>
+        <li>
+            <a class="dropdown-item close_menu_mobile" style="cursor: pointer" @click="logout">Logout</a>
+        </li>
     </ul>
-  </div>
+</div>
 </template>
 <style lang="scss">
 .dropdown-cats {

@@ -1,9 +1,9 @@
 <template>
     <div class="sction-contact">
         <div class="container">
-            <div class="row">
+            <div class="row pt-0 pt-lg-5 pb-5">
                 <!-- Contact Content -->
-                <div class="col-lg-6  contact_col">
+                <div class="col-lg-6 contact_col">
                     <div class="contact_content">
                         <div class="contact_content_title">
                             Get in touch with us
@@ -26,46 +26,28 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="col-lg-6">
-                    <div class="contact_form_container">
-                        <div class="contact_form_title">Contact Us</div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="contact_form_container p-4">
+                        <h2 class="contact_form_title mb-5">Contact Us</h2>
                         <form action="#" class="contact_form" id="contact_form">
-                            <div
-                                class="d-flex flex-row align-items-start justify-content-between flex-wrap"
-                            >
-                                <input
-                                    type="text"
-                                    class="contact_input"
-                                    placeholder="Your Name"
-                                    required="required"
-                                />
-                                <input
-                                    type="tel"
-                                    class="contact_input"
-                                    placeholder="Your Phone"
-                                    required="required"
-                                />
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <input type="text" class="contact_input" placeholder="Your Name" required="required" />
+                                </div>
 
-                                <input
-                                    type="email"
-                                    class="contact_input"
-                                    style="width: 100%;"
-                                    placeholder="Your E-mail"
-                                    required="required"
-                                />
-
-                                <textarea
-                                    class="contact_input"
-                                    style="width: 100%; min-height:100px"
-                                    placeholder="Enter Your Message"
-                                    required="required"
-                                ></textarea>
+                                <div class="col-12 col-lg-6">
+                                    <input type="tel" class="contact_input" placeholder="Your Phone" required="required" />
+                                </div>
+                                <div class="col-12">
+                                    <input type="email" class="contact_input" style="width: 100%;" placeholder="Your E-mail" required="required" />
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="contact_input" style="width: 100%; min-height:100px" placeholder="Enter Your Message" required="required"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="button button_1 contact_button trans_200">Send</button>
+                                </div>
                             </div>
-                            <button
-                                class="button button_1 contact_button trans_200"
-                            >
-                                Send
-                            </button>
                         </form>
                     </div>
                 </div>
@@ -84,7 +66,7 @@
 	background: #0f243c !important;
 	color: #a5a5a5;
     position: relative;
-    padding: 70px 0;
+    /* padding: 70px 0; */
 }
 /*div
 {
@@ -144,10 +126,10 @@
 {
 	width: 100%;
 	background: transparent;
-	padding-left: 33px;
-	padding-right: 34px;
-	padding-bottom: 63px;
-	padding-top: 136px;
+	/* padding-left: 33px; */
+	/* padding-right: 34px; */
+	/* padding-bottom: 63px;
+	padding-top: 136px; */
 	/*box-shadow: 0px 2px 12px #fd1266;*/
     box-shadow: 0px 2px 12px #059cc2;
     position: relative;
@@ -155,12 +137,12 @@
 }
 .contact_form_title
 {
-   
-	position: absolute;
-	top: 0;
-	left: 0;
+
+	/* position: absolute; */
+	/* top: 0;
+	left: 0; */
     width: 100%;
-	line-height: 80px;
+	/* line-height: 80px; */
 	text-align: center;
 	font-size: 40px;
 	font-weight: 600;
@@ -173,7 +155,7 @@
 }
 .contact_input
 {
-	width: calc((100% - 15px) / 2);
+	width: 100%;
 	height: 62px;
 	background: transparent;
 	border: solid 2px #e6ebf1;
@@ -215,9 +197,9 @@
 	font-weight: 400 !important;
 	font-style: italic;
 	color: #a09f9f !important;
-} 
+}
 .contact_input:-ms-input-placeholder
-{ 
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	font-style: italic;
