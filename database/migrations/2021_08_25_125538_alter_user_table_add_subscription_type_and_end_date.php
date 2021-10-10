@@ -14,8 +14,8 @@ class AlterUserTableAddSubscriptionTypeAndEndDate extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('subscription_type')->nullable()->after('subscription_product_quantity');
-            $table->timestamp('subscription_end_at')->nullable()->after('subscription_product_quantity');
+            $table->string('subscription_type')->nullable();
+            $table->timestamp('subscription_end_at')->nullable();
         });
     }
 
