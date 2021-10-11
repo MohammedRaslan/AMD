@@ -1,29 +1,32 @@
 <template>
         <a class="position-relative d-inline-block" >
-            <button class="btn-notification bg-transparent border-0 dropdown-notifications" v-on:click="clickDropDwonCatetoies">
-                <svg fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Notifications">
-                                                    <g id="Group_30" data-name="Group 30"
-                                                        transform="translate(-844 -319)">
-                                                        <g id="Icon_20_Grey_Notification"
-                                                            data-name="Icon / 20 / Grey / Notification"
-                                                            transform="translate(851.223 326)">
-                                                            <path id="Shape"
-                                                                d="M17.437,16.869l-1.5-2.385a6.832,6.832,0,0,1-1.06-3.645V8.75A5.886,5.886,0,0,0,10.5,3.162v-1.5a1.752,1.752,0,0,0-3.5,0v1.5A5.886,5.886,0,0,0,2.624,8.75v2.089a6.836,6.836,0,0,1-1.06,3.644l-1.5,2.385a.4.4,0,0,0-.005.42.44.44,0,0,0,.38.212H17.062a.443.443,0,0,0,.381-.211A.4.4,0,0,0,17.437,16.869Z"
-                                                                transform="translate(1.028)"></path>
-                                                            <path id="Shape-2" data-name="Shape"
-                                                                d="M0,0A3.072,3.072,0,0,0,2.755,1.667,3.072,3.072,0,0,0,5.511,0H0Z"
-                                                                transform="translate(7.022 18.333)"></path>
-                                                        </g>
-                                                        <g id="Ellipse_46" data-name="Ellipse 46"
-                                                            transform="translate(844 319)" fill="none" stroke-width="1">
-                                                            <circle cx="17" cy="17" r="17" stroke="none"></circle>
-                                                            <circle cx="17" cy="17" r="16.5" fill="none"></circle>
-                                                        </g>
-                                                    </g>
-                </svg>
-                <span v-show="count > 0" v-html="count" class="quantity-notif" style="top:-10px !important"></span>
-            </button>
-            <div class="notif-cont" :class="{ 'd-none': !dropDwonCatetoies }">
+            <div v-on:click="clickDropDwonNot()">
+                <button class="btn-notification bg-transparent border-0 dropdown-notifications">
+                    <svg class="dropdown-notifications" fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Notifications">
+                        <g class="dropdown-notifications" id="Group_30" data-name="Group 30"
+                            transform="translate(-844 -319)">
+                            <g class="dropdown-notifications" id="Icon_20_Grey_Notification"
+                                data-name="Icon / 20 / Grey / Notification"
+                                transform="translate(851.223 326)">
+                                <path class="dropdown-notifications" id="Shape"
+                                    d="M17.437,16.869l-1.5-2.385a6.832,6.832,0,0,1-1.06-3.645V8.75A5.886,5.886,0,0,0,10.5,3.162v-1.5a1.752,1.752,0,0,0-3.5,0v1.5A5.886,5.886,0,0,0,2.624,8.75v2.089a6.836,6.836,0,0,1-1.06,3.644l-1.5,2.385a.4.4,0,0,0-.005.42.44.44,0,0,0,.38.212H17.062a.443.443,0,0,0,.381-.211A.4.4,0,0,0,17.437,16.869Z"
+                                    transform="translate(1.028)"></path>
+                                <path class="dropdown-notifications" id="Shape-2" data-name="Shape"
+                                    d="M0,0A3.072,3.072,0,0,0,2.755,1.667,3.072,3.072,0,0,0,5.511,0H0Z"
+                                    transform="translate(7.022 18.333)"></path>
+                            </g>
+                            <g class="dropdown-notifications" id="Ellipse_46" data-name="Ellipse 46"
+                                transform="translate(844 319)" fill="none" stroke-width="1">
+                                <circle class="dropdown-notifications" cx="17" cy="17" r="17" stroke="none"></circle>
+                                <circle class="dropdown-notifications" cx="17" cy="17" r="16.5" fill="none"></circle>
+                            </g>
+                        </g>
+                    </svg>
+                    <span v-show="count > 0" v-html="count" class="quantity-notif" style="top:-10px !important"></span>
+                </button>
+
+            </div>
+            <div class="notif-cont" v-bind:class="{ 'd-block': dropDwonNot }">
                 <!-- Block Item -->
                 <h6 v-if="message != null " class="text-center">{{ message }}</h6>
                 <div @click="markAllAsRead" class="read" v-if="message == ''"> Mark all as read</div>
@@ -59,7 +62,7 @@ export default ({
         count: 0,
         notifications: {},
         message : "",
-        dropDwonCatetoies: false
+        dropDwonNot: false
     }),
     methods:{
         str_replace: function(str){
@@ -82,12 +85,11 @@ export default ({
             }
     });
         },
-        blurDropDwonCatetoies () {
-            setTimeout(() => this.dropDwonCatetoies = false, 320);
+        blurDropDwonNot () {
+            setTimeout(() => this.dropDwonNot = false, 320);
         },
-        clickDropDwonCatetoies () {
-            event.preventDefault()
-            this.dropDwonCatetoies = !this.dropDwonCatetoies
+        clickDropDwonNot () {
+            this.dropDwonNot = !this.dropDwonNot
         },
     },
     mounted(){
@@ -108,11 +110,12 @@ export default ({
 
             }
         });
+
         var self = this
         window.addEventListener('click', function(e){
             if (! e.target.parentNode.classList.contains('dropdown-notifications')){
-                self.blurDropDwonCatetoies()
-                console.log(self);
+                self.blurDropDwonNot()
+                console.log('lkdf');
             }
         }, false)
     }
