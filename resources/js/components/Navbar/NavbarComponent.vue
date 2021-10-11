@@ -682,10 +682,11 @@ export default {
     GotoAdmin: function () {
       window.location.href = "/admin";
     },
-    blurDropAvatar: function () {
+    blurDropAvatar () {
         setTimeout(() => this.dropAvatar = false, 320);
     },
-    clickdropavatar: function () {
+    clickdropavatar () {
+        event.preventDefault()
         this.dropAvatar = !this.dropAvatar
     },
   },
