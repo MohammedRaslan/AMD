@@ -374,7 +374,7 @@
 
                                 <div class="dropdown drop-user1">
                                     <button class="btn btn-outline-secondary dropdown-toggle w-auto" style="height: 50px;"
-                                        @blur="blurDropAvatar" @click="clickdropavatar">
+                                        v-on:blur="blurDropAvatar" v-on:click="clickdropavatar">
                                         <svg
                                             v-show="image == null"
                                             class="user-icon"
