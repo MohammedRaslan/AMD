@@ -4028,10 +4028,13 @@ input[type=radio]:checked+label>img#img9 {
 
 header .icons svg:hover,
 header .search-switch svg:hover,
+header .search-switch i:hover,
+header .search-switch:hover i,
 header .mesg:hover svg,
 header .header__menu>ul>li:nth-of-type(2):hover svg {
     fill: #FD1266;
     stroke: #FD1266 !important;
+    color: #FD1266 !important;
 }
 
 header .mesg:hover,

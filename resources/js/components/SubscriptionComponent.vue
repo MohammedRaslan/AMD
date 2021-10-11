@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 offset-lg-2">
-                    <h2>SUBSCRIPTION PLANS</h2>
+                    <h2 class="my-5">SUBSCRIPTION PLANS</h2>
                 </div>
             </div>
             <div class="row price-row">
@@ -39,18 +39,21 @@
                             <p class="type">Regular</p>
                             <h3>FREE</h3>
                             <hr class="opacity-100 bg-white">
-                            <p>
-                                <span class="data"></span>
-                                <span class="pl-3">50 Free Listings monthly</span>
-                            </p>
-                            <p>
-                                <span class="data"></span>
-                                <span class="pl-3">
-                                    Selling Fee 9% unlimited
-                                    <br>
-                                    final value fee.
-                                </span>
-                            </p>
+                            <div class="d-flex flex-column">
+                                <p>
+                                    <span class="data"></span>
+                                    <span class="pl-3">50 Free Listings monthly</span>
+                                </p>
+                                <p>
+                                    <span class="data"></span>
+                                    <span class="pl-3">
+                                        Selling Fee 9% unlimited
+                                        <br>
+                                        final value fee.
+                                    </span>
+                                </p>
+
+                            </div>
                        </div>
                         <router-link to="/subscriptions/free" class="btn bg-white"> Get Started</router-link>
                     </div>
@@ -62,18 +65,20 @@
                             <p class="type">Silver</p>
                             <h3>$ 19.99 /mo</h3>
                             <hr class="opacity-100 bg-white">
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">100 Free Listings Monthly</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">7% final value fee on the first 10 items sold.</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">Unlimited 8% final value fee on the 11th item sold</span>
-                            </p>
+                            <div class="d-flex flex-column">
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">100 Free Listings Monthly</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">7% final value fee on the first 10 items sold.</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">Unlimited 8% final value fee on the 11th item sold</span>
+                                </p>
+                            </div>
                         </div>
                         <router-link to="/subscriptions/silver" class="btn bg-white">Get Started</router-link>
                     </div>
@@ -84,18 +89,20 @@
                             <p class="type">Gold</p>
                             <h3>$ 49.99 /mo</h3>
                             <hr class="opacity-100 bg-white">
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">250 Free Listings</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">No final value fee on the first 2 items sold</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">Unlimited 7% final value fee on the 3rd item sold</span>
-                            </p>
+                            <div class="d-flex flex-column">
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">250 Free Listings</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">No final value fee on the first 2 items sold</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">Unlimited 7% final value fee on the 3rd item sold</span>
+                                </p>
+                            </div>
                         </div>
                         <router-link to="/subscriptions/gold" class="btn bg-white">Get Started</router-link>
                     </div>
@@ -106,29 +113,31 @@
                             <p class="type">Platinum</p>
                             <h3>$ 99.99 /mo</h3>
                             <hr class="opacity-100 bg-white">
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">500 Free Listings</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">No final value fee on the first 5 items sold</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">5% final value fee on the next 25 items sold</span>
-                            </p>
-                            <p>
-                                <span class="data data2"></span>
-                                <span class="pl-3">Unlimited 7% final value fee on the 31st item sold</span>
-                            </p>
+                            <div class="d-flex flex-column">
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">500 Free Listings</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">No final value fee on the first 5 items sold</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">5% final value fee on the next 25 items sold</span>
+                                </p>
+                                <p>
+                                    <span class="data data2"></span>
+                                    <span class="pl-3">Unlimited 7% final value fee on the 31st item sold</span>
+                                </p>
+                            </div>
                         </div>
                         <router-link to="/subscriptions/platinum" class="btn bg-white">Get Started</router-link>
                     </div>
                 </div>
 
             </div>
-            <div class="row bot-row">
+            <div class="row bot-row d-none d-lg-flex">
                 <div class="col-5 d-none d-lg-block">
                     <img :src="'FrontEnd/images/sub-03.png'" alt="">
                     <img :src="'FrontEnd/images/sub-02.png'" alt="">

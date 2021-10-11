@@ -32,8 +32,6 @@
     <link rel="stylesheet" href=" {{ asset('Admin/assets') }}/assets/plugins/dropify/css/dropify.min.css">
     <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.carousel.min.css" rel="stylesheet" >
     <link type="text/css" href="{{ asset('FrontEnd') }}/css/owlcarousel/owl.theme.default.min.css" rel="stylesheet">
-    <script src="{{ asset('FrontEnd') }}/js/owlcarousel/jquery.min.js" defer></script>
-    <script src="{{ asset('FrontEnd') }}/js/owlcarousel/owl.carousel.js" defer></script>
 
 </head>
 <style>
@@ -44,7 +42,9 @@
     #preloader {
         display: block !important;
     }
-
+    main{
+        min-height: 400px;
+    }
 </style>
 
 <body>
@@ -80,34 +80,19 @@
             <div id="mobile-menu-wrap">
                <Mobile></Mobile>
             </div>
-            {{-- <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
-        </div> --}}
         </div>
         <!-- Offcanvas Menu End -->
 
         <!-- Header Section Begin -->
-        {{-- <header class="header">
-            <div class="container h-100">
-                <div class="row h-100 d-flex align-items-center">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-12 p-0">
-                        <div class="header__logo">
-                            <router-link to="/">
-                                <img class="logo-web" src="{{ asset('FrontEnd') }}/images/Logo.png" alt>
-                                <img class="logo-mobil" src="{{ asset('FrontEnd') }}/images/Logo-mobile.png" alt>
-                            </router-link>
-                        </div>
-                    </div> --}}
-                    <Navbar></Navbar>
-                {{-- </div>
-            </div>
-        </header> --}}
+        <Navbar></Navbar>
         <!-- Header Section End -->
 
         <div class="rectangle-nav"></div>
 
-        <router-view :key="$route.path"></router-view>
-        <vue-progress-bar></vue-progress-bar>
+        <main>
+            <router-view :key="$route.path"></router-view>
+            <vue-progress-bar></vue-progress-bar>
+        </main>
 
 
 
@@ -290,8 +275,9 @@
         </div>
         <!-- Search End -->
 
-        <!-- Js Plugins -->
     </div>
+
+    <!-- Js Plugins -->
     <script src="{{ asset('FrontEnd') }}/js/jquery-3.3.1.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/bootstrap.bundle.min.js" defer></script>
     <script src="{{ asset('FrontEnd') }}/js/jquery.nice-select.min.js" defer></script>

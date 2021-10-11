@@ -82,10 +82,11 @@ export default ({
             }
     });
         },
-        blurDropDwonCatetoies: function () {
+        blurDropDwonCatetoies () {
             setTimeout(() => this.dropDwonCatetoies = false, 320);
         },
-        clickDropDwonCatetoies: function () {
+        clickDropDwonCatetoies () {
+            event.preventDefault()
             this.dropDwonCatetoies = !this.dropDwonCatetoies
         },
     },

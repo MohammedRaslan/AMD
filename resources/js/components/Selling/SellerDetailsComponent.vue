@@ -63,14 +63,14 @@
 
                                                                     <div class="row mb-4 px-2">
                                                                         <label class="text-offwhite text-left">Unit Measurement</label>
-                                                                        <div class="col-lg-6">
+                                                                        <div class="col-6">
                                                                            <div class="inner">
                                                                                 <div class="custom_radio">
                                                                                     <input type="radio" id="usa" name="is_american"  v-model="form.is_american" value="1"><label for="usa" class="text-offwhite">American</label>
                                                                                 </div>
                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
+                                                                        <div class="col-6">
                                                                             <div class="inner">
                                                                                 <div class="custom_radio">
                                                                                     <input type="radio" id="worldwide-cur" name="is_american" v-model="form.is_american" value="0"><label for="worldwide-cur" class="text-offwhite">Metric</label>

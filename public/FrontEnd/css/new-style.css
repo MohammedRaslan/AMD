@@ -12,6 +12,10 @@
   width: 120px !important;
 }
 
+.fs-20 {
+  font-size: 20px !important;
+}
+
 .d-block1 {
   display: block !important;
 }
@@ -319,6 +323,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .btn-login:hover {
   background: transparent !important;
+  color: white !important;
 }
 
 @media (min-width: 992px) {
@@ -393,6 +398,17 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 @media (max-width: 1200px) {
+  .selling .header-taps {
+    z-index: 4;
+    position: fixed;
+    right: 200px;
+    left: 200px;
+    top: 193px;
+    background: #0f243c;
+    display: none;
+  }
+}
+@media (max-width: 700px) {
   .selling .header-taps {
     z-index: 4;
     position: fixed;
