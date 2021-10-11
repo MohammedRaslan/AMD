@@ -1,6 +1,6 @@
 <template>
         <a class="position-relative d-inline-block" >
-            <button class="btn-notification bg-transparent border-0" v-on:blur="blurDropDwonCatetoies"  v-on:click="clickDropDwonCatetoies">
+            <button class="btn-notification bg-transparent border-0 dropdown-notifications" v-on:click="clickDropDwonCatetoies">
                 <svg fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Notifications">
                                                     <g id="Group_30" data-name="Group 30"
                                                         transform="translate(-844 -319)">
@@ -108,6 +108,13 @@ export default ({
 
             }
         });
+        var self = this
+        window.addEventListener('click', function(e){
+            if (! e.target.parentNode.classList.contains('dropdown-notifications')){
+                self.blurDropDwonCatetoies()
+                console.log(self);
+            }
+        }, false)
     }
 })
 </script>

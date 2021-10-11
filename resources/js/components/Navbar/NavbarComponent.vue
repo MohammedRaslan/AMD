@@ -373,8 +373,8 @@
                                 </div>
 
                                 <div class="dropdown drop-user1">
-                                    <button class="btn btn-outline-secondary dropdown-toggle w-auto" style="height: 50px;"
-                                        v-on:blur="blurDropAvatar" v-on:click="clickdropavatar">
+                                    <button class="btn btn-outline-secondary dropdown-toggle w-auto dropdown-avatar" style="height: 50px;"
+                                        v-on:click="clickdropavatar">
                                         <svg
                                             v-show="image == null"
                                             class="user-icon"
@@ -719,6 +719,14 @@ export default {
       });
     }
     this.mounted = true;
+
+    var self = this
+    window.addEventListener('click', function(e){
+        if (! e.target.parentNode.classList.contains('dropdown-avatar')){
+            self.blurDropAvatar()
+            console.log(self);
+        }
+    }, false)
   },
 };
 </script>
