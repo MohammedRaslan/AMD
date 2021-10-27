@@ -55,7 +55,7 @@
                                                 <div class="col-lg-7 col-md-6 col-sm-6 col-6">
                                                     <h5>
                                                         {{ product.title }}
-                                                        <p>Dolls</p>
+                                                        <p>{{ product.brand }}</p>
                                                     </h5>
                                                 </div>
                                             </div>

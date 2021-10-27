@@ -103,9 +103,8 @@
                                     <a class="link-del" href="_shop-details2.htm">
                                         <img  alt="">
                                     </a>
-                                    </figure>
+                                </figure>
                                 <h4 style="background-color:grey; height:25px"><a class="link-del" href="_shop-details2.htm"> </a> </h4>
-
                             </div>
                         </div>
                     </div>

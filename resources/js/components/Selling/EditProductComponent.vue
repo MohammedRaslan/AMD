@@ -179,8 +179,8 @@
                                                                                 <div class="row save">
                                                                                     <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
                                                                                         <div class="inner-save inner-save1 w-100">
-                                                                                            <form action="" class="border-0 px-0">
-                                                                                            <label for="#listing1" class='text-offwhite'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
+                                                                                            <form action="" class="border-0 px-0 mt-1">
+                                                                                            <label for="#listing1" class='text-offwhite w-100 text-start'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
                                                                                                 <input class="form-control mt-3" v-model="form.price" id='listing1' type="number" placeholder="Price">
                                                                                             </form>
                                                                                         </div>
@@ -191,7 +191,9 @@
                                                                                             <label for="checkbox3" class="ml-3">Accept best offer</label>
                                                                                             <div v-if="form.errors.has('best_offer')" class="alert alert-danger" v-html="form.errors.get('best_offer')" />
                                                                                         </div>
-                                                                                        <input class="form-control" type="text" v-model="form.best_offer_price" placeholder="Minimum offer" :disabled="!form.best_offer">
+
+                                                                                        <label for="best_offer_price" class='text-offwhite w-100 text-start'>Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
+                                                                                        <input id="best_offer_price" class="form-control" type="text" v-model="form.best_offer_price" placeholder="Minimum offer" :disabled="!form.best_offer">
                                                                                         <span style="color:red" v-show="minimum_offer_message != ''">{{ minimum_offer_message }}</span>
                                                                                     </div>
 

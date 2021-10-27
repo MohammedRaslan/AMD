@@ -35,7 +35,7 @@ class ProductRepository{
     }
 
     public function saveImage($data,$product)
-    {       
+    {
             $file = $data['image'][0];
             $fileName = time() . '.'. $file->getClientOriginalExtension();
             $file->storeAs('public/products/'.$product->id.'/',$fileName);
@@ -44,9 +44,9 @@ class ProductRepository{
                 return true;
             }
            return false;
-        
+
     }
-    
+
     public function saveImages($product,$images)
     {
         foreach($images as $file){
@@ -54,19 +54,19 @@ class ProductRepository{
             $file->storeAs('public/products/'.$product->id.'/',$fileName);
             $path = 'public/products/'.$product->id.'/'.$fileName;
             $image = new Image(['url' => $path]);
-            $product->images()->save($image);  
+            $product->images()->save($image);
         }
     }
 
     public function getData($user_id,$id)
     {
-    
+
         $userDetails = UserDetail::where('user_id',$user_id)->first();
         //dd( Product::where('id',$id)->with(['categories','bid','images'])->first()->categories[0] );
         return ['types'=> ProductType::getInstances(),
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
-                'conditions' => $this->fixConditions(ProductCondition::getKeys()), 
-                'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),   
+                'conditions' => $this->fixConditions(ProductCondition::getKeys()),
+                'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),
                 'return_policy' => Return_Policy::asSelectArray(),
                 'bidding_step' => $this->biddingSteps(),
                 "product" => $id != NULL ?  Product::where('id',$id)->with(['categories','bid','images'])->first() : null,
@@ -92,7 +92,7 @@ class ProductRepository{
 
     public function store($data,$images,$user_id)
     {
-        
+
         $product = new Product();
         $product->sku = 'PRO_' . Str::random(5);
         $product->title = $data['title'];
@@ -120,7 +120,7 @@ class ProductRepository{
         //dd($product , $images,$user_id);
         if($product->save()){
             if(!is_string($data['featured_image'] )  ){
-                $this->saveImage($data,$product);            
+                $this->saveImage($data,$product);
             }elseif(is_string($data['featured_image'])){
                 $product->image = $data['featured_image'];
             }
@@ -169,7 +169,7 @@ class ProductRepository{
     }
 
     public function update($id, $data)
-    {   
+    {
         $product = Product::find($id);
         $product->title = $data['title'];
         $product->type  = $data['type'];
@@ -205,13 +205,13 @@ class ProductRepository{
                     }
                     $image->delete();
                 });
-             
+
                 foreach($data['image'] as $file){
                     $fileName = Str::random(10) . '.'. $file->getClientOriginalExtension();
                     $file->storeAs('public/products/'.$product->id.'/',$fileName);
                     $path = 'public/products/'.$product->id.'/'.$fileName;
                     $image = new Image(['url' => $path]);
-                    $product->images()->save($image);  
+                    $product->images()->save($image);
                 }
             }
         }
@@ -222,7 +222,7 @@ class ProductRepository{
                 $fileName = time() . '.'. $featuredImage->getClientOriginalExtension();
                 $featuredImage->storeAs('public/products/'.$product->id.'/',$fileName);
                 $product->image = 'public/products/'.$product->id.'/'.$fileName;
-            
+
             $product->save();
         }
         return ['response' => true,
@@ -309,7 +309,7 @@ class ProductRepository{
         }
         return $productsInOrder;
     }
-    
+
     public function getProduct($user_id,$id)
     {
         $userDetails = UserDetail::where('user_id',$user_id)->first();
@@ -325,22 +325,22 @@ class ProductRepository{
                 'product' => $product,
                 'category' => $product->categories[0],
             'steps' => $this->biddingStepsForProduct($product->bid->step),
-        
+
         ];
-        
+
         }else{
             return ['product' => $product,
             'category' => $product->categories[0],
         ];
         }
-   
-      
+
+
     }
 
     protected function biddingStepsForProduct($step)
     {
             $steps = $this->biddingSteps();
-        
+
             $lower_limit = $step;
             $array = array_filter(
                 $steps,
@@ -366,7 +366,7 @@ class ProductRepository{
                 $product->draft = 1;
             }
             if($product->save()){
-                return ['response' => true, 
+                return ['response' => true,
                         'status' => $product->status];
             }
         }
@@ -392,7 +392,7 @@ class ProductRepository{
 
     public function AddToWishlist($user_id,$product_id)
     {
-        
+
        $product = Product::find($product_id);
        $wishlist = Wishlist::where('user_id',$user_id)->where('product_id',$product_id)->first();
        if($product){
@@ -408,13 +408,13 @@ class ProductRepository{
                 return ['status' => 'not_added', 'count' => $this->productWishlistCount($product_id)];
            }
        }
-     
+
       return false;
     }
 
     public function AddToVendorWishlist($user_id,$vendor_id)
     {
-        
+
        $user = User::find($vendor_id);
        $wishlist = VendorWhishList::where('user_id',$user_id)->where('vendor_id',$vendor_id)->first();
        if($user){
@@ -429,7 +429,7 @@ class ProductRepository{
                 return ['status' => 'not_added', 'count' => $this->productWishlistCount($vendor_id)];
            }
        }
-     
+
       return false;
     }
 
@@ -441,7 +441,7 @@ class ProductRepository{
 
     public function getUserProductActive($user_id)
     {
-        return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ['type', ProductType::getValue("Regular")]])->paginate(10);
+        return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ])->whereIn('type',[0,1] )->paginate(10);
 
     }
     public function getRequestedItems($user_id)
@@ -471,7 +471,7 @@ class ProductRepository{
             });
 
     }
-    
+
     public function requestedProduct($user_id)
     {
         $products= Product::where([['user_id', "!=",$user_id] , ['status',1], ['draft', 0] , ['type', 2]  ])->paginate(10);

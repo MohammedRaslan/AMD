@@ -55,16 +55,17 @@ class ChatRepository{
     }
 
     public function getAllChat($user_id)
-    {   
+    {
         return Chat::select('id','user_id_from','user_id_to','product_id','created_at' , 'status')
                       ->where('user_id_from',$user_id)
                       ->orwhere('user_id_to',$user_id)
                       ->where('status',1)
                       ->groupBy('user_id_to','user_id_from','product_id')
                       ->with('user_to')->with('user_from')->with('product')
+                      ->orderBy('created_at','desc')
                       ->get();
-                      
-     
+
+
     }
 
     public function getChat($chat_id)
@@ -73,7 +74,7 @@ class ChatRepository{
                               ->where('id',$chat_id)
                               ->where('status',1)
                               ->first();
-                              
+
         return Chat::select('id','user_id_from','user_id_to','product_id','message','created_at')
                          ->where('status',1)
                          ->where([
@@ -85,7 +86,7 @@ class ChatRepository{
                              ['user_id_to', $chatParameters->user_id_from],
                              ['product_id',$chatParameters->product_id]
                              ])->with('user_to')->with('user_from')->with('product')->orderBy('created_at','asc')->get();
-                  
+
 
     }
 
