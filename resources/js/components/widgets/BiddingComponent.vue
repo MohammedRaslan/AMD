@@ -5,7 +5,8 @@
                 <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
                 <div class="content pt-0">
                     <div class="mb-3">
-                        <h3 class="text-white mb-3">You,ve been outbid </h3>
+                        <h3 v-if="!isHighst" class="text-white mb-3">You,ve been outbid </h3>
+                        <h3 v-else class="text-white mb-3">You Are The Highest Bidder </h3>
                         <!-- <h3 class="text-maron mb-1">Current bid is {{ Number((this.minimum_price).toFixed(10)) }} <span v-html="currencyIcon"></span> </h3><br> -->
                         <!-- <small class="mb-0 text-white" v-if="isHighst">You Are The Highest Bidder</small>
                         <small class="mb-0 text-white" v-else>You Have Been Outbid</small><br> -->
@@ -22,7 +23,7 @@
                                 <p class="fs-17 text-light-gray">Your max bid</p>
                             </div>
                             <div class="col-6">
-                                <p><span v-html="currencyIcon"></span> 100</p>
+                                <p><span v-html="currencyIcon"></span> {{this.maxBidForUser}}</p>
                             </div>
                         </div>
                         <!-- <small class="text-white">Minimum Bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }}</small> -->
@@ -66,6 +67,7 @@ export default {
         bid_end: false,
         isHighst : false,
         currencyIcon: null,
+        maxBidForUser : null,
     }),
     methods:{
         async makeBid(step = null){
@@ -90,10 +92,13 @@ export default {
     showUserHistory(id){
         axios.get('/api/bid/getHistory/'+id).then((response) => {
             console.log(response);
-            if(response.data == true){
+            if(response.data.isHighst != false){
                 this.isHighst = true;
+                this.maxBidForUser = response.data.maxForUser;
             }else{
                 this.isHighst = false;
+                this.maxBidForUser = response.data.maxForUser;
+
             }
         });
     },

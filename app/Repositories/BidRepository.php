@@ -57,9 +57,15 @@ class BidRepository{
     public function getHistory($user_id , $bid_id)
     {
         $maxForUser = HistoryBid::where("bid_id" , $bid_id)->where('user_id' , $user_id)->max("price");
-        if($maxForUser >= $this->getMax($bid_id)){
-            return true;
+        if($maxForUser >= $this->getMax($bid_id) && $maxForUser !=0){
+            return [
+                "maxForUser" =>$maxForUser,
+                "is_highst" => true,
+            ];
         }
-        return false;
+        return [
+            "maxForUser" =>$maxForUser,
+            "isHighst" => false,
+        ];;
     }
 }
