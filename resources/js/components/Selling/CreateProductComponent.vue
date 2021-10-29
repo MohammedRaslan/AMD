@@ -150,7 +150,7 @@
                                                                                         <!-- <form action="" class="border-0 px-0 text-left pb-0"> -->
                                                                                         <div class="px-0 text-left pb-0 mt-4 pt-2">
                                                                                             <label for="priceListing" class='text-offwhite mb-2 pb-1'>Price <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
-                                                                                            <input class="form-control mt-3" v-model="form.price" id='priceListing' type="number" placeholder="Price" required>
+                                                                                            <input type="number" step="0.01" class="form-control mt-3" v-model="form.price" id='priceListing' placeholder="Price" required>
                                                                                         </div>
                                                                                         <!-- </form> -->
                                                                                     </div>
@@ -164,7 +164,7 @@
                                                                                     </div>
                                                                                     <label for="#listing1" class='text-offwhite'>Minimum Offer <span v-html="currencyIcon"></span> <span class="requiredItem text-maroon">*</span></label>
 
-                                                                                    <input class="form-control" type="text" v-model="form.minimum_offer" placeholder="Minimum offer" :disabled="!form.best_offer">
+                                                                                    <input class="form-control" type="number" step="0.01" v-model="form.minimum_offer" placeholder="Minimum offer" :disabled="!form.best_offer">
                                                                                     <span style="color:red" v-show="minimum_offer_message != ''">{{ minimum_offer_message }}</span>
                                                                                 </div>
 

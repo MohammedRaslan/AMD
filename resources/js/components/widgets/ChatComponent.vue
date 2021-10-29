@@ -1,24 +1,24 @@
 <template>
-          <div class="inner-price-table question mt-5">
-                            <div class="card-cus">
-                                <h2>{{ this.productUserName }}</h2>
+    <div v-show="author" class="inner-price-table question mt-5">
+        <div class="card-cus">
+            <h2>{{ this.productUserName }}</h2>
 
-                               <div class="content data" >
-                                    <h4 v-show="author">Send a message to the seller</h4>
-                                    <div style="display:flex; flex-direction:column-reverse">
-                                        <!-- <div v-show="messageAlert != null" class="text-white text-center"> {{ messageAlert }} </div> -->
-                                        <p class="d-block" v-for="(message,index) in messages" :key="index" >
-                                        <span>{{ message.user_from.user_name }}:</span>
-                                            {{ message.message }}
-                                        </p>
-                                    </div>
-                                   <form @submit.prevent="sendMessage" v-show="author">
-                                       <textarea v-model="form.message" name="" id="" cols="39" rows="4" ></textarea>
-                                       <button :disabled="form.busy">Send</button>
-                                   </form>
-                               </div>
-                            </div>
-                        </div>
+            <div class="content data" >
+                <h4 v-show="author">Send a message to the seller</h4>
+                <div style="display:flex; flex-direction:column-reverse">
+                    <!-- <div v-show="messageAlert != null" class="text-white text-center"> {{ messageAlert }} </div> -->
+                    <p class="d-block" v-for="(message,index) in messages" :key="index" >
+                    <span>{{ message.user_from.user_name }}:</span>
+                        {{ message.message }}
+                    </p>
+                </div>
+                <form @submit.prevent="sendMessage" v-show="author">
+                    <textarea v-model="form.message" name="" id="" cols="39" rows="4" ></textarea>
+                    <button :disabled="form.busy">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>

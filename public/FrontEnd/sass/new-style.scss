@@ -16,10 +16,11 @@
     }
     
     // #finish-loading
-    // #preloder {
-    //     display: none !important;
-    //     opacity: 0 !important;
-    // }
+    #preloder {
+        display: none !important;
+        opacity: 0 !important;
+    }
+    
     .w-120 {
         width: 120px !important;
     }
@@ -740,6 +741,8 @@
     @import './include/only-vue/chat-private';
     @import './include/shopping-cart';
     @import './include/categoies';
+    @import './include/global';
+    @import './include/fonts';
     .c-position-static {
         position: static !important;
     }

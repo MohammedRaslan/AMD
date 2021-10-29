@@ -5,7 +5,7 @@
                 <div class="content">
                     <div>
                         <form @submit.prevent="makeOffer">
-                            <input  type="number" v-model="form.offer" placeholder="$ 0.00"> 
+                            <input type="number" v-model="form.offer" step="0.01" placeholder="$ 0.00">
                             <button class="btn-dark btn-yellow">Submit</button>
                         </form>
                     </div>
@@ -33,19 +33,19 @@
                 if(this.form.offer >= this.best_offer_price){
                     const response = await this.form.post('/api/offer/makeOffer').then((response) => {
                     if(response.data == false){
-                        Swal.fire('Item Not Available!')
+                        Swal.fire('You alredy send an offer')
                     }else{
                         // Toast.fire({
                         //     icon: 'success',
                         //     title: 'Offer Made Successfully'
                         // });
                     }
-                
+
                 });
                 }else{
-                    Swal.fire('Item Not Available!')
+                    Swal.fire('Your offer is very low!')
                 }
-         
+
             }
         }
 })

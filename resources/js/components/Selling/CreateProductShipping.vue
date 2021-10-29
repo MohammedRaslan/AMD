@@ -138,135 +138,60 @@
                                                                 </div>
                                                                 <div class="row text-left" v-show="form.package_details">
                                                                     <div class="col-lg-3 col-6">
-                                                                        <label
-                                                                            class="text-offwhite"
-                                                                            for="cats"
-                                                                            >Width {{userDetails.is_american ==1? "(in)" : "(cm)" }}</label
-                                                                        >
-                                                                        <input
-                                                                            type="number"
-                                                                            v-model="
-                                                                                form.width
-                                                                            "
-                                                                            :disabled="
-                                                                                !form.package_details
-                                                                            "
-                                                                            class="form-control"
-                                                                            id="fName"
-                                                                            placeholder="Width"
-                                                                            required
-                                                                        />
-                                                                        <div
-                                                                            v-if="
-                                                                                form.errors.has(
-                                                                                    'width'
-                                                                                )
-                                                                            "
-                                                                            class="alert alert-danger"
-                                                                            v-html="
-                                                                                form.errors.get(
-                                                                                    'width'
-                                                                                )
-                                                                            "
-                                                                        />
+                                                                        <label class="text-offwhite" for="cats">
+                                                                            Width {{userDetails.is_american ==1? "(in)" : "(cm)" }} <span class="text-maroon">*</span>
+                                                                        </label>
+                                                                        <input type="number" v-model="form.width" :disabled=" !form.package_details " class="form-control" id="fName" placeholder="Width" required/>
+                                                                        <div v-if="form.errors.has('width')" class="alert alert-danger"
+                                                                            v-html="form.errors.get('width')"/>
                                                                     </div>
                                                                     <div class="col-lg-3 col-6">
-                                                                        <label
-                                                                            class="text-offwhite"
-                                                                            for="cats"
-                                                                            >Height {{userDetails.is_american ==1? "(in)" : "(cm)" }}</label
-                                                                        >
-                                                                        <input
-                                                                            type="number"
-                                                                            v-model="
-                                                                                form.height
-                                                                            "
-                                                                            :disabled="
-                                                                                !form.package_details
-                                                                            "
+                                                                        <label class="text-offwhite" for="cats">
+                                                                            Height {{userDetails.is_american ==1? "(in)" : "(cm)" }}
+                                                                            <span class="text-maroon">*</span>
+                                                                        </label>
+                                                                        <input type="number" v-model="form.height" :disabled="!form.package_details"
                                                                             class="form-control"
                                                                             id="fName"
                                                                             placeholder="Height"
                                                                             required
                                                                         />
-                                                                        <div
-                                                                            v-if="
-                                                                                form.errors.has(
-                                                                                    'height'
-                                                                                )
-                                                                            "
-                                                                            class="alert alert-danger"
-                                                                            v-html="
-                                                                                form.errors.get(
-                                                                                    'height'
-                                                                                )
-                                                                            "
-                                                                        />
+                                                                        <div v-if="form.errors.has('height')" class="alert alert-danger" v-html="form.errors.get('height')"/>
                                                                     </div>
                                                                     <div class="col-lg-3 col-6">
-                                                                        <label
-                                                                            class="text-offwhite"
-                                                                            for="cats"
-                                                                            >Length {{userDetails.is_american ==1? "(in)" : "(cm)" }}</label
+                                                                        <label class="text-offwhite" for="cats">
+                                                                            Length {{userDetails.is_american ==1? "(in)" : "(cm)" }}
+                                                                            <span class="text-maroon">*</span>
+                                                                        </label
                                                                         >
-                                                                        <input
-                                                                            type="number"
-                                                                            v-model="
-                                                                                form.length
-                                                                            "
-                                                                            :disabled="
-                                                                                !form.package_details
-                                                                            "
+                                                                        <input type="number" v-model="form.length" :disabled="!form.package_details"
                                                                             class="form-control"
                                                                             id="fName"
                                                                             placeholder="Length"
                                                                             required
                                                                         />
                                                                         <div
-                                                                            v-if="
-                                                                                form.errors.has(
-                                                                                    'length'
-                                                                                )
-                                                                            "
+                                                                            v-if="form.errors.has('length')"
                                                                             class="alert alert-danger"
-                                                                            v-html="
-                                                                                form.errors.get(
-                                                                                    'length'
-                                                                                )
-                                                                            "
+                                                                            v-html="form.errors.get('length')"
                                                                         />
                                                                     </div>
                                                                     <div class="col-lg-3 col-6">
-                                                                        <label
-                                                                            class="text-offwhite"
-                                                                            for="cats"
-                                                                            >Weight {{userDetails.is_american ==1? "(lb)" : "(kg)" }}</label
+                                                                        <label class="text-offwhite" for="cats">
+                                                                            Weight {{userDetails.is_american ==1? "(lb)" : "(kg)" }}
+                                                                            <span class="text-maroon">*</span>
+                                                                        </label
                                                                         >
-                                                                        <input
-                                                                            type="number"
-                                                                            v-model="
-                                                                                form.weight
-                                                                            "
-                                                                            :disabled="
-                                                                                !form.package_details
-                                                                            "
+                                                                        <input type="number" v-model="form.weight" :disabled="!form.package_details"
                                                                             class="form-control"
                                                                             id="fName"
                                                                             placeholder="Weight"
                                                                             required
                                                                         />
                                                                         <div
-                                                                            v-if="
-                                                                                form.errors.has(
-                                                                                    'weight'
-                                                                                )
-                                                                            "
+                                                                            v-if="form.errors.has('weight')"
                                                                             class="alert alert-danger"
-                                                                            v-html="
-                                                                                form.errors.get(
-                                                                                    'weight'
-                                                                                )
-                                                                            "
+                                                                            v-html="form.errors.get('weight')"
                                                                         />
                                                                     </div>
                                                                 </div>
@@ -280,60 +205,32 @@
                                                                         </div>
 
                                                                         <div class="text-left">
-                                                                        <label class="text-offwhite text-left w-100" for="cats">Carrier</label>
+                                                                        <label class="text-offwhite text-left w-100" for="cats">
+                                                                            Carrier
+                                                                            <span class="text-maroon">*</span>
+                                                                        </label>
                                                                         <input
-                                                                            type="text"
-                                                                            v-model="
-                                                                                form.service_usa
-                                                                            "
-                                                                            :disabled="
-                                                                                !form.usa
-                                                                            "
+                                                                            type="text" v-model="form.service_usa" :disabled="!form.usa"
                                                                             class="form-control"
                                                                             id="fName"
                                                                             placeholder="Service"
                                                                             required
                                                                         />
                                                                         <div
-                                                                            v-if="
-                                                                                form.errors.has(
-                                                                                    'service_usa'
-                                                                                )
-                                                                            "
+                                                                            v-if="form.errors.has('service_usa')"
                                                                             class="alert alert-danger"
-                                                                            v-html="
-                                                                                form.errors.get(
-                                                                                    'service_usa'
-                                                                                )
-                                                                            "
+                                                                            v-html="form.errors.get('service_usa')"
                                                                         />
                                                                         </div>
 
                                                                          <div class="text-left">
-                                                                            <label
-                                                                                class="text-offwhite"
-                                                                                for="cats"
-                                                                                >Cost
+                                                                            <label class="text-offwhite" for="cats">
+                                                                                Cost
                                                                             </label>
-                                                                            <span
-                                                                                style="color:white"
-                                                                                v-html="
-                                                                                    currencyIcon
-                                                                                "
-                                                                            ></span>
-                                                                            <input
-                                                                                type="number"
-                                                                                step="0.01"
-                                                                                v-model="
-                                                                                    form.price_usa
-                                                                                "
-                                                                                :disabled="
-                                                                                    !form.usa
-                                                                                "
-                                                                                class="form-control"
-                                                                                id="fName"
-                                                                                placeholder="Price"
-                                                                                required
+                                                                            <span style="color:white" v-html="currencyIcon"></span>
+                                                                            <span class="text-maroon">*</span>
+                                                                            <input type="number" step="0.01" v-model="form.price_usa " :disabled="!form.usa" class="form-control"
+                                                                                id="fName" placeholder="Price" required
                                                                             />
                                                                             <div
                                                                                 v-if="
@@ -351,7 +248,10 @@
                                                                         </div>
 
                                                                         <div class="select-product text-left">
-                                                                            <label class="text-offwhite" for="cats">Duration</label>
+                                                                            <label class="text-offwhite" for="cats">
+                                                                                Duration
+                                                                                <span class="text-maroon">*</span>
+                                                                            </label>
                                                                             <v-select placeholder="Select Duration" id="cats" class="custom-vue-select" v-model="form.duration_usa"
                                                                                 :disabled="!form.usa"
                                                                                 label="title"
@@ -416,11 +316,10 @@
                                                                         </div> -->
 
                                                                         <div class="text-left">
-                                                                            <label
-                                                                                class="text-offwhite text-left w-100"
-                                                                                for="cats"
-                                                                                >Worldwide </label
-                                                                            >
+                                                                            <label class="text-offwhite text-left w-100" for="cats">
+                                                                                Worldwide
+                                                                                <span class="text-maroon">*</span>
+                                                                            </label>
                                                                             <input
                                                                                 type="text"
                                                                                 v-model="
@@ -450,17 +349,11 @@
                                                                         </div>
 
                                                                         <div class="text-left">
-                                                                            <label
-                                                                                class="text-offwhite"
-                                                                                for="cats"
-                                                                                >Cost</label
-                                                                            >
-                                                                            <span
-                                                                                style="color:white"
-                                                                                v-html="
-                                                                                    currencyIcon
-                                                                                "
-                                                                            ></span>
+                                                                            <label class="text-offwhite" for="cats">
+                                                                                Cost
+                                                                            </label>
+                                                                            <span style="color:white" v-html="currencyIcon"></span>
+                                                                            <span class="text-maroon">*</span>
                                                                             <input
                                                                                 type="number"
                                                                                 step="0.01"
@@ -491,7 +384,9 @@
                                                                         </div>
 
                                                                          <div class="select-product text-left">
-                                                                            <label class="text-offwhite" for="cats" >Duration</label>
+                                                                            <label class="text-offwhite" for="cats">
+                                                                                Duration <span class="text-maroon">*</span>
+                                                                            </label>
                                                                             <v-select
                                                                                 placeholder="Select Duration"
                                                                                 class="custom-vue-select"

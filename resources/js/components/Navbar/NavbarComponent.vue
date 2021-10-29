@@ -373,18 +373,19 @@
                                 </div>
 
                                 <div class="dropdown drop-user1">
-                                    <button class="btn btn-outline-secondary dropdown-toggle w-auto dropdown-avatar" style="height: 50px;"
+                                    <button class="btn btn-outline-secondary dropdown-toggle w-auto dropdown-avatar flex-column p-0" style="height: 50px;"
                                         v-on:click="clickdropavatar">
                                         <svg
                                             v-show="image == null"
-                                            class="user-icon"
+                                            class="user-icon dropdown-avatar"
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink"
                                             width="52"
                                             height="100"
                                         >
-                                            <defs>
+                                            <defs class="dropdown-avatar">
                                                 <filter
+                                                    class="dropdown-avatar"
                                                     id="Shape"
                                                     x="0"
                                                     y="0"
@@ -393,19 +394,20 @@
                                                     filterUnits="userSpaceOnUse"
                                                 >
                                                     <feOffset
+                                                        class="dropdown-avatar"
                                                         dy="10"
                                                         input="SourceAlpha"
                                                     >
-                                                        <feGaussianBlur
+                                                        <feGaussianBlur class="dropdown-avatar"
                                                             stdDeviation="10"
                                                             result="blur"
                                                         >
-                                                            <feFlood flood-opacity="0.161">
+                                                            <feFlood flood-opacity="0.161" class="dropdown-avatar">
                                                                 <feComposite
-                                                                    operator="in"
+                                                                    operator="in" class="dropdown-avatar"
                                                                     in2="blur"
                                                                 >
-                                                                    <feComposite in="SourceGraphic"></feComposite>
+                                                                    <feComposite class="dropdown-avatar" in="SourceGraphic"></feComposite>
                                                                 </feComposite>
                                                             </feFlood>
                                                         </feGaussianBlur>
@@ -413,15 +415,15 @@
                                                 </filter>
                                             </defs>
 
-                                            <g id="Icon_user_solid">
-                                                <g
+                                            <g id="Icon_user_solid" class="dropdown-avatar">
+                                                <g class="dropdown-avatar"
                                                     id="Icon_user_solid-2"
                                                     data-name="Icon_user_solid"
                                                     transform="translate(3.333 3.333)"
                                                 >
-                                                    <g>
+                                                    <g class="dropdown-avatar">
                                                         <path
-                                                            class="user-acc"
+                                                            class="user-acc dropdown-avatar"
                                                             id="Shape-2"
                                                             data-name="Shape"
                                                             d="M20,40A20,20,0,1,1,40,20,20.023,20.023,0,0,1,20,40Zm0-18a20.237,20.237,0,0,0-6.563,1.313C11.41,24.093,8.82,25.54,8,28c1.477,4.428,7.388,6,12,6s10.523-1.571,12-6c-.821-2.461-3.41-3.908-5.438-4.688A20.237,20.237,0,0,0,20,22ZM20,6a6,6,0,1,0,6,6A6.007,6.007,0,0,0,20,6Z"
@@ -432,8 +434,8 @@
                                                 </g>
                                             </g>
                                         </svg>
-
-                                        <img v-show="image" style="width: 45px; border-radius: 50%; margin-left: 5px;" :src="'/'+image" alt="Avatar User">
+                                        <img class="dropdown-avatar" v-show="image" style="width: 45px; border-radius: 50%;" :src="'/'+image" alt="Avatar User">
+                                        <i class="fas fa-chevron-down arrow-dwon-avatar dropdown-avatar pt-1 w-100" :class="{ 'rotate-180': dropAvatar }"></i>
                                     </button>
 
                                     <ul class="dropdown-menu dropdown-menu-dark" :class="{ 'show': dropAvatar }" id="m-user">

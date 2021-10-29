@@ -56,7 +56,7 @@
                                                     <div class="col-lg-7 col-md-6 col-sm-6 col-6">
                                                         <h5>
                                                             {{ product.title }}
-                                                            <p>Dolls</p>
+                                                            <p>{{ product.brand }}</p>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -129,9 +129,10 @@ export default ({
         getProducts(page = 1){
             axios.get('/api/product/getUserProductActive?page=' + page).then((response) => {
             this.products = response.data;
+            console.log(this.products);
             if(response.data.length == 0 ){
                 this.message = 'You dont have products';
-                }
+            }
         });
         },
         changeStatus(product_id){

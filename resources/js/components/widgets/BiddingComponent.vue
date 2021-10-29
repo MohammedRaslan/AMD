@@ -1,20 +1,37 @@
 <template>
        <div class="inner-price-table">
             <div class="card-cus">
-                <h2 v-if="openBidding">Closes in {{ this.bid.to.actual }} </h2>
+                <h2 v-if="openBidding">Time left {{ this.bid.to.actual }} </h2>
                 <h2 v-else>Opens at {{ this.bid.from.human }}</h2>
-                <div class="content">
+                <div class="content pt-0">
                     <div class="mb-3">
-                    <h3 class="text-maron mb-1">Current bid is {{ Number((this.minimum_price).toFixed(10)) }} <span v-html="currencyIcon"></span> </h3><br>
-                    <small class="mb-0 text-white" v-if="isHighst">You Are The Highest Bidder</small>
-                    <small class="mb-0 text-white" v-else>You Have Been Outbid</small><br>
-                    <!-- <small class="text-white">Minimum Bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }}</small> -->
+                        <h3 class="text-white mb-3">You,ve been outbid </h3>
+                        <!-- <h3 class="text-maron mb-1">Current bid is {{ Number((this.minimum_price).toFixed(10)) }} <span v-html="currencyIcon"></span> </h3><br> -->
+                        <!-- <small class="mb-0 text-white" v-if="isHighst">You Are The Highest Bidder</small>
+                        <small class="mb-0 text-white" v-else>You Have Been Outbid</small><br> -->
+                        <div class="row">
+                            <div class="col-6 col-lg-5">
+                                <p class="fs-17 text-light-gray">Current bid</p>
+                            </div>
+                            <div class="col-6">
+                                <p><span v-html="currencyIcon"></span> {{ Number((this.minimum_price).toFixed(10)) }} </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-lg-5">
+                                <p class="fs-17 text-light-gray">Your max bid</p>
+                            </div>
+                            <div class="col-6">
+                                <p><span v-html="currencyIcon"></span> 100</p>
+                            </div>
+                        </div>
+                        <!-- <small class="text-white">Minimum Bid is {{ Number((this.minimum_price).toFixed(10)) }} {{ this.user_details.currency }}</small> -->
                         <!-- <p>8 Bids</p> -->
                     </div>
 
                         <div v-if="!author && openBidding">
                         <form class="pb-3" @submit.prevent="makeBid()">
-                            <input type="number" v-model="form.bidValue" name="" id="" :disabled="!openBidding">
+                            <input type="number" step='0.01' v-model="form.bidValue" name="" id="" :disabled="!openBidding">
                             <button class="btn-dark" :disabled="!openBidding">BID</button>
                         </form>
                     </div>

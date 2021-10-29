@@ -119,7 +119,7 @@
                         <div class="inner">
                             <figure>
                                 <router-link class="link-del" :to="{name: 'ShopDetailComponent', params:{query: product.id}}">
-                                    <img  :src='str_replace(product.image)' alt="">
+                                    <img :src='str_replace(product.image)' alt="">
                                 </router-link>
                                 </figure>
                             <h4><router-link class="link-del" :to="{name: 'ShopDetailComponent', params:{query: product.id}}">{{ product.title }}</router-link> </h4>
@@ -171,6 +171,8 @@ export default {
             this.products = response.data;
             this.$Progress.finish();
             this.loading = false;
+
+            console.log('data product details', this.products);
 
         });
     },
