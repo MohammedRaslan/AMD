@@ -33,7 +33,7 @@
                         <div v-if="!author && openBidding  && !bid_end">
                         <form class="pb-3" @submit.prevent="makeBid()">
                             <input type="number" step='0.01' v-model="form.bidValue" name="" id="" :disabled="!openBidding">
-                            <button class="btn-dark" :disabled="!openBidding">BID</button>
+                            <button class="btn-dark" :disabled="!openBidding ">BID</button>
                         </form>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ export default {
         var now  = moment().format('l');
         var to   = moment(this.bid.to.actual).format('l');
         console.log("test..." , from , now , to);
-        console.log("test..." , now > from);
+        console.log("test..." , now > to);
         if(now > from){
             this.openBidding = true;
         }

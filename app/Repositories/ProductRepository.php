@@ -318,7 +318,7 @@ class ProductRepository{
         $product->wishlistCount = count($product->wishlist);
         $product->userAddedItemToWishlist = in_array($user_id,$wishlist);
         $product->user_details = $product->user->user_details;
-        $product->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
+        $product->currencyIcon = CurrencyIconsEnum::getValue($product->user->user_details->currency);
         $product->unsetRelation('wishlist');
         if($product->bid != null){
             return [
@@ -465,7 +465,7 @@ class ProductRepository{
                     }
                }
                $item->userAddedItemToWishlist = $exist;
-               $item->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
+               $item->currencyIcon = CurrencyIconsEnum::getValue($item->user->user_details->currency);
                $item->unsetRelation('wishlist');
             return $item;
             });
@@ -487,7 +487,7 @@ class ProductRepository{
                     }
                }
                $item->userAddedItemToWishlist = $exist;
-               $item->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
+               $item->currencyIcon = CurrencyIconsEnum::getValue($item->user->user_details->currency);
                $item->unsetRelation('wishlist');
             return $item;
             });

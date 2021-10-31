@@ -76,7 +76,7 @@ class CategoryRepository{
                     }
                }
                $item->userAddedItemToWishlist = $exist;
-               $item->currencyIcon = CurrencyIconsEnum::getValue($userDetails->currency);
+               $item->currencyIcon = CurrencyIconsEnum::getValue($item->user->user_details->currency);
                $item->unsetRelation('wishlist');
             return $item;
                 
