@@ -30,7 +30,7 @@
                         <!-- <p>8 Bids</p> -->
                     </div>
 
-                        <div v-if="!author && openBidding">
+                        <div v-if="!author && openBidding  && !bid_end">
                         <form class="pb-3" @submit.prevent="makeBid()">
                             <input type="number" step='0.01' v-model="form.bidValue" name="" id="" :disabled="!openBidding">
                             <button class="btn-dark" :disabled="!openBidding">BID</button>
