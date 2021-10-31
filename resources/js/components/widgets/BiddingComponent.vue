@@ -133,6 +133,7 @@ export default {
         var now  = moment().format('l');
         var to   = moment(this.bid.to.actual).format('l');
         console.log("test..." , from , now , to);
+        console.log("test..." , now > from);
         if(now > from){
             this.openBidding = true;
         }
