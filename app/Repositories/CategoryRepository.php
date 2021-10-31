@@ -63,7 +63,7 @@ class CategoryRepository{
     public function categoryProducts($user_id,$id)
     {
         $category = Category::where('id',$id)->with('products')->first();
-        $products = $category->products()->where('status',1)->where('draft',0)->get();
+        $products = $category->products()->where('status',1)->where('draft',0)->whereIn('type' , [0,1])->get();
         $exist = false;
         $userDetails = UserDetail::where('user_id',$user_id)->first();
         return $products->map(function($item, $key) use ($user_id,$exist,$userDetails){
