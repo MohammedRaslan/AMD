@@ -426,7 +426,13 @@ export default ({
         axios.get('/api/product/getProductData').then((response) => {
             this.categories = response.data.categories;
             this.conditions = response.data.conditions;
-            this.brands = response.data.brands;
+            this.brands = [
+                {
+                    "id" : 96,
+                    "title" : "Any"
+                },
+                ...response.data.brands
+            ];
             this.currencyIcon = response.data.currencyIcon;
         });
 

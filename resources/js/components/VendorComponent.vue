@@ -4,7 +4,7 @@
             <div class="dells-top">
                 <div class="inner-top">
                     <div class="container">
-                        <h2>Dolls</h2>
+                        <h2>{{ products[0].user.user_name}}</h2>
                     </div>
                 </div>
             </div>
@@ -167,6 +167,7 @@ export default {
             axios.get('/api/product/getVendorProducts/'+this.id).then((response) =>{
 
             this.products = response.data;
+            console.log(this.products)
             this.$Progress.finish();
             this.loading = false;
             console.log(response);

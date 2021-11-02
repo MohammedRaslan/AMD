@@ -66,7 +66,7 @@ class ProductRepository{
         return ['types'=> ProductType::getInstances(),
                 'categories' => Category::select('id','title')->where('status',1)->orderBy('order','asc')->get(),
                 'conditions' => $this->fixConditions(ProductCondition::getKeys()),
-                'brands' => Brand::select('id','title')->orderBy('order','asc')->get(),
+                'brands' => Brand::where("title" ,"!=" , "Any")->select('id','title')->orderBy('order','asc')->get(),
                 'return_policy' => Return_Policy::asSelectArray(),
                 'bidding_step' => $this->biddingSteps(),
                 "product" => $id != NULL ?  Product::where('id',$id)->with(['categories','bid','images'])->first() : null,
@@ -452,7 +452,7 @@ class ProductRepository{
 
     public function getVendorProducts($user_id)
     {
-        $products= Product::where([['user_id',$user_id] , ['status',1], ['draft', 0] ])->paginate(10);
+        $products= Product::where([['user_id',$user_id] , ['status',1], ['draft', 0] ])->with('user')->paginate(10);
         $exist = false;
         $userDetails = UserDetail::where('user_id',$user_id)->first();
         return $products->map(function($item, $key) use ($user_id,$exist,$userDetails){
