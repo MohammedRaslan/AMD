@@ -425,7 +425,11 @@ export default ({
 
         axios.get('/api/product/getProductData').then((response) => {
             this.categories = response.data.categories;
-            this.conditions = response.data.conditions;
+            this.conditions = [
+                "Any",
+                ...response.data.conditions
+            ];
+            console.log("dee" , this.conditions);
             this.brands = [
                 {
                     "id" : 96,

@@ -471,6 +471,7 @@ export default ({
     }),
     methods:{
         async saveProduct(isDraft = 0){
+            console.log(this.form);
            this.$Progress.start();
            this.form.minimum_offer = this.form.best_offer == false ? null : this.form.minimum_offer;
            this.form.domestic_product = this.form.domestic_product == true ? 1 :0;
@@ -480,6 +481,8 @@ export default ({
                    this.minimum_offer_message = "This value can not be higher than Price";
                    this.$Progress.fail();
 
+               }else if(this.form.brand == "Any" || this.form.condition =="Any"){
+                    Swal.fire('Brands and Conditions Can Not be Null!')
                }else{
             const response = await this.form.post('/api/product/store/').then((response)=>{
                 this.$Progress.finish();

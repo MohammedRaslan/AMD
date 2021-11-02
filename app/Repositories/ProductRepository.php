@@ -446,7 +446,7 @@ class ProductRepository{
     }
     public function getRequestedItems($user_id)
     {
-        return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ['type', ProductType::getValue("Requested")]])->paginate(10);
+        return Product::where([['user_id',$user_id] , ['status',1], ['draft', 0], ['type', ProductType::getValue("Requested")]])->paginate(15);
 
     }
 
@@ -474,7 +474,7 @@ class ProductRepository{
 
     public function requestedProduct($user_id)
     {
-        $products= Product::where([['user_id', "!=",$user_id] , ['status',1], ['draft', 0] , ['type', 2]  ])->paginate(10);
+        $products= Product::where([['user_id', "!=",$user_id] , ['status',1], ['draft', 0] , ['type', 2]  ])->paginate(100);
         $exist = false;
         $userDetails = UserDetail::where('user_id',$user_id)->first();
         return $products->map(function($item, $key) use ($user_id,$exist,$userDetails){
